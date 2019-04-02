@@ -8,22 +8,50 @@
 
 /* Begin PBXBuildFile section */
 		DEECB02622533430002D6C30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB02522533430002D6C30 /* AppDelegate.swift */; };
-		DEECB02822533430002D6C30 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB02722533430002D6C30 /* ViewController.swift */; };
-		DEECB02B22533430002D6C30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEECB02922533430002D6C30 /* Main.storyboard */; };
 		DEECB02E22533430002D6C30 /* mSaving.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DEECB02C22533430002D6C30 /* mSaving.xcdatamodeld */; };
 		DEECB03022533432002D6C30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEECB02F22533432002D6C30 /* Assets.xcassets */; };
-		DEECB03322533432002D6C30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEECB03122533432002D6C30 /* LaunchScreen.storyboard */; };
+		DEECB0472253358B002D6C30 /* Accounting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEECB03E2253358B002D6C30 /* Accounting.storyboard */; };
+		DEECB0482253358B002D6C30 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEECB03F2253358B002D6C30 /* Setting.storyboard */; };
+		DEECB0492253358B002D6C30 /* Invoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEECB0402253358B002D6C30 /* Invoice.storyboard */; };
+		DEECB04A2253358B002D6C30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEECB0412253358B002D6C30 /* LaunchScreen.storyboard */; };
+		DEECB04B2253358B002D6C30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEECB0432253358B002D6C30 /* Main.storyboard */; };
+		DEECB04C2253358B002D6C30 /* Chart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEECB0452253358B002D6C30 /* Chart.storyboard */; };
+		DEECB04D2253358B002D6C30 /* Saving.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEECB0462253358B002D6C30 /* Saving.storyboard */; };
+		DEECB05622533599002D6C30 /* ChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB04F22533599002D6C30 /* ChartVC.swift */; };
+		DEECB05722533599002D6C30 /* SavingAddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB05022533599002D6C30 /* SavingAddVC.swift */; };
+		DEECB05822533599002D6C30 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB05122533599002D6C30 /* SettingVC.swift */; };
+		DEECB05922533599002D6C30 /* SavingDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB05222533599002D6C30 /* SavingDetailVC.swift */; };
+		DEECB05A22533599002D6C30 /* SavingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB05322533599002D6C30 /* SavingVC.swift */; };
+		DEECB05B22533599002D6C30 /* AccountingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB05422533599002D6C30 /* AccountingVC.swift */; };
+		DEECB05C22533599002D6C30 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB05522533599002D6C30 /* TabBarController.swift */; };
+		DEECB063225335FA002D6C30 /* UIView - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB060225335FA002D6C30 /* UIView - extension.swift */; };
+		DEECB064225335FA002D6C30 /* UIImage - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB061225335FA002D6C30 /* UIImage - extension.swift */; };
+		DEECB065225335FA002D6C30 /* UIStoryboard - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB062225335FA002D6C30 /* UIStoryboard - extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DEECB02222533430002D6C30 /* mSaving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mSaving.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEECB02522533430002D6C30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DEECB02722533430002D6C30 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DEECB02A22533430002D6C30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DEECB02D22533430002D6C30 /* mSaving.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mSaving.xcdatamodel; sourceTree = "<group>"; };
 		DEECB02F22533432002D6C30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		DEECB03222533432002D6C30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DEECB03422533432002D6C30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DEECB03E2253358B002D6C30 /* Accounting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Accounting.storyboard; sourceTree = "<group>"; };
+		DEECB03F2253358B002D6C30 /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		DEECB0402253358B002D6C30 /* Invoice.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Invoice.storyboard; sourceTree = "<group>"; };
+		DEECB0422253358B002D6C30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DEECB0442253358B002D6C30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DEECB0452253358B002D6C30 /* Chart.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chart.storyboard; sourceTree = "<group>"; };
+		DEECB0462253358B002D6C30 /* Saving.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Saving.storyboard; sourceTree = "<group>"; };
+		DEECB04F22533599002D6C30 /* ChartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartVC.swift; sourceTree = "<group>"; };
+		DEECB05022533599002D6C30 /* SavingAddVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavingAddVC.swift; sourceTree = "<group>"; };
+		DEECB05122533599002D6C30 /* SettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		DEECB05222533599002D6C30 /* SavingDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavingDetailVC.swift; sourceTree = "<group>"; };
+		DEECB05322533599002D6C30 /* SavingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavingVC.swift; sourceTree = "<group>"; };
+		DEECB05422533599002D6C30 /* AccountingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountingVC.swift; sourceTree = "<group>"; };
+		DEECB05522533599002D6C30 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		DEECB060225335FA002D6C30 /* UIView - extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView - extension.swift"; sourceTree = "<group>"; };
+		DEECB061225335FA002D6C30 /* UIImage - extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage - extension.swift"; sourceTree = "<group>"; };
+		DEECB062225335FA002D6C30 /* UIStoryboard - extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard - extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,14 +85,68 @@
 			isa = PBXGroup;
 			children = (
 				DEECB02522533430002D6C30 /* AppDelegate.swift */,
-				DEECB02722533430002D6C30 /* ViewController.swift */,
-				DEECB02922533430002D6C30 /* Main.storyboard */,
-				DEECB02F22533432002D6C30 /* Assets.xcassets */,
-				DEECB03122533432002D6C30 /* LaunchScreen.storyboard */,
 				DEECB03422533432002D6C30 /* Info.plist */,
-				DEECB02C22533430002D6C30 /* mSaving.xcdatamodeld */,
+				DEECB05D225335AD002D6C30 /* Model */,
+				DEECB03D2253358B002D6C30 /* View */,
+				DEECB04E22533599002D6C30 /* Controller */,
+				DEECB05F225335FA002D6C30 /* Extension */,
+				DEECB0662253366F002D6C30 /* Resource */,
 			);
 			path = mSaving;
+			sourceTree = "<group>";
+		};
+		DEECB03D2253358B002D6C30 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DEECB0412253358B002D6C30 /* LaunchScreen.storyboard */,
+				DEECB0432253358B002D6C30 /* Main.storyboard */,
+				DEECB0462253358B002D6C30 /* Saving.storyboard */,
+				DEECB0452253358B002D6C30 /* Chart.storyboard */,
+				DEECB03E2253358B002D6C30 /* Accounting.storyboard */,
+				DEECB0402253358B002D6C30 /* Invoice.storyboard */,
+				DEECB03F2253358B002D6C30 /* Setting.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DEECB04E22533599002D6C30 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DEECB05522533599002D6C30 /* TabBarController.swift */,
+				DEECB05322533599002D6C30 /* SavingVC.swift */,
+				DEECB05222533599002D6C30 /* SavingDetailVC.swift */,
+				DEECB05022533599002D6C30 /* SavingAddVC.swift */,
+				DEECB04F22533599002D6C30 /* ChartVC.swift */,
+				DEECB05422533599002D6C30 /* AccountingVC.swift */,
+				DEECB05122533599002D6C30 /* SettingVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DEECB05D225335AD002D6C30 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DEECB02C22533430002D6C30 /* mSaving.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DEECB05F225335FA002D6C30 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DEECB060225335FA002D6C30 /* UIView - extension.swift */,
+				DEECB061225335FA002D6C30 /* UIImage - extension.swift */,
+				DEECB062225335FA002D6C30 /* UIStoryboard - extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		DEECB0662253366F002D6C30 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				DEECB02F22533432002D6C30 /* Assets.xcassets */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,9 +207,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEECB03322533432002D6C30 /* LaunchScreen.storyboard in Resources */,
 				DEECB03022533432002D6C30 /* Assets.xcassets in Resources */,
-				DEECB02B22533430002D6C30 /* Main.storyboard in Resources */,
+				DEECB0492253358B002D6C30 /* Invoice.storyboard in Resources */,
+				DEECB04B2253358B002D6C30 /* Main.storyboard in Resources */,
+				DEECB0482253358B002D6C30 /* Setting.storyboard in Resources */,
+				DEECB04A2253358B002D6C30 /* LaunchScreen.storyboard in Resources */,
+				DEECB04D2253358B002D6C30 /* Saving.storyboard in Resources */,
+				DEECB0472253358B002D6C30 /* Accounting.storyboard in Resources */,
+				DEECB04C2253358B002D6C30 /* Chart.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,29 +225,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEECB02822533430002D6C30 /* ViewController.swift in Sources */,
+				DEECB05922533599002D6C30 /* SavingDetailVC.swift in Sources */,
+				DEECB05A22533599002D6C30 /* SavingVC.swift in Sources */,
+				DEECB063225335FA002D6C30 /* UIView - extension.swift in Sources */,
+				DEECB05C22533599002D6C30 /* TabBarController.swift in Sources */,
+				DEECB05822533599002D6C30 /* SettingVC.swift in Sources */,
+				DEECB064225335FA002D6C30 /* UIImage - extension.swift in Sources */,
+				DEECB065225335FA002D6C30 /* UIStoryboard - extension.swift in Sources */,
+				DEECB05722533599002D6C30 /* SavingAddVC.swift in Sources */,
 				DEECB02E22533430002D6C30 /* mSaving.xcdatamodeld in Sources */,
+				DEECB05B22533599002D6C30 /* AccountingVC.swift in Sources */,
 				DEECB02622533430002D6C30 /* AppDelegate.swift in Sources */,
+				DEECB05622533599002D6C30 /* ChartVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DEECB02922533430002D6C30 /* Main.storyboard */ = {
+		DEECB0412253358B002D6C30 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DEECB02A22533430002D6C30 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		DEECB03122533432002D6C30 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DEECB03222533432002D6C30 /* Base */,
+				DEECB0422253358B002D6C30 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		DEECB0432253358B002D6C30 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DEECB0442253358B002D6C30 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
