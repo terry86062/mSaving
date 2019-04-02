@@ -134,9 +134,9 @@
 		DEECB05F225335FA002D6C30 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				DEECB062225335FA002D6C30 /* UIStoryboard - extension.swift */,
 				DEECB060225335FA002D6C30 /* UIView - extension.swift */,
 				DEECB061225335FA002D6C30 /* UIImage - extension.swift */,
-				DEECB062225335FA002D6C30 /* UIStoryboard - extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
