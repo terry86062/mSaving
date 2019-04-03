@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34FE46260D153EA89122AC6A /* Pods_mSaving.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2F60CB0FEB4CC786F0B4059 /* Pods_mSaving.framework */; };
+		DE2BB358225360C2001D55E4 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BB357225360C2001D55E4 /* TopView.swift */; };
+		DE2BB35C22539662001D55E4 /* SavingCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BB35A22539662001D55E4 /* SavingCVCell.swift */; };
+		DE2BB35D22539662001D55E4 /* SavingCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2BB35B22539662001D55E4 /* SavingCVCell.xib */; };
+		DE2BB35F225398DA001D55E4 /* SavingGoalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2BB35E225398DA001D55E4 /* SavingGoalView.xib */; };
+		DE2BB36122539A16001D55E4 /* SavingGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BB36022539A16001D55E4 /* SavingGoalView.swift */; };
+		DE2BB36322539B95001D55E4 /* UICollectionView - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BB36222539B95001D55E4 /* UICollectionView - extension.swift */; };
+		DE2BB3662253AC1D001D55E4 /* MonthCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BB3642253AC1D001D55E4 /* MonthCVCell.swift */; };
+		DE2BB3672253AC1D001D55E4 /* MonthCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2BB3652253AC1D001D55E4 /* MonthCVCell.xib */; };
+		DE2BB3692253AE16001D55E4 /* Int - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BB3682253AE16001D55E4 /* Int - extension.swift */; };
 		DEECB02622533430002D6C30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB02522533430002D6C30 /* AppDelegate.swift */; };
 		DEECB02E22533430002D6C30 /* mSaving.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DEECB02C22533430002D6C30 /* mSaving.xcdatamodeld */; };
 		DEECB03022533432002D6C30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEECB02F22533432002D6C30 /* Assets.xcassets */; };
@@ -30,6 +40,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2269CA763E2B12B921C758F2 /* Pods-mSaving.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mSaving.debug.xcconfig"; path = "Target Support Files/Pods-mSaving/Pods-mSaving.debug.xcconfig"; sourceTree = "<group>"; };
+		2C6C6317FBC34568D8610458 /* Pods-mSaving.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mSaving.release.xcconfig"; path = "Target Support Files/Pods-mSaving/Pods-mSaving.release.xcconfig"; sourceTree = "<group>"; };
+		DE2BB357225360C2001D55E4 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
+		DE2BB35A22539662001D55E4 /* SavingCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingCVCell.swift; sourceTree = "<group>"; };
+		DE2BB35B22539662001D55E4 /* SavingCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavingCVCell.xib; sourceTree = "<group>"; };
+		DE2BB35E225398DA001D55E4 /* SavingGoalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavingGoalView.xib; sourceTree = "<group>"; };
+		DE2BB36022539A16001D55E4 /* SavingGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingGoalView.swift; sourceTree = "<group>"; };
+		DE2BB36222539B95001D55E4 /* UICollectionView - extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView - extension.swift"; sourceTree = "<group>"; };
+		DE2BB3642253AC1D001D55E4 /* MonthCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCVCell.swift; sourceTree = "<group>"; };
+		DE2BB3652253AC1D001D55E4 /* MonthCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthCVCell.xib; sourceTree = "<group>"; };
+		DE2BB3682253AE16001D55E4 /* Int - extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int - extension.swift"; sourceTree = "<group>"; };
 		DEECB02222533430002D6C30 /* mSaving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mSaving.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEECB02522533430002D6C30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEECB02D22533430002D6C30 /* mSaving.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mSaving.xcdatamodel; sourceTree = "<group>"; };
@@ -52,6 +73,7 @@
 		DEECB060225335FA002D6C30 /* UIView - extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView - extension.swift"; sourceTree = "<group>"; };
 		DEECB061225335FA002D6C30 /* UIImage - extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage - extension.swift"; sourceTree = "<group>"; };
 		DEECB062225335FA002D6C30 /* UIStoryboard - extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard - extension.swift"; sourceTree = "<group>"; };
+		E2F60CB0FEB4CC786F0B4059 /* Pods_mSaving.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mSaving.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,17 +81,68 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34FE46260D153EA89122AC6A /* Pods_mSaving.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		600F4854E9FFB3F5EA3A02F1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2269CA763E2B12B921C758F2 /* Pods-mSaving.debug.xcconfig */,
+				2C6C6317FBC34568D8610458 /* Pods-mSaving.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BBD75296C698B591F95558B3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E2F60CB0FEB4CC786F0B4059 /* Pods_mSaving.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE2BB3552253605D001D55E4 /* Saving */ = {
+			isa = PBXGroup;
+			children = (
+				DE2BB35A22539662001D55E4 /* SavingCVCell.swift */,
+				DE2BB35B22539662001D55E4 /* SavingCVCell.xib */,
+				DE2BB36022539A16001D55E4 /* SavingGoalView.swift */,
+				DE2BB35E225398DA001D55E4 /* SavingGoalView.xib */,
+			);
+			path = Saving;
+			sourceTree = "<group>";
+		};
+		DE2BB35622536070001D55E4 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				DE2BB357225360C2001D55E4 /* TopView.swift */,
+				DE2BB3642253AC1D001D55E4 /* MonthCVCell.swift */,
+				DE2BB3652253AC1D001D55E4 /* MonthCVCell.xib */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		DE2BB35922538889001D55E4 /* Saving */ = {
+			isa = PBXGroup;
+			children = (
+				DEECB05322533599002D6C30 /* SavingVC.swift */,
+				DEECB05222533599002D6C30 /* SavingDetailVC.swift */,
+				DEECB05022533599002D6C30 /* SavingAddVC.swift */,
+			);
+			path = Saving;
+			sourceTree = "<group>";
+		};
 		DEECB01922533430002D6C30 = {
 			isa = PBXGroup;
 			children = (
 				DEECB02422533430002D6C30 /* mSaving */,
 				DEECB02322533430002D6C30 /* Products */,
+				600F4854E9FFB3F5EA3A02F1 /* Pods */,
+				BBD75296C698B591F95558B3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,6 +171,8 @@
 		DEECB03D2253358B002D6C30 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DE2BB35622536070001D55E4 /* Base */,
+				DE2BB3552253605D001D55E4 /* Saving */,
 				DEECB0412253358B002D6C30 /* LaunchScreen.storyboard */,
 				DEECB0432253358B002D6C30 /* Main.storyboard */,
 				DEECB0462253358B002D6C30 /* Saving.storyboard */,
@@ -113,9 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				DEECB05522533599002D6C30 /* TabBarController.swift */,
-				DEECB05322533599002D6C30 /* SavingVC.swift */,
-				DEECB05222533599002D6C30 /* SavingDetailVC.swift */,
-				DEECB05022533599002D6C30 /* SavingAddVC.swift */,
+				DE2BB35922538889001D55E4 /* Saving */,
 				DEECB04F22533599002D6C30 /* ChartVC.swift */,
 				DEECB05422533599002D6C30 /* AccountingVC.swift */,
 				DEECB05122533599002D6C30 /* SettingVC.swift */,
@@ -136,7 +209,9 @@
 			children = (
 				DEECB062225335FA002D6C30 /* UIStoryboard - extension.swift */,
 				DEECB060225335FA002D6C30 /* UIView - extension.swift */,
+				DE2BB36222539B95001D55E4 /* UICollectionView - extension.swift */,
 				DEECB061225335FA002D6C30 /* UIImage - extension.swift */,
+				DE2BB3682253AE16001D55E4 /* Int - extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -156,9 +231,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DEECB03722533432002D6C30 /* Build configuration list for PBXNativeTarget "mSaving" */;
 			buildPhases = (
+				B7B405D90613C72D0DB5D1C2 /* [CP] Check Pods Manifest.lock */,
 				DEECB01E22533430002D6C30 /* Sources */,
 				DEECB01F22533430002D6C30 /* Frameworks */,
 				DEECB02022533430002D6C30 /* Resources */,
+				1B4409F408563D0687E4EC7F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -208,11 +285,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEECB03022533432002D6C30 /* Assets.xcassets in Resources */,
+				DE2BB35D22539662001D55E4 /* SavingCVCell.xib in Resources */,
 				DEECB0492253358B002D6C30 /* Invoice.storyboard in Resources */,
 				DEECB04B2253358B002D6C30 /* Main.storyboard in Resources */,
 				DEECB0482253358B002D6C30 /* Setting.storyboard in Resources */,
 				DEECB04A2253358B002D6C30 /* LaunchScreen.storyboard in Resources */,
 				DEECB04D2253358B002D6C30 /* Saving.storyboard in Resources */,
+				DE2BB35F225398DA001D55E4 /* SavingGoalView.xib in Resources */,
+				DE2BB3672253AC1D001D55E4 /* MonthCVCell.xib in Resources */,
 				DEECB0472253358B002D6C30 /* Accounting.storyboard in Resources */,
 				DEECB04C2253358B002D6C30 /* Chart.storyboard in Resources */,
 			);
@@ -220,21 +300,74 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1B4409F408563D0687E4EC7F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mSaving/Pods-mSaving-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mSaving/Pods-mSaving-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7B405D90613C72D0DB5D1C2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mSaving-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DEECB01E22533430002D6C30 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE2BB358225360C2001D55E4 /* TopView.swift in Sources */,
 				DEECB05922533599002D6C30 /* SavingDetailVC.swift in Sources */,
+				DE2BB35C22539662001D55E4 /* SavingCVCell.swift in Sources */,
 				DEECB05A22533599002D6C30 /* SavingVC.swift in Sources */,
 				DEECB063225335FA002D6C30 /* UIView - extension.swift in Sources */,
+				DE2BB3662253AC1D001D55E4 /* MonthCVCell.swift in Sources */,
 				DEECB05C22533599002D6C30 /* TabBarController.swift in Sources */,
 				DEECB05822533599002D6C30 /* SettingVC.swift in Sources */,
 				DEECB064225335FA002D6C30 /* UIImage - extension.swift in Sources */,
+				DE2BB3692253AE16001D55E4 /* Int - extension.swift in Sources */,
 				DEECB065225335FA002D6C30 /* UIStoryboard - extension.swift in Sources */,
 				DEECB05722533599002D6C30 /* SavingAddVC.swift in Sources */,
 				DEECB02E22533430002D6C30 /* mSaving.xcdatamodeld in Sources */,
 				DEECB05B22533599002D6C30 /* AccountingVC.swift in Sources */,
+				DE2BB36322539B95001D55E4 /* UICollectionView - extension.swift in Sources */,
+				DE2BB36122539A16001D55E4 /* SavingGoalView.swift in Sources */,
 				DEECB02622533430002D6C30 /* AppDelegate.swift in Sources */,
 				DEECB05622533599002D6C30 /* ChartVC.swift in Sources */,
 			);
@@ -380,6 +513,7 @@
 		};
 		DEECB03822533432002D6C30 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2269CA763E2B12B921C758F2 /* Pods-mSaving.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -398,6 +532,7 @@
 		};
 		DEECB03922533432002D6C30 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C6C6317FBC34568D8610458 /* Pods-mSaving.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
