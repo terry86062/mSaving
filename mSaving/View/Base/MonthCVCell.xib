@@ -22,6 +22,19 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VSZ-5f-qZd">
                         <rect key="frame" x="0.0" y="0.0" width="138" height="43"/>
                         <subviews>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ode-J8-y6L">
+                                <rect key="frame" x="21" y="0.5" width="96" height="32"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="joc-Ha-HI7"/>
+                                    <constraint firstAttribute="width" constant="96" id="ufB-DY-YMd"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="April" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0MJ-ZM-5RN">
                                 <rect key="frame" x="50.5" y="6" width="37" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -32,6 +45,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="0MJ-ZM-5RN" firstAttribute="top" secondItem="VSZ-5f-qZd" secondAttribute="top" constant="6" id="Get-CA-cYx"/>
+                            <constraint firstItem="ode-J8-y6L" firstAttribute="centerY" secondItem="0MJ-ZM-5RN" secondAttribute="centerY" id="SqL-Ra-zbX"/>
+                            <constraint firstItem="ode-J8-y6L" firstAttribute="centerX" secondItem="0MJ-ZM-5RN" secondAttribute="centerX" id="jcd-JE-Kzz"/>
                             <constraint firstItem="0MJ-ZM-5RN" firstAttribute="centerX" secondItem="VSZ-5f-qZd" secondAttribute="centerX" id="wiL-Eu-HEm"/>
                         </constraints>
                     </view>

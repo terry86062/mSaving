@@ -99,6 +99,8 @@ extension SavingVC: UICollectionViewDataSource {
             
             guard let cell = savingCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SavingCVCell.self), for: indexPath) as? SavingCVCell else { return SavingCVCell() }
             
+            cell.initSavingCVCell(dataSource: self, delegate: self)
+            
             return cell
             
         }
@@ -117,7 +119,7 @@ extension SavingVC: UICollectionViewDelegateFlowLayout {
         
         if collectionView == monthCollectionView {
             
-            return UIEdgeInsets(top: 0, left: monthCollectionView.frame.width / 3, bottom: 0, right: 0)
+            return UIEdgeInsets(top: 0, left: monthCollectionView.frame.width / 3, bottom: 0, right: monthCollectionView.frame.width / 3)
             
         }
         
@@ -144,6 +146,29 @@ extension SavingVC: UICollectionViewDelegateFlowLayout {
         return 0
         
     }
+    
+}
+
+extension SavingVC: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return 1
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SearchBarTVCell.self), for: indexPath) as? SearchBarTVCell else { return UITableViewCell() }
+        
+        return cell
+        
+    }
+    
+}
+
+extension SavingVC: UITableViewDelegate {
+    
     
 }
 
@@ -181,14 +206,14 @@ extension SavingVC {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        if scrollView.isEqual(monthCollectionView), scrollView.isDragging {
-            var offset = savingCollectionView.contentOffset
-            offset.x = monthCollectionView.contentOffset.x * 3
-            savingCollectionView.setContentOffset(offset, animated: false)
-        } else if scrollView.isEqual(savingCollectionView), scrollView.isDragging {
-            var offset = monthCollectionView.contentOffset
-            offset.x = savingCollectionView.contentOffset.x / 3
-            monthCollectionView.setContentOffset(offset, animated: false)
+        if scrollView.isEqual(monthCollectionView) {
+            
+            savingCollectionView.bounds.origin.x = monthCollectionView.bounds.origin.x * 3
+            
+        } else if scrollView.isEqual(savingCollectionView) {
+            
+            monthCollectionView.bounds.origin.x = savingCollectionView.bounds.origin.x / 3
+            
         }
         
     }

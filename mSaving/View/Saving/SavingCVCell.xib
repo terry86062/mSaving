@@ -31,12 +31,20 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AG7-0d-IzU">
+                                <rect key="frame" x="0.0" y="116" width="414" height="659"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="MWY-15-C2G" firstAttribute="leading" secondItem="wVH-21-mql" secondAttribute="leading" constant="16" id="6af-JO-HRR"/>
                             <constraint firstItem="MWY-15-C2G" firstAttribute="top" secondItem="wVH-21-mql" secondAttribute="top" id="8WT-ch-U5j"/>
+                            <constraint firstAttribute="trailing" secondItem="AG7-0d-IzU" secondAttribute="trailing" id="H6f-i1-9mH"/>
+                            <constraint firstItem="AG7-0d-IzU" firstAttribute="leading" secondItem="wVH-21-mql" secondAttribute="leading" id="SSs-oC-jjc"/>
                             <constraint firstItem="MWY-15-C2G" firstAttribute="height" secondItem="wVH-21-mql" secondAttribute="width" multiplier="100:414" id="m1q-i1-m2I"/>
+                            <constraint firstItem="AG7-0d-IzU" firstAttribute="top" secondItem="MWY-15-C2G" secondAttribute="bottom" constant="16" id="mlV-q2-wQD"/>
+                            <constraint firstAttribute="bottom" secondItem="AG7-0d-IzU" secondAttribute="bottom" id="vAi-yn-Ri5"/>
                             <constraint firstAttribute="trailing" secondItem="MWY-15-C2G" secondAttribute="trailing" constant="16" id="xmi-kc-fpZ"/>
                         </constraints>
                     </view>
@@ -50,6 +58,7 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
+                <outlet property="accountTableView" destination="AG7-0d-IzU" id="vwJ-MM-CQE"/>
                 <outlet property="savingGoalContainView" destination="MWY-15-C2G" id="STu-tH-0Ss"/>
             </connections>
         </collectionViewCell>

@@ -27,8 +27,8 @@ import UIKit
         gradientLayer.frame = self.bounds
         
         gradientLayer.colors = [
-            UIColor(red: 173 / 255, green: 207 / 255, blue: 142 / 255, alpha: 1).cgColor,
-            UIColor(red: 73 / 255,green: 161 / 255, blue: 84 / 255, alpha: 1).cgColor
+            UIColor.mSLightGreen.cgColor,
+            UIColor.mSGreen.cgColor
         ]
         
         gradientLayer.startPoint = CGPoint(x: 1.0, y: 0.0)
