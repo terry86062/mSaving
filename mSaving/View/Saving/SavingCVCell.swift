@@ -30,19 +30,11 @@ class SavingCVCell: UICollectionViewCell {
         
     }
     
-    @IBOutlet weak var accountTableView: UITableView! {
+    @IBOutlet weak var accountCollectionView: UICollectionView! {
         
         didSet {
             
-            accountTableView.estimatedRowHeight = 0
-            
-//            accountTableView.estimatedSectionHeaderHeight = 0
-//            
-//            accountTableView.estimatedSectionFooterHeight = 0
-            
-            accountTableView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height + 1000)
-            
-            setUpTableView()
+            setUpCollectionView()
             
         }
         
@@ -54,31 +46,19 @@ class SavingCVCell: UICollectionViewCell {
         
     }
     
-    func initSavingCVCell(dataSource: UITableViewDataSource, delegate: UITableViewDelegate) {
+    func initSavingCVCell(dataSource: UICollectionViewDataSource, delegate: UICollectionViewDelegate) {
         
-        accountTableView.dataSource = dataSource
+        accountCollectionView.dataSource = dataSource
         
-        accountTableView.delegate = delegate
+        accountCollectionView.delegate = delegate
         
     }
     
-    func setUpTableView() {
+    func setUpCollectionView() {
         
-        accountTableView.helpRegister(cell: SearchBarTVCell())
-        
-//        accountTableView.beginUpdates()
-//
-//        accountTableView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height + 1000000)
-//
-//        accountTableView.endUpdates()
-//
-//        accountTableView.reloadData()
-        
-//        accountTableView.contentOffset = CGPoint(x: 0, y: 56)
-        
-//        accountTableView.contentInset.top = -56
+        accountCollectionView.helpRegister(cell: AccountCVCell())
         
     }
-
+    
 }
 

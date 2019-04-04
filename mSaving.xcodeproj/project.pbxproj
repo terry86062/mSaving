@@ -18,9 +18,9 @@
 		DE2BB3672253AC1D001D55E4 /* MonthCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2BB3652253AC1D001D55E4 /* MonthCVCell.xib */; };
 		DE2BB3692253AE16001D55E4 /* Int - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BB3682253AE16001D55E4 /* Int - extension.swift */; };
 		DEBE8C1B2254836800C2A8A3 /* UIColor - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C1A2254836800C2A8A3 /* UIColor - extension.swift */; };
-		DEBE8C222254ADA700C2A8A3 /* SearchBarTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C202254ADA700C2A8A3 /* SearchBarTVCell.swift */; };
-		DEBE8C232254ADA700C2A8A3 /* SearchBarTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEBE8C212254ADA700C2A8A3 /* SearchBarTVCell.xib */; };
 		DEBE8C252254AE5200C2A8A3 /* UITableView - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C242254AE5200C2A8A3 /* UITableView - extension.swift */; };
+		DEBE8C28225519F800C2A8A3 /* AccountCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C26225519F800C2A8A3 /* AccountCVCell.swift */; };
+		DEBE8C29225519F800C2A8A3 /* AccountCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEBE8C27225519F800C2A8A3 /* AccountCVCell.xib */; };
 		DEECB02622533430002D6C30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB02522533430002D6C30 /* AppDelegate.swift */; };
 		DEECB02E22533430002D6C30 /* mSaving.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DEECB02C22533430002D6C30 /* mSaving.xcdatamodeld */; };
 		DEECB03022533432002D6C30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEECB02F22533432002D6C30 /* Assets.xcassets */; };
@@ -56,9 +56,9 @@
 		DE2BB3652253AC1D001D55E4 /* MonthCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthCVCell.xib; sourceTree = "<group>"; };
 		DE2BB3682253AE16001D55E4 /* Int - extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int - extension.swift"; sourceTree = "<group>"; };
 		DEBE8C1A2254836800C2A8A3 /* UIColor - extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor - extension.swift"; sourceTree = "<group>"; };
-		DEBE8C202254ADA700C2A8A3 /* SearchBarTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarTVCell.swift; sourceTree = "<group>"; };
-		DEBE8C212254ADA700C2A8A3 /* SearchBarTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchBarTVCell.xib; sourceTree = "<group>"; };
 		DEBE8C242254AE5200C2A8A3 /* UITableView - extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView - extension.swift"; sourceTree = "<group>"; };
+		DEBE8C26225519F800C2A8A3 /* AccountCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCVCell.swift; sourceTree = "<group>"; };
+		DEBE8C27225519F800C2A8A3 /* AccountCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCVCell.xib; sourceTree = "<group>"; };
 		DEECB02222533430002D6C30 /* mSaving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mSaving.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEECB02522533430002D6C30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEECB02D22533430002D6C30 /* mSaving.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mSaving.xcdatamodel; sourceTree = "<group>"; };
@@ -120,6 +120,8 @@
 				DE2BB35B22539662001D55E4 /* SavingCVCell.xib */,
 				DE2BB36022539A16001D55E4 /* SavingGoalView.swift */,
 				DE2BB35E225398DA001D55E4 /* SavingGoalView.xib */,
+				DEBE8C26225519F800C2A8A3 /* AccountCVCell.swift */,
+				DEBE8C27225519F800C2A8A3 /* AccountCVCell.xib */,
 			);
 			path = Saving;
 			sourceTree = "<group>";
@@ -130,8 +132,6 @@
 				DE2BB357225360C2001D55E4 /* TopView.swift */,
 				DE2BB3642253AC1D001D55E4 /* MonthCVCell.swift */,
 				DE2BB3652253AC1D001D55E4 /* MonthCVCell.xib */,
-				DEBE8C202254ADA700C2A8A3 /* SearchBarTVCell.swift */,
-				DEBE8C212254ADA700C2A8A3 /* SearchBarTVCell.xib */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -296,11 +296,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEBE8C29225519F800C2A8A3 /* AccountCVCell.xib in Resources */,
 				DEECB03022533432002D6C30 /* Assets.xcassets in Resources */,
 				DE2BB35D22539662001D55E4 /* SavingCVCell.xib in Resources */,
 				DEECB0492253358B002D6C30 /* Invoice.storyboard in Resources */,
 				DEECB04B2253358B002D6C30 /* Main.storyboard in Resources */,
-				DEBE8C232254ADA700C2A8A3 /* SearchBarTVCell.xib in Resources */,
 				DEECB0482253358B002D6C30 /* Setting.storyboard in Resources */,
 				DEECB04A2253358B002D6C30 /* LaunchScreen.storyboard in Resources */,
 				DEECB04D2253358B002D6C30 /* Saving.storyboard in Resources */,
@@ -369,6 +369,7 @@
 				DEECB05922533599002D6C30 /* SavingDetailVC.swift in Sources */,
 				DE2BB35C22539662001D55E4 /* SavingCVCell.swift in Sources */,
 				DEECB05A22533599002D6C30 /* SavingVC.swift in Sources */,
+				DEBE8C28225519F800C2A8A3 /* AccountCVCell.swift in Sources */,
 				DEECB063225335FA002D6C30 /* UIView - extension.swift in Sources */,
 				DE2BB3662253AC1D001D55E4 /* MonthCVCell.swift in Sources */,
 				DEBE8C252254AE5200C2A8A3 /* UITableView - extension.swift in Sources */,
@@ -382,7 +383,6 @@
 				DEECB02E22533430002D6C30 /* mSaving.xcdatamodeld in Sources */,
 				DEECB05B22533599002D6C30 /* AccountingVC.swift in Sources */,
 				DE2BB36322539B95001D55E4 /* UICollectionView - extension.swift in Sources */,
-				DEBE8C222254ADA700C2A8A3 /* SearchBarTVCell.swift in Sources */,
 				DE2BB36122539A16001D55E4 /* SavingGoalView.swift in Sources */,
 				DEECB02622533430002D6C30 /* AppDelegate.swift in Sources */,
 				DEECB05622533599002D6C30 /* ChartVC.swift in Sources */,

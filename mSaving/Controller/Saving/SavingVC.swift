@@ -59,6 +59,8 @@ class SavingVC: UIViewController {
         MonthData(month: "December", goal: "12000", spend: "1200")
     ]
     
+    var searchBarAppear = false
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -95,11 +97,17 @@ extension SavingVC: UICollectionViewDataSource {
             
             return cell
             
-        } else {
+        } else if collectionView == savingCollectionView {
             
             guard let cell = savingCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SavingCVCell.self), for: indexPath) as? SavingCVCell else { return SavingCVCell() }
             
             cell.initSavingCVCell(dataSource: self, delegate: self)
+            
+            return cell
+            
+        } else {
+            
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AccountCVCell.self), for: indexPath) as? AccountCVCell else { return AccountCVCell() }
             
             return cell
             
@@ -121,9 +129,15 @@ extension SavingVC: UICollectionViewDelegateFlowLayout {
             
             return UIEdgeInsets(top: 0, left: monthCollectionView.frame.width / 3, bottom: 0, right: monthCollectionView.frame.width / 3)
             
+        } else if collectionView == savingCollectionView {
+            
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            
+        } else {
+            
+            return UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+            
         }
-        
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
     }
     
@@ -133,9 +147,13 @@ extension SavingVC: UICollectionViewDelegateFlowLayout {
             
             return CGSize(width: UIScreen.main.bounds.width / 3, height: 43.fitScreen)
             
-        } else {
+        } else if collectionView == savingCollectionView {
             
             return CGSize(width: savingCollectionView.frame.width, height: savingCollectionView.frame.height)
+            
+        } else {
+            
+            return CGSize(width: 384.fitScreen, height: 56.fitScreen)
             
         }
         
@@ -146,29 +164,6 @@ extension SavingVC: UICollectionViewDelegateFlowLayout {
         return 0
         
     }
-    
-}
-
-extension SavingVC: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 1
-        
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SearchBarTVCell.self), for: indexPath) as? SearchBarTVCell else { return UITableViewCell() }
-        
-        return cell
-        
-    }
-    
-}
-
-extension SavingVC: UITableViewDelegate {
-    
     
 }
 

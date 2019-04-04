@@ -448,7 +448,7 @@
                                 <cells/>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="yL3-9r-bOn" firstAttribute="trailing" secondItem="yhK-G2-nhO" secondAttribute="trailing" id="2Lj-9F-HHs"/>
                             <constraint firstItem="Djq-hD-MnL" firstAttribute="trailing" secondItem="yL3-9r-bOn" secondAttribute="trailing" id="4dF-lN-VDu"/>
