@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SavingDetailVC: UIViewController {
+class SavingDetailVC: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var monthCollectionView: UICollectionView! {
         
@@ -49,12 +49,40 @@ class SavingDetailVC: UIViewController {
         MonthData(month: "December", goal: "12000", spend: "1200")
     ]
     
+    var gesture: UIGestureRecognizer?
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         setUpCollectionView()
         
+        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+        
+        edgePan.edges = .left
+        
+        edgePan.delegate = self
+        
+        view.addGestureRecognizer(edgePan)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        let gestureArray: [AnyObject] = self.navigationController!.view.gestureRecognizers!
+        
+        for gesture in gestureArray {
+            
+            if gesture.isKind(of: UIScreenEdgePanGestureRecognizer.self) {
+                
+                self.savingDetailCollectionView.panGestureRecognizer.require(toFail: gesture as! UIGestureRecognizer)
+                
+                break
+                
+            }
+            
+        }
+
     }
     
     func setUpCollectionView() {
@@ -64,7 +92,35 @@ class SavingDetailVC: UIViewController {
         monthCollectionView.helpRegister(cell: MonthCVCell())
         
     }
-
+    
+    @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+        
+        if recognizer.state == .recognized {
+            
+            self.navigationController?.popViewController(animated: true)
+            
+        }
+        
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        
+        return false
+        
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive press: UIPress) -> Bool {
+        
+        return false
+        
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        
+        return true
+        
+    }
+    
 }
 
 extension SavingDetailVC: UICollectionViewDataSource {
