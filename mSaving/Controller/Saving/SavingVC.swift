@@ -117,6 +117,12 @@ extension SavingVC: UICollectionViewDataSource {
             
             cell.initMonthCVCell(month: testData[indexPath.row].month)
             
+            if indexPath.row == 0 {
+                
+                cell.shadowView.alpha = 0.5
+                
+            }
+            
             return cell
             
         } else if collectionView == savingCollectionView {
@@ -254,6 +260,58 @@ extension SavingVC {
         } else if scrollView.isEqual(savingCollectionView) {
             
             monthCollectionView.bounds.origin.x = savingCollectionView.bounds.origin.x / 3
+            
+            let row = Int((savingCollectionView.bounds.origin.x + savingCollectionView.frame.width / 2) / savingCollectionView.frame.width)
+            
+            guard let cell = monthCollectionView.cellForItem(at: IndexPath(row: Int((savingCollectionView.bounds.origin.x + savingCollectionView.frame.width / 2) / savingCollectionView.frame.width), section: 0)) as? MonthCVCell else { return }
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                
+                cell.shadowView.alpha = 0.5
+                
+            })
+            
+            switch row {
+                
+            case 0:
+                
+                guard let cell3 = monthCollectionView.cellForItem(at: IndexPath(row: Int((savingCollectionView.bounds.origin.x + savingCollectionView.frame.width / 2) / savingCollectionView.frame.width) + 1, section: 0)) as? MonthCVCell else { return }
+                
+                UIView.animate(withDuration: 0.5, animations: {
+                    
+                    cell3.shadowView.alpha = 0
+                    
+                })
+                
+            case testData.count:
+                
+                guard let cell2 = monthCollectionView.cellForItem(at: IndexPath(row: Int((savingCollectionView.bounds.origin.x + savingCollectionView.frame.width / 2) / savingCollectionView.frame.width) - 1, section: 0)) as? MonthCVCell else { return }
+                
+                UIView.animate(withDuration: 0.5, animations: {
+                    
+                    cell2.shadowView.alpha = 0
+                    
+                })
+                
+            default:
+                
+                guard let cell2 = monthCollectionView.cellForItem(at: IndexPath(row: Int((savingCollectionView.bounds.origin.x + savingCollectionView.frame.width / 2) / savingCollectionView.frame.width) - 1, section: 0)) as? MonthCVCell else { return }
+                
+                UIView.animate(withDuration: 0.5, animations: {
+                    
+                    cell2.shadowView.alpha = 0
+                    
+                })
+                
+                guard let cell3 = monthCollectionView.cellForItem(at: IndexPath(row: Int((savingCollectionView.bounds.origin.x + savingCollectionView.frame.width / 2) / savingCollectionView.frame.width) + 1, section: 0)) as? MonthCVCell else { return }
+                
+                UIView.animate(withDuration: 0.5, animations: {
+                    
+                    cell3.shadowView.alpha = 0
+                    
+                })
+                
+            }
             
         }
         

@@ -24,6 +24,8 @@ class MonthCVCell: UICollectionViewCell {
         
         monthLabel.text = month
         
+        shadowView.alpha = 0
+        
     }
     
 }
