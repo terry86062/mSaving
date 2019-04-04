@@ -1,5 +1,5 @@
 //
-//  AccountCVCell.swift
+//  AccountDateCVCell.swift
 //  mSaving
 //
 //  Created by 黃偉勛 Terry on 2019/4/4.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccountCVCell: UICollectionViewCell {
+class AccountDateCVCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         
@@ -17,12 +17,6 @@ class AccountCVCell: UICollectionViewCell {
 //        clipsToBounds = false
 //        
 //        layer.masksToBounds = false
-        
-    }
-    
-    func initAccountCVCell(zPosition: CGFloat) {
-        
-        self.layer.zPosition = zPosition
         
     }
 

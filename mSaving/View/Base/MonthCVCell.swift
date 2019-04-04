@@ -12,6 +12,7 @@ class MonthCVCell: UICollectionViewCell {
     
     @IBOutlet weak var monthLabel: UILabel!
     
+    @IBOutlet weak var shadowView: UIView!
     
     override func awakeFromNib() {
         

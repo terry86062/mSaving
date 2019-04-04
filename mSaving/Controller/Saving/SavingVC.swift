@@ -81,9 +81,31 @@ class SavingVC: UIViewController {
 
 extension SavingVC: UICollectionViewDataSource {
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
+        if collectionView == monthCollectionView || collectionView == savingCollectionView {
+            
+            return 1
+            
+        } else {
+            
+            return 3
+            
+        }
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return testData.count
+        if collectionView == monthCollectionView || collectionView == savingCollectionView {
+            
+            return testData.count
+            
+        } else {
+            
+            return 3
+            
+        }
         
     }
     
@@ -109,9 +131,19 @@ extension SavingVC: UICollectionViewDataSource {
             
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AccountCVCell.self), for: indexPath) as? AccountCVCell else { return AccountCVCell() }
             
+            cell.initAccountCVCell(zPosition: CGFloat(indexPath.row + 2))
+            
             return cell
             
         }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: AccountDateCVCell.self), for: indexPath) as? AccountDateCVCell else { return AccountCVCell() }
+        
+        return headerView
         
     }
     
@@ -135,7 +167,7 @@ extension SavingVC: UICollectionViewDelegateFlowLayout {
             
         } else {
             
-            return UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+            return UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
             
         }
         
@@ -153,7 +185,7 @@ extension SavingVC: UICollectionViewDelegateFlowLayout {
             
         } else {
             
-            return CGSize(width: 384.fitScreen, height: 56.fitScreen)
+            return CGSize(width: 382.fitScreen, height: 56.fitScreen)
             
         }
         
@@ -162,6 +194,20 @@ extension SavingVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
         return 0
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        if collectionView != savingCollectionView && collectionView != monthCollectionView {
+            
+            return CGSize(width: 0, height: 56)
+            
+        } else {
+            
+            return CGSize(width: 0, height: 0)
+            
+        }
         
     }
     

@@ -18,4 +18,12 @@ extension UICollectionView {
         
     }
     
+    func helpRegisterView<T>(cell: T) {
+        
+        let nibName = UINib(nibName: String(describing: T.self), bundle: nil)
+        
+        self.register(nibName, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: T.self))
+        
+    }
+    
 }

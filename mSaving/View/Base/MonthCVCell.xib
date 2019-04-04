@@ -61,6 +61,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
                 <outlet property="monthLabel" destination="0MJ-ZM-5RN" id="RwJ-pT-Yyy"/>
+                <outlet property="shadowView" destination="ode-J8-y6L" id="fH2-La-rU3"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
         </collectionViewCell>
