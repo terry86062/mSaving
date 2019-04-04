@@ -14,10 +14,6 @@ class AccountDateCVCell: UICollectionViewCell {
         
         super.awakeFromNib()
         
-//        clipsToBounds = false
-//        
-//        layer.masksToBounds = false
-        
     }
 
 }

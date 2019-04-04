@@ -14,10 +14,6 @@ class AccountCVCell: UICollectionViewCell {
         
         super.awakeFromNib()
         
-//        clipsToBounds = false
-//        
-//        layer.masksToBounds = false
-        
     }
     
     func initAccountCVCell(zPosition: CGFloat) {
