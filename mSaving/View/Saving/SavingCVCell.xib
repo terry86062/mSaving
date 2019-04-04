@@ -31,6 +31,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAq-RH-L66">
+                                <rect key="frame" x="16" y="0.0" width="382" height="100"/>
+                                <connections>
+                                    <action selector="showSavingDetail:" destination="gTV-IL-0wX" eventType="touchUpInside" id="4Zr-XZ-lIO"/>
+                                </connections>
+                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="9fs-Jl-s2h">
                                 <rect key="frame" x="0.0" y="116" width="414" height="659"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -47,10 +53,14 @@
                             <constraint firstItem="MWY-15-C2G" firstAttribute="leading" secondItem="wVH-21-mql" secondAttribute="leading" constant="16" id="6af-JO-HRR"/>
                             <constraint firstItem="MWY-15-C2G" firstAttribute="top" secondItem="wVH-21-mql" secondAttribute="top" id="8WT-ch-U5j"/>
                             <constraint firstAttribute="bottom" secondItem="9fs-Jl-s2h" secondAttribute="bottom" id="8YS-FL-ebI"/>
+                            <constraint firstItem="vAq-RH-L66" firstAttribute="height" secondItem="MWY-15-C2G" secondAttribute="height" id="C7Q-1r-LjJ"/>
+                            <constraint firstItem="vAq-RH-L66" firstAttribute="width" secondItem="MWY-15-C2G" secondAttribute="width" id="IFg-tp-eSE"/>
                             <constraint firstAttribute="trailing" secondItem="9fs-Jl-s2h" secondAttribute="trailing" id="VX7-ve-pyk"/>
+                            <constraint firstItem="vAq-RH-L66" firstAttribute="centerY" secondItem="MWY-15-C2G" secondAttribute="centerY" id="Xow-dV-kXm"/>
                             <constraint firstItem="9fs-Jl-s2h" firstAttribute="top" secondItem="MWY-15-C2G" secondAttribute="bottom" constant="16" id="bE2-Ot-ilx"/>
                             <constraint firstItem="9fs-Jl-s2h" firstAttribute="leading" secondItem="wVH-21-mql" secondAttribute="leading" id="eu7-mA-3gs"/>
                             <constraint firstItem="MWY-15-C2G" firstAttribute="height" secondItem="wVH-21-mql" secondAttribute="width" multiplier="100:414" id="m1q-i1-m2I"/>
+                            <constraint firstItem="vAq-RH-L66" firstAttribute="centerX" secondItem="MWY-15-C2G" secondAttribute="centerX" id="xXH-sc-pvm"/>
                             <constraint firstAttribute="trailing" secondItem="MWY-15-C2G" secondAttribute="trailing" constant="16" id="xmi-kc-fpZ"/>
                         </constraints>
                     </view>

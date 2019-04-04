@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yTV-kM-rr3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2Lg-pY-XZB">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -404,22 +404,6 @@
                                     <constraint firstAttribute="height" constant="203" id="F4S-dh-bYP"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tao-rf-OC6">
-                                <rect key="frame" x="159" y="44.5" width="96" height="32"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="ZeJ-Fp-MNz"/>
-                                    <constraint firstAttribute="width" constant="96" id="mJG-op-Xkr"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yhK-G2-nhO">
                                 <rect key="frame" x="0.0" y="44" width="414" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -457,23 +441,38 @@
                             <constraint firstItem="Y4f-oa-sf1" firstAttribute="leading" secondItem="yL3-9r-bOn" secondAttribute="leading" id="B3e-Nh-bQR"/>
                             <constraint firstItem="yhK-G2-nhO" firstAttribute="top" secondItem="yL3-9r-bOn" secondAttribute="top" id="CUh-3M-TNL"/>
                             <constraint firstItem="Djq-hD-MnL" firstAttribute="leading" secondItem="yL3-9r-bOn" secondAttribute="leading" id="KRM-A7-czp"/>
-                            <constraint firstItem="Tao-rf-OC6" firstAttribute="centerX" secondItem="mVS-nP-D1J" secondAttribute="centerX" id="Mc3-Tx-vB3"/>
                             <constraint firstItem="yL3-9r-bOn" firstAttribute="trailing" secondItem="Y4f-oa-sf1" secondAttribute="trailing" id="YP5-vJ-YU5"/>
                             <constraint firstItem="Y4f-oa-sf1" firstAttribute="top" secondItem="yhK-G2-nhO" secondAttribute="bottom" id="k5t-FQ-mq6"/>
-                            <constraint firstItem="Tao-rf-OC6" firstAttribute="top" secondItem="yhK-G2-nhO" secondAttribute="top" constant="0.5" id="rzZ-RG-uG9"/>
                             <constraint firstItem="Djq-hD-MnL" firstAttribute="top" secondItem="mVS-nP-D1J" secondAttribute="top" id="u8c-16-rTG"/>
                             <constraint firstItem="yhK-G2-nhO" firstAttribute="height" secondItem="mVS-nP-D1J" secondAttribute="width" multiplier="43:414" id="vhI-bQ-6MH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yL3-9r-bOn"/>
                     </view>
+                    <navigationItem key="navigationItem" id="BFi-jn-3Hi"/>
                     <connections>
                         <outlet property="monthCollectionView" destination="yhK-G2-nhO" id="v3X-xS-IUV"/>
                         <outlet property="savingCollectionView" destination="Y4f-oa-sf1" id="UWY-KF-Mi0"/>
+                        <segue destination="Onk-FR-Onj" kind="show" identifier="showSavingDetail" id="j5U-Wp-ScP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X3f-df-BEJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="905.79710144927549" y="888.61607142857144"/>
+            <point key="canvasLocation" x="932" y="1894"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="KTV-0t-IHA">
+            <objects>
+                <viewController id="Onk-FR-Onj" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hes-6d-mce">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="w1N-O4-Q1W"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zsH-t2-hYy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1730" y="1894"/>
         </scene>
         <!--Saving DetailVC-->
         <scene sceneID="xEH-Ao-J9S">
@@ -1271,6 +1270,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4SW-No-hgP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2460.8695652173915" y="-170.08928571428569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Olk-wd-nw6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="2Lg-pY-XZB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ic0-tu-fQD">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yTV-kM-rr3" kind="relationship" relationship="rootViewController" id="FiH-hL-TxL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="beX-BK-5Cp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="206" y="1894"/>
         </scene>
     </scenes>
     <resources>

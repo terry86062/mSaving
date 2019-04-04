@@ -131,6 +131,12 @@ extension SavingVC: UICollectionViewDataSource {
             
             cell.initSavingCVCell(dataSource: self, delegate: self)
             
+            cell.showSavingDetail = {
+                
+                self.performSegue(withIdentifier: "showSavingDetail", sender: nil)
+                
+            }
+            
             return cell
             
         } else {
