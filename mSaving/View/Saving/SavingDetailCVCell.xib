@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SavingDetailCVCell" customModule="mSaving" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="382" height="112"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="382" height="112"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1p-wN-lnv">
+                        <rect key="frame" x="0.0" y="0.0" width="382" height="112"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCq-We-BpK">
+                        <rect key="frame" x="16" y="64" width="350" height="32"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9XI-z4-jgI">
+                                <rect key="frame" x="0.0" y="0.0" width="87.5" height="32"/>
+                                <color key="backgroundColor" red="0.86583477259999997" green="0.40854889150000001" blue="0.31047788259999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$2000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7L-Jp-6GX">
+                                <rect key="frame" x="293" y="6.5" width="49" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-$500" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEH-dF-A7Y">
+                                <rect key="frame" x="8" y="6.5" width="46.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92159336810000003" green="0.9098213315" blue="0.92535680529999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="s7L-Jp-6GX" secondAttribute="trailing" constant="8" id="3N0-ed-Tee"/>
+                            <constraint firstItem="9XI-z4-jgI" firstAttribute="top" secondItem="NCq-We-BpK" secondAttribute="top" id="7Sw-Ii-3a4"/>
+                            <constraint firstItem="PEH-dF-A7Y" firstAttribute="centerY" secondItem="NCq-We-BpK" secondAttribute="centerY" id="BnB-2b-Zw7"/>
+                            <constraint firstItem="s7L-Jp-6GX" firstAttribute="centerY" secondItem="NCq-We-BpK" secondAttribute="centerY" id="F3C-HI-8Hl"/>
+                            <constraint firstItem="9XI-z4-jgI" firstAttribute="width" secondItem="NCq-We-BpK" secondAttribute="width" multiplier="1:4" id="QeO-og-zUJ"/>
+                            <constraint firstAttribute="bottom" secondItem="9XI-z4-jgI" secondAttribute="bottom" id="UBA-P1-AOe"/>
+                            <constraint firstItem="9XI-z4-jgI" firstAttribute="leading" secondItem="NCq-We-BpK" secondAttribute="leading" id="VyX-gG-Mro"/>
+                            <constraint firstItem="PEH-dF-A7Y" firstAttribute="leading" secondItem="NCq-We-BpK" secondAttribute="leading" constant="8" id="mhX-ok-UlX"/>
+                            <constraint firstAttribute="height" constant="32" id="rc1-GD-qHe"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="kJl-rQ-uVD">
+                        <rect key="frame" x="16" y="16" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="FHQ-1S-y9s"/>
+                            <constraint firstAttribute="width" constant="32" id="sch-85-PSM"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="食物預算" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ny2-xL-vlJ">
+                        <rect key="frame" x="64" y="22.5" width="65.5" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="kJl-rQ-uVD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="139-WG-msH"/>
+                <constraint firstItem="z1p-wN-lnv" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1xc-ay-cSW"/>
+                <constraint firstItem="Ny2-xL-vlJ" firstAttribute="leading" secondItem="kJl-rQ-uVD" secondAttribute="trailing" constant="16" id="3Ge-sR-iKT"/>
+                <constraint firstAttribute="bottom" secondItem="z1p-wN-lnv" secondAttribute="bottom" id="JBt-oR-2bn"/>
+                <constraint firstItem="z1p-wN-lnv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="KOH-YG-Cjd"/>
+                <constraint firstItem="NCq-We-BpK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="UKd-HQ-eFy"/>
+                <constraint firstAttribute="bottom" secondItem="NCq-We-BpK" secondAttribute="bottom" constant="16" id="bjE-D6-6bU"/>
+                <constraint firstAttribute="trailing" secondItem="z1p-wN-lnv" secondAttribute="trailing" id="cZ2-ER-qcm"/>
+                <constraint firstItem="kJl-rQ-uVD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="hV8-FL-1MI"/>
+                <constraint firstItem="Ny2-xL-vlJ" firstAttribute="centerY" secondItem="kJl-rQ-uVD" secondAttribute="centerY" id="l3H-dS-deP"/>
+                <constraint firstAttribute="trailing" secondItem="NCq-We-BpK" secondAttribute="trailing" constant="16" id="qyI-DH-MGd"/>
+                <constraint firstItem="NCq-We-BpK" firstAttribute="top" secondItem="kJl-rQ-uVD" secondAttribute="bottom" constant="16" id="vNM-eA-o5H"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
+                    <size key="value" width="0.0" height="2"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
+                    <real key="value" value="0.80000000000000004"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
+                    <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
+                    <real key="value" value="2"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="food" width="512" height="512"/>
+    </resources>
+</document>

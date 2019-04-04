@@ -23,6 +23,8 @@
 		DEBE8C29225519F800C2A8A3 /* AccountCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEBE8C27225519F800C2A8A3 /* AccountCVCell.xib */; };
 		DEBE8C2C2255AED800C2A8A3 /* AccountDateCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C2A2255AED800C2A8A3 /* AccountDateCVCell.swift */; };
 		DEBE8C2D2255AED800C2A8A3 /* AccountDateCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEBE8C2B2255AED800C2A8A3 /* AccountDateCVCell.xib */; };
+		DEEAA9CC2255F4A5005FCE8E /* SavingDetailCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEAA9CA2255F4A5005FCE8E /* SavingDetailCVCell.swift */; };
+		DEEAA9CD2255F4A5005FCE8E /* SavingDetailCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEEAA9CB2255F4A5005FCE8E /* SavingDetailCVCell.xib */; };
 		DEECB02622533430002D6C30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB02522533430002D6C30 /* AppDelegate.swift */; };
 		DEECB02E22533430002D6C30 /* mSaving.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DEECB02C22533430002D6C30 /* mSaving.xcdatamodeld */; };
 		DEECB03022533432002D6C30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEECB02F22533432002D6C30 /* Assets.xcassets */; };
@@ -63,6 +65,8 @@
 		DEBE8C27225519F800C2A8A3 /* AccountCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCVCell.xib; sourceTree = "<group>"; };
 		DEBE8C2A2255AED800C2A8A3 /* AccountDateCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDateCVCell.swift; sourceTree = "<group>"; };
 		DEBE8C2B2255AED800C2A8A3 /* AccountDateCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountDateCVCell.xib; sourceTree = "<group>"; };
+		DEEAA9CA2255F4A5005FCE8E /* SavingDetailCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingDetailCVCell.swift; sourceTree = "<group>"; };
+		DEEAA9CB2255F4A5005FCE8E /* SavingDetailCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavingDetailCVCell.xib; sourceTree = "<group>"; };
 		DEECB02222533430002D6C30 /* mSaving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mSaving.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEECB02522533430002D6C30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEECB02D22533430002D6C30 /* mSaving.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mSaving.xcdatamodel; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 				DEBE8C27225519F800C2A8A3 /* AccountCVCell.xib */,
 				DEBE8C2A2255AED800C2A8A3 /* AccountDateCVCell.swift */,
 				DEBE8C2B2255AED800C2A8A3 /* AccountDateCVCell.xib */,
+				DEEAA9CA2255F4A5005FCE8E /* SavingDetailCVCell.swift */,
+				DEEAA9CB2255F4A5005FCE8E /* SavingDetailCVCell.xib */,
 			);
 			path = Saving;
 			sourceTree = "<group>";
@@ -311,6 +317,7 @@
 				DEBE8C2D2255AED800C2A8A3 /* AccountDateCVCell.xib in Resources */,
 				DEECB04A2253358B002D6C30 /* LaunchScreen.storyboard in Resources */,
 				DEECB04D2253358B002D6C30 /* Saving.storyboard in Resources */,
+				DEEAA9CD2255F4A5005FCE8E /* SavingDetailCVCell.xib in Resources */,
 				DE2BB35F225398DA001D55E4 /* SavingGoalView.xib in Resources */,
 				DE2BB3672253AC1D001D55E4 /* MonthCVCell.xib in Resources */,
 				DEECB0472253358B002D6C30 /* Accounting.storyboard in Resources */,
@@ -383,6 +390,7 @@
 				DEBE8C252254AE5200C2A8A3 /* UITableView - extension.swift in Sources */,
 				DEECB05C22533599002D6C30 /* TabBarController.swift in Sources */,
 				DEECB05822533599002D6C30 /* SettingVC.swift in Sources */,
+				DEEAA9CC2255F4A5005FCE8E /* SavingDetailCVCell.swift in Sources */,
 				DEECB064225335FA002D6C30 /* UIImage - extension.swift in Sources */,
 				DE2BB3692253AE16001D55E4 /* Int - extension.swift in Sources */,
 				DEECB065225335FA002D6C30 /* UIStoryboard - extension.swift in Sources */,

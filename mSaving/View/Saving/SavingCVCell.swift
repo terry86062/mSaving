@@ -60,6 +60,8 @@ class SavingCVCell: UICollectionViewCell {
         
         accountCollectionView.helpRegister(cell: AccountCVCell())
         
+        accountCollectionView.helpRegister(cell: SavingDetailCVCell())
+        
         accountCollectionView.helpRegisterView(cell: AccountDateCVCell())
         
         accountCollectionView.contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16)

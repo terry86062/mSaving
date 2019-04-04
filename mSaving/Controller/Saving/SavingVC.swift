@@ -59,8 +59,6 @@ class SavingVC: UIViewController {
         MonthData(month: "December", goal: "12000", spend: "1200")
     ]
     
-    var searchBarAppear = false
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
