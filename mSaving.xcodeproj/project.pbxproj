@@ -161,6 +161,13 @@
 			path = Saving;
 			sourceTree = "<group>";
 		};
+		DE7B38A7225731C400C17846 /* Accounting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Accounting;
+			sourceTree = "<group>";
+		};
 		DEECB01922533430002D6C30 = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +205,7 @@
 			children = (
 				DE2BB35622536070001D55E4 /* Base */,
 				DE2BB3552253605D001D55E4 /* Saving */,
+				DE7B38A7225731C400C17846 /* Accounting */,
 				DEECB0412253358B002D6C30 /* LaunchScreen.storyboard */,
 				DEECB0432253358B002D6C30 /* Main.storyboard */,
 				DEECB0462253358B002D6C30 /* Saving.storyboard */,
@@ -340,12 +348,14 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-mSaving/Pods-mSaving-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BetterSegmentedControl/BetterSegmentedControl.framework",
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BetterSegmentedControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

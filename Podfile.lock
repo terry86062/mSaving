@@ -1,16 +1,20 @@
 PODS:
+  - BetterSegmentedControl (1.0.3)
   - FSCalendar (2.8.0)
 
 DEPENDENCIES:
+  - BetterSegmentedControl
   - FSCalendar
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - BetterSegmentedControl
     - FSCalendar
 
 SPEC CHECKSUMS:
+  BetterSegmentedControl: 4e3bd0bd517b0f6077c9e17f5663a01cff48e2c5
   FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
 
-PODFILE CHECKSUM: 7b101ac2923de26ced4dc5b9088213254f4f87c6
+PODFILE CHECKSUM: 6c2ab6285ab4dd134f49489c47fde19f5ec2208e
 
 COCOAPODS: 1.6.0

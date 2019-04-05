@@ -10,6 +10,8 @@ import UIKit
 
 import FSCalendar
 
+import BetterSegmentedControl
+
 class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDataSource, FSCalendarDelegate {
     
     @IBOutlet weak var calendar: FSCalendar!
@@ -37,6 +39,10 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         return panGesture
         }()
     
+    @IBOutlet weak var incomeExpenseSegmentedC: BetterSegmentedControl!
+    
+    @IBOutlet weak var categoryCollectionView: UICollectionView!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -53,6 +59,8 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         
         createGradientLayer()
         
+        incomeExpenseSegmentedC.segments = LabelSegment.segments(withTitles: ["支出", "收入", "移轉"], normalBackgroundColor: UIColor.white, normalFont: .systemFont(ofSize: 16), normalTextColor: UIColor.mSYellow, selectedBackgroundColor: UIColor.mSYellow, selectedFont: .systemFont(ofSize: 16), selectedTextColor: UIColor.black)
+        
     }
     
     func createGradientLayer() {
@@ -61,11 +69,19 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         
         gradientLayer.frame = self.topView.bounds
         
-        gradientLayer.colors = [UIColor(red: 173 / 255, green: 207 / 255, blue: 142 / 255, alpha: 1).cgColor, UIColor(red: 73 / 255, green: 161 / 255, blue: 84 / 255, alpha: 1).cgColor]
+        gradientLayer.colors = [UIColor(red: 101 / 255, green: 177 / 255, blue: 80 / 255, alpha: 1).cgColor, UIColor(red: 57 / 255, green: 130 / 255, blue: 69 / 255, alpha: 1).cgColor]
         
         gradientLayer.startPoint = CGPoint(x: 1.0, y: 0.0)
         
         gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
+        
+        gradientLayer.shadowOffset = CGSize(width: 0, height: 2)
+        
+        gradientLayer.shadowOpacity = 0.8
+        
+        gradientLayer.shadowRadius = 2
+        
+        gradientLayer.shadowColor = UIColor.gray.cgColor
         
         gradientLayer.zPosition = -1
         

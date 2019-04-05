@@ -631,6 +631,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPo-QH-ZIJ">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="412"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xxl-QC-3w4" customClass="FSCalendar">
                                 <rect key="frame" x="0.0" y="44" width="414" height="300"/>
@@ -687,26 +701,90 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7PX-KH-VAT">
+                                <rect key="frame" x="20" y="432" width="374" height="32"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x56-jZ-6zt" customClass="BetterSegmentedControl" customModule="BetterSegmentedControl">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="32"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="indicatorViewBackgroundColor">
+                                                <color key="value" name="mSYellow"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="x56-jZ-6zt" secondAttribute="trailing" id="3p5-lr-tGR"/>
+                                    <constraint firstAttribute="bottom" secondItem="x56-jZ-6zt" secondAttribute="bottom" id="aTZ-Zq-Qma"/>
+                                    <constraint firstItem="x56-jZ-6zt" firstAttribute="leading" secondItem="7PX-KH-VAT" secondAttribute="leading" id="aw1-VL-UQg"/>
+                                    <constraint firstItem="x56-jZ-6zt" firstAttribute="top" secondItem="7PX-KH-VAT" secondAttribute="top" id="k1H-ZT-16r"/>
+                                    <constraint firstAttribute="height" constant="32" id="pNw-Uw-sLJ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eRU-9e-ssL">
+                                <rect key="frame" x="0.0" y="484" width="414" height="180"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="wPr-ID-x5Q"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h6E-oB-CGh">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="n4m-DW-yNG" firstAttribute="top" secondItem="xxl-QC-3w4" secondAttribute="bottom" constant="16" id="3lm-Rm-5xw"/>
                             <constraint firstItem="aPo-QH-ZIJ" firstAttribute="top" secondItem="IR1-3g-NU5" secondAttribute="top" id="9tG-VN-2Xc"/>
                             <constraint firstItem="xxl-QC-3w4" firstAttribute="top" secondItem="2zY-Mj-l89" secondAttribute="top" id="BOq-DH-NqY"/>
                             <constraint firstItem="xxl-QC-3w4" firstAttribute="leading" secondItem="2zY-Mj-l89" secondAttribute="leading" id="Bb1-Dg-FOL"/>
+                            <constraint firstItem="2zY-Mj-l89" firstAttribute="trailing" secondItem="7PX-KH-VAT" secondAttribute="trailing" constant="20" id="Gzd-5I-eQG"/>
+                            <constraint firstItem="7PX-KH-VAT" firstAttribute="leading" secondItem="2zY-Mj-l89" secondAttribute="leading" constant="20" id="KCo-6t-sa5"/>
+                            <constraint firstItem="eRU-9e-ssL" firstAttribute="top" secondItem="7PX-KH-VAT" secondAttribute="bottom" constant="20" id="KGN-Tx-dp8"/>
                             <constraint firstItem="aPo-QH-ZIJ" firstAttribute="bottom" secondItem="n4m-DW-yNG" secondAttribute="bottom" constant="16" id="Nxj-bU-gix"/>
+                            <constraint firstItem="eRU-9e-ssL" firstAttribute="leading" secondItem="2zY-Mj-l89" secondAttribute="leading" id="PNH-8G-ppz"/>
                             <constraint firstItem="vo2-PX-h4g" firstAttribute="centerY" secondItem="n4m-DW-yNG" secondAttribute="centerY" id="TLm-sB-G5X"/>
                             <constraint firstItem="vo2-PX-h4g" firstAttribute="leading" secondItem="2zY-Mj-l89" secondAttribute="leading" constant="16" id="W2h-yL-JmK"/>
                             <constraint firstItem="2zY-Mj-l89" firstAttribute="trailing" secondItem="xxl-QC-3w4" secondAttribute="trailing" id="cNy-bl-GI1"/>
                             <constraint firstItem="2zY-Mj-l89" firstAttribute="trailing" secondItem="n4m-DW-yNG" secondAttribute="trailing" constant="16" id="eUZ-ar-R0m"/>
                             <constraint firstAttribute="trailing" secondItem="aPo-QH-ZIJ" secondAttribute="trailing" id="qpq-gg-Jvl"/>
+                            <constraint firstItem="2zY-Mj-l89" firstAttribute="trailing" secondItem="eRU-9e-ssL" secondAttribute="trailing" id="rdR-aV-wcX"/>
                             <constraint firstItem="aPo-QH-ZIJ" firstAttribute="leading" secondItem="IR1-3g-NU5" secondAttribute="leading" id="sX3-eG-VMA"/>
+                            <constraint firstItem="7PX-KH-VAT" firstAttribute="top" secondItem="aPo-QH-ZIJ" secondAttribute="bottom" constant="20" id="yjX-Xc-27R"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2zY-Mj-l89"/>
                     </view>
                     <connections>
                         <outlet property="calendar" destination="xxl-QC-3w4" id="lX1-Y7-J1u"/>
                         <outlet property="calendarHeightConstraint" destination="RsL-Qt-NWI" id="jQq-0u-HZo"/>
+                        <outlet property="categoryCollectionView" destination="eRU-9e-ssL" id="gpe-Nk-ztq"/>
+                        <outlet property="incomeExpenseSegmentedC" destination="x56-jZ-6zt" id="pG5-Pr-9su"/>
                         <outlet property="topView" destination="aPo-QH-ZIJ" id="l5g-nf-2eA"/>
                     </connections>
                 </viewController>

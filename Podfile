@@ -4,6 +4,6 @@ target 'mSaving' do
   use_frameworks!
 
 pod 'FSCalendar'
-
+pod 'BetterSegmentedControl'
 
 end
