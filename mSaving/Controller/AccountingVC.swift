@@ -8,21 +8,21 @@
 
 import UIKit
 
-class AccountingVC: UIViewController {
+import FSCalendar
 
-    @IBOutlet weak var topView: UIView!
+class AccountingVC: UIViewController {
+    
+    @IBOutlet weak var calendar: FSCalendar!
     
     var gradientLayer: CAGradientLayer!
     
-    @IBOutlet weak var spendTextField: UITextField!
+    var change = false
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        createGradientLayer()
-        
-        spendTextField.becomeFirstResponder()
+//        createGradientLayer()
         
     }
     
@@ -30,7 +30,7 @@ class AccountingVC: UIViewController {
         
         gradientLayer = CAGradientLayer()
         
-        gradientLayer.frame = self.topView.bounds
+//        gradientLayer.frame = self.calenderView.bounds
         
         gradientLayer.colors = [UIColor(red: 173 / 255, green: 207 / 255, blue: 142 / 255, alpha: 1).cgColor, UIColor(red: 73 / 255, green: 161 / 255, blue: 84 / 255, alpha: 1).cgColor]
         
@@ -42,9 +42,10 @@ class AccountingVC: UIViewController {
         
     }
     
-    @IBAction func dismissKeyboard(_ sender: UIButton) {
+    @IBAction func changeCalender(_ sender: UIButton) {
         
-        spendTextField.resignFirstResponder()
+        self.calendar.scope = .week
+        
         
     }
     

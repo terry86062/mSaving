@@ -92,21 +92,31 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BXQ-sd-tbd">
+                        <rect key="frame" x="0.0" y="0.0" width="382" height="112"/>
+                        <connections>
+                            <action selector="goToSavingDetailAdd:" destination="gTV-IL-0wX" eventType="touchUpInside" id="s2j-xZ-OBn"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="kJl-rQ-uVD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="139-WG-msH"/>
                 <constraint firstItem="z1p-wN-lnv" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1xc-ay-cSW"/>
                 <constraint firstItem="Ny2-xL-vlJ" firstAttribute="leading" secondItem="kJl-rQ-uVD" secondAttribute="trailing" constant="16" id="3Ge-sR-iKT"/>
+                <constraint firstAttribute="trailing" secondItem="BXQ-sd-tbd" secondAttribute="trailing" id="5Ev-lt-9uS"/>
                 <constraint firstAttribute="bottom" secondItem="z1p-wN-lnv" secondAttribute="bottom" id="JBt-oR-2bn"/>
                 <constraint firstItem="z1p-wN-lnv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="KOH-YG-Cjd"/>
                 <constraint firstItem="NCq-We-BpK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="UKd-HQ-eFy"/>
                 <constraint firstAttribute="bottom" secondItem="NCq-We-BpK" secondAttribute="bottom" constant="16" id="bjE-D6-6bU"/>
                 <constraint firstAttribute="trailing" secondItem="z1p-wN-lnv" secondAttribute="trailing" id="cZ2-ER-qcm"/>
+                <constraint firstAttribute="bottom" secondItem="BXQ-sd-tbd" secondAttribute="bottom" id="fYx-DW-1iY"/>
                 <constraint firstItem="kJl-rQ-uVD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="hV8-FL-1MI"/>
                 <constraint firstItem="Ny2-xL-vlJ" firstAttribute="centerY" secondItem="kJl-rQ-uVD" secondAttribute="centerY" id="l3H-dS-deP"/>
                 <constraint firstAttribute="trailing" secondItem="NCq-We-BpK" secondAttribute="trailing" constant="16" id="qyI-DH-MGd"/>
+                <constraint firstItem="BXQ-sd-tbd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="sKQ-CJ-s4e"/>
                 <constraint firstItem="NCq-We-BpK" firstAttribute="top" secondItem="kJl-rQ-uVD" secondAttribute="bottom" constant="16" id="vNM-eA-o5H"/>
+                <constraint firstItem="BXQ-sd-tbd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="yPg-bf-a0M"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <userDefinedRuntimeAttributes>

@@ -13,7 +13,7 @@
         <!--ChartVC-->
         <scene sceneID="Ov2-t6-2eR">
             <objects>
-                <viewController id="FUq-Nb-93p" customClass="ChartVC" customModule="msaving" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="FUq-Nb-93p" customClass="ChartVC" customModule="mSaving" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Twn-Sx-PO8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -316,6 +316,22 @@
             <point key="canvasLocation" x="1289.8550724637682" y="-58.258928571428569"/>
         </scene>
         <!--View Controller-->
+        <scene sceneID="fet-Oy-rLk">
+            <objects>
+                <viewController id="who-qC-jFn" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PIl-r7-Y3z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="BQC-eJ-uAd"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Kou-5r-bgS"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h21-ub-3Y0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1290" y="739"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="HG0-BU-kWt">
             <objects>
                 <viewController id="TCi-aX-fjM" sceneMemberID="viewController">
@@ -585,6 +601,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOV-yl-hgN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="379.71014492753625" y="-58.258928571428569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Mm2-OM-4pU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="fdg-41-sgK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="P89-Id-m8A">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="who-qC-jFn" kind="relationship" relationship="rootViewController" id="t2X-Oh-PyB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ppj-A5-hdV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="380" y="739"/>
         </scene>
     </scenes>
     <resources>

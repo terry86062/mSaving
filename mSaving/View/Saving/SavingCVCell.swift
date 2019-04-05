@@ -42,6 +42,8 @@ class SavingCVCell: UICollectionViewCell {
     
     var showSavingDetail: (() -> ())?
     
+    var showSavingGoalSet: (() -> ())?
+    
     override func awakeFromNib() {
         
         super.awakeFromNib()
@@ -70,9 +72,15 @@ class SavingCVCell: UICollectionViewCell {
     
     @IBAction func showSavingDetail(_ sender: UIButton) {
         
-        guard let show = showSavingDetail else { return }
-        
-        show()
+        if let show = showSavingDetail {
+            
+            show()
+            
+        } else if let show = showSavingGoalSet {
+            
+            show()
+            
+        }
         
     }
     

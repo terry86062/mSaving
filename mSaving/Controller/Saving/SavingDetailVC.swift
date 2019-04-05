@@ -161,11 +161,23 @@ extension SavingDetailVC: UICollectionViewDataSource {
             
             cell.initSavingCVCell(dataSource: self, delegate: self)
             
+            cell.showSavingGoalSet = {
+                
+                self.performSegue(withIdentifier: "showSavingGoalSetVC", sender: nil)
+                
+            }
+            
             return cell
             
         } else {
             
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SavingDetailCVCell.self), for: indexPath) as? SavingDetailCVCell else { return SavingDetailCVCell() }
+            
+            cell.showSavingDetailAdd = {
+                
+                self.performSegue(withIdentifier: "showSavingDetailAddVC", sender: nil)
+                
+            }
             
             return cell
             
