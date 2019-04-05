@@ -701,6 +701,15 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9V-J7-nFo">
+                                <rect key="frame" x="0.0" y="412" width="414" height="500"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="500" id="PoN-Ym-L77"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="dismissKeyboard:" destination="pCO-3F-btS" eventType="touchUpInside" id="9HE-mw-BsB"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7PX-KH-VAT">
                                 <rect key="frame" x="20" y="432" width="374" height="32"/>
                                 <subviews>
@@ -743,7 +752,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eRU-9e-ssL">
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eRU-9e-ssL">
                                 <rect key="frame" x="0.0" y="484" width="414" height="180"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -767,12 +776,15 @@
                             <constraint firstItem="2zY-Mj-l89" firstAttribute="trailing" secondItem="7PX-KH-VAT" secondAttribute="trailing" constant="20" id="Gzd-5I-eQG"/>
                             <constraint firstItem="7PX-KH-VAT" firstAttribute="leading" secondItem="2zY-Mj-l89" secondAttribute="leading" constant="20" id="KCo-6t-sa5"/>
                             <constraint firstItem="eRU-9e-ssL" firstAttribute="top" secondItem="7PX-KH-VAT" secondAttribute="bottom" constant="20" id="KGN-Tx-dp8"/>
+                            <constraint firstItem="U9V-J7-nFo" firstAttribute="leading" secondItem="IR1-3g-NU5" secondAttribute="leading" id="LAn-Qw-LbS"/>
                             <constraint firstItem="aPo-QH-ZIJ" firstAttribute="bottom" secondItem="n4m-DW-yNG" secondAttribute="bottom" constant="16" id="Nxj-bU-gix"/>
                             <constraint firstItem="eRU-9e-ssL" firstAttribute="leading" secondItem="2zY-Mj-l89" secondAttribute="leading" id="PNH-8G-ppz"/>
                             <constraint firstItem="vo2-PX-h4g" firstAttribute="centerY" secondItem="n4m-DW-yNG" secondAttribute="centerY" id="TLm-sB-G5X"/>
                             <constraint firstItem="vo2-PX-h4g" firstAttribute="leading" secondItem="2zY-Mj-l89" secondAttribute="leading" constant="16" id="W2h-yL-JmK"/>
                             <constraint firstItem="2zY-Mj-l89" firstAttribute="trailing" secondItem="xxl-QC-3w4" secondAttribute="trailing" id="cNy-bl-GI1"/>
                             <constraint firstItem="2zY-Mj-l89" firstAttribute="trailing" secondItem="n4m-DW-yNG" secondAttribute="trailing" constant="16" id="eUZ-ar-R0m"/>
+                            <constraint firstAttribute="trailing" secondItem="U9V-J7-nFo" secondAttribute="trailing" id="lzb-bq-A7a"/>
+                            <constraint firstItem="U9V-J7-nFo" firstAttribute="top" secondItem="aPo-QH-ZIJ" secondAttribute="bottom" id="nTP-lU-KRX"/>
                             <constraint firstAttribute="trailing" secondItem="aPo-QH-ZIJ" secondAttribute="trailing" id="qpq-gg-Jvl"/>
                             <constraint firstItem="2zY-Mj-l89" firstAttribute="trailing" secondItem="eRU-9e-ssL" secondAttribute="trailing" id="rdR-aV-wcX"/>
                             <constraint firstItem="aPo-QH-ZIJ" firstAttribute="leading" secondItem="IR1-3g-NU5" secondAttribute="leading" id="sX3-eG-VMA"/>
@@ -781,9 +793,10 @@
                         <viewLayoutGuide key="safeArea" id="2zY-Mj-l89"/>
                     </view>
                     <connections>
+                        <outlet property="amountTextField" destination="n4m-DW-yNG" id="zDH-J9-6I5"/>
                         <outlet property="calendar" destination="xxl-QC-3w4" id="lX1-Y7-J1u"/>
                         <outlet property="calendarHeightConstraint" destination="RsL-Qt-NWI" id="jQq-0u-HZo"/>
-                        <outlet property="categoryCollectionView" destination="eRU-9e-ssL" id="gpe-Nk-ztq"/>
+                        <outlet property="incomeExpenseCollectionView" destination="eRU-9e-ssL" id="gpe-Nk-ztq"/>
                         <outlet property="incomeExpenseSegmentedC" destination="x56-jZ-6zt" id="pG5-Pr-9su"/>
                         <outlet property="topView" destination="aPo-QH-ZIJ" id="l5g-nf-2eA"/>
                     </connections>

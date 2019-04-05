@@ -39,9 +39,29 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         return panGesture
         }()
     
+    @IBOutlet weak var amountTextField: UITextField!
+    
     @IBOutlet weak var incomeExpenseSegmentedC: BetterSegmentedControl!
     
-    @IBOutlet weak var categoryCollectionView: UICollectionView!
+    @IBOutlet weak var incomeExpenseCollectionView: UICollectionView! {
+        
+        didSet {
+            
+            incomeExpenseCollectionView.dataSource = self
+            
+            incomeExpenseCollectionView.delegate = self
+            
+            setUpCollectionView()
+            
+        }
+        
+    }
+    
+    func setUpCollectionView() {
+        
+        incomeExpenseCollectionView.helpRegister(cell: IncomeExpenseCVCell())
+        
+    }
     
     override func viewDidLoad() {
         
@@ -60,6 +80,14 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         createGradientLayer()
         
         incomeExpenseSegmentedC.segments = LabelSegment.segments(withTitles: ["支出", "收入", "移轉"], normalBackgroundColor: UIColor.white, normalFont: .systemFont(ofSize: 16), normalTextColor: UIColor.mSYellow, selectedBackgroundColor: UIColor.mSYellow, selectedFont: .systemFont(ofSize: 16), selectedTextColor: UIColor.black)
+        
+        incomeExpenseSegmentedC.addTarget(self, action: #selector(navigationSegmentedControlValueChanged(_:)), for: .valueChanged)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        amountTextField.becomeFirstResponder()
         
     }
     
@@ -88,6 +116,47 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         self.view.layer.addSublayer(gradientLayer)
         
     }
+    
+    @objc func navigationSegmentedControlValueChanged(_ sender: BetterSegmentedControl) {
+        
+        if incomeExpenseCollectionView.isDragging == false {
+        
+            if sender.index == 0 {
+                
+                UIView.animate(withDuration: 0.5, animations: {
+    
+                    self.incomeExpenseCollectionView.bounds.origin.x = 0
+    
+                })
+                
+            } else if sender.index == 1 {
+                
+                UIView.animate(withDuration: 0.5, animations: {
+    
+                    self.incomeExpenseCollectionView.bounds.origin.x = 386
+    
+                })
+                
+            } else if sender.index == 2 {
+                
+                UIView.animate(withDuration: 0.5, animations: {
+    
+                    self.incomeExpenseCollectionView.bounds.origin.x = 772
+    
+                })
+                
+            }
+            
+        }
+    
+    }
+    
+    @IBAction func dismissKeyboard(_ sender: UIButton) {
+        
+        amountTextField.resignFirstResponder()
+        
+    }
+    
     
     // MARK:- UIGestureRecognizerDelegate
     
@@ -130,6 +199,154 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         print("\(self.dateFormatter.string(from: calendar.currentPage))")
+    }
+    
+}
+
+extension AccountingVC: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if collectionView == incomeExpenseCollectionView {
+            
+            return 3
+            
+        } else {
+            
+            return 20
+            
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if collectionView == incomeExpenseCollectionView {
+            
+            guard let cell = incomeExpenseCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: IncomeExpenseCVCell.self), for: indexPath) as? IncomeExpenseCVCell else { return IncomeExpenseCVCell() }
+            
+            cell.initSavingCVCell(dataSource: self, delegate: self)
+            
+            return cell
+            
+        } else {
+            
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CategoryCVCell.self), for: indexPath) as? CategoryCVCell else { return CategoryCVCell() }
+            
+            return cell
+            
+        }
+        
+    }
+    
+}
+
+extension AccountingVC: UICollectionViewDelegate {
+    
+}
+
+extension AccountingVC: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        if collectionView == incomeExpenseCollectionView {
+            
+            return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+            
+        } else {
+            
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if collectionView == incomeExpenseCollectionView {
+            
+            return CGSize(width: 374, height: 180)
+            
+        } else {
+            
+            return CGSize(width: 65, height: 89)
+            
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
+        if collectionView == incomeExpenseCollectionView {
+            
+            return 12
+            
+        } else {
+            
+            return 0
+            
+        }
+        
+    }
+    
+}
+
+extension AccountingVC {
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+        if scrollView == incomeExpenseCollectionView {
+            
+            // Simulate "Page" Function
+            
+            let pageWidth: Float = Float(386)
+            let currentOffset: Float = Float(scrollView.contentOffset.x)
+            let targetOffset: Float = Float(targetContentOffset.pointee.x)
+            var newTargetOffset: Float = 0
+            if targetOffset > currentOffset {
+                newTargetOffset = ceilf(currentOffset / pageWidth) * pageWidth
+            }
+            else {
+                newTargetOffset = floorf(currentOffset / pageWidth) * pageWidth
+            }
+            if newTargetOffset < 0 {
+                newTargetOffset = 0
+            }
+            else if (newTargetOffset > Float(scrollView.contentSize.width)){
+                newTargetOffset = Float(Float(scrollView.contentSize.width))
+            }
+            
+            targetContentOffset.pointee.x = CGFloat(currentOffset)
+            scrollView.setContentOffset(CGPoint(x: CGFloat(newTargetOffset), y: scrollView.contentOffset.y), animated: true)
+            
+        }
+        
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if scrollView.isEqual(incomeExpenseCollectionView) {
+            
+            let move = incomeExpenseCollectionView.bounds.origin.x
+            
+            print((move + 193) / 386)
+            
+            if (move + 193) / 386 < 1 {
+                
+                incomeExpenseSegmentedC.setIndex(0, animated: true)
+                
+            } else if (move + 193) / 386 >= 1 && (move + 193) / 386 < 2 {
+                
+                incomeExpenseSegmentedC.setIndex(1, animated: true)
+                
+            } else if (move + 193) / 386 >= 2 {
+                
+                incomeExpenseSegmentedC.setIndex(2, animated: true)
+                
+            }
+            
+        }
+        
     }
     
 }
