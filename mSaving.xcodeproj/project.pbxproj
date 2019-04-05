@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		34FE46260D153EA89122AC6A /* Pods_mSaving.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2F60CB0FEB4CC786F0B4059 /* Pods_mSaving.framework */; };
+		DE21B90222578D9800B65719 /* PieChartCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE21B90022578D9800B65719 /* PieChartCVCell.swift */; };
+		DE21B90322578D9800B65719 /* PieChartCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE21B90122578D9800B65719 /* PieChartCVCell.xib */; };
+		DE21B906225794C900B65719 /* BarChartCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE21B904225794C900B65719 /* BarChartCVCell.swift */; };
+		DE21B907225794C900B65719 /* BarChartCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE21B905225794C900B65719 /* BarChartCVCell.xib */; };
 		DE2BB358225360C2001D55E4 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BB357225360C2001D55E4 /* TopView.swift */; };
 		DE2BB35C22539662001D55E4 /* SavingCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BB35A22539662001D55E4 /* SavingCVCell.swift */; };
 		DE2BB35D22539662001D55E4 /* SavingCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2BB35B22539662001D55E4 /* SavingCVCell.xib */; };
@@ -55,6 +59,10 @@
 /* Begin PBXFileReference section */
 		2269CA763E2B12B921C758F2 /* Pods-mSaving.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mSaving.debug.xcconfig"; path = "Target Support Files/Pods-mSaving/Pods-mSaving.debug.xcconfig"; sourceTree = "<group>"; };
 		2C6C6317FBC34568D8610458 /* Pods-mSaving.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mSaving.release.xcconfig"; path = "Target Support Files/Pods-mSaving/Pods-mSaving.release.xcconfig"; sourceTree = "<group>"; };
+		DE21B90022578D9800B65719 /* PieChartCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartCVCell.swift; sourceTree = "<group>"; };
+		DE21B90122578D9800B65719 /* PieChartCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PieChartCVCell.xib; sourceTree = "<group>"; };
+		DE21B904225794C900B65719 /* BarChartCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartCVCell.swift; sourceTree = "<group>"; };
+		DE21B905225794C900B65719 /* BarChartCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarChartCVCell.xib; sourceTree = "<group>"; };
 		DE2BB357225360C2001D55E4 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		DE2BB35A22539662001D55E4 /* SavingCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingCVCell.swift; sourceTree = "<group>"; };
 		DE2BB35B22539662001D55E4 /* SavingCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavingCVCell.xib; sourceTree = "<group>"; };
@@ -129,6 +137,17 @@
 				E2F60CB0FEB4CC786F0B4059 /* Pods_mSaving.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE21B8FF22578D1E00B65719 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				DE21B90022578D9800B65719 /* PieChartCVCell.swift */,
+				DE21B90122578D9800B65719 /* PieChartCVCell.xib */,
+				DE21B904225794C900B65719 /* BarChartCVCell.swift */,
+				DE21B905225794C900B65719 /* BarChartCVCell.xib */,
+			);
+			path = Chart;
 			sourceTree = "<group>";
 		};
 		DE2BB3552253605D001D55E4 /* Saving */ = {
@@ -218,6 +237,7 @@
 				DE2BB35622536070001D55E4 /* Base */,
 				DE2BB3552253605D001D55E4 /* Saving */,
 				DE7B38A7225731C400C17846 /* Accounting */,
+				DE21B8FF22578D1E00B65719 /* Chart */,
 				DEECB0412253358B002D6C30 /* LaunchScreen.storyboard */,
 				DEECB0432253358B002D6C30 /* Main.storyboard */,
 				DEECB0462253358B002D6C30 /* Saving.storyboard */,
@@ -346,7 +366,9 @@
 				DE7B38AB2257329300C17846 /* IncomeExpenseCVCell.xib in Resources */,
 				DE2BB3672253AC1D001D55E4 /* MonthCVCell.xib in Resources */,
 				DEECB0472253358B002D6C30 /* Accounting.storyboard in Resources */,
+				DE21B90322578D9800B65719 /* PieChartCVCell.xib in Resources */,
 				DEECB04C2253358B002D6C30 /* Chart.storyboard in Resources */,
+				DE21B907225794C900B65719 /* BarChartCVCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +385,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-mSaving/Pods-mSaving-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BetterSegmentedControl/BetterSegmentedControl.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -370,6 +393,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BetterSegmentedControl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +437,7 @@
 				DEBE8C28225519F800C2A8A3 /* AccountCVCell.swift in Sources */,
 				DEECB063225335FA002D6C30 /* UIView - extension.swift in Sources */,
 				DEBE8C2C2255AED800C2A8A3 /* AccountDateCVCell.swift in Sources */,
+				DE21B906225794C900B65719 /* BarChartCVCell.swift in Sources */,
 				DE2BB3662253AC1D001D55E4 /* MonthCVCell.swift in Sources */,
 				DE7B38AE2257427200C17846 /* CategoryCVCell.swift in Sources */,
 				DEBE8C252254AE5200C2A8A3 /* UITableView - extension.swift in Sources */,
@@ -428,6 +453,7 @@
 				DEECB05722533599002D6C30 /* SavingGoalSetVC.swift in Sources */,
 				DEECB02E22533430002D6C30 /* mSaving.xcdatamodeld in Sources */,
 				DEECB05B22533599002D6C30 /* AccountingVC.swift in Sources */,
+				DE21B90222578D9800B65719 /* PieChartCVCell.swift in Sources */,
 				DE2BB36322539B95001D55E4 /* UICollectionView - extension.swift in Sources */,
 				DE2BB36122539A16001D55E4 /* SavingGoalView.swift in Sources */,
 				DEECB02622533430002D6C30 /* AppDelegate.swift in Sources */,

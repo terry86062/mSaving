@@ -1,20 +1,26 @@
 PODS:
   - BetterSegmentedControl (1.0.3)
+  - Charts (3.2.2):
+    - Charts/Core (= 3.2.2)
+  - Charts/Core (3.2.2)
   - FSCalendar (2.8.0)
 
 DEPENDENCIES:
   - BetterSegmentedControl
+  - Charts
   - FSCalendar
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - BetterSegmentedControl
+    - Charts
     - FSCalendar
 
 SPEC CHECKSUMS:
   BetterSegmentedControl: 4e3bd0bd517b0f6077c9e17f5663a01cff48e2c5
+  Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
   FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
 
-PODFILE CHECKSUM: 6c2ab6285ab4dd134f49489c47fde19f5ec2208e
+PODFILE CHECKSUM: 72b550fa480a0820174dc5b9fdc56ff2996454f1
 
 COCOAPODS: 1.6.0

@@ -8,47 +8,92 @@
 
 import UIKit
 
-class ChartVC: UIViewController {
+import Charts
 
-    @IBOutlet weak var topView: UIView!
+class ChartVC: UIViewController {
     
-    var gradientLayer: CAGradientLayer!
+    @IBOutlet weak var analysisCollectionView: UICollectionView! {
+        
+        didSet {
+            
+            analysisCollectionView.dataSource = self
+            
+            analysisCollectionView.delegate = self
+            
+        }
+        
+    }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        createGradientLayer()
+        setUpCollectionView()
         
-        
-        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
-        edgePan.edges = .left
-        
-        view.addGestureRecognizer(edgePan)
     }
     
-    @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
-        if recognizer.state == .recognized {
-            print("Screen edge swiped!")
+    func setUpCollectionView() {
+        
+        analysisCollectionView.helpRegister(cell: PieChartCVCell())
+        
+        analysisCollectionView.helpRegister(cell: BarChartCVCell())
+        
+    }
+    
+}
+
+extension ChartVC: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
+        return 2
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return 1
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if indexPath.section == 0 {
+            
+            guard let cell = analysisCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PieChartCVCell.self), for: indexPath) as? PieChartCVCell else { return UICollectionViewCell() }
+            
+            cell.pieChartUpdate()
+            
+            return cell
+            
+        } else {
+            
+            guard let cell = analysisCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: BarChartCVCell.self), for: indexPath) as? BarChartCVCell else { return UICollectionViewCell() }
+            
+            cell.barChartUpdate()
+            
+            return cell
+            
         }
+        
     }
-
-
     
-    func createGradientLayer() {
+}
+
+extension ChartVC: UICollectionViewDelegate {
+    
+    
+    
+}
+
+extension ChartVC: UICollectionViewDelegateFlowLayout {
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        gradientLayer = CAGradientLayer()
-        
-        gradientLayer.frame = self.topView.bounds
-        
-        gradientLayer.colors = [UIColor(red: 173 / 255, green: 207 / 255, blue: 142 / 255, alpha: 1).cgColor, UIColor(red: 73 / 255, green: 161 / 255, blue: 84 / 255, alpha: 1).cgColor]
-        
-        gradientLayer.startPoint = CGPoint(x: 1.0, y: 0.0)
-        
-        gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
-        
-        self.view.layer.addSublayer(gradientLayer)
+        return CGSize(width: 320, height: 320)
         
     }
-
+    
 }
