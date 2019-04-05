@@ -326,10 +326,26 @@
                                     <constraint firstAttribute="height" constant="180" id="e3q-QL-LcZ"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ua1-Yq-anV">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iyE-0e-gdu">
+                                <rect key="frame" x="0.0" y="44" width="414" height="43"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XUt-lT-XcC">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </collectionView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ua1-Yq-anV">
                                 <rect key="frame" x="0.0" y="180" width="414" height="682"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hZg-Ec-T9d">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hZg-Ec-T9d">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -340,19 +356,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="BQC-eJ-uAd" firstAttribute="trailing" secondItem="iyE-0e-gdu" secondAttribute="trailing" id="756-XR-55f"/>
                             <constraint firstItem="TIy-M1-NBk" firstAttribute="trailing" secondItem="BQC-eJ-uAd" secondAttribute="trailing" id="CvF-ur-Wgd"/>
                             <constraint firstItem="BQC-eJ-uAd" firstAttribute="bottom" secondItem="Ua1-Yq-anV" secondAttribute="bottom" id="EgI-SY-Tmj"/>
                             <constraint firstItem="TIy-M1-NBk" firstAttribute="top" secondItem="PIl-r7-Y3z" secondAttribute="top" id="GB2-yO-vSs"/>
                             <constraint firstItem="BQC-eJ-uAd" firstAttribute="trailing" secondItem="Ua1-Yq-anV" secondAttribute="trailing" id="LtF-tm-CSX"/>
                             <constraint firstItem="TIy-M1-NBk" firstAttribute="leading" secondItem="BQC-eJ-uAd" secondAttribute="leading" id="QKR-1X-ilO"/>
                             <constraint firstItem="Ua1-Yq-anV" firstAttribute="top" secondItem="TIy-M1-NBk" secondAttribute="bottom" id="ii1-2z-Vyr"/>
+                            <constraint firstItem="iyE-0e-gdu" firstAttribute="height" secondItem="PIl-r7-Y3z" secondAttribute="width" multiplier="43:414" id="kRQ-nO-Gl2"/>
+                            <constraint firstItem="iyE-0e-gdu" firstAttribute="leading" secondItem="BQC-eJ-uAd" secondAttribute="leading" id="pTq-9p-zeK"/>
                             <constraint firstItem="Ua1-Yq-anV" firstAttribute="leading" secondItem="BQC-eJ-uAd" secondAttribute="leading" id="pqY-eK-MrI"/>
+                            <constraint firstItem="iyE-0e-gdu" firstAttribute="top" secondItem="BQC-eJ-uAd" secondAttribute="top" id="zVH-hb-DCt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BQC-eJ-uAd"/>
                     </view>
                     <navigationItem key="navigationItem" id="Kou-5r-bgS"/>
                     <connections>
                         <outlet property="analysisCollectionView" destination="Ua1-Yq-anV" id="cTl-wb-td7"/>
+                        <outlet property="monthCollectionView" destination="iyE-0e-gdu" id="EtV-rg-Gl1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h21-ub-3Y0" userLabel="First Responder" sceneMemberID="firstResponder"/>
