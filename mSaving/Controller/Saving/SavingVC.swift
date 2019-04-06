@@ -44,6 +44,10 @@ class SavingVC: UIViewController {
         
     }
     
+    @IBOutlet weak var searchButton: UIButton!
+    
+    @IBOutlet weak var editingButton: UIButton!
+    
     var showAccount = true
     
     let testData: [MonthData] = [
@@ -147,6 +151,10 @@ extension SavingVC: UICollectionViewDataSource {
                         
                         self.showAccount = false
                         
+                        self.searchButton.isHidden = true
+                        
+                        self.editingButton.isHidden = false
+                        
                         var indexPath: [IndexPath] = []
                         
                         for i in 1...3 {
@@ -156,13 +164,15 @@ extension SavingVC: UICollectionViewDataSource {
                         }
                         
                         collectionView.reloadItems(at: indexPath)
-                        
-//                        collectionView.reloadData()
                         
                     } else {
                         
                         self.showAccount = true
                         
+                        self.searchButton.isHidden = false
+                        
+                        self.editingButton.isHidden = true
+                        
                         var indexPath: [IndexPath] = []
                         
                         for i in 1...3 {
@@ -172,8 +182,6 @@ extension SavingVC: UICollectionViewDataSource {
                         }
                         
                         collectionView.reloadItems(at: indexPath)
-                        
-//                        collectionView.reloadData()
                         
                     }
                     
@@ -191,9 +199,31 @@ extension SavingVC: UICollectionViewDataSource {
                     
                 } else {
                     
-                    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SavingDetailCVCell.self), for: indexPath) as? SavingDetailCVCell else { return SavingDetailCVCell() }
-                    
-                    return cell
+                    if indexPath.row == 3 {
+                        
+                        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AddSavingDetailCVCell.self), for: indexPath) as? AddSavingDetailCVCell else { return AddSavingDetailCVCell() }
+                        
+                        cell.showSavingDetailAdd = {
+                            
+                            self.performSegue(withIdentifier: "goToSavingDetailAdd", sender: nil)
+                            
+                        }
+                        
+                        return cell
+                        
+                    } else {
+                        
+                        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SavingDetailCVCell.self), for: indexPath) as? SavingDetailCVCell else { return SavingDetailCVCell() }
+                        
+                        cell.showSavingDetailAdd = {
+                            
+                            self.performSegue(withIdentifier: "goToSavingDetailEdit", sender: nil)
+                            
+                        }
+                        
+                        return cell
+                        
+                    }
                     
                 }
                 
@@ -270,7 +300,15 @@ extension SavingVC: UICollectionViewDelegateFlowLayout {
                     
                 } else {
                     
-                    return CGSize(width: 382, height: 112)
+                    if indexPath.row == 3 {
+                        
+                        return CGSize(width: 382, height: 56)
+                        
+                    } else {
+                        
+                        return CGSize(width: 382, height: 112)
+                        
+                    }
                     
                 }
                 

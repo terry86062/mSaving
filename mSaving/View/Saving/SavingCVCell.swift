@@ -42,6 +42,8 @@ class SavingCVCell: UICollectionViewCell {
         
         accountCollectionView.helpRegister(cell: SavingDetailCVCell())
         
+        accountCollectionView.helpRegister(cell: AddSavingDetailCVCell())
+        
     }
     
 }

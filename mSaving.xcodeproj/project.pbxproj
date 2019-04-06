@@ -28,6 +28,8 @@
 		DE7B38AF2257427200C17846 /* CategoryCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE7B38AD2257427200C17846 /* CategoryCVCell.xib */; };
 		DE97C64B2258E12400D0C9CF /* SavingGoalCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97C6492258E12400D0C9CF /* SavingGoalCVCell.swift */; };
 		DE97C64C2258E12400D0C9CF /* SavingGoalCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE97C64A2258E12400D0C9CF /* SavingGoalCVCell.xib */; };
+		DE97C64F225919CE00D0C9CF /* AddSavingDetailCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97C64D225919CE00D0C9CF /* AddSavingDetailCVCell.swift */; };
+		DE97C650225919CE00D0C9CF /* AddSavingDetailCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE97C64E225919CE00D0C9CF /* AddSavingDetailCVCell.xib */; };
 		DE99AC8A22563D1400B12AD6 /* SavingDetailAddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99AC8922563D1400B12AD6 /* SavingDetailAddVC.swift */; };
 		DEACE3DC2257AD1900EA209C /* AnalysisCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEACE3DA2257AD1900EA209C /* AnalysisCVCell.swift */; };
 		DEACE3DD2257AD1900EA209C /* AnalysisCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEACE3DB2257AD1900EA209C /* AnalysisCVCell.xib */; };
@@ -88,6 +90,8 @@
 		DE7B38AD2257427200C17846 /* CategoryCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCVCell.xib; sourceTree = "<group>"; };
 		DE97C6492258E12400D0C9CF /* SavingGoalCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingGoalCVCell.swift; sourceTree = "<group>"; };
 		DE97C64A2258E12400D0C9CF /* SavingGoalCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavingGoalCVCell.xib; sourceTree = "<group>"; };
+		DE97C64D225919CE00D0C9CF /* AddSavingDetailCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSavingDetailCVCell.swift; sourceTree = "<group>"; };
+		DE97C64E225919CE00D0C9CF /* AddSavingDetailCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSavingDetailCVCell.xib; sourceTree = "<group>"; };
 		DE99AC8922563D1400B12AD6 /* SavingDetailAddVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingDetailAddVC.swift; sourceTree = "<group>"; };
 		DEACE3DA2257AD1900EA209C /* AnalysisCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisCVCell.swift; sourceTree = "<group>"; };
 		DEACE3DB2257AD1900EA209C /* AnalysisCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnalysisCVCell.xib; sourceTree = "<group>"; };
@@ -187,6 +191,8 @@
 				DEBE8C2B2255AED800C2A8A3 /* AccountDateCVCell.xib */,
 				DEEAA9CA2255F4A5005FCE8E /* SavingDetailCVCell.swift */,
 				DEEAA9CB2255F4A5005FCE8E /* SavingDetailCVCell.xib */,
+				DE97C64D225919CE00D0C9CF /* AddSavingDetailCVCell.swift */,
+				DE97C64E225919CE00D0C9CF /* AddSavingDetailCVCell.xib */,
 			);
 			path = Saving;
 			sourceTree = "<group>";
@@ -424,6 +430,7 @@
 				DE21B90322578D9800B65719 /* PieChartCVCell.xib in Resources */,
 				DEECB04C2253358B002D6C30 /* Chart.storyboard in Resources */,
 				DE21B907225794C900B65719 /* BarChartCVCell.xib in Resources */,
+				DE97C650225919CE00D0C9CF /* AddSavingDetailCVCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +501,7 @@
 				DE4984B8225878A8004E4AE9 /* CategoryAccountsTotalCVCell.swift in Sources */,
 				DEECB063225335FA002D6C30 /* UIView - extension.swift in Sources */,
 				DEBE8C2C2255AED800C2A8A3 /* AccountDateCVCell.swift in Sources */,
+				DE97C64F225919CE00D0C9CF /* AddSavingDetailCVCell.swift in Sources */,
 				DE21B906225794C900B65719 /* BarChartCVCell.swift in Sources */,
 				DE4984B522586A0F004E4AE9 /* CategoryAccountsDetailVC.swift in Sources */,
 				DE2BB3662253AC1D001D55E4 /* MonthCVCell.swift in Sources */,

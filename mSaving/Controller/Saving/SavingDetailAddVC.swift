@@ -24,6 +24,8 @@ class SavingDetailAddVC: UIViewController {
         
         navigationController?.popViewController(animated: true)
         
+        dismiss(animated: true, completion: nil)
+        
     }
 
 }
