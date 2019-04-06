@@ -217,6 +217,14 @@
 			path = Chart;
 			sourceTree = "<group>";
 		};
+		DE4984BA22587B9F004E4AE9 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				DEECB05122533599002D6C30 /* SettingVC.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		DE7B38A7225731C400C17846 /* Accounting */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,7 +293,7 @@
 				DE2BB35922538889001D55E4 /* Saving */,
 				DE4984B3225869D6004E4AE9 /* Chart */,
 				DEECB05422533599002D6C30 /* AccountingVC.swift */,
-				DEECB05122533599002D6C30 /* SettingVC.swift */,
+				DE4984BA22587B9F004E4AE9 /* Setting */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
