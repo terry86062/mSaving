@@ -399,10 +399,10 @@
             </objects>
             <point key="canvasLocation" x="1289.8550724637682" y="738.61607142857144"/>
         </scene>
-        <!--View Controller-->
+        <!--Category Accounts DetailVC-->
         <scene sceneID="gUZ-pA-JGI">
             <objects>
-                <viewController id="23y-g6-22h" sceneMemberID="viewController">
+                <viewController id="23y-g6-22h" customClass="CategoryAccountsDetailVC" customModule="mSaving" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7mx-sz-7lN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -439,6 +439,9 @@
                                     <constraint firstAttribute="height" constant="20" id="lc3-t0-prH"/>
                                 </constraints>
                                 <state key="normal" image="back"/>
+                                <connections>
+                                    <action selector="pop:" destination="23y-g6-22h" eventType="touchUpInside" id="HOa-pz-hhp"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -458,6 +461,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RfP-yi-NK8"/>
                     </view>
+                    <connections>
+                        <outlet property="categoryAccountsCollectionView" destination="Sg9-Zb-77l" id="jFH-vc-9Yb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OSV-S4-NM5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

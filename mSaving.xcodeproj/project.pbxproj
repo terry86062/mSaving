@@ -21,6 +21,7 @@
 		DE2BB3662253AC1D001D55E4 /* MonthCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BB3642253AC1D001D55E4 /* MonthCVCell.swift */; };
 		DE2BB3672253AC1D001D55E4 /* MonthCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2BB3652253AC1D001D55E4 /* MonthCVCell.xib */; };
 		DE2BB3692253AE16001D55E4 /* Int - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BB3682253AE16001D55E4 /* Int - extension.swift */; };
+		DE4984B522586A0F004E4AE9 /* CategoryAccountsDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4984B422586A0F004E4AE9 /* CategoryAccountsDetailVC.swift */; };
 		DE7B38AA2257329300C17846 /* IncomeExpenseCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7B38A82257329300C17846 /* IncomeExpenseCVCell.swift */; };
 		DE7B38AB2257329300C17846 /* IncomeExpenseCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE7B38A92257329300C17846 /* IncomeExpenseCVCell.xib */; };
 		DE7B38AE2257427200C17846 /* CategoryCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7B38AC2257427200C17846 /* CategoryCVCell.swift */; };
@@ -76,6 +77,7 @@
 		DE2BB3642253AC1D001D55E4 /* MonthCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCVCell.swift; sourceTree = "<group>"; };
 		DE2BB3652253AC1D001D55E4 /* MonthCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthCVCell.xib; sourceTree = "<group>"; };
 		DE2BB3682253AE16001D55E4 /* Int - extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int - extension.swift"; sourceTree = "<group>"; };
+		DE4984B422586A0F004E4AE9 /* CategoryAccountsDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAccountsDetailVC.swift; sourceTree = "<group>"; };
 		DE7B38A82257329300C17846 /* IncomeExpenseCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseCVCell.swift; sourceTree = "<group>"; };
 		DE7B38A92257329300C17846 /* IncomeExpenseCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeExpenseCVCell.xib; sourceTree = "<group>"; };
 		DE7B38AC2257427200C17846 /* CategoryCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCVCell.swift; sourceTree = "<group>"; };
@@ -200,6 +202,15 @@
 			path = Saving;
 			sourceTree = "<group>";
 		};
+		DE4984B3225869D6004E4AE9 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				DEECB04F22533599002D6C30 /* ChartVC.swift */,
+				DE4984B422586A0F004E4AE9 /* CategoryAccountsDetailVC.swift */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
 		DE7B38A7225731C400C17846 /* Accounting */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,7 +277,7 @@
 			children = (
 				DEECB05522533599002D6C30 /* TabBarController.swift */,
 				DE2BB35922538889001D55E4 /* Saving */,
-				DEECB04F22533599002D6C30 /* ChartVC.swift */,
+				DE4984B3225869D6004E4AE9 /* Chart */,
 				DEECB05422533599002D6C30 /* AccountingVC.swift */,
 				DEECB05122533599002D6C30 /* SettingVC.swift */,
 			);
@@ -452,6 +463,7 @@
 				DEECB063225335FA002D6C30 /* UIView - extension.swift in Sources */,
 				DEBE8C2C2255AED800C2A8A3 /* AccountDateCVCell.swift in Sources */,
 				DE21B906225794C900B65719 /* BarChartCVCell.swift in Sources */,
+				DE4984B522586A0F004E4AE9 /* CategoryAccountsDetailVC.swift in Sources */,
 				DE2BB3662253AC1D001D55E4 /* MonthCVCell.swift in Sources */,
 				DE7B38AE2257427200C17846 /* CategoryCVCell.swift in Sources */,
 				DEBE8C252254AE5200C2A8A3 /* UITableView - extension.swift in Sources */,
