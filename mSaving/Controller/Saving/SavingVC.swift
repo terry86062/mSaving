@@ -69,9 +69,9 @@ class SavingVC: UIViewController {
     
     func setUpCollectionView() {
         
-        savingCollectionView.helpRegister(cell: SavingCVCell())
-        
         monthCollectionView.helpRegister(cell: MonthCVCell())
+        
+        savingCollectionView.helpRegister(cell: SavingCVCell())
         
     }
     
@@ -81,15 +81,7 @@ extension SavingVC: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
-        if collectionView == monthCollectionView || collectionView == savingCollectionView {
-            
-            return 1
-            
-        } else {
-            
-            return 3
-            
-        }
+        return 1
         
     }
     
@@ -101,7 +93,7 @@ extension SavingVC: UICollectionViewDataSource {
             
         } else {
             
-            return 3
+            return 4
             
         }
         
@@ -139,9 +131,9 @@ extension SavingVC: UICollectionViewDataSource {
             
         } else {
             
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AccountCVCell.self), for: indexPath) as? AccountCVCell else { return AccountCVCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AccountsCVCell.self), for: indexPath) as? AccountsCVCell else { return AccountsCVCell() }
             
-            cell.initAccountCVCell(zPosition: CGFloat(indexPath.row + 2))
+//            cell.initAccountCVCell(zPosition: CGFloat(indexPath.row + 2))
             
             return cell
             

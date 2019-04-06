@@ -9,33 +9,126 @@
 import UIKit
 
 class SettingVC: UIViewController {
-
-    @IBOutlet weak var topView: UIView!
     
-    var gradientLayer: CAGradientLayer!
+    @IBOutlet weak var settingsCollectionView: UICollectionView! {
+        
+        didSet {
+            
+            settingsCollectionView.dataSource = self
+            
+            settingsCollectionView.delegate = self
+            
+        }
+        
+    }
+    
+    @IBOutlet weak var segmentedBarView: UIView!
+    
+    @IBOutlet weak var accountsButton: UIButton!
+    
+    @IBOutlet weak var settingButton: UIButton!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        createGradientLayer()
+        setUpCollectionView()
         
     }
     
-    func createGradientLayer() {
+    func setUpCollectionView() {
         
-        gradientLayer = CAGradientLayer()
-        
-        gradientLayer.frame = self.topView.bounds
-        
-        gradientLayer.colors = [UIColor(red: 173 / 255, green: 207 / 255, blue: 142 / 255, alpha: 1).cgColor, UIColor(red: 73 / 255, green: 161 / 255, blue: 84 / 255, alpha: 1).cgColor]
-        
-        gradientLayer.startPoint = CGPoint(x: 1.0, y: 0.0)
-        
-        gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
-        
-        self.view.layer.addSublayer(gradientLayer)
+        settingsCollectionView.helpRegister(cell: SettingCVCell())
         
     }
 
 }
+
+extension SettingVC: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return 2
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = settingsCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SettingCVCell.self), for: indexPath) as? SettingCVCell else { return SettingCVCell() }
+        
+        if indexPath.row == 0 {
+            
+            cell.initSettingCVCell(whichSetting: .accounts)
+            
+        } else {
+            
+            cell.initSettingCVCell(whichSetting: .setting)
+            
+        }
+        
+        return cell
+        
+    }
+    
+}
+
+extension SettingVC: UICollectionViewDelegate {
+    
+}
+
+extension SettingVC: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: 414, height: settingsCollectionView.frame.height)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 0
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 0
+        
+    }
+    
+}
+
+extension SettingVC {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if scrollView.isEqual(settingsCollectionView) {
+            
+            segmentedBarView.frame.origin.x = settingsCollectionView.bounds.origin.x / 2
+            
+            if segmentedBarView.frame.origin.x == segmentedBarView.frame.width {
+                
+                accountsButton.isSelected = false
+                
+                settingButton.isSelected = true
+                
+            } else if segmentedBarView.frame.origin.x == 0 {
+                
+                accountsButton.isSelected = true
+                
+                settingButton.isSelected = false
+                
+            }
+            
+        }
+        
+    }
+    
+}
+

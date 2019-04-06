@@ -399,10 +399,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Djq-hD-MnL" customClass="TopView" customModule="mSaving" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="203"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="203" id="F4S-dh-bYP"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="87"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yhK-G2-nhO">
                                 <rect key="frame" x="0.0" y="44" width="414" height="43"/>
@@ -443,6 +440,7 @@
                             <constraint firstItem="Djq-hD-MnL" firstAttribute="leading" secondItem="yL3-9r-bOn" secondAttribute="leading" id="KRM-A7-czp"/>
                             <constraint firstItem="yL3-9r-bOn" firstAttribute="trailing" secondItem="Y4f-oa-sf1" secondAttribute="trailing" id="YP5-vJ-YU5"/>
                             <constraint firstItem="Y4f-oa-sf1" firstAttribute="top" secondItem="yhK-G2-nhO" secondAttribute="bottom" id="k5t-FQ-mq6"/>
+                            <constraint firstItem="yhK-G2-nhO" firstAttribute="bottom" secondItem="Djq-hD-MnL" secondAttribute="bottom" id="kuU-gu-awg"/>
                             <constraint firstItem="Djq-hD-MnL" firstAttribute="top" secondItem="mVS-nP-D1J" secondAttribute="top" id="u8c-16-rTG"/>
                             <constraint firstItem="yhK-G2-nhO" firstAttribute="height" secondItem="mVS-nP-D1J" secondAttribute="width" multiplier="43:414" id="vhI-bQ-6MH"/>
                         </constraints>
@@ -457,7 +455,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X3f-df-BEJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="932" y="1894"/>
+            <point key="canvasLocation" x="931.88405797101461" y="1893.75"/>
         </scene>
         <!--Saving DetailVC-->
         <scene sceneID="KTV-0t-IHA">

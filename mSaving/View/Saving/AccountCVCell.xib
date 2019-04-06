@@ -85,20 +85,11 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="144" height="50"/>
             <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
-                    <size key="value" width="0.0" height="0.0"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
-                    <real key="value" value="0.0"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
-                    <real key="value" value="0.0"/>
-                </userDefinedRuntimeAttribute>
                 <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
                     <real key="value" value="5"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="83" y="42"/>
+            <point key="canvasLocation" x="82.608695652173921" y="41.517857142857139"/>
         </collectionViewCell>
     </objects>
     <resources>
