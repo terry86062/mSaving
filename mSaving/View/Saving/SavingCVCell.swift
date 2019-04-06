@@ -10,26 +10,6 @@ import UIKit
 
 class SavingCVCell: UICollectionViewCell {
     
-    lazy var savingGoalView: SavingGoalView = {
-        
-        guard let goalView = Bundle.main.loadNibNamed(String(describing: SavingGoalView.self), owner: nil, options: nil)?[0] as? SavingGoalView else { return SavingGoalView() }
-        
-        goalView.frame = CGRect(x: 0, y: 0, width: savingGoalContainView.frame.width, height: savingGoalContainView.frame.height)
-        
-        return goalView
-        
-    }()
-    
-    @IBOutlet weak var savingGoalContainView: SavingGoalView! {
-        
-        didSet {
-            
-            savingGoalContainView.addSubview(savingGoalView)
-            
-        }
-        
-    }
-    
     @IBOutlet weak var accountCollectionView: UICollectionView! {
         
         didSet {
@@ -39,10 +19,6 @@ class SavingCVCell: UICollectionViewCell {
         }
         
     }
-    
-    var showSavingDetail: (() -> ())?
-    
-    var showSavingGoalSet: (() -> ())?
     
     override func awakeFromNib() {
         
@@ -60,29 +36,11 @@ class SavingCVCell: UICollectionViewCell {
     
     func setUpCollectionView() {
         
+        accountCollectionView.helpRegister(cell: SavingGoalCVCell())
+        
         accountCollectionView.helpRegister(cell: AccountsCVCell())
         
-        accountCollectionView.helpRegister(cell: AccountCVCell())
-        
         accountCollectionView.helpRegister(cell: SavingDetailCVCell())
-        
-        accountCollectionView.helpRegisterView(cell: AccountDateCVCell())
-        
-        accountCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        
-    }
-    
-    @IBAction func showSavingDetail(_ sender: UIButton) {
-        
-        if let show = showSavingDetail {
-            
-            show()
-            
-        } else if let show = showSavingGoalSet {
-            
-            show()
-            
-        }
         
     }
     

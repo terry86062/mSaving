@@ -44,6 +44,8 @@ class SavingVC: UIViewController {
         
     }
     
+    var showAccount = true
+    
     let testData: [MonthData] = [
         MonthData(month: "January", goal: "1000", spend: "100"),
         MonthData(month: "February", goal: "2000", spend: "200"),
@@ -64,6 +66,16 @@ class SavingVC: UIViewController {
         super.viewDidLoad()
         
         setUpCollectionView()
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        
+        super.viewDidLayoutSubviews()
+        
+        let indexPath = IndexPath(item: 3, section: 0)
+        
+        savingCollectionView.scrollToItem(at: indexPath, at: [.centeredVertically,   .centeredHorizontally], animated: false)
         
     }
     
@@ -121,37 +133,96 @@ extension SavingVC: UICollectionViewDataSource {
             
             cell.initSavingCVCell(dataSource: self, delegate: self)
             
-            cell.showSavingDetail = {
-                
-                self.performSegue(withIdentifier: "showSavingDetail", sender: nil)
-                
-            }
-            
             return cell
             
         } else {
             
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AccountsCVCell.self), for: indexPath) as? AccountsCVCell else { return AccountsCVCell() }
-            
-//            cell.initAccountCVCell(zPosition: CGFloat(indexPath.row + 2))
-            
-            return cell
+            if indexPath.row == 0 {
+                
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SavingGoalCVCell.self), for: indexPath) as? SavingGoalCVCell else { return SavingGoalCVCell() }
+                
+                cell.goToSavingGoalDetail = {
+                    
+                    if self.showAccount {
+                        
+                        self.showAccount = false
+                        
+                        var indexPath: [IndexPath] = []
+                        
+                        for i in 1...3 {
+                            
+                            indexPath.append(IndexPath(row: i, section: 0))
+                            
+                        }
+                        
+                        collectionView.reloadItems(at: indexPath)
+                        
+//                        collectionView.reloadData()
+                        
+                    } else {
+                        
+                        self.showAccount = true
+                        
+                        var indexPath: [IndexPath] = []
+                        
+                        for i in 1...3 {
+                            
+                            indexPath.append(IndexPath(row: i, section: 0))
+                            
+                        }
+                        
+                        collectionView.reloadItems(at: indexPath)
+                        
+//                        collectionView.reloadData()
+                        
+                    }
+                    
+                }
+                
+                return cell
+                
+            } else {
+                
+                if showAccount {
+                    
+                    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AccountsCVCell.self), for: indexPath) as? AccountsCVCell else { return AccountsCVCell() }
+                    
+                    return cell
+                    
+                } else {
+                    
+                    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SavingDetailCVCell.self), for: indexPath) as? SavingDetailCVCell else { return SavingDetailCVCell() }
+                    
+                    return cell
+                    
+                }
+                
+            }
             
         }
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: AccountDateCVCell.self), for: indexPath) as? AccountDateCVCell else { return AccountCVCell() }
-        
-        return headerView
         
     }
     
 }
 
 extension SavingVC: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        if collectionView != monthCollectionView && collectionView != savingCollectionView {
+            
+            cell.alpha = 0
+            
+            UIView.animate(
+                withDuration: 0.5,
+                delay: 0.05 * Double(indexPath.row),
+                animations: {
+                    cell.alpha = 1
+            })
+            
+        }
+        
+    }
     
 }
 
@@ -169,7 +240,7 @@ extension SavingVC: UICollectionViewDelegateFlowLayout {
             
         } else {
             
-            return UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
+            return UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
             
         }
         
@@ -187,7 +258,23 @@ extension SavingVC: UICollectionViewDelegateFlowLayout {
             
         } else {
             
-            return CGSize(width: 382.fitScreen, height: 56.fitScreen)
+            if indexPath.row == 0 {
+                
+                return CGSize(width: 382, height: 100)
+                
+            } else {
+                
+                if showAccount {
+                    
+                    return CGSize(width: 382, height: 56 * 6)
+                    
+                } else {
+                    
+                    return CGSize(width: 382, height: 112)
+                    
+                }
+                
+            }
             
         }
         
@@ -195,19 +282,13 @@ extension SavingVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
-        return 0
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        
-        if collectionView != savingCollectionView && collectionView != monthCollectionView {
+        if collectionView == monthCollectionView || collectionView == savingCollectionView {
             
-            return CGSize(width: 0, height: 56)
+            return 0
             
         } else {
             
-            return CGSize(width: 0, height: 0)
+            return 16
             
         }
         

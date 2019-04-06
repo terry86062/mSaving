@@ -22,6 +22,23 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1p-wN-lnv">
                         <rect key="frame" x="0.0" y="0.0" width="382" height="112"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
+                                <size key="value" width="0.0" height="2"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
+                                <real key="value" value="0.80000000000000004"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
+                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCq-We-BpK">
                         <rect key="frame" x="16" y="64" width="350" height="32"/>
@@ -100,6 +117,7 @@
                     </button>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="kJl-rQ-uVD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="139-WG-msH"/>
                 <constraint firstItem="z1p-wN-lnv" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1xc-ay-cSW"/>
@@ -119,20 +137,6 @@
                 <constraint firstItem="BXQ-sd-tbd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="yPg-bf-a0M"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
-                    <size key="value" width="0.0" height="2"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
-                    <real key="value" value="0.80000000000000004"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
-                    <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
-                    <real key="value" value="2"/>
-                </userDefinedRuntimeAttribute>
-            </userDefinedRuntimeAttributes>
         </collectionViewCell>
     </objects>
     <resources>

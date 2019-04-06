@@ -38,6 +38,8 @@ class AccountsCVCell: UICollectionViewCell {
     
     func setUpCollectionView() {
         
+        accountsCollectionView.helpRegisterView(cell: AccountDateCVCell())
+        
         accountsCollectionView.helpRegister(cell: AccountCVCell())
         
     }
@@ -62,6 +64,14 @@ extension AccountsCVCell: UICollectionViewDataSource {
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: AccountDateCVCell.self), for: indexPath) as? AccountDateCVCell else { return AccountCVCell() }
+        
+        return headerView
+        
+    }
+    
 }
 
 extension AccountsCVCell: UICollectionViewDelegate {
@@ -79,6 +89,12 @@ extension AccountsCVCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
         return 0
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        return CGSize(width: 0, height: 56)
         
     }
     

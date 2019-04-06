@@ -161,12 +161,6 @@ extension SavingDetailVC: UICollectionViewDataSource {
             
             cell.initSavingCVCell(dataSource: self, delegate: self)
             
-            cell.showSavingGoalSet = {
-                
-                self.performSegue(withIdentifier: "showSavingGoalSetVC", sender: nil)
-                
-            }
-            
             return cell
             
         } else {

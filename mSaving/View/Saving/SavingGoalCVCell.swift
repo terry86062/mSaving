@@ -9,11 +9,21 @@
 import UIKit
 
 class SavingGoalCVCell: UICollectionViewCell {
-
+    
+    var goToSavingGoalDetail: (() -> ())?
+    
     override func awakeFromNib() {
         
         super.awakeFromNib()
         
     }
-
+    
+    @IBAction func goToSavingGoalDetail(_ sender: UIButton) {
+        
+        guard let go = goToSavingGoalDetail else { return }
+        
+        go()
+        
+    }
+    
 }
