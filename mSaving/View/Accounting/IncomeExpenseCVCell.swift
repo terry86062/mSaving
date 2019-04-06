@@ -38,6 +38,8 @@ class IncomeExpenseCVCell: UICollectionViewCell {
         
         categoryCollectionView.helpRegister(cell: CategoryCVCell())
         
+        categoryCollectionView.helpRegister(cell: AccountsCVCell())
+        
     }
     
 }

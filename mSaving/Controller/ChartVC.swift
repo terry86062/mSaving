@@ -10,6 +10,8 @@ import UIKit
 
 import Charts
 
+import BetterSegmentedControl
+
 class ChartVC: UIViewController {
     
     @IBOutlet weak var monthCollectionView: UICollectionView! {
@@ -36,6 +38,8 @@ class ChartVC: UIViewController {
         
     }
     
+    @IBOutlet weak var incomeExpenseSegmentedC: BetterSegmentedControl!
+    
     let testData: [MonthData] = [
         MonthData(month: "January", goal: "1000", spend: "100"),
         MonthData(month: "February", goal: "2000", spend: "200"),
@@ -57,6 +61,8 @@ class ChartVC: UIViewController {
         
         setUpCollectionView()
         
+        incomeExpenseSegmentedC.segments = LabelSegment.segments(withTitles: ["支出", "收入"], normalBackgroundColor: UIColor.white, normalFont: .systemFont(ofSize: 16), normalTextColor: UIColor.mSYellow, selectedBackgroundColor: UIColor.mSYellow, selectedFont: .systemFont(ofSize: 16), selectedTextColor: UIColor.black)
+        
     }
     
     func setUpCollectionView() {
@@ -66,6 +72,7 @@ class ChartVC: UIViewController {
         analysisCollectionView.helpRegister(cell: AnalysisCVCell())
         
     }
+    
     
 }
 
@@ -79,7 +86,7 @@ extension ChartVC: UICollectionViewDataSource {
             
         } else {
             
-            return 2
+            return 3
             
         }
         
@@ -133,6 +140,18 @@ extension ChartVC: UICollectionViewDataSource {
                 
                 return cell
                 
+            } else if indexPath.section == 1 {
+                
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AccountsCVCell.self), for: indexPath) as? AccountsCVCell else { return UICollectionViewCell() }
+                
+                cell.goToAccountDetail = {
+                    
+                    self.performSegue(withIdentifier: "goToCategoryAccountsDetailVC", sender: nil)
+                    
+                }
+                
+                return cell
+                
             } else {
                 
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: BarChartCVCell.self), for: indexPath) as? BarChartCVCell else { return UICollectionViewCell() }
@@ -167,7 +186,7 @@ extension ChartVC: UICollectionViewDelegateFlowLayout {
             
         } else {
             
-            return UIEdgeInsets(top: 0, left: 0, bottom: 64, right: 0)
+            return UIEdgeInsets(top: 0, left: 0, bottom: 32, right: 0)
             
         }
         
@@ -185,7 +204,15 @@ extension ChartVC: UICollectionViewDelegateFlowLayout {
             
         } else {
             
-            return CGSize(width: 320, height: 320)
+            if indexPath.section == 0 || indexPath.section == 2 {
+                
+                return CGSize(width: 320, height: 320)
+                
+            } else {
+                
+                return CGSize(width: 382, height: 56 * 9)
+                
+            }
             
         }
         

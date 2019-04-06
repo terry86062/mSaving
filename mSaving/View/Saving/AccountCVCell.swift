@@ -9,7 +9,9 @@
 import UIKit
 
 class AccountCVCell: UICollectionViewCell {
-
+    
+    var goToAccountDetail: (() -> ())?
+    
     override func awakeFromNib() {
         
         super.awakeFromNib()
@@ -21,5 +23,13 @@ class AccountCVCell: UICollectionViewCell {
         self.layer.zPosition = zPosition
         
     }
-
+    
+    @IBAction func goToAccountDetail(_ sender: UIButton) {
+        
+        guard let go = goToAccountDetail else { return }
+        
+        go()
+        
+    }
+    
 }

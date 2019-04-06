@@ -30,6 +30,11 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clothes" translatesAutoresizingMaskIntoConstraints="NO" id="anR-vD-yqN">
                         <rect key="frame" x="16" y="12" width="32" height="32"/>
@@ -50,17 +55,27 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcO-O6-pvy">
+                        <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
+                        <connections>
+                            <action selector="goToAccountDetail:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Z5o-b4-Q9F"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="anR-vD-yqN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="4VK-mi-4Dk"/>
+                <constraint firstAttribute="trailing" secondItem="xcO-O6-pvy" secondAttribute="trailing" id="8bc-ju-kqw"/>
                 <constraint firstItem="QJc-CP-sRC" firstAttribute="leading" secondItem="IaY-pv-PHR" secondAttribute="leading" id="Add-ip-6O2"/>
                 <constraint firstItem="i44-Kb-zqP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="JnE-Za-f2h"/>
                 <constraint firstItem="QJc-CP-sRC" firstAttribute="top" secondItem="i44-Kb-zqP" secondAttribute="centerY" constant="2" id="N6n-Ju-PX9"/>
                 <constraint firstItem="anR-vD-yqN" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Pvz-L5-2O8"/>
                 <constraint firstItem="i44-Kb-zqP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Szo-kU-bgB"/>
                 <constraint firstItem="IaY-pv-PHR" firstAttribute="leading" secondItem="anR-vD-yqN" secondAttribute="trailing" constant="16" id="by0-J4-scR"/>
+                <constraint firstItem="xcO-O6-pvy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="crW-JA-wD4"/>
                 <constraint firstAttribute="bottom" secondItem="i44-Kb-zqP" secondAttribute="bottom" id="eeG-rH-gno"/>
+                <constraint firstItem="xcO-O6-pvy" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fXf-ra-9AB"/>
+                <constraint firstAttribute="bottom" secondItem="xcO-O6-pvy" secondAttribute="bottom" id="kQ7-dB-o4h"/>
                 <constraint firstItem="zHZ-SP-VZg" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="qMc-M3-lS5"/>
                 <constraint firstAttribute="trailing" secondItem="i44-Kb-zqP" secondAttribute="trailing" id="qR1-A3-xjr"/>
                 <constraint firstItem="IaY-pv-PHR" firstAttribute="bottom" secondItem="i44-Kb-zqP" secondAttribute="centerY" id="snp-Yw-nqC"/>
@@ -71,16 +86,16 @@
             <size key="customSize" width="144" height="50"/>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
-                    <size key="value" width="0.0" height="2"/>
+                    <size key="value" width="0.0" height="0.0"/>
                 </userDefinedRuntimeAttribute>
                 <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
-                    <real key="value" value="0.80000000000000004"/>
+                    <real key="value" value="0.0"/>
                 </userDefinedRuntimeAttribute>
                 <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
-                    <real key="value" value="2"/>
+                    <real key="value" value="0.0"/>
                 </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
-                    <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
+                    <real key="value" value="5"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="83" y="42"/>
