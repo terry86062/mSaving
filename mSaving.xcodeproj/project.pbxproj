@@ -22,6 +22,8 @@
 		DE2BB3672253AC1D001D55E4 /* MonthCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2BB3652253AC1D001D55E4 /* MonthCVCell.xib */; };
 		DE2BB3692253AE16001D55E4 /* Int - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BB3682253AE16001D55E4 /* Int - extension.swift */; };
 		DE4984B522586A0F004E4AE9 /* CategoryAccountsDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4984B422586A0F004E4AE9 /* CategoryAccountsDetailVC.swift */; };
+		DE4984B8225878A8004E4AE9 /* CategoryAccountsTotalCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4984B6225878A8004E4AE9 /* CategoryAccountsTotalCVCell.swift */; };
+		DE4984B9225878A8004E4AE9 /* CategoryAccountsTotalCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE4984B7225878A8004E4AE9 /* CategoryAccountsTotalCVCell.xib */; };
 		DE7B38AA2257329300C17846 /* IncomeExpenseCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7B38A82257329300C17846 /* IncomeExpenseCVCell.swift */; };
 		DE7B38AB2257329300C17846 /* IncomeExpenseCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE7B38A92257329300C17846 /* IncomeExpenseCVCell.xib */; };
 		DE7B38AE2257427200C17846 /* CategoryCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7B38AC2257427200C17846 /* CategoryCVCell.swift */; };
@@ -78,6 +80,8 @@
 		DE2BB3652253AC1D001D55E4 /* MonthCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthCVCell.xib; sourceTree = "<group>"; };
 		DE2BB3682253AE16001D55E4 /* Int - extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int - extension.swift"; sourceTree = "<group>"; };
 		DE4984B422586A0F004E4AE9 /* CategoryAccountsDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAccountsDetailVC.swift; sourceTree = "<group>"; };
+		DE4984B6225878A8004E4AE9 /* CategoryAccountsTotalCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAccountsTotalCVCell.swift; sourceTree = "<group>"; };
+		DE4984B7225878A8004E4AE9 /* CategoryAccountsTotalCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryAccountsTotalCVCell.xib; sourceTree = "<group>"; };
 		DE7B38A82257329300C17846 /* IncomeExpenseCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseCVCell.swift; sourceTree = "<group>"; };
 		DE7B38A92257329300C17846 /* IncomeExpenseCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeExpenseCVCell.xib; sourceTree = "<group>"; };
 		DE7B38AC2257427200C17846 /* CategoryCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCVCell.swift; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 				DE21B90122578D9800B65719 /* PieChartCVCell.xib */,
 				DE21B904225794C900B65719 /* BarChartCVCell.swift */,
 				DE21B905225794C900B65719 /* BarChartCVCell.xib */,
+				DE4984B6225878A8004E4AE9 /* CategoryAccountsTotalCVCell.swift */,
+				DE4984B7225878A8004E4AE9 /* CategoryAccountsTotalCVCell.xib */,
 			);
 			path = Chart;
 			sourceTree = "<group>";
@@ -382,6 +388,7 @@
 				DEECB0492253358B002D6C30 /* Invoice.storyboard in Resources */,
 				DEECB04B2253358B002D6C30 /* Main.storyboard in Resources */,
 				DEECB0482253358B002D6C30 /* Setting.storyboard in Resources */,
+				DE4984B9225878A8004E4AE9 /* CategoryAccountsTotalCVCell.xib in Resources */,
 				DEBE8C2D2255AED800C2A8A3 /* AccountDateCVCell.xib in Resources */,
 				DEECB04A2253358B002D6C30 /* LaunchScreen.storyboard in Resources */,
 				DEECB04D2253358B002D6C30 /* Saving.storyboard in Resources */,
@@ -460,6 +467,7 @@
 				DE2BB35C22539662001D55E4 /* SavingCVCell.swift in Sources */,
 				DEECB05A22533599002D6C30 /* SavingVC.swift in Sources */,
 				DEBE8C28225519F800C2A8A3 /* AccountCVCell.swift in Sources */,
+				DE4984B8225878A8004E4AE9 /* CategoryAccountsTotalCVCell.swift in Sources */,
 				DEECB063225335FA002D6C30 /* UIView - extension.swift in Sources */,
 				DEBE8C2C2255AED800C2A8A3 /* AccountDateCVCell.swift in Sources */,
 				DE21B906225794C900B65719 /* BarChartCVCell.swift in Sources */,

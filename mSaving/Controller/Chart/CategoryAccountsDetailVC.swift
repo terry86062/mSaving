@@ -32,7 +32,9 @@ class CategoryAccountsDetailVC: UIViewController {
     
     func setUpCollectionView() {
         
-        categoryAccountsCollectionView.helpRegister(cell: AccountCVCell())
+        categoryAccountsCollectionView.helpRegister(cell: CategoryAccountsTotalCVCell())
+        
+        categoryAccountsCollectionView.helpRegister(cell: AccountsCVCell())
         
     }
     
@@ -54,23 +56,24 @@ extension CategoryAccountsDetailVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if section == 0 {
-            
-            return 1
-            
-        } else {
-            
-            return 3
-            
-        }
-        
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = categoryAccountsCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AccountCVCell.self), for: indexPath) as? AccountCVCell else { return UICollectionViewCell() }
-        
-        return cell
+        if indexPath.section == 0 {
+            
+            guard let cell = categoryAccountsCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CategoryAccountsTotalCVCell.self), for: indexPath) as? CategoryAccountsTotalCVCell else { return UICollectionViewCell() }
+            
+            return cell
+            
+        } else {
+            
+            guard let cell = categoryAccountsCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AccountsCVCell.self), for: indexPath) as? AccountsCVCell else { return UICollectionViewCell() }
+            
+            return cell
+            
+        }
         
     }
     
@@ -82,9 +85,31 @@ extension CategoryAccountsDetailVC: UICollectionViewDelegate {
 
 extension CategoryAccountsDetailVC: UICollectionViewDelegateFlowLayout {
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        if section == 0 {
+            
+            return UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+            
+        } else {
+            
+            return UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
+            
+        }
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: 382, height: 56)
+        if indexPath.section == 0 {
+            
+            return CGSize(width: 382, height: 56)
+            
+        } else {
+            
+            return CGSize(width: 382, height: 56 * 9)
+            
+        }
         
     }
     
