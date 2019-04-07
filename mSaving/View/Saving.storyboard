@@ -563,38 +563,65 @@
             </objects>
             <point key="canvasLocation" x="932" y="988"/>
         </scene>
-        <!--View Controller-->
+        <!--SearchVC-->
         <scene sceneID="4V8-GJ-u34">
             <objects>
-                <viewController id="faa-fA-ylO" sceneMemberID="viewController">
+                <viewController id="faa-fA-ylO" customClass="SearchVC" customModule="mSaving" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="34R-zB-CZl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9e7-K5-fzm" customClass="TopView" customModule="mSaving" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="158.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="158.5" id="4bX-lr-Enu"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="139.5"/>
                             </view>
                             <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S96-gS-eAT">
-                                <rect key="frame" x="16" y="60" width="382" height="56"/>
+                                <rect key="frame" x="8" y="77.5" width="398" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜尋" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qu9-XV-dtq">
+                                <rect key="frame" x="188.5" y="50" width="37" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X9E-5E-ERC">
+                                <rect key="frame" x="16" y="51" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="K0a-1c-DZn"/>
+                                    <constraint firstAttribute="width" constant="20" id="eVa-KY-Ub4"/>
+                                </constraints>
+                                <state key="normal" image="back"/>
+                                <connections>
+                                    <action selector="pop:" destination="faa-fA-ylO" eventType="touchUpInside" id="U2G-l8-pKc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="X9E-5E-ERC" firstAttribute="centerY" secondItem="qu9-XV-dtq" secondAttribute="centerY" id="MvJ-1k-foL"/>
                             <constraint firstItem="9e7-K5-fzm" firstAttribute="leading" secondItem="34R-zB-CZl" secondAttribute="leading" id="P3J-Ni-B7h"/>
-                            <constraint firstItem="S96-gS-eAT" firstAttribute="trailing" secondItem="0P8-Pa-f0i" secondAttribute="trailing" constant="-16" id="SXg-0u-7Pv"/>
-                            <constraint firstItem="S96-gS-eAT" firstAttribute="top" secondItem="0P8-Pa-f0i" secondAttribute="top" constant="16" id="TAL-0a-cop"/>
+                            <constraint firstItem="S96-gS-eAT" firstAttribute="top" secondItem="qu9-XV-dtq" secondAttribute="bottom" constant="6" id="Rap-Q4-ZjD"/>
+                            <constraint firstItem="S96-gS-eAT" firstAttribute="trailing" secondItem="0P8-Pa-f0i" secondAttribute="trailing" constant="-8" id="SXg-0u-7Pv"/>
                             <constraint firstItem="0P8-Pa-f0i" firstAttribute="trailing" secondItem="9e7-K5-fzm" secondAttribute="trailing" id="TP8-Ha-XBc"/>
-                            <constraint firstItem="S96-gS-eAT" firstAttribute="leading" secondItem="0P8-Pa-f0i" secondAttribute="leading" constant="16" id="qSc-AP-Ct9"/>
+                            <constraint firstItem="qu9-XV-dtq" firstAttribute="centerX" secondItem="34R-zB-CZl" secondAttribute="centerX" id="Yy3-h8-Qw8"/>
+                            <constraint firstItem="qu9-XV-dtq" firstAttribute="top" secondItem="0P8-Pa-f0i" secondAttribute="top" constant="6" id="aZh-gh-6F7"/>
+                            <constraint firstItem="9e7-K5-fzm" firstAttribute="bottom" secondItem="S96-gS-eAT" secondAttribute="bottom" constant="6" id="haK-NI-jdN"/>
+                            <constraint firstItem="X9E-5E-ERC" firstAttribute="leading" secondItem="0P8-Pa-f0i" secondAttribute="leading" constant="16" id="j5j-Mp-Bcv"/>
+                            <constraint firstItem="S96-gS-eAT" firstAttribute="leading" secondItem="0P8-Pa-f0i" secondAttribute="leading" constant="8" id="qSc-AP-Ct9"/>
                             <constraint firstItem="9e7-K5-fzm" firstAttribute="top" secondItem="34R-zB-CZl" secondAttribute="top" id="sin-M2-nVj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0P8-Pa-f0i"/>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="S96-gS-eAT" id="ASu-aG-OrK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DbZ-xj-PQZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1811,6 +1838,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="back" width="512" height="512"/>
         <image name="book" width="512" height="512"/>
         <image name="car" width="512" height="512"/>
         <image name="clothes" width="512" height="512"/>
