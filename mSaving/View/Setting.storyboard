@@ -1826,36 +1826,191 @@
                                 <state key="normal" title="取消">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="pop:" destination="rKV-vh-dMk" eventType="touchUpInside" id="dcz-R5-sMO"/>
+                                </connections>
                             </button>
-                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3S1-mR-ocm">
-                                <rect key="frame" x="0.0" y="87.5" width="414" height="774.5"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Bm4-XL-pAA">
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3S1-mR-ocm">
+                                <rect key="frame" x="0.0" y="175.5" width="414" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="tln-Rk-SRa"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Bm4-XL-pAA">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ta-Lq-isl">
+                                <rect key="frame" x="16" y="103.5" width="382" height="56"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clothes" translatesAutoresizingMaskIntoConstraints="NO" id="5EY-nd-foH">
+                                        <rect key="frame" x="16" y="12" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="1vz-QS-6Vt"/>
+                                            <constraint firstAttribute="width" constant="32" id="6I6-eC-nql"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="衣服" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HW5-XO-oPb">
+                                        <rect key="frame" x="64" y="18.5" width="33" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="78m-Xb-paV"/>
+                                    <constraint firstItem="5EY-nd-foH" firstAttribute="leading" secondItem="7ta-Lq-isl" secondAttribute="leading" constant="16" id="Dtu-ko-J5C"/>
+                                    <constraint firstItem="5EY-nd-foH" firstAttribute="centerY" secondItem="7ta-Lq-isl" secondAttribute="centerY" id="NTZ-gI-Mw8"/>
+                                    <constraint firstItem="HW5-XO-oPb" firstAttribute="centerY" secondItem="7ta-Lq-isl" secondAttribute="centerY" id="StU-fg-NcG"/>
+                                    <constraint firstItem="HW5-XO-oPb" firstAttribute="leading" secondItem="5EY-nd-foH" secondAttribute="trailing" constant="16" id="lF3-fu-6Sn"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Fsi-lN-Qey">
+                                <rect key="frame" x="0.0" y="247.5" width="414" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="5SG-cz-8hW"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7LV-Px-5db">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </collectionView>
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="76t-C9-QEv">
+                                <rect key="frame" x="0.0" y="303.5" width="414" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="ISP-cB-QYm"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ibX-jS-5lm">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </collectionView>
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zia-Pt-p65">
+                                <rect key="frame" x="0.0" y="359.5" width="414" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="2r7-nC-EWs"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cfx-YY-K2e">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="rBF-7v-rQC" firstAttribute="bottom" secondItem="VE0-qr-mM5" secondAttribute="bottom" constant="16" id="2sy-Zb-JXb"/>
                             <constraint firstItem="rBF-7v-rQC" firstAttribute="top" secondItem="RbX-jH-mwc" secondAttribute="top" id="4Ub-9O-hxg"/>
+                            <constraint firstItem="3S1-mR-ocm" firstAttribute="top" secondItem="7ta-Lq-isl" secondAttribute="bottom" constant="16" id="5sL-RN-FiJ"/>
                             <constraint firstItem="yNR-ZU-i07" firstAttribute="trailing" secondItem="3S1-mR-ocm" secondAttribute="trailing" id="62G-wF-qhO"/>
                             <constraint firstItem="VE0-qr-mM5" firstAttribute="top" secondItem="yNR-ZU-i07" secondAttribute="top" constant="6" id="6co-nk-oeB"/>
+                            <constraint firstItem="zia-Pt-p65" firstAttribute="leading" secondItem="RbX-jH-mwc" secondAttribute="leading" id="9Zz-e2-gNg"/>
+                            <constraint firstItem="Fsi-lN-Qey" firstAttribute="leading" secondItem="yNR-ZU-i07" secondAttribute="leading" id="9nB-Ul-oTf"/>
+                            <constraint firstItem="yNR-ZU-i07" firstAttribute="trailing" secondItem="Fsi-lN-Qey" secondAttribute="trailing" id="AUo-zT-VaW"/>
+                            <constraint firstItem="yNR-ZU-i07" firstAttribute="trailing" secondItem="7ta-Lq-isl" secondAttribute="trailing" constant="16" id="AlL-tH-NYy"/>
                             <constraint firstItem="VE0-qr-mM5" firstAttribute="centerX" secondItem="RbX-jH-mwc" secondAttribute="centerX" id="Bp1-9y-NHE"/>
+                            <constraint firstItem="76t-C9-QEv" firstAttribute="top" secondItem="Fsi-lN-Qey" secondAttribute="bottom" id="HXz-dt-nng"/>
+                            <constraint firstItem="76t-C9-QEv" firstAttribute="leading" secondItem="RbX-jH-mwc" secondAttribute="leading" id="Hes-xH-Qu8"/>
                             <constraint firstItem="i2z-X6-XmR" firstAttribute="leading" secondItem="yNR-ZU-i07" secondAttribute="leading" constant="16" id="IKN-wX-PfL"/>
-                            <constraint firstItem="yNR-ZU-i07" firstAttribute="bottom" secondItem="3S1-mR-ocm" secondAttribute="bottom" id="RGN-TN-lqe"/>
+                            <constraint firstItem="Fsi-lN-Qey" firstAttribute="top" secondItem="3S1-mR-ocm" secondAttribute="bottom" constant="16" id="JMJ-15-3Ce"/>
+                            <constraint firstItem="7ta-Lq-isl" firstAttribute="top" secondItem="rBF-7v-rQC" secondAttribute="bottom" constant="16" id="SUE-1H-DuT"/>
                             <constraint firstItem="3S1-mR-ocm" firstAttribute="leading" secondItem="yNR-ZU-i07" secondAttribute="leading" id="WBM-di-S9Y"/>
                             <constraint firstItem="i2z-X6-XmR" firstAttribute="centerY" secondItem="VE0-qr-mM5" secondAttribute="centerY" id="Y8j-nd-nyS"/>
-                            <constraint firstItem="3S1-mR-ocm" firstAttribute="top" secondItem="rBF-7v-rQC" secondAttribute="bottom" id="ch7-ps-sWx"/>
                             <constraint firstItem="rBF-7v-rQC" firstAttribute="leading" secondItem="RbX-jH-mwc" secondAttribute="leading" id="eqy-Zd-E0Y"/>
+                            <constraint firstItem="yNR-ZU-i07" firstAttribute="trailing" secondItem="zia-Pt-p65" secondAttribute="trailing" id="gYq-WE-4TL"/>
+                            <constraint firstItem="yNR-ZU-i07" firstAttribute="trailing" secondItem="76t-C9-QEv" secondAttribute="trailing" id="i2U-Vq-gnk"/>
                             <constraint firstAttribute="trailing" secondItem="rBF-7v-rQC" secondAttribute="trailing" id="nRh-Uj-nhb"/>
+                            <constraint firstItem="7ta-Lq-isl" firstAttribute="leading" secondItem="yNR-ZU-i07" secondAttribute="leading" constant="16" id="uAu-MG-PqV"/>
+                            <constraint firstItem="zia-Pt-p65" firstAttribute="top" secondItem="76t-C9-QEv" secondAttribute="bottom" id="xw4-XU-aOj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yNR-ZU-i07"/>
                     </view>
+                    <connections>
+                        <outlet property="colorCollectionView" destination="3S1-mR-ocm" id="wRa-5V-63m"/>
+                        <outlet property="iconCollectionView" destination="Fsi-lN-Qey" id="8Yj-lS-VaI"/>
+                        <outlet property="iconThreeCollectionView" destination="zia-Pt-p65" id="chw-Ug-syA"/>
+                        <outlet property="iconTwoCollectionView" destination="76t-C9-QEv" id="TU3-B6-LXW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ohS-Hs-bgx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -26,13 +26,6 @@
                             <constraint firstAttribute="height" constant="32" id="pC9-6C-bfI"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vr5-L0-XoV">
-                        <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <connections>
-                            <action selector="goToSetCategory:" destination="gTV-IL-0wX" eventType="touchUpInside" id="bfI-pl-MhS"/>
-                        </connections>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="衣服" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5t-Yu-4cy">
                         <rect key="frame" x="64" y="18.5" width="33" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -45,6 +38,13 @@
                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vr5-L0-XoV">
+                        <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <action selector="goToSetCategory:" destination="gTV-IL-0wX" eventType="touchUpInside" id="bfI-pl-MhS"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
