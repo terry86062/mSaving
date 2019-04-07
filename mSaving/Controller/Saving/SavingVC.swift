@@ -81,6 +81,10 @@ class SavingVC: UIViewController {
         
         savingCollectionView.scrollToItem(at: indexPath, at: [.centeredVertically,   .centeredHorizontally], animated: false)
         
+        guard let cell = monthCollectionView.cellForItem(at: IndexPath(row: 3, section: 0)) as? MonthCVCell else { return }
+        
+        cell.shadowView.alpha = 0.5
+        
     }
     
     func setUpCollectionView() {
@@ -123,11 +127,11 @@ extension SavingVC: UICollectionViewDataSource {
             
             cell.initMonthCVCell(month: testData[indexPath.row].month)
             
-            if indexPath.row == 0 {
-                
-                cell.shadowView.alpha = 0.5
-                
-            }
+//            if indexPath.row == 0 {
+//                
+//                cell.shadowView.alpha = 0.5
+//                
+//            }
             
             return cell
             

@@ -442,6 +442,9 @@
                                 </constraints>
                                 <state key="normal" image="search"/>
                                 <state key="selected" title="編輯"/>
+                                <connections>
+                                    <segue destination="faa-fA-ylO" kind="show" id="5Tu-FO-moN"/>
+                                </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hbs-E5-8bb">
                                 <rect key="frame" x="355" y="46" width="35" height="30"/>
@@ -559,6 +562,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zsH-t2-hYy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="932" y="988"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="4V8-GJ-u34">
+            <objects>
+                <viewController id="faa-fA-ylO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="34R-zB-CZl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9e7-K5-fzm" customClass="TopView" customModule="mSaving" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="158.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="158.5" id="4bX-lr-Enu"/>
+                                </constraints>
+                            </view>
+                            <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S96-gS-eAT">
+                                <rect key="frame" x="16" y="60" width="382" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9e7-K5-fzm" firstAttribute="leading" secondItem="34R-zB-CZl" secondAttribute="leading" id="P3J-Ni-B7h"/>
+                            <constraint firstItem="S96-gS-eAT" firstAttribute="trailing" secondItem="0P8-Pa-f0i" secondAttribute="trailing" constant="-16" id="SXg-0u-7Pv"/>
+                            <constraint firstItem="S96-gS-eAT" firstAttribute="top" secondItem="0P8-Pa-f0i" secondAttribute="top" constant="16" id="TAL-0a-cop"/>
+                            <constraint firstItem="0P8-Pa-f0i" firstAttribute="trailing" secondItem="9e7-K5-fzm" secondAttribute="trailing" id="TP8-Ha-XBc"/>
+                            <constraint firstItem="S96-gS-eAT" firstAttribute="leading" secondItem="0P8-Pa-f0i" secondAttribute="leading" constant="16" id="qSc-AP-Ct9"/>
+                            <constraint firstItem="9e7-K5-fzm" firstAttribute="top" secondItem="34R-zB-CZl" secondAttribute="top" id="sin-M2-nVj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0P8-Pa-f0i"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DbZ-xj-PQZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1706" y="1169"/>
         </scene>
         <!--Saving Detail AddVC-->
         <scene sceneID="Afz-bH-h4G">
