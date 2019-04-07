@@ -19,15 +19,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dey-mW-idR">
-                        <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
-                                <real key="value" value="20"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-$2000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R3N-4d-0rV">
                         <rect key="frame" x="310" y="18.5" width="56" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -42,16 +33,12 @@
                     </label>
                 </subviews>
             </view>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="Dey-mW-idR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="4By-VD-yxZ"/>
                 <constraint firstItem="gow-B8-7LE" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="4fW-Ds-irs"/>
                 <constraint firstItem="R3N-4d-0rV" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="6lx-L7-Otd"/>
                 <constraint firstAttribute="trailing" secondItem="R3N-4d-0rV" secondAttribute="trailing" constant="16" id="7ID-qy-VaK"/>
-                <constraint firstItem="Dey-mW-idR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="c7M-aO-mo8"/>
-                <constraint firstAttribute="trailing" secondItem="Dey-mW-idR" secondAttribute="trailing" id="dUz-b4-VTk"/>
                 <constraint firstItem="gow-B8-7LE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="iHn-r9-y6F"/>
-                <constraint firstAttribute="bottom" secondItem="Dey-mW-idR" secondAttribute="bottom" id="rFC-PR-848"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <userDefinedRuntimeAttributes>

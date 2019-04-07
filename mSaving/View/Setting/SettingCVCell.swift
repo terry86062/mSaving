@@ -16,6 +16,14 @@ enum Setting {
     
 }
 
+struct SettingText {
+    
+    let leadingText: String
+    
+    let trailingText: String
+    
+}
+
 class SettingCVCell: UICollectionViewCell {
     
     @IBOutlet weak var settingCollectionView: UICollectionView! {
@@ -33,6 +41,20 @@ class SettingCVCell: UICollectionViewCell {
     }
     
     var setting: Setting?
+    
+    var accounts: [SettingText] = [
+        SettingText(leadingText: "總資產", trailingText: "10000"),
+        SettingText(leadingText: "現金", trailingText: "3000"),
+        SettingText(leadingText: "銀行", trailingText: "7000"),
+        SettingText(leadingText: "悠遊卡", trailingText: "100"),
+        SettingText(leadingText: "隨行卡", trailingText: "500")
+    ]
+    
+    var settings: [SettingText] = [
+        SettingText(leadingText: "新增類別", trailingText: ""),
+        SettingText(leadingText: "隱私權聲明內容", trailingText: ""),
+        SettingText(leadingText: "給予評價", trailingText: "")
+    ]
     
     override func awakeFromNib() {
         
@@ -84,13 +106,17 @@ extension SettingCVCell: UICollectionViewDataSource {
 
         case .accounts:
 
-            guard let cell = settingCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AccountCVCell.self), for: indexPath) as? AccountCVCell else { return AccountCVCell() }
+            guard let cell = settingCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AccountDateCVCell.self), for: indexPath) as? AccountDateCVCell else { return AccountDateCVCell() }
+            
+            cell.initAccountDateCVCell(style: .setting(leadingText: accounts[indexPath.row].leadingText, trailingText: accounts[indexPath.row].trailingText))
 
             return cell
 
         case .setting:
         
             guard let cell = settingCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AccountDateCVCell.self), for: indexPath) as? AccountDateCVCell else { return AccountDateCVCell() }
+            
+            cell.initAccountDateCVCell(style: .setting(leadingText: settings[indexPath.row].leadingText, trailingText: settings[indexPath.row].trailingText))
             
             return cell
             
@@ -130,7 +156,7 @@ extension SettingCVCell: UICollectionViewDelegateFlowLayout {
             
         case .setting:
             
-            return 0
+            return 16
             
         }
         

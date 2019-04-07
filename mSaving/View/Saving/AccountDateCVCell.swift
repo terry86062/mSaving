@@ -10,9 +10,9 @@ import UIKit
 
 enum AccountDateStyle {
     
-    case accountDate
+    case accountDate(date: String, amount: String)
     
-    case setting
+    case setting(leadingText: String, trailingText: String)
     
 }
 
@@ -28,11 +28,42 @@ class AccountDateCVCell: UICollectionViewCell {
         
     }
     
-    func initAccountDateCVCell() {
+    func initAccountDateCVCell(style: AccountDateStyle) {
         
-        
+        switch style {
+            
+        case .accountDate(let date, let amount):
+            
+            leadingLabel.text = date
+            
+            trailingLabel.text = amount
+            
+            setShadow(bool: false)
+            
+        case .setting(let leadingText, let trailingText):
+            
+            leadingLabel.text = leadingText
+            
+            trailingLabel.text = trailingText
+            
+            trailingLabel.textColor = .black
+            
+            setShadow(bool: true)
+            
+        }
         
     }
     
-
+    func setShadow(bool: Bool) {
+        
+        self.layer.shadowOffset = CGSize(width: 0, height: 2)
+        
+        self.layer.shadowOpacity = 0.8
+        
+        self.layer.shadowRadius = 5
+        
+        self.layer.shadowColor = UIColor.gray.cgColor
+        
+    }
+    
 }
