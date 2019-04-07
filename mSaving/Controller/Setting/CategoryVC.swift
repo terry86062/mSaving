@@ -54,15 +54,35 @@ extension CategoryVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 2
+        if collectionView == categoryCollectionView {
+            
+            return 2
+            
+        } else {
+            
+            return 1
+            
+        }
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = categoryCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: IncomeExpenseCategoryCVCell.self), for: indexPath) as? IncomeExpenseCategoryCVCell else { return IncomeExpenseCategoryCVCell() }
-        
-        return cell
+        if collectionView == categoryCollectionView {
+            
+            guard let cell = categoryCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: IncomeExpenseCategoryCVCell.self), for: indexPath) as? IncomeExpenseCategoryCVCell else { return IncomeExpenseCategoryCVCell() }
+            
+            cell.initIncomeExpenseCategoryCVCell(dataSource: self, delegate: self)
+            
+            return cell
+            
+        } else {
+            
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CategorysCVCell.self), for: indexPath) as? CategorysCVCell else { return CategorysCVCell() }
+            
+            return cell
+            
+        }
         
     }
     
@@ -74,15 +94,71 @@ extension CategoryVC: UICollectionViewDelegate {
 
 extension CategoryVC: UICollectionViewDelegateFlowLayout {
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        if collectionView == categoryCollectionView {
+            
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            
+        } else {
+            
+            return UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
+            
+        }
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: 382, height: categoryCollectionView.frame.height)
+        if collectionView == categoryCollectionView {
+            
+            return CGSize(width: categoryCollectionView.frame.width, height: categoryCollectionView.frame.height)
+            
+        } else {
+            
+            return CGSize(width: 382, height: 56 * 9)
+            
+        }
         
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
-        return 0
+        if collectionView == categoryCollectionView {
+            
+            return 0
+            
+        } else {
+            
+            return 0
+            
+        }
+        
+    }
+    
+}
+
+extension CategoryVC {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if scrollView.isEqual(categoryCollectionView) {
+            
+            let move = categoryCollectionView.bounds.origin.x
+            
+            print((move + 207) / 414)
+            
+            if (move + 207) / 414 < 1 {
+                
+                categorySegmentedC.setIndex(0, animated: true)
+                
+            } else if (move + 207) / 414 >= 1 && (move + 207) / 414 < 2 {
+                
+                categorySegmentedC.setIndex(1, animated: true)
+                
+            }
+            
+        }
         
     }
     

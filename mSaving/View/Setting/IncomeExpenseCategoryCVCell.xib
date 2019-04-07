@@ -38,6 +38,9 @@
                 <constraint firstAttribute="bottom" secondItem="ce1-3k-832" secondAttribute="bottom" id="zaz-jt-5eN"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="incomeExpenseCategoryCollectionView" destination="ce1-3k-832" id="WSk-YJ-Zj0"/>
+            </connections>
         </collectionViewCell>
     </objects>
 </document>

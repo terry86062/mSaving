@@ -36,7 +36,7 @@ class IncomeExpenseCVCell: UICollectionViewCell {
     
     func setUpCollectionView() {
         
-        categoryCollectionView.helpRegister(cell: CategoryCVCell())
+        categoryCollectionView.helpRegister(cell: CategorySelectCVCell())
         
         categoryCollectionView.helpRegister(cell: AccountsCVCell())
         

@@ -231,7 +231,7 @@ extension AccountingVC: UICollectionViewDataSource {
             
         } else {
             
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CategoryCVCell.self), for: indexPath) as? CategoryCVCell else { return CategoryCVCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CategorySelectCVCell.self), for: indexPath) as? CategorySelectCVCell else { return CategorySelectCVCell() }
             
             return cell
             

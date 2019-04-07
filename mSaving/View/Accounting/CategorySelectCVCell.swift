@@ -1,5 +1,5 @@
 //
-//  CategoryCVCell.swift
+//  CategorySelectCVCell.swift
 //  mSaving
 //
 //  Created by 黃偉勛 Terry on 2019/4/5.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryCVCell: UICollectionViewCell {
+class CategorySelectCVCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         
