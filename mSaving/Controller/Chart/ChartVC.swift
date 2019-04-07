@@ -200,7 +200,7 @@ extension ChartVC: UICollectionViewDelegateFlowLayout {
             
         } else if collectionView == analysisCollectionView {
             
-            return CGSize(width: 414, height: 682)
+            return CGSize(width: 414, height: analysisCollectionView.frame.height)
             
         } else {
             

@@ -8,12 +8,31 @@
 
 import UIKit
 
-class AccountDateCVCell: UICollectionViewCell {
+enum AccountDateStyle {
+    
+    case accountDate
+    
+    case setting
+    
+}
 
+class AccountDateCVCell: UICollectionViewCell {
+    
+    @IBOutlet weak var leadingLabel: UILabel!
+    
+    @IBOutlet weak var trailingLabel: UILabel!
+    
     override func awakeFromNib() {
         
         super.awakeFromNib()
         
     }
+    
+    func initAccountDateCVCell() {
+        
+        
+        
+    }
+    
 
 }

@@ -322,10 +322,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIy-M1-NBk" customClass="TopView" customModule="mSaving" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="151"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="122.5"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iyE-0e-gdu">
-                                <rect key="frame" x="0.0" y="44" width="414" height="43"/>
+                                <rect key="frame" x="0.0" y="79.5" width="414" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XUt-lT-XcC">
                                     <size key="itemSize" width="50" height="50"/>
@@ -341,7 +341,7 @@
                                 </userDefinedRuntimeAttributes>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ua1-Yq-anV">
-                                <rect key="frame" x="0.0" y="151" width="414" height="711"/>
+                                <rect key="frame" x="0.0" y="186.5" width="414" height="675.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hZg-Ec-T9d">
                                     <size key="itemSize" width="50" height="50"/>
@@ -351,39 +351,76 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hjb-Ef-17y" customClass="BetterSegmentedControl" customModule="BetterSegmentedControl">
-                                <rect key="frame" x="16" y="103" width="382" height="32"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LEr-a9-qPk">
+                                <rect key="frame" x="16" y="138.5" width="382" height="32"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hjb-Ef-17y" customClass="BetterSegmentedControl" customModule="BetterSegmentedControl">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="32"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="gDF-ng-H0K"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="indicatorViewBackgroundColor">
+                                                <color key="value" name="mSYellow"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="gDF-ng-H0K"/>
+                                    <constraint firstAttribute="bottom" secondItem="hjb-Ef-17y" secondAttribute="bottom" id="Dya-6L-1Rc"/>
+                                    <constraint firstItem="hjb-Ef-17y" firstAttribute="leading" secondItem="LEr-a9-qPk" secondAttribute="leading" id="EFa-17-vDZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="hjb-Ef-17y" secondAttribute="trailing" id="QBY-am-R7G"/>
+                                    <constraint firstItem="hjb-Ef-17y" firstAttribute="top" secondItem="LEr-a9-qPk" secondAttribute="top" id="b5L-XY-NSx"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
                                         <real key="value" value="16"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="indicatorViewBackgroundColor">
-                                        <color key="value" name="mSYellow"/>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
+                                        <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iM7-gY-DsZ">
+                                <rect key="frame" x="187" y="50" width="40.5" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="hjb-Ef-17y" firstAttribute="top" secondItem="iyE-0e-gdu" secondAttribute="bottom" constant="16" id="6CR-D8-kzK"/>
                             <constraint firstItem="BQC-eJ-uAd" firstAttribute="trailing" secondItem="iyE-0e-gdu" secondAttribute="trailing" id="756-XR-55f"/>
+                            <constraint firstItem="iM7-gY-DsZ" firstAttribute="centerX" secondItem="PIl-r7-Y3z" secondAttribute="centerX" id="CMS-ut-0Vu"/>
+                            <constraint firstItem="iM7-gY-DsZ" firstAttribute="top" secondItem="BQC-eJ-uAd" secondAttribute="top" constant="6" id="CjB-Ov-dlD"/>
                             <constraint firstItem="TIy-M1-NBk" firstAttribute="trailing" secondItem="BQC-eJ-uAd" secondAttribute="trailing" id="CvF-ur-Wgd"/>
                             <constraint firstItem="BQC-eJ-uAd" firstAttribute="bottom" secondItem="Ua1-Yq-anV" secondAttribute="bottom" id="EgI-SY-Tmj"/>
                             <constraint firstItem="TIy-M1-NBk" firstAttribute="top" secondItem="PIl-r7-Y3z" secondAttribute="top" id="GB2-yO-vSs"/>
+                            <constraint firstItem="iyE-0e-gdu" firstAttribute="top" secondItem="iM7-gY-DsZ" secondAttribute="bottom" constant="8" id="GEy-X9-GtT"/>
                             <constraint firstItem="BQC-eJ-uAd" firstAttribute="trailing" secondItem="Ua1-Yq-anV" secondAttribute="trailing" id="LtF-tm-CSX"/>
                             <constraint firstItem="TIy-M1-NBk" firstAttribute="leading" secondItem="BQC-eJ-uAd" secondAttribute="leading" id="QKR-1X-ilO"/>
-                            <constraint firstItem="BQC-eJ-uAd" firstAttribute="trailing" secondItem="hjb-Ef-17y" secondAttribute="trailing" constant="16" id="Xdg-fY-srE"/>
-                            <constraint firstItem="Ua1-Yq-anV" firstAttribute="top" secondItem="TIy-M1-NBk" secondAttribute="bottom" id="kAH-6c-T9t"/>
-                            <constraint firstItem="hjb-Ef-17y" firstAttribute="leading" secondItem="BQC-eJ-uAd" secondAttribute="leading" constant="16" id="kDO-wv-GP8"/>
+                            <constraint firstItem="iyE-0e-gdu" firstAttribute="bottom" secondItem="TIy-M1-NBk" secondAttribute="bottom" id="Twh-ZX-8H9"/>
+                            <constraint firstItem="LEr-a9-qPk" firstAttribute="trailing" secondItem="BQC-eJ-uAd" secondAttribute="trailing" constant="-16" id="a5y-Ng-mET"/>
+                            <constraint firstItem="LEr-a9-qPk" firstAttribute="top" secondItem="TIy-M1-NBk" secondAttribute="bottom" constant="16" id="frM-86-66B"/>
                             <constraint firstItem="iyE-0e-gdu" firstAttribute="height" secondItem="PIl-r7-Y3z" secondAttribute="width" multiplier="43:414" id="kRQ-nO-Gl2"/>
                             <constraint firstItem="iyE-0e-gdu" firstAttribute="leading" secondItem="BQC-eJ-uAd" secondAttribute="leading" id="pTq-9p-zeK"/>
                             <constraint firstItem="Ua1-Yq-anV" firstAttribute="leading" secondItem="BQC-eJ-uAd" secondAttribute="leading" id="pqY-eK-MrI"/>
-                            <constraint firstItem="TIy-M1-NBk" firstAttribute="bottom" secondItem="hjb-Ef-17y" secondAttribute="bottom" constant="16" id="xVj-LP-2uq"/>
-                            <constraint firstItem="iyE-0e-gdu" firstAttribute="top" secondItem="BQC-eJ-uAd" secondAttribute="top" id="zVH-hb-DCt"/>
+                            <constraint firstItem="Ua1-Yq-anV" firstAttribute="top" secondItem="LEr-a9-qPk" secondAttribute="bottom" constant="16" id="q3G-2e-Kj4"/>
+                            <constraint firstItem="LEr-a9-qPk" firstAttribute="leading" secondItem="BQC-eJ-uAd" secondAttribute="leading" constant="16" id="x6R-Fc-X8x"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BQC-eJ-uAd"/>
                     </view>

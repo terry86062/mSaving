@@ -10,6 +10,7 @@ import UIKit
 
 class AccountCVCell: UICollectionViewCell {
     
+    
     var goToAccountDetail: (() -> ())?
     
     override func awakeFromNib() {

@@ -44,9 +44,15 @@
                             <constraint firstItem="zh1-lF-QXS" firstAttribute="centerX" secondItem="NwZ-hm-ixg" secondAttribute="centerX" id="QyB-zM-9BD"/>
                             <constraint firstItem="ppU-OH-TF7" firstAttribute="centerX" secondItem="zh1-lF-QXS" secondAttribute="centerX" id="vQd-34-ZyW"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="NwZ-hm-ixg" secondAttribute="bottom" id="3TX-pP-UQu"/>
                 <constraint firstItem="NwZ-hm-ixg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="en9-ak-cQc"/>

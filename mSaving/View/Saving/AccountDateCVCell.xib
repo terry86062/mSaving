@@ -59,6 +59,10 @@
                     <real key="value" value="20"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="leadingLabel" destination="gow-B8-7LE" id="rV9-p3-KQw"/>
+                <outlet property="trailingLabel" destination="R3N-4d-0rV" id="g0b-rT-hCW"/>
+            </connections>
             <point key="canvasLocation" x="133" y="126"/>
         </collectionViewCell>
     </objects>

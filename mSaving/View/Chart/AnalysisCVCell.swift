@@ -42,7 +42,7 @@ class AnalysisCVCell: UICollectionViewCell {
         
         analysisCollectionView.helpRegister(cell: AccountsCVCell())
         
-        analysisCollectionView.contentInset = UIEdgeInsets(top: 32, left: 0, bottom: 0, right: 0)
+        analysisCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
     }
 

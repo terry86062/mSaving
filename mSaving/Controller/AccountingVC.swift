@@ -179,7 +179,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         self.calendarHeightConstraint.constant = bounds.height
         
-        self.gradientLayer.frame = CGRect(x: 0, y: 0, width: topView.frame.width, height: bounds.height + view.safeAreaInsets.top + 68)
+        self.gradientLayer.frame = CGRect(x: 0, y: 0, width: topView.frame.width, height: bounds.height + view.safeAreaInsets.top + 46)
         
 //        self.topViewHeightConstraint.constant = 100 //bounds.height + view.safeAreaInsets.top
         

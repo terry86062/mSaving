@@ -19,40 +19,24 @@
                 <rect key="frame" x="0.0" y="0.0" width="374" height="180"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CGl-3u-Axn">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="bxW-ES-JaN">
                         <rect key="frame" x="0.0" y="0.0" width="374" height="180"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="bxW-ES-JaN">
-                                <rect key="frame" x="0.0" y="0.0" width="374" height="180"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qDj-64-TKF">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                            </collectionView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="bxW-ES-JaN" firstAttribute="leading" secondItem="CGl-3u-Axn" secondAttribute="leading" id="0vd-6f-sYH"/>
-                            <constraint firstAttribute="bottom" secondItem="bxW-ES-JaN" secondAttribute="bottom" id="9bh-BR-1oS"/>
-                            <constraint firstAttribute="trailing" secondItem="bxW-ES-JaN" secondAttribute="trailing" id="QCP-VX-OU4"/>
-                            <constraint firstItem="bxW-ES-JaN" firstAttribute="top" secondItem="CGl-3u-Axn" secondAttribute="top" id="TtT-Tg-w0u"/>
-                        </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
-                                <real key="value" value="5"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </view>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qDj-64-TKF">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="CGl-3u-Axn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="2cp-aR-rxG"/>
-                <constraint firstItem="CGl-3u-Axn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Jpa-rM-tzx"/>
-                <constraint firstAttribute="trailing" secondItem="CGl-3u-Axn" secondAttribute="trailing" id="KV4-H8-57O"/>
-                <constraint firstAttribute="bottom" secondItem="CGl-3u-Axn" secondAttribute="bottom" id="gb4-j7-EWK"/>
+                <constraint firstItem="bxW-ES-JaN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Irf-Ae-Kfv"/>
+                <constraint firstItem="bxW-ES-JaN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Q6j-ep-kkR"/>
+                <constraint firstAttribute="trailing" secondItem="bxW-ES-JaN" secondAttribute="trailing" id="QO6-Id-ruC"/>
+                <constraint firstAttribute="bottom" secondItem="bxW-ES-JaN" secondAttribute="bottom" id="V0p-Bv-DS9"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <userDefinedRuntimeAttributes>
@@ -66,10 +50,10 @@
                     <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </userDefinedRuntimeAttribute>
                 <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
-                    <real key="value" value="2"/>
+                    <real key="value" value="5"/>
                 </userDefinedRuntimeAttribute>
                 <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
-                    <real key="value" value="5"/>
+                    <real key="value" value="20"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
