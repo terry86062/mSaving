@@ -80,6 +80,12 @@ extension CategoryVC: UICollectionViewDataSource {
             
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CategorysCVCell.self), for: indexPath) as? CategorysCVCell else { return CategorysCVCell() }
             
+            cell.goToSetCategory = {
+                
+                self.performSegue(withIdentifier: "goToSetCategoryVC", sender: nil)
+                
+            }
+            
             return cell
             
         }

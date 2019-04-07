@@ -52,6 +52,8 @@ extension CategorysCVCell: UICollectionViewDataSource {
         
         guard let cell = categorysCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CategoryCVCell.self), for: indexPath) as? CategoryCVCell else { return CategoryCVCell() }
         
+        cell.goToSetCategory = goToSetCategory
+        
         return cell
         
     }
