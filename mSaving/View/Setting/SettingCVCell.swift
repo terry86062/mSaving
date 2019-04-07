@@ -42,6 +42,8 @@ class SettingCVCell: UICollectionViewCell {
     
     var setting: Setting?
     
+    var goToDetailPage: (() -> ())?
+    
     var accounts: [SettingText] = [
         SettingText(leadingText: "總資產", trailingText: "10000"),
         SettingText(leadingText: "現金", trailingText: "3000"),
@@ -51,9 +53,9 @@ class SettingCVCell: UICollectionViewCell {
     ]
     
     var settings: [SettingText] = [
-        SettingText(leadingText: "新增類別", trailingText: ""),
-        SettingText(leadingText: "隱私權聲明內容", trailingText: ""),
-        SettingText(leadingText: "給予評價", trailingText: "")
+        SettingText(leadingText: "新增類別", trailingText: ">"),
+        SettingText(leadingText: "隱私權聲明內容", trailingText: ">"),
+        SettingText(leadingText: "給予評價", trailingText: ">")
     ]
     
     override func awakeFromNib() {
@@ -109,6 +111,8 @@ extension SettingCVCell: UICollectionViewDataSource {
             guard let cell = settingCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AccountDateCVCell.self), for: indexPath) as? AccountDateCVCell else { return AccountDateCVCell() }
             
             cell.initAccountDateCVCell(style: .setting(leadingText: accounts[indexPath.row].leadingText, trailingText: accounts[indexPath.row].trailingText))
+            
+            cell.goToDetialPage = goToDetailPage
 
             return cell
 
@@ -117,6 +121,8 @@ extension SettingCVCell: UICollectionViewDataSource {
             guard let cell = settingCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AccountDateCVCell.self), for: indexPath) as? AccountDateCVCell else { return AccountDateCVCell() }
             
             cell.initAccountDateCVCell(style: .setting(leadingText: settings[indexPath.row].leadingText, trailingText: settings[indexPath.row].trailingText))
+            
+            cell.goToDetialPage = goToDetailPage
             
             return cell
             

@@ -60,9 +60,21 @@ extension SettingVC: UICollectionViewDataSource {
             
             cell.initSettingCVCell(whichSetting: .accounts)
             
+            cell.goToDetailPage = {
+                
+                self.performSegue(withIdentifier: "goToSetAccount", sender: nil)
+                
+            }
+            
         } else {
             
             cell.initSettingCVCell(whichSetting: .setting)
+            
+            cell.goToDetailPage = {
+                
+                self.performSegue(withIdentifier: "goToSetCategory", sender: nil)
+                
+            }
             
         }
         

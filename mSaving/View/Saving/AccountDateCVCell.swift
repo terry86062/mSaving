@@ -22,6 +22,8 @@ class AccountDateCVCell: UICollectionViewCell {
     
     @IBOutlet weak var trailingLabel: UILabel!
     
+    var goToDetialPage: (() -> ())?
+    
     override func awakeFromNib() {
         
         super.awakeFromNib()
@@ -63,6 +65,14 @@ class AccountDateCVCell: UICollectionViewCell {
         self.layer.shadowRadius = 5
         
         self.layer.shadowColor = UIColor.gray.cgColor
+        
+    }
+    
+    @IBAction func goToDetail(_ sender: UIButton) {
+        
+        guard let go = goToDetialPage else { return }
+        
+        go()
         
     }
     

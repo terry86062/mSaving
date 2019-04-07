@@ -31,14 +31,24 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QS1-jP-Hha">
+                        <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
+                        <connections>
+                            <action selector="goToDetail:" destination="gTV-IL-0wX" eventType="touchUpInside" id="xxN-7B-6ah"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="QS1-jP-Hha" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1xi-Fw-q0t"/>
                 <constraint firstItem="gow-B8-7LE" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="4fW-Ds-irs"/>
                 <constraint firstItem="R3N-4d-0rV" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="6lx-L7-Otd"/>
                 <constraint firstAttribute="trailing" secondItem="R3N-4d-0rV" secondAttribute="trailing" constant="16" id="7ID-qy-VaK"/>
+                <constraint firstAttribute="bottom" secondItem="QS1-jP-Hha" secondAttribute="bottom" id="d7v-f2-fdQ"/>
                 <constraint firstItem="gow-B8-7LE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="iHn-r9-y6F"/>
+                <constraint firstItem="QS1-jP-Hha" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="tFI-fR-DCW"/>
+                <constraint firstAttribute="trailing" secondItem="QS1-jP-Hha" secondAttribute="trailing" id="zum-Hd-gC9"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <userDefinedRuntimeAttributes>

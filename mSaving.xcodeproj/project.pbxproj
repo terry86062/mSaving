@@ -31,6 +31,7 @@
 		DE97C64F225919CE00D0C9CF /* AddSavingDetailCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97C64D225919CE00D0C9CF /* AddSavingDetailCVCell.swift */; };
 		DE97C650225919CE00D0C9CF /* AddSavingDetailCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE97C64E225919CE00D0C9CF /* AddSavingDetailCVCell.xib */; };
 		DE99AC8A22563D1400B12AD6 /* SavingDetailAddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99AC8922563D1400B12AD6 /* SavingDetailAddVC.swift */; };
+		DEAA6A292259984B00224B26 /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA6A282259984B00224B26 /* CategoryVC.swift */; };
 		DEACE3DC2257AD1900EA209C /* AnalysisCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEACE3DA2257AD1900EA209C /* AnalysisCVCell.swift */; };
 		DEACE3DD2257AD1900EA209C /* AnalysisCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEACE3DB2257AD1900EA209C /* AnalysisCVCell.xib */; };
 		DEACE3E02257B9F500EA209C /* AccountsCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEACE3DE2257B9F500EA209C /* AccountsCVCell.swift */; };
@@ -93,6 +94,7 @@
 		DE97C64D225919CE00D0C9CF /* AddSavingDetailCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSavingDetailCVCell.swift; sourceTree = "<group>"; };
 		DE97C64E225919CE00D0C9CF /* AddSavingDetailCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSavingDetailCVCell.xib; sourceTree = "<group>"; };
 		DE99AC8922563D1400B12AD6 /* SavingDetailAddVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingDetailAddVC.swift; sourceTree = "<group>"; };
+		DEAA6A282259984B00224B26 /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
 		DEACE3DA2257AD1900EA209C /* AnalysisCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisCVCell.swift; sourceTree = "<group>"; };
 		DEACE3DB2257AD1900EA209C /* AnalysisCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnalysisCVCell.xib; sourceTree = "<group>"; };
 		DEACE3DE2257B9F500EA209C /* AccountsCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsCVCell.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				DEECB05122533599002D6C30 /* SettingVC.swift */,
+				DEAA6A282259984B00224B26 /* CategoryVC.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEAA6A292259984B00224B26 /* CategoryVC.swift in Sources */,
 				DE2BB358225360C2001D55E4 /* TopView.swift in Sources */,
 				DEECB05922533599002D6C30 /* SavingDetailVC.swift in Sources */,
 				DE2BB35C22539662001D55E4 /* SavingCVCell.swift in Sources */,
