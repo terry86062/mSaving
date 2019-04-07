@@ -98,7 +98,7 @@ extension SettingVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: 414, height: settingsCollectionView.frame.height)
+        return CGSize(width: settingsCollectionView.frame.width, height: settingsCollectionView.frame.height)
         
     }
     

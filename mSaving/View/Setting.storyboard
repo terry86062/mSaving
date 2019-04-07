@@ -1823,6 +1823,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="h5b-Op-2CH"/>
                     <connections>
+                        <outlet property="categoryCollectionView" destination="vg6-wV-MW0" id="Kj8-7b-COc"/>
                         <outlet property="categorySegmentedC" destination="2wJ-Lu-37c" id="vPQ-kB-lje"/>
                     </connections>
                 </viewController>
