@@ -26,13 +26,17 @@ class AccountsCVCell: UICollectionViewCell {
     
     var goToAccountDetail: (() -> ())?
     
+    var haveHeader = false
+    
     override func awakeFromNib() {
         
         super.awakeFromNib()
         
     }
     
-    func initAccountsCVCell() {
+    func initAccountsCVCell(haveHeader: Bool) {
+        
+        self.haveHeader = haveHeader
         
     }
     
@@ -94,7 +98,15 @@ extension AccountsCVCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
-        return CGSize(width: 0, height: 56)
+        if haveHeader {
+            
+            return CGSize(width: 0, height: 56)
+            
+        } else {
+            
+            return CGSize(width: 0, height: 0)
+            
+        }
         
     }
     

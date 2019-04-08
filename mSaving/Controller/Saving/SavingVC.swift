@@ -83,7 +83,7 @@ class SavingVC: UIViewController {
         
         guard let cell = monthCollectionView.cellForItem(at: IndexPath(row: 3, section: 0)) as? MonthCVCell else { return }
         
-        cell.shadowView.alpha = 0.5
+        cell.shadowView.alpha = 1
         
     }
     
@@ -128,9 +128,9 @@ extension SavingVC: UICollectionViewDataSource {
             cell.initMonthCVCell(month: testData[indexPath.row].month)
             
 //            if indexPath.row == 0 {
-//                
+//
 //                cell.shadowView.alpha = 0.5
-//                
+//
 //            }
             
             return cell
@@ -198,6 +198,8 @@ extension SavingVC: UICollectionViewDataSource {
                 if showAccount {
                     
                     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AccountsCVCell.self), for: indexPath) as? AccountsCVCell else { return AccountsCVCell() }
+                    
+                    cell.initAccountsCVCell(haveHeader: true)
                     
                     return cell
                     

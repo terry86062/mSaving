@@ -16,5 +16,7 @@ extension UIColor {
     
     static let mSYellow = UIColor(red: 252 / 255, green: 222 / 255, blue: 116 / 255, alpha: 1)
     
+    // UIColor(red: 228 / 255, green: 190 / 255, blue: 64 / 255, alpha: 1) // yellow
+    
 }
 

@@ -201,6 +201,13 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         print("\(self.dateFormatter.string(from: calendar.currentPage))")
     }
     
+    @IBAction func dismiss(_ sender: UIButton) {
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    
 }
 
 extension AccountingVC: UICollectionViewDataSource {

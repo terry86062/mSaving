@@ -184,7 +184,7 @@ class TabBarController: UITabBarController {
         
         if let vc = UIStoryboard.accounting.instantiateInitialViewController() {
             
-//            vc.modalPresentationStyle = .overCurrentContext
+            vc.modalPresentationStyle = .overCurrentContext
             
             present(vc, animated: true, completion: nil)
         }

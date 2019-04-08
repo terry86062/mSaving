@@ -766,6 +766,13 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8X-Ee-VYo">
+                                <rect key="frame" x="192" y="800" width="30" height="30"/>
+                                <state key="normal" title="X"/>
+                                <connections>
+                                    <action selector="dismiss:" destination="pCO-3F-btS" eventType="touchUpInside" id="mgJ-hM-E6b"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
@@ -773,6 +780,7 @@
                             <constraint firstItem="aPo-QH-ZIJ" firstAttribute="top" secondItem="IR1-3g-NU5" secondAttribute="top" id="9tG-VN-2Xc"/>
                             <constraint firstItem="xxl-QC-3w4" firstAttribute="top" secondItem="2zY-Mj-l89" secondAttribute="top" id="BOq-DH-NqY"/>
                             <constraint firstItem="xxl-QC-3w4" firstAttribute="leading" secondItem="2zY-Mj-l89" secondAttribute="leading" id="Bb1-Dg-FOL"/>
+                            <constraint firstItem="D8X-Ee-VYo" firstAttribute="centerX" secondItem="IR1-3g-NU5" secondAttribute="centerX" id="DiS-3E-pxt"/>
                             <constraint firstItem="2zY-Mj-l89" firstAttribute="trailing" secondItem="7PX-KH-VAT" secondAttribute="trailing" constant="20" id="Gzd-5I-eQG"/>
                             <constraint firstItem="7PX-KH-VAT" firstAttribute="leading" secondItem="2zY-Mj-l89" secondAttribute="leading" constant="20" id="KCo-6t-sa5"/>
                             <constraint firstItem="eRU-9e-ssL" firstAttribute="top" secondItem="7PX-KH-VAT" secondAttribute="bottom" constant="16" id="KGN-Tx-dp8"/>
@@ -788,6 +796,7 @@
                             <constraint firstAttribute="trailing" secondItem="aPo-QH-ZIJ" secondAttribute="trailing" id="qpq-gg-Jvl"/>
                             <constraint firstItem="2zY-Mj-l89" firstAttribute="trailing" secondItem="eRU-9e-ssL" secondAttribute="trailing" id="rdR-aV-wcX"/>
                             <constraint firstItem="aPo-QH-ZIJ" firstAttribute="leading" secondItem="IR1-3g-NU5" secondAttribute="leading" id="sX3-eG-VMA"/>
+                            <constraint firstItem="2zY-Mj-l89" firstAttribute="bottom" secondItem="D8X-Ee-VYo" secondAttribute="bottom" constant="32" id="tb8-Pb-C7y"/>
                             <constraint firstItem="7PX-KH-VAT" firstAttribute="top" secondItem="aPo-QH-ZIJ" secondAttribute="bottom" constant="16" id="yjX-Xc-27R"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2zY-Mj-l89"/>

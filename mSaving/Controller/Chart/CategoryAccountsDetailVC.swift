@@ -71,6 +71,8 @@ extension CategoryAccountsDetailVC: UICollectionViewDataSource {
             
             guard let cell = categoryAccountsCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AccountsCVCell.self), for: indexPath) as? AccountsCVCell else { return UICollectionViewCell() }
             
+            cell.initAccountsCVCell(haveHeader: true)
+            
             return cell
             
         }

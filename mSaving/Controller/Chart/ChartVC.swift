@@ -144,6 +144,8 @@ extension ChartVC: UICollectionViewDataSource {
                 
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AccountsCVCell.self), for: indexPath) as? AccountsCVCell else { return UICollectionViewCell() }
                 
+                cell.initAccountsCVCell(haveHeader: false)
+                
                 cell.goToAccountDetail = {
                     
                     self.performSegue(withIdentifier: "goToCategoryAccountsDetailVC", sender: nil)
