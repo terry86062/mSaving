@@ -388,7 +388,7 @@ extension SavingVC {
             
             UIView.animate(withDuration: 0.5, animations: {
                 
-                cell.shadowView.alpha = 0.5
+                cell.shadowView.alpha = 1
                 
             })
             

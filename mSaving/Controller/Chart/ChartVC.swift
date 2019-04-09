@@ -116,7 +116,7 @@ extension ChartVC: UICollectionViewDataSource {
             
             if indexPath.row == 0 {
                 
-                cell.shadowView.alpha = 0.5
+                cell.shadowView.alpha = 1
                 
             }
             
@@ -276,7 +276,7 @@ extension ChartVC {
             
             UIView.animate(withDuration: 0.5, animations: {
                 
-                cell.shadowView.alpha = 0.5
+                cell.shadowView.alpha = 1
                 
             })
             

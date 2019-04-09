@@ -628,8 +628,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPo-QH-ZIJ">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="296"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPo-QH-ZIJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="388"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
@@ -647,25 +647,25 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xxl-QC-3w4" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="44" width="414" height="208"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="208" id="RsL-Qt-NWI"/>
+                                    <constraint firstAttribute="height" constant="300" id="RsL-Qt-NWI"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="allowsMultipleSelection" value="NO"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="string" keyPath="headerDateFormat" value="MMMM"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
                                         <color key="value" name="mSYellow"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="titleDefaultColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="titleSelectionColor">
                                         <color key="value" cocoaTouchSystemColor="darkTextColor"/>
@@ -676,6 +676,12 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
                                         <color key="value" name="mSYellow"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="headerHeight">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="weekdayHeight">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="dataSource" destination="pCO-3F-btS" id="MFN-V9-i4r"/>
@@ -683,10 +689,10 @@
                                 </connections>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="right" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n4m-DW-yNG">
-                                <rect key="frame" x="375" y="252" width="23" height="36"/>
+                                <rect key="frame" x="376" y="344" width="22" height="36"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
@@ -695,14 +701,14 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vo2-PX-h4g">
-                                <rect key="frame" x="16" y="246" width="61" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <rect key="frame" x="16" y="338" width="61" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="30"/>
                                 <state key="normal" title="現金">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9V-J7-nFo">
-                                <rect key="frame" x="0.0" y="296" width="414" height="500"/>
+                                <rect key="frame" x="0.0" y="388" width="414" height="500"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="500" id="PoN-Ym-L77"/>
                                 </constraints>
@@ -711,7 +717,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7PX-KH-VAT">
-                                <rect key="frame" x="20" y="312" width="374" height="32"/>
+                                <rect key="frame" x="20" y="404" width="374" height="32"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x56-jZ-6zt" customClass="BetterSegmentedControl" customModule="BetterSegmentedControl">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="32"/>
@@ -753,7 +759,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eRU-9e-ssL">
-                                <rect key="frame" x="0.0" y="360" width="414" height="180"/>
+                                <rect key="frame" x="0.0" y="452" width="414" height="180"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="wPr-ID-x5Q"/>
@@ -807,19 +813,34 @@
                         <outlet property="calendarHeightConstraint" destination="RsL-Qt-NWI" id="jQq-0u-HZo"/>
                         <outlet property="incomeExpenseCollectionView" destination="eRU-9e-ssL" id="gpe-Nk-ztq"/>
                         <outlet property="incomeExpenseSegmentedC" destination="x56-jZ-6zt" id="pG5-Pr-9su"/>
+                        <outlet property="keyboardToolBar" destination="pwF-39-152" id="kH9-Yb-SmG"/>
                         <outlet property="topView" destination="aPo-QH-ZIJ" id="l5g-nf-2eA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rox-xe-fzI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="pwF-39-152">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" name="mSYellow"/>
+                    <items>
+                        <barButtonItem title="新增" width="486" id="aFy-QS-DFL">
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <connections>
+                                <action selector="addAccounting:" destination="pCO-3F-btS" id="M17-HM-tHl"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                    <color key="barTintColor" name="mSYellow"/>
+                </toolbar>
             </objects>
-            <point key="canvasLocation" x="121.73913043478262" y="787.5"/>
+            <point key="canvasLocation" x="122" y="854"/>
         </scene>
     </scenes>
     <resources>
         <image name="clothes" width="512" height="512"/>
         <image name="food" width="512" height="512"/>
         <namedColor name="mSYellow">
-            <color red="0.9882352941176471" green="0.87058823529411766" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.99215686274509807" green="0.87450980392156863" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

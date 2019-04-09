@@ -20,7 +20,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PYf-3P-YQm">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="202.5"/>
-                                <color key="backgroundColor" red="0.22302860021591187" green="0.50793743133544922" blue="0.2700543999671936" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.99082666635513306" green="0.87507307529449463" blue="0.29771387577056885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
                                         <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -440,6 +440,7 @@
                                     <constraint firstAttribute="height" constant="20" id="pBO-dc-PPU"/>
                                     <constraint firstAttribute="width" constant="20" id="s0J-FI-c1C"/>
                                 </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <state key="normal" image="search"/>
                                 <state key="selected" title="編輯"/>
                                 <connections>
@@ -451,8 +452,10 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="DhS-vJ-glu"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="編輯"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
+                                <state key="normal" title="編輯">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <state key="selected" title="編輯"/>
                                 <connections>
                                     <segue destination="H9T-wO-Cpx" kind="show" id="Se4-Mq-X1n"/>

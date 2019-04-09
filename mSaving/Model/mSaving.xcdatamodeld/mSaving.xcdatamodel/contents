@@ -4,7 +4,7 @@
         <attribute name="currentValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="initialValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <relationship name="accounting" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Accounting" inverseName="account" inverseEntity="Accounting" syncable="YES"/>
+        <relationship name="accounting" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Accounting" syncable="YES"/>
     </entity>
     <entity name="Accounting" representedClassName="Accounting" syncable="YES" codeGenerationType="class">
         <attribute name="amount" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -12,7 +12,6 @@
         <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subCategory" attributeType="String" syncable="YES"/>
-        <relationship name="account" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="accounting" inverseEntity="Account" syncable="YES"/>
     </entity>
     <entity name="Saving" representedClassName="Saving" syncable="YES" codeGenerationType="class">
         <attribute name="amount" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -20,7 +19,7 @@
         <attribute name="subCategory" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Accounting" positionX="-597.63671875" positionY="-30.9453125" width="128" height="133"/>
+        <element name="Accounting" positionX="-597.63671875" positionY="-30.9453125" width="128" height="118"/>
         <element name="Account" positionX="-292.5859375" positionY="-30.87890625" width="128" height="103"/>
         <element name="Saving" positionX="-547.99609375" positionY="280.58984375" width="128" height="88"/>
     </elements>

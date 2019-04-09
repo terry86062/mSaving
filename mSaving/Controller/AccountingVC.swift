@@ -22,7 +22,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     
     @IBOutlet weak var topView: TopView!
     
-    var gradientLayer: CAGradientLayer!
+//    var gradientLayer: CAGradientLayer!
     
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -40,6 +40,8 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         }()
     
     @IBOutlet weak var amountTextField: UITextField!
+    
+    @IBOutlet var keyboardToolBar: UIToolbar!
     
     @IBOutlet weak var incomeExpenseSegmentedC: BetterSegmentedControl!
     
@@ -77,11 +79,15 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
 //        self.tableView.panGestureRecognizer.require(toFail: self.scopeGesture)
         self.calendar.scope = .week
         
-        createGradientLayer()
+//        createGradientLayer()
         
         incomeExpenseSegmentedC.segments = LabelSegment.segments(withTitles: ["支出", "收入", "移轉"], normalBackgroundColor: UIColor.white, normalFont: .systemFont(ofSize: 16), normalTextColor: UIColor.mSYellow, selectedBackgroundColor: UIColor.mSYellow, selectedFont: .systemFont(ofSize: 16), selectedTextColor: UIColor.black)
         
         incomeExpenseSegmentedC.addTarget(self, action: #selector(navigationSegmentedControlValueChanged(_:)), for: .valueChanged)
+        
+        amountTextField.inputAccessoryView = keyboardToolBar
+        
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
     }
     
@@ -91,31 +97,31 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         
     }
     
-    func createGradientLayer() {
-        
-        gradientLayer = CAGradientLayer()
-        
-        gradientLayer.frame = self.topView.bounds
-        
-        gradientLayer.colors = [UIColor(red: 101 / 255, green: 177 / 255, blue: 80 / 255, alpha: 1).cgColor, UIColor(red: 57 / 255, green: 130 / 255, blue: 69 / 255, alpha: 1).cgColor]
-        
-        gradientLayer.startPoint = CGPoint(x: 1.0, y: 0.0)
-        
-        gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
-        
-        gradientLayer.shadowOffset = CGSize(width: 0, height: 2)
-        
-        gradientLayer.shadowOpacity = 0.8
-        
-        gradientLayer.shadowRadius = 2
-        
-        gradientLayer.shadowColor = UIColor.gray.cgColor
-        
-        gradientLayer.zPosition = -1
-        
-        self.view.layer.addSublayer(gradientLayer)
-        
-    }
+//    func createGradientLayer() {
+//        
+//        gradientLayer = CAGradientLayer()
+//
+//        gradientLayer.frame = self.topView.bounds
+//
+//        gradientLayer.colors = [UIColor(red: 101 / 255, green: 177 / 255, blue: 80 / 255, alpha: 1).cgColor, UIColor(red: 57 / 255, green: 130 / 255, blue: 69 / 255, alpha: 1).cgColor]
+//
+//        gradientLayer.startPoint = CGPoint(x: 1.0, y: 0.0)
+//
+//        gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
+//
+//        gradientLayer.shadowOffset = CGSize(width: 0, height: 2)
+//
+//        gradientLayer.shadowOpacity = 0.8
+//
+//        gradientLayer.shadowRadius = 2
+//
+//        gradientLayer.shadowColor = UIColor.gray.cgColor
+//
+//        gradientLayer.zPosition = -1
+//
+//        self.view.layer.addSublayer(gradientLayer)
+//
+//    }
     
     @objc func navigationSegmentedControlValueChanged(_ sender: BetterSegmentedControl) {
         
@@ -157,6 +163,25 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         
     }
     
+    @IBAction func addAccounting(_ sender: UIBarButtonItem) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        
+        let accounting = Accounting(context: appDelegate.persistentContainer.viewContext)
+        
+        accounting.date = Date()
+        
+        accounting.amount = 50
+        
+        accounting.category = "支出"
+        
+        accounting.subCategory = "吃飯"
+        
+        appDelegate.saveContext()
+        
+    }
+    
+    
     
     // MARK:- UIGestureRecognizerDelegate
     
@@ -179,7 +204,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         self.calendarHeightConstraint.constant = bounds.height
         
-        self.gradientLayer.frame = CGRect(x: 0, y: 0, width: topView.frame.width, height: bounds.height + view.safeAreaInsets.top + 46)
+//        self.gradientLayer.frame = CGRect(x: 0, y: 0, width: topView.frame.width, height: bounds.height + view.safeAreaInsets.top + 46)
         
 //        self.topViewHeightConstraint.constant = 100 //bounds.height + view.safeAreaInsets.top
         
