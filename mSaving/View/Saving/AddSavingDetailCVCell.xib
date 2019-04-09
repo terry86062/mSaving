@@ -78,6 +78,9 @@
                 <constraint firstItem="EGp-Gi-fW3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="xT6-1r-ngn"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="plusImageView" destination="fzc-M8-Q5r" id="ldS-3N-aDO"/>
+            </connections>
         </collectionViewCell>
     </objects>
     <resources>

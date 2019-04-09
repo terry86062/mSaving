@@ -10,11 +10,15 @@ import UIKit
 
 class AddSavingDetailCVCell: UICollectionViewCell {
     
+    @IBOutlet weak var plusImageView: UIImageView!
+    
     var showSavingDetailAdd: (() -> ())?
     
     override func awakeFromNib() {
         
         super.awakeFromNib()
+        
+        plusImageView.tintColor = .lightGray
         
     }
     

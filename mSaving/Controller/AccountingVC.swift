@@ -8,9 +8,19 @@
 
 import UIKit
 
+import CoreData
+
 import FSCalendar
 
 import BetterSegmentedControl
+
+struct SubCategory {
+    
+    let imageName: String
+    
+    let name: String
+    
+}
 
 class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDataSource, FSCalendarDelegate {
     
@@ -65,6 +75,31 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         
     }
     
+    var selectedSubCategory = ""
+    
+    var subCategory = [
+        SubCategory(imageName: "book", name: "教育"),
+        SubCategory(imageName: "car", name: "交通"),
+        SubCategory(imageName: "clothes", name: "購物"),
+        SubCategory(imageName: "food", name: "飲食"),
+        SubCategory(imageName: "gif", name: "送禮"),
+        SubCategory(imageName: "home", name: "家庭"),
+        SubCategory(imageName: "hospital", name: "醫療"),
+        SubCategory(imageName: "invest", name: "投資"),
+        SubCategory(imageName: "phone", name: "電話"),
+        SubCategory(imageName: "plane", name: "旅遊"),
+        SubCategory(imageName: "book", name: "教育"),
+        SubCategory(imageName: "car", name: "交通"),
+        SubCategory(imageName: "clothes", name: "購物"),
+        SubCategory(imageName: "food", name: "飲食"),
+        SubCategory(imageName: "gif", name: "送禮"),
+        SubCategory(imageName: "home", name: "家庭"),
+        SubCategory(imageName: "hospital", name: "醫療"),
+        SubCategory(imageName: "invest", name: "投資"),
+        SubCategory(imageName: "phone", name: "電話"),
+        SubCategory(imageName: "plane", name: "旅遊")
+    ]
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -81,7 +116,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         
 //        createGradientLayer()
         
-        incomeExpenseSegmentedC.segments = LabelSegment.segments(withTitles: ["支出", "收入", "移轉"], normalBackgroundColor: UIColor.white, normalFont: .systemFont(ofSize: 16), normalTextColor: UIColor.mSYellow, selectedBackgroundColor: UIColor.mSYellow, selectedFont: .systemFont(ofSize: 16), selectedTextColor: UIColor.black)
+        incomeExpenseSegmentedC.segments = LabelSegment.segments(withTitles: ["支出", "收入", "移轉"], normalBackgroundColor: UIColor.white, normalFont: .systemFont(ofSize: 16), normalTextColor: UIColor.lightGray, selectedBackgroundColor: UIColor.mSYellow, selectedFont: .systemFont(ofSize: 16), selectedTextColor: UIColor.black)
         
         incomeExpenseSegmentedC.addTarget(self, action: #selector(navigationSegmentedControlValueChanged(_:)), for: .valueChanged)
         
@@ -129,7 +164,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         
             if sender.index == 0 {
                 
-                UIView.animate(withDuration: 0.5, animations: {
+                UIView.animate(withDuration: 0.1, animations: {
     
                     self.incomeExpenseCollectionView.bounds.origin.x = 0
     
@@ -137,7 +172,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
                 
             } else if sender.index == 1 {
                 
-                UIView.animate(withDuration: 0.5, animations: {
+                UIView.animate(withDuration: 0.1, animations: {
     
                     self.incomeExpenseCollectionView.bounds.origin.x = 386
     
@@ -145,7 +180,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
                 
             } else if sender.index == 2 {
                 
-                UIView.animate(withDuration: 0.5, animations: {
+                UIView.animate(withDuration: 0.1, animations: {
     
                     self.incomeExpenseCollectionView.bounds.origin.x = 772
     
@@ -169,13 +204,23 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         
         let accounting = Accounting(context: appDelegate.persistentContainer.viewContext)
         
-        accounting.date = Date()
+        let request = NSFetchRequest<Account>(entityName: "Account")
+        
+        request.predicate = NSPredicate(format: "name = %@", "現金")
+        
+//        request.sortDescriptors = [NSSortDescriptor(key: "現金", ascending: true)]
+        
+        let account = try! appDelegate.persistentContainer.viewContext.fetch(request)
+        
+        accounting.occurDate = Int64(Date().timeIntervalSince1970)
         
         accounting.amount = 50
         
         accounting.category = "支出"
         
         accounting.subCategory = "吃飯"
+        
+        accounting.accountName = account[0]
         
         appDelegate.saveContext()
         
@@ -265,6 +310,12 @@ extension AccountingVC: UICollectionViewDataSource {
             
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CategorySelectCVCell.self), for: indexPath) as? CategorySelectCVCell else { return CategorySelectCVCell() }
             
+            let aSubCategory = subCategory[indexPath.row]
+            
+            cell.initCategorySelectCVCell(imageName: aSubCategory.imageName, subCategoryName: aSubCategory.name)
+            
+            
+            
             return cell
             
         }
@@ -287,7 +338,7 @@ extension AccountingVC: UICollectionViewDelegateFlowLayout {
             
         } else {
             
-            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            return UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
             
         }
         
@@ -297,11 +348,11 @@ extension AccountingVC: UICollectionViewDelegateFlowLayout {
         
         if collectionView == incomeExpenseCollectionView {
             
-            return CGSize(width: 374, height: 180)
+            return CGSize(width: 374, height: 240)
             
         } else {
             
-            return CGSize(width: 65, height: 89)
+            return CGSize(width: 32, height: 76)
             
         }
         
@@ -316,6 +367,20 @@ extension AccountingVC: UICollectionViewDelegateFlowLayout {
         } else {
             
             return 0
+            
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        if collectionView == incomeExpenseCollectionView {
+            
+            return 0
+            
+        } else {
+            
+            return 40
             
         }
         

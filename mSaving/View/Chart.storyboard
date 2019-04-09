@@ -444,13 +444,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eQJ-8G-pAy" customClass="TopView" customModule="mSaving" customModuleProvider="target">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eQJ-8G-pAy" customClass="TopView" customModule="mSaving" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="86.5"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="食物" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gel-8e-Adx">
                                 <rect key="frame" x="189.5" y="50" width="35" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
@@ -475,6 +475,7 @@
                                     <constraint firstAttribute="width" constant="20" id="OOa-iY-5Lx"/>
                                     <constraint firstAttribute="height" constant="20" id="lc3-t0-prH"/>
                                 </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <state key="normal" image="back"/>
                                 <connections>
                                     <action selector="pop:" destination="23y-g6-22h" eventType="touchUpInside" id="HOa-pz-hhp"/>

@@ -8,6 +8,8 @@
 
 import UIKit
 
+import CoreData
+
 enum Setting {
     
     case accounts
@@ -68,6 +70,8 @@ class SettingCVCell: UICollectionViewCell {
         
         settingCollectionView.helpRegister(cell: AccountDateCVCell())
         
+        settingCollectionView.helpRegister(cell: AddSavingDetailCVCell())
+        
         settingCollectionView.helpRegister(cell: AccountCVCell())
         
     }
@@ -107,14 +111,46 @@ extension SettingCVCell: UICollectionViewDataSource {
         switch set {
 
         case .accounts:
-
-            guard let cell = settingCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AccountDateCVCell.self), for: indexPath) as? AccountDateCVCell else { return AccountDateCVCell() }
             
-            cell.initAccountDateCVCell(style: .setting(leadingText: accounts[indexPath.row].leadingText, trailingText: accounts[indexPath.row].trailingText))
+            if indexPath.row == 4 {
+                
+                guard let cell = settingCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AddSavingDetailCVCell.self), for: indexPath) as? AddSavingDetailCVCell else { return AddSavingDetailCVCell() }
+                
+                cell.showSavingDetailAdd = {
+                    
+                    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+                    
+//                    let account = NSEntityDescription.insertNewObject(forEntityName: "Account", into: appDelegate.persistentContainer.viewContext) as! Account
+                    
+                    let account = Account(context: appDelegate.persistentContainer.viewContext)
+                    
+                    account.initialValue = 5000
+                    
+                    account.name = "現金"
+                    
+                    account.currentValue = 5000
+                    
+//                    account.accounting = nil
+                    
+                    appDelegate.saveContext()
+                    
+                }
+                
+                return cell
+                
+            } else {
+                
+                guard let cell = settingCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AccountDateCVCell.self), for: indexPath) as? AccountDateCVCell else { return AccountDateCVCell() }
+                
+                cell.initAccountDateCVCell(style: .setting(leadingText: accounts[indexPath.row].leadingText, trailingText: accounts[indexPath.row].trailingText))
+                
+                cell.goToDetialPage = goToDetailPage
+                
+                return cell
+                
+            }
             
-            cell.goToDetialPage = goToDetailPage
-
-            return cell
+            
 
         case .setting:
         

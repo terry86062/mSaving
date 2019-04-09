@@ -19,52 +19,48 @@
                 <rect key="frame" x="0.0" y="0.0" width="74" height="89"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NwZ-hm-ixg">
-                        <rect key="frame" x="0.0" y="0.0" width="74" height="89"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zh1-lF-QXS">
-                                <rect key="frame" x="21" y="16" width="32" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="Vwv-wc-ipB"/>
-                                    <constraint firstAttribute="width" constant="32" id="Ynq-at-WVW"/>
-                                </constraints>
-                                <state key="normal" image="car"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="交通" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppU-OH-TF7">
-                                <rect key="frame" x="22.5" y="56" width="29" height="17"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="Xtr-06-sYA">
+                        <rect key="frame" x="21" y="16" width="32" height="32"/>
                         <constraints>
-                            <constraint firstItem="zh1-lF-QXS" firstAttribute="top" secondItem="NwZ-hm-ixg" secondAttribute="top" constant="16" id="0ug-fQ-dov"/>
-                            <constraint firstItem="ppU-OH-TF7" firstAttribute="top" secondItem="zh1-lF-QXS" secondAttribute="bottom" constant="8" id="3qD-wJ-Q71"/>
-                            <constraint firstItem="zh1-lF-QXS" firstAttribute="centerX" secondItem="NwZ-hm-ixg" secondAttribute="centerX" id="QyB-zM-9BD"/>
-                            <constraint firstItem="ppU-OH-TF7" firstAttribute="centerX" secondItem="zh1-lF-QXS" secondAttribute="centerX" id="vQd-34-ZyW"/>
+                            <constraint firstAttribute="height" constant="32" id="J5o-0Q-KFd"/>
+                            <constraint firstAttribute="width" constant="32" id="ZAI-mu-huc"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
-                                <real key="value" value="20"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </view>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="交通" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppU-OH-TF7">
+                        <rect key="frame" x="22.5" y="52" width="29" height="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45M-HL-Edy">
+                        <rect key="frame" x="21" y="16" width="32" height="53"/>
+                        <connections>
+                            <action selector="selectSubCategory:" destination="gTV-IL-0wX" eventType="touchUpInside" id="jCT-lW-fah"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="NwZ-hm-ixg" secondAttribute="bottom" id="3TX-pP-UQu"/>
-                <constraint firstItem="NwZ-hm-ixg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="en9-ak-cQc"/>
-                <constraint firstAttribute="trailing" secondItem="NwZ-hm-ixg" secondAttribute="trailing" id="h2u-Af-Ma5"/>
-                <constraint firstItem="NwZ-hm-ixg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="kMt-8I-oPo"/>
+                <constraint firstItem="45M-HL-Edy" firstAttribute="leading" secondItem="Xtr-06-sYA" secondAttribute="leading" id="2Gx-fw-dpF"/>
+                <constraint firstItem="Xtr-06-sYA" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="2Oh-KN-q2O"/>
+                <constraint firstItem="ppU-OH-TF7" firstAttribute="centerX" secondItem="Xtr-06-sYA" secondAttribute="centerX" id="8Cd-Qj-vYZ"/>
+                <constraint firstItem="45M-HL-Edy" firstAttribute="top" secondItem="Xtr-06-sYA" secondAttribute="top" id="UY4-SF-AhP"/>
+                <constraint firstItem="45M-HL-Edy" firstAttribute="bottom" secondItem="ppU-OH-TF7" secondAttribute="bottom" id="VwP-ko-heu"/>
+                <constraint firstItem="Xtr-06-sYA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="eSm-jw-lVh"/>
+                <constraint firstItem="45M-HL-Edy" firstAttribute="trailing" secondItem="Xtr-06-sYA" secondAttribute="trailing" id="oZG-US-qWR"/>
+                <constraint firstItem="ppU-OH-TF7" firstAttribute="top" secondItem="Xtr-06-sYA" secondAttribute="bottom" constant="4" id="xMD-ay-jGt"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="157" height="135"/>
+            <connections>
+                <outlet property="subCategoryImageView" destination="Xtr-06-sYA" id="cfb-h8-Ji1"/>
+                <outlet property="subCategoryNameLabel" destination="ppU-OH-TF7" id="YDB-Lz-Gid"/>
+            </connections>
             <point key="canvasLocation" x="209.42028985507247" y="167.07589285714286"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="car" width="512" height="512"/>
+        <image name="home" width="512" height="512"/>
     </resources>
 </document>
