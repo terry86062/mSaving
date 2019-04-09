@@ -9,21 +9,21 @@
 import UIKit
 
 class SavingDetailCVCell: UICollectionViewCell {
-    
-    var showSavingDetailAdd: (() -> ())?
-    
+
+    var showSavingDetailAdd: (() -> Void)?
+
     override func awakeFromNib() {
-        
+
         super.awakeFromNib()
-        
+
     }
-    
+
     @IBAction func goToSavingDetailAdd(_ sender: UIButton) {
-        
+
         guard let show = showSavingDetailAdd else { return }
-        
+
         show()
-        
+
     }
-    
+
 }

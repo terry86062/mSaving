@@ -6,5 +6,6 @@ target 'mSaving' do
 pod 'FSCalendar'
 pod 'BetterSegmentedControl'
 pod 'Charts'
+pod 'SwiftLint'
 
 end

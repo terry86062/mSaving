@@ -11,9 +11,9 @@ import UIKit
 class CategoryAccountsTotalCVCell: UICollectionViewCell {
 
     override func awakeFromNib() {
-        
+
         super.awakeFromNib()
-        
+
     }
 
 }

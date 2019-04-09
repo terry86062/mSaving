@@ -9,23 +9,23 @@
 import UIKit
 
 class MonthCVCell: UICollectionViewCell {
-    
+
     @IBOutlet weak var monthLabel: UILabel!
-    
+
     @IBOutlet weak var shadowView: UIView!
-    
+
     override func awakeFromNib() {
-        
+
         super.awakeFromNib()
-        
+
     }
-    
+
     func initMonthCVCell(month: String) {
-        
+
         monthLabel.text = month
-        
+
         shadowView.alpha = 0
-        
+
     }
-    
+
 }

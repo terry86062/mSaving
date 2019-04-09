@@ -9,21 +9,23 @@
 import UIKit
 
 extension UICollectionView {
-    
+
     func helpRegister<T>(cell: T) {
-        
+
         let nibName = UINib(nibName: String(describing: T.self), bundle: nil)
-        
+
         self.register(nibName, forCellWithReuseIdentifier: String(describing: T.self))
-        
+
     }
-    
+
     func helpRegisterView<T>(cell: T) {
-        
+
         let nibName = UINib(nibName: String(describing: T.self), bundle: nil)
-        
-        self.register(nibName, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: T.self))
-        
+
+        self.register(nibName,
+                      forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                      withReuseIdentifier: String(describing: T.self))
+
     }
-    
+
 }

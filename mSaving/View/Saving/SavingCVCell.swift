@@ -9,42 +9,41 @@
 import UIKit
 
 class SavingCVCell: UICollectionViewCell {
-    
-    @IBOutlet weak var accountCollectionView: UICollectionView! {
-        
-        didSet {
-            
-            setUpCollectionView()
-            
-        }
-        
-    }
-    
-    override func awakeFromNib() {
-        
-        super.awakeFromNib()
-        
-    }
-    
-    func initSavingCVCell(dataSource: UICollectionViewDataSource, delegate: UICollectionViewDelegate) {
-        
-        accountCollectionView.dataSource = dataSource
-        
-        accountCollectionView.delegate = delegate
-        
-    }
-    
-    func setUpCollectionView() {
-        
-        accountCollectionView.helpRegister(cell: SavingGoalCVCell())
-        
-        accountCollectionView.helpRegister(cell: AccountsCVCell())
-        
-        accountCollectionView.helpRegister(cell: SavingDetailCVCell())
-        
-        accountCollectionView.helpRegister(cell: AddSavingDetailCVCell())
-        
-    }
-    
-}
 
+    @IBOutlet weak var accountCollectionView: UICollectionView! {
+
+        didSet {
+
+            setUpCollectionView()
+
+        }
+
+    }
+
+    override func awakeFromNib() {
+
+        super.awakeFromNib()
+
+    }
+
+    func initSavingCVCell(dataSource: UICollectionViewDataSource, delegate: UICollectionViewDelegate) {
+
+        accountCollectionView.dataSource = dataSource
+
+        accountCollectionView.delegate = delegate
+
+    }
+
+    func setUpCollectionView() {
+
+        accountCollectionView.helpRegister(cell: SavingGoalCVCell())
+
+        accountCollectionView.helpRegister(cell: AccountsCVCell())
+
+        accountCollectionView.helpRegister(cell: SavingDetailCVCell())
+
+        accountCollectionView.helpRegister(cell: AddSavingDetailCVCell())
+
+    }
+
+}

@@ -9,13 +9,13 @@
 import UIKit
 
 extension UITableView {
-    
+
     func helpRegister<T>(cell: T) {
-        
+
         let nibName = UINib(nibName: String(describing: T.self), bundle: nil)
-        
+
         self.register(nibName, forCellReuseIdentifier: String(describing: T.self))
-        
+
     }
-    
+
 }

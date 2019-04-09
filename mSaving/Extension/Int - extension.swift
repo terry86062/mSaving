@@ -9,11 +9,11 @@
 import UIKit
 
 extension Int {
-    
+
     var fitScreen: CGFloat {
-        
+
         return CGFloat(self) * UIScreen.main.bounds.width / 414
-        
+
     }
-    
+
 }

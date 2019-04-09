@@ -9,25 +9,25 @@
 import UIKit
 
 class AddSavingDetailCVCell: UICollectionViewCell {
-    
+
     @IBOutlet weak var plusImageView: UIImageView!
-    
-    var showSavingDetailAdd: (() -> ())?
-    
+
+    var showSavingDetailAdd: (() -> Void)?
+
     override func awakeFromNib() {
-        
+
         super.awakeFromNib()
-        
+
         plusImageView.tintColor = .lightGray
-        
+
     }
-    
+
     @IBAction func goToSavingDetailAdd(_ sender: UIButton) {
-        
+
         guard let show = showSavingDetailAdd else { return }
-        
+
         show()
-        
+
     }
-    
+
 }

@@ -11,21 +11,21 @@ import UIKit
 class SavingDetailAddVC: UIViewController {
 
     @IBOutlet weak var textField: UITextField!
-    
+
     override func viewDidLoad() {
-        
+
         super.viewDidLoad()
-        
+
         textField.becomeFirstResponder()
-        
+
     }
-    
+
     @IBAction func pop(_ sender: UIButton) {
-        
+
         navigationController?.popViewController(animated: true)
-        
+
         dismiss(animated: true, completion: nil)
-        
+
     }
 
 }

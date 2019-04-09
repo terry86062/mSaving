@@ -11,9 +11,9 @@ import UIKit
 class IconCVCell: UICollectionViewCell {
 
     override func awakeFromNib() {
-        
+
         super.awakeFromNib()
-        
+
     }
 
 }

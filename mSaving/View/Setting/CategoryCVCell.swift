@@ -9,21 +9,21 @@
 import UIKit
 
 class CategoryCVCell: UICollectionViewCell {
-    
-    var goToSetCategory: (() -> ())?
-    
+
+    var goToSetCategory: (() -> Void)?
+
     override func awakeFromNib() {
-        
+
         super.awakeFromNib()
-        
+
     }
-    
+
     @IBAction func goToSetCategory(_ sender: UIButton) {
-        
-        guard let go = goToSetCategory else { return }
-        
-        go()
-        
+
+        guard let goTo = goToSetCategory else { return }
+
+        goTo()
+
     }
-    
+
 }

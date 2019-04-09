@@ -11,35 +11,35 @@ import UIKit
 class IncomeExpenseCVCell: UICollectionViewCell {
 
     @IBOutlet weak var categoryCollectionView: UICollectionView! {
-        
+
         didSet {
-            
+
             setUpCollectionView()
-            
+
         }
-        
+
     }
-    
+
     override func awakeFromNib() {
-        
+
         super.awakeFromNib()
-        
+
     }
-    
+
     func initSavingCVCell(dataSource: UICollectionViewDataSource, delegate: UICollectionViewDelegate) {
-        
+
         categoryCollectionView.dataSource = dataSource
-        
+
         categoryCollectionView.delegate = delegate
-        
+
     }
-    
+
     func setUpCollectionView() {
-        
+
         categoryCollectionView.helpRegister(cell: CategorySelectCVCell())
-        
+
         categoryCollectionView.helpRegister(cell: AccountsCVCell())
-        
+
     }
-    
+
 }

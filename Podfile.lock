@@ -4,23 +4,27 @@ PODS:
     - Charts/Core (= 3.2.2)
   - Charts/Core (3.2.2)
   - FSCalendar (2.8.0)
+  - SwiftLint (0.31.0)
 
 DEPENDENCIES:
   - BetterSegmentedControl
   - Charts
   - FSCalendar
+  - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - BetterSegmentedControl
     - Charts
     - FSCalendar
+    - SwiftLint
 
 SPEC CHECKSUMS:
   BetterSegmentedControl: 4e3bd0bd517b0f6077c9e17f5663a01cff48e2c5
   Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
   FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
+  SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
 
-PODFILE CHECKSUM: 72b550fa480a0820174dc5b9fdc56ff2996454f1
+PODFILE CHECKSUM: c2bb9cd50cfe426ff2b64e0ae0d091e5161a1dc8
 
 COCOAPODS: 1.6.0

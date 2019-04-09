@@ -9,21 +9,21 @@
 import UIKit
 
 class SearchVC: UIViewController {
-    
+
     @IBOutlet weak var searchBar: UISearchBar!
-    
+
     override func viewDidLoad() {
-        
+
         super.viewDidLoad()
-        
+
         searchBar.backgroundImage = UIImage()
 
     }
 
     @IBAction func pop(_ sender: Any) {
-        
+
         navigationController?.popViewController(animated: true)
-        
+
     }
-    
+
 }
