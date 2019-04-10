@@ -14,16 +14,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(
-        _ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    // swiftlint:disable colon
+    // swiftlint:enable colon
+
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        detectFirstLaunch()
 
         return true
     }
     
-    // swiftlint:disable colon
-    // swiftlint:enable colon
-    
+    func detectFirstLaunch() {
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if launchedBefore {
+            print("Not first launch.")
+        } else {
+            print("First launch, setting NSUserDefault.")
+            
+            let expenseSubCategory = ExpenseCategory(context: persistentContainer.viewContext)
+            
+            expenseSubCategory.name = "食物"
+            expenseSubCategory.iconName = "Cutlery-Fork-Knife-128-2"
+            expenseSubCategory.color = "EE5142"
+            
+            saveContext()
+            
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+        }
+    }
+
     func applicationWillResignActive(_ application: UIApplication) {
 
     }

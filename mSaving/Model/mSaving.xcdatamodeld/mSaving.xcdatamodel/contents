@@ -8,20 +8,36 @@
     </entity>
     <entity name="Accounting" representedClassName="Accounting" syncable="YES" codeGenerationType="class">
         <attribute name="amount" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="category" attributeType="String" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="occurDate" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="subCategory" attributeType="String" syncable="YES"/>
         <relationship name="accountName" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="accounting" inverseEntity="Account" syncable="YES"/>
+        <relationship name="expenseSubCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExpenseCategory" inverseName="accounting" inverseEntity="ExpenseCategory" syncable="YES"/>
+        <relationship name="incomeSubCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IncomeCategory" inverseName="accounting" inverseEntity="IncomeCategory" syncable="YES"/>
+    </entity>
+    <entity name="ExpenseCategory" representedClassName="ExpenseCategory" syncable="YES" codeGenerationType="class">
+        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iconName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="accounting" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Accounting" inverseName="expenseSubCategory" inverseEntity="Accounting" syncable="YES"/>
+        <relationship name="saving" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Saving" inverseName="expenseSubCategory" inverseEntity="Saving" syncable="YES"/>
+    </entity>
+    <entity name="IncomeCategory" representedClassName="IncomeCategory" syncable="YES" codeGenerationType="class">
+        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iconName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="accounting" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Accounting" inverseName="incomeSubCategory" inverseEntity="Accounting" syncable="YES"/>
     </entity>
     <entity name="Saving" representedClassName="Saving" syncable="YES" codeGenerationType="class">
         <attribute name="amount" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="main" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="month" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="subCategory" attributeType="String" syncable="YES"/>
+        <relationship name="expenseSubCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExpenseCategory" inverseName="saving" inverseEntity="ExpenseCategory" syncable="YES"/>
     </entity>
     <elements>
         <element name="Account" positionX="-292.5859375" positionY="-30.87890625" width="128" height="105"/>
         <element name="Accounting" positionX="-597.63671875" positionY="-30.9453125" width="128" height="135"/>
-        <element name="Saving" positionX="-547.99609375" positionY="280.58984375" width="128" height="88"/>
+        <element name="Saving" positionX="-547.99609375" positionY="280.58984375" width="128" height="105"/>
+        <element name="ExpenseCategory" positionX="-432" positionY="126" width="128" height="120"/>
+        <element name="IncomeCategory" positionX="-423" positionY="135" width="128" height="105"/>
     </elements>
 </model>

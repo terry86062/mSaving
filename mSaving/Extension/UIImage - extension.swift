@@ -8,8 +8,45 @@
 
 import UIKit
 
+enum ImageAsset: String {
+    
+    // Category Icon
+    case cutleryForkKnife
+    case beverageMilkShake
+    
+    case car
+    case trainSideView01
+    
+    case home
+    case waterTap
+    case contact
+    case footprint
+    
+    case eightNote
+    case dumbbells
+    case aeroplane
+    
+    case shoppingBag
+    case menTShirt
+    
+    case bookOpen
+    case color
+    
+    case pill
+    
+    case gift
+    
+    case stockExchange
+    case addShield
+    
+    case cash
+
+}
+
 extension UIImage {
 
+    
+    
     func resizeImage(targetSize: CGSize = CGSize(width: 36, height: 36)) -> UIImage {
 
         let size = self.size

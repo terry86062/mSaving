@@ -233,9 +233,9 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
             
             accounting.amount = amount
             
-            accounting.category = "支出"
-            
-            accounting.subCategory = selectedSubCategory
+//            accounting.category = "支出"
+//            
+//            accounting.subCategory = selectedSubCategory
 
             accounting.accountName = account[0]
             

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -914,11 +915,17 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B69-kH-xbe">
                                         <rect key="frame" x="98" y="128" width="33" height="33"/>
+                                        <color key="backgroundColor" name="mSYellow"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="MvR-VZ-f6Z"/>
                                             <constraint firstAttribute="width" constant="33" id="RXV-K3-C5O"/>
                                         </constraints>
-                                        <state key="normal" image="gif"/>
+                                        <state key="normal" image="gas"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v04-xD-j5y">
                                         <rect key="frame" x="20.5" y="127" width="35" height="35"/>
@@ -2059,13 +2066,16 @@
         <image name="car" width="128" height="128"/>
         <image name="clothes" width="128" height="128"/>
         <image name="food" width="128" height="128"/>
-        <image name="gif" width="512" height="512"/>
+        <image name="gas" width="128" height="128"/>
         <image name="home" width="128" height="128"/>
         <image name="hospital" width="128" height="128"/>
         <image name="invest" width="128" height="128"/>
         <image name="phone" width="128" height="128"/>
         <image name="plane" width="128" height="128"/>
         <image name="search" width="512" height="512"/>
+        <namedColor name="mSYellow">
+            <color red="0.99215686274509807" green="0.87450980392156863" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="oW7-S6-CfC"/>

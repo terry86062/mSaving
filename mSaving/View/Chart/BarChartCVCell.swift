@@ -39,7 +39,10 @@ class BarChartCVCell: UICollectionViewCell {
         barChart.chartDescription?.text = "Number of Widgets by Type"
 
         //All other additions to this function will go here
-
+        barChart.xAxis.drawGridLinesEnabled = false
+        barChart.leftAxis.drawLabelsEnabled = false
+        barChart.legend.enabled = false
+        
         //This must stay at end of function
         barChart.notifyDataSetChanged()
 
