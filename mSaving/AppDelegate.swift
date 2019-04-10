@@ -32,13 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             print("First launch, setting NSUserDefault.")
             
-            let expenseSubCategory = ExpenseCategory(context: persistentContainer.viewContext)
-            
-            expenseSubCategory.name = "食物"
-            expenseSubCategory.iconName = "Cutlery-Fork-Knife-128-2"
-            expenseSubCategory.color = "EE5142"
-            
-            saveContext()
+            StorageManager.shared.initExpenseIncomeCategory()
             
             UserDefaults.standard.set(true, forKey: "launchedBefore")
         }
@@ -60,39 +54,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
 
-    func applicationWillTerminate(_ application: UIApplication) {
-
-        self.saveContext()
-    }
-
-    // MARK: - Core Data stack
-
-    lazy var persistentContainer: NSPersistentContainer = {
-
-        let container = NSPersistentContainer(name: "mSaving")
-        container.loadPersistentStores(completionHandler: { (_, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-
-    // MARK: - Core Data Saving support
-
-    func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-
-                print("save success")
-
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
-    }
+//    func applicationWillTerminate(_ application: UIApplication) {
+//
+//        self.saveContext()
+//    }
+//
+//    // MARK: - Core Data stack
+//
+//    lazy var persistentContainer: NSPersistentContainer = {
+//
+//        let container = NSPersistentContainer(name: "mSaving")
+//        container.loadPersistentStores(completionHandler: { (_, error) in
+//            if let error = error as NSError? {
+//                fatalError("Unresolved error \(error), \(error.userInfo)")
+//            }
+//        })
+//        return container
+//    }()
+//
+//    // MARK: - Core Data Saving support
+//
+//    func saveContext () {
+//        let context = persistentContainer.viewContext
+//        if context.hasChanges {
+//            do {
+//                try context.save()
+//
+//                print("save success")
+//
+//            } catch {
+//                let nserror = error as NSError
+//                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+//            }
+//        }
+//    }
 
 }

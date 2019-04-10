@@ -22,9 +22,11 @@ class CategorySelectCVCell: UICollectionViewCell {
 
     }
 
-    func initCategorySelectCVCell(imageName: String, subCategoryName: String) {
+    func initCategorySelectCVCell(imageName: String, subCategoryName: String, hex: String) {
 
         subCategoryImageView.image = UIImage(named: imageName)
+        
+        subCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
 
         subCategoryNameLabel.text = subCategoryName
 

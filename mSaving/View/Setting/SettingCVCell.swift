@@ -123,19 +123,7 @@ extension SettingCVCell: UICollectionViewDataSource {
 
                 cell.showSavingDetailAdd = {
 
-                    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-
-                    let account = Account(context: appDelegate.persistentContainer.viewContext)
-
-                    account.initialValue = 5000
-
-                    account.name = "現金"
-
-                    account.currentValue = 5000
-
-//                    account.accounting = nil
-
-                    appDelegate.saveContext()
+                    StorageManager.shared.createAccount(name: "現金", amount: 5000)
 
                 }
 

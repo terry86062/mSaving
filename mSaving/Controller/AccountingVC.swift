@@ -28,12 +28,6 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
 
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
 
-//    @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
-
-    @IBOutlet weak var topView: TopView!
-
-//    var gradientLayer: CAGradientLayer!
-
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
@@ -77,30 +71,9 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
 
     }
 
-    var selectedSubCategory = ""
+    var selectedSubCategory: ExpenseCategory?
 
-    var subCategory = [
-        SubCategory(imageName: "food", name: "飲食"),
-        SubCategory(imageName: "clothes", name: "購物"),
-        SubCategory(imageName: "car", name: "交通"),
-        SubCategory(imageName: "home", name: "家庭"),
-        SubCategory(imageName: "phone", name: "電話"),
-        SubCategory(imageName: "plane", name: "旅遊"),
-        SubCategory(imageName: "book", name: "教育"),
-        SubCategory(imageName: "hospital", name: "醫療"),
-        SubCategory(imageName: "gift", name: "送禮"),
-        SubCategory(imageName: "invest", name: "投資"),
-        SubCategory(imageName: "food", name: "飲食"),
-        SubCategory(imageName: "clothes", name: "購物"),
-        SubCategory(imageName: "car", name: "交通"),
-        SubCategory(imageName: "home", name: "家庭"),
-        SubCategory(imageName: "phone", name: "電話"),
-        SubCategory(imageName: "plane", name: "旅遊"),
-        SubCategory(imageName: "book", name: "教育"),
-        SubCategory(imageName: "hospital", name: "醫療"),
-        SubCategory(imageName: "gift", name: "送禮"),
-        SubCategory(imageName: "invest", name: "投資")
-    ]
+    var subCategorys: [ExpenseCategory] = []
 
     override func viewDidLoad() {
 
@@ -115,8 +88,6 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         self.view.addGestureRecognizer(self.scopeGesture)
 //        self.tableView.panGestureRecognizer.require(toFail: self.scopeGesture)
         self.calendar.scope = .week
-
-//        createGradientLayer()
 
         incomeExpenseSegmentedC.segments = LabelSegment.segments(
             withTitles: ["支出", "收入", "移轉"],
@@ -135,6 +106,10 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         amountTextField.inputAccessoryView = keyboardToolBar
 
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
+        guard let subCategorys = StorageManager.shared.fetchCategory() else { return }
+        
+        self.subCategorys = subCategorys
 
     }
 
@@ -143,34 +118,6 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         amountTextField.becomeFirstResponder()
 
     }
-
-//    func createGradientLayer() {
-//        
-//        gradientLayer = CAGradientLayer()
-//
-//        gradientLayer.frame = self.topView.bounds
-//
-//        gradientLayer.colors = [
-//    UIColor(red: 101 / 255, green: 177 / 255, blue: 80 / 255, alpha: 1).cgColor,
-//    UIColor(red: 57 / 255, green: 130 / 255, blue: 69 / 255, alpha: 1).cgColor]
-//
-//        gradientLayer.startPoint = CGPoint(x: 1.0, y: 0.0)
-//
-//        gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
-//
-//        gradientLayer.shadowOffset = CGSize(width: 0, height: 2)
-//
-//        gradientLayer.shadowOpacity = 0.8
-//
-//        gradientLayer.shadowRadius = 2
-//
-//        gradientLayer.shadowColor = UIColor.gray.cgColor
-//
-//        gradientLayer.zPosition = -1
-//
-//        self.view.layer.addSublayer(gradientLayer)
-//
-//    }
 
     @objc func navigationSegmentedControlValueChanged(_ sender: BetterSegmentedControl) {
 
@@ -216,30 +163,28 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         
         guard let text = amountTextField.text, let amount = Int64(text), amount != 0 else { return }
         
-        guard selectedSubCategory != "" else { return }
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        guard let selectedSubCategory = selectedSubCategory else { return }
 
-        let accounting = Accounting(context: appDelegate.persistentContainer.viewContext)
+//        let accounting = Accounting(context: appDelegate.persistentContainer.viewContext)
 
         let request = NSFetchRequest<Account>(entityName: "Account")
 
         request.predicate = NSPredicate(format: "name = %@", "現金")
 
         do {
-            let account = try appDelegate.persistentContainer.viewContext.fetch(request)
+//            let account = try appDelegate.persistentContainer.viewContext.fetch(request)
             
-            accounting.occurDate = Int64(Date().timeIntervalSince1970)
-            
-            accounting.amount = amount
+//            accounting.occurDate = Int64(Date().timeIntervalSince1970)
+//
+//            accounting.amount = amount
             
 //            accounting.category = "支出"
 //            
 //            accounting.subCategory = selectedSubCategory
 
-            accounting.accountName = account[0]
+//            accounting.accountName = account[0]
             
-            appDelegate.saveContext()
+//            appDelegate.saveContext()
             
         } catch {
             print(error)
@@ -267,13 +212,6 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
 
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         self.calendarHeightConstraint.constant = bounds.height
-
-//        self.gradientLayer.frame = CGRect(x: 0,
-//        y: 0,
-//        width: topView.frame.width,
-//        height: bounds.height + view.safeAreaInsets.top + 46)
-
-//        self.topViewHeightConstraint.constant = 100 //bounds.height + view.safeAreaInsets.top
 
         print("boundingRectWillChange")
 
@@ -311,7 +249,7 @@ extension AccountingVC: UICollectionViewDataSource {
 
         } else {
 
-            return 20
+            return subCategorys.count
 
         }
 
@@ -339,14 +277,18 @@ extension AccountingVC: UICollectionViewDataSource {
                 for: indexPath) as? CategorySelectCVCell else {
                     return CategorySelectCVCell()
             }
-
-            let aSubCategory = subCategory[indexPath.row]
-
-            cell.initCategorySelectCVCell(imageName: aSubCategory.imageName, subCategoryName: aSubCategory.name)
+            
+            let aSubCategory = subCategorys[indexPath.row]
+            
+            if let iconName = aSubCategory.iconName, let name = aSubCategory.name, let color = aSubCategory.color {
+                
+                cell.initCategorySelectCVCell(imageName: iconName, subCategoryName: name, hex: color)
+                
+            }
             
             cell.selectSubCategory = {
                 
-                self.selectedSubCategory = self.subCategory[indexPath.row].name
+                self.selectedSubCategory = aSubCategory
                 
             }
 

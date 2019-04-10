@@ -25,6 +25,11 @@
                             <constraint firstAttribute="height" constant="32" id="J5o-0Q-KFd"/>
                             <constraint firstAttribute="width" constant="32" id="ZAI-mu-huc"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
+                                <real key="value" value="16"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="交通" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppU-OH-TF7">
                         <rect key="frame" x="22.5" y="52" width="29" height="17"/>
