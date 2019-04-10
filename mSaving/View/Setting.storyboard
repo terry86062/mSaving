@@ -1677,6 +1677,9 @@
                                 <state key="normal">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="dismiss:" destination="vnS-kl-hBB" eventType="touchUpInside" id="ow7-xb-8en"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8w9-mG-JQo">
                                 <rect key="frame" x="32" y="118.5" width="350" height="360"/>
@@ -1826,6 +1829,9 @@
                                                 <real key="value" value="16"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="confirm:" destination="vnS-kl-hBB" eventType="touchUpInside" id="5cv-FY-7Pu"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1893,6 +1899,10 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <connections>
+                        <outlet property="accountAmountTextField" destination="JsO-46-yip" id="5pA-oM-5x5"/>
+                        <outlet property="accountTextField" destination="M7P-NZ-pGZ" id="dzh-BI-NBw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BQq-hy-31O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
