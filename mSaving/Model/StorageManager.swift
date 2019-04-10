@@ -163,15 +163,31 @@ class StorageManager {
         
     }
     
-    func saveAccounting() {
+    func saveAccounting(amount: Int64, accountName: String, selectedSubCategory: ExpenseCategory) {
         
         let accounting = Accounting(context: viewContext)
         
-        accounting.occurDate = Int64(amount)
+        let request = NSFetchRequest<Account>(entityName: "Account")
         
-        accounting.amount = Int64(amount)
+        request.predicate = NSPredicate(format: "name = %@", accountName)
         
-        accounting.accountName = name
+        do {
+            
+            let account = try viewContext.fetch(request)
+
+            accounting.occurDate = Int64(Date().timeIntervalSince1970)
+
+            accounting.amount = amount
+
+            accounting.accountName = account[0]
+            
+            accounting.expenseSubCategory = selectedSubCategory
+            
+        } catch {
+            
+            print(error)
+            
+        }
         
         saveContext()
         

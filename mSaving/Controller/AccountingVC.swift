@@ -46,7 +46,9 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         }()
 
     @IBOutlet weak var amountTextField: UITextField!
-
+    
+    @IBOutlet weak var selectedSubCategoryImageView: UIImageView!
+    
     @IBOutlet var keyboardToolBar: UIToolbar!
 
     @IBOutlet weak var incomeExpenseSegmentedC: BetterSegmentedControl!
@@ -165,30 +167,9 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         
         guard let selectedSubCategory = selectedSubCategory else { return }
 
-//        let accounting = Accounting(context: appDelegate.persistentContainer.viewContext)
-
-        let request = NSFetchRequest<Account>(entityName: "Account")
-
-        request.predicate = NSPredicate(format: "name = %@", "現金")
-
-        do {
-//            let account = try appDelegate.persistentContainer.viewContext.fetch(request)
-            
-//            accounting.occurDate = Int64(Date().timeIntervalSince1970)
-//
-//            accounting.amount = amount
-            
-//            accounting.category = "支出"
-//            
-//            accounting.subCategory = selectedSubCategory
-
-//            accounting.accountName = account[0]
-            
-//            appDelegate.saveContext()
-            
-        } catch {
-            print(error)
-        }
+        StorageManager.shared.saveAccounting(amount: amount,
+                                             accountName: "現金",
+                                             selectedSubCategory: selectedSubCategory)
 
     }
 
@@ -280,15 +261,19 @@ extension AccountingVC: UICollectionViewDataSource {
             
             let aSubCategory = subCategorys[indexPath.row]
             
-            if let iconName = aSubCategory.iconName, let name = aSubCategory.name, let color = aSubCategory.color {
+            guard let iconName = aSubCategory.iconName,
+                let name = aSubCategory.name,
+                let color = aSubCategory.color else { return cell }
                 
-                cell.initCategorySelectCVCell(imageName: iconName, subCategoryName: name, hex: color)
-                
-            }
+            cell.initCategorySelectCVCell(imageName: iconName, subCategoryName: name, hex: color)
             
             cell.selectSubCategory = {
                 
                 self.selectedSubCategory = aSubCategory
+                
+                self.selectedSubCategoryImageView.image = UIImage(named: iconName)
+                
+                self.selectedSubCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
                 
             }
 
