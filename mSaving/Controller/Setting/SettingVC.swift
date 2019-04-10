@@ -27,12 +27,18 @@ class SettingVC: UIViewController {
     @IBOutlet weak var accountsButton: UIButton!
 
     @IBOutlet weak var settingButton: UIButton!
+    
+    var accountArray: [Account] = []
 
     override func viewDidLoad() {
 
         super.viewDidLoad()
 
         setUpCollectionView()
+        
+        guard let accountArray = StorageManager.shared.fetchAccount() else { return }
+        
+        self.accountArray = accountArray
 
     }
 
@@ -73,7 +79,7 @@ extension SettingVC: UICollectionViewDataSource {
 
         if indexPath.row == 0 {
 
-            cell.initSettingCVCell(whichSetting: .accounts)
+            cell.initSettingCVCell(whichSetting: .accounts, accountArray: accountArray)
 
             cell.goToDetailPage = {
                 
@@ -89,7 +95,7 @@ extension SettingVC: UICollectionViewDataSource {
 
         } else {
 
-            cell.initSettingCVCell(whichSetting: .setting)
+            cell.initSettingCVCell(whichSetting: .setting, accountArray: accountArray)
 
             cell.goToDetailPage = {
 

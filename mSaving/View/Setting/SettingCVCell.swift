@@ -61,6 +61,8 @@ class SettingCVCell: UICollectionViewCell {
         SettingText(leadingText: "隱私權聲明內容", trailingText: ">"),
         SettingText(leadingText: "給予評價", trailingText: ">")
     ]
+    
+    var accountArray: [Account] = []
 
     override func awakeFromNib() {
 
@@ -78,9 +80,11 @@ class SettingCVCell: UICollectionViewCell {
 
     }
 
-    func initSettingCVCell(whichSetting: Setting) {
+    func initSettingCVCell(whichSetting: Setting, accountArray: [Account]) {
 
         setting = whichSetting
+        
+        self.accountArray = accountArray
 
     }
 
@@ -96,7 +100,7 @@ extension SettingCVCell: UICollectionViewDataSource {
 
         case .accounts:
 
-            return 5
+            return accountArray.count + 1
 
         case .setting:
 
@@ -115,7 +119,7 @@ extension SettingCVCell: UICollectionViewDataSource {
 
         case .accounts:
 
-            if indexPath.row == 4 {
+            if indexPath.row == accountArray.count {
 
                 guard let cell = settingCollectionView.dequeueReusableCell(
                     withReuseIdentifier: String(describing: AddSavingDetailCVCell.self),
@@ -135,9 +139,13 @@ extension SettingCVCell: UICollectionViewDataSource {
                         return AccountDateCVCell()
                 }
 
+                let account = accountArray[indexPath.row]
+                
+                guard let name = account.name else { return cell }
+                
                 cell.initAccountDateCVCell(style: .setting(
-                    leadingText: accounts[indexPath.row].leadingText,
-                    trailingText: accounts[indexPath.row].trailingText))
+                    leadingText: name,
+                    trailingText: String(account.currentValue)))
 
                 cell.goToDetialPage = goToDetailPage
 

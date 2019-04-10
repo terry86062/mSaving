@@ -23,6 +23,7 @@
 		DE4984B8225878A8004E4AE9 /* CategoryAccountsTotalCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4984B6225878A8004E4AE9 /* CategoryAccountsTotalCVCell.swift */; };
 		DE4984B9225878A8004E4AE9 /* CategoryAccountsTotalCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE4984B7225878A8004E4AE9 /* CategoryAccountsTotalCVCell.xib */; };
 		DE712852225E541400E12283 /* AccountDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE712851225E541400E12283 /* AccountDetailVC.swift */; };
+		DE712854225E5CAB00E12283 /* FetchedResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE712853225E5CAB00E12283 /* FetchedResultsController.swift */; };
 		DE7B38AA2257329300C17846 /* IncomeExpenseCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7B38A82257329300C17846 /* IncomeExpenseCVCell.swift */; };
 		DE7B38AB2257329300C17846 /* IncomeExpenseCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE7B38A92257329300C17846 /* IncomeExpenseCVCell.xib */; };
 		DE7B38AE2257427200C17846 /* CategorySelectCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7B38AC2257427200C17846 /* CategorySelectCVCell.swift */; };
@@ -98,6 +99,7 @@
 		DE4984B6225878A8004E4AE9 /* CategoryAccountsTotalCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAccountsTotalCVCell.swift; sourceTree = "<group>"; };
 		DE4984B7225878A8004E4AE9 /* CategoryAccountsTotalCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryAccountsTotalCVCell.xib; sourceTree = "<group>"; };
 		DE712851225E541400E12283 /* AccountDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailVC.swift; sourceTree = "<group>"; };
+		DE712853225E5CAB00E12283 /* FetchedResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsController.swift; sourceTree = "<group>"; };
 		DE7B38A82257329300C17846 /* IncomeExpenseCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseCVCell.swift; sourceTree = "<group>"; };
 		DE7B38A92257329300C17846 /* IncomeExpenseCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeExpenseCVCell.xib; sourceTree = "<group>"; };
 		DE7B38AC2257427200C17846 /* CategorySelectCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectCVCell.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 			children = (
 				DEECB02C22533430002D6C30 /* mSaving.xcdatamodeld */,
 				DE9BEFE9225DD2DE003458AD /* StorageManager.swift */,
+				DE712853225E5CAB00E12283 /* FetchedResultsController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				DEECB05B22533599002D6C30 /* AccountingVC.swift in Sources */,
 				DE21B90222578D9800B65719 /* PieChartCVCell.swift in Sources */,
 				DE712852225E541400E12283 /* AccountDetailVC.swift in Sources */,
+				DE712854225E5CAB00E12283 /* FetchedResultsController.swift in Sources */,
 				DE2BB36322539B95001D55E4 /* UICollectionView - extension.swift in Sources */,
 				DEECB02622533430002D6C30 /* AppDelegate.swift in Sources */,
 				DEA65DF9225A211800A10242 /* IconCVCell.swift in Sources */,

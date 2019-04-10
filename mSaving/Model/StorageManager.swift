@@ -193,4 +193,22 @@ class StorageManager {
         
     }
     
+    func fetchAccount() -> [Account]? {
+        
+        let request = NSFetchRequest<Account>(entityName: "Account")
+        
+        do {
+            
+            return try viewContext.fetch(request)
+            
+        } catch {
+            
+            print("fetch account fail")
+            
+            return nil
+            
+        }
+        
+    }
+    
 }
