@@ -133,19 +133,31 @@ extension SettingVC {
 
         if scrollView.isEqual(settingsCollectionView) {
 
-            segmentedBarView.frame.origin.x = settingsCollectionView.bounds.origin.x / 2
+            segmentedBarView.frame.origin.x = 119 + settingsCollectionView.bounds.origin.x * 104 / 414
 
-            if segmentedBarView.frame.origin.x == segmentedBarView.frame.width {
+            if segmentedBarView.frame.origin.x > settingsCollectionView.frame.width / 2 {
 
                 accountsButton.isSelected = false
 
                 settingButton.isSelected = true
+                
+                accountsButton.setTitleColor(.lightGray, for: .normal)
+                
+                settingButton.setTitleColor(.black, for: .normal)
+                
+                segmentedBarView.frame = CGRect(x: segmentedBarView.frame.origin.x, y: segmentedBarView.frame.origin.y, width: settingButton.frame.width, height: 3)
 
-            } else if segmentedBarView.frame.origin.x == 0 {
+            } else if segmentedBarView.frame.origin.x < settingsCollectionView.frame.width / 2 {
 
                 accountsButton.isSelected = true
 
                 settingButton.isSelected = false
+                
+                accountsButton.setTitleColor(.black, for: .normal)
+                
+                settingButton.setTitleColor(.lightGray, for: .normal)
+                
+                segmentedBarView.frame = CGRect(x: segmentedBarView.frame.origin.x, y: segmentedBarView.frame.origin.y, width: accountsButton.frame.width, height: 3)
 
             }
 

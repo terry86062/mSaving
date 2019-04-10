@@ -45,7 +45,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9XI-z4-jgI">
                                 <rect key="frame" x="0.0" y="0.0" width="87.5" height="32"/>
-                                <color key="backgroundColor" red="0.86583477259999997" green="0.40854889150000001" blue="0.31047788259999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.2936418354511261" green="0.35291594266891479" blue="0.964702308177948" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
                                         <real key="value" value="10"/>
@@ -140,6 +140,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="food" width="512" height="512"/>
+        <image name="food" width="128" height="128"/>
     </resources>
 </document>

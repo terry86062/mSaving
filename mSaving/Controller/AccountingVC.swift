@@ -80,26 +80,26 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     var selectedSubCategory = ""
 
     var subCategory = [
-        SubCategory(imageName: "book", name: "教育"),
-        SubCategory(imageName: "car", name: "交通"),
-        SubCategory(imageName: "clothes", name: "購物"),
         SubCategory(imageName: "food", name: "飲食"),
-        SubCategory(imageName: "gif", name: "送禮"),
+        SubCategory(imageName: "clothes", name: "購物"),
+        SubCategory(imageName: "car", name: "交通"),
         SubCategory(imageName: "home", name: "家庭"),
-        SubCategory(imageName: "hospital", name: "醫療"),
-        SubCategory(imageName: "invest", name: "投資"),
         SubCategory(imageName: "phone", name: "電話"),
         SubCategory(imageName: "plane", name: "旅遊"),
         SubCategory(imageName: "book", name: "教育"),
-        SubCategory(imageName: "car", name: "交通"),
-        SubCategory(imageName: "clothes", name: "購物"),
-        SubCategory(imageName: "food", name: "飲食"),
-        SubCategory(imageName: "gif", name: "送禮"),
-        SubCategory(imageName: "home", name: "家庭"),
         SubCategory(imageName: "hospital", name: "醫療"),
+        SubCategory(imageName: "gift", name: "送禮"),
         SubCategory(imageName: "invest", name: "投資"),
+        SubCategory(imageName: "food", name: "飲食"),
+        SubCategory(imageName: "clothes", name: "購物"),
+        SubCategory(imageName: "car", name: "交通"),
+        SubCategory(imageName: "home", name: "家庭"),
         SubCategory(imageName: "phone", name: "電話"),
-        SubCategory(imageName: "plane", name: "旅遊")
+        SubCategory(imageName: "plane", name: "旅遊"),
+        SubCategory(imageName: "book", name: "教育"),
+        SubCategory(imageName: "hospital", name: "醫療"),
+        SubCategory(imageName: "gift", name: "送禮"),
+        SubCategory(imageName: "invest", name: "投資")
     ]
 
     override func viewDidLoad() {
@@ -213,7 +213,11 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     }
 
     @IBAction func addAccounting(_ sender: UIBarButtonItem) {
-
+        
+        guard let text = amountTextField.text, let amount = Int64(text), amount != 0 else { return }
+        
+        guard selectedSubCategory != "" else { return }
+        
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
 
         let accounting = Accounting(context: appDelegate.persistentContainer.viewContext)
@@ -222,18 +226,16 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
 
         request.predicate = NSPredicate(format: "name = %@", "現金")
 
-//        request.sortDescriptors = [NSSortDescriptor(key: "現金", ascending: true)]
-
         do {
             let account = try appDelegate.persistentContainer.viewContext.fetch(request)
             
             accounting.occurDate = Int64(Date().timeIntervalSince1970)
             
-            accounting.amount = 50
+            accounting.amount = amount
             
             accounting.category = "支出"
             
-            accounting.subCategory = "吃飯"
+            accounting.subCategory = selectedSubCategory
 
             accounting.accountName = account[0]
             
@@ -341,6 +343,12 @@ extension AccountingVC: UICollectionViewDataSource {
             let aSubCategory = subCategory[indexPath.row]
 
             cell.initCategorySelectCVCell(imageName: aSubCategory.imageName, subCategoryName: aSubCategory.name)
+            
+            cell.selectSubCategory = {
+                
+                self.selectedSubCategory = self.subCategory[indexPath.row].name
+                
+            }
 
             return cell
 

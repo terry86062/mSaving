@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="74" height="89"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="Xtr-06-sYA">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="Xtr-06-sYA">
                         <rect key="frame" x="21" y="16" width="32" height="32"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="32" id="J5o-0Q-KFd"/>
@@ -61,6 +61,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="home" width="512" height="512"/>
+        <image name="home" width="128" height="128"/>
     </resources>
 </document>
