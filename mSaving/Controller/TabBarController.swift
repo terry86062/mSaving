@@ -100,6 +100,8 @@ class TabBarController: UITabBarController {
 
     private let tabs: [Tab] = [.saving, .chart, .accounting, .invoice, .setting]
 
+    var blackView = UIView()
+    
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -116,6 +118,14 @@ class TabBarController: UITabBarController {
 
             self.addCenterButton(withImage: newButtonImage, highlightImage: newButtonImage)
         }
+        
+        blackView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        
+        blackView.frame = UIScreen.main.bounds
+        
+        blackView.isHidden = true
+        
+        view.addSubview(blackView)
 
     }
 
@@ -192,6 +202,7 @@ class TabBarController: UITabBarController {
             let item = self.tabBar.items![Int(index)]
             item.title = ""
         }
+        
     }
 
     @objc func handleTouchTabbarCenter(sender: UIButton) {

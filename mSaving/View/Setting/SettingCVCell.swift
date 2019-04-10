@@ -44,6 +44,8 @@ class SettingCVCell: UICollectionViewCell {
 
     var setting: Setting?
 
+    var goToAddPage: (() -> Void)?
+    
     var goToDetailPage: (() -> Void)?
 
     var accounts: [SettingText] = [
@@ -121,11 +123,7 @@ extension SettingCVCell: UICollectionViewDataSource {
                         return AddSavingDetailCVCell()
                 }
 
-                cell.showSavingDetailAdd = {
-
-                    StorageManager.shared.createAccount(name: "現金", amount: 5000)
-
-                }
+                cell.showSavingDetailAdd = goToAddPage
 
                 return cell
 

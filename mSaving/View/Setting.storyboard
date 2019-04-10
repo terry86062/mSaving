@@ -814,9 +814,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AmY-Ys-ruI" customClass="TopView" customModule="mSaving" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="190"/>
-                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userImage" translatesAutoresizingMaskIntoConstraints="NO" id="qXu-gI-4TL">
                                 <rect key="frame" x="32" y="60" width="80" height="80"/>
                                 <constraints>
@@ -977,25 +974,21 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="O65-Y2-jB5" secondAttribute="trailing" id="7Yg-Yn-I8m"/>
-                            <constraint firstItem="AmY-Ys-ruI" firstAttribute="trailing" secondItem="7Jr-bw-C8n" secondAttribute="trailing" id="8Ys-eq-z3o"/>
                             <constraint firstItem="V4g-Ks-FIp" firstAttribute="centerY" secondItem="r0T-qW-C11" secondAttribute="centerY" id="APB-wc-CCg"/>
-                            <constraint firstItem="RTU-4r-uFr" firstAttribute="bottom" secondItem="AmY-Ys-ruI" secondAttribute="bottom" id="AQU-ap-CLw"/>
                             <constraint firstItem="JuT-G5-fGk" firstAttribute="bottom" secondItem="qXu-gI-4TL" secondAttribute="bottom" constant="-2" id="Az7-1P-pIo"/>
                             <constraint firstItem="bf9-Qj-Bby" firstAttribute="top" secondItem="qXu-gI-4TL" secondAttribute="top" constant="16" id="CCh-Fl-5z1"/>
                             <constraint firstItem="RTU-4r-uFr" firstAttribute="centerX" secondItem="r0T-qW-C11" secondAttribute="centerX" id="DvX-qM-CYL"/>
                             <constraint firstItem="RTU-4r-uFr" firstAttribute="width" secondItem="r0T-qW-C11" secondAttribute="width" id="E3v-ju-Ohn"/>
                             <constraint firstItem="qXu-gI-4TL" firstAttribute="top" secondItem="7Jr-bw-C8n" secondAttribute="top" constant="16" id="N5k-VQ-yFm"/>
                             <constraint firstItem="r0T-qW-C11" firstAttribute="trailing" secondItem="fNO-t4-7W5" secondAttribute="centerX" constant="-16" id="Ngx-pE-kjc"/>
-                            <constraint firstItem="AmY-Ys-ruI" firstAttribute="bottom" secondItem="r0T-qW-C11" secondAttribute="bottom" constant="1" id="UvD-UN-akp"/>
-                            <constraint firstItem="AmY-Ys-ruI" firstAttribute="top" secondItem="fNO-t4-7W5" secondAttribute="top" id="apu-bQ-wei"/>
+                            <constraint firstItem="RTU-4r-uFr" firstAttribute="bottom" secondItem="r0T-qW-C11" secondAttribute="bottom" constant="1" id="UvD-UN-akp"/>
                             <constraint firstItem="bf9-Qj-Bby" firstAttribute="leading" secondItem="qXu-gI-4TL" secondAttribute="trailing" constant="24" id="der-BP-2L1"/>
                             <constraint firstItem="r0T-qW-C11" firstAttribute="top" secondItem="qXu-gI-4TL" secondAttribute="bottom" constant="16" id="g5V-fU-oJ1"/>
                             <constraint firstItem="JuT-G5-fGk" firstAttribute="leading" secondItem="qXu-gI-4TL" secondAttribute="trailing" constant="24" id="iZj-4z-6QP"/>
                             <constraint firstItem="O65-Y2-jB5" firstAttribute="leading" secondItem="fNO-t4-7W5" secondAttribute="leading" id="l7P-Ir-8id"/>
                             <constraint firstItem="V4g-Ks-FIp" firstAttribute="leading" secondItem="fNO-t4-7W5" secondAttribute="centerX" constant="16" id="n1o-7e-GTz"/>
                             <constraint firstItem="7Jr-bw-C8n" firstAttribute="bottom" secondItem="O65-Y2-jB5" secondAttribute="bottom" id="sFU-JH-Oum"/>
-                            <constraint firstItem="O65-Y2-jB5" firstAttribute="top" secondItem="AmY-Ys-ruI" secondAttribute="bottom" constant="8" id="uXE-UI-Jxd"/>
-                            <constraint firstItem="AmY-Ys-ruI" firstAttribute="leading" secondItem="7Jr-bw-C8n" secondAttribute="leading" id="w4s-1O-RwY"/>
+                            <constraint firstItem="O65-Y2-jB5" firstAttribute="top" secondItem="RTU-4r-uFr" secondAttribute="bottom" constant="8" id="uXE-UI-Jxd"/>
                             <constraint firstItem="qXu-gI-4TL" firstAttribute="leading" secondItem="7Jr-bw-C8n" secondAttribute="leading" constant="32" id="yEk-0c-iZI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7Jr-bw-C8n"/>
@@ -1006,8 +999,8 @@
                         <outlet property="segmentedBarView" destination="RTU-4r-uFr" id="grE-Yf-NMn"/>
                         <outlet property="settingButton" destination="V4g-Ks-FIp" id="1sR-uf-6r6"/>
                         <outlet property="settingsCollectionView" destination="O65-Y2-jB5" id="jEr-R0-Si7"/>
-                        <segue destination="vnS-kl-hBB" kind="show" identifier="goToSetAccount" id="byw-Rm-fOy"/>
                         <segue destination="oqZ-b3-WQU" kind="show" identifier="goToSetCategory" id="wph-DF-5tA"/>
+                        <segue destination="vnS-kl-hBB" kind="presentation" identifier="goToAccountDetail" modalPresentationStyle="overFullScreen" id="PYr-pa-Jcw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tA0-zh-DjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1669,106 +1662,201 @@
             </objects>
             <point key="canvasLocation" x="200" y="1791"/>
         </scene>
-        <!--Saving Goal SetVC-->
+        <!--Account DetailVC-->
         <scene sceneID="B65-g5-1My">
             <objects>
-                <viewController id="vnS-kl-hBB" customClass="SavingGoalSetVC" customModule="mSaving" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vnS-kl-hBB" customClass="AccountDetailVC" customModule="mSaving" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dUX-A3-pLC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMx-cf-Eki" customClass="TopView" customModule="mSaving" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="159"/>
-                            </view>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jey-34-kn6">
-                                <rect key="frame" x="187.5" y="243" width="39" height="19.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每天你可以花" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5a-sI-ePS">
-                                <rect key="frame" x="158" y="207" width="98" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="$6000" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M7P-NZ-pGZ">
-                                <rect key="frame" x="180.5" y="123" width="53" height="20"/>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zao-VO-jWE">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
-                                        <size key="value" width="0.0" height="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
-                                        <real key="value" value="0.80000000000000004"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
-                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="類別：現金" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Enj-rp-4QY">
-                                <rect key="frame" x="161" y="50" width="92" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
-                                        <size key="value" width="0.0" height="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
-                                        <real key="value" value="0.80000000000000004"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
-                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="現金" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7QD-2Q-NIW">
-                                <rect key="frame" x="190.5" y="87" width="33" height="20"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="16"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
-                                        <size key="value" width="0.0" height="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
-                                        <real key="value" value="0.80000000000000004"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
-                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zao-VO-jWE">
-                                <rect key="frame" x="16" y="45.5" width="47" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
-                                <state key="normal" title="Cancel">
+                                <state key="normal">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8w9-mG-JQo">
+                                <rect key="frame" x="32" y="118.5" width="350" height="360"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新增帳戶" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Enj-rp-4QY">
+                                        <rect key="frame" x="134" y="32" width="82" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" name="mSGreen"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
+                                                <size key="value" width="0.0" height="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
+                                                <real key="value" value="0.80000000000000004"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="現金" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M7P-NZ-pGZ">
+                                        <rect key="frame" x="32" y="120" width="286" height="22"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
+                                                <size key="value" width="0.0" height="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
+                                                <real key="value" value="0.80000000000000004"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="帳戶名稱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7QD-2Q-NIW">
+                                        <rect key="frame" x="32" y="96" width="41" height="12"/>
+                                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="10"/>
+                                        <color key="textColor" name="mSGreen"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
+                                                <size key="value" width="0.0" height="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
+                                                <real key="value" value="0.80000000000000004"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zFh-ct-OdP">
+                                        <rect key="frame" x="32" y="150" width="286" height="1"/>
+                                        <color key="backgroundColor" name="mSGreen"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="B2C-g3-l05"/>
+                                        </constraints>
+                                    </view>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="5000" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JsO-46-yip">
+                                        <rect key="frame" x="32" y="215" width="286" height="22"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
+                                                <size key="value" width="0.0" height="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
+                                                <real key="value" value="0.80000000000000004"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
+                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="初始金額" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ac6-UN-mp3">
+                                        <rect key="frame" x="32" y="191" width="41" height="12"/>
+                                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="10"/>
+                                        <color key="textColor" name="mSGreen"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
+                                                <size key="value" width="0.0" height="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
+                                                <real key="value" value="0.80000000000000004"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
+                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VOR-8w-Bjx">
+                                        <rect key="frame" x="32" y="245" width="286" height="1"/>
+                                        <color key="backgroundColor" name="mSGreen"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="5Fi-rc-Zmh"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgT-fj-FVe">
+                                        <rect key="frame" x="87.5" y="286" width="175" height="32"/>
+                                        <color key="backgroundColor" name="mSGreen"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="GGa-or-caR"/>
+                                        </constraints>
+                                        <state key="normal" title="確認">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="lgT-fj-FVe" firstAttribute="top" secondItem="VOR-8w-Bjx" secondAttribute="bottom" constant="40" id="3xu-Uf-neq"/>
+                                    <constraint firstItem="M7P-NZ-pGZ" firstAttribute="leading" secondItem="8w9-mG-JQo" secondAttribute="leading" constant="32" id="7nC-5Z-xQc"/>
+                                    <constraint firstItem="ac6-UN-mp3" firstAttribute="leading" secondItem="8w9-mG-JQo" secondAttribute="leading" constant="32" id="BET-WA-ojb"/>
+                                    <constraint firstAttribute="trailing" secondItem="zFh-ct-OdP" secondAttribute="trailing" constant="32" id="C1J-hM-QSh"/>
+                                    <constraint firstAttribute="trailing" secondItem="VOR-8w-Bjx" secondAttribute="trailing" constant="32" id="Jdg-i1-V3t"/>
+                                    <constraint firstItem="VOR-8w-Bjx" firstAttribute="top" secondItem="JsO-46-yip" secondAttribute="bottom" constant="8" id="Mg2-ez-LEh"/>
+                                    <constraint firstItem="lgT-fj-FVe" firstAttribute="centerX" secondItem="8w9-mG-JQo" secondAttribute="centerX" id="UJO-kB-jIR"/>
+                                    <constraint firstItem="ac6-UN-mp3" firstAttribute="top" secondItem="zFh-ct-OdP" secondAttribute="bottom" constant="40" id="W6j-gk-RaD"/>
+                                    <constraint firstItem="VOR-8w-Bjx" firstAttribute="leading" secondItem="8w9-mG-JQo" secondAttribute="leading" constant="32" id="Yob-KF-5gh"/>
+                                    <constraint firstAttribute="trailing" secondItem="M7P-NZ-pGZ" secondAttribute="trailing" constant="32" id="ZN6-N0-aK7"/>
+                                    <constraint firstItem="Enj-rp-4QY" firstAttribute="top" secondItem="8w9-mG-JQo" secondAttribute="top" constant="32" id="afX-KH-liA"/>
+                                    <constraint firstItem="Enj-rp-4QY" firstAttribute="centerX" secondItem="8w9-mG-JQo" secondAttribute="centerX" id="apM-Ba-yc9"/>
+                                    <constraint firstItem="lgT-fj-FVe" firstAttribute="width" secondItem="8w9-mG-JQo" secondAttribute="width" multiplier="1:2" id="bdc-1C-xHU"/>
+                                    <constraint firstItem="JsO-46-yip" firstAttribute="top" secondItem="ac6-UN-mp3" secondAttribute="bottom" constant="12" id="c4Y-0K-CLg"/>
+                                    <constraint firstItem="zFh-ct-OdP" firstAttribute="top" secondItem="M7P-NZ-pGZ" secondAttribute="bottom" constant="8" id="flX-YM-e6I"/>
+                                    <constraint firstItem="7QD-2Q-NIW" firstAttribute="top" secondItem="Enj-rp-4QY" secondAttribute="bottom" constant="40" id="ioV-bu-C1U"/>
+                                    <constraint firstItem="JsO-46-yip" firstAttribute="leading" secondItem="8w9-mG-JQo" secondAttribute="leading" constant="32" id="mXz-dy-ZyQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="JsO-46-yip" secondAttribute="trailing" constant="32" id="nAh-9g-SHu"/>
+                                    <constraint firstItem="7QD-2Q-NIW" firstAttribute="leading" secondItem="8w9-mG-JQo" secondAttribute="leading" constant="32" id="o2Y-l6-gM2"/>
+                                    <constraint firstItem="M7P-NZ-pGZ" firstAttribute="top" secondItem="7QD-2Q-NIW" secondAttribute="bottom" constant="12" id="tWc-d6-KJe"/>
+                                    <constraint firstAttribute="height" constant="360" id="uI5-pQ-UVu"/>
+                                    <constraint firstItem="zFh-ct-OdP" firstAttribute="leading" secondItem="8w9-mG-JQo" secondAttribute="leading" constant="32" id="wfY-h3-oTA"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
                                         <size key="value" width="0.0" height="2"/>
                                     </userDefinedRuntimeAttribute>
@@ -1781,40 +1869,34 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="pop:" destination="vnS-kl-hBB" eventType="touchUpInside" id="bAA-ql-JlB"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="jMx-cf-Eki" firstAttribute="top" secondItem="dUX-A3-pLC" secondAttribute="top" id="0nw-gy-Xnc"/>
-                            <constraint firstItem="x5a-sI-ePS" firstAttribute="top" secondItem="jMx-cf-Eki" secondAttribute="bottom" constant="48" id="4M3-YL-zzl"/>
-                            <constraint firstItem="7QD-2Q-NIW" firstAttribute="top" secondItem="Enj-rp-4QY" secondAttribute="bottom" constant="16" id="DZj-2c-hZF"/>
-                            <constraint firstItem="Zao-VO-jWE" firstAttribute="leading" secondItem="K7i-kn-RQM" secondAttribute="leading" constant="16" id="GeC-c1-2l8"/>
-                            <constraint firstItem="jey-34-kn6" firstAttribute="top" secondItem="x5a-sI-ePS" secondAttribute="bottom" constant="16" id="Icg-TM-jTU"/>
-                            <constraint firstItem="jMx-cf-Eki" firstAttribute="trailing" secondItem="K7i-kn-RQM" secondAttribute="trailing" id="ROI-7k-ca1"/>
-                            <constraint firstItem="jMx-cf-Eki" firstAttribute="bottom" secondItem="M7P-NZ-pGZ" secondAttribute="bottom" constant="16" id="RnX-dy-lRB"/>
-                            <constraint firstItem="x5a-sI-ePS" firstAttribute="centerX" secondItem="dUX-A3-pLC" secondAttribute="centerX" id="TgX-cp-hmD"/>
-                            <constraint firstItem="jey-34-kn6" firstAttribute="centerX" secondItem="dUX-A3-pLC" secondAttribute="centerX" id="Vci-DS-Hbc"/>
-                            <constraint firstItem="Enj-rp-4QY" firstAttribute="top" secondItem="K7i-kn-RQM" secondAttribute="top" constant="6" id="Xbq-d9-KCA"/>
-                            <constraint firstItem="M7P-NZ-pGZ" firstAttribute="top" secondItem="7QD-2Q-NIW" secondAttribute="bottom" constant="16" id="aC6-GZ-TVb"/>
-                            <constraint firstItem="7QD-2Q-NIW" firstAttribute="centerX" secondItem="dUX-A3-pLC" secondAttribute="centerX" id="hQa-Bo-uaH"/>
-                            <constraint firstItem="M7P-NZ-pGZ" firstAttribute="centerX" secondItem="dUX-A3-pLC" secondAttribute="centerX" id="iPy-Zo-Ugi"/>
-                            <constraint firstItem="jMx-cf-Eki" firstAttribute="leading" secondItem="K7i-kn-RQM" secondAttribute="leading" id="mtT-fa-c7r"/>
-                            <constraint firstItem="Enj-rp-4QY" firstAttribute="centerX" secondItem="dUX-A3-pLC" secondAttribute="centerX" id="rNm-BU-oK1"/>
-                            <constraint firstItem="Zao-VO-jWE" firstAttribute="centerY" secondItem="Enj-rp-4QY" secondAttribute="centerY" id="rce-nq-9b8"/>
+                            <constraint firstItem="Zao-VO-jWE" firstAttribute="leading" secondItem="dUX-A3-pLC" secondAttribute="leading" id="0g1-kC-LpE"/>
+                            <constraint firstItem="Zao-VO-jWE" firstAttribute="top" secondItem="dUX-A3-pLC" secondAttribute="top" id="Szc-4d-pSc"/>
+                            <constraint firstItem="8w9-mG-JQo" firstAttribute="centerY" secondItem="dUX-A3-pLC" secondAttribute="bottom" multiplier="1:3" id="WK9-PC-coL"/>
+                            <constraint firstItem="K7i-kn-RQM" firstAttribute="trailing" secondItem="8w9-mG-JQo" secondAttribute="trailing" constant="32" id="WTf-8r-Ibh"/>
+                            <constraint firstItem="8w9-mG-JQo" firstAttribute="leading" secondItem="K7i-kn-RQM" secondAttribute="leading" constant="32" id="YUw-U6-1aF"/>
+                            <constraint firstAttribute="bottom" secondItem="Zao-VO-jWE" secondAttribute="bottom" id="lKB-7o-7Nf"/>
+                            <constraint firstAttribute="trailing" secondItem="Zao-VO-jWE" secondAttribute="trailing" id="qEz-zr-4Ea"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K7i-kn-RQM"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
+                                <real key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
-                    <connections>
-                        <outlet property="textField" destination="M7P-NZ-pGZ" id="Z9G-pI-0wi"/>
-                    </connections>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BQq-hy-31O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1761" y="1398"/>
+            <point key="canvasLocation" x="1760.8695652173915" y="1397.5446428571429"/>
         </scene>
         <!--CategoryVC-->
         <scene sceneID="tIx-vP-M5F">
@@ -2208,6 +2290,9 @@
         <image name="food" width="128" height="128"/>
         <image name="star" width="512" height="512"/>
         <image name="userImage" width="512" height="512"/>
+        <namedColor name="mSGreen">
+            <color red="0.2196078431372549" green="0.52941176470588236" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="mSYellow">
             <color red="0.99215686274509807" green="0.87450980392156863" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

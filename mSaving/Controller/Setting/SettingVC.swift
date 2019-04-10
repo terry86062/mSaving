@@ -41,6 +41,18 @@ class SettingVC: UIViewController {
         settingsCollectionView.helpRegister(cell: SettingCVCell())
 
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "goToAccountDetail" {
+            
+            guard let tabBarVC = tabBarController as? TabBarController else { return }
+            
+            tabBarVC.blackView.isHidden = false
+            
+        }
+        
+    }
 
 }
 
@@ -64,9 +76,15 @@ extension SettingVC: UICollectionViewDataSource {
             cell.initSettingCVCell(whichSetting: .accounts)
 
             cell.goToDetailPage = {
+                
+                self.performSegue(withIdentifier: "goToAccountDetail", sender: nil)
 
-                self.performSegue(withIdentifier: "goToSetAccount", sender: nil)
-
+            }
+            
+            cell.goToAddPage = {
+                
+                self.performSegue(withIdentifier: "goToAccountDetail", sender: nil)
+                
             }
 
         } else {

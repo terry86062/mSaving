@@ -22,6 +22,7 @@
 		DE4984B522586A0F004E4AE9 /* CategoryAccountsDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4984B422586A0F004E4AE9 /* CategoryAccountsDetailVC.swift */; };
 		DE4984B8225878A8004E4AE9 /* CategoryAccountsTotalCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4984B6225878A8004E4AE9 /* CategoryAccountsTotalCVCell.swift */; };
 		DE4984B9225878A8004E4AE9 /* CategoryAccountsTotalCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE4984B7225878A8004E4AE9 /* CategoryAccountsTotalCVCell.xib */; };
+		DE712852225E541400E12283 /* AccountDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE712851225E541400E12283 /* AccountDetailVC.swift */; };
 		DE7B38AA2257329300C17846 /* IncomeExpenseCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7B38A82257329300C17846 /* IncomeExpenseCVCell.swift */; };
 		DE7B38AB2257329300C17846 /* IncomeExpenseCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE7B38A92257329300C17846 /* IncomeExpenseCVCell.xib */; };
 		DE7B38AE2257427200C17846 /* CategorySelectCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7B38AC2257427200C17846 /* CategorySelectCVCell.swift */; };
@@ -96,6 +97,7 @@
 		DE4984B422586A0F004E4AE9 /* CategoryAccountsDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAccountsDetailVC.swift; sourceTree = "<group>"; };
 		DE4984B6225878A8004E4AE9 /* CategoryAccountsTotalCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAccountsTotalCVCell.swift; sourceTree = "<group>"; };
 		DE4984B7225878A8004E4AE9 /* CategoryAccountsTotalCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryAccountsTotalCVCell.xib; sourceTree = "<group>"; };
+		DE712851225E541400E12283 /* AccountDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailVC.swift; sourceTree = "<group>"; };
 		DE7B38A82257329300C17846 /* IncomeExpenseCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseCVCell.swift; sourceTree = "<group>"; };
 		DE7B38A92257329300C17846 /* IncomeExpenseCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeExpenseCVCell.xib; sourceTree = "<group>"; };
 		DE7B38AC2257427200C17846 /* CategorySelectCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectCVCell.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				DEECB05122533599002D6C30 /* SettingVC.swift */,
+				DE712851225E541400E12283 /* AccountDetailVC.swift */,
 				DEAA6A282259984B00224B26 /* CategoryVC.swift */,
 				DEA65DF52259F5F800A10242 /* SetCategoryVC.swift */,
 			);
@@ -588,6 +591,7 @@
 				DEECB02E22533430002D6C30 /* mSaving.xcdatamodeld in Sources */,
 				DEECB05B22533599002D6C30 /* AccountingVC.swift in Sources */,
 				DE21B90222578D9800B65719 /* PieChartCVCell.swift in Sources */,
+				DE712852225E541400E12283 /* AccountDetailVC.swift in Sources */,
 				DE2BB36322539B95001D55E4 /* UICollectionView - extension.swift in Sources */,
 				DEECB02622533430002D6C30 /* AppDelegate.swift in Sources */,
 				DEA65DF9225A211800A10242 /* IconCVCell.swift in Sources */,
