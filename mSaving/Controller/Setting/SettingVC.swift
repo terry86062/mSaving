@@ -21,6 +21,8 @@ class SettingVC: UIViewController {
         }
 
     }
+    
+    var settingCollectionView: UICollectionView?
 
     @IBOutlet weak var segmentedBarView: UIView!
 
@@ -82,6 +84,8 @@ extension SettingVC: UICollectionViewDataSource {
         guard let cell = settingsCollectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: SettingCVCell.self),
             for: indexPath) as? SettingCVCell else { return SettingCVCell() }
+        
+        settingCollectionView = cell.settingCollectionView
 
         if indexPath.row == 0 {
 

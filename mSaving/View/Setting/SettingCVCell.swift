@@ -48,7 +48,7 @@ class SettingCVCell: UICollectionViewCell {
                                         collectionView: settingCollectionView)
         
     }()
-
+    
     var setting: Setting?
 
     var goToAddPage: (() -> Void)?
@@ -71,11 +71,13 @@ class SettingCVCell: UICollectionViewCell {
 
     func setUpCollectionView() {
 
+        settingCollectionView.helpRegisterView(cell: AccountDateCVCell())
+        
         settingCollectionView.helpRegister(cell: AccountDateCVCell())
 
         settingCollectionView.helpRegister(cell: AddSavingDetailCVCell())
-
-        settingCollectionView.helpRegister(cell: AccountCVCell())
+        
+        settingCollectionView.contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 24, right: 16)
 
     }
 
@@ -101,7 +103,7 @@ extension SettingCVCell: UICollectionViewDataSource {
             
             guard let count = fetchedResultsController.sections?[0].numberOfObjects else { return 0 }
             
-            return count + 2
+            return count + 1
 
         case .setting:
 
@@ -119,38 +121,10 @@ extension SettingCVCell: UICollectionViewDataSource {
         switch set {
 
         case .accounts:
-
-            guard let count = fetchedResultsController.sections?[0].numberOfObjects else {
-                return UICollectionViewCell()
-            }
             
-            if indexPath.row == 0 {
-                
-                guard let cell = settingCollectionView.dequeueReusableCell(
-                    withReuseIdentifier: String(describing: AccountDateCVCell.self),
-                    for: indexPath) as? AccountDateCVCell else {
-                        return AccountDateCVCell()
-                }
-                
-                var totalAmount = 0
-                
-                if count > 0 {
-                    
-                    for index in 0...count - 1 {
-                        
-                        guard let account = fetchedResultsController.fetchedObjects?[index] else { return AccountDateCVCell() }
-                        
-                        totalAmount += Int(account.currentValue)
-                        
-                    }
-                    
-                }
-                
-                cell.initAccountDateCVCell(style: .setting(leadingText: "總資產", trailingText: String(totalAmount)))
-                
-                return cell
-                
-            } else if indexPath.row == count + 1 {
+            guard let count = fetchedResultsController.sections?[0].numberOfObjects else { return UICollectionViewCell() }
+            
+            if indexPath.row == count {
 
                 guard let cell = settingCollectionView.dequeueReusableCell(
                     withReuseIdentifier: String(describing: AddSavingDetailCVCell.self),
@@ -203,6 +177,34 @@ extension SettingCVCell: UICollectionViewDataSource {
         }
 
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        guard let headerView = settingCollectionView.dequeueReusableSupplementaryView(
+            ofKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: String(describing: AccountDateCVCell.self),
+            for: indexPath) as? AccountDateCVCell else { return UICollectionReusableView() }
+        
+        var totalAmount = 0
+        
+        guard let count = fetchedResultsController.sections?[0].numberOfObjects else { return UICollectionViewCell() }
+        
+        if count > 0 {
+            
+            for index in 0...count - 1 {
+                
+                guard let account = fetchedResultsController.fetchedObjects?[index] else { return AccountDateCVCell() }
+                
+                totalAmount += Int(account.currentValue)
+                
+            }
+            
+        }
+        
+        headerView.initAccountDateCVCell(style: .setting(leadingText: "總資產", trailingText: String(totalAmount)))
+        
+        return headerView
+    }
 
 }
 
@@ -246,6 +248,12 @@ extension SettingCVCell: UICollectionViewDelegateFlowLayout {
 
         }
 
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        return CGSize(width: 0, height: 56)
+        
     }
 
 }

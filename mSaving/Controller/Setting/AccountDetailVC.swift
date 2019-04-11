@@ -38,6 +38,8 @@ class AccountDetailVC: UIViewController {
         
         dismiss(animated: true, completion: nil)
         
+        delegate?.settingCollectionView?.collectionViewLayout.invalidateLayout()
+        
         hideTabBarVCBlackView()
         
     }
@@ -54,7 +56,7 @@ class AccountDetailVC: UIViewController {
             
             if let account = StorageManager.shared.fetchAccount()?.last {
                 
-                StorageManager.shared.createAccount(name: text, amount: amount, priority: account.priority)
+                StorageManager.shared.createAccount(name: text, amount: amount, priority: account.priority + 1)
                 
             } else {
                 

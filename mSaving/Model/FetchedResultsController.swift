@@ -20,11 +20,11 @@ class FetchedResultsController: NSFetchedResultsController<Account> {
         
         let request = NSFetchRequest<Account>(entityName: "Account")
         
-        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key: "priority", ascending: true)]
         
         super.init(fetchRequest: request, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         
-//        self.delegate = self
+        self.delegate = self
         
         tryFetch()
     }
@@ -37,34 +37,36 @@ class FetchedResultsController: NSFetchedResultsController<Account> {
         }
     }
 }
-/*
+
 extension FetchedResultsController: NSFetchedResultsControllerDelegate {
     // MARK: - Fetched Results Controller Delegate
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        collectionView.beginUpdates()
-    }
+//    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        collectionView.beginUpdates()
+//    }
     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any,
+                    at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
         switch type {
         case .insert:
             guard let newIndexPath = newIndexPath else { return }
-            collectionView.insertRows(at: [newIndexPath], with: .automatic)
+            collectionView.insertItems(at: [newIndexPath])
         case .delete:
             guard let indexPath = indexPath else { return }
-            collectionView.deleteRows(at: [indexPath], with: .automatic)
+            collectionView.deleteItems(at: [indexPath])
         case .update:
             guard let indexPath = indexPath else { return }
-            collectionView.reloadRows(at: [indexPath], with: .none)
+            collectionView.reloadItems(at: [indexPath])
         case .move:
             guard let indexPath = indexPath, let newIndexPath = newIndexPath else { return }
-            collectionView.moveRow(at: indexPath, to: newIndexPath)
+            collectionView.moveItem(at: indexPath, to: newIndexPath)
         }
     }
     
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        
-        collectionView.endUpdates()
-    }
+//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//
+//        collectionView.endUpdates()
+//    }
 }
-*/
