@@ -29,6 +29,8 @@ class SettingVC: UIViewController {
     @IBOutlet weak var settingButton: UIButton!
     
     var accountArray: [Account] = []
+    
+    var isAddingNewAccount = false
 
     override func viewDidLoad() {
 
@@ -55,6 +57,10 @@ class SettingVC: UIViewController {
             guard let tabBarVC = tabBarController as? TabBarController else { return }
             
             tabBarVC.blackView.isHidden = false
+            
+            guard let accountDetailVC = segue.destination as? AccountDetailVC else { return }
+            
+            accountDetailVC.delegate = self
             
         }
         
@@ -83,11 +89,15 @@ extension SettingVC: UICollectionViewDataSource {
 
             cell.goToDetailPage = {
                 
+                self.isAddingNewAccount = false
+                
                 self.performSegue(withIdentifier: "goToAccountDetail", sender: nil)
 
             }
             
             cell.goToAddPage = {
+                
+                self.isAddingNewAccount = true
                 
                 self.performSegue(withIdentifier: "goToAccountDetail", sender: nil)
                 

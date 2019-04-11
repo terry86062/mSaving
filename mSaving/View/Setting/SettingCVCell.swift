@@ -41,20 +41,19 @@ class SettingCVCell: UICollectionViewCell {
         }
 
     }
+    
+    lazy var fetchedResultsController = {
+        
+        return FetchedResultsController(managedObjectContext: StorageManager.shared.viewContext,
+                                        collectionView: settingCollectionView)
+        
+    }()
 
     var setting: Setting?
 
     var goToAddPage: (() -> Void)?
     
     var goToDetailPage: (() -> Void)?
-
-    var accounts: [SettingText] = [
-        SettingText(leadingText: "總資產", trailingText: "10000"),
-        SettingText(leadingText: "現金", trailingText: "3000"),
-        SettingText(leadingText: "銀行", trailingText: "7000"),
-        SettingText(leadingText: "悠遊卡", trailingText: "100"),
-        SettingText(leadingText: "隨行卡", trailingText: "500")
-    ]
 
     var settings: [SettingText] = [
         SettingText(leadingText: "新增類別", trailingText: ">"),
@@ -99,8 +98,10 @@ extension SettingCVCell: UICollectionViewDataSource {
         switch set {
 
         case .accounts:
-
-            return accountArray.count + 1
+            
+            guard let count = fetchedResultsController.sections?[0].numberOfObjects else { return 0 }
+            
+            return count + 2
 
         case .setting:
 
@@ -119,7 +120,37 @@ extension SettingCVCell: UICollectionViewDataSource {
 
         case .accounts:
 
-            if indexPath.row == accountArray.count {
+            guard let count = fetchedResultsController.sections?[0].numberOfObjects else {
+                return UICollectionViewCell()
+            }
+            
+            if indexPath.row == 0 {
+                
+                guard let cell = settingCollectionView.dequeueReusableCell(
+                    withReuseIdentifier: String(describing: AccountDateCVCell.self),
+                    for: indexPath) as? AccountDateCVCell else {
+                        return AccountDateCVCell()
+                }
+                
+                var totalAmount = 0
+                
+                if count > 0 {
+                    
+                    for index in 0...count - 1 {
+                        
+                        guard let account = fetchedResultsController.fetchedObjects?[index] else { return AccountDateCVCell() }
+                        
+                        totalAmount += Int(account.currentValue)
+                        
+                    }
+                    
+                }
+                
+                cell.initAccountDateCVCell(style: .setting(leadingText: "總資產", trailingText: String(totalAmount)))
+                
+                return cell
+                
+            } else if indexPath.row == count + 1 {
 
                 guard let cell = settingCollectionView.dequeueReusableCell(
                     withReuseIdentifier: String(describing: AddSavingDetailCVCell.self),
@@ -138,8 +169,8 @@ extension SettingCVCell: UICollectionViewDataSource {
                     for: indexPath) as? AccountDateCVCell else {
                         return AccountDateCVCell()
                 }
-
-                let account = accountArray[indexPath.row]
+                
+                let account = fetchedResultsController.object(at: indexPath)
                 
                 guard let name = account.name else { return cell }
                 

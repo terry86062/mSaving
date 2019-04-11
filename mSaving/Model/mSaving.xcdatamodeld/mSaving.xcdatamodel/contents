@@ -4,13 +4,14 @@
         <attribute name="currentValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="initialValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="priority" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="accounting" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Accounting" inverseName="accountName" inverseEntity="Accounting" syncable="YES"/>
     </entity>
     <entity name="Accounting" representedClassName="Accounting" syncable="YES" codeGenerationType="class">
         <attribute name="amount" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="occurDate" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="accountName" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="accounting" inverseEntity="Account" syncable="YES"/>
+        <relationship name="accountName" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="accounting" inverseEntity="Account" syncable="YES"/>
         <relationship name="expenseSubCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExpenseCategory" inverseName="accounting" inverseEntity="ExpenseCategory" syncable="YES"/>
         <relationship name="incomeSubCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IncomeCategory" inverseName="accounting" inverseEntity="IncomeCategory" syncable="YES"/>
     </entity>
@@ -38,10 +39,10 @@
         <relationship name="expenseSubCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExpenseCategory" inverseName="saving" inverseEntity="ExpenseCategory" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Account" positionX="-292.5859375" positionY="-30.87890625" width="128" height="105"/>
-        <element name="Accounting" positionX="-597.63671875" positionY="-30.9453125" width="128" height="135"/>
-        <element name="ExpenseCategory" positionX="-432" positionY="126" width="128" height="150"/>
-        <element name="IncomeCategory" positionX="-423" positionY="135" width="128" height="135"/>
-        <element name="Saving" positionX="-547.99609375" positionY="280.58984375" width="128" height="105"/>
+        <element name="Account" positionX="-511.30859375" positionY="-167.48046875" width="128" height="120"/>
+        <element name="Accounting" positionX="-738.33203125" positionY="79.31640625" width="128" height="135"/>
+        <element name="ExpenseCategory" positionX="-324.62890625" positionY="-53.10546875" width="128" height="150"/>
+        <element name="IncomeCategory" positionX="-717.62890625" positionY="341.08203125" width="128" height="135"/>
+        <element name="Saving" positionX="-547.4609375" positionY="240.1953125" width="128" height="105"/>
     </elements>
 </model>

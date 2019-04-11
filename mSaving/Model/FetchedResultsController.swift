@@ -15,8 +15,14 @@ class FetchedResultsController: NSFetchedResultsController<Account> {
     private let collectionView: UICollectionView
     
     init(managedObjectContext: NSManagedObjectContext, collectionView: UICollectionView) {
+        
         self.collectionView = collectionView
-        super.init(fetchRequest: Account.fetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        let request = NSFetchRequest<Account>(entityName: "Account")
+        
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        
+        super.init(fetchRequest: request, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         
 //        self.delegate = self
         

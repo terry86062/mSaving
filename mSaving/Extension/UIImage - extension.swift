@@ -45,8 +45,6 @@ enum ImageAsset: String {
 
 extension UIImage {
 
-    
-    
     func resizeImage(targetSize: CGSize = CGSize(width: 36, height: 36)) -> UIImage {
 
         let size = self.size

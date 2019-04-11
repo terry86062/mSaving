@@ -126,15 +126,17 @@ class StorageManager {
         
     }
     
-    func createAccount(name: String, amount: Int) {
+    func createAccount(name: String, amount: Int64, priority: Int64) {
         
         let account = Account(context: viewContext)
         
-        account.initialValue = Int64(amount)
+        account.initialValue = amount
         
-        account.currentValue = Int64(amount)
+        account.currentValue = amount
         
         account.name = name
+        
+        account.priority = priority
         
         saveContext()
         
@@ -196,6 +198,8 @@ class StorageManager {
     func fetchAccount() -> [Account]? {
         
         let request = NSFetchRequest<Account>(entityName: "Account")
+        
+        request.sortDescriptors = [NSSortDescriptor(key: "priority", ascending: true)]
         
         do {
             

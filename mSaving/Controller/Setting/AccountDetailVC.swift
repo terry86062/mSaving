@@ -14,6 +14,8 @@ class AccountDetailVC: UIViewController {
     
     @IBOutlet weak var accountAmountTextField: UITextField!
     
+    weak var delegate: SettingVC?
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -32,9 +34,35 @@ class AccountDetailVC: UIViewController {
     
     @IBAction func confirm(_ sender: UIButton) {
         
+        saveAccount()
+        
         dismiss(animated: true, completion: nil)
         
         hideTabBarVCBlackView()
+        
+    }
+    
+    func saveAccount() {
+        
+        guard let delegate = delegate else { return }
+        
+        guard let text = accountTextField.text, text != "" else { return }
+        
+        guard let amountText = accountAmountTextField.text, let amount = Int64(amountText) else { return }
+        
+        if delegate.isAddingNewAccount {
+            
+            if let account = StorageManager.shared.fetchAccount()?.last {
+                
+                StorageManager.shared.createAccount(name: text, amount: amount, priority: account.priority)
+                
+            } else {
+                
+                StorageManager.shared.createAccount(name: text, amount: amount, priority: 0)
+                
+            }
+
+        }
         
     }
     
