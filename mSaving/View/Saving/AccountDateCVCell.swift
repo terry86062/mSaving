@@ -8,14 +8,6 @@
 
 import UIKit
 
-enum AccountDateStyle {
-
-    case accountDate(date: String, amount: String)
-
-    case setting(leadingText: String, trailingText: String)
-
-}
-
 class AccountDateCVCell: UICollectionViewCell {
 
     @IBOutlet weak var leadingLabel: UILabel!
@@ -30,29 +22,15 @@ class AccountDateCVCell: UICollectionViewCell {
 
     }
 
-    func initAccountDateCVCell(style: AccountDateStyle) {
+    func initAccountDateCVCell(leadingText: String, trailingText: String, trailingColor: UIColor, havingShadow: Bool) {
 
-        switch style {
-
-        case .accountDate(let date, let amount):
-
-            leadingLabel.text = date
-
-            trailingLabel.text = amount
-
-            setShadow(bool: false)
-
-        case .setting(let leadingText, let trailingText):
-
-            leadingLabel.text = leadingText
-
-            trailingLabel.text = trailingText
-
-            trailingLabel.textColor = .black
-
-            setShadow(bool: true)
-
-        }
+        leadingLabel.text = leadingText
+        
+        trailingLabel.text = trailingText
+        
+        trailingLabel.textColor = trailingColor
+        
+        setShadow(bool: havingShadow)
 
     }
 

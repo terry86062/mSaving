@@ -11,7 +11,9 @@ import UIKit
 class AddSavingDetailCVCell: UICollectionViewCell {
 
     @IBOutlet weak var plusImageView: UIImageView!
-
+    
+    @IBOutlet weak var addLabel: UILabel!
+    
     var showSavingDetailAdd: (() -> Void)?
 
     override func awakeFromNib() {
@@ -20,6 +22,12 @@ class AddSavingDetailCVCell: UICollectionViewCell {
 
         plusImageView.tintColor = .lightGray
 
+    }
+    
+    func initAddSavingDetailCVCell(addText: String) {
+        
+        addLabel.text = addText
+        
     }
 
     @IBAction func goToSavingDetailAdd(_ sender: UIButton) {

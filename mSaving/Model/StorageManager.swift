@@ -225,11 +225,61 @@ class StorageManager {
             
             let account = try viewContext.fetch(request)
             
+            let request = NSFetchRequest<Account>(entityName: "Account")
+            
+            request.sortDescriptors = [NSSortDescriptor(key: "priority", ascending: true)]
+            
+            do {
+                
+                let accounts = try viewContext.fetch(request)
+                
+                var priority = Int(account[0].priority)
+                
+                while priority + 1 < accounts.count {
+                    
+                    accounts[priority + 1].priority -= 1
+                    
+                    priority += 1
+                    
+                }
+                
+            } catch {
+                
+                print(error)
+                
+            }
+            
             viewContext.delete(account[0])
             
         } catch {
             
             print(error)
+            
+        }
+        
+        saveContext()
+        
+    }
+    
+    func reviseAccount(accountName: String, newName: String, newInitialValue: Int64) {
+        
+        let request = NSFetchRequest<Account>(entityName: "Account")
+        
+        request.predicate = NSPredicate(format: "name = %@", accountName)
+        
+        do {
+            
+            let account = try viewContext.fetch(request)
+            
+            account[0].name = newName
+            
+            account[0].currentValue = account[0].currentValue + newInitialValue - account[0].initialValue
+            
+            account[0].initialValue = newInitialValue
+            
+        } catch {
+            
+            print("revise account fail")
             
         }
         

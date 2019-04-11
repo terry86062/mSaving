@@ -14,6 +14,8 @@ class AccountDetailVC: UIViewController {
     
     @IBOutlet weak var accountAmountTextField: UITextField!
     
+    var originalAccountName = ""
+    
     weak var delegate: SettingVC?
     
     override func viewDidLoad() {
@@ -22,7 +24,9 @@ class AccountDetailVC: UIViewController {
         
         accountTextField.text = delegate?.selectedAccountName
         
-        accountAmountTextField.text = delegate?.selectedAccountCurrentValue
+        originalAccountName = delegate?.selectedAccountName ?? ""
+        
+        accountAmountTextField.text = delegate?.selectedAccountInitialValue
         
         accountTextField.becomeFirstResponder()
 
@@ -48,7 +52,7 @@ class AccountDetailVC: UIViewController {
         
         delegate?.selectedAccountName = ""
         
-        delegate?.selectedAccountCurrentValue = ""
+        delegate?.selectedAccountInitialValue = ""
         
         dismiss(animated: true, completion: nil)
         
@@ -76,6 +80,10 @@ class AccountDetailVC: UIViewController {
                 
             }
 
+        } else {
+            
+            StorageManager.shared.reviseAccount(accountName: originalAccountName, newName: text, newInitialValue: amount)
+            
         }
         
     }

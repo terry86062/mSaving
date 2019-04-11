@@ -58,7 +58,7 @@ class SettingVC: UIViewController {
     
     var selectedAccountName = ""
     
-    var selectedAccountCurrentValue = ""
+    var selectedAccountInitialValue = ""
     
     var accountArray: [Account] = []
     
@@ -159,6 +159,8 @@ extension SettingVC: UICollectionViewDataSource {
                         return AddSavingDetailCVCell()
                 }
                 
+                cell.initAddSavingDetailCVCell(addText: "新增帳戶")
+                
                 cell.showSavingDetailAdd = {
                     
                     self.isAddingNewAccount = true
@@ -180,15 +182,16 @@ extension SettingVC: UICollectionViewDataSource {
                 
                 guard let name = anAccount.name else { return cell }
                 
-                cell.initAccountDateCVCell(style: .setting(
-                    leadingText: name,
-                    trailingText: String(anAccount.currentValue)))
+                cell.initAccountDateCVCell(leadingText: name,
+                                           trailingText: String(anAccount.currentValue),
+                                           trailingColor: .black,
+                                           havingShadow: true)
                 
                 cell.goToDetialPage = {
                     
                     self.selectedAccountName = name
                     
-                    self.selectedAccountCurrentValue = String(anAccount.currentValue)
+                    self.selectedAccountInitialValue = String(anAccount.initialValue)
                     
                     self.isAddingNewAccount = false
                     
@@ -208,9 +211,10 @@ extension SettingVC: UICollectionViewDataSource {
                     return AccountDateCVCell()
             }
             
-            cell.initAccountDateCVCell(style: .setting(
-                leadingText: settings[indexPath.row].leadingText,
-                trailingText: settings[indexPath.row].trailingText))
+            cell.initAccountDateCVCell(leadingText: settings[indexPath.row].leadingText,
+                                       trailingText: settings[indexPath.row].trailingText,
+                                       trailingColor: .black,
+                                       havingShadow: true)
             
             cell.goToDetialPage = {
                 
@@ -245,7 +249,10 @@ extension SettingVC: UICollectionViewDataSource {
             
         }
         
-        headerView.initAccountDateCVCell(style: .setting(leadingText: "總資產", trailingText: String(totalAmount)))
+        headerView.initAccountDateCVCell(leadingText: "總資產",
+                                         trailingText: String(totalAmount),
+                                         trailingColor: .black,
+                                         havingShadow: true)
         
         return headerView
     }
