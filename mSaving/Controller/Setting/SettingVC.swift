@@ -60,10 +60,9 @@ class SettingVC: UIViewController {
     
     var selectedAccountCurrentValue = ""
     
-    lazy var fetchedResultsController = {
-        return FetchedResultsController(managedObjectContext: StorageManager.shared.viewContext,
-                                        collectionView: accountsCollectionView)
-    }()
+    var accountArray: [Account] = []
+    
+    var accountArrayCount = 0
     
     var settings: [SettingText] = [
         SettingText(leadingText: "新增類別", trailingText: ">"),
@@ -78,7 +77,13 @@ class SettingVC: UIViewController {
         setUpCollectionView()
         
         scrollView.delegate = self
-
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        fetchData()
+        
     }
 
     func setUpCollectionView() {
@@ -110,6 +115,18 @@ class SettingVC: UIViewController {
         }
         
     }
+    
+    func fetchData() {
+        
+        guard let accountArray = StorageManager.shared.fetchAccount() else { return }
+        
+        self.accountArray = accountArray
+        
+        accountArrayCount = accountArray.count
+        
+        accountsCollectionView.reloadData()
+        
+    }
 
 }
 
@@ -119,9 +136,7 @@ extension SettingVC: UICollectionViewDataSource {
 
         if collectionView == accountsCollectionView {
             
-            guard let count = fetchedResultsController.sections?[0].numberOfObjects else { return 0 }
-            
-            return count + 1
+            return accountArrayCount + 1
             
         } else {
             
@@ -136,9 +151,7 @@ extension SettingVC: UICollectionViewDataSource {
         
         if collectionView == accountsCollectionView {
             
-            guard let count = fetchedResultsController.sections?[0].numberOfObjects else { return UICollectionViewCell() }
-            
-            if indexPath.row == count {
+            if indexPath.row == accountArrayCount {
                 
                 guard let cell = accountsCollectionView.dequeueReusableCell(
                     withReuseIdentifier: String(describing: AddSavingDetailCVCell.self),
@@ -163,19 +176,19 @@ extension SettingVC: UICollectionViewDataSource {
                         return AccountDateCVCell()
                 }
                 
-                let account = fetchedResultsController.object(at: indexPath)
+                let anAccount = accountArray[indexPath.row]
                 
-                guard let name = account.name else { return cell }
+                guard let name = anAccount.name else { return cell }
                 
                 cell.initAccountDateCVCell(style: .setting(
                     leadingText: name,
-                    trailingText: String(account.currentValue)))
+                    trailingText: String(anAccount.currentValue)))
                 
                 cell.goToDetialPage = {
                     
                     self.selectedAccountName = name
                     
-                    self.selectedAccountCurrentValue = String(account.currentValue)
+                    self.selectedAccountCurrentValue = String(anAccount.currentValue)
                     
                     self.isAddingNewAccount = false
                     
@@ -222,15 +235,11 @@ extension SettingVC: UICollectionViewDataSource {
         
         var totalAmount = 0
         
-        guard let count = fetchedResultsController.sections?[0].numberOfObjects else { return UICollectionViewCell() }
-        
-        if count > 0 {
+        if accountArrayCount > 0 {
             
-            for index in 0...count - 1 {
+            for index in 0...accountArrayCount - 1 {
                 
-                guard let account = fetchedResultsController.fetchedObjects?[index] else { return AccountDateCVCell() }
-                
-                totalAmount += Int(account.currentValue)
+                totalAmount += Int(accountArray[index].currentValue)
                 
             }
             

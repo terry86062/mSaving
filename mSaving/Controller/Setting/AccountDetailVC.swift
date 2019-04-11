@@ -38,10 +38,10 @@ class AccountDetailVC: UIViewController {
         
         saveAccount()
         
-        delegate?.accountsCollectionView.reloadItems(at: [IndexPath(row: 0, section: 0)])
+        delegate?.fetchData()
         
         helpDismiss()
-        
+
     }
     
     func helpDismiss() {
@@ -94,7 +94,7 @@ class AccountDetailVC: UIViewController {
         
         StorageManager.shared.deleteAccount(accountName: text)
         
-        delegate?.accountsCollectionView.reloadItems(at: [IndexPath(row: 0, section: 0)])
+        delegate?.fetchData()
         
         helpDismiss()
         
