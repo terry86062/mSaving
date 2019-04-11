@@ -20,15 +20,17 @@ class AccountDetailVC: UIViewController {
         
         super.viewDidLoad()
         
+        accountTextField.text = delegate?.selectedAccountName
+        
+        accountAmountTextField.text = delegate?.selectedAccountCurrentValue
+        
         accountTextField.becomeFirstResponder()
 
     }
 
     @IBAction func dismiss(_ sender: UIButton) {
         
-        dismiss(animated: true, completion: nil)
-        
-        hideTabBarVCBlackView()
+        helpDismiss()
         
     }
     
@@ -36,9 +38,19 @@ class AccountDetailVC: UIViewController {
         
         saveAccount()
         
-        dismiss(animated: true, completion: nil)
+        delegate?.accountsCollectionView.reloadItems(at: [IndexPath(row: 0, section: 0)])
         
-        delegate?.settingCollectionView?.collectionViewLayout.invalidateLayout()
+        helpDismiss()
+        
+    }
+    
+    func helpDismiss() {
+        
+        delegate?.selectedAccountName = ""
+        
+        delegate?.selectedAccountCurrentValue = ""
+        
+        dismiss(animated: true, completion: nil)
         
         hideTabBarVCBlackView()
         
@@ -73,6 +85,18 @@ class AccountDetailVC: UIViewController {
         guard let tabBarVC = presentingViewController as? TabBarController else { return }
         
         tabBarVC.blackView.isHidden = true
+        
+    }
+    
+    @IBAction func deleteAccount(_ sender: UIButton) {
+        
+        guard let text = accountTextField.text, text != "" else { return }
+        
+        StorageManager.shared.deleteAccount(accountName: text)
+        
+        delegate?.accountsCollectionView.reloadItems(at: [IndexPath(row: 0, section: 0)])
+        
+        helpDismiss()
         
     }
     

@@ -8,21 +8,45 @@
 
 import UIKit
 
+import CoreData
+
+struct SettingText {
+    
+    let leadingText: String
+    
+    let trailingText: String
+    
+}
+
 class SettingVC: UIViewController {
 
-    @IBOutlet weak var settingsCollectionView: UICollectionView! {
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var contentView: UIView!
+    
+    @IBOutlet weak var accountsCollectionView: UICollectionView! {
 
         didSet {
 
-            settingsCollectionView.dataSource = self
+            accountsCollectionView.dataSource = self
 
-            settingsCollectionView.delegate = self
+            accountsCollectionView.delegate = self
 
         }
 
     }
     
-    var settingCollectionView: UICollectionView?
+    @IBOutlet weak var settingsCollectionView: UICollectionView! {
+        
+        didSet {
+            
+            settingsCollectionView.dataSource = self
+            
+            settingsCollectionView.delegate = self
+            
+        }
+        
+    }
 
     @IBOutlet weak var segmentedBarView: UIView!
 
@@ -30,9 +54,22 @@ class SettingVC: UIViewController {
 
     @IBOutlet weak var settingButton: UIButton!
     
-    var accountArray: [Account] = []
-    
     var isAddingNewAccount = false
+    
+    var selectedAccountName = ""
+    
+    var selectedAccountCurrentValue = ""
+    
+    lazy var fetchedResultsController = {
+        return FetchedResultsController(managedObjectContext: StorageManager.shared.viewContext,
+                                        collectionView: accountsCollectionView)
+    }()
+    
+    var settings: [SettingText] = [
+        SettingText(leadingText: "新增類別", trailingText: ">"),
+        SettingText(leadingText: "隱私權聲明內容", trailingText: ">"),
+        SettingText(leadingText: "給予評價", trailingText: ">")
+    ]
 
     override func viewDidLoad() {
 
@@ -40,15 +77,21 @@ class SettingVC: UIViewController {
 
         setUpCollectionView()
         
-        guard let accountArray = StorageManager.shared.fetchAccount() else { return }
-        
-        self.accountArray = accountArray
+        scrollView.delegate = self
 
     }
 
     func setUpCollectionView() {
 
-        settingsCollectionView.helpRegister(cell: SettingCVCell())
+        accountsCollectionView.helpRegisterView(cell: AccountDateCVCell())
+        
+        accountsCollectionView.helpRegister(cell: AccountDateCVCell())
+        
+        accountsCollectionView.helpRegister(cell: AddSavingDetailCVCell())
+        
+        settingsCollectionView.helpRegister(cell: AccountDateCVCell())
+        
+        accountsCollectionView.contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 24, right: 16)
 
     }
     
@@ -74,53 +117,128 @@ extension SettingVC: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return 2
+        if collectionView == accountsCollectionView {
+            
+            guard let count = fetchedResultsController.sections?[0].numberOfObjects else { return 0 }
+            
+            return count + 1
+            
+        } else {
+            
+            return 3
+            
+        }
 
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-        guard let cell = settingsCollectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: SettingCVCell.self),
-            for: indexPath) as? SettingCVCell else { return SettingCVCell() }
         
-        settingCollectionView = cell.settingCollectionView
-
-        if indexPath.row == 0 {
-
-            cell.initSettingCVCell(whichSetting: .accounts, accountArray: accountArray)
-
-            cell.goToDetailPage = {
+        if collectionView == accountsCollectionView {
+            
+            guard let count = fetchedResultsController.sections?[0].numberOfObjects else { return UICollectionViewCell() }
+            
+            if indexPath.row == count {
                 
-                self.isAddingNewAccount = false
+                guard let cell = accountsCollectionView.dequeueReusableCell(
+                    withReuseIdentifier: String(describing: AddSavingDetailCVCell.self),
+                    for: indexPath) as? AddSavingDetailCVCell else {
+                        return AddSavingDetailCVCell()
+                }
                 
-                self.performSegue(withIdentifier: "goToAccountDetail", sender: nil)
-
+                cell.showSavingDetailAdd = {
+                    
+                    self.isAddingNewAccount = true
+                    
+                    self.performSegue(withIdentifier: "goToAccountDetail", sender: nil)
+                }
+                
+                return cell
+                
+            } else {
+                
+                guard let cell = accountsCollectionView.dequeueReusableCell(
+                    withReuseIdentifier: String(describing: AccountDateCVCell.self),
+                    for: indexPath) as? AccountDateCVCell else {
+                        return AccountDateCVCell()
+                }
+                
+                let account = fetchedResultsController.object(at: indexPath)
+                
+                guard let name = account.name else { return cell }
+                
+                cell.initAccountDateCVCell(style: .setting(
+                    leadingText: name,
+                    trailingText: String(account.currentValue)))
+                
+                cell.goToDetialPage = {
+                    
+                    self.selectedAccountName = name
+                    
+                    self.selectedAccountCurrentValue = String(account.currentValue)
+                    
+                    self.isAddingNewAccount = false
+                    
+                    self.performSegue(withIdentifier: "goToAccountDetail", sender: nil)
+                    
+                }
+                
+                return cell
+                
             }
             
-            cell.goToAddPage = {
-                
-                self.isAddingNewAccount = true
-                
-                self.performSegue(withIdentifier: "goToAccountDetail", sender: nil)
-                
-            }
-
         } else {
-
-            cell.initSettingCVCell(whichSetting: .setting, accountArray: accountArray)
-
-            cell.goToDetailPage = {
-
-                self.performSegue(withIdentifier: "goToSetCategory", sender: nil)
-
+            
+            guard let cell = settingsCollectionView.dequeueReusableCell(
+                withReuseIdentifier: String(describing: AccountDateCVCell.self),
+                for: indexPath) as? AccountDateCVCell else {
+                    return AccountDateCVCell()
             }
-
+            
+            cell.initAccountDateCVCell(style: .setting(
+                leadingText: settings[indexPath.row].leadingText,
+                trailingText: settings[indexPath.row].trailingText))
+            
+            cell.goToDetialPage = {
+                
+                self.performSegue(withIdentifier: "goToSetCategory", sender: nil)
+                
+            }
+            
+            return cell
+            
         }
 
-        return cell
-
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        guard let headerView = accountsCollectionView.dequeueReusableSupplementaryView(
+            ofKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: String(describing: AccountDateCVCell.self),
+            for: indexPath) as? AccountDateCVCell else { return UICollectionReusableView() }
+        
+        var totalAmount = 0
+        
+        guard let count = fetchedResultsController.sections?[0].numberOfObjects else { return UICollectionViewCell() }
+        
+        if count > 0 {
+            
+            for index in 0...count - 1 {
+                
+                guard let account = fetchedResultsController.fetchedObjects?[index] else { return AccountDateCVCell() }
+                
+                totalAmount += Int(account.currentValue)
+                
+            }
+            
+        }
+        
+        headerView.initAccountDateCVCell(style: .setting(leadingText: "總資產", trailingText: String(totalAmount)))
+        
+        return headerView
     }
 
 }
@@ -135,7 +253,15 @@ extension SettingVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
 
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        if collectionView == accountsCollectionView {
+            
+            return UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
+            
+        } else {
+            
+            return UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
+            
+        }
 
     }
 
@@ -143,7 +269,7 @@ extension SettingVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        return CGSize(width: settingsCollectionView.frame.width, height: settingsCollectionView.frame.height)
+        return CGSize(width: 382, height: 56)
 
     }
 
@@ -151,29 +277,37 @@ extension SettingVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 
-        return 0
+        return 16
 
     }
-
+    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
-                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-
-        return 0
-
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        if collectionView == accountsCollectionView {
+            
+            return CGSize(width: 0, height: 56)
+            
+        } else {
+            
+            return CGSize(width: 0, height: 0)
+            
+        }
+        
     }
 
 }
 
-extension SettingVC {
+extension SettingVC: UIScrollViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
-        if scrollView.isEqual(settingsCollectionView) {
-
-            segmentedBarView.frame.origin.x = 119 + settingsCollectionView.bounds.origin.x * 104 / 414
-
-            if segmentedBarView.frame.origin.x > settingsCollectionView.frame.width / 2 {
+        if scrollView.isEqual(scrollView) {
+            
+            segmentedBarView.frame.origin.x = 119 + scrollView.bounds.origin.x * 104 / 414
+            
+            if segmentedBarView.frame.origin.x > scrollView.frame.width / 2 {
 
                 accountsButton.isSelected = false
 
@@ -183,9 +317,10 @@ extension SettingVC {
                 
                 settingButton.setTitleColor(.black, for: .normal)
                 
-                segmentedBarView.frame = CGRect(x: segmentedBarView.frame.origin.x, y: segmentedBarView.frame.origin.y, width: settingButton.frame.width, height: 3)
+                segmentedBarView.frame = CGRect(x: segmentedBarView.frame.origin.x, y: segmentedBarView.frame.origin.y,
+                                                width: settingButton.frame.width, height: 3)
 
-            } else if segmentedBarView.frame.origin.x < settingsCollectionView.frame.width / 2 {
+            } else if segmentedBarView.frame.origin.x < scrollView.frame.width / 2 {
 
                 accountsButton.isSelected = true
 
@@ -195,7 +330,8 @@ extension SettingVC {
                 
                 settingButton.setTitleColor(.lightGray, for: .normal)
                 
-                segmentedBarView.frame = CGRect(x: segmentedBarView.frame.origin.x, y: segmentedBarView.frame.origin.y, width: accountsButton.frame.width, height: 3)
+                segmentedBarView.frame = CGRect(x: segmentedBarView.frame.origin.x, y: segmentedBarView.frame.origin.y,
+                                                width: accountsButton.frame.width, height: 3)
 
             }
 

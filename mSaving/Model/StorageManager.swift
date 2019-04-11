@@ -215,4 +215,26 @@ class StorageManager {
         
     }
     
+    func deleteAccount(accountName: String) {
+        
+        let request = NSFetchRequest<Account>(entityName: "Account")
+        
+        request.predicate = NSPredicate(format: "name = %@", accountName)
+        
+        do {
+            
+            let account = try viewContext.fetch(request)
+            
+            viewContext.delete(account[0])
+            
+        } catch {
+            
+            print(error)
+            
+        }
+        
+        saveContext()
+        
+    }
+    
 }

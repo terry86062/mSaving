@@ -57,8 +57,6 @@
 		DEBE8C2D2255AED800C2A8A3 /* AccountDateCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEBE8C2B2255AED800C2A8A3 /* AccountDateCVCell.xib */; };
 		DEEAA9CC2255F4A5005FCE8E /* SavingDetailCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEAA9CA2255F4A5005FCE8E /* SavingDetailCVCell.swift */; };
 		DEEAA9CD2255F4A5005FCE8E /* SavingDetailCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEEAA9CB2255F4A5005FCE8E /* SavingDetailCVCell.xib */; };
-		DEECAE4622589F2B0067388C /* SettingCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECAE4422589F2B0067388C /* SettingCVCell.swift */; };
-		DEECAE4722589F2B0067388C /* SettingCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEECAE4522589F2B0067388C /* SettingCVCell.xib */; };
 		DEECB02622533430002D6C30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB02522533430002D6C30 /* AppDelegate.swift */; };
 		DEECB02E22533430002D6C30 /* mSaving.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DEECB02C22533430002D6C30 /* mSaving.xcdatamodeld */; };
 		DEECB03022533432002D6C30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEECB02F22533432002D6C30 /* Assets.xcassets */; };
@@ -133,8 +131,6 @@
 		DEBE8C2B2255AED800C2A8A3 /* AccountDateCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountDateCVCell.xib; sourceTree = "<group>"; };
 		DEEAA9CA2255F4A5005FCE8E /* SavingDetailCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingDetailCVCell.swift; sourceTree = "<group>"; };
 		DEEAA9CB2255F4A5005FCE8E /* SavingDetailCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavingDetailCVCell.xib; sourceTree = "<group>"; };
-		DEECAE4422589F2B0067388C /* SettingCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCVCell.swift; sourceTree = "<group>"; };
-		DEECAE4522589F2B0067388C /* SettingCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCVCell.xib; sourceTree = "<group>"; };
 		DEECB02222533430002D6C30 /* mSaving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mSaving.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEECB02522533430002D6C30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEECB02D22533430002D6C30 /* mSaving.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mSaving.xcdatamodel; sourceTree = "<group>"; };
@@ -270,8 +266,6 @@
 		DE4984BB225886C8004E4AE9 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				DEECAE4422589F2B0067388C /* SettingCVCell.swift */,
-				DEECAE4522589F2B0067388C /* SettingCVCell.xib */,
 				DEAA6A2A2259A55000224B26 /* IncomeExpenseCategoryCVCell.swift */,
 				DEAA6A2B2259A55000224B26 /* IncomeExpenseCategoryCVCell.xib */,
 				DEA65DF12259EE4700A10242 /* CategorysCVCell.swift */,
@@ -462,7 +456,6 @@
 				DEECB0482253358B002D6C30 /* Setting.storyboard in Resources */,
 				DE4984B9225878A8004E4AE9 /* CategoryAccountsTotalCVCell.xib in Resources */,
 				DEAA6A2D2259A55000224B26 /* IncomeExpenseCategoryCVCell.xib in Resources */,
-				DEECAE4722589F2B0067388C /* SettingCVCell.xib in Resources */,
 				DEBE8C2D2255AED800C2A8A3 /* AccountDateCVCell.xib in Resources */,
 				DEECB04A2253358B002D6C30 /* LaunchScreen.storyboard in Resources */,
 				DEECB04D2253358B002D6C30 /* Saving.storyboard in Resources */,
@@ -563,7 +556,6 @@
 				DE9BEFEA225DD2DE003458AD /* StorageManager.swift in Sources */,
 				DE2BB35C22539662001D55E4 /* SavingCVCell.swift in Sources */,
 				DEECB05A22533599002D6C30 /* SavingVC.swift in Sources */,
-				DEECAE4622589F2B0067388C /* SettingCVCell.swift in Sources */,
 				DEBE8C28225519F800C2A8A3 /* AccountCVCell.swift in Sources */,
 				DE4984B8225878A8004E4AE9 /* CategoryAccountsTotalCVCell.swift in Sources */,
 				DEECB063225335FA002D6C30 /* UIView - extension.swift in Sources */,
