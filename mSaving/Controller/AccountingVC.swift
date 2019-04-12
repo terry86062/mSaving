@@ -116,6 +116,8 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
 
         amountTextField.becomeFirstResponder()
 

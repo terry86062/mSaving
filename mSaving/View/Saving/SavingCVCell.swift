@@ -47,3 +47,25 @@ class SavingCVCell: UICollectionViewCell {
     }
 
 }
+
+extension SavingCVCell: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        <#code#>
+    }
+    
+}
+
+extension SavingCVCell: UICollectionViewDelegate {
+    
+}
+
+extension SavingCVCell: UICollectionViewDelegateFlowLayout {
+    
+    
+    
+}

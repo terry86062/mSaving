@@ -27,6 +27,8 @@ class AccountsCVCell: UICollectionViewCell {
     var goToAccountDetail: (() -> Void)?
 
     var haveHeader = false
+    
+    var accountings: [AccountingWithDate] = []
 
     override func awakeFromNib() {
 
@@ -34,9 +36,11 @@ class AccountsCVCell: UICollectionViewCell {
 
     }
 
-    func initAccountsCVCell(haveHeader: Bool) {
+    func initAccountsCVCell(haveHeader: Bool, accountings: [AccountingWithDate]) {
 
         self.haveHeader = haveHeader
+        
+        self.accountings = accountings
 
     }
 

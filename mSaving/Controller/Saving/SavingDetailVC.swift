@@ -68,6 +68,8 @@ class SavingDetailVC: UIViewController, UIGestureRecognizerDelegate {
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
 
         let gestureArray: [AnyObject] = self.navigationController!.view.gestureRecognizers!
 

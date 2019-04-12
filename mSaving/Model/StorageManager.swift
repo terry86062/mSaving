@@ -287,4 +287,24 @@ class StorageManager {
         
     }
     
+    func fetchAccounting() -> [Accounting]? {
+        
+        let request = NSFetchRequest<Accounting>(entityName: "Accounting")
+        
+        request.sortDescriptors = [NSSortDescriptor(key: "occurDate", ascending: true)]
+        
+        do {
+            
+            return try viewContext.fetch(request)
+            
+        } catch {
+            
+            print("fetch accounting fail")
+            
+            return nil
+            
+        }
+        
+    }
+    
 }
