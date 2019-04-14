@@ -1,5 +1,5 @@
 //
-//  AccountsCVCell.swift
+//  AccountingsCVCell.swift
 //  mSaving
 //
 //  Created by 黃偉勛 Terry on 2019/4/6.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-class AccountsCVCell: UICollectionViewCell {
+class AccountingsCVCell: UICollectionViewCell {
 
-    @IBOutlet weak var accountsCollectionView: UICollectionView! {
+    @IBOutlet weak var accountingsCollectionView: UICollectionView! {
 
         didSet {
 
-            accountsCollectionView.dataSource = self
+            accountingsCollectionView.dataSource = self
 
-            accountsCollectionView.delegate = self
+            accountingsCollectionView.delegate = self
 
             setUpCollectionView()
 
@@ -46,19 +46,19 @@ class AccountsCVCell: UICollectionViewCell {
 
     func setUpCollectionView() {
 
-        accountsCollectionView.helpRegisterView(cell: AccountDateCVCell())
+        accountingsCollectionView.helpRegisterView(cell: AccountingDateCVCell())
 
-        accountsCollectionView.helpRegister(cell: AccountCVCell())
+        accountingsCollectionView.helpRegister(cell: AccountingCVCell())
 
     }
 
 }
 
-extension AccountsCVCell: UICollectionViewDataSource {
+extension AccountingsCVCell: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return 9
+        return accountings.count
 
     }
 
@@ -66,8 +66,10 @@ extension AccountsCVCell: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: AccountCVCell.self),
-            for: indexPath) as? AccountCVCell else { return UICollectionViewCell() }
+            withReuseIdentifier: String(describing: AccountingCVCell.self),
+            for: indexPath) as? AccountingCVCell else { return UICollectionViewCell() }
+        
+        cell.initAccountCVCell(accounting: accountings[indexPath.row])
 
         cell.goToAccountDetail = goToAccountDetail
 
@@ -81,22 +83,60 @@ extension AccountsCVCell: UICollectionViewDataSource {
 
         guard let headerView = collectionView.dequeueReusableSupplementaryView(
             ofKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: String(describing: AccountDateCVCell.self),
-            for: indexPath) as? AccountDateCVCell else {
-                return AccountCVCell()
+            withReuseIdentifier: String(describing: AccountingDateCVCell.self),
+            for: indexPath) as? AccountingDateCVCell else {
+                return AccountingCVCell()
         }
+        
+        var totalAmount = 0
+        
+        for index in 0...accountings.count - 1 {
+            
+            totalAmount += Int(accountings[index].accounting.amount)
+            
+        }
+        
+        let dateComponents = accountings[0].dateComponents
+        
+        guard let day = dateComponents.day, let weekday = dateComponents.weekday else { return headerView }
+        
+        headerView.initAccountDateCVCell(leadingText: "\(day), \(helpTransferWeekdayFromIntToString(weekday: weekday))", trailingText: String(totalAmount), trailingColor: .red, havingShadow: false)
 
         return headerView
 
     }
+    
+    func helpTransferWeekdayFromIntToString(weekday: Int) -> String {
+        
+        switch weekday {
+            
+        case 1: return "星期日"
+            
+        case 2: return "星期一"
+           
+        case 3: return "星期二"
+            
+        case 4: return "星期三"
+            
+        case 5: return "星期四"
+            
+        case 6: return "星期五"
+            
+        case 7: return "星期六"
+            
+        default: return ""
+            
+        }
+        
+    }
 
 }
 
-extension AccountsCVCell: UICollectionViewDelegate {
+extension AccountingsCVCell: UICollectionViewDelegate {
 
 }
 
-extension AccountsCVCell: UICollectionViewDelegateFlowLayout {
+extension AccountingsCVCell: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

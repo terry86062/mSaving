@@ -34,7 +34,7 @@ class CategoryAccountsDetailVC: UIViewController {
 
         categoryAccountsCollectionView.helpRegister(cell: CategoryAccountsTotalCVCell())
 
-        categoryAccountsCollectionView.helpRegister(cell: AccountsCVCell())
+        categoryAccountsCollectionView.helpRegister(cell: AccountingsCVCell())
 
     }
 
@@ -75,12 +75,12 @@ extension CategoryAccountsDetailVC: UICollectionViewDataSource {
         } else {
 
             guard let cell = categoryAccountsCollectionView.dequeueReusableCell(
-                withReuseIdentifier: String(describing: AccountsCVCell.self),
-                for: indexPath) as? AccountsCVCell else {
+                withReuseIdentifier: String(describing: AccountingsCVCell.self),
+                for: indexPath) as? AccountingsCVCell else {
                     return UICollectionViewCell()
             }
 
-            cell.initAccountsCVCell(haveHeader: true)
+            cell.initAccountsCVCell(haveHeader: true, accountings: [])
 
             return cell
 

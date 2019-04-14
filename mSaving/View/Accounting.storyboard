@@ -794,7 +794,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="right" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n4m-DW-yNG">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="right" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n4m-DW-yNG">
                                 <rect key="frame" x="287" y="288" width="22" height="36"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -818,10 +818,18 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xW-H0-2Ww">
+                                <rect key="frame" x="321" y="293.5" width="61" height="34"/>
+                                <connections>
+                                    <action selector="changeAccount:" destination="pCO-3F-btS" eventType="touchUpInside" id="YxH-xp-5oD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="4xW-H0-2Ww" firstAttribute="top" secondItem="vo2-PX-h4g" secondAttribute="top" id="1Xt-Bz-RL8"/>
                             <constraint firstItem="n4m-DW-yNG" firstAttribute="top" secondItem="xxl-QC-3w4" secondAttribute="bottom" constant="4" id="3lm-Rm-5xw"/>
+                            <constraint firstItem="4xW-H0-2Ww" firstAttribute="bottom" secondItem="vo2-PX-h4g" secondAttribute="bottom" id="3sM-b6-aiP"/>
                             <constraint firstItem="2zY-Mj-l89" firstAttribute="trailing" secondItem="ShB-fx-4xS" secondAttribute="trailing" constant="32" id="91d-pf-h9g"/>
                             <constraint firstItem="xxl-QC-3w4" firstAttribute="top" secondItem="2zY-Mj-l89" secondAttribute="top" id="BOq-DH-NqY"/>
                             <constraint firstItem="xxl-QC-3w4" firstAttribute="leading" secondItem="2zY-Mj-l89" secondAttribute="leading" id="Bb1-Dg-FOL"/>
@@ -836,8 +844,10 @@
                             <constraint firstItem="ShB-fx-4xS" firstAttribute="leading" secondItem="vo2-PX-h4g" secondAttribute="trailing" id="UdK-Yh-hkE"/>
                             <constraint firstAttribute="bottom" secondItem="U9V-J7-nFo" secondAttribute="bottom" id="VDR-eU-WzI"/>
                             <constraint firstItem="GZW-OP-aVz" firstAttribute="centerY" secondItem="n4m-DW-yNG" secondAttribute="centerY" id="ZD3-2K-HhA"/>
+                            <constraint firstItem="4xW-H0-2Ww" firstAttribute="trailing" secondItem="ShB-fx-4xS" secondAttribute="trailing" id="awh-y5-e68"/>
                             <constraint firstItem="2zY-Mj-l89" firstAttribute="trailing" secondItem="xxl-QC-3w4" secondAttribute="trailing" id="cNy-bl-GI1"/>
                             <constraint firstItem="GZW-OP-aVz" firstAttribute="leading" secondItem="2zY-Mj-l89" secondAttribute="leading" constant="32" id="esP-Dm-ZOs"/>
+                            <constraint firstItem="4xW-H0-2Ww" firstAttribute="leading" secondItem="vo2-PX-h4g" secondAttribute="leading" id="gJJ-0x-lkU"/>
                             <constraint firstItem="vo2-PX-h4g" firstAttribute="firstBaseline" secondItem="n4m-DW-yNG" secondAttribute="firstBaseline" id="hrK-0J-iV6"/>
                             <constraint firstAttribute="trailing" secondItem="U9V-J7-nFo" secondAttribute="trailing" id="lzb-bq-A7a"/>
                             <constraint firstItem="2zY-Mj-l89" firstAttribute="trailing" secondItem="eRU-9e-ssL" secondAttribute="trailing" id="rdR-aV-wcX"/>
@@ -853,6 +863,7 @@
                         <outlet property="incomeExpenseCollectionView" destination="eRU-9e-ssL" id="gpe-Nk-ztq"/>
                         <outlet property="incomeExpenseSegmentedC" destination="x56-jZ-6zt" id="pG5-Pr-9su"/>
                         <outlet property="keyboardToolBar" destination="pwF-39-152" id="kH9-Yb-SmG"/>
+                        <outlet property="selectedAccount" destination="vo2-PX-h4g" id="rgZ-Vo-meK"/>
                         <outlet property="selectedSubCategoryImageView" destination="GZW-OP-aVz" id="Aog-UE-jMn"/>
                     </connections>
                 </viewController>

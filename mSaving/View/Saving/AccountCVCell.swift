@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccountCVCell: UICollectionViewCell {
+class AccountingCVCell: UICollectionViewCell {
 
     var goToAccountDetail: (() -> Void)?
 

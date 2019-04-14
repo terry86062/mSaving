@@ -165,7 +165,7 @@ class StorageManager {
         
     }
     
-    func saveAccounting(amount: Int64, accountName: String, selectedSubCategory: ExpenseCategory) {
+    func saveAccounting(date: Date, amount: Int64, accountName: String, selectedSubCategory: ExpenseCategory) {
         
         let accounting = Accounting(context: viewContext)
         
@@ -177,7 +177,7 @@ class StorageManager {
             
             let account = try viewContext.fetch(request)
 
-            accounting.occurDate = Int64(Date().timeIntervalSince1970)
+            accounting.occurDate = Int64(date.timeIntervalSince1970)
 
             accounting.amount = amount
 
@@ -295,7 +295,7 @@ class StorageManager {
         
         do {
             
-            return try viewContext.fetch(request)
+            return try viewContext.fetch(request).reversed()
             
         } catch {
             

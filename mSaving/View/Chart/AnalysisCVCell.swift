@@ -40,7 +40,7 @@ class AnalysisCVCell: UICollectionViewCell {
 
         analysisCollectionView.helpRegister(cell: BarChartCVCell())
 
-        analysisCollectionView.helpRegister(cell: AccountsCVCell())
+        analysisCollectionView.helpRegister(cell: AccountingsCVCell())
 
         analysisCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 

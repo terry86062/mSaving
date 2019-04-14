@@ -10,7 +10,7 @@ import UIKit
 
 class SavingDetailCVCell: UICollectionViewCell {
 
-    var showSavingDetailAdd: (() -> Void)?
+    var pushSavingDetailAdd: (() -> Void)?
 
     override func awakeFromNib() {
 
@@ -20,7 +20,7 @@ class SavingDetailCVCell: UICollectionViewCell {
 
     @IBAction func goToSavingDetailAdd(_ sender: UIButton) {
 
-        guard let show = showSavingDetailAdd else { return }
+        guard let show = pushSavingDetailAdd else { return }
 
         show()
 

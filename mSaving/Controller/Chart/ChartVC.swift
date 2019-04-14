@@ -159,12 +159,12 @@ extension ChartVC: UICollectionViewDataSource {
             } else if indexPath.section == 1 {
 
                 guard let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: String(describing: AccountsCVCell.self),
-                    for: indexPath) as? AccountsCVCell else {
+                    withReuseIdentifier: String(describing: AccountingsCVCell.self),
+                    for: indexPath) as? AccountingsCVCell else {
                         return UICollectionViewCell()
                 }
 
-                cell.initAccountsCVCell(haveHeader: false)
+                cell.initAccountsCVCell(haveHeader: false, accountings: [])
 
                 cell.goToAccountDetail = {
 

@@ -8,6 +8,16 @@
 
 import UIKit
 
+struct MonthData {
+    
+    let month: String
+    
+    let goal: String
+    
+    let spend: String
+    
+}
+
 class SavingDetailVC: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var monthCollectionView: UICollectionView! {
@@ -169,8 +179,6 @@ extension SavingDetailVC: UICollectionViewDataSource {
                 withReuseIdentifier: String(describing: SavingCVCell.self),
                 for: indexPath) as? SavingCVCell else { return SavingCVCell() }
 
-            cell.initSavingCVCell(dataSource: self, delegate: self)
-
             return cell
 
         } else {
@@ -181,7 +189,7 @@ extension SavingDetailVC: UICollectionViewDataSource {
                     return SavingDetailCVCell()
             }
 
-            cell.showSavingDetailAdd = {
+            cell.pushSavingDetailAdd = {
 
                 self.performSegue(withIdentifier: "showSavingDetailAddVC", sender: nil)
 

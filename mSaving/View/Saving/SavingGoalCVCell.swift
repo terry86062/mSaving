@@ -10,7 +10,7 @@ import UIKit
 
 class SavingGoalCVCell: UICollectionViewCell {
 
-    var goToSavingGoalDetail: (() -> Void)?
+    var showSavingDetail: (() -> Void)?
 
     override func awakeFromNib() {
 
@@ -18,11 +18,11 @@ class SavingGoalCVCell: UICollectionViewCell {
 
     }
 
-    @IBAction func goToSavingGoalDetail(_ sender: UIButton) {
+    @IBAction func showSavingDetail(_ sender: UIButton) {
 
-        guard let goTo = goToSavingGoalDetail else { return }
+        guard let show = showSavingDetail else { return }
 
-        goTo()
+        show()
 
     }
 

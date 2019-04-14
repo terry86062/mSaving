@@ -38,7 +38,7 @@ class IncomeExpenseCVCell: UICollectionViewCell {
 
         categoryCollectionView.helpRegister(cell: CategorySelectCVCell())
 
-        categoryCollectionView.helpRegister(cell: AccountsCVCell())
+        categoryCollectionView.helpRegister(cell: AccountingsCVCell())
 
     }
 

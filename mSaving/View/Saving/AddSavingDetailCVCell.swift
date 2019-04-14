@@ -14,7 +14,7 @@ class AddSavingDetailCVCell: UICollectionViewCell {
     
     @IBOutlet weak var addLabel: UILabel!
     
-    var showSavingDetailAdd: (() -> Void)?
+    var presentSavingDetailAdd: (() -> Void)?
 
     override func awakeFromNib() {
 
@@ -32,7 +32,7 @@ class AddSavingDetailCVCell: UICollectionViewCell {
 
     @IBAction func goToSavingDetailAdd(_ sender: UIButton) {
 
-        guard let show = showSavingDetailAdd else { return }
+        guard let show = presentSavingDetailAdd else { return }
 
         show()
 

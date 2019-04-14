@@ -8,16 +8,6 @@
 
 import UIKit
 
-struct MonthData {
-
-    let month: String
-
-    let goal: String
-
-    let spend: String
-
-}
-
 struct AccountingWithDate {
     let accounting: Accounting
     let date: Date
@@ -53,23 +43,6 @@ class SavingVC: UIViewController {
     @IBOutlet weak var searchButton: UIButton!
 
     @IBOutlet weak var editingButton: UIButton!
-
-    var showAccount = true
-
-    let testData: [MonthData] = [
-        MonthData(month: "1月", goal: "1000", spend: "100"),
-        MonthData(month: "2月", goal: "2000", spend: "200"),
-        MonthData(month: "3月", goal: "3000", spend: "300"),
-        MonthData(month: "4月", goal: "4000", spend: "400"),
-        MonthData(month: "5月", goal: "5000", spend: "500"),
-        MonthData(month: "6月", goal: "6000", spend: "600"),
-        MonthData(month: "7月", goal: "7000", spend: "700"),
-        MonthData(month: "8月", goal: "8000", spend: "800"),
-        MonthData(month: "9月", goal: "9000", spend: "900"),
-        MonthData(month: "10月", goal: "10000", spend: "1000"),
-        MonthData(month: "11月", goal: "11000", spend: "1100"),
-        MonthData(month: "12月", goal: "12000", spend: "1200")
-    ]
     
     var accountingWithDateGroupArray: [[[AccountingWithDate]]] = []
 
@@ -96,15 +69,11 @@ class SavingVC: UIViewController {
             accountingWithDateArray.append(
                 AccountingWithDate(accounting: accountingArray[index],
                                    date: date,
-                                   dateComponents: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+                                   dateComponents: Calendar.current.dateComponents([.year, .month, .day, .weekday, .hour, .minute], from: date)
                 )
             )
             
         }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy/MM/dd EEEE HH:mm:ss"
-        dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(accountingArray[0].occurDate)))
         
         for index in 0...accountingWithDateArray.count - 1 {
             
@@ -127,7 +96,7 @@ class SavingVC: UIViewController {
                     
                 } else {
                     
-                    accountingWithDateGroupArray.append([[accountingWithDateArray[index]]])
+                    accountingWithDateGroupArray.insert([[accountingWithDateArray[index]]], at: 0)
                     
                 }
                 
@@ -137,22 +106,34 @@ class SavingVC: UIViewController {
         
         print(accountingWithDateGroupArray)
         
+        monthCollectionView.reloadData()
+        
+        savingCollectionView.reloadData()
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillDisappear(animated)
+        
+        accountingWithDateGroupArray = []
+        
     }
 
     override func viewDidLayoutSubviews() {
 
         super.viewDidLayoutSubviews()
 
-//        let indexPath = IndexPath(item: 3, section: 0)
-//
-//        savingCollectionView.scrollToItem(at: indexPath,
-//                                          at: [.centeredVertically, .centeredHorizontally],
-//                                          animated: false)
-//
-//        guard let cell = monthCollectionView.cellForItem(at:
-//            IndexPath(row: 3, section: 0)) as? MonthCVCell else { return }
-//
-//        cell.shadowView.alpha = 1
+        let indexPath = IndexPath(item: accountingWithDateGroupArray.count - 1, section: 0)
+
+        savingCollectionView.scrollToItem(at: indexPath,
+                                          at: [.centeredVertically, .centeredHorizontally],
+                                          animated: false)
+
+        guard let cell = monthCollectionView.cellForItem(at:
+            indexPath) as? MonthCVCell else { return }
+
+        cell.shadowView.alpha = 1
 
     }
 
@@ -170,15 +151,7 @@ extension SavingVC: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if collectionView == monthCollectionView || collectionView == savingCollectionView {
-
-            return accountingWithDateGroupArray.count
-
-        } else {
-
-            return accountingWithDateGroupArray[section].count
-
-        }
+        return accountingWithDateGroupArray.count
 
     }
 
@@ -191,127 +164,53 @@ extension SavingVC: UICollectionViewDataSource {
                 withReuseIdentifier: String(describing: MonthCVCell.self),
                 for: indexPath) as? MonthCVCell else { return MonthCVCell() }
 
-            cell.initMonthCVCell(month: testData[indexPath.row].month)
-
-            return cell
-
-        } else if collectionView == savingCollectionView {
-
-            guard let cell = savingCollectionView.dequeueReusableCell(
-                withReuseIdentifier: String(describing: SavingCVCell.self),
-                for: indexPath) as? SavingCVCell else { return SavingCVCell() }
-
-            cell.initSavingCVCell(dataSource: self, delegate: self)
+            guard let month = accountingWithDateGroupArray[indexPath.row].first?.first?.dateComponents.month else {
+                return cell
+            }
+            
+            cell.initMonthCVCell(month: "\(month)月")
 
             return cell
 
         } else {
 
-            if indexPath.row == 0 {
+            guard let cell = savingCollectionView.dequeueReusableCell(
+                withReuseIdentifier: String(describing: SavingCVCell.self),
+                for: indexPath) as? SavingCVCell else { return SavingCVCell() }
 
-                guard let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: String(describing: SavingGoalCVCell.self),
-                    for: indexPath) as? SavingGoalCVCell else {
-                        return SavingGoalCVCell()
-                }
-
-                cell.goToSavingGoalDetail = {
-
-                    if self.showAccount {
-
-                        self.showAccount = false
-
-                        self.searchButton.isHidden = true
-
-                        self.editingButton.isHidden = false
-
-                        var indexPath: [IndexPath] = []
-
-                        for index in 1...3 {
-
-                            indexPath.append(IndexPath(row: index, section: 0))
-
-                        }
-
-                        collectionView.reloadItems(at: indexPath)
-
-                    } else {
-
-                        self.showAccount = true
-
-                        self.searchButton.isHidden = false
-
-                        self.editingButton.isHidden = true
-
-                        var indexPath: [IndexPath] = []
-
-                        for index in 1...3 {
-
-                            indexPath.append(IndexPath(row: index, section: 0))
-
-                        }
-
-                        collectionView.reloadItems(at: indexPath)
-
-                    }
-
-                }
-
-                return cell
-
-            } else {
-
-                if showAccount {
-
-                    guard let cell = collectionView.dequeueReusableCell(
-                        withReuseIdentifier: String(describing: AccountsCVCell.self),
-                        for: indexPath) as? AccountsCVCell else {
-                            return AccountsCVCell()
-                    }
-
-                    cell.initAccountsCVCell(haveHeader: true, accountings: accountingWithDateGroupArray[indexPath.row])
-
-                    return cell
-
-                } else {
-
-                    if indexPath.row == 3 {
-
-                        guard let cell = collectionView.dequeueReusableCell(
-                            withReuseIdentifier: String(describing: AddSavingDetailCVCell.self),
-                            for: indexPath) as? AddSavingDetailCVCell else {
-                                return AddSavingDetailCVCell()
-                        }
-
-                        cell.showSavingDetailAdd = {
-
-                            self.performSegue(withIdentifier: "goToSavingDetailAdd", sender: nil)
-
-                        }
-
-                        return cell
-
-                    } else {
-
-                        guard let cell = collectionView.dequeueReusableCell(
-                            withReuseIdentifier: String(describing: SavingDetailCVCell.self),
-                            for: indexPath) as? SavingDetailCVCell else {
-                                return SavingDetailCVCell()
-                        }
-
-                        cell.showSavingDetailAdd = {
-
-                            self.performSegue(withIdentifier: "goToSavingDetailEdit", sender: nil)
-
-                        }
-
-                        return cell
-
-                    }
-
-                }
-
+            cell.initSavingCVCell(accountings: accountingWithDateGroupArray[indexPath.row])
+            
+            cell.showSavingDetail = {
+                
+                self.searchButton.isHidden = true
+                
+                self.editingButton.isHidden = false
+                
             }
+            
+            cell.showAccountingBack = {
+                
+                self.searchButton.isHidden = false
+                
+                self.editingButton.isHidden = true
+                
+            }
+            
+            cell.presentSavingDetailAdd = {
+                
+                self.performSegue(withIdentifier: "goToSavingDetailAdd", sender: nil)
+                
+            }
+            
+            cell.pushSavingDetailAdd = {
+                
+                self.performSegue(withIdentifier: "goToSavingDetailEdit", sender: nil)
+                
+            }
+            
+            cell.savingAccountingCollectionView.reloadData()
+
+            return cell
 
         }
 
@@ -356,13 +255,9 @@ extension SavingVC: UICollectionViewDelegateFlowLayout {
                 bottom: 0,
                 right: monthCollectionView.frame.width / 3)
 
-        } else if collectionView == savingCollectionView {
-
-            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-
         } else {
 
-            return UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 
         }
 
@@ -376,37 +271,9 @@ extension SavingVC: UICollectionViewDelegateFlowLayout {
 
             return CGSize(width: UIScreen.main.bounds.width / 3, height: 43.fitScreen)
 
-        } else if collectionView == savingCollectionView {
-
-            return CGSize(width: savingCollectionView.frame.width, height: savingCollectionView.frame.height)
-
         } else {
 
-            if indexPath.row == 0 {
-
-                return CGSize(width: 382, height: 100)
-
-            } else {
-
-                if showAccount {
-
-                    return CGSize(width: 382, height: 56 * 6)
-
-                } else {
-
-                    if indexPath.row == 3 {
-
-                        return CGSize(width: 382, height: 56)
-
-                    } else {
-
-                        return CGSize(width: 382, height: 112)
-
-                    }
-
-                }
-
-            }
+            return CGSize(width: savingCollectionView.frame.width, height: savingCollectionView.frame.height)
 
         }
 
@@ -416,15 +283,7 @@ extension SavingVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 
-        if collectionView == monthCollectionView || collectionView == savingCollectionView {
-
-            return 0
-
-        } else {
-
-            return 16
-
-        }
+        return 0
 
     }
 
@@ -473,7 +332,6 @@ extension SavingVC {
 
             monthCollectionView.bounds.origin.x = savingCollectionView.bounds.origin.x / 3
 
-            /*
             let row = Int((savingCollectionView.bounds.origin.x +
                             savingCollectionView.frame.width / 2) /
                             savingCollectionView.frame.width)
@@ -508,7 +366,7 @@ extension SavingVC {
 
                 })
 
-            case testData.count:
+            case accountingWithDateGroupArray.count:
 
                 guard let cell2 = monthCollectionView.cellForItem(
                     at: IndexPath(
@@ -552,7 +410,6 @@ extension SavingVC {
                 })
 
             }
-            */
 
         }
 

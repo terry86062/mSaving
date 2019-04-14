@@ -90,13 +90,13 @@ class SettingVC: UIViewController {
 
     func setUpCollectionView() {
 
-        accountsCollectionView.helpRegisterView(cell: AccountDateCVCell())
+        accountsCollectionView.helpRegisterView(cell: AccountingDateCVCell())
         
-        accountsCollectionView.helpRegister(cell: AccountDateCVCell())
+        accountsCollectionView.helpRegister(cell: AccountingDateCVCell())
         
         accountsCollectionView.helpRegister(cell: AddSavingDetailCVCell())
         
-        settingsCollectionView.helpRegister(cell: AccountDateCVCell())
+        settingsCollectionView.helpRegister(cell: AccountingDateCVCell())
         
         accountsCollectionView.contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 24, right: 16)
 
@@ -163,7 +163,7 @@ extension SettingVC: UICollectionViewDataSource {
                 
                 cell.initAddSavingDetailCVCell(addText: "新增帳戶")
                 
-                cell.showSavingDetailAdd = {
+                cell.presentSavingDetailAdd = {
                     
                     self.isAddingNewAccount = true
                     
@@ -175,9 +175,9 @@ extension SettingVC: UICollectionViewDataSource {
             } else {
                 
                 guard let cell = accountsCollectionView.dequeueReusableCell(
-                    withReuseIdentifier: String(describing: AccountDateCVCell.self),
-                    for: indexPath) as? AccountDateCVCell else {
-                        return AccountDateCVCell()
+                    withReuseIdentifier: String(describing: AccountingDateCVCell.self),
+                    for: indexPath) as? AccountingDateCVCell else {
+                        return AccountingDateCVCell()
                 }
                 
                 let anAccount = accountArray[indexPath.row]
@@ -208,9 +208,9 @@ extension SettingVC: UICollectionViewDataSource {
         } else {
             
             guard let cell = settingsCollectionView.dequeueReusableCell(
-                withReuseIdentifier: String(describing: AccountDateCVCell.self),
-                for: indexPath) as? AccountDateCVCell else {
-                    return AccountDateCVCell()
+                withReuseIdentifier: String(describing: AccountingDateCVCell.self),
+                for: indexPath) as? AccountingDateCVCell else {
+                    return AccountingDateCVCell()
             }
             
             cell.initAccountDateCVCell(leadingText: settings[indexPath.row].leadingText,
@@ -236,8 +236,8 @@ extension SettingVC: UICollectionViewDataSource {
         
         guard let headerView = accountsCollectionView.dequeueReusableSupplementaryView(
             ofKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: String(describing: AccountDateCVCell.self),
-            for: indexPath) as? AccountDateCVCell else { return UICollectionReusableView() }
+            withReuseIdentifier: String(describing: AccountingDateCVCell.self),
+            for: indexPath) as? AccountingDateCVCell else { return UICollectionReusableView() }
         
         var totalAmount = 0
         

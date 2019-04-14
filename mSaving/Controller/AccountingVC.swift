@@ -66,7 +66,9 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         }
 
     }
-
+    
+    @IBOutlet weak var selectedAccount: UIButton!
+    
     func setUpCollectionView() {
 
         incomeExpenseCollectionView.helpRegister(cell: IncomeExpenseCVCell())
@@ -74,6 +76,8 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     }
 
     var selectedSubCategory: ExpenseCategory?
+    
+    var selectedDate = Date()
 
     var subCategorys: [ExpenseCategory] = []
 
@@ -168,10 +172,15 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         guard let text = amountTextField.text, let amount = Int64(text), amount != 0 else { return }
         
         guard let selectedSubCategory = selectedSubCategory else { return }
+        
+        guard let selectedAccount = selectedAccount.titleLabel?.text else { return }
 
-        StorageManager.shared.saveAccounting(amount: amount,
-                                             accountName: "現金",
+        StorageManager.shared.saveAccounting(date: selectedDate,
+                                             amount: amount,
+                                             accountName: selectedAccount,
                                              selectedSubCategory: selectedSubCategory)
+        
+        dismiss(animated: true, completion: nil)
 
     }
 
@@ -202,6 +211,9 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     }
 
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        
+        selectedDate = date
+        
         print("did select date \(self.dateFormatter.string(from: date))")
         let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
         print("selected dates is \(selectedDates)")
@@ -219,7 +231,38 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         dismiss(animated: true, completion: nil)
 
     }
-
+    
+    @IBAction func changeAccount(_ sender: UIButton) {
+        
+        showAlertWith(title: "請選擇帳戶", message: "")
+        
+    }
+    
+    func showAlertWith(title: String, message: String, style: UIAlertController.Style = .actionSheet) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
+        
+        guard let accounts = StorageManager.shared.fetchAccount() else { return }
+        
+        for index in 0...accounts.count - 1 {
+            
+            guard let accountName = accounts[index].name else { return }
+            
+            let accountAction = UIAlertAction(title: accountName, style: .default, handler: { _ in
+                
+                self.selectedAccount.setTitle(accountName, for: .normal)
+                
+            })
+            
+            alertController.addAction(accountAction)
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
 }
 
 extension AccountingVC: UICollectionViewDataSource {

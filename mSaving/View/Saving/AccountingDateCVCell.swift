@@ -1,5 +1,5 @@
 //
-//  AccountDateCVCell.swift
+//  AccountingDateCVCell.swift
 //  mSaving
 //
 //  Created by 黃偉勛 Terry on 2019/4/4.
@@ -36,14 +36,28 @@ class AccountingDateCVCell: UICollectionViewCell {
 
     func setShadow(bool: Bool) {
 
-        self.layer.shadowOffset = CGSize(width: 0, height: 2)
-
-        self.layer.shadowOpacity = 0.8
-
-        self.layer.shadowRadius = 5
-
-        self.layer.shadowColor = UIColor.gray.cgColor
-
+        if bool {
+            
+            self.layer.shadowOffset = CGSize(width: 0, height: 2)
+            
+            self.layer.shadowOpacity = 0.8
+            
+            self.layer.shadowRadius = 5
+            
+            self.layer.shadowColor = UIColor.gray.cgColor
+            
+        } else {
+            
+            self.layer.shadowOffset = CGSize(width: 0, height: 0)
+            
+            self.layer.shadowOpacity = 0
+            
+            self.layer.shadowRadius = 0
+            
+            self.layer.shadowColor = UIColor.clear.cgColor
+            
+        }
+        
     }
 
     @IBAction func goToDetail(_ sender: UIButton) {
