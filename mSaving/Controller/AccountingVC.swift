@@ -336,7 +336,9 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     
     @IBAction func deleteAccounting(_ sender: UIButton) {
         
+        StorageManager.shared.deleteAccounting(date: reviseOccurDate)
         
+        navigationController?.popViewController(animated: true)
         
     }
     

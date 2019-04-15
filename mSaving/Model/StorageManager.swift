@@ -341,4 +341,26 @@ class StorageManager {
         
     }
     
+    func deleteAccounting(date: Int64) {
+        
+        let request = NSFetchRequest<Accounting>(entityName: "Accounting")
+        
+        request.predicate = NSPredicate(format: "occurDate == \(date)")
+        
+        do {
+            
+            let accounting = try viewContext.fetch(request)
+            
+            viewContext.delete(accounting[0])
+            
+        } catch {
+            
+            print(error)
+            
+        }
+        
+        saveContext()
+        
+    }
+    
 }
