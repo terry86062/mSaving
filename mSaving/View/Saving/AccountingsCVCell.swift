@@ -102,7 +102,15 @@ extension AccountingsCVCell: UICollectionViewDataSource {
         
         for index in 0...accountings.count - 1 {
             
-            totalAmount += Int(accountings[index].accounting.amount)
+            if accountings[index].accounting.expenseSubCategory != nil {
+                
+                totalAmount -= Int(accountings[index].accounting.amount)
+                
+            } else if accountings[index].accounting.incomeSubCategory != nil {
+                
+                totalAmount += Int(accountings[index].accounting.amount)
+                
+            }
             
         }
         
@@ -110,7 +118,23 @@ extension AccountingsCVCell: UICollectionViewDataSource {
         
         guard let day = dateComponents.day, let weekday = dateComponents.weekday else { return headerView }
         
-        headerView.initAccountDateCVCell(leadingText: "\(day), \(helpTransferWeekdayFromIntToString(weekday: weekday))", trailingText: String(totalAmount), trailingColor: .red, havingShadow: false)
+        if totalAmount > 0 {
+            
+            headerView.initAccountDateCVCell(
+                leadingText: "\(day), \(helpTransferWeekdayFromIntToString(weekday: weekday))",
+                trailingText: String(totalAmount),
+                trailingColor: .green,
+                havingShadow: false)
+            
+        } else {
+            
+            headerView.initAccountDateCVCell(
+                leadingText: "\(day), \(helpTransferWeekdayFromIntToString(weekday: weekday))",
+                trailingText: String(totalAmount),
+                trailingColor: .red,
+                havingShadow: false)
+            
+        }
 
         return headerView
 

@@ -28,19 +28,35 @@ class AccountingCVCell: UICollectionViewCell {
 
     func initAccountCVCell(accounting: AccountingWithDate) {
         
-        guard let category = accounting.accounting.expenseSubCategory,
+        if let category = accounting.accounting.expenseSubCategory,
             let iconName = category.iconName,
-            let color = category.color else { return }
-        
-        accountingCategoryImageView.image = UIImage(named: iconName)
-        
-        accountingCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
-        
-        accountingCategoryNameLabel.text = category.name
-        
-        accountingAccountNameLabel.text = accounting.accounting.accountName?.name
-        
-        accountingAmountLabel.text = String(accounting.accounting.amount)
+            let color = category.color {
+            
+            accountingCategoryImageView.image = UIImage(named: iconName)
+            
+            accountingCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+            
+            accountingCategoryNameLabel.text = category.name
+            
+            accountingAccountNameLabel.text = accounting.accounting.accountName?.name
+            
+            accountingAmountLabel.text = "-\(accounting.accounting.amount)"
+            
+        } else if let category = accounting.accounting.incomeSubCategory,
+            let iconName = category.iconName,
+            let color = category.color {
+            
+            accountingCategoryImageView.image = UIImage(named: iconName)
+            
+            accountingCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+            
+            accountingCategoryNameLabel.text = category.name
+            
+            accountingAccountNameLabel.text = accounting.accounting.accountName?.name
+            
+            accountingAmountLabel.text = String(accounting.accounting.amount)
+            
+        }
         
     }
 

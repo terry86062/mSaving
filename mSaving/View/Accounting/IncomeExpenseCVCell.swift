@@ -85,27 +85,43 @@ extension IncomeExpenseCVCell: UICollectionViewDataSource {
         
         if expenseCategorys != [] {
             
-            expenseCategory = expenseCategorys[indexPath.row]
+            let expenseCategory = expenseCategorys[indexPath.row]
             
-            guard let iconName = expenseCategory?.iconName,
-                let name = expenseCategory?.name,
-                let color = expenseCategory?.color else { return cell }
+            guard let iconName = expenseCategory.iconName,
+                let name = expenseCategory.name,
+                let color = expenseCategory.color else { return cell }
             
             cell.initCategorySelectCVCell(imageName: iconName, subCategoryName: name, hex: color)
             
-            cell.selectSubCategory = selectSubCategory
+            cell.selectSubCategory = {
+                
+                self.expenseCategory = expenseCategory
+                
+                guard let selectSubCategory = self.selectSubCategory else { return }
+                
+                selectSubCategory()
+                
+            }
             
         } else {
             
-            incomeCategory = incomeCategorys[indexPath.row]
+            let incomeCategory = incomeCategorys[indexPath.row]
             
-            guard let iconName = incomeCategory?.iconName,
-                let name = incomeCategory?.name,
-                let color = incomeCategory?.color else { return cell }
+            guard let iconName = incomeCategory.iconName,
+                let name = incomeCategory.name,
+                let color = incomeCategory.color else { return cell }
             
             cell.initCategorySelectCVCell(imageName: iconName, subCategoryName: name, hex: color)
             
-            cell.selectSubCategory = selectSubCategory
+            cell.selectSubCategory = {
+                
+                self.incomeCategory = incomeCategory
+                
+                guard let selectSubCategory = self.selectSubCategory else { return }
+                
+                selectSubCategory()
+                
+            }
             
         }
         
