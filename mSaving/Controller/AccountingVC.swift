@@ -77,9 +77,11 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
 
     var selectedSubCategory: ExpenseCategory?
     
-    var selectedDate = Date()
+//    var selectedDate = Date()
 
     var subCategorys: [ExpenseCategory] = []
+    
+    var newAccounting = true
 
     override func viewDidLoad() {
 
@@ -116,6 +118,8 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         guard let subCategorys = StorageManager.shared.fetchCategory() else { return }
         
         self.subCategorys = subCategorys
+        
+        selectedSubCategory = subCategorys[0]
 
     }
 
@@ -169,19 +173,29 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
 
     @IBAction func addAccounting(_ sender: UIBarButtonItem) {
         
-        guard let text = amountTextField.text, let amount = Int64(text), amount != 0 else { return }
+        if newAccounting {
+            
+            guard let text = amountTextField.text, let amount = Int64(text), amount != 0 else { return }
+            
+            guard let selectedSubCategory = selectedSubCategory else { return }
+            
+            guard let selectedAccount = selectedAccount.titleLabel?.text else { return }
+            
+            guard let selectedDate = calendar.selectedDate else { return }
+            
+            StorageManager.shared.saveAccounting(date: selectedDate,
+                                                 amount: amount,
+                                                 accountName: selectedAccount,
+                                                 selectedSubCategory: selectedSubCategory)
+            
+            dismiss(animated: true, completion: nil)
+            
+        } else {
+            
+            
+            
+        }
         
-        guard let selectedSubCategory = selectedSubCategory else { return }
-        
-        guard let selectedAccount = selectedAccount.titleLabel?.text else { return }
-
-        StorageManager.shared.saveAccounting(date: selectedDate,
-                                             amount: amount,
-                                             accountName: selectedAccount,
-                                             selectedSubCategory: selectedSubCategory)
-        
-        dismiss(animated: true, completion: nil)
-
     }
 
     // MARK: - UIGestureRecognizerDelegate
@@ -212,7 +226,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
 
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
-        selectedDate = date
+//        selectedDate = date
         
         print("did select date \(self.dateFormatter.string(from: date))")
         let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
@@ -261,6 +275,12 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         alertController.addAction(cancelAction)
         
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func setAccountingForRevise(date: Date) {
+        
+        calendar.select(date, scrollToDate: true)
+        
     }
     
 }

@@ -62,41 +62,45 @@ class SavingVC: UIViewController {
         
         var accountingWithDateArray: [AccountingWithDate] = []
         
-        for index in 0...accountingArray.count - 1 {
+        if accountingArray.count > 0 {
             
-            let date = Date(timeIntervalSince1970: TimeInterval(accountingArray[index].occurDate))
-            
-            accountingWithDateArray.append(
-                AccountingWithDate(accounting: accountingArray[index],
-                                   date: date,
-                                   dateComponents: Calendar.current.dateComponents([.year, .month, .day, .weekday, .hour, .minute], from: date)
+            for index in 0...accountingArray.count - 1 {
+                
+                let date = Date(timeIntervalSince1970: TimeInterval(accountingArray[index].occurDate))
+                
+                accountingWithDateArray.append(
+                    AccountingWithDate(accounting: accountingArray[index],
+                                       date: date,
+                                       dateComponents: Calendar.current.dateComponents([.year, .month, .day, .weekday, .hour, .minute], from: date)
+                    )
                 )
-            )
+                
+            }
             
-        }
-        
-        for index in 0...accountingWithDateArray.count - 1 {
-            
-            if index == 0 {
+            for index in 0...accountingWithDateArray.count - 1 {
                 
-                accountingWithDateGroupArray.append([[accountingWithDateArray[index]]])
-                
-            } else {
-                
-                if accountingWithDateArray[index].dateComponents.month == accountingWithDateArray[index - 1].dateComponents.month &&
-                    accountingWithDateArray[index].dateComponents.day == accountingWithDateArray[index - 1].dateComponents.day {
+                if index == 0 {
                     
-                    let temp = accountingWithDateGroupArray[accountingWithDateGroupArray.count - 1]
-                    
-                    accountingWithDateGroupArray[accountingWithDateGroupArray.count - 1][temp.count - 1].append(accountingWithDateArray[index])
-                    
-                } else if accountingWithDateArray[index].dateComponents.month == accountingWithDateArray[index - 1].dateComponents.month {
-                    
-                    accountingWithDateGroupArray[accountingWithDateGroupArray.count - 1].append([accountingWithDateArray[index]])
+                    accountingWithDateGroupArray.append([[accountingWithDateArray[index]]])
                     
                 } else {
                     
-                    accountingWithDateGroupArray.insert([[accountingWithDateArray[index]]], at: 0)
+                    if accountingWithDateArray[index].dateComponents.month == accountingWithDateArray[index - 1].dateComponents.month &&
+                        accountingWithDateArray[index].dateComponents.day == accountingWithDateArray[index - 1].dateComponents.day {
+                        
+                        let temp = accountingWithDateGroupArray[accountingWithDateGroupArray.count - 1]
+                        
+                        accountingWithDateGroupArray[accountingWithDateGroupArray.count - 1][temp.count - 1].append(accountingWithDateArray[index])
+                        
+                    } else if accountingWithDateArray[index].dateComponents.month == accountingWithDateArray[index - 1].dateComponents.month {
+                        
+                        accountingWithDateGroupArray[accountingWithDateGroupArray.count - 1].append([accountingWithDateArray[index]])
+                        
+                    } else {
+                        
+                        accountingWithDateGroupArray.insert([[accountingWithDateArray[index]]], at: 0)
+                        
+                    }
                     
                 }
                 
@@ -112,29 +116,29 @@ class SavingVC: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        
+        let indexPath = IndexPath(item: accountingWithDateGroupArray.count - 1, section: 0)
+        
+        savingCollectionView.scrollToItem(at: indexPath,
+                                          at: [.centeredVertically, .centeredHorizontally],
+                                          animated: false)
+        
+        guard let cell = monthCollectionView.cellForItem(at:
+            indexPath) as? MonthCVCell else { return }
+        
+        cell.shadowView.alpha = 1
+        
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         
         super.viewWillDisappear(animated)
         
         accountingWithDateGroupArray = []
         
-    }
-
-    override func viewDidLayoutSubviews() {
-
-        super.viewDidLayoutSubviews()
-
-        let indexPath = IndexPath(item: accountingWithDateGroupArray.count - 1, section: 0)
-
-        savingCollectionView.scrollToItem(at: indexPath,
-                                          at: [.centeredVertically, .centeredHorizontally],
-                                          animated: false)
-
-        guard let cell = monthCollectionView.cellForItem(at:
-            indexPath) as? MonthCVCell else { return }
-
-        cell.shadowView.alpha = 1
-
     }
 
     func setUpCollectionView() {
@@ -205,6 +209,14 @@ extension SavingVC: UICollectionViewDataSource {
             cell.pushSavingDetailAdd = {
                 
                 self.performSegue(withIdentifier: "goToSavingDetailEdit", sender: nil)
+                
+            }
+            
+            cell.goToAccountDetail = {
+                
+                guard let accountingVC = UIStoryboard.accounting.instantiateInitialViewController() else { return }
+                
+                self.navigationController?.pushViewController(accountingVC, animated: true)
                 
             }
             

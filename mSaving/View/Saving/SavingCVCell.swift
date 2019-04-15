@@ -26,6 +26,8 @@ class SavingCVCell: UICollectionViewCell {
     
     var showAccounting = true
     
+    var goToAccountDetail: (() -> Void)?
+    
     var showSavingDetail: (() -> Void)?
     
     var showAccountingBack: (() -> Void)?
@@ -147,6 +149,8 @@ extension SavingCVCell: UICollectionViewDataSource {
                 }
                 
                 cell.initAccountsCVCell(haveHeader: true, accountings: accountings[indexPath.row - 1])
+                
+                cell.goToAccountDetail = goToAccountDetail
                 
                 cell.accountingsCollectionView.reloadData()
                 
