@@ -75,6 +75,8 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     
     @IBOutlet weak var selectedAccount: UIButton!
     
+    @IBOutlet weak var deleteAccountingButton: UIButton!
+    
     var selectedSubCategory: ExpenseCategory?
 
     var subCategorys: [ExpenseCategory] = []
@@ -138,6 +140,8 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         if newAccounting == false {
             
             setAccountingFromRevise()
+            
+            deleteAccountingButton.isHidden = false
             
         } else {
             
@@ -327,6 +331,12 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         selectedSubCategoryImageView.image = UIImage(named: iconName)
         
         selectedSubCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+        
+    }
+    
+    @IBAction func deleteAccounting(_ sender: UIButton) {
+        
+        
         
     }
     
