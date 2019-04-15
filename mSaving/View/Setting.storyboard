@@ -1959,6 +1959,7 @@
                     <connections>
                         <outlet property="accountAmountTextField" destination="JsO-46-yip" id="5pA-oM-5x5"/>
                         <outlet property="accountTextField" destination="M7P-NZ-pGZ" id="dzh-BI-NBw"/>
+                        <outlet property="titleLabel" destination="Enj-rp-4QY" id="dFN-B4-QCG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BQq-hy-31O" userLabel="First Responder" sceneMemberID="firstResponder"/>

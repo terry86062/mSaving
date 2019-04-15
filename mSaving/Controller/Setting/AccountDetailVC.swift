@@ -10,9 +10,13 @@ import UIKit
 
 class AccountDetailVC: UIViewController {
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
     @IBOutlet weak var accountTextField: UITextField!
     
     @IBOutlet weak var accountAmountTextField: UITextField!
+    
+    var stringForTitle: String = ""
     
     var originalAccountName = ""
     
@@ -28,8 +32,14 @@ class AccountDetailVC: UIViewController {
         
         accountAmountTextField.text = delegate?.selectedAccountInitialValue
         
-        accountTextField.becomeFirstResponder()
-
+        titleLabel.text = stringForTitle
+        
+        if let delegate = delegate, delegate.isAddingNewAccount == true {
+            
+            accountTextField.becomeFirstResponder()
+            
+        }
+        
     }
 
     @IBAction func dismiss(_ sender: UIButton) {

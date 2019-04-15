@@ -114,6 +114,16 @@ class SettingVC: UIViewController {
             
             accountDetailVC.delegate = self
             
+            if isAddingNewAccount {
+                
+                accountDetailVC.stringForTitle = "新增帳戶"
+                
+            } else {
+                
+                accountDetailVC.stringForTitle = "帳戶資訊"
+                
+            }
+            
         }
         
     }

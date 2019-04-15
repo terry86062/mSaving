@@ -38,6 +38,8 @@ class SavingCVCell: UICollectionViewCell {
 
     var accountings: [[AccountingWithDate]] = []
     
+    var selectedAccounting: AccountingWithDate?
+    
     override func awakeFromNib() {
 
         super.awakeFromNib()
@@ -150,7 +152,15 @@ extension SavingCVCell: UICollectionViewDataSource {
                 
                 cell.initAccountsCVCell(haveHeader: true, accountings: accountings[indexPath.row - 1])
                 
-                cell.goToAccountDetail = goToAccountDetail
+                cell.goToAccountDetail = {
+                    
+                    self.selectedAccounting = cell.selectedAccounting
+                    
+                    guard let goTo = self.goToAccountDetail else { return }
+                    
+                    goTo()
+                    
+                }
                 
                 cell.accountingsCollectionView.reloadData()
                 

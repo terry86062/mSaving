@@ -307,4 +307,38 @@ class StorageManager {
         
     }
     
+    func reviseAccounting(date: Int64, newDate: Date, amount: Int64, accountName: String, selectedSubCategory: ExpenseCategory) {
+        
+        let request = NSFetchRequest<Accounting>(entityName: "Accounting")
+        
+        request.predicate = NSPredicate(format: "occurDate == \(date)")
+        
+        let accountRequest = NSFetchRequest<Account>(entityName: "Account")
+        
+        accountRequest.predicate = NSPredicate(format: "name = %@", accountName)
+        
+        do {
+            
+            let accounting = try viewContext.fetch(request)
+            
+            let account = try viewContext.fetch(accountRequest)
+            
+            accounting[0].occurDate = Int64(newDate.timeIntervalSince1970)
+            
+            accounting[0].amount = amount
+            
+            accounting[0].accountName = account[0]
+            
+            accounting[0].expenseSubCategory = selectedSubCategory
+            
+        } catch {
+            
+            print("revise accounting fail")
+            
+        }
+        
+        saveContext()
+        
+    }
+    
 }

@@ -214,9 +214,17 @@ extension SavingVC: UICollectionViewDataSource {
             
             cell.goToAccountDetail = {
                 
-                guard let accountingVC = UIStoryboard.accounting.instantiateInitialViewController() else { return }
+                guard let accountingVC = UIStoryboard.accounting.instantiateInitialViewController() as? AccountingVC else { return }
+                
+                guard let accounting = cell.selectedAccounting else { return }
                 
                 self.navigationController?.pushViewController(accountingVC, animated: true)
+                
+                accountingVC.setAccountingRevise(occurDate: accounting.accounting.occurDate,
+                                                 date: accounting.date,
+                                                 amount: accounting.accounting.amount,
+                                                 account: accounting.accounting.accountName?.name,
+                                                 category: accounting.accounting.expenseSubCategory)
                 
             }
             

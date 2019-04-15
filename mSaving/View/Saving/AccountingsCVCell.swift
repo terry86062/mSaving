@@ -29,6 +29,8 @@ class AccountingsCVCell: UICollectionViewCell {
     var haveHeader = false
     
     var accountings: [AccountingWithDate] = []
+    
+    var selectedAccounting: AccountingWithDate?
 
     override func awakeFromNib() {
 
@@ -71,7 +73,15 @@ extension AccountingsCVCell: UICollectionViewDataSource {
         
         cell.initAccountCVCell(accounting: accountings[indexPath.row])
 
-        cell.goToAccountDetail = goToAccountDetail
+        cell.goToAccountDetail = {
+            
+            self.selectedAccounting = self.accountings[indexPath.row]
+            
+            guard let goTo = self.goToAccountDetail else { return }
+            
+            goTo()
+            
+        }
 
         return cell
 

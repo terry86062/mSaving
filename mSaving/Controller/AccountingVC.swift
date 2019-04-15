@@ -43,7 +43,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         panGesture.minimumNumberOfTouches = 1
         panGesture.maximumNumberOfTouches = 2
         return panGesture
-        }()
+    }()
 
     @IBOutlet weak var amountTextField: UITextField!
     
@@ -67,21 +67,29 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
 
     }
     
+    func setUpCollectionView() {
+        
+        incomeExpenseCollectionView.helpRegister(cell: IncomeExpenseCVCell())
+        
+    }
+    
     @IBOutlet weak var selectedAccount: UIButton!
     
-    func setUpCollectionView() {
-
-        incomeExpenseCollectionView.helpRegister(cell: IncomeExpenseCVCell())
-
-    }
-
     var selectedSubCategory: ExpenseCategory?
-    
-//    var selectedDate = Date()
 
     var subCategorys: [ExpenseCategory] = []
     
     var newAccounting = true
+    
+    var reviseAmount: Int64 = 0
+    
+    var reviseOccurDate: Int64 = 0
+    
+    var reviseDate: Date?
+    
+    var reviseAccount: String?
+    
+    var reviseCategory: ExpenseCategory?
 
     override func viewDidLoad() {
 
@@ -126,8 +134,16 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
-
-        amountTextField.becomeFirstResponder()
+        
+        if newAccounting == false {
+            
+            setAccountingFromRevise()
+            
+        } else {
+            
+            amountTextField.becomeFirstResponder()
+            
+        }
 
     }
 
@@ -173,15 +189,15 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
 
     @IBAction func addAccounting(_ sender: UIBarButtonItem) {
         
+        guard let text = amountTextField.text, let amount = Int64(text), amount != 0 else { return }
+        
+        guard let selectedSubCategory = selectedSubCategory else { return }
+        
+        guard let selectedAccount = selectedAccount.titleLabel?.text else { return }
+        
+        guard let selectedDate = calendar.selectedDate else { return }
+        
         if newAccounting {
-            
-            guard let text = amountTextField.text, let amount = Int64(text), amount != 0 else { return }
-            
-            guard let selectedSubCategory = selectedSubCategory else { return }
-            
-            guard let selectedAccount = selectedAccount.titleLabel?.text else { return }
-            
-            guard let selectedDate = calendar.selectedDate else { return }
             
             StorageManager.shared.saveAccounting(date: selectedDate,
                                                  amount: amount,
@@ -192,7 +208,13 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
             
         } else {
             
+            StorageManager.shared.reviseAccounting(date: reviseOccurDate,
+                                                   newDate: selectedDate,
+                                                   amount: amount,
+                                                   accountName: selectedAccount,
+                                                   selectedSubCategory: selectedSubCategory)
             
+            navigationController?.popViewController(animated: true)
             
         }
         
@@ -225,9 +247,6 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     }
 
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        
-//        selectedDate = date
-        
         print("did select date \(self.dateFormatter.string(from: date))")
         let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
         print("selected dates is \(selectedDates)")
@@ -243,6 +262,8 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     @IBAction func dismiss(_ sender: UIButton) {
 
         dismiss(animated: true, completion: nil)
+        
+        navigationController?.popViewController(animated: true)
 
     }
     
@@ -277,9 +298,35 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         present(alertController, animated: true, completion: nil)
     }
     
-    func setAccountingForRevise(date: Date) {
+    func setAccountingRevise(occurDate: Int64, date: Date, amount: Int64, account: String?, category: ExpenseCategory?) {
         
-        calendar.select(date, scrollToDate: true)
+        newAccounting = false
+        
+        reviseOccurDate = occurDate
+        
+        reviseDate = date
+        
+        reviseAmount = amount
+        
+        reviseAccount = account
+        
+        reviseCategory = category
+        
+    }
+    
+    func setAccountingFromRevise() {
+        
+        calendar.select(reviseDate, scrollToDate: true)
+        
+        amountTextField.text = String(reviseAmount)
+        
+        selectedAccount.setTitle(reviseAccount, for: .normal)
+        
+        guard let category = reviseCategory, let iconName = category.iconName, let color = category.color else { return }
+        
+        selectedSubCategoryImageView.image = UIImage(named: iconName)
+        
+        selectedSubCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
         
     }
     
