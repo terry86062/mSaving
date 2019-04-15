@@ -142,7 +142,7 @@ class StorageManager {
         
     }
     
-    func fetchCategory() -> [ExpenseCategory]? {
+    func fetchExpenseCategory() -> [ExpenseCategory]? {
         
         let request = NSFetchRequest<ExpenseCategory>(entityName: "ExpenseCategory")
         
@@ -165,7 +165,30 @@ class StorageManager {
         
     }
     
-    func saveAccounting(date: Date, amount: Int64, accountName: String, selectedSubCategory: ExpenseCategory) {
+    func fetchIncomeCategory() -> [IncomeCategory]? {
+        
+        let request = NSFetchRequest<IncomeCategory>(entityName: "IncomeCategory")
+        
+        request.sortDescriptors = [
+            NSSortDescriptor(key: "priority", ascending: true),
+            NSSortDescriptor(key: "subPriority", ascending: true)
+        ]
+        
+        do {
+            
+            return try viewContext.fetch(request)
+            
+        } catch {
+            
+            print("fetch income category fail")
+            
+            return nil
+            
+        }
+        
+    }
+    
+    func saveAccounting(date: Date, amount: Int64, accountName: String, selectedExpenseCategory: ExpenseCategory?, selectedIncomeCategory: IncomeCategory?, selectedExpense: Bool) {
         
         let accounting = Accounting(context: viewContext)
         
@@ -183,7 +206,15 @@ class StorageManager {
 
             accounting.accountName = account[0]
             
-            accounting.expenseSubCategory = selectedSubCategory
+            if selectedExpense {
+                
+                accounting.expenseSubCategory = selectedExpenseCategory
+                
+            } else {
+                
+                accounting.incomeSubCategory = selectedIncomeCategory
+                
+            }
             
         } catch {
             
@@ -307,7 +338,7 @@ class StorageManager {
         
     }
     
-    func reviseAccounting(date: Int64, newDate: Date, amount: Int64, accountName: String, selectedSubCategory: ExpenseCategory) {
+    func reviseAccounting(date: Int64, newDate: Date, amount: Int64, accountName: String, selectedExpenseCategory: ExpenseCategory?, selectedIncomeCategory: IncomeCategory?, selectedExpense: Bool) {
         
         let request = NSFetchRequest<Accounting>(entityName: "Accounting")
         
@@ -329,7 +360,15 @@ class StorageManager {
             
             accounting[0].accountName = account[0]
             
-            accounting[0].expenseSubCategory = selectedSubCategory
+            if selectedExpense {
+                
+                accounting[0].expenseSubCategory = selectedExpenseCategory
+                
+            } else {
+                
+                accounting[0].incomeSubCategory = selectedIncomeCategory
+                
+            }
             
         } catch {
             

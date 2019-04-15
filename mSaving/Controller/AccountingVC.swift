@@ -77,9 +77,15 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     
     @IBOutlet weak var deleteAccountingButton: UIButton!
     
-    var selectedSubCategory: ExpenseCategory?
+    var selectedExpenseCategory: ExpenseCategory?
+    
+    var selectedIncomeCategory: IncomeCategory?
+    
+    var selectedExpense = true
 
-    var subCategorys: [ExpenseCategory] = []
+    var expenseCategorys: [ExpenseCategory] = []
+    
+    var incomeCategorys: [IncomeCategory] = []
     
     var newAccounting = true
     
@@ -125,11 +131,15 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
 
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
-        guard let subCategorys = StorageManager.shared.fetchCategory() else { return }
+        guard let expenseCategorys = StorageManager.shared.fetchExpenseCategory() else { return }
         
-        self.subCategorys = subCategorys
+        self.expenseCategorys = expenseCategorys
         
-        selectedSubCategory = subCategorys[0]
+        selectedExpenseCategory = expenseCategorys[0]
+        
+        guard let incomeCategorys = StorageManager.shared.fetchIncomeCategory() else { return }
+        
+        self.incomeCategorys = incomeCategorys
 
     }
 
@@ -195,28 +205,65 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         
         guard let text = amountTextField.text, let amount = Int64(text), amount != 0 else { return }
         
-        guard let selectedSubCategory = selectedSubCategory else { return }
-        
         guard let selectedAccount = selectedAccount.titleLabel?.text else { return }
         
         guard let selectedDate = calendar.selectedDate else { return }
         
         if newAccounting {
             
-            StorageManager.shared.saveAccounting(date: selectedDate,
-                                                 amount: amount,
-                                                 accountName: selectedAccount,
-                                                 selectedSubCategory: selectedSubCategory)
+            if selectedExpense {
+                
+                guard let selectedCategory = selectedExpenseCategory else { return }
+                
+                StorageManager.shared.saveAccounting(date: selectedDate,
+                                                     amount: amount,
+                                                     accountName: selectedAccount,
+                                                     selectedExpenseCategory: selectedCategory,
+                                                     selectedIncomeCategory: nil,
+                                                     selectedExpense: selectedExpense)
+                
+            } else {
+                
+                guard let selectedCategory = selectedIncomeCategory else { return }
+                
+                StorageManager.shared.saveAccounting(date: selectedDate,
+                                                     amount: amount,
+                                                     accountName: selectedAccount,
+                                                     selectedExpenseCategory: nil,
+                                                     selectedIncomeCategory: selectedCategory,
+                                                     selectedExpense: selectedExpense)
+                
+            }
             
             dismiss(animated: true, completion: nil)
             
         } else {
             
-            StorageManager.shared.reviseAccounting(date: reviseOccurDate,
-                                                   newDate: selectedDate,
-                                                   amount: amount,
-                                                   accountName: selectedAccount,
-                                                   selectedSubCategory: selectedSubCategory)
+            if selectedExpense {
+                
+                guard let selectedCategory = selectedExpenseCategory else { return }
+                
+                StorageManager.shared.reviseAccounting(date: reviseOccurDate,
+                                                       newDate: selectedDate,
+                                                       amount: amount,
+                                                       accountName: selectedAccount,
+                                                       selectedExpenseCategory: selectedCategory,
+                                                       selectedIncomeCategory: nil,
+                                                       selectedExpense: selectedExpense)
+                
+            } else {
+                
+                guard let selectedCategory = selectedIncomeCategory else { return }
+                
+                StorageManager.shared.reviseAccounting(date: reviseOccurDate,
+                                                       newDate: selectedDate,
+                                                       amount: amount,
+                                                       accountName: selectedAccount,
+                                                       selectedExpenseCategory: nil,
+                                                       selectedIncomeCategory: selectedCategory,
+                                                       selectedExpense: selectedExpense)
+                
+            }
             
             navigationController?.popViewController(animated: true)
             
@@ -302,7 +349,8 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         present(alertController, animated: true, completion: nil)
     }
     
-    func setAccountingRevise(occurDate: Int64, date: Date, amount: Int64, account: String?, category: ExpenseCategory?) {
+    func setAccountingRevise(occurDate: Int64, date: Date, amount: Int64,
+                             account: String?, category: ExpenseCategory?) {
         
         newAccounting = false
         
@@ -326,7 +374,9 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         
         selectedAccount.setTitle(reviseAccount, for: .normal)
         
-        guard let category = reviseCategory, let iconName = category.iconName, let color = category.color else { return }
+        guard let category = reviseCategory, let iconName = category.iconName, let color = category.color else {
+            return
+        }
         
         selectedSubCategoryImageView.image = UIImage(named: iconName)
         
@@ -348,62 +398,58 @@ extension AccountingVC: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        if collectionView == incomeExpenseCollectionView {
-
-            return 3
-
-        } else {
-
-            return subCategorys.count
-
-        }
+        return 3
 
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        if collectionView == incomeExpenseCollectionView {
-
-            guard let cell = incomeExpenseCollectionView.dequeueReusableCell(
-                withReuseIdentifier: String(describing: IncomeExpenseCVCell.self),
-                for: indexPath) as? IncomeExpenseCVCell else {
-                    return IncomeExpenseCVCell()
-            }
-
-            cell.initSavingCVCell(dataSource: self, delegate: self)
-
-            return cell
-
-        } else {
-
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: String(describing: CategorySelectCVCell.self),
-                for: indexPath) as? CategorySelectCVCell else {
-                    return CategorySelectCVCell()
-            }
+        guard let cell = incomeExpenseCollectionView.dequeueReusableCell(
+            withReuseIdentifier: String(describing: IncomeExpenseCVCell.self),
+            for: indexPath) as? IncomeExpenseCVCell else {
+                return IncomeExpenseCVCell()
+        }
+        
+        if indexPath.row == 0 {
             
-            let aSubCategory = subCategorys[indexPath.row]
-            
-            guard let iconName = aSubCategory.iconName,
-                let name = aSubCategory.name,
-                let color = aSubCategory.color else { return cell }
-                
-            cell.initCategorySelectCVCell(imageName: iconName, subCategoryName: name, hex: color)
+            cell.initSavingCVCell(expenseCategorys: expenseCategorys, incomeCategorys: [])
             
             cell.selectSubCategory = {
                 
-                self.selectedSubCategory = aSubCategory
+                guard let category = cell.expenseCategory, let iconName = category.iconName, let color = category.color else { return }
+                
+                self.selectedExpenseCategory = category
+                
+                self.selectedExpense = true
                 
                 self.selectedSubCategoryImageView.image = UIImage(named: iconName)
                 
                 self.selectedSubCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
                 
             }
-
-            return cell
-
+            
+        } else {
+            
+            cell.initSavingCVCell(expenseCategorys: [], incomeCategorys: incomeCategorys)
+            
+            cell.selectSubCategory = {
+                
+                guard let category = cell.incomeCategory, let iconName = category.iconName, let color = category.color else { return }
+                
+                self.selectedIncomeCategory = category
+                
+                self.selectedExpense = false
+                
+                self.selectedSubCategoryImageView.image = UIImage(named: iconName)
+                
+                self.selectedSubCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+                
+            }
+            
         }
+        
+        return cell
 
     }
 
@@ -419,15 +465,7 @@ extension AccountingVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
 
-        if collectionView == incomeExpenseCollectionView {
-
-            return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-
-        } else {
-
-            return UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
-
-        }
+        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
 
     }
 
@@ -435,15 +473,7 @@ extension AccountingVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        if collectionView == incomeExpenseCollectionView {
-
-            return CGSize(width: 374, height: 240)
-
-        } else {
-
-            return CGSize(width: 32, height: 76)
-
-        }
+        return CGSize(width: 374, height: 240)
 
     }
 
@@ -451,15 +481,7 @@ extension AccountingVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 
-        if collectionView == incomeExpenseCollectionView {
-
-            return 12
-
-        } else {
-
-            return 0
-
-        }
+        return 12
 
     }
 
@@ -467,15 +489,7 @@ extension AccountingVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
 
-        if collectionView == incomeExpenseCollectionView {
-
-            return 0
-
-        } else {
-
-            return 40
-
-        }
+        return 0
 
     }
 
