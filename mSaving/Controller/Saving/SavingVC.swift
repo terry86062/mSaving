@@ -242,7 +242,8 @@ extension SavingVC: UICollectionViewDataSource {
             
             cell.goToAccountDetail = {
                 
-                guard let accountingVC = UIStoryboard.accounting.instantiateInitialViewController() as? AccountingVC else { return }
+                guard let accountingVC = UIStoryboard.accounting.instantiateInitialViewController()
+                    as? AccountingVC else { return }
                 
                 guard let accounting = cell.selectedAccounting else { return }
                 

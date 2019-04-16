@@ -663,4 +663,18 @@ class StorageManager {
         
     }
     
+    func createSaving(main: Bool, date: Date, amount: Int64) {
+        
+        let saving = Saving(context: viewContext)
+        
+        saving.main = main
+        
+        saving.month = Int64(date.timeIntervalSince1970)
+        
+        saving.amount = amount
+        
+        saveContext()
+        
+    }
+    
 }
