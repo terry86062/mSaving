@@ -155,8 +155,16 @@ extension SavingVC: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return accountingWithDateGroupArray.count
-
+        if accountingWithDateGroupArray.count == 0 {
+            
+            return 1
+            
+        } else {
+            
+            return accountingWithDateGroupArray.count
+            
+        }
+        
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -168,12 +176,24 @@ extension SavingVC: UICollectionViewDataSource {
                 withReuseIdentifier: String(describing: MonthCVCell.self),
                 for: indexPath) as? MonthCVCell else { return MonthCVCell() }
 
-            guard let month = accountingWithDateGroupArray[indexPath.row].first?.first?.dateComponents.month else {
-                return cell
+            if accountingWithDateGroupArray.count == 0 {
+                
+                let dateComponents = Calendar.current.dateComponents([.month], from: Date())
+                
+                guard let month = dateComponents.month else { return cell }
+                
+                cell.initMonthCVCell(month: "\(month)月")
+                
+            } else {
+                
+                guard let month = accountingWithDateGroupArray[indexPath.row].first?.first?.dateComponents.month else {
+                    return cell
+                }
+                
+                cell.initMonthCVCell(month: "\(month)月")
+                
             }
             
-            cell.initMonthCVCell(month: "\(month)月")
-
             return cell
 
         } else {
@@ -182,7 +202,15 @@ extension SavingVC: UICollectionViewDataSource {
                 withReuseIdentifier: String(describing: SavingCVCell.self),
                 for: indexPath) as? SavingCVCell else { return SavingCVCell() }
 
-            cell.initSavingCVCell(accountings: accountingWithDateGroupArray[indexPath.row])
+            if accountingWithDateGroupArray.count == 0 {
+                
+                cell.initSavingCVCell(accountings: [])
+                
+            } else {
+                
+                cell.initSavingCVCell(accountings: accountingWithDateGroupArray[indexPath.row])
+                
+            }
             
             cell.showSavingDetail = {
                 
