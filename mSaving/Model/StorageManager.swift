@@ -218,13 +218,17 @@ class StorageManager {
             
             var isRepeat = false
             
-            for index in 0...accountings.count - 1 {
+            if accountings.count > 0 {
                 
-                if time == accountings[index].occurDate {
+                for index in 0...accountings.count - 1 {
                     
-                    isRepeat = true
-                    
-                    break
+                    if time == accountings[index].occurDate {
+                        
+                        isRepeat = true
+                        
+                        break
+                        
+                    }
                     
                 }
                 
@@ -282,9 +286,13 @@ class StorageManager {
                 
                 accounting.expenseSubCategory = selectedExpenseCategory
                 
+                account[0].currentValue -= amount
+                
             } else {
                 
                 accounting.incomeSubCategory = selectedIncomeCategory
+                
+                account[0].currentValue += amount
                 
             }
             
@@ -444,13 +452,17 @@ class StorageManager {
             
             var isRepeat = false
             
-            for index in 0...accountings.count - 1 {
+            if accountings.count > 0 {
                 
-                if time == accountings[index].occurDate {
+                for index in 0...accountings.count - 1 {
                     
-                    isRepeat = true
-                    
-                    break
+                    if time == accountings[index].occurDate {
+                        
+                        isRepeat = true
+                        
+                        break
+                        
+                    }
                     
                 }
                 
