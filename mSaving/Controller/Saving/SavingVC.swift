@@ -45,6 +45,12 @@ class SavingVC: UIViewController {
     @IBOutlet weak var editingButton: UIButton!
     
     var accountingWithDateGroupArray: [[[AccountingWithDate]]] = []
+    
+    var savingArray: [[Saving]] = []
+    
+    var selectedYear = ""
+    
+    var selectedMonth = ""
 
     override func viewDidLoad() {
 
@@ -110,6 +116,8 @@ class SavingVC: UIViewController {
         
         print(accountingWithDateGroupArray)
         
+        guard let savingArray = StorageManager.shared.fetchSaving() else { return }
+        
         monthCollectionView.reloadData()
         
         savingCollectionView.reloadData()
@@ -148,6 +156,24 @@ class SavingVC: UIViewController {
         savingCollectionView.helpRegister(cell: SavingCVCell())
 
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "goToSavingGoalSetVC" {
+            
+            guard let tabBarVC = tabBarController as? TabBarController else { return }
+            
+            tabBarVC.blackView.isHidden = false
+            
+            guard let savingGoalSetVC = segue.destination as? SavingGoalSetVC else { return }
+            
+            savingGoalSetVC.selectedMonth = selectedMonth
+            
+            savingGoalSetVC.selectedYear = selectedYear
+            
+        }
+        
+    }
 
 }
 
@@ -178,19 +204,20 @@ extension SavingVC: UICollectionViewDataSource {
 
             if accountingWithDateGroupArray.count == 0 {
                 
-                let dateComponents = Calendar.current.dateComponents([.month], from: Date())
+                let dateComponents = Calendar.current.dateComponents([.year, .month], from: Date())
                 
-                guard let month = dateComponents.month else { return cell }
+                guard let month = dateComponents.month, let year = dateComponents.year else { return cell }
                 
-                cell.initMonthCVCell(month: "\(month)月")
+                cell.initMonthCVCell(year: "\(year)", month: "\(month)月")
                 
             } else {
                 
-                guard let month = accountingWithDateGroupArray[indexPath.row].first?.first?.dateComponents.month else {
+                guard let month = accountingWithDateGroupArray[indexPath.row].first?.first?.dateComponents.month,
+                    let year = accountingWithDateGroupArray[indexPath.row].first?.first?.dateComponents.year else {
                     return cell
                 }
                 
-                cell.initMonthCVCell(month: "\(month)月")
+                cell.initMonthCVCell(year: "\(year)", month: "\(month)")
                 
             }
             
@@ -386,8 +413,7 @@ extension SavingVC {
                             savingCollectionView.frame.width / 2) /
                             savingCollectionView.frame.width)
 
-            guard let cell = monthCollectionView.cellForItem(
-                at: IndexPath(
+            guard let cell = monthCollectionView.cellForItem(at: IndexPath(
                     row: Int((savingCollectionView.bounds.origin.x +
                                 savingCollectionView.frame.width / 2) /
                                 savingCollectionView.frame.width),
@@ -397,6 +423,10 @@ extension SavingVC {
 
                 cell.shadowView.alpha = 1
 
+                self.selectedMonth = cell.month
+                
+                self.selectedYear = cell.year
+                
             })
 
             switch row {

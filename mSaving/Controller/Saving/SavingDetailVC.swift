@@ -163,7 +163,7 @@ extension SavingDetailVC: UICollectionViewDataSource {
                 withReuseIdentifier: String(describing: MonthCVCell.self),
                 for: indexPath) as? MonthCVCell else { return MonthCVCell() }
 
-            cell.initMonthCVCell(month: testData[indexPath.row].month)
+//            cell.initMonthCVCell(month: testData[indexPath.row].month)
 
             if indexPath.row == 0 {
 

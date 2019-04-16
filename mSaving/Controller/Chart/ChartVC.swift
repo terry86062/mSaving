@@ -120,7 +120,7 @@ extension ChartVC: UICollectionViewDataSource {
                 withReuseIdentifier: String(describing: MonthCVCell.self),
                 for: indexPath) as? MonthCVCell else { return MonthCVCell() }
 
-            cell.initMonthCVCell(month: testData[indexPath.row].month)
+            cell.initMonthCVCell(year: "", month: testData[indexPath.row].month)
 
             if indexPath.row == 0 {
 

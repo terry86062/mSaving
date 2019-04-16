@@ -501,7 +501,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="nTW-Gj-7Bw" kind="presentation" modalPresentationStyle="overFullScreen" id="dUa-Qq-oDp"/>
+                                    <segue destination="nTW-Gj-7Bw" kind="presentation" identifier="goToSavingGoalSetVC" modalPresentationStyle="overFullScreen" id="dUa-Qq-oDp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2068,6 +2068,9 @@
                                 <state key="normal">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="dismiss:" destination="nTW-Gj-7Bw" eventType="touchUpInside" id="qM4-gN-x3h"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bit-4x-aMT">
                                 <rect key="frame" x="32" y="137.5" width="350" height="322"/>
@@ -2100,7 +2103,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
                                                 <real key="value" value="2"/>
@@ -2186,6 +2189,9 @@
                                                 <real key="value" value="16"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="confirm:" destination="nTW-Gj-7Bw" eventType="touchUpInside" id="0BO-QN-6LU"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2247,6 +2253,11 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="zGP-hL-fRv" id="fld-bw-lbH"/>
+                        <outlet property="savingTextField" destination="t8V-BO-9d8" id="eFC-NU-MBj"/>
+                        <outlet property="titleLabel" destination="Q20-XS-1Ph" id="Vzd-GH-tyN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KmH-6R-LvH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

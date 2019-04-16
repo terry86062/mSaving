@@ -677,4 +677,27 @@ class StorageManager {
         
     }
     
+    func fetchSaving() -> [Saving]? {
+        
+        let request = NSFetchRequest<Saving>(entityName: "Saving")
+        
+        request.sortDescriptors = [
+            NSSortDescriptor(key: "month", ascending: true),
+            NSSortDescriptor(key: "amount", ascending: true)
+        ]
+        
+        do {
+            
+            return try viewContext.fetch(request)
+            
+        } catch {
+            
+            print("fetch saving fail")
+            
+            return nil
+            
+        }
+        
+    }
+    
 }
