@@ -224,7 +224,8 @@ extension SavingVC: UICollectionViewDataSource {
                                                  date: accounting.date,
                                                  amount: accounting.accounting.amount,
                                                  account: accounting.accounting.accountName?.name,
-                                                 category: accounting.accounting.expenseSubCategory)
+                                                 expenseCategory: accounting.accounting.expenseSubCategory,
+                                                 incomeCategory: accounting.accounting.incomeSubCategory)
                 
             }
             

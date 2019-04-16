@@ -364,7 +364,11 @@ class StorageManager {
                 
                 accounting[0].expenseSubCategory = selectedExpenseCategory
                 
+                accounting[0].incomeSubCategory = nil
+                
             } else {
+                
+                accounting[0].expenseSubCategory = nil
                 
                 accounting[0].incomeSubCategory = selectedIncomeCategory
                 

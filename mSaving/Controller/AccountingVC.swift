@@ -97,7 +97,9 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     
     var reviseAccount: String?
     
-    var reviseCategory: ExpenseCategory?
+    var reviseExpenseCategory: ExpenseCategory?
+    
+    var reviseIncomeCategory: IncomeCategory?
 
     override func viewDidLoad() {
 
@@ -135,7 +137,11 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         
         self.expenseCategorys = expenseCategorys
         
-        selectedExpenseCategory = expenseCategorys[0]
+        if selectedExpense {
+            
+            selectedExpenseCategory = expenseCategorys[0]
+            
+        }
         
         guard let incomeCategorys = StorageManager.shared.fetchIncomeCategory() else { return }
         
@@ -350,7 +356,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     }
     
     func setAccountingRevise(occurDate: Int64, date: Date, amount: Int64,
-                             account: String?, category: ExpenseCategory?) {
+                             account: String?, expenseCategory: ExpenseCategory?, incomeCategory: IncomeCategory?) {
         
         newAccounting = false
         
@@ -362,7 +368,19 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         
         reviseAccount = account
         
-        reviseCategory = category
+        if expenseCategory != nil {
+            
+            reviseExpenseCategory = expenseCategory
+            
+            selectedExpense = true
+            
+        } else if incomeCategory != nil {
+            
+            reviseIncomeCategory = incomeCategory
+            
+            selectedExpense = false
+            
+        }
         
     }
     
@@ -374,13 +392,23 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         
         selectedAccount.setTitle(reviseAccount, for: .normal)
         
-        guard let category = reviseCategory, let iconName = category.iconName, let color = category.color else {
-            return
+        if selectedExpense == true, let category = reviseExpenseCategory, let iconName = category.iconName, let color = category.color {
+            
+            selectedExpenseCategory = category
+            
+            selectedSubCategoryImageView.image = UIImage(named: iconName)
+            
+            selectedSubCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+            
+        } else if selectedExpense == false, let category = reviseIncomeCategory, let iconName = category.iconName, let color = category.color {
+            
+            selectedIncomeCategory = category
+            
+            selectedSubCategoryImageView.image = UIImage(named: iconName)
+            
+            selectedSubCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+            
         }
-        
-        selectedSubCategoryImageView.image = UIImage(named: iconName)
-        
-        selectedSubCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
         
     }
     
@@ -421,6 +449,8 @@ extension AccountingVC: UICollectionViewDataSource {
                 
                 self.selectedExpenseCategory = category
                 
+                self.selectedIncomeCategory = nil
+                
                 self.selectedExpense = true
                 
                 self.selectedSubCategoryImageView.image = UIImage(named: iconName)
@@ -438,6 +468,8 @@ extension AccountingVC: UICollectionViewDataSource {
                 guard let category = cell.incomeCategory, let iconName = category.iconName, let color = category.color else { return }
                 
                 self.selectedIncomeCategory = category
+                
+                self.selectedExpenseCategory = nil
                 
                 self.selectedExpense = false
                 
