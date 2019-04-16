@@ -540,7 +540,7 @@ class StorageManager {
         
     }
     
-    func deleteAccounting(date: Int64) {
+    func deleteAccounting(date: Int64, selectedExpense: Bool) {
         
         let request = NSFetchRequest<Accounting>(entityName: "Accounting")
         
@@ -549,6 +549,16 @@ class StorageManager {
         do {
             
             let accounting = try viewContext.fetch(request)
+            
+            if selectedExpense {
+                
+                accounting[0].accountName?.currentValue += accounting[0].amount
+                
+            } else {
+                
+                accounting[0].accountName?.currentValue -= accounting[0].amount
+                
+            }
             
             viewContext.delete(accounting[0])
             
