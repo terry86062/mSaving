@@ -192,15 +192,87 @@ class StorageManager {
         
         let accounting = Accounting(context: viewContext)
         
-        let request = NSFetchRequest<Account>(entityName: "Account")
+        let request = NSFetchRequest<Accounting>(entityName: "Accounting")
         
-        request.predicate = NSPredicate(format: "name = %@", accountName)
+        let time = Int64(date.timeIntervalSince1970)
+        
+        print("time \(time)")
+        
+        let beginDate = time - time % 86400 + 57600
+        
+        print("beginDate \(beginDate)")
+        
+        let finishDate = beginDate + 86400 - 1
+        
+        print("finishDate \(finishDate)")
+        
+        request.predicate = NSPredicate(format: "occurDate BETWEEN { \(beginDate) , \(finishDate) }")
+        
+        let accountRequest = NSFetchRequest<Account>(entityName: "Account")
+        
+        accountRequest.predicate = NSPredicate(format: "name = %@", accountName)
         
         do {
             
-            let account = try viewContext.fetch(request)
-
-            accounting.occurDate = Int64(date.timeIntervalSince1970)
+            let accountings = try viewContext.fetch(request)
+            
+            var isRepeat = false
+            
+            for index in 0...accountings.count - 1 {
+                
+                if time == accountings[index].occurDate {
+                    
+                    isRepeat = true
+                    
+                    break
+                    
+                }
+                
+            }
+            
+            if isRepeat {
+                
+                for newTime in beginDate...finishDate {
+                    
+                    if accounting.occurDate == 0 {
+                        
+                        var count = 0
+                        
+                        for index in 0...accountings.count - 1 {
+                            
+                            if newTime == accountings[index].occurDate {
+                                
+                                break
+                                
+                            } else {
+                                
+                                count += 1
+                                
+                            }
+                            
+                            if count == accountings.count {
+                                
+                                accounting.occurDate = newTime
+                                
+                            }
+                            
+                        }
+                        
+                    } else {
+                        
+                        break
+                        
+                    }
+                    
+                }
+                
+            } else {
+                
+                accounting.occurDate = Int64(date.timeIntervalSince1970)
+                
+            }
+            
+            let account = try viewContext.fetch(accountRequest)
 
             accounting.amount = amount
 
