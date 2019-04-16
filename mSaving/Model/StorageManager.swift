@@ -126,13 +126,21 @@ class StorageManager {
         
     }
     
-    func createAccount(name: String, amount: Int64, priority: Int64) {
+    func createAccount(name: String, initalAmount: Int64, priority: Int64, currentAmount: Int64 = 0) {
         
         let account = Account(context: viewContext)
         
-        account.initialValue = amount
+        account.initialValue = initalAmount
         
-        account.currentValue = amount
+        if currentAmount == 0 {
+            
+            account.currentValue = initalAmount
+            
+        } else {
+            
+            account.currentValue = currentAmount
+            
+        }
         
         account.name = name
         
@@ -280,19 +288,59 @@ class StorageManager {
 
             accounting.amount = amount
 
-            accounting.accountName = account[0]
+            if account.count > 0 {
+                
+                accounting.accountName = account[0]
+                
+            }
             
             if selectedExpense {
                 
                 accounting.expenseSubCategory = selectedExpenseCategory
                 
-                account[0].currentValue -= amount
+                if account.count > 0 {
+                    
+                    account[0].currentValue -= amount
+                    
+                } else {
+                    
+                    let account = Account(context: viewContext)
+                    
+                    account.initialValue = 0
+                    
+                    account.currentValue = -amount
+                    
+                    account.name = "現金"
+                    
+                    account.priority = 0
+                    
+                    accounting.accountName = account
+                    
+                }
                 
             } else {
                 
                 accounting.incomeSubCategory = selectedIncomeCategory
                 
-                account[0].currentValue += amount
+                if account.count > 0 {
+                    
+                    account[0].currentValue += amount
+                    
+                } else {
+                    
+                    let account = Account(context: viewContext)
+                    
+                    account.initialValue = 0
+                    
+                    account.currentValue = amount
+                    
+                    account.name = "現金"
+                    
+                    account.priority = 0
+                    
+                    accounting.accountName = account
+                    
+                }
                 
             }
             
@@ -418,7 +466,15 @@ class StorageManager {
         
     }
     
-    func reviseAccounting(date: Int64, newDate: Date, amount: Int64, accountName: String, selectedExpenseCategory: ExpenseCategory?, selectedIncomeCategory: IncomeCategory?, selectedExpense: Bool) {
+    // swiftlint:disable function_parameter_count
+    func reviseAccounting(date: Int64,
+                          newDate: Date,
+                          amount: Int64,
+                          accountName: String,
+                          selectedExpenseCategory: ExpenseCategory?,
+                          selectedIncomeCategory: IncomeCategory?,
+                          selectedExpense: Bool,
+                          reviseSelectedExpense: Bool) {
         
         let request = NSFetchRequest<Accounting>(entityName: "Accounting")
         
@@ -512,6 +568,40 @@ class StorageManager {
             
             let account = try viewContext.fetch(accountRequest)
             
+            if reviseSelectedExpense {
+                
+                if selectedExpense {
+                    
+                    accounting[0].accountName?.currentValue += accounting[0].amount
+                    
+                    account[0].currentValue -= amount
+                    
+                } else {
+                    
+                    accounting[0].accountName?.currentValue += accounting[0].amount
+                    
+                    account[0].currentValue += amount
+                    
+                }
+                
+            } else {
+                
+                if selectedExpense {
+                    
+                    accounting[0].accountName?.currentValue -= accounting[0].amount
+                    
+                    account[0].currentValue -= amount
+                    
+                } else {
+                    
+                    accounting[0].accountName?.currentValue -= accounting[0].amount
+                    
+                    account[0].currentValue += amount
+                    
+                }
+                
+            }
+            
             accounting[0].amount = amount
             
             accounting[0].accountName = account[0]
@@ -539,8 +629,9 @@ class StorageManager {
         saveContext()
         
     }
+    // swiftlint:enable function_parameter_count
     
-    func deleteAccounting(date: Int64, selectedExpense: Bool) {
+    func deleteAccounting(date: Int64, reviseSelectedExpense: Bool) {
         
         let request = NSFetchRequest<Accounting>(entityName: "Accounting")
         
@@ -550,7 +641,7 @@ class StorageManager {
             
             let accounting = try viewContext.fetch(request)
             
-            if selectedExpense {
+            if reviseSelectedExpense {
                 
                 accounting[0].accountName?.currentValue += accounting[0].amount
                 

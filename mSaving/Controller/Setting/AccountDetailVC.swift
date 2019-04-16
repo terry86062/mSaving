@@ -82,11 +82,11 @@ class AccountDetailVC: UIViewController {
             
             if let account = StorageManager.shared.fetchAccount()?.last {
                 
-                StorageManager.shared.createAccount(name: text, amount: amount, priority: account.priority + 1)
+                StorageManager.shared.createAccount(name: text, initalAmount: amount, priority: account.priority + 1)
                 
             } else {
                 
-                StorageManager.shared.createAccount(name: text, amount: amount, priority: 0)
+                StorageManager.shared.createAccount(name: text, initalAmount: amount, priority: 0)
                 
             }
 

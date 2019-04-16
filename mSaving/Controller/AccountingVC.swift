@@ -82,6 +82,8 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     var selectedIncomeCategory: IncomeCategory?
     
     var selectedExpense = true
+    
+    var reviseSelectedExpense = true
 
     var expenseCategorys: [ExpenseCategory] = []
     
@@ -153,6 +155,14 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         
         super.viewWillAppear(animated)
         
+        guard let accounts = StorageManager.shared.fetchAccount() else { return }
+        
+        if accounts.count > 0 {
+            
+            selectedAccount.setTitle(accounts[0].name, for: .normal)
+            
+        }
+        
         if newAccounting == false {
             
             setAccountingFromRevise()
@@ -164,7 +174,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
             amountTextField.becomeFirstResponder()
             
         }
-
+        
     }
 
     @objc func navigationSegmentedControlValueChanged(_ sender: BetterSegmentedControl) {
@@ -255,7 +265,8 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
                                                        accountName: selectedAccount,
                                                        selectedExpenseCategory: selectedCategory,
                                                        selectedIncomeCategory: nil,
-                                                       selectedExpense: selectedExpense)
+                                                       selectedExpense: selectedExpense,
+                                                       reviseSelectedExpense: reviseSelectedExpense)
                 
             } else {
                 
@@ -267,7 +278,8 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
                                                        accountName: selectedAccount,
                                                        selectedExpenseCategory: nil,
                                                        selectedIncomeCategory: selectedCategory,
-                                                       selectedExpense: selectedExpense)
+                                                       selectedExpense: selectedExpense,
+                                                       reviseSelectedExpense: reviseSelectedExpense)
                 
             }
             
@@ -335,17 +347,21 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         
         guard let accounts = StorageManager.shared.fetchAccount() else { return }
         
-        for index in 0...accounts.count - 1 {
+        if accounts.count > 0 {
             
-            guard let accountName = accounts[index].name else { return }
-            
-            let accountAction = UIAlertAction(title: accountName, style: .default, handler: { _ in
+            for index in 0...accounts.count - 1 {
                 
-                self.selectedAccount.setTitle(accountName, for: .normal)
+                guard let accountName = accounts[index].name else { return }
                 
-            })
-            
-            alertController.addAction(accountAction)
+                let accountAction = UIAlertAction(title: accountName, style: .default, handler: { _ in
+                    
+                    self.selectedAccount.setTitle(accountName, for: .normal)
+                    
+                })
+                
+                alertController.addAction(accountAction)
+                
+            }
             
         }
         
@@ -374,11 +390,15 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
             
             selectedExpense = true
             
+            reviseSelectedExpense = true
+            
         } else if incomeCategory != nil {
             
             reviseIncomeCategory = incomeCategory
             
             selectedExpense = false
+            
+            reviseSelectedExpense = false
             
         }
         
@@ -414,7 +434,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     
     @IBAction func deleteAccounting(_ sender: UIButton) {
         
-        StorageManager.shared.deleteAccounting(date: reviseOccurDate, selectedExpense: selectedExpense)
+        StorageManager.shared.deleteAccounting(date: reviseOccurDate, reviseSelectedExpense: reviseSelectedExpense)
         
         navigationController?.popViewController(animated: true)
         
