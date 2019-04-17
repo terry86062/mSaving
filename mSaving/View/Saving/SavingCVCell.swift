@@ -38,7 +38,11 @@ class SavingCVCell: UICollectionViewCell {
 
     var accountings: [[AccountingWithDate]] = []
     
+    var savings: [SavingWithDate] = []
+    
     var selectedAccounting: AccountingWithDate?
+    
+    var totalSpend = 0
     
     override func awakeFromNib() {
 
@@ -46,9 +50,31 @@ class SavingCVCell: UICollectionViewCell {
 
     }
 
-    func initSavingCVCell(accountings: [[AccountingWithDate]]) {
-
+    func initSavingCVCell(accountings: [[AccountingWithDate]], savings: [SavingWithDate]) {
+        
+        self.savings = []
+        
+        totalSpend = 0
+        
         self.accountings = accountings
+        
+        self.savings = savings
+        
+        let accountingsFlatMaped = accountings.flatMap({ $0 })
+        
+        if accountingsFlatMaped.count > 0 {
+            
+            for index in 0...accountingsFlatMaped.count - 1 {
+                
+                if accountingsFlatMaped[index].accounting.expenseSubCategory != nil {
+                    
+                    totalSpend += Int(accountingsFlatMaped[index].accounting.amount)
+                    
+                }
+                
+            }
+            
+        }
         
     }
 
@@ -76,7 +102,15 @@ extension SavingCVCell: UICollectionViewDataSource {
             
         } else {
             
-            return 4
+            if savings.count == 0 {
+                
+                return 1
+                
+            } else {
+                
+                return savings.count
+                
+            }
             
         }
         
@@ -90,6 +124,16 @@ extension SavingCVCell: UICollectionViewDataSource {
                 withReuseIdentifier: String(describing: SavingGoalCVCell.self),
                 for: indexPath) as? SavingGoalCVCell else {
                     return SavingGoalCVCell()
+            }
+            
+            if savings.count > 0 {
+                
+                cell.initSavingGoalCVCell(budget: savings[indexPath.row].saving.amount, totalSpend: totalSpend)
+                
+            } else {
+                
+                cell.initSavingGoalCVCell(budget: 0, totalSpend: totalSpend)
+                
             }
             
             cell.showSavingDetail = {

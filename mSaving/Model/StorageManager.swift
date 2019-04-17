@@ -688,7 +688,7 @@ class StorageManager {
         
         do {
             
-            return try viewContext.fetch(request)
+            return try viewContext.fetch(request).reversed()
             
         } catch {
             

@@ -66,7 +66,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFb-ZB-WQ9">
                         <rect key="frame" x="16" y="52" width="350" height="32"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zTY-FH-GaS">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zTY-FH-GaS">
                                 <rect key="frame" x="0.0" y="0.0" width="87.5" height="32"/>
                                 <color key="backgroundColor" name="mSYellow"/>
                                 <userDefinedRuntimeAttributes>
@@ -147,6 +147,13 @@
                 <constraint firstItem="ZQk-5R-95J" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="z4c-fB-jUs"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="budgetLabel" destination="Z0x-WJ-ZTw" id="Fva-Iv-lUx"/>
+                <outlet property="budgetProgressView" destination="WFb-ZB-WQ9" id="asa-U5-zzN"/>
+                <outlet property="spendLabel" destination="9ri-gX-cFp" id="iA4-uH-h5B"/>
+                <outlet property="spendPercentView" destination="zTY-FH-GaS" id="bEa-e1-ahZ"/>
+                <outlet property="spendPercentWidthConstraint" destination="ZQG-ZY-ty1" id="nKs-2n-kaH"/>
+            </connections>
             <point key="canvasLocation" x="37.681159420289859" y="34.821428571428569"/>
         </collectionViewCell>
     </objects>
