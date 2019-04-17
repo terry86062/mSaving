@@ -245,6 +245,18 @@ class SavingVC: UIViewController {
             
             savingGoalSetVC.selectedYear = selectedYear
             
+        } else if segue.identifier == "goToSavingDetail" {
+            
+            guard let tabBarVC = tabBarController as? TabBarController else { return }
+            
+            tabBarVC.blackView.isHidden = false
+            
+            guard let savingDetailAddVC = segue.destination as? SavingDetailAddVC else { return }
+            
+            savingDetailAddVC.selectedMonth = selectedMonth
+            
+            savingDetailAddVC.selectedYear = selectedYear
+            
         }
         
     }
@@ -369,13 +381,13 @@ extension SavingVC: UICollectionViewDataSource {
             
             cell.presentSavingDetailAdd = {
                 
-                self.performSegue(withIdentifier: "goToSavingDetailAdd", sender: nil)
+                self.performSegue(withIdentifier: "goToSavingDetail", sender: nil)
                 
             }
             
             cell.pushSavingDetailAdd = {
                 
-                self.performSegue(withIdentifier: "goToSavingDetailEdit", sender: nil)
+                self.performSegue(withIdentifier: "goToSavingDetail", sender: nil)
                 
             }
             

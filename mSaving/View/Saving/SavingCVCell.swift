@@ -108,7 +108,7 @@ extension SavingCVCell: UICollectionViewDataSource {
                 
             } else {
                 
-                return savings.count
+                return savings.count + 1
                 
             }
             
@@ -212,7 +212,7 @@ extension SavingCVCell: UICollectionViewDataSource {
                 
             } else {
                 
-                if indexPath.row == 3 {
+                if indexPath.row == savings.count {
                     
                     guard let cell = collectionView.dequeueReusableCell(
                         withReuseIdentifier: String(describing: AddSavingDetailCVCell.self),
@@ -272,7 +272,7 @@ extension SavingCVCell: UICollectionViewDelegateFlowLayout {
                 
             } else {
                 
-                if indexPath.row == 3 {
+                if indexPath.row == savings.count {
                     
                     return CGSize(width: 382, height: 56)
                     
