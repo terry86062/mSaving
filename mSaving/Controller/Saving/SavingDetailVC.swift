@@ -189,7 +189,7 @@ extension SavingDetailVC: UICollectionViewDataSource {
                     return SavingDetailCVCell()
             }
 
-            cell.pushSavingDetailAdd = {
+            cell.showSavingDetailAdd = {
 
                 self.performSegue(withIdentifier: "showSavingDetailAddVC", sender: nil)
 

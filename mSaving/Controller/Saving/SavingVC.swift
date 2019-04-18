@@ -57,6 +57,10 @@ class SavingVC: UIViewController {
     var selectedYear = ""
     
     var selectedMonth = ""
+    
+    var selectedSaving: SavingWithDate?
+    
+    var selectedSavingDetail: SavingWithDate?
 
     override func viewDidLoad() {
 
@@ -179,14 +183,34 @@ class SavingVC: UIViewController {
             
             selectedMonth = "\(month)"
             
+            if savingWithDateGroupArray.count != 0 {
+                
+                selectedSaving = savingWithDateGroupArray[savingWithDateGroupArray.count - 1].first
+                
+            }
+            
         } else {
             
             guard let year = accountingWithDateGroupArray.last?.first?.first?.dateComponents.year,
-                let month = accountingWithDateGroupArray.last?.first?.first?.dateComponents.year else { return }
+                let month = accountingWithDateGroupArray.last?.first?.first?.dateComponents.month else { return }
             
             selectedYear = "\(year)"
             
             selectedMonth = "\(month)"
+            
+            if savingWithDateGroupArray.count != 0 {
+                
+                for index in 0...savingWithDateGroupArray.count - 1 {
+                    
+                    if savingWithDateGroupArray[index].first?.dateComponents.year == year && savingWithDateGroupArray[index].first?.dateComponents.month == month {
+                        
+                        selectedSaving = savingWithDateGroupArray[index].first
+                        
+                    }
+                    
+                }
+                
+            }
             
         }
         
@@ -245,6 +269,8 @@ class SavingVC: UIViewController {
             
             savingGoalSetVC.selectedYear = selectedYear
             
+            savingGoalSetVC.selectedSaving = selectedSaving
+            
         } else if segue.identifier == "goToSavingDetail" {
             
             guard let tabBarVC = tabBarController as? TabBarController else { return }
@@ -256,6 +282,8 @@ class SavingVC: UIViewController {
             savingDetailAddVC.selectedMonth = selectedMonth
             
             savingDetailAddVC.selectedYear = selectedYear
+            
+            savingDetailAddVC.selectedSavingDetail = selectedSavingDetail
             
         }
         
@@ -385,7 +413,9 @@ extension SavingVC: UICollectionViewDataSource {
                 
             }
             
-            cell.pushSavingDetailAdd = {
+            cell.editSavingDetailAdd = {
+                
+                self.selectedSavingDetail = cell.selectedSavingDetail
                 
                 self.performSegue(withIdentifier: "goToSavingDetail", sender: nil)
                 

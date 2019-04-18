@@ -19,6 +19,8 @@ class SavingGoalSetVC: UIViewController {
     var selectedYear = ""
     
     var selectedMonth = ""
+    
+    var selectedSaving: SavingWithDate?
 
     override func viewDidLoad() {
         
@@ -27,6 +29,16 @@ class SavingGoalSetVC: UIViewController {
         savingTextField.becomeFirstResponder()
         
         titleLabel.text = "\(selectedMonth)月預算"
+        
+        if selectedSaving != nil {
+            
+            guard let amount = selectedSaving?.saving.amount else { return }
+            
+            savingTextField.text = String(amount)
+            
+            descriptionLabel.text = "每天可花 $" + String(amount / 30)
+            
+        }
         
     }
     
@@ -38,9 +50,25 @@ class SavingGoalSetVC: UIViewController {
     
     @IBAction func confirm(_ sender: UIButton) {
         
-        saveSaving()
+        if selectedSaving != nil {
+            
+            reviseSaving()
+            
+        } else {
+            
+            saveSaving()
+            
+        }
         
         helpDismiss()
+        
+    }
+    
+    @IBAction func changeText(_ sender: UITextField) {
+        
+        guard let text = savingTextField.text, let budget = Int(text) else { return }
+        
+        descriptionLabel.text = "每天可花 $" + String(budget / 30)
         
     }
     
@@ -73,6 +101,18 @@ class SavingGoalSetVC: UIViewController {
         guard let date = Calendar.current.date(from: components) else { return }
         
         StorageManager.shared.createSaving(main: true, date: date, amount: amount)
+        
+    }
+    
+    func reviseSaving() {
+        
+        guard let selectedSaving = selectedSaving else { return }
+        
+        guard let text = savingTextField.text, let amount = Int64(text) else { return }
+        
+        selectedSaving.saving.amount = amount
+        
+        StorageManager.shared.saveContext()
         
     }
 

@@ -19,27 +19,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="382" height="112"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1p-wN-lnv">
-                        <rect key="frame" x="0.0" y="0.0" width="382" height="112"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
-                                <size key="value" width="0.0" height="2"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
-                                <real key="value" value="0.80000000000000004"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
-                                <real key="value" value="5"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
-                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
-                                <real key="value" value="20"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCq-We-BpK">
                         <rect key="frame" x="16" y="64" width="350" height="32"/>
                         <subviews>
@@ -96,12 +75,17 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="kJl-rQ-uVD">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kJl-rQ-uVD">
                         <rect key="frame" x="16" y="16" width="32" height="32"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="32" id="FHQ-1S-y9s"/>
                             <constraint firstAttribute="width" constant="32" id="sch-85-PSM"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
+                                <real key="value" value="16"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="食物預算" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ny2-xL-vlJ">
                         <rect key="frame" x="64" y="22.5" width="65.5" height="19.5"/>
@@ -117,17 +101,13 @@
                     </button>
                 </subviews>
             </view>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="kJl-rQ-uVD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="139-WG-msH"/>
-                <constraint firstItem="z1p-wN-lnv" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1xc-ay-cSW"/>
                 <constraint firstItem="Ny2-xL-vlJ" firstAttribute="leading" secondItem="kJl-rQ-uVD" secondAttribute="trailing" constant="16" id="3Ge-sR-iKT"/>
                 <constraint firstAttribute="trailing" secondItem="BXQ-sd-tbd" secondAttribute="trailing" id="5Ev-lt-9uS"/>
-                <constraint firstAttribute="bottom" secondItem="z1p-wN-lnv" secondAttribute="bottom" id="JBt-oR-2bn"/>
-                <constraint firstItem="z1p-wN-lnv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="KOH-YG-Cjd"/>
                 <constraint firstItem="NCq-We-BpK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="UKd-HQ-eFy"/>
                 <constraint firstAttribute="bottom" secondItem="NCq-We-BpK" secondAttribute="bottom" constant="16" id="bjE-D6-6bU"/>
-                <constraint firstAttribute="trailing" secondItem="z1p-wN-lnv" secondAttribute="trailing" id="cZ2-ER-qcm"/>
                 <constraint firstAttribute="bottom" secondItem="BXQ-sd-tbd" secondAttribute="bottom" id="fYx-DW-1iY"/>
                 <constraint firstItem="kJl-rQ-uVD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="hV8-FL-1MI"/>
                 <constraint firstItem="Ny2-xL-vlJ" firstAttribute="centerY" secondItem="kJl-rQ-uVD" secondAttribute="centerY" id="l3H-dS-deP"/>
@@ -137,9 +117,32 @@
                 <constraint firstItem="BXQ-sd-tbd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="yPg-bf-a0M"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
+                    <size key="value" width="0.0" height="2"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
+                    <real key="value" value="0.80000000000000004"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
+                    <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
+                    <real key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
+                    <real key="value" value="20"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="categoryBudgetLabel" destination="s7L-Jp-6GX" id="p9B-KD-vO1"/>
+                <outlet property="categoryBudgetView" destination="NCq-We-BpK" id="gwQ-rH-kkh"/>
+                <outlet property="categoryImageView" destination="kJl-rQ-uVD" id="b8e-Hl-cGZ"/>
+                <outlet property="categoryNameLabel" destination="Ny2-xL-vlJ" id="op0-ep-U65"/>
+                <outlet property="categorySpendLabel" destination="PEH-dF-A7Y" id="l9r-e4-tR9"/>
+                <outlet property="categorySpendView" destination="9XI-z4-jgI" id="viT-hp-nk3"/>
+                <outlet property="categorySpendViewConstraint" destination="QeO-og-zUJ" id="MD3-52-hxH"/>
+            </connections>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="food" width="128" height="128"/>
-    </resources>
 </document>

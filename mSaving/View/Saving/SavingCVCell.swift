@@ -34,13 +34,15 @@ class SavingCVCell: UICollectionViewCell {
     
     var presentSavingDetailAdd: (() -> Void)?
     
-    var pushSavingDetailAdd: (() -> Void)?
+    var editSavingDetailAdd: (() -> Void)?
 
     var accountings: [[AccountingWithDate]] = []
     
     var savings: [SavingWithDate] = []
     
     var selectedAccounting: AccountingWithDate?
+    
+    var selectedSavingDetail: SavingWithDate?
     
     var totalSpend = 0
     
@@ -232,7 +234,26 @@ extension SavingCVCell: UICollectionViewDataSource {
                             return SavingDetailCVCell()
                     }
                     
-                    cell.pushSavingDetailAdd = pushSavingDetailAdd
+                    if savings.count > 0 {
+                        
+                        guard let expenseCategory = savings[indexPath.row].saving.expenseSubCategory,
+                            let iconName = expenseCategory.iconName,
+                            let name = expenseCategory.name,
+                            let color = expenseCategory.color else { return cell }
+                        
+                        cell.initSavingDetailCVCell(budget: savings[indexPath.row].saving.amount, totalSpend: 0, imageName: iconName, subCategoryName: name, hex: color)
+                        
+                    }
+                    
+                    cell.showSavingDetailAdd = {
+                        
+                        self.selectedSavingDetail = self.savings[indexPath.row]
+
+                        guard let edit = self.editSavingDetailAdd else { return }
+                        
+                        edit()
+                        
+                    }
                     
                     return cell
                     

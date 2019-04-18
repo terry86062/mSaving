@@ -30,6 +30,8 @@ class SavingDetailAddVC: UIViewController {
     
     var selectedMonth = ""
     
+    var selectedSavingDetail: SavingWithDate?
+    
     var selectedExpenseCategory: ExpenseCategory?
     
     var expenseCategorys: [ExpenseCategory] = []
@@ -42,11 +44,23 @@ class SavingDetailAddVC: UIViewController {
         
         savingDetailTextField.becomeFirstResponder()
         
-//        titleLabel.text = "\(selectedMonth)月預算"
-        
         guard let expenseCategorys = StorageManager.shared.fetchExpenseCategory() else { return }
         
         self.expenseCategorys = expenseCategorys
+        
+        if selectedSavingDetail != nil {
+            
+            guard let name = selectedSavingDetail?.saving.expenseSubCategory?.name, let budget = selectedSavingDetail?.saving.amount else { return }
+            
+            titleLabel.text = "\(name)預算"
+            
+            savingDetailTextField.text = String(budget)
+            
+        } else {
+            
+            titleLabel.text = "新增子預算"
+            
+        }
         
     }
     
@@ -135,6 +149,10 @@ extension SavingDetailAddVC: UICollectionViewDataSource {
             
             self.selectedExpenseCategory = expenseCategory
             
+            cell.subCategoryImageView.layer.borderWidth = 1
+            
+            cell.subCategoryImageView.layer.borderColor = UIColor.black.cgColor
+            
         }
         
         return cell
@@ -153,7 +171,7 @@ extension SavingDetailAddVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         
     }
     
