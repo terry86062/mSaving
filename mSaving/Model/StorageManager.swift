@@ -677,6 +677,22 @@ class StorageManager {
         
     }
     
+    func createSubSaving(main: Bool, date: Date, amount: Int64, selectedExpenseCategory: ExpenseCategory) {
+        
+        let saving = Saving(context: viewContext)
+        
+        saving.main = main
+        
+        saving.month = Int64(date.timeIntervalSince1970)
+        
+        saving.amount = amount
+        
+        saving.expenseSubCategory = selectedExpenseCategory
+        
+        saveContext()
+        
+    }
+    
     func fetchSaving() -> [Saving]? {
         
         let request = NSFetchRequest<Saving>(entityName: "Saving")

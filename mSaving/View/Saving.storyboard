@@ -2275,7 +2275,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oyX-dk-eyA">
-                                <rect key="frame" x="32" y="45" width="350" height="507"/>
+                                <rect key="frame" x="32" y="54" width="350" height="489"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新增子預算" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GP4-ZD-g3c">
                                         <rect key="frame" x="124" y="32" width="102" height="24"/>
@@ -2378,7 +2378,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3n-UV-pWZ">
-                                        <rect key="frame" x="87.5" y="433" width="175" height="32"/>
+                                        <rect key="frame" x="87.5" y="415" width="175" height="32"/>
                                         <color key="backgroundColor" name="mSGreen"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="EUa-d4-IdF"/>
@@ -2395,13 +2395,13 @@
                                             <action selector="confirm:" destination="YWh-vS-MS1" eventType="touchUpInside" id="70k-kN-JfZ"/>
                                         </connections>
                                     </button>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mKe-UT-vAR">
-                                        <rect key="frame" x="0.0" y="215" width="350" height="178"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mKe-UT-vAR">
+                                        <rect key="frame" x="0.0" y="215" width="350" height="160"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="178" id="7Rq-Un-kd1"/>
+                                            <constraint firstAttribute="height" constant="160" id="7Rq-Un-kd1"/>
                                         </constraints>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hAr-0c-bCp">
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hAr-0c-bCp">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -2426,7 +2426,7 @@
                                     <constraint firstItem="X3n-UV-pWZ" firstAttribute="width" secondItem="oyX-dk-eyA" secondAttribute="width" multiplier="1:2" id="SOa-9W-LWo"/>
                                     <constraint firstItem="X3n-UV-pWZ" firstAttribute="top" secondItem="mKe-UT-vAR" secondAttribute="bottom" constant="40" id="XPE-UA-xSj"/>
                                     <constraint firstItem="8Bb-ad-hJA" firstAttribute="leading" secondItem="oyX-dk-eyA" secondAttribute="leading" constant="32" id="Zpo-HS-It3"/>
-                                    <constraint firstAttribute="height" constant="507" id="cbj-J9-NcG"/>
+                                    <constraint firstAttribute="height" constant="489" id="cbj-J9-NcG"/>
                                     <constraint firstAttribute="trailing" secondItem="Ln2-Lq-vFz" secondAttribute="trailing" constant="32" id="eFi-Y8-xSl"/>
                                     <constraint firstItem="Ln2-Lq-vFz" firstAttribute="top" secondItem="8Bb-ad-hJA" secondAttribute="bottom" constant="8" id="itQ-y6-h0K"/>
                                     <constraint firstItem="GP4-ZD-g3c" firstAttribute="top" secondItem="oyX-dk-eyA" secondAttribute="top" constant="32" id="kFb-AX-gDU"/>

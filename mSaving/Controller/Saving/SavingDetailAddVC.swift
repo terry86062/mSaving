@@ -14,19 +14,45 @@ class SavingDetailAddVC: UIViewController {
     
     @IBOutlet weak var savingDetailTextField: UITextField!
     
-    @IBOutlet weak var savingCategoryCollectionView: UICollectionView!
+    @IBOutlet weak var savingCategoryCollectionView: UICollectionView! {
+        
+        didSet {
+            
+            savingCategoryCollectionView.dataSource = self
+            
+            savingCategoryCollectionView.delegate = self
+            
+        }
+        
+    }
     
     var selectedYear = ""
     
     var selectedMonth = ""
     
+    var selectedExpenseCategory: ExpenseCategory?
+    
+    var expenseCategorys: [ExpenseCategory] = []
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
+        setUpCollectionView()
+        
         savingDetailTextField.becomeFirstResponder()
         
 //        titleLabel.text = "\(selectedMonth)月預算"
+        
+        guard let expenseCategorys = StorageManager.shared.fetchExpenseCategory() else { return }
+        
+        self.expenseCategorys = expenseCategorys
+        
+    }
+    
+    func setUpCollectionView() {
+        
+        savingCategoryCollectionView.helpRegister(cell: CategorySelectCVCell())
         
     }
     
@@ -38,7 +64,7 @@ class SavingDetailAddVC: UIViewController {
     
     @IBAction func confirm(_ sender: UIButton) {
         
-        saveSaving()
+        saveSubSaving()
         
         helpDismiss()
         
@@ -60,10 +86,91 @@ class SavingDetailAddVC: UIViewController {
         
     }
     
-    func saveSaving() {
+    func saveSubSaving() {
         
+        guard let amountText = savingDetailTextField.text, let amount = Int64(amountText) else { return }
         
+        var components = DateComponents()
+        
+        components.year = Int(selectedYear)
+        components.month = Int(selectedMonth)
+        components.day = 1
+        
+        guard let date = Calendar.current.date(from: components) else { return }
+        
+        guard let selectedExpenseCategory = selectedExpenseCategory else { return }
+        
+        StorageManager.shared.createSubSaving(main: false, date: date, amount: amount, selectedExpenseCategory: selectedExpenseCategory)
         
     }
 
+}
+
+extension SavingDetailAddVC: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return expenseCategorys.count
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = savingCategoryCollectionView.dequeueReusableCell(
+            withReuseIdentifier: String(describing: CategorySelectCVCell.self),
+            for: indexPath) as? CategorySelectCVCell else {
+                return CategorySelectCVCell()
+        }
+        
+        let expenseCategory = expenseCategorys[indexPath.row]
+        
+        guard let iconName = expenseCategory.iconName,
+            let name = expenseCategory.name,
+            let color = expenseCategory.color else { return cell }
+        
+        cell.initCategorySelectCVCell(imageName: iconName, subCategoryName: name, hex: color)
+        
+        cell.selectSubCategory = {
+            
+            self.selectedExpenseCategory = expenseCategory
+            
+        }
+        
+        return cell
+        
+    }
+    
+}
+
+extension SavingDetailAddVC: UICollectionViewDelegate {
+    
+}
+
+extension SavingDetailAddVC: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: 57, height: 76)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 0
+        
+    }
+    
 }
