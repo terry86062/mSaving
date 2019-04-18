@@ -102,6 +102,16 @@ class SavingDetailAddVC: UIViewController {
         
     }
     
+    @IBAction func deleteSubSaving(_ sender: UIButton) {
+        
+        guard let subSaving = selectedSavingDetail?.saving else { return }
+        
+        StorageManager.shared.deleteSubSaving(subSaving: subSaving)
+        
+        helpDismiss()
+        
+    }
+    
     func helpDismiss() {
         
         dismiss(animated: true, completion: nil)

@@ -2424,6 +2424,18 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nkc-cQ-wHW">
+                                        <rect key="frame" x="294" y="32" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="hUt-UQ-u77"/>
+                                            <constraint firstAttribute="height" constant="24" id="qUq-Wo-RB6"/>
+                                        </constraints>
+                                        <color key="tintColor" name="mSGreen"/>
+                                        <state key="normal" image="garbageClosed"/>
+                                        <connections>
+                                            <action selector="deleteSubSaving:" destination="YWh-vS-MS1" eventType="touchUpInside" id="422-YY-4nu"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -2443,8 +2455,10 @@
                                     <constraint firstItem="X3n-UV-pWZ" firstAttribute="width" secondItem="oyX-dk-eyA" secondAttribute="width" multiplier="1:2" id="SOa-9W-LWo"/>
                                     <constraint firstItem="8Bb-ad-hJA" firstAttribute="leading" secondItem="M1c-w2-tIh" secondAttribute="trailing" constant="16" id="W6z-nK-UwM"/>
                                     <constraint firstItem="X3n-UV-pWZ" firstAttribute="top" secondItem="mKe-UT-vAR" secondAttribute="bottom" constant="40" id="XPE-UA-xSj"/>
+                                    <constraint firstItem="nkc-cQ-wHW" firstAttribute="centerY" secondItem="GP4-ZD-g3c" secondAttribute="centerY" id="aol-SH-Zw6"/>
                                     <constraint firstAttribute="height" constant="489" id="cbj-J9-NcG"/>
                                     <constraint firstAttribute="trailing" secondItem="Ln2-Lq-vFz" secondAttribute="trailing" constant="32" id="eFi-Y8-xSl"/>
+                                    <constraint firstAttribute="trailing" secondItem="nkc-cQ-wHW" secondAttribute="trailing" constant="32" id="iNw-eX-B1R"/>
                                     <constraint firstItem="Ln2-Lq-vFz" firstAttribute="top" secondItem="8Bb-ad-hJA" secondAttribute="bottom" constant="8" id="itQ-y6-h0K"/>
                                     <constraint firstItem="GP4-ZD-g3c" firstAttribute="top" secondItem="oyX-dk-eyA" secondAttribute="top" constant="32" id="kFb-AX-gDU"/>
                                     <constraint firstItem="X3n-UV-pWZ" firstAttribute="centerX" secondItem="oyX-dk-eyA" secondAttribute="centerX" id="mWj-YR-QAl"/>
@@ -2504,6 +2518,7 @@
         <image name="car" width="128" height="128"/>
         <image name="clothes" width="128" height="128"/>
         <image name="food" width="128" height="128"/>
+        <image name="garbageClosed" width="128" height="128"/>
         <image name="gas" width="128" height="128"/>
         <image name="home" width="128" height="128"/>
         <image name="hospital" width="128" height="128"/>

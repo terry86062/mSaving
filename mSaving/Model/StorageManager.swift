@@ -739,4 +739,12 @@ class StorageManager {
         
     }
     */
+    
+    func deleteSubSaving(subSaving: Saving) {
+        
+        viewContext.delete(subSaving)
+        
+        saveContext()
+        
+    }
 }
