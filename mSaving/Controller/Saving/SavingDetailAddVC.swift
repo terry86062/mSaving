@@ -14,6 +14,8 @@ class SavingDetailAddVC: UIViewController {
     
     @IBOutlet weak var savingDetailTextField: UITextField!
     
+    @IBOutlet weak var selectedCategoryImageView: UIImageView!
+    
     @IBOutlet weak var savingCategoryCollectionView: UICollectionView! {
         
         didSet {
@@ -56,9 +58,17 @@ class SavingDetailAddVC: UIViewController {
             
             savingDetailTextField.text = String(budget)
             
+            guard let iconName = selectedSavingDetail?.saving.expenseSubCategory?.iconName, let hex = selectedSavingDetail?.saving.expenseSubCategory?.color else { return }
+            
+            selectedCategoryImageView.image = UIImage(named: iconName)
+            
+            selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
+            
         } else {
             
             titleLabel.text = "新增子預算"
+            
+            selectedCategoryImageView.backgroundColor = UIColor.mSGreen
             
         }
         
@@ -78,7 +88,15 @@ class SavingDetailAddVC: UIViewController {
     
     @IBAction func confirm(_ sender: UIButton) {
         
-        saveSubSaving()
+        if selectedSavingDetail != nil {
+            
+            reviseSubSaving()
+            
+        } else {
+            
+            saveSubSaving()
+            
+        }
         
         helpDismiss()
         
@@ -117,6 +135,20 @@ class SavingDetailAddVC: UIViewController {
         StorageManager.shared.createSubSaving(main: false, date: date, amount: amount, selectedExpenseCategory: selectedExpenseCategory)
         
     }
+    
+    func reviseSubSaving() {
+        
+        guard let selectedSavingDetail = selectedSavingDetail else { return }
+        
+        guard let text = savingDetailTextField.text, let amount = Int64(text) else { return }
+        
+        selectedSavingDetail.saving.amount = amount
+        
+        selectedSavingDetail.saving.expenseSubCategory = selectedExpenseCategory
+        
+        StorageManager.shared.saveContext()
+        
+    }
 
 }
 
@@ -149,9 +181,11 @@ extension SavingDetailAddVC: UICollectionViewDataSource {
             
             self.selectedExpenseCategory = expenseCategory
             
-            cell.subCategoryImageView.layer.borderWidth = 1
+            self.titleLabel.text = "\(name)預算"
             
-            cell.subCategoryImageView.layer.borderColor = UIColor.black.cgColor
+            self.selectedCategoryImageView.image = UIImage(named: iconName)
+            
+            self.selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
             
         }
         

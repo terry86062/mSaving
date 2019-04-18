@@ -38,6 +38,8 @@ class SavingGoalSetVC: UIViewController {
             
             descriptionLabel.text = "每天可花 $" + String(amount / 30)
             
+            
+            
         }
         
     }

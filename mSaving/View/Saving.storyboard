@@ -2304,7 +2304,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="3000" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Bb-ad-hJA">
-                                        <rect key="frame" x="32" y="120" width="286" height="22"/>
+                                        <rect key="frame" x="80" y="120" width="238" height="22"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="18"/>
@@ -2351,7 +2351,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ln2-Lq-vFz">
-                                        <rect key="frame" x="32" y="150" width="286" height="1"/>
+                                        <rect key="frame" x="80" y="150" width="238" height="1"/>
                                         <color key="backgroundColor" name="mSGreen"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="rlG-dl-EMU"/>
@@ -2412,6 +2412,18 @@
                                         </collectionViewFlowLayout>
                                         <cells/>
                                     </collectionView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M1c-w2-tIh">
+                                        <rect key="frame" x="32" y="120" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="MBx-QF-vBm"/>
+                                            <constraint firstAttribute="height" constant="32" id="NkW-YN-4Di"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -2419,16 +2431,18 @@
                                     <constraint firstAttribute="trailing" secondItem="mKe-UT-vAR" secondAttribute="trailing" id="3rb-6u-zj7"/>
                                     <constraint firstItem="wmJ-Pa-vAh" firstAttribute="top" secondItem="GP4-ZD-g3c" secondAttribute="bottom" constant="40" id="7nX-g2-Dhc"/>
                                     <constraint firstAttribute="trailing" secondItem="8Bb-ad-hJA" secondAttribute="trailing" constant="32" id="7pq-x0-LkP"/>
-                                    <constraint firstItem="Ln2-Lq-vFz" firstAttribute="leading" secondItem="oyX-dk-eyA" secondAttribute="leading" constant="32" id="9fv-Pt-Xfl"/>
                                     <constraint firstItem="mKe-UT-vAR" firstAttribute="leading" secondItem="oyX-dk-eyA" secondAttribute="leading" id="Bki-27-VVo"/>
+                                    <constraint firstItem="M1c-w2-tIh" firstAttribute="top" secondItem="8Bb-ad-hJA" secondAttribute="top" id="CeA-r4-AXa"/>
                                     <constraint firstItem="f1c-Vp-g8s" firstAttribute="leading" secondItem="oyX-dk-eyA" secondAttribute="leading" constant="32" id="E1f-zd-bmZ"/>
+                                    <constraint firstItem="M1c-w2-tIh" firstAttribute="leading" secondItem="oyX-dk-eyA" secondAttribute="leading" constant="32" id="GSX-mp-RCX"/>
+                                    <constraint firstItem="Ln2-Lq-vFz" firstAttribute="leading" secondItem="M1c-w2-tIh" secondAttribute="trailing" constant="16" id="JAD-ij-ejx"/>
                                     <constraint firstItem="GP4-ZD-g3c" firstAttribute="centerX" secondItem="oyX-dk-eyA" secondAttribute="centerX" id="NUB-wI-hfQ"/>
                                     <constraint firstItem="wmJ-Pa-vAh" firstAttribute="leading" secondItem="oyX-dk-eyA" secondAttribute="leading" constant="32" id="O8A-tn-XY8"/>
                                     <constraint firstItem="f1c-Vp-g8s" firstAttribute="top" secondItem="Ln2-Lq-vFz" secondAttribute="bottom" constant="40" id="Odc-Em-PsM"/>
                                     <constraint firstItem="8Bb-ad-hJA" firstAttribute="top" secondItem="wmJ-Pa-vAh" secondAttribute="bottom" constant="12" id="Rsw-AV-26a"/>
                                     <constraint firstItem="X3n-UV-pWZ" firstAttribute="width" secondItem="oyX-dk-eyA" secondAttribute="width" multiplier="1:2" id="SOa-9W-LWo"/>
+                                    <constraint firstItem="8Bb-ad-hJA" firstAttribute="leading" secondItem="M1c-w2-tIh" secondAttribute="trailing" constant="16" id="W6z-nK-UwM"/>
                                     <constraint firstItem="X3n-UV-pWZ" firstAttribute="top" secondItem="mKe-UT-vAR" secondAttribute="bottom" constant="40" id="XPE-UA-xSj"/>
-                                    <constraint firstItem="8Bb-ad-hJA" firstAttribute="leading" secondItem="oyX-dk-eyA" secondAttribute="leading" constant="32" id="Zpo-HS-It3"/>
                                     <constraint firstAttribute="height" constant="489" id="cbj-J9-NcG"/>
                                     <constraint firstAttribute="trailing" secondItem="Ln2-Lq-vFz" secondAttribute="trailing" constant="32" id="eFi-Y8-xSl"/>
                                     <constraint firstItem="Ln2-Lq-vFz" firstAttribute="top" secondItem="8Bb-ad-hJA" secondAttribute="bottom" constant="8" id="itQ-y6-h0K"/>
@@ -2475,12 +2489,13 @@
                     <connections>
                         <outlet property="savingCategoryCollectionView" destination="mKe-UT-vAR" id="WWS-MI-t4t"/>
                         <outlet property="savingDetailTextField" destination="8Bb-ad-hJA" id="pVW-uK-1yC"/>
+                        <outlet property="selectedCategoryImageView" destination="M1c-w2-tIh" id="y9P-mA-sfP"/>
                         <outlet property="titleLabel" destination="GP4-ZD-g3c" id="dZX-0X-wnc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggs-yQ-PQV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1706" y="2630"/>
+            <point key="canvasLocation" x="1705.7971014492755" y="2629.6875"/>
         </scene>
     </scenes>
     <resources>

@@ -409,6 +409,8 @@ extension SavingVC: UICollectionViewDataSource {
             
             cell.presentSavingDetailAdd = {
                 
+                self.selectedSavingDetail = nil
+                
                 self.performSegue(withIdentifier: "goToSavingDetail", sender: nil)
                 
             }
