@@ -1,5 +1,5 @@
 //
-//  CategoryAccountsTotalCVCell.swift
+//  CategoryAccountingsTotalCVCell.swift
 //  mSaving
 //
 //  Created by 黃偉勛 Terry on 2019/4/6.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryAccountsTotalCVCell: UICollectionViewCell {
+class CategoryAccountingsTotalCVCell: UICollectionViewCell {
 
     override func awakeFromNib() {
 

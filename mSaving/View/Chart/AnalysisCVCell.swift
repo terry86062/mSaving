@@ -44,9 +44,7 @@ class AnalysisCVCell: UICollectionViewCell {
 
         analysisCollectionView.helpRegister(cell: BarChartCVCell())
 
-        analysisCollectionView.helpRegister(cell: AccountingsCVCell())
-
-        analysisCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        analysisCollectionView.helpRegister(cell: CategoryAccountingsCVCell())
 
     }
 
@@ -54,22 +52,16 @@ class AnalysisCVCell: UICollectionViewCell {
 
 extension AnalysisCVCell: UICollectionViewDataSource {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        
-        return 3
-        
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 1
+        return 3
         
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if indexPath.section == 0 {
+        if indexPath.row == 0 {
             
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: String(describing: PieChartCVCell.self),
@@ -77,21 +69,20 @@ extension AnalysisCVCell: UICollectionViewDataSource {
                     return UICollectionViewCell()
             }
             
-            
-            
             cell.pieChartUpdate(categoryAccountingMonthTotals: categoryAccountingMonthTotals)
             
             return cell
             
-        } else if indexPath.section == 1 {
+        } else if indexPath.row == 1 {
             
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: String(describing: AccountingsCVCell.self),
-                for: indexPath) as? AccountingsCVCell else {
+                withReuseIdentifier: String(describing: CategoryAccountingsCVCell.self),
+                for: indexPath) as? CategoryAccountingsCVCell else {
                     return UICollectionViewCell()
             }
             
-            cell.initAccountsCVCell(haveHeader: false, accountings: [])
+            cell.initCategoryAccountingsCVCell(haveHeader: false,
+                                               categoryAccountingMonthTotals: categoryAccountingMonthTotals)
             
 //            cell.goToAccountDetail = {
 //
@@ -129,7 +120,7 @@ extension AnalysisCVCell: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        return UIEdgeInsets(top: 0, left: 0, bottom: 32, right: 0)
+        return UIEdgeInsets(top: 8, left: 0, bottom: 32, right: 0)
         
     }
     
@@ -137,13 +128,13 @@ extension AnalysisCVCell: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        if indexPath.section == 0 || indexPath.section == 2 {
+        if indexPath.row == 0 || indexPath.row == 2 {
             
             return CGSize(width: 320, height: 320)
             
         } else {
             
-            return CGSize(width: 382, height: 56 * 9)
+            return CGSize(width: 382, height: 56 * categoryAccountingMonthTotals.count)
             
         }
         
@@ -153,7 +144,7 @@ extension AnalysisCVCell: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
-        return 0
+        return 32
         
     }
     

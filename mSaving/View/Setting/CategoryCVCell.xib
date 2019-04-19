@@ -19,12 +19,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clothes" translatesAutoresizingMaskIntoConstraints="NO" id="zKf-02-3QW">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zKf-02-3QW">
                         <rect key="frame" x="16" y="12" width="32" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="32" id="HTF-ax-hPl"/>
                             <constraint firstAttribute="height" constant="32" id="pC9-6C-bfI"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
+                                <real key="value" value="16"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="衣服" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5t-Yu-4cy">
                         <rect key="frame" x="64" y="18.5" width="33" height="19.5"/>
@@ -60,9 +65,11 @@
                 <constraint firstItem="zKf-02-3QW" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="zyd-ia-hxK"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="categoryImageView" destination="zKf-02-3QW" id="wJ3-Uf-5Os"/>
+                <outlet property="categoryNameLabel" destination="b5t-Yu-4cy" id="ZVL-k9-ESG"/>
+                <outlet property="trailingLabel" destination="Qja-EL-Xke" id="ebw-9F-sik"/>
+            </connections>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="clothes" width="512" height="512"/>
-    </resources>
 </document>
