@@ -450,10 +450,10 @@
             </objects>
             <point key="canvasLocation" x="1289.8550724637682" y="738.61607142857144"/>
         </scene>
-        <!--Category Accounts DetailVC-->
+        <!--Category Accountings DetailVC-->
         <scene sceneID="gUZ-pA-JGI">
             <objects>
-                <viewController id="23y-g6-22h" customClass="CategoryAccountsDetailVC" customModule="mSaving" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="23y-g6-22h" customClass="CategoryAccountingsDetailVC" customModule="mSaving" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7mx-sz-7lN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -540,7 +540,8 @@
                         <viewLayoutGuide key="safeArea" id="RfP-yi-NK8"/>
                     </view>
                     <connections>
-                        <outlet property="categoryAccountsCollectionView" destination="Sg9-Zb-77l" id="jFH-vc-9Yb"/>
+                        <outlet property="categoryAccountingsCollectionView" destination="Sg9-Zb-77l" id="jFH-vc-9Yb"/>
+                        <outlet property="categoryNameLabel" destination="gel-8e-Adx" id="zAq-Xd-qs0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OSV-S4-NM5" userLabel="First Responder" sceneMemberID="firstResponder"/>

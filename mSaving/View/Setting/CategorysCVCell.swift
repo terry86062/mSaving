@@ -55,7 +55,7 @@ extension CategorysCVCell: UICollectionViewDataSource {
             withReuseIdentifier: String(describing: CategoryCVCell.self),
             for: indexPath) as? CategoryCVCell else { return CategoryCVCell() }
 
-        cell.goToSetCategory = goToSetCategory
+        cell.touchCategoryHandler = goToSetCategory
 
         return cell
 

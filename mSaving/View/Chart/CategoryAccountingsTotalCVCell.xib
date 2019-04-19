@@ -19,83 +19,75 @@
                 <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GAf-ra-SXt">
-                        <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-$500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZc-0G-u1r">
-                                <rect key="frame" x="267" y="31" width="39" height="16"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="13"/>
-                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支出總合" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vqj-Qp-RTb">
-                                <rect key="frame" x="259.5" y="11" width="54" height="16"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="13"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tre-Bf-1RM">
-                                <rect key="frame" x="190.5" y="7" width="1" height="42"/>
-                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="1" id="qD1-8d-Ncu"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-$500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOD-PK-jPv">
-                                <rect key="frame" x="76" y="31" width="39" height="16"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="13"/>
-                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最高支出" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1V0-6M-fWK">
-                                <rect key="frame" x="68.5" y="11" width="54" height="16"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="13"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支出總合" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vqj-Qp-RTb">
+                        <rect key="frame" x="259.5" y="10" width="54" height="16"/>
+                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-$500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZc-0G-u1r">
+                        <rect key="frame" x="267" y="32" width="39" height="16"/>
+                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="13"/>
+                        <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tre-Bf-1RM">
+                        <rect key="frame" x="190.5" y="14" width="1" height="28"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Vqj-Qp-RTb" firstAttribute="centerX" secondItem="GAf-ra-SXt" secondAttribute="trailing" multiplier="3:4" id="07w-o6-UOk"/>
-                            <constraint firstItem="CZc-0G-u1r" firstAttribute="top" secondItem="Vqj-Qp-RTb" secondAttribute="bottom" constant="4" id="091-eQ-Wqi"/>
-                            <constraint firstItem="GOD-PK-jPv" firstAttribute="top" secondItem="1V0-6M-fWK" secondAttribute="bottom" constant="4" id="6Wt-cD-GBY"/>
-                            <constraint firstItem="Tre-Bf-1RM" firstAttribute="centerY" secondItem="GAf-ra-SXt" secondAttribute="centerY" id="8Ii-Ft-uny"/>
-                            <constraint firstItem="Tre-Bf-1RM" firstAttribute="centerX" secondItem="GAf-ra-SXt" secondAttribute="centerX" id="AQc-xC-uVp"/>
-                            <constraint firstItem="GOD-PK-jPv" firstAttribute="centerX" secondItem="1V0-6M-fWK" secondAttribute="centerX" id="Fuv-gh-1ya"/>
-                            <constraint firstItem="CZc-0G-u1r" firstAttribute="centerX" secondItem="Vqj-Qp-RTb" secondAttribute="centerX" id="ZMS-J6-vbk"/>
-                            <constraint firstAttribute="centerY" secondItem="Vqj-Qp-RTb" secondAttribute="bottom" constant="1" id="iH5-Id-0bM"/>
-                            <constraint firstAttribute="centerY" secondItem="1V0-6M-fWK" secondAttribute="bottom" constant="1" id="rx8-cM-7ML"/>
-                            <constraint firstItem="1V0-6M-fWK" firstAttribute="centerX" secondItem="GAf-ra-SXt" secondAttribute="trailing" multiplier="1:4" id="yQ2-IX-Bw3"/>
-                            <constraint firstItem="Tre-Bf-1RM" firstAttribute="height" secondItem="GAf-ra-SXt" secondAttribute="height" multiplier="3:4" id="yxs-kj-2un"/>
+                            <constraint firstAttribute="width" constant="1" id="qD1-8d-Ncu"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
-                                <real key="value" value="20"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
-                                <size key="value" width="0.0" height="2"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
-                                <real key="value" value="0.80000000000000004"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
-                                <real key="value" value="5"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
-                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最高支出" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1V0-6M-fWK">
+                        <rect key="frame" x="68.5" y="10" width="54" height="16"/>
+                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-$500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOD-PK-jPv">
+                        <rect key="frame" x="76" y="32" width="39" height="16"/>
+                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="13"/>
+                        <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="GAf-ra-SXt" secondAttribute="trailing" id="8KY-Bm-Oud"/>
-                <constraint firstItem="GAf-ra-SXt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="V3T-sr-2dB"/>
-                <constraint firstItem="GAf-ra-SXt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="aMh-Q2-fxX"/>
-                <constraint firstAttribute="bottom" secondItem="GAf-ra-SXt" secondAttribute="bottom" id="fG6-TI-uZO"/>
+                <constraint firstItem="Tre-Bf-1RM" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="4Nd-Bb-2Au"/>
+                <constraint firstItem="Tre-Bf-1RM" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="1:2" id="BCG-cz-xdC"/>
+                <constraint firstItem="CZc-0G-u1r" firstAttribute="centerX" secondItem="Vqj-Qp-RTb" secondAttribute="centerX" id="G93-5V-c5P"/>
+                <constraint firstItem="Tre-Bf-1RM" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="IVZ-h8-d2M"/>
+                <constraint firstItem="CZc-0G-u1r" firstAttribute="top" secondItem="Vqj-Qp-RTb" secondAttribute="bottom" constant="6" id="QL7-A9-LCD"/>
+                <constraint firstItem="Vqj-Qp-RTb" firstAttribute="bottom" secondItem="gTV-IL-0wX" secondAttribute="centerY" constant="-2" id="RT8-RA-RMf"/>
+                <constraint firstItem="Vqj-Qp-RTb" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="trailing" multiplier="3:4" id="U2U-cE-MLt"/>
+                <constraint firstItem="GOD-PK-jPv" firstAttribute="centerX" secondItem="1V0-6M-fWK" secondAttribute="centerX" id="aM6-oU-SH0"/>
+                <constraint firstItem="1V0-6M-fWK" firstAttribute="centerY" secondItem="Vqj-Qp-RTb" secondAttribute="centerY" id="ebl-MB-miT"/>
+                <constraint firstItem="GOD-PK-jPv" firstAttribute="centerY" secondItem="CZc-0G-u1r" secondAttribute="centerY" id="hrd-GS-J16"/>
+                <constraint firstItem="1V0-6M-fWK" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="trailing" multiplier="1:4" id="oC6-yp-jjA"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
+                    <size key="value" width="0.0" height="2"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
+                    <real key="value" value="0.80000000000000004"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
+                    <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
+                    <real key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
+                    <real key="value" value="20"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="highestSpendLabel" destination="GOD-PK-jPv" id="hba-Gp-w9k"/>
+                <outlet property="totalSpendLabel" destination="CZc-0G-u1r" id="8Ym-I3-ilp"/>
+            </connections>
         </collectionViewCell>
     </objects>
 </document>

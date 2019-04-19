@@ -10,13 +10,13 @@ import UIKit
 
 class CategoryCVCell: UICollectionViewCell {
     
-    @IBOutlet weak var categoryImageView: UIImageView!
+    @IBOutlet private weak var categoryImageView: UIImageView!
     
-    @IBOutlet weak var categoryNameLabel: UILabel!
+    @IBOutlet private weak var categoryNameLabel: UILabel!
     
-    @IBOutlet weak var trailingLabel: UILabel!
+    @IBOutlet private weak var trailingLabel: UILabel!
     
-    var goToSetCategory: (() -> Void)?
+    var touchCategoryHandler: (() -> Void)?
 
     override func awakeFromNib() {
 
@@ -40,9 +40,9 @@ class CategoryCVCell: UICollectionViewCell {
         
     }
 
-    @IBAction func goToSetCategory(_ sender: UIButton) {
+    @IBAction private func touchCategory(_ sender: UIButton) {
 
-        guard let goTo = goToSetCategory else { return }
+        guard let goTo = touchCategoryHandler else { return }
 
         goTo()
 

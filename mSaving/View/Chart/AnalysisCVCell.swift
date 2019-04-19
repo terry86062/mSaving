@@ -25,6 +25,10 @@ class AnalysisCVCell: UICollectionViewCell {
     }
     
     var categoryAccountingMonthTotals: [CategoryAccountingMonthTotal] = []
+    
+    var touchCategoryHandler: (() -> Void)?
+    
+    var selectedCategoryAccountingMonthTotal: CategoryAccountingMonthTotal?
 
     override func awakeFromNib() {
 
@@ -81,14 +85,17 @@ extension AnalysisCVCell: UICollectionViewDataSource {
                     return UICollectionViewCell()
             }
             
-            cell.initCategoryAccountingsCVCell(haveHeader: false,
-                                               categoryAccountingMonthTotals: categoryAccountingMonthTotals)
+            cell.initCategoryAccountingsCVCell(categoryAccountingMonthTotals: categoryAccountingMonthTotals)
             
-//            cell.goToAccountDetail = {
-//
-//                self.performSegue(withIdentifier: "goToCategoryAccountsDetailVC", sender: nil)
-//
-//            }
+            cell.touchCategoryHandler = {
+
+                self.selectedCategoryAccountingMonthTotal = cell.selectedCategoryAccountingMonthTotal
+                
+                guard let touch = self.touchCategoryHandler else { return }
+                
+                touch()
+
+            }
             
             return cell
             

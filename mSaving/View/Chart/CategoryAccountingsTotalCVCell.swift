@@ -9,11 +9,23 @@
 import UIKit
 
 class CategoryAccountingsTotalCVCell: UICollectionViewCell {
-
+    
+    @IBOutlet weak var totalSpendLabel: UILabel!
+    
+    @IBOutlet weak var highestSpendLabel: UILabel!
+    
     override func awakeFromNib() {
 
         super.awakeFromNib()
 
+    }
+    
+    func initCategoryAccountingsTotalCVCell(totalSpend: Int64, highestSpend: Int64) {
+        
+        totalSpendLabel.text = "-\(totalSpend)"
+        
+        highestSpendLabel.text = "-\(highestSpend)"
+        
     }
 
 }

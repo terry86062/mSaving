@@ -47,7 +47,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <connections>
-                            <action selector="goToSetCategory:" destination="gTV-IL-0wX" eventType="touchUpInside" id="bfI-pl-MhS"/>
+                            <action selector="touchCategory:" destination="gTV-IL-0wX" eventType="touchUpInside" id="bfI-pl-MhS"/>
                         </connections>
                     </button>
                 </subviews>

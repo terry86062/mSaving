@@ -40,22 +40,9 @@ class ChartVC: UIViewController {
 
     @IBOutlet weak var incomeExpenseSegmentedC: BetterSegmentedControl!
     
-    let testData: [MonthData] = [
-        MonthData(month: "January", goal: "1000", spend: "100"),
-        MonthData(month: "February", goal: "2000", spend: "200"),
-        MonthData(month: "March", goal: "3000", spend: "300"),
-        MonthData(month: "April", goal: "4000", spend: "400"),
-        MonthData(month: "May", goal: "5000", spend: "500"),
-        MonthData(month: "June", goal: "6000", spend: "600"),
-        MonthData(month: "July", goal: "7000", spend: "700"),
-        MonthData(month: "August", goal: "8000", spend: "800"),
-        MonthData(month: "September", goal: "9000", spend: "900"),
-        MonthData(month: "October", goal: "10000", spend: "1000"),
-        MonthData(month: "November", goal: "11000", spend: "1100"),
-        MonthData(month: "December", goal: "12000", spend: "1200")
-    ]
-    
     var categoryAccountingMonthTotalArray: [[CategoryAccountingMonthTotal]] = []
+    
+    var selectedCategoryAccountingMonthTotal: CategoryAccountingMonthTotal?
 
     override func viewDidLoad() {
 
@@ -88,6 +75,18 @@ class ChartVC: UIViewController {
 
         analysisCollectionView.helpRegister(cell: AnalysisCVCell())
 
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "goToCategoryAccountsDetailVC" {
+            
+            guard let categoryAccountingsDetailVC = segue.destination as? CategoryAccountingsDetailVC else { return }
+            
+            categoryAccountingsDetailVC.selectedCategoryAccountingMonthTotal = selectedCategoryAccountingMonthTotal
+            
+        }
+        
     }
 
 }
@@ -132,6 +131,14 @@ extension ChartVC: UICollectionViewDataSource {
             }
 
             cell.initAnalysisCVCell(categoryAccountingMonthTotals: categoryAccountingMonthTotalArray[indexPath.row])
+            
+            cell.touchCategoryHandler = {
+                
+                self.selectedCategoryAccountingMonthTotal = cell.selectedCategoryAccountingMonthTotal
+                
+                self.performSegue(withIdentifier: "goToCategoryAccountsDetailVC", sender: nil)
+                
+            }
 
             return cell
 
@@ -252,67 +259,67 @@ extension ChartVC {
 
             })
 
-            switch row {
-
-            case 0:
-
-                guard let cell3 = monthCollectionView.cellForItem(
-                    at: IndexPath(
-                        row: Int((analysisCollectionView.bounds.origin.x +
-                                    analysisCollectionView.frame.width / 2) /
-                                    analysisCollectionView.frame.width) + 1,
-                        section: 0)) as? MonthCVCell else { return }
-
-                UIView.animate(withDuration: 0.5, animations: {
-
-                    cell3.shadowView.alpha = 0
-
-                })
-
-            case testData.count:
-
-                guard let cell2 = monthCollectionView.cellForItem(
-                    at: IndexPath(
-                        row: Int((analysisCollectionView.bounds.origin.x +
-                                    analysisCollectionView.frame.width / 2) /
-                                    analysisCollectionView.frame.width) - 1,
-                        section: 0)) as? MonthCVCell else { return }
-
-                UIView.animate(withDuration: 0.5, animations: {
-
-                    cell2.shadowView.alpha = 0
-
-                })
-
-            default:
-
-                guard let cell2 = monthCollectionView.cellForItem(
-                    at: IndexPath(
-                        row: Int((analysisCollectionView.bounds.origin.x +
-                                    analysisCollectionView.frame.width / 2) /
-                                    analysisCollectionView.frame.width) - 1,
-                        section: 0)) as? MonthCVCell else { return }
-
-                UIView.animate(withDuration: 0.5, animations: {
-
-                    cell2.shadowView.alpha = 0
-
-                })
-
-                guard let cell3 = monthCollectionView.cellForItem(
-                    at: IndexPath(
-                        row: Int((analysisCollectionView.bounds.origin.x +
-                                    analysisCollectionView.frame.width / 2) /
-                                    analysisCollectionView.frame.width) + 1,
-                        section: 0)) as? MonthCVCell else { return }
-
-                UIView.animate(withDuration: 0.5, animations: {
-
-                    cell3.shadowView.alpha = 0
-
-                })
-
-            }
+//            switch row {
+//
+//            case 0:
+//
+//                guard let cell3 = monthCollectionView.cellForItem(
+//                    at: IndexPath(
+//                        row: Int((analysisCollectionView.bounds.origin.x +
+//                                    analysisCollectionView.frame.width / 2) /
+//                                    analysisCollectionView.frame.width) + 1,
+//                        section: 0)) as? MonthCVCell else { return }
+//
+//                UIView.animate(withDuration: 0.5, animations: {
+//
+//                    cell3.shadowView.alpha = 0
+//
+//                })
+//
+//            case testData.count:
+//
+//                guard let cell2 = monthCollectionView.cellForItem(
+//                    at: IndexPath(
+//                        row: Int((analysisCollectionView.bounds.origin.x +
+//                                    analysisCollectionView.frame.width / 2) /
+//                                    analysisCollectionView.frame.width) - 1,
+//                        section: 0)) as? MonthCVCell else { return }
+//
+//                UIView.animate(withDuration: 0.5, animations: {
+//
+//                    cell2.shadowView.alpha = 0
+//
+//                })
+//
+//            default:
+//
+//                guard let cell2 = monthCollectionView.cellForItem(
+//                    at: IndexPath(
+//                        row: Int((analysisCollectionView.bounds.origin.x +
+//                                    analysisCollectionView.frame.width / 2) /
+//                                    analysisCollectionView.frame.width) - 1,
+//                        section: 0)) as? MonthCVCell else { return }
+//
+//                UIView.animate(withDuration: 0.5, animations: {
+//
+//                    cell2.shadowView.alpha = 0
+//
+//                })
+//
+//                guard let cell3 = monthCollectionView.cellForItem(
+//                    at: IndexPath(
+//                        row: Int((analysisCollectionView.bounds.origin.x +
+//                                    analysisCollectionView.frame.width / 2) /
+//                                    analysisCollectionView.frame.width) + 1,
+//                        section: 0)) as? MonthCVCell else { return }
+//
+//                UIView.animate(withDuration: 0.5, animations: {
+//
+//                    cell3.shadowView.alpha = 0
+//
+//                })
+//
+//            }
 
         }
 
