@@ -26,6 +26,8 @@ class AnalysisCVCell: UICollectionViewCell {
     
     var categoryAccountingMonthTotals: [CategoryAccountingMonthTotal] = []
     
+    var accountingWithDateArray: [[AccountingWithDate]] = []
+    
     var touchCategoryHandler: (() -> Void)?
     
     var selectedCategoryAccountingMonthTotal: CategoryAccountingMonthTotal?
@@ -36,9 +38,11 @@ class AnalysisCVCell: UICollectionViewCell {
 
     }
 
-    func initAnalysisCVCell(categoryAccountingMonthTotals: [CategoryAccountingMonthTotal]) {
+    func initAnalysisCVCell(categoryAccountingMonthTotals: [CategoryAccountingMonthTotal], accountingWithDateArray: [[AccountingWithDate]]) {
 
         self.categoryAccountingMonthTotals = categoryAccountingMonthTotals
+        
+        self.accountingWithDateArray = accountingWithDateArray
         
     }
 
@@ -107,7 +111,7 @@ extension AnalysisCVCell: UICollectionViewDataSource {
                     return UICollectionViewCell()
             }
             
-            cell.barChartUpdate()
+            cell.barChartUpdate(accountingWithDateArray: accountingWithDateArray)
             
             return cell
             
@@ -137,7 +141,7 @@ extension AnalysisCVCell: UICollectionViewDelegateFlowLayout {
         
         if indexPath.row == 0 || indexPath.row == 2 {
             
-            return CGSize(width: 320, height: 320)
+            return CGSize(width: 360, height: 360)
             
         } else {
             

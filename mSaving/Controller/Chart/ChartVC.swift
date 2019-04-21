@@ -42,6 +42,8 @@ class ChartVC: UIViewController {
     
     var categoryAccountingMonthTotalArray: [[CategoryAccountingMonthTotal]] = []
     
+    var accountingWithDateGroupArray: [[[AccountingWithDate]]] = []
+    
     var selectedCategoryAccountingMonthTotal: CategoryAccountingMonthTotal?
 
     override func viewDidLoad() {
@@ -66,6 +68,8 @@ class ChartVC: UIViewController {
         super.viewWillAppear(animated)
         
         categoryAccountingMonthTotalArray = StorageManager.shared.categoryAccountingMonthTotalArray
+        
+        accountingWithDateGroupArray = StorageManager.shared.accountingWithDateGroupArray
         
     }
 
@@ -130,7 +134,8 @@ extension ChartVC: UICollectionViewDataSource {
                     return AnalysisCVCell()
             }
 
-            cell.initAnalysisCVCell(categoryAccountingMonthTotals: categoryAccountingMonthTotalArray[indexPath.row])
+            cell.initAnalysisCVCell(categoryAccountingMonthTotals: categoryAccountingMonthTotalArray[indexPath.row],
+                                    accountingWithDateArray: accountingWithDateGroupArray[indexPath.row])
             
             cell.touchCategoryHandler = {
                 
