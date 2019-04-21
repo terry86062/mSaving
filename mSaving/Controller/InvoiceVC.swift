@@ -104,7 +104,9 @@ class InvoiceVC: UIViewController {
 
 extension InvoiceVC: AVCaptureMetadataOutputObjectsDelegate {
     
-    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+    func metadataOutput(_ output: AVCaptureMetadataOutput,
+                        didOutput metadataObjects: [AVMetadataObject],
+                        from connection: AVCaptureConnection) {
         // 檢查  metadataObjects 陣列為非空值，它至少需包含一個物件
         if metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRect.zero
