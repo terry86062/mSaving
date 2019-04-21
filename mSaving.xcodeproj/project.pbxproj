@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		34FE46260D153EA89122AC6A /* Pods_mSaving.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2F60CB0FEB4CC786F0B4059 /* Pods_mSaving.framework */; };
+		DE02DECA226C97B700B51201 /* InvoiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE02DEC9226C97B700B51201 /* InvoiceVC.swift */; };
 		DE21B90222578D9800B65719 /* PieChartCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE21B90022578D9800B65719 /* PieChartCVCell.swift */; };
 		DE21B90322578D9800B65719 /* PieChartCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE21B90122578D9800B65719 /* PieChartCVCell.xib */; };
 		DE21B906225794C900B65719 /* BarChartCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE21B904225794C900B65719 /* BarChartCVCell.swift */; };
@@ -84,6 +85,7 @@
 /* Begin PBXFileReference section */
 		2269CA763E2B12B921C758F2 /* Pods-mSaving.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mSaving.debug.xcconfig"; path = "Target Support Files/Pods-mSaving/Pods-mSaving.debug.xcconfig"; sourceTree = "<group>"; };
 		2C6C6317FBC34568D8610458 /* Pods-mSaving.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mSaving.release.xcconfig"; path = "Target Support Files/Pods-mSaving/Pods-mSaving.release.xcconfig"; sourceTree = "<group>"; };
+		DE02DEC9226C97B700B51201 /* InvoiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceVC.swift; sourceTree = "<group>"; };
 		DE21B90022578D9800B65719 /* PieChartCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartCVCell.swift; sourceTree = "<group>"; };
 		DE21B90122578D9800B65719 /* PieChartCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PieChartCVCell.xib; sourceTree = "<group>"; };
 		DE21B904225794C900B65719 /* BarChartCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartCVCell.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 				DE2BB35922538889001D55E4 /* Saving */,
 				DE4984B3225869D6004E4AE9 /* Chart */,
 				DEECB05422533599002D6C30 /* AccountingVC.swift */,
+				DE02DEC9226C97B700B51201 /* InvoiceVC.swift */,
 				DE4984BA22587B9F004E4AE9 /* Setting */,
 			);
 			path = Controller;
@@ -571,6 +574,7 @@
 				DE21B906225794C900B65719 /* BarChartCVCell.swift in Sources */,
 				DE4984B522586A0F004E4AE9 /* CategoryAccountingsDetailVC.swift in Sources */,
 				DEAA6A302259B07C00224B26 /* CategoryCVCell.swift in Sources */,
+				DE02DECA226C97B700B51201 /* InvoiceVC.swift in Sources */,
 				DE2BB3662253AC1D001D55E4 /* MonthCVCell.swift in Sources */,
 				DEAA6A2C2259A55000224B26 /* IncomeExpenseCategoryCVCell.swift in Sources */,
 				DE7B38AE2257427200C17846 /* CategorySelectCVCell.swift in Sources */,
