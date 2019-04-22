@@ -30,13 +30,13 @@ enum InvoiceRequest: MSRequest {
         
         switch self {
             
-        case .invoiceDetail: return "/PB2CAPIVAN/invapp/InvApp"
+        case .invoiceDetail: return "//PB2CAPIVAN/invapp/InvApp"
             
         }
         
     }
     
-    var parameters: [String : String] {
+    var parameters: [String: String] {
         
         switch self {
             
@@ -70,7 +70,7 @@ enum InvoiceRequest: MSRequest {
         
     }
     
-    var headers: [String : String] {
+    var headers: [String: String] {
         
         switch self {
             

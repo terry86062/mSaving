@@ -13,14 +13,13 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    let uuid = UUID().uuidString
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         detectFirstLaunch()
-        
-        let uuid = UUID().uuidString
-        print(uuid)
 
         return true
     }

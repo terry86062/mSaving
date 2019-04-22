@@ -10,7 +10,9 @@ import Foundation
 
 class InvoiceDownloader {
     
-    func downloadInvoiceDetail(qrCodeInfo: QRCodeInfo, uuid: String, completionHandler: @escaping (Result<InvoiceDetail>) -> Void) {
+    func downloadInvoiceDetail(qrCodeInfo: QRCodeInfo,
+                               uuid: String,
+                               completionHandler: @escaping (Result<InvoiceDetail>) -> Void) {
         
         HTTPClient.shared.sendRequest(InvoiceRequest.invoiceDetail(qrCodeInfo: qrCodeInfo, uuid: uuid)) { result in
             

@@ -13,6 +13,10 @@ import AVFoundation
 class InvoiceVC: UIViewController {
     
     @IBOutlet weak var messageLabel:UILabel!
+    
+    var messageFromQRCode = ""
+    
+    let invoiceDownloader = InvoiceDownloader()
 
     var captureSession = AVCaptureSession()
     
@@ -122,9 +126,50 @@ extension InvoiceVC: AVCaptureMetadataOutputObjectsDelegate {
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = barCodeObject!.bounds
             
-            if metadataObj.stringValue != nil {
-                messageLabel.text = metadataObj.stringValue
+            guard let stringValue = metadataObj.stringValue else { return }
+            
+            messageFromQRCode = stringValue
+            
+            messageLabel.text = stringValue
+            
+            guard messageFromQRCode.first != "*" else { return }
+            
+            print(messageFromQRCode)
+            
+            let year = messageFromQRCode.getRangeString(start: 10, end: 13)
+            
+            guard let yearInt = Int(year) else { return }
+            
+            let month = messageFromQRCode.getRangeString(start: 13, end: 15)
+            
+            let day = messageFromQRCode.getRangeString(start: 15, end: 17)
+            
+            let invDate = "\(yearInt + 1911)/\(month)/\(day)"
+            
+            let qrCodeInfo = QRCodeInfo(invNum: String(messageFromQRCode.prefix(10)),
+                                        invDate: invDate,
+                                        encrypt: messageFromQRCode.getRangeString(start: 53, end: 77),
+                                        sellerID: messageFromQRCode.getRangeString(start: 45, end: 53),
+                                        randomNumber: messageFromQRCode.getRangeString(start: 17, end: 21))
+            
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            
+            invoiceDownloader.downloadInvoiceDetail(qrCodeInfo: qrCodeInfo, uuid: appDelegate.uuid) { result in
+                
+                switch result {
+                    
+                case .success(let invoiceDetail):
+                    
+                    print(invoiceDetail)
+                    
+                case .failure(let error):
+                    
+                    print("download failure: \(error)")
+                    
+                }
+                
             }
+            
         }
     }
     

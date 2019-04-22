@@ -127,6 +127,8 @@ class HTTPClient {
         
         urlComponents.setQueryItems(with: parameters)
         
+        print(urlComponents.url!.absoluteString)
+        
         return urlComponents.url!
         
     }
