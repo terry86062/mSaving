@@ -103,6 +103,18 @@ class InvoiceVC: UIViewController {
         }
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "goToInvoiceToAccountingVC" {
+            
+            guard let tabBarVC = tabBarController as? TabBarController else { return }
+            
+            tabBarVC.blackView.isHidden = false
+            
+        }
+        
+    }
 
 }
 
@@ -161,6 +173,8 @@ extension InvoiceVC: AVCaptureMetadataOutputObjectsDelegate {
                 case .success(let invoiceDetail):
                     
                     print(invoiceDetail)
+                    
+                    self.performSegue(withIdentifier: "goToInvoiceToAccountingVC", sender: nil)
                     
                 case .failure(let error):
                     
