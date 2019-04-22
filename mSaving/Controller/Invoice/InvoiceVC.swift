@@ -12,7 +12,7 @@ import AVFoundation
 
 class InvoiceVC: UIViewController {
     
-    @IBOutlet weak var messageLabel:UILabel!
+    @IBOutlet weak var messageLabel: UILabel!
     
     var messageFromQRCode = ""
     
@@ -35,6 +35,14 @@ class InvoiceVC: UIViewController {
         AVMetadataObject.ObjectType.ean13,
         AVMetadataObject.ObjectType.aztec
     ]
+    
+    var invoiceYear = ""
+    
+    var invoiceMonth = ""
+    
+    var invoiceDay = ""
+    
+    var invoiceAmount = 0
     
     override func viewDidLoad() {
         
@@ -112,6 +120,16 @@ class InvoiceVC: UIViewController {
             
             tabBarVC.blackView.isHidden = false
             
+            guard let invoiceToAccountingVC = segue.destination as? InvoiceToAccountingVC else { return }
+            
+            invoiceToAccountingVC.invoiceYear = invoiceYear
+            
+            invoiceToAccountingVC.invoiceMonth = invoiceMonth
+            
+            invoiceToAccountingVC.invoiceDay = invoiceDay
+            
+            invoiceToAccountingVC.invoiceAmount = invoiceAmount
+            
         }
         
     }
@@ -170,9 +188,17 @@ extension InvoiceVC: AVCaptureMetadataOutputObjectsDelegate {
                 
                 switch result {
                     
-                case .success(let invoiceDetail):
+                case .success(var invoiceDetail):
                     
                     print(invoiceDetail)
+                    
+                    self.invoiceYear = "\(yearInt + 1911)"
+                    
+                    self.invoiceMonth = month
+                    
+                    self.invoiceDay = day
+                    
+                    self.invoiceAmount = invoiceDetail.totalAmount
                     
                     self.performSegue(withIdentifier: "goToInvoiceToAccountingVC", sender: nil)
                     

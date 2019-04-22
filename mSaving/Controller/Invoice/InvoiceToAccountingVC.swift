@@ -16,6 +16,8 @@ class InvoiceToAccountingVC: UIViewController {
     
     @IBOutlet weak var selectedCategoryImageView: UIImageView!
     
+    @IBOutlet weak var selectedAccount: UIButton!
+    
     @IBOutlet weak var accountingCategoryCollectionView: UICollectionView! {
         
         didSet {
@@ -34,6 +36,8 @@ class InvoiceToAccountingVC: UIViewController {
     
     var invoiceDay = ""
     
+    var invoiceAmount = 0
+    
     var selectedExpenseCategory: ExpenseCategory?
     
     var expenseCategorys: [ExpenseCategory] = []
@@ -43,6 +47,10 @@ class InvoiceToAccountingVC: UIViewController {
         super.viewDidLoad()
         
         setUpCollectionView()
+        
+        dateLabel.text = invoiceYear + "年" + invoiceMonth + "月" + invoiceDay + "日"
+        
+        invoiceAccountingTextField.text = "\(invoiceAmount)"
         
         guard let expenseCategorys = StorageManager.shared.fetchExpenseCategory() else { return }
         
@@ -63,6 +71,8 @@ class InvoiceToAccountingVC: UIViewController {
     }
     
     @IBAction func confirm(_ sender: UIButton) {
+        
+        saveAccounting()
         
         helpDismiss()
         
@@ -87,6 +97,31 @@ class InvoiceToAccountingVC: UIViewController {
         guard let tabBarVC = presentingViewController as? TabBarController else { return }
         
         tabBarVC.blackView.isHidden = true
+        
+    }
+    
+    func saveAccounting() {
+        
+        guard let text = invoiceAccountingTextField.text, let amount = Int64(text), amount != 0 else { return }
+        
+        guard let selectedAccount = selectedAccount.titleLabel?.text else { return }
+        
+        var components = DateComponents()
+        
+        components.year = Int(invoiceYear)
+        components.month = Int(invoiceMonth)
+        components.day = Int(invoiceDay)
+        
+        guard let date = Calendar.current.date(from: components) else { return }
+        
+        guard let selectedCategory = selectedExpenseCategory else { return }
+        
+        StorageManager.shared.saveAccounting(date: date,
+                                             amount: amount,
+                                             accountName: selectedAccount,
+                                             selectedExpenseCategory: selectedCategory,
+                                             selectedIncomeCategory: nil,
+                                             selectedExpense: true)
         
     }
     

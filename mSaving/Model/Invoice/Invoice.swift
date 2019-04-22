@@ -36,6 +36,24 @@ struct InvoiceDetail: Codable {
     
     let invDate: String
     
+    lazy var totalAmount: Int = {
+        
+        var total = 0
+        
+        guard details.count > 0 else { return 0 }
+        
+        for index in 0...details.count - 1 {
+            
+            guard let amount = Int(details[index].amount) else { return 0 }
+            
+            total += amount
+            
+        }
+        
+        return total
+        
+    }()
+    
 }
 
 struct Goods: Codable {
