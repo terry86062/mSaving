@@ -12,6 +12,8 @@ protocol MSRequest {
     
     var endPoint: String { get }
     
+    var parameters: [String: String] { get }
+    
     var method: String { get }
     
     var headers: [String: String] { get }
@@ -49,6 +51,8 @@ enum MSHTTPClientError: Error {
 class HTTPClient {
     
     static let shared = HTTPClient()
+    
+    private init() {}
     
     func sendRequest(_ mSRequest: MSRequest,
                      completionHandler: @escaping (Result<Data>) -> Void) {
@@ -97,7 +101,7 @@ class HTTPClient {
     
     private func makeHTTPRequest(_ mSRequest: MSRequest) -> URLRequest {
         
-        var request = URLRequest(url: makeURL(endPoint: mSRequest.endPoint))
+        var request = URLRequest(url: makeURL(endPoint: mSRequest.endPoint, parameters: mSRequest.parameters))
         
         request.httpMethod = mSRequest.method
         
@@ -109,11 +113,21 @@ class HTTPClient {
         
     }
     
-    private func makeURL(endPoint: String) -> URL {
+    private func makeURL(endPoint: String, parameters: [String: String]) -> URL {
         
-        let hostName = "https://api.einvoice.nat.gov.tw/"
+        var urlComponents = URLComponents()
         
-        return URL(string: hostName + endPoint)!
+        urlComponents.scheme = "https"
+        
+        urlComponents.host = "api.einvoice.nat.gov.tw"
+        
+//        let hostName = "https://api.einvoice.nat.gov.tw/"
+        
+        urlComponents.path = endPoint
+        
+        urlComponents.setQueryItems(with: parameters)
+        
+        return urlComponents.url!
         
     }
     

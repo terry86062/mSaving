@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Invoice: Codable {
+struct InvoiceDetail: Codable {
     
     let msg: String
     
