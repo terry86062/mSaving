@@ -76,7 +76,7 @@ class SavingVC: UIViewController {
         
         super.viewWillAppear(animated)
         
-        guard let accountingArray = StorageManager.shared.fetchAccounting() else { return }
+        guard let accountingArray = CoreDataManager.shared.fetchAccounting() else { return }
         
         var accountingWithDateArray: [AccountingWithDate] = []
         
@@ -128,7 +128,7 @@ class SavingVC: UIViewController {
         
         print(accountingWithDateGroupArray)
         
-        guard let savingArray = StorageManager.shared.fetchSaving() else { return }
+        guard let savingArray = SavingProvider().savings else { return }
         
         var savingWithDateArray: [SavingWithDate] = []
         

@@ -67,9 +67,9 @@ class ChartVC: UIViewController {
         
         super.viewWillAppear(animated)
         
-        categoryAccountingMonthTotalArray = StorageManager.shared.categoryAccountingMonthTotalArray
+        categoryAccountingMonthTotalArray = CoreDataManager.shared.categoryAccountingMonthTotalArray
         
-        accountingWithDateGroupArray = StorageManager.shared.accountingWithDateGroupArray
+        accountingWithDateGroupArray = CoreDataManager.shared.accountingWithDateGroupArray
         
     }
 

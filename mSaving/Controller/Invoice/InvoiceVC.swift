@@ -16,7 +16,7 @@ class InvoiceVC: UIViewController {
     
     var messageFromQRCode = ""
     
-    let invoiceDownloader = InvoiceDownloader()
+    let invoiceDownloader = InvoiceProvider()
 
     var captureSession = AVCaptureSession()
     

@@ -28,7 +28,7 @@ class CoreDataManager {
     
     static let shared = CoreDataManager()
     
-    init() {
+    private init() {
         
         print(" Core data file path: \(NSPersistentContainer.defaultDirectoryURL())")
     }
@@ -306,10 +306,18 @@ class CoreDataManager {
         
         let request = NSFetchRequest<T>(entityName: String(describing: T.self))
         
-        request.sortDescriptors = [
-            NSSortDescriptor(key: sortFirst, ascending: true),
-            NSSortDescriptor(key: second, ascending: true)
-        ]
+        if second == "" {
+            
+            request.sortDescriptors = [NSSortDescriptor(key: sortFirst, ascending: true)]
+            
+        } else {
+            
+            request.sortDescriptors = [
+                NSSortDescriptor(key: sortFirst, ascending: true),
+                NSSortDescriptor(key: second, ascending: true)
+            ]
+            
+        }
         
         do {
             
@@ -330,30 +338,6 @@ class CoreDataManager {
             return nil
             
         }
-        
-    }
-    
-    func createAccount(name: String, initalAmount: Int64, priority: Int64, currentAmount: Int64 = 0) {
-        
-        let account = Account(context: viewContext)
-        
-        account.initialValue = initalAmount
-        
-        if currentAmount == 0 {
-            
-            account.currentValue = initalAmount
-            
-        } else {
-            
-            account.currentValue = currentAmount
-            
-        }
-        
-        account.name = name
-        
-        account.priority = priority
-        
-        saveContext()
         
     }
     
@@ -508,98 +492,6 @@ class CoreDataManager {
         } catch {
             
             print(error)
-            
-        }
-        
-        saveContext()
-        
-    }
-    
-    func fetchAccount() -> [Account]? {
-        
-        let request = NSFetchRequest<Account>(entityName: "Account")
-        
-        request.sortDescriptors = [NSSortDescriptor(key: "priority", ascending: true)]
-        
-        do {
-            
-            return try viewContext.fetch(request)
-            
-        } catch {
-            
-            print("fetch account fail")
-            
-            return nil
-            
-        }
-        
-    }
-    
-    func deleteAccount(accountName: String) {
-        
-        let request = NSFetchRequest<Account>(entityName: "Account")
-        
-        request.predicate = NSPredicate(format: "name = %@", accountName)
-        
-        do {
-            
-            let account = try viewContext.fetch(request)
-            
-            let request = NSFetchRequest<Account>(entityName: "Account")
-            
-            request.sortDescriptors = [NSSortDescriptor(key: "priority", ascending: true)]
-            
-            do {
-                
-                let accounts = try viewContext.fetch(request)
-                
-                var priority = Int(account[0].priority)
-                
-                while priority + 1 < accounts.count {
-                    
-                    accounts[priority + 1].priority -= 1
-                    
-                    priority += 1
-                    
-                }
-                
-            } catch {
-                
-                print(error)
-                
-            }
-            
-            viewContext.delete(account[0])
-            
-        } catch {
-            
-            print(error)
-            
-        }
-        
-        saveContext()
-        
-    }
-    
-    func reviseAccount(accountName: String, newName: String, newInitialValue: Int64) {
-        
-        let request = NSFetchRequest<Account>(entityName: "Account")
-        
-        request.predicate = NSPredicate(format: "name = %@", accountName)
-        
-        do {
-            
-            let account = try viewContext.fetch(request)
-            
-            account[0].name = newName
-            
-            account[0].currentValue = account[0].currentValue + newInitialValue - account[0].initialValue
-            
-            account[0].initialValue = newInitialValue
-            
-        } catch {
-            
-            print("revise account fail")
             
         }
         
@@ -835,64 +727,4 @@ class CoreDataManager {
         
     }
     
-    func createSaving(main: Bool, date: Date, amount: Int64) {
-        
-        let saving = Saving(context: viewContext)
-        
-        saving.main = main
-        
-        saving.month = Int64(date.timeIntervalSince1970)
-        
-        saving.amount = amount
-        
-        saveContext()
-        
-    }
-    
-    func createSubSaving(main: Bool, date: Date, amount: Int64, selectedExpenseCategory: ExpenseCategory) {
-        
-        let saving = Saving(context: viewContext)
-        
-        saving.main = main
-        
-        saving.month = Int64(date.timeIntervalSince1970)
-        
-        saving.amount = amount
-        
-        saving.expenseSubCategory = selectedExpenseCategory
-        
-        saveContext()
-        
-    }
-    
-    func fetchSaving() -> [Saving]? {
-        
-        let request = NSFetchRequest<Saving>(entityName: "Saving")
-        
-        request.sortDescriptors = [
-            NSSortDescriptor(key: "month", ascending: true),
-            NSSortDescriptor(key: "amount", ascending: true)
-        ]
-        
-        do {
-            
-            return try viewContext.fetch(request).reversed()
-            
-        } catch {
-            
-            print("fetch saving fail")
-            
-            return nil
-            
-        }
-        
-    }
-    
-    func deleteSubSaving(subSaving: Saving) {
-        
-        viewContext.delete(subSaving)
-        
-        saveContext()
-        
-    }
 }

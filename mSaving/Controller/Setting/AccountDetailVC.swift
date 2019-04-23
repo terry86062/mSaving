@@ -80,19 +80,19 @@ class AccountDetailVC: UIViewController {
         
         if delegate.isAddingNewAccount {
             
-            if let account = StorageManager.shared.fetchAccount()?.last {
+            if let account = AccountProvider().accounts?.last {
                 
-                StorageManager.shared.createAccount(name: text, initalAmount: amount, priority: account.priority + 1)
+                AccountProvider().createAccount(name: text, initalAmount: amount, priority: account.priority + 1)
                 
             } else {
                 
-                StorageManager.shared.createAccount(name: text, initalAmount: amount, priority: 0)
+                AccountProvider().createAccount(name: text, initalAmount: amount, priority: 0)
                 
             }
 
         } else {
             
-            StorageManager.shared.reviseAccount(accountName: originalAccountName, newName: text, newInitialValue: amount)
+            AccountProvider().reviseAccount(accountName: originalAccountName, newName: text, newInitialValue: amount)
             
         }
         
@@ -110,7 +110,7 @@ class AccountDetailVC: UIViewController {
         
         guard let text = accountTextField.text, text != "" else { return }
         
-        StorageManager.shared.deleteAccount(accountName: text)
+        AccountProvider().deleteAccount(accountName: text)
         
         delegate?.fetchData()
         

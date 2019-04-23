@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             print("First launch, setting NSUserDefault.")
             
-            StorageManager.shared.initExpenseIncomeCategory()
+            CategoryProvider().initExpenseIncomeCategory()
             
             UserDefaults.standard.set(true, forKey: "launchedBefore")
         }

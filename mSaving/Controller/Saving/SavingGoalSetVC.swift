@@ -102,7 +102,7 @@ class SavingGoalSetVC: UIViewController {
         
         guard let date = Calendar.current.date(from: components) else { return }
         
-        StorageManager.shared.createSaving(main: true, date: date, amount: amount)
+        SavingProvider().createSaving(main: true, date: date, amount: amount)
         
     }
     
@@ -114,7 +114,7 @@ class SavingGoalSetVC: UIViewController {
         
         selectedSaving.saving.amount = amount
         
-        StorageManager.shared.saveContext()
+        CoreDataManager.shared.saveContext()
         
     }
 

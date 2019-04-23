@@ -135,7 +135,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
 
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
-        guard let expenseCategorys = StorageManager.shared.fetchExpenseCategory() else { return }
+        guard let expenseCategorys = CategoryProvider().expenseCategory else { return }
         
         self.expenseCategorys = expenseCategorys
         
@@ -145,7 +145,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
             
         }
         
-        guard let incomeCategorys = StorageManager.shared.fetchIncomeCategory() else { return }
+        guard let incomeCategorys = CategoryProvider().incomeCategory else { return }
         
         self.incomeCategorys = incomeCategorys
 
@@ -155,7 +155,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         
         super.viewWillAppear(animated)
         
-        guard let accounts = StorageManager.shared.fetchAccount() else { return }
+        guard let accounts = AccountProvider().accounts else { return }
         
         if accounts.count > 0 {
             
@@ -231,7 +231,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
                 
                 guard let selectedCategory = selectedExpenseCategory else { return }
                 
-                StorageManager.shared.saveAccounting(date: selectedDate,
+                CoreDataManager.shared.saveAccounting(date: selectedDate,
                                                      amount: amount,
                                                      accountName: selectedAccount,
                                                      selectedExpenseCategory: selectedCategory,
@@ -242,7 +242,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
                 
                 guard let selectedCategory = selectedIncomeCategory else { return }
                 
-                StorageManager.shared.saveAccounting(date: selectedDate,
+                CoreDataManager.shared.saveAccounting(date: selectedDate,
                                                      amount: amount,
                                                      accountName: selectedAccount,
                                                      selectedExpenseCategory: nil,
@@ -259,7 +259,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
                 
                 guard let selectedCategory = selectedExpenseCategory else { return }
                 
-                StorageManager.shared.reviseAccounting(date: reviseOccurDate,
+                CoreDataManager.shared.reviseAccounting(date: reviseOccurDate,
                                                        newDate: selectedDate,
                                                        amount: amount,
                                                        accountName: selectedAccount,
@@ -272,7 +272,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
                 
                 guard let selectedCategory = selectedIncomeCategory else { return }
                 
-                StorageManager.shared.reviseAccounting(date: reviseOccurDate,
+                CoreDataManager.shared.reviseAccounting(date: reviseOccurDate,
                                                        newDate: selectedDate,
                                                        amount: amount,
                                                        accountName: selectedAccount,
@@ -345,7 +345,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     func showAlertWith(title: String, message: String, style: UIAlertController.Style = .actionSheet) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
         
-        guard let accounts = StorageManager.shared.fetchAccount() else { return }
+        guard let accounts = AccountProvider().accounts else { return }
         
         if accounts.count > 0 {
             
@@ -434,7 +434,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     
     @IBAction func deleteAccounting(_ sender: UIButton) {
         
-        StorageManager.shared.deleteAccounting(date: reviseOccurDate, reviseSelectedExpense: reviseSelectedExpense)
+        CoreDataManager.shared.deleteAccounting(date: reviseOccurDate, reviseSelectedExpense: reviseSelectedExpense)
         
         navigationController?.popViewController(animated: true)
         

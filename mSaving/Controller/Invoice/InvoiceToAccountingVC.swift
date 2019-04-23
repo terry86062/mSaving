@@ -52,7 +52,7 @@ class InvoiceToAccountingVC: UIViewController {
         
         invoiceAccountingTextField.text = "\(invoiceAmount)"
         
-        guard let expenseCategorys = StorageManager.shared.fetchExpenseCategory() else { return }
+        guard let expenseCategorys = CategoryProvider().expenseCategory else { return }
         
         self.expenseCategorys = expenseCategorys
         
@@ -116,7 +116,7 @@ class InvoiceToAccountingVC: UIViewController {
         
         guard let selectedCategory = selectedExpenseCategory else { return }
         
-        StorageManager.shared.saveAccounting(date: date,
+        CoreDataManager.shared.saveAccounting(date: date,
                                              amount: amount,
                                              accountName: selectedAccount,
                                              selectedExpenseCategory: selectedCategory,

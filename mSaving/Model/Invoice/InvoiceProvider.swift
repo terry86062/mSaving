@@ -8,7 +8,7 @@
 
 import Foundation
 
-class InvoiceDownloader {
+class InvoiceProvider {
     
     func downloadInvoiceDetail(qrCodeInfo: QRCodeInfo,
                                uuid: String,

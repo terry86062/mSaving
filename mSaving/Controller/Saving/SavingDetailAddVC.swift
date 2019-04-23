@@ -46,7 +46,7 @@ class SavingDetailAddVC: UIViewController {
         
         savingDetailTextField.becomeFirstResponder()
         
-        guard let expenseCategorys = StorageManager.shared.fetchExpenseCategory() else { return }
+        guard let expenseCategorys = CategoryProvider().expenseCategory else { return }
         
         self.expenseCategorys = expenseCategorys
         
@@ -106,7 +106,7 @@ class SavingDetailAddVC: UIViewController {
         
         guard let subSaving = selectedSavingDetail?.saving else { return }
         
-        StorageManager.shared.deleteSubSaving(subSaving: subSaving)
+        SavingProvider().deleteSubSaving(subSaving: subSaving)
         
         helpDismiss()
         
@@ -142,7 +142,7 @@ class SavingDetailAddVC: UIViewController {
         
         guard let selectedExpenseCategory = selectedExpenseCategory else { return }
         
-        StorageManager.shared.createSubSaving(main: false, date: date, amount: amount, selectedExpenseCategory: selectedExpenseCategory)
+        SavingProvider().createSubSaving(main: false, date: date, amount: amount, selectedExpenseCategory: selectedExpenseCategory)
         
     }
     
@@ -156,7 +156,7 @@ class SavingDetailAddVC: UIViewController {
         
         selectedSavingDetail.saving.expenseSubCategory = selectedExpenseCategory
         
-        StorageManager.shared.saveContext()
+        CoreDataManager.shared.saveContext()
         
     }
 
