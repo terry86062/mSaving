@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" name="mSYellow"/>
+                        <color key="tintColor" name="mSGreen"/>
                     </tabBar>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I5u-Na-i3K" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -28,8 +28,8 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="mSYellow">
-            <color red="0.9882352941176471" green="0.87058823529411766" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="mSGreen">
+            <color red="0.2196078431372549" green="0.52941176470588236" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

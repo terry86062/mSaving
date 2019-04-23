@@ -91,6 +91,8 @@ extension AnalysisCVCell: UICollectionViewDataSource {
             
             cell.initCategoryAccountingsCVCell(categoryAccountingMonthTotals: categoryAccountingMonthTotals)
             
+            cell.categoryAccountingsCollectionView.reloadData()
+            
             cell.touchCategoryHandler = {
 
                 self.selectedCategoryAccountingMonthTotal = cell.selectedCategoryAccountingMonthTotal

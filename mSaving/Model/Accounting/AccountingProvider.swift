@@ -28,6 +28,8 @@ class AccountingProvider {
     
     var coreDataManager = CoreDataManager.shared
     
+    var notificationManager = MSNotificationManager()
+    
     var accountingWithDateArray: [AccountingWithDate] {
         
         guard let accountingArray = self.fetchAccounting() else { return [] }
@@ -418,6 +420,8 @@ class AccountingProvider {
         }
         
         coreDataManager.saveContext()
+        
+        notificationManager.postNotificationForRenew()
         
     }
     

@@ -10,8 +10,6 @@ import UIKit
 
 import Charts
 
-import BetterSegmentedControl
-
 class ChartVC: UIViewController {
 
     @IBOutlet weak var monthCollectionView: UICollectionView! {
@@ -37,8 +35,8 @@ class ChartVC: UIViewController {
         }
 
     }
-
-    @IBOutlet weak var incomeExpenseSegmentedC: BetterSegmentedControl!
+    
+    let notificationManager = MSNotificationManager()
     
     var categoryAccountingMonthTotalArray: [[CategoryAccountingMonthTotal]] = []
     
@@ -51,34 +49,31 @@ class ChartVC: UIViewController {
         super.viewDidLoad()
 
         setUpCollectionView()
-
-        incomeExpenseSegmentedC.segments = LabelSegment.segments(
-            withTitles: ["支出", "收入"],
-            normalBackgroundColor: UIColor.white,
-            normalFont: .systemFont(ofSize: 16),
-            normalTextColor: UIColor.lightGray,
-            selectedBackgroundColor: UIColor.mSYellow,
-            selectedFont: .systemFont(ofSize: 16),
-            selectedTextColor: UIColor.black)
+        
+        fetchData()
+        
+        notificationManager.addNotificationForRenew(collectionView: analysisCollectionView) { [weak self] in
+            
+            self?.fetchData()
+            
+        }
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        super.viewWillAppear(animated)
-        
-        categoryAccountingMonthTotalArray = AccountingProvider().categoryAccountingMonthTotalArray
-        
-        accountingWithDateGroupArray = AccountingProvider().accountingWithDateGroupArray
-        
-    }
-
     func setUpCollectionView() {
 
         monthCollectionView.helpRegister(cell: MonthCVCell())
 
         analysisCollectionView.helpRegister(cell: AnalysisCVCell())
 
+    }
+    
+    func fetchData() {
+        
+        categoryAccountingMonthTotalArray = AccountingProvider().categoryAccountingMonthTotalArray
+        
+        accountingWithDateGroupArray = AccountingProvider().accountingWithDateGroupArray
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -99,6 +94,8 @@ extension ChartVC: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
+        guard categoryAccountingMonthTotalArray.count != 0 else { return 1 }
+        
         return categoryAccountingMonthTotalArray.count
 
     }
@@ -136,6 +133,8 @@ extension ChartVC: UICollectionViewDataSource {
 
             cell.initAnalysisCVCell(categoryAccountingMonthTotals: categoryAccountingMonthTotalArray[indexPath.row],
                                     accountingWithDateArray: accountingWithDateGroupArray[indexPath.row])
+            
+            cell.analysisCollectionView.reloadData()
             
             cell.touchCategoryHandler = {
                 
