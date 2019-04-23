@@ -76,7 +76,7 @@ class SavingVC: UIViewController {
         
         super.viewWillAppear(animated)
         
-        guard let accountingArray = CoreDataManager.shared.fetchAccounting() else { return }
+        guard let accountingArray = AccountingProvider().fetchAccounting() else { return }
         
         var accountingWithDateArray: [AccountingWithDate] = []
         

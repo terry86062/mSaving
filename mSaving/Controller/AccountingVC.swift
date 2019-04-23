@@ -231,7 +231,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
                 
                 guard let selectedCategory = selectedExpenseCategory else { return }
                 
-                CoreDataManager.shared.saveAccounting(date: selectedDate,
+                AccountingProvider().saveAccounting(date: selectedDate,
                                                      amount: amount,
                                                      accountName: selectedAccount,
                                                      selectedExpenseCategory: selectedCategory,
@@ -242,7 +242,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
                 
                 guard let selectedCategory = selectedIncomeCategory else { return }
                 
-                CoreDataManager.shared.saveAccounting(date: selectedDate,
+                AccountingProvider().saveAccounting(date: selectedDate,
                                                      amount: amount,
                                                      accountName: selectedAccount,
                                                      selectedExpenseCategory: nil,
@@ -259,7 +259,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
                 
                 guard let selectedCategory = selectedExpenseCategory else { return }
                 
-                CoreDataManager.shared.reviseAccounting(date: reviseOccurDate,
+                AccountingProvider().reviseAccounting(date: reviseOccurDate,
                                                        newDate: selectedDate,
                                                        amount: amount,
                                                        accountName: selectedAccount,
@@ -272,7 +272,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
                 
                 guard let selectedCategory = selectedIncomeCategory else { return }
                 
-                CoreDataManager.shared.reviseAccounting(date: reviseOccurDate,
+                AccountingProvider().reviseAccounting(date: reviseOccurDate,
                                                        newDate: selectedDate,
                                                        amount: amount,
                                                        accountName: selectedAccount,
@@ -434,7 +434,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     
     @IBAction func deleteAccounting(_ sender: UIButton) {
         
-        CoreDataManager.shared.deleteAccounting(date: reviseOccurDate, reviseSelectedExpense: reviseSelectedExpense)
+        AccountingProvider().deleteAccounting(date: reviseOccurDate, reviseSelectedExpense: reviseSelectedExpense)
         
         navigationController?.popViewController(animated: true)
         

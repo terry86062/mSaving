@@ -116,7 +116,7 @@ class InvoiceToAccountingVC: UIViewController {
         
         guard let selectedCategory = selectedExpenseCategory else { return }
         
-        CoreDataManager.shared.saveAccounting(date: date,
+        AccountingProvider().saveAccounting(date: date,
                                              amount: amount,
                                              accountName: selectedAccount,
                                              selectedExpenseCategory: selectedCategory,
