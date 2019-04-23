@@ -24,7 +24,7 @@ class CategoryCVCell: UICollectionViewCell {
 
     }
     
-    func initCategoryCVCell(categoryAccountingMonthTotal: CategoryAccountingMonthTotal) {
+    func initCategoryCVCell(categoryAccountingMonthTotal: CategoryMonthTotal) {
         
         let category = categoryAccountingMonthTotal.expenseCategory
         

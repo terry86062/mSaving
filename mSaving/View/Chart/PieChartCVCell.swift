@@ -20,7 +20,7 @@ class PieChartCVCell: UICollectionViewCell {
 
     }
 
-    func pieChartUpdate(categoryAccountingMonthTotals: [CategoryAccountingMonthTotal]) {
+    func pieChartUpdate(categoryAccountingMonthTotals: [CategoryMonthTotal]) {
 
         guard categoryAccountingMonthTotals.count != 0 else { return }
         
@@ -47,6 +47,8 @@ class PieChartCVCell: UICollectionViewCell {
         dataSet.colors = colors
         
         let data = PieChartData(dataSet: dataSet)
+        
+        pieChart.legend.enabled = false
         
         pieChart.data = data
 //        pieChart.chartDescription?.text = "Share of Widgets by Type"

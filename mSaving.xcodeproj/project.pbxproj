@@ -29,6 +29,7 @@
 		DE4984B522586A0F004E4AE9 /* CategoryAccountingsDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4984B422586A0F004E4AE9 /* CategoryAccountingsDetailVC.swift */; };
 		DE4984B8225878A8004E4AE9 /* CategoryAccountingsTotalCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4984B6225878A8004E4AE9 /* CategoryAccountingsTotalCVCell.swift */; };
 		DE4984B9225878A8004E4AE9 /* CategoryAccountingsTotalCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE4984B7225878A8004E4AE9 /* CategoryAccountingsTotalCVCell.xib */; };
+		DE5776D8226F57D300652B61 /* AccountingTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5776D7226F57D300652B61 /* AccountingTransformer.swift */; };
 		DE712852225E541400E12283 /* AccountDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE712851225E541400E12283 /* AccountDetailVC.swift */; };
 		DE7B38AA2257329300C17846 /* IncomeExpenseCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7B38A82257329300C17846 /* IncomeExpenseCVCell.swift */; };
 		DE7B38AB2257329300C17846 /* IncomeExpenseCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE7B38A92257329300C17846 /* IncomeExpenseCVCell.xib */; };
@@ -118,6 +119,7 @@
 		DE4984B422586A0F004E4AE9 /* CategoryAccountingsDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAccountingsDetailVC.swift; sourceTree = "<group>"; };
 		DE4984B6225878A8004E4AE9 /* CategoryAccountingsTotalCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAccountingsTotalCVCell.swift; sourceTree = "<group>"; };
 		DE4984B7225878A8004E4AE9 /* CategoryAccountingsTotalCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryAccountingsTotalCVCell.xib; sourceTree = "<group>"; };
+		DE5776D7226F57D300652B61 /* AccountingTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountingTransformer.swift; sourceTree = "<group>"; };
 		DE712851225E541400E12283 /* AccountDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailVC.swift; sourceTree = "<group>"; };
 		DE7B38A82257329300C17846 /* IncomeExpenseCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseCVCell.swift; sourceTree = "<group>"; };
 		DE7B38A92257329300C17846 /* IncomeExpenseCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeExpenseCVCell.xib; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				DE366ABC226EC20700A65954 /* AccountingProvider.swift */,
+				DE5776D7226F57D300652B61 /* AccountingTransformer.swift */,
 			);
 			path = Accounting;
 			sourceTree = "<group>";
@@ -690,6 +693,7 @@
 				DEACE3DC2257AD1900EA209C /* AnalysisCVCell.swift in Sources */,
 				DE97C64B2258E12400D0C9CF /* SavingGoalCVCell.swift in Sources */,
 				DEBE8C1B2254836800C2A8A3 /* UIColor - extension.swift in Sources */,
+				DE5776D8226F57D300652B61 /* AccountingTransformer.swift in Sources */,
 				DEECB05722533599002D6C30 /* SavingGoalSetVC.swift in Sources */,
 				DEECB02E22533430002D6C30 /* mSaving.xcdatamodeld in Sources */,
 				DEECB05B22533599002D6C30 /* AccountingVC.swift in Sources */,

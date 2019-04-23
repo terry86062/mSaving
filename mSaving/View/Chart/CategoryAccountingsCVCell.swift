@@ -26,9 +26,9 @@ class CategoryAccountingsCVCell: UICollectionViewCell {
     
     var touchCategoryHandler: (() -> Void)?
     
-    var categoryAccountingMonthTotals: [CategoryAccountingMonthTotal] = []
+    var categoryAccountingMonthTotals: [CategoryMonthTotal] = []
     
-    var selectedCategoryAccountingMonthTotal: CategoryAccountingMonthTotal?
+    var selectedCategoryAccountingMonthTotal: CategoryMonthTotal?
     
     override func awakeFromNib() {
         
@@ -36,7 +36,7 @@ class CategoryAccountingsCVCell: UICollectionViewCell {
         
     }
     
-    func initCategoryAccountingsCVCell(categoryAccountingMonthTotals: [CategoryAccountingMonthTotal]) {
+    func initCategoryAccountingsCVCell(categoryAccountingMonthTotals: [CategoryMonthTotal]) {
         
         self.categoryAccountingMonthTotals = categoryAccountingMonthTotals
         

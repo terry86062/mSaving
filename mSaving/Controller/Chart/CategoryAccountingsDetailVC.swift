@@ -24,7 +24,7 @@ class CategoryAccountingsDetailVC: UIViewController {
     
     @IBOutlet weak var categoryNameLabel: UILabel!
     
-    var selectedCategoryAccountingMonthTotal: CategoryAccountingMonthTotal?
+    var selectedCategoryAccountingMonthTotal: CategoryMonthTotal?
 
     override func viewDidLoad() {
 

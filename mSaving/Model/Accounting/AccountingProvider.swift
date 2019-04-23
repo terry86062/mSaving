@@ -10,7 +10,7 @@ import Foundation
 
 import CoreData
 
-struct CategoryAccountingMonthTotal {
+struct CategoryMonthTotal {
     
     let year: Int
     
@@ -26,242 +26,41 @@ struct CategoryAccountingMonthTotal {
 
 class AccountingProvider {
     
-    var coreDataManager = CoreDataManager.shared
+    let coreDataManager = CoreDataManager.shared
     
-    var notificationManager = MSNotificationManager()
+    let transformer = AccountingTransformer()
     
-    var accountingWithDateArray: [AccountingWithDate] {
+    let notificationManager = MSNotificationManager()
+    
+    var accountingsWithDate: [AccountingWithDate] {
         
-        guard let accountingArray = self.fetchAccounting() else { return [] }
+        guard let accountings = coreDataManager.fetch(entityType: Accounting(),
+                                                      sortFirst: "occurDate",
+                                                      second: "",
+                                                      reverse: true) else { return [] }
         
-        var accountingWithDateArray: [AccountingWithDate] = []
-        
-        guard accountingArray.count > 0 else { return accountingWithDateArray }
-        
-        for index in 0...accountingArray.count - 1 {
-            
-            let date = Date(timeIntervalSince1970: TimeInterval(accountingArray[index].occurDate))
-            
-            accountingWithDateArray.append(
-                AccountingWithDate(accounting: accountingArray[index],
-                                   date: date,
-                                   dateComponents: Calendar.current.dateComponents(
-                                    [.year, .month, .day, .weekday, .hour, .minute], from: date)))
-            
-        }
-        
-        return accountingWithDateArray
+        return transformer.transformFrom(accountings: accountings)
         
     }
     
-    var accountingWithDateGroupArray: [[[AccountingWithDate]]] {
+    var accountingsWithDateGroup: [[[AccountingWithDate]]] {
         
-        var accountingWithDateGroupArray: [[[AccountingWithDate]]] = []
-        
-        guard accountingWithDateArray.count > 0 else { return accountingWithDateGroupArray }
-        
-        for index in 0...accountingWithDateArray.count - 1 {
-            
-            if index == 0 {
-                
-                accountingWithDateGroupArray.append([[accountingWithDateArray[index]]])
-                
-            } else {
-                
-                if accountingWithDateArray[index].dateComponents.month == accountingWithDateArray[index - 1].dateComponents.month &&
-                    accountingWithDateArray[index].dateComponents.day == accountingWithDateArray[index - 1].dateComponents.day {
-                    
-                    let temp = accountingWithDateGroupArray[accountingWithDateGroupArray.count - 1]
-                    
-                    accountingWithDateGroupArray[accountingWithDateGroupArray.count - 1][temp.count - 1].append(accountingWithDateArray[index])
-                    
-                } else if accountingWithDateArray[index].dateComponents.month == accountingWithDateArray[index - 1].dateComponents.month {
-                    
-                    accountingWithDateGroupArray[accountingWithDateGroupArray.count - 1].append([accountingWithDateArray[index]])
-                    
-                } else {
-                    
-                    accountingWithDateGroupArray.insert([[accountingWithDateArray[index]]], at: 0)
-                    
-                }
-                
-            }
-            
-        }
-        
-        return accountingWithDateGroupArray
+        return transformer.transformFrom(accountingsWithDate: accountingsWithDate)
         
     }
     
-    var categoryAccountingMonthTotalArray: [[CategoryAccountingMonthTotal]] {
+    var categoriesMonthTotalGroup: [[CategoryMonthTotal]] {
         
-        guard let accountingArray = self.fetchAccounting(sortOnlyWithDate: false) else { return [] }
+        guard let accountings = coreDataManager.fetch(entityType: Accounting(),
+                                                      sortFirst: "expenseSubCategory",
+                                                      second: "occurDate",
+                                                      reverse: true) else { return [] }
         
-        var accountingWithDateArray: [AccountingWithDate] = []
+        let accountingsWithDate = transformer.transformFrom(accountings: accountings)
         
-        guard accountingArray.count > 0 else { return [] }
+        let categoriesMonthTotal = transformer.transformToTotal(accountingsWithDate: accountingsWithDate)
         
-        for index in 0...accountingArray.count - 1 {
-            
-            let date = Date(timeIntervalSince1970: TimeInterval(accountingArray[index].occurDate))
-            
-            accountingWithDateArray.append(
-                AccountingWithDate(accounting: accountingArray[index],
-                                   date: date,
-                                   dateComponents: Calendar.current.dateComponents(
-                                    [.year, .month, .day, .weekday, .hour, .minute], from: date)))
-            
-        }
-        
-        var categoryAccountingMonthTotals: [CategoryAccountingMonthTotal] = []
-        
-        guard accountingWithDateArray.count > 0 else { return [] }
-        
-        for index in 0...accountingWithDateArray.count - 1 {
-            
-            let accountingWithDate = accountingWithDateArray[index]
-            
-            guard let year = accountingWithDate.dateComponents.year,
-                let month = accountingWithDate.dateComponents.month,
-                let day = accountingWithDate.dateComponents.day,
-                let expenseCategory = accountingWithDate.accounting.expenseSubCategory else { return [] }
-            
-            if index == 0 {
-                
-                categoryAccountingMonthTotals.append(
-                    CategoryAccountingMonthTotal(year: year,
-                                                 month: month,
-                                                 amount: accountingWithDate.accounting.amount,
-                                                 expenseCategory: expenseCategory,
-                                                 accountings: [[accountingWithDate]]))
-                
-            } else {
-                
-                let accountingWithDatePreivous = accountingWithDateArray[index - 1]
-                
-                let lastNumber = categoryAccountingMonthTotals.count - 1
-                
-                let lastNumberInside = categoryAccountingMonthTotals[lastNumber].accountings.count - 1
-                
-                guard let yearPreivous = accountingWithDatePreivous.dateComponents.year,
-                    let monthPreivous = accountingWithDatePreivous.dateComponents.month,
-                    let dayPreivous = accountingWithDatePreivous.dateComponents.day,
-                    let expenseCategoryPreivous = accountingWithDatePreivous.accounting.expenseSubCategory else { return [] }
-                
-                if expenseCategory == expenseCategoryPreivous &&
-                    year == yearPreivous &&
-                    month == monthPreivous &&
-                    day == dayPreivous {
-                    
-                    categoryAccountingMonthTotals[lastNumber].amount += accountingWithDate.accounting.amount
-                    categoryAccountingMonthTotals[lastNumber].accountings[lastNumberInside].append(accountingWithDate)
-                    
-                } else if expenseCategory == expenseCategoryPreivous &&
-                    year == yearPreivous &&
-                    month == monthPreivous {
-                    
-                    categoryAccountingMonthTotals[lastNumber].amount += accountingWithDate.accounting.amount
-                    categoryAccountingMonthTotals[lastNumber].accountings.append([accountingWithDate])
-                    
-                } else {
-                    
-                    categoryAccountingMonthTotals.append(
-                        CategoryAccountingMonthTotal(year: year,
-                                                     month: month,
-                                                     amount: accountingWithDate.accounting.amount,
-                                                     expenseCategory: expenseCategory,
-                                                     accountings: [[accountingWithDate]]))
-                    
-                }
-                
-            }
-            
-        }
-        
-        var categoryAccountingMonthTotalArray: [[CategoryAccountingMonthTotal]] = []
-        
-        guard categoryAccountingMonthTotals.count > 0 else { return [] }
-        
-        for index in 0...categoryAccountingMonthTotals.count - 1 {
-            
-            let categoryAccountingMonthTotal = categoryAccountingMonthTotals[index]
-            
-            let year = categoryAccountingMonthTotal.year
-            let month = categoryAccountingMonthTotal.month
-            let amount = categoryAccountingMonthTotal.amount
-            
-            if index == 0 {
-                
-                categoryAccountingMonthTotalArray.append([categoryAccountingMonthTotal])
-                
-            } else {
-                
-                for indexx in 0...categoryAccountingMonthTotalArray.count - 1 {
-                    
-                    var count = 0
-                    
-                    guard let yearInside = categoryAccountingMonthTotalArray[indexx].first?.year,
-                        let monthInside = categoryAccountingMonthTotalArray[indexx].first?.month else { return [] }
-                    
-                    if year < yearInside {
-                        
-                        categoryAccountingMonthTotalArray.insert([categoryAccountingMonthTotal], at: indexx)
-                        
-                        break
-                        
-                    } else if year == yearInside && month < monthInside {
-                        
-                        categoryAccountingMonthTotalArray.insert([categoryAccountingMonthTotal], at: indexx)
-                        
-                        break
-                        
-                    } else if year == yearInside && month == monthInside {
-                        
-                        var countInside = 0
-                        
-                        for indexxx in 0...categoryAccountingMonthTotalArray[indexx].count - 1 {
-                            
-                            if amount >= categoryAccountingMonthTotalArray[indexx][indexxx].amount {
-                                
-                                categoryAccountingMonthTotalArray[indexx].insert(categoryAccountingMonthTotal, at: indexxx)
-                                
-                                break
-                                
-                            } else {
-                                
-                                countInside += 1
-                                
-                            }
-                            
-                        }
-                        
-                        if countInside == categoryAccountingMonthTotalArray[indexx].count {
-                            
-                            categoryAccountingMonthTotalArray[indexx].append(categoryAccountingMonthTotal)
-                            
-                        }
-                        
-                        break
-                        
-                    } else {
-                        
-                        count += 1
-                        
-                    }
-                    
-                    if count == categoryAccountingMonthTotalArray.count {
-                        
-                        categoryAccountingMonthTotalArray.append([categoryAccountingMonthTotal])
-                        
-                    }
-                    
-                }
-                
-            }
-            
-        }
-        
-        return categoryAccountingMonthTotalArray
+        return transformer.transformFrom(categoriesMonthTotal: categoriesMonthTotal)
         
     }
     
@@ -422,37 +221,6 @@ class AccountingProvider {
         coreDataManager.saveContext()
         
         notificationManager.postNotificationForRenew()
-        
-    }
-    
-    func fetchAccounting(sortOnlyWithDate: Bool = true) -> [Accounting]? {
-        
-        let request = NSFetchRequest<Accounting>(entityName: "Accounting")
-        
-        if sortOnlyWithDate {
-            
-            request.sortDescriptors = [NSSortDescriptor(key: "occurDate", ascending: true)]
-            
-        } else {
-            
-            request.sortDescriptors = [
-                NSSortDescriptor(key: "expenseSubCategory", ascending: true),
-                NSSortDescriptor(key: "occurDate", ascending: true)
-            ]
-            
-        }
-        
-        do {
-            
-            return try coreDataManager.viewContext.fetch(request).reversed()
-            
-        } catch {
-            
-            print("fetch accounting fail")
-            
-            return nil
-            
-        }
         
     }
     

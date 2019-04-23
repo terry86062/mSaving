@@ -76,57 +76,7 @@ class SavingVC: UIViewController {
         
         super.viewWillAppear(animated)
         
-        guard let accountingArray = AccountingProvider().fetchAccounting() else { return }
-        
-        var accountingWithDateArray: [AccountingWithDate] = []
-        
-        if accountingArray.count > 0 {
-            
-            for index in 0...accountingArray.count - 1 {
-                
-                let date = Date(timeIntervalSince1970: TimeInterval(accountingArray[index].occurDate))
-                
-                accountingWithDateArray.append(
-                    AccountingWithDate(accounting: accountingArray[index],
-                                       date: date,
-                                       dateComponents: Calendar.current.dateComponents([.year, .month, .day, .weekday, .hour, .minute], from: date)
-                    )
-                )
-                
-            }
-            
-            for index in 0...accountingWithDateArray.count - 1 {
-                
-                if index == 0 {
-                    
-                    accountingWithDateGroupArray.append([[accountingWithDateArray[index]]])
-                    
-                } else {
-                    
-                    if accountingWithDateArray[index].dateComponents.month == accountingWithDateArray[index - 1].dateComponents.month &&
-                        accountingWithDateArray[index].dateComponents.day == accountingWithDateArray[index - 1].dateComponents.day {
-                        
-                        let temp = accountingWithDateGroupArray[accountingWithDateGroupArray.count - 1]
-                        
-                        accountingWithDateGroupArray[accountingWithDateGroupArray.count - 1][temp.count - 1].append(accountingWithDateArray[index])
-                        
-                    } else if accountingWithDateArray[index].dateComponents.month == accountingWithDateArray[index - 1].dateComponents.month {
-                        
-                        accountingWithDateGroupArray[accountingWithDateGroupArray.count - 1].append([accountingWithDateArray[index]])
-                        
-                    } else {
-                        
-                        accountingWithDateGroupArray.insert([[accountingWithDateArray[index]]], at: 0)
-                        
-                    }
-                    
-                }
-                
-            }
-            
-        }
-        
-        print(accountingWithDateGroupArray)
+        accountingWithDateGroupArray = AccountingProvider().accountingsWithDateGroup
         
         guard let savingArray = SavingProvider().savings else { return }
         

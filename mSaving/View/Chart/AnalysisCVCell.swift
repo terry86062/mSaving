@@ -24,13 +24,13 @@ class AnalysisCVCell: UICollectionViewCell {
 
     }
     
-    var categoryAccountingMonthTotals: [CategoryAccountingMonthTotal] = []
+    var categoryAccountingMonthTotals: [CategoryMonthTotal] = []
     
     var accountingWithDateArray: [[AccountingWithDate]] = []
     
     var touchCategoryHandler: (() -> Void)?
     
-    var selectedCategoryAccountingMonthTotal: CategoryAccountingMonthTotal?
+    var selectedCategoryAccountingMonthTotal: CategoryMonthTotal?
 
     override func awakeFromNib() {
 
@@ -38,7 +38,8 @@ class AnalysisCVCell: UICollectionViewCell {
 
     }
 
-    func initAnalysisCVCell(categoryAccountingMonthTotals: [CategoryAccountingMonthTotal], accountingWithDateArray: [[AccountingWithDate]]) {
+    func initAnalysisCVCell(categoryAccountingMonthTotals: [CategoryMonthTotal],
+                            accountingWithDateArray: [[AccountingWithDate]]) {
 
         self.categoryAccountingMonthTotals = categoryAccountingMonthTotals
         
@@ -60,16 +61,22 @@ class AnalysisCVCell: UICollectionViewCell {
 
 extension AnalysisCVCell: UICollectionViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         return 3
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return 1
         
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if indexPath.row == 0 {
+        if indexPath.section == 0 {
             
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: String(describing: PieChartCVCell.self),
@@ -81,7 +88,7 @@ extension AnalysisCVCell: UICollectionViewDataSource {
             
             return cell
             
-        } else if indexPath.row == 1 {
+        } else if indexPath.section == 1 {
             
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: String(describing: CategoryAccountingsCVCell.self),
@@ -133,21 +140,17 @@ extension AnalysisCVCell: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        return UIEdgeInsets(top: 8, left: 0, bottom: 32, right: 0)
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        if indexPath.row == 0 || indexPath.row == 2 {
+        if section == 0 {
             
-            return CGSize(width: 360, height: 360)
+            return UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
+            
+        } else if section == 1 {
+            
+            return UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
             
         } else {
             
-            return CGSize(width: 382, height: 56 * categoryAccountingMonthTotals.count)
+            return UIEdgeInsets(top: 64, left: 0, bottom: 32, right: 0)
             
         }
         
@@ -155,10 +158,30 @@ extension AnalysisCVCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return 32
+        if indexPath.section == 0 {
+            
+            return CGSize(width: 320, height: 320)
+            
+        } else if indexPath.section == 1 {
+            
+            return CGSize(width: 382, height: 56 * categoryAccountingMonthTotals.count)
+            
+        } else {
+            
+            return CGSize(width: 360, height: 360)
+            
+        }
         
     }
+    
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//
+//        return 16
+//
+//    }
     
 }
