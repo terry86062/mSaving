@@ -66,6 +66,12 @@
 		DEBE8C29225519F800C2A8A3 /* AccountingCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEBE8C27225519F800C2A8A3 /* AccountingCVCell.xib */; };
 		DEBE8C2C2255AED800C2A8A3 /* AccountingDateCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C2A2255AED800C2A8A3 /* AccountingDateCVCell.swift */; };
 		DEBE8C2D2255AED800C2A8A3 /* AccountingDateCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEBE8C2B2255AED800C2A8A3 /* AccountingDateCVCell.xib */; };
+		DEDE571222702EB10071FCFD /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDE571122702EB10071FCFD /* IntentHandler.swift */; };
+		DEDE571A22702EB20071FCFD /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEDE571922702EB20071FCFD /* IntentsUI.framework */; };
+		DEDE571D22702EB20071FCFD /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDE571C22702EB20071FCFD /* IntentViewController.swift */; };
+		DEDE572022702EB20071FCFD /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEDE571E22702EB20071FCFD /* MainInterface.storyboard */; };
+		DEDE572422702EB20071FCFD /* PaymentIntentUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DEDE571822702EB20071FCFD /* PaymentIntentUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DEDE572722702EB20071FCFD /* PaymentIntent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DEDE570F22702EB10071FCFD /* PaymentIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DEEAA9CC2255F4A5005FCE8E /* SavingDetailCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEAA9CA2255F4A5005FCE8E /* SavingDetailCVCell.swift */; };
 		DEEAA9CD2255F4A5005FCE8E /* SavingDetailCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEEAA9CB2255F4A5005FCE8E /* SavingDetailCVCell.xib */; };
 		DEEB5FB5226CC8DE0088C798 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEB5FB4226CC8DE0088C798 /* HTTPClient.swift */; };
@@ -94,6 +100,38 @@
 		DEF27CAC226977F30030DB9D /* CategoryAccountingsCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF27CAA226977F30030DB9D /* CategoryAccountingsCVCell.swift */; };
 		DEF27CAD226977F30030DB9D /* CategoryAccountingsCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEF27CAB226977F30030DB9D /* CategoryAccountingsCVCell.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DEDE572222702EB20071FCFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DEECB01A22533430002D6C30 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DEDE571722702EB20071FCFD;
+			remoteInfo = PaymentIntentUI;
+		};
+		DEDE572522702EB20071FCFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DEECB01A22533430002D6C30 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DEDE570E22702EB10071FCFD;
+			remoteInfo = PaymentIntent;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DEDE572E22702EB20071FCFD /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DEDE572422702EB20071FCFD /* PaymentIntentUI.appex in Embed App Extensions */,
+				DEDE572722702EB20071FCFD /* PaymentIntent.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2269CA763E2B12B921C758F2 /* Pods-mSaving.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mSaving.debug.xcconfig"; path = "Target Support Files/Pods-mSaving/Pods-mSaving.debug.xcconfig"; sourceTree = "<group>"; };
@@ -156,6 +194,15 @@
 		DEBE8C27225519F800C2A8A3 /* AccountingCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountingCVCell.xib; sourceTree = "<group>"; };
 		DEBE8C2A2255AED800C2A8A3 /* AccountingDateCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountingDateCVCell.swift; sourceTree = "<group>"; };
 		DEBE8C2B2255AED800C2A8A3 /* AccountingDateCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountingDateCVCell.xib; sourceTree = "<group>"; };
+		DEDE570A227004550071FCFD /* mSaving.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mSaving.entitlements; sourceTree = "<group>"; };
+		DEDE570F22702EB10071FCFD /* PaymentIntent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PaymentIntent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEDE571122702EB10071FCFD /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		DEDE571322702EB10071FCFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DEDE571822702EB20071FCFD /* PaymentIntentUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PaymentIntentUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEDE571922702EB20071FCFD /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
+		DEDE571C22702EB20071FCFD /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
+		DEDE571F22702EB20071FCFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		DEDE572122702EB20071FCFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DEEAA9CA2255F4A5005FCE8E /* SavingDetailCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingDetailCVCell.swift; sourceTree = "<group>"; };
 		DEEAA9CB2255F4A5005FCE8E /* SavingDetailCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavingDetailCVCell.xib; sourceTree = "<group>"; };
 		DEEB5FB4226CC8DE0088C798 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -189,6 +236,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		DEDE570C22702EB10071FCFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEDE571522702EB20071FCFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEDE571A22702EB20071FCFD /* IntentsUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DEECB01F22533430002D6C30 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -213,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				E2F60CB0FEB4CC786F0B4059 /* Pods_mSaving.framework */,
+				DEDE571922702EB20071FCFD /* IntentsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -365,6 +428,25 @@
 			path = Invoice;
 			sourceTree = "<group>";
 		};
+		DEDE571022702EB10071FCFD /* PaymentIntent */ = {
+			isa = PBXGroup;
+			children = (
+				DEDE571122702EB10071FCFD /* IntentHandler.swift */,
+				DEDE571322702EB10071FCFD /* Info.plist */,
+			);
+			path = PaymentIntent;
+			sourceTree = "<group>";
+		};
+		DEDE571B22702EB20071FCFD /* PaymentIntentUI */ = {
+			isa = PBXGroup;
+			children = (
+				DEDE571C22702EB20071FCFD /* IntentViewController.swift */,
+				DEDE571E22702EB20071FCFD /* MainInterface.storyboard */,
+				DEDE572122702EB20071FCFD /* Info.plist */,
+			);
+			path = PaymentIntentUI;
+			sourceTree = "<group>";
+		};
 		DEEB5FB3226CC7590088C798 /* HTTP */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +469,8 @@
 			isa = PBXGroup;
 			children = (
 				DEECB02422533430002D6C30 /* mSaving */,
+				DEDE571022702EB10071FCFD /* PaymentIntent */,
+				DEDE571B22702EB20071FCFD /* PaymentIntentUI */,
 				DEECB02322533430002D6C30 /* Products */,
 				600F4854E9FFB3F5EA3A02F1 /* Pods */,
 				BBD75296C698B591F95558B3 /* Frameworks */,
@@ -397,6 +481,8 @@
 			isa = PBXGroup;
 			children = (
 				DEECB02222533430002D6C30 /* mSaving.app */,
+				DEDE570F22702EB10071FCFD /* PaymentIntent.appex */,
+				DEDE571822702EB20071FCFD /* PaymentIntentUI.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -404,6 +490,7 @@
 		DEECB02422533430002D6C30 /* mSaving */ = {
 			isa = PBXGroup;
 			children = (
+				DEDE570A227004550071FCFD /* mSaving.entitlements */,
 				DEECB02522533430002D6C30 /* AppDelegate.swift */,
 				DEECB03422533432002D6C30 /* Info.plist */,
 				DEECB05D225335AD002D6C30 /* Model */,
@@ -491,6 +578,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		DEDE570E22702EB10071FCFD /* PaymentIntent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DEDE572B22702EB20071FCFD /* Build configuration list for PBXNativeTarget "PaymentIntent" */;
+			buildPhases = (
+				DEDE570B22702EB10071FCFD /* Sources */,
+				DEDE570C22702EB10071FCFD /* Frameworks */,
+				DEDE570D22702EB10071FCFD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PaymentIntent;
+			productName = PaymentIntent;
+			productReference = DEDE570F22702EB10071FCFD /* PaymentIntent.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		DEDE571722702EB20071FCFD /* PaymentIntentUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DEDE572822702EB20071FCFD /* Build configuration list for PBXNativeTarget "PaymentIntentUI" */;
+			buildPhases = (
+				DEDE571422702EB20071FCFD /* Sources */,
+				DEDE571522702EB20071FCFD /* Frameworks */,
+				DEDE571622702EB20071FCFD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PaymentIntentUI;
+			productName = PaymentIntentUI;
+			productReference = DEDE571822702EB20071FCFD /* PaymentIntentUI.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		DEECB02122533430002D6C30 /* mSaving */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DEECB03722533432002D6C30 /* Build configuration list for PBXNativeTarget "mSaving" */;
@@ -501,10 +622,13 @@
 				DEECB02022533430002D6C30 /* Resources */,
 				1B4409F408563D0687E4EC7F /* [CP] Embed Pods Frameworks */,
 				DE93BBBA225C993B00DCD069 /* SwiftLint */,
+				DEDE572E22702EB20071FCFD /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DEDE572322702EB20071FCFD /* PBXTargetDependency */,
+				DEDE572622702EB20071FCFD /* PBXTargetDependency */,
 			);
 			name = mSaving;
 			productName = mSaving;
@@ -521,8 +645,19 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Terry;
 				TargetAttributes = {
+					DEDE570E22702EB10071FCFD = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					DEDE571722702EB20071FCFD = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
 					DEECB02122533430002D6C30 = {
 						CreatedOnToolsVersion = 10.2;
+						SystemCapabilities = {
+							com.apple.Siri = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -540,11 +675,28 @@
 			projectRoot = "";
 			targets = (
 				DEECB02122533430002D6C30 /* mSaving */,
+				DEDE570E22702EB10071FCFD /* PaymentIntent */,
+				DEDE571722702EB20071FCFD /* PaymentIntentUI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		DEDE570D22702EB10071FCFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEDE571622702EB20071FCFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEDE572022702EB20071FCFD /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DEECB02022533430002D6C30 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -651,6 +803,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		DEDE570B22702EB10071FCFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEDE571222702EB10071FCFD /* IntentHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEDE571422702EB20071FCFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEDE571D22702EB20071FCFD /* IntentViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DEECB01E22533430002D6C30 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -718,7 +886,28 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		DEDE572322702EB20071FCFD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DEDE571722702EB20071FCFD /* PaymentIntentUI */;
+			targetProxy = DEDE572222702EB20071FCFD /* PBXContainerItemProxy */;
+		};
+		DEDE572622702EB20071FCFD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DEDE570E22702EB10071FCFD /* PaymentIntent */;
+			targetProxy = DEDE572522702EB20071FCFD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		DEDE571E22702EB20071FCFD /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DEDE571F22702EB20071FCFD /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		DEECB0412253358B002D6C30 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -738,6 +927,82 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		DEDE572922702EB20071FCFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B8QRU3Z535;
+				INFOPLIST_FILE = PaymentIntentUI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.terry.mSaving.PaymentIntentUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DEDE572A22702EB20071FCFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B8QRU3Z535;
+				INFOPLIST_FILE = PaymentIntentUI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.terry.mSaving.PaymentIntentUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DEDE572C22702EB20071FCFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B8QRU3Z535;
+				INFOPLIST_FILE = PaymentIntent/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.terry.mSaving.PaymentIntent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DEDE572D22702EB20071FCFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B8QRU3Z535;
+				INFOPLIST_FILE = PaymentIntent/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.terry.mSaving.PaymentIntent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		DEECB03522533432002D6C30 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -858,7 +1123,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2269CA763E2B12B921C758F2 /* Pods-mSaving.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = mSaving/mSaving.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B8QRU3Z535;
 				INFOPLIST_FILE = mSaving/Info.plist;
@@ -877,7 +1144,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2C6C6317FBC34568D8610458 /* Pods-mSaving.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = mSaving/mSaving.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B8QRU3Z535;
 				INFOPLIST_FILE = mSaving/Info.plist;
@@ -895,6 +1164,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		DEDE572822702EB20071FCFD /* Build configuration list for PBXNativeTarget "PaymentIntentUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DEDE572922702EB20071FCFD /* Debug */,
+				DEDE572A22702EB20071FCFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DEDE572B22702EB20071FCFD /* Build configuration list for PBXNativeTarget "PaymentIntent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DEDE572C22702EB20071FCFD /* Debug */,
+				DEDE572D22702EB20071FCFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DEECB01D22533430002D6C30 /* Build configuration list for PBXProject "mSaving" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

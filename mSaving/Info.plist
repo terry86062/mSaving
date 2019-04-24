@@ -43,5 +43,7 @@
 	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>We need to access your camera for scanning QR code</string>
+	<key>NSSiriUsageDescription</key>
+	<string>開啟Siri</string>
 </dict>
 </plist>

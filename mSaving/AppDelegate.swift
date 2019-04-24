@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Intents
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         detectFirstLaunch()
+        
+        INPreferences.requestSiriAuthorization { (status) in
+            
+            switch status {
+                
+            case .authorized:
+                
+                print("Authorized")
+                
+            default:
+                
+                print("Not Authorized")
+                
+            }
+            
+        }
 
         return true
     }
