@@ -28,13 +28,13 @@ class CategoryCVCell: UICollectionViewCell {
         
         let category = categoryAccountingMonthTotal.expenseCategory
         
-        guard let iconName = category.iconName, let color = category.color else { return }
+        guard let iconName = category?.iconName, let color = category?.color else { return }
             
         categoryImageView.image = UIImage(named: iconName)
         
         categoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
         
-        categoryNameLabel.text = category.name
+        categoryNameLabel.text = category?.name
         
         trailingLabel.text = "-\(categoryAccountingMonthTotal.amount)"
         

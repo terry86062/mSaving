@@ -36,6 +36,8 @@ class ChartVC: UIViewController {
 
     }
     
+    @IBOutlet weak var expenseIncomeButton: UIButton!
+    
     let notificationManager = MSNotificationManager()
     
     var categoryAccountingMonthTotalArray: [[CategoryMonthTotal]] = []
@@ -104,7 +106,17 @@ class ChartVC: UIViewController {
         }
         
     }
-
+    
+    @IBAction func changeExpenseIncome(_ sender: UIButton) {
+        
+        expenseIncomeButton.isSelected = !expenseIncomeButton.isSelected
+        
+        monthCollectionView.reloadData()
+        
+        analysisCollectionView.reloadData()
+        
+    }
+    
 }
 
 extension ChartVC: UICollectionViewDataSource {
@@ -154,7 +166,8 @@ extension ChartVC: UICollectionViewDataSource {
                 for: indexPath) as? AnalysisCVCell else { return AnalysisCVCell() }
 
             cell.initAnalysisCVCell(categoryAccountingMonthTotals: categoryAccountingMonthTotalArray[indexPath.row],
-                                    accountingWithDateArray: accountingWithDateGroupArray[indexPath.row])
+                                    accountingWithDateArray: accountingWithDateGroupArray[indexPath.row],
+                                    isIncome: expenseIncomeButton.isSelected)
             
             cell.touchCategoryHandler = {
                 

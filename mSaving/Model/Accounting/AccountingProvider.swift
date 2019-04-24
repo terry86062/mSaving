@@ -18,7 +18,9 @@ struct CategoryMonthTotal {
     
     var amount: Int64
     
-    let expenseCategory: ExpenseCategory
+    let expenseCategory: ExpenseCategory?
+    
+    let incomeCategory: IncomeCategory?
     
     var accountings: [[AccountingWithDate]]
     

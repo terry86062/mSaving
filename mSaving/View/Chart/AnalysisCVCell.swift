@@ -28,9 +28,41 @@ class AnalysisCVCell: UICollectionViewCell {
     
     var accountingWithDateArray: [[AccountingWithDate]] = []
     
+    var isIncome = false
+    
     var touchCategoryHandler: (() -> Void)?
     
     var selectedCategoryAccountingMonthTotal: CategoryMonthTotal?
+    
+    var numberOfRow: Int {
+        
+        var tempArray: [CategoryMonthTotal] = []
+        
+        for index in 0...categoryAccountingMonthTotals.count - 1 {
+            
+            if isIncome {
+                
+                if categoryAccountingMonthTotals[index].incomeCategory != nil {
+                    
+                    tempArray.append(categoryAccountingMonthTotals[index])
+                    
+                }
+                
+            } else {
+                
+                if categoryAccountingMonthTotals[index].expenseCategory != nil {
+                    
+                    tempArray.append(categoryAccountingMonthTotals[index])
+                    
+                }
+                
+            }
+            
+        }
+        
+        return tempArray.count
+        
+    }
 
     override func awakeFromNib() {
 
@@ -39,11 +71,14 @@ class AnalysisCVCell: UICollectionViewCell {
     }
 
     func initAnalysisCVCell(categoryAccountingMonthTotals: [CategoryMonthTotal],
-                            accountingWithDateArray: [[AccountingWithDate]]) {
+                            accountingWithDateArray: [[AccountingWithDate]],
+                            isIncome: Bool) {
 
         self.categoryAccountingMonthTotals = categoryAccountingMonthTotals
         
         self.accountingWithDateArray = accountingWithDateArray
+        
+        self.isIncome = isIncome
         
     }
 
@@ -84,7 +119,7 @@ extension AnalysisCVCell: UICollectionViewDataSource {
                     return UICollectionViewCell()
             }
             
-            cell.pieChartUpdate(categoryAccountingMonthTotals: categoryAccountingMonthTotals)
+            cell.pieChartUpdate(categoryAccountingMonthTotals: categoryAccountingMonthTotals, isIncome: isIncome)
             
             return cell
             
@@ -96,9 +131,7 @@ extension AnalysisCVCell: UICollectionViewDataSource {
                     return UICollectionViewCell()
             }
             
-            cell.initCategoryAccountingsCVCell(categoryAccountingMonthTotals: categoryAccountingMonthTotals)
-            
-            cell.categoryAccountingsCollectionView.reloadData()
+            cell.initCategoryAccountingsCVCell(categoryAccountingMonthTotals: categoryAccountingMonthTotals, isIncome: isIncome)
             
             cell.touchCategoryHandler = {
 
@@ -109,6 +142,8 @@ extension AnalysisCVCell: UICollectionViewDataSource {
                 touch()
 
             }
+            
+            cell.categoryAccountingsCollectionView.reloadData()
             
             return cell
             
@@ -166,7 +201,7 @@ extension AnalysisCVCell: UICollectionViewDelegateFlowLayout {
             
         } else if indexPath.section == 1 {
             
-            return CGSize(width: 382, height: 56 * categoryAccountingMonthTotals.count)
+            return CGSize(width: 382, height: 56 * numberOfRow)
             
         } else {
             
@@ -175,13 +210,5 @@ extension AnalysisCVCell: UICollectionViewDelegateFlowLayout {
         }
         
     }
-    
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//
-//        return 16
-//
-//    }
     
 }

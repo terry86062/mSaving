@@ -48,16 +48,16 @@ class AccountingTransformer {
                 
                 let dateComponents = accountingsWithDate[index].dateComponents
                 
-                let previousDateComponents = accountingsWithDate[index - 1].dateComponents
+                let preDateComponents = accountingsWithDate[index - 1].dateComponents
                 
-                if dateComponents.month == previousDateComponents.month &&
-                    dateComponents.day == previousDateComponents.day {
+                if dateComponents.month == preDateComponents.month &&
+                    dateComponents.day == preDateComponents.day {
                     
                     let lastOne = accountingsWithDateGroup[0]
                     
                     accountingsWithDateGroup[0][lastOne.count - 1].append(accountingsWithDate[index])
                     
-                } else if dateComponents.month == previousDateComponents.month {
+                } else if dateComponents.month == preDateComponents.month {
                     
                     accountingsWithDateGroup[0].append([accountingsWithDate[index]])
                     
@@ -85,41 +85,48 @@ class AccountingTransformer {
             
             let accountingWithDate = accountingsWithDate[index]
             
+            let accounting = accountingWithDate.accounting
+            
             let dateComponents = accountingWithDate.dateComponents
             
-            guard let year = dateComponents.year, let month = dateComponents.month, let day = dateComponents.day,
-                let expenseCategory = accountingWithDate.accounting.expenseSubCategory else { return [] }
+            guard let year = dateComponents.year,let month = dateComponents.month, let day = dateComponents.day
+                else { return [] }
             
             if index == 0 {
                 
                 categoriesMonthTotal.append(CategoryMonthTotal(year: year, month: month,
                                                                amount: accountingWithDate.accounting.amount,
-                                                               expenseCategory: expenseCategory,
+                                                               expenseCategory: accounting.expenseSubCategory,
+                                                               incomeCategory: accounting.incomeSubCategory,
                                                                accountings: [[accountingWithDate]]))
                 
             } else {
                 
-                let preivousAccountingWithDate = accountingsWithDate[index - 1]
+                let preAccountingWithDate = accountingsWithDate[index - 1]
+                
+                let preAccounting = preAccountingWithDate.accounting
                 
                 let lastNumber = categoriesMonthTotal.count - 1
                 
                 let lastNumberInside = categoriesMonthTotal[lastNumber].accountings.count - 1
                 
-                let preivousDateComponents = preivousAccountingWithDate.dateComponents
+                let preDateComponents = preAccountingWithDate.dateComponents
                 
-                guard let preivousYear = preivousDateComponents.year, let preivousMonth = preivousDateComponents.month,
-                    let preivousDay = preivousDateComponents.day,
-                    let expenseCategoryPreivous = preivousAccountingWithDate.accounting.expenseSubCategory
+                guard let preYear = preDateComponents.year,
+                    let preMonth = preDateComponents.month,
+                    let preDay = preDateComponents.day
                     else { return [] }
                 
-                if expenseCategory == expenseCategoryPreivous && year == preivousYear &&
-                    month == preivousMonth && day == preivousDay {
+                if year == preYear && month == preMonth && day == preDay &&
+                    accounting.expenseSubCategory == preAccounting.expenseSubCategory &&
+                    accounting.incomeSubCategory == preAccounting.incomeSubCategory {
                     
                     categoriesMonthTotal[lastNumber].amount += accountingWithDate.accounting.amount
                     categoriesMonthTotal[lastNumber].accountings[lastNumberInside].append(accountingWithDate)
                     
-                } else if expenseCategory == expenseCategoryPreivous && year == preivousYear &&
-                    month == preivousMonth {
+                } else if year == preYear && month == preMonth &&
+                    accounting.expenseSubCategory == preAccounting.expenseSubCategory &&
+                    accounting.incomeSubCategory == preAccounting.incomeSubCategory {
                     
                     categoriesMonthTotal[lastNumber].amount += accountingWithDate.accounting.amount
                     categoriesMonthTotal[lastNumber].accountings.append([accountingWithDate])
@@ -129,7 +136,8 @@ class AccountingTransformer {
                     categoriesMonthTotal.append(
                         CategoryMonthTotal(year: year, month: month,
                                            amount: accountingWithDate.accounting.amount,
-                                           expenseCategory: expenseCategory,
+                                           expenseCategory: accounting.expenseSubCategory,
+                                           incomeCategory: accounting.incomeSubCategory,
                                            accountings: [[accountingWithDate]]))
                     
                 }

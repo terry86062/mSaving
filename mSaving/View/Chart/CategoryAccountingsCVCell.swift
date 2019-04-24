@@ -24,9 +24,11 @@ class CategoryAccountingsCVCell: UICollectionViewCell {
         
     }
     
-    var touchCategoryHandler: (() -> Void)?
-    
     var categoryAccountingMonthTotals: [CategoryMonthTotal] = []
+    
+    var isIncome = false
+    
+    var touchCategoryHandler: (() -> Void)?
     
     var selectedCategoryAccountingMonthTotal: CategoryMonthTotal?
     
@@ -36,9 +38,11 @@ class CategoryAccountingsCVCell: UICollectionViewCell {
         
     }
     
-    func initCategoryAccountingsCVCell(categoryAccountingMonthTotals: [CategoryMonthTotal]) {
+    func initCategoryAccountingsCVCell(categoryAccountingMonthTotals: [CategoryMonthTotal], isIncome: Bool) {
         
         self.categoryAccountingMonthTotals = categoryAccountingMonthTotals
+        
+        self.isIncome = isIncome
         
     }
     

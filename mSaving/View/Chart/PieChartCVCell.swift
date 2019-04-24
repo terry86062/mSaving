@@ -20,7 +20,7 @@ class PieChartCVCell: UICollectionViewCell {
 
     }
 
-    func pieChartUpdate(categoryAccountingMonthTotals: [CategoryMonthTotal]) {
+    func pieChartUpdate(categoryAccountingMonthTotals: [CategoryMonthTotal], isIncome: Bool) {
 
         guard categoryAccountingMonthTotals.count != 0 else { return }
         
@@ -28,7 +28,23 @@ class PieChartCVCell: UICollectionViewCell {
         
         for index in 0...categoryAccountingMonthTotals.count - 1 {
             
-            dataArray.append(PieChartDataEntry(value: Double(categoryAccountingMonthTotals[index].amount), label: categoryAccountingMonthTotals[index].expenseCategory.name))
+            if isIncome {
+                
+                if let incomeCategory = categoryAccountingMonthTotals[index].incomeCategory {
+                    
+                    dataArray.append(PieChartDataEntry(value: Double(categoryAccountingMonthTotals[index].amount), label: incomeCategory.name))
+                    
+                }
+                
+            } else {
+                
+                if let expenseCategory = categoryAccountingMonthTotals[index].expenseCategory {
+                    
+                    dataArray.append(PieChartDataEntry(value: Double(categoryAccountingMonthTotals[index].amount), label: expenseCategory.name))
+                    
+                }
+                
+            }
             
         }
         
@@ -38,10 +54,24 @@ class PieChartCVCell: UICollectionViewCell {
         
         for index in 0...categoryAccountingMonthTotals.count - 1 {
 
-            guard let color = categoryAccountingMonthTotals[index].expenseCategory.color else { return }
-
-            colors.append(UIColor.hexStringToUIColor(hex: color))
-
+            if isIncome {
+                
+                if let color = categoryAccountingMonthTotals[index].incomeCategory?.color {
+                    
+                    colors.append(UIColor.hexStringToUIColor(hex: color))
+                    
+                }
+                
+            } else {
+                
+                if let color = categoryAccountingMonthTotals[index].expenseCategory?.color {
+                    
+                    colors.append(UIColor.hexStringToUIColor(hex: color))
+                    
+                }
+                
+            }
+            
         }
         
         dataSet.colors = colors

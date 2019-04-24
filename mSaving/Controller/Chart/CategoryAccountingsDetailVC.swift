@@ -32,7 +32,7 @@ class CategoryAccountingsDetailVC: UIViewController {
 
         setUpCollectionView()
         
-        categoryNameLabel.text = selectedCategoryAccountingMonthTotal?.expenseCategory.name
+        categoryNameLabel.text = selectedCategoryAccountingMonthTotal?.expenseCategory?.name
 
     }
 
