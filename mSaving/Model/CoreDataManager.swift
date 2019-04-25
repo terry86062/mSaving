@@ -68,7 +68,7 @@ class CoreDataManager {
         
     }
     
-    func fetch<T: NSManagedObject>(entityType: T, sortFirst: String, second: String, reverse: Bool) -> [T]? {
+    func fetch<T: NSManagedObject>(entityType: T, sortFirst: String, second: String, reverse: Bool) -> [T] {
         
         let request = NSFetchRequest<T>(entityName: String(describing: T.self))
         
@@ -101,7 +101,7 @@ class CoreDataManager {
             
             print("fetch \(String(describing: T.self)) fail")
             
-            return nil
+            return []
             
         }
         

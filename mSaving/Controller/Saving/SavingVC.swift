@@ -10,12 +10,6 @@ import UIKit
 
 import CoreData
 
-struct SavingWithDate {
-    let saving: Saving
-    let date: Date
-    let dateComponents: DateComponents
-}
-
 class SavingVC: UIViewController {
 
     @IBOutlet weak var monthCollectionView: UICollectionView! {
@@ -72,7 +66,7 @@ class SavingVC: UIViewController {
         
         accountingWithDateGroupArray = AccountingProvider().accountingsWithDateGroup
         
-        guard let savingArray = SavingProvider().savings else { return }
+        let savingArray = SavingProvider().savings
         
         var savingWithDateArray: [SavingWithDate] = []
         

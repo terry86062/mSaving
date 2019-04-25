@@ -12,14 +12,28 @@ import CoreData
 
 class SavingProvider {
     
-    var coreDataManager = CoreDataManager.shared
+    let coreDataManager = CoreDataManager.shared
     
-    var savings: [Saving]? {
+    let transformer = SavingTransformer()
+    
+    var savings: [Saving] {
         
         return coreDataManager.fetch(entityType: Saving(),
                                      sortFirst: "month",
                                      second: "amount",
                                      reverse: true)
+        
+    }
+    
+    var savingsWithDate: [SavingWithDate] {
+        
+        return transformer.transformFrom(savings: savings)
+        
+    }
+    
+    var savingsWithDateGroup: [[SavingWithDate]] {
+        
+        return transformer.transformFrom(savingsWithDate: savingsWithDate)
         
     }
     

@@ -22,7 +22,9 @@ extension IntentHandler: INPayBillIntentHandling {
             
         }
 
-        guard let category = CategoryProvider().expenseCategory else {
+        let category = CategoryProvider().expenseCategory
+        
+        guard category != [] else {
             
             completion(INPayBillIntentResponse(code: .failure, userActivity: nil))
             

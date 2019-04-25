@@ -11,9 +11,13 @@ import Foundation
 import CoreData
 
 struct AccountingWithDate {
+    
     let accounting: Accounting
+    
     let date: Date
+    
     let dateComponents: DateComponents
+    
 }
 
 struct CategoryMonthTotal {
@@ -42,10 +46,10 @@ class AccountingProvider {
     
     var accountingsWithDate: [AccountingWithDate] {
         
-        guard let accountings = coreDataManager.fetch(entityType: Accounting(),
-                                                      sortFirst: "occurDate",
-                                                      second: "",
-                                                      reverse: true) else { return [] }
+        let accountings = coreDataManager.fetch(entityType: Accounting(),
+                                                sortFirst: "occurDate",
+                                                second: "",
+                                                reverse: true)
         
         return transformer.transformFrom(accountings: accountings)
         
@@ -59,10 +63,10 @@ class AccountingProvider {
     
     var categoriesMonthTotalGroup: [[CategoryMonthTotal]] {
         
-        guard let accountings = coreDataManager.fetch(entityType: Accounting(),
-                                                      sortFirst: "expenseSubCategory",
-                                                      second: "occurDate",
-                                                      reverse: true) else { return [] }
+        let accountings = coreDataManager.fetch(entityType: Accounting(),
+                                                sortFirst: "expenseSubCategory",
+                                                second: "occurDate",
+                                                reverse: true)
         
         let accountingsWithDate = transformer.transformFrom(accountings: accountings)
         

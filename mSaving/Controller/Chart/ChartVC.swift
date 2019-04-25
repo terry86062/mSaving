@@ -66,6 +66,8 @@ class ChartVC: UIViewController {
         
         super.viewDidAppear(animated)
         
+        guard categoryAccountingMonthTotalArray.count > 0 else { return }
+        
         let indexPath = IndexPath(item: categoryAccountingMonthTotalArray.count - 1, section: 0)
         
         analysisCollectionView.scrollToItem(at: indexPath,
@@ -165,9 +167,13 @@ extension ChartVC: UICollectionViewDataSource {
                 withReuseIdentifier: String(describing: AnalysisCVCell.self),
                 for: indexPath) as? AnalysisCVCell else { return AnalysisCVCell() }
 
-            cell.initAnalysisCVCell(categoryAccountingMonthTotals: categoryAccountingMonthTotalArray[indexPath.row],
-                                    accountingWithDateArray: accountingWithDateGroupArray[indexPath.row],
-                                    isIncome: expenseIncomeButton.isSelected)
+            if indexPath.row > 0 {
+                
+                cell.initAnalysisCVCell(categoryAccountingMonthTotals: categoryAccountingMonthTotalArray[indexPath.row],
+                                        accountingWithDateArray: accountingWithDateGroupArray[indexPath.row],
+                                        isIncome: expenseIncomeButton.isSelected)
+                
+            }
             
             cell.touchCategoryHandler = {
                 

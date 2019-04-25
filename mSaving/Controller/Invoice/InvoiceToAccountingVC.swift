@@ -52,7 +52,7 @@ class InvoiceToAccountingVC: UIViewController {
         
         invoiceAccountingTextField.text = "\(invoiceAmount)"
         
-        guard let expenseCategorys = CategoryProvider().expenseCategory else { return }
+        let expenseCategorys = CategoryProvider().expenseCategory
         
         self.expenseCategorys = expenseCategorys
         

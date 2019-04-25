@@ -130,7 +130,7 @@ class SettingVC: UIViewController {
     
     func fetchData() {
         
-        guard let accountArray = AccountProvider().accounts else { return }
+        let accountArray = AccountProvider().accounts
         
         self.accountArray = accountArray
         

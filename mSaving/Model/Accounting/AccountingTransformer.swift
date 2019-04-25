@@ -14,7 +14,7 @@ class AccountingTransformer {
         
         var accountingsWithDate: [AccountingWithDate] = []
         
-        guard accountings.count > 0 else { return accountingsWithDate }
+        guard accountings.count > 0 else { return [] }
         
         for index in 0...accountings.count - 1 {
             

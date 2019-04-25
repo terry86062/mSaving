@@ -38,6 +38,8 @@ class AnalysisCVCell: UICollectionViewCell {
         
         var tempArray: [CategoryMonthTotal] = []
         
+        guard categoryAccountingMonthTotals.count > 0 else { return 0 }
+        
         for index in 0...categoryAccountingMonthTotals.count - 1 {
             
             if isIncome {

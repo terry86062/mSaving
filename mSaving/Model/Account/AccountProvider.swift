@@ -14,7 +14,7 @@ class AccountProvider {
     
     var coreDataManager = CoreDataManager.shared
     
-    var accounts: [Account]? {
+    var accounts: [Account] {
         
         return coreDataManager.fetch(entityType: Account(),
                                      sortFirst: "priority",

@@ -46,7 +46,7 @@ class SavingDetailAddVC: UIViewController {
         
         savingDetailTextField.becomeFirstResponder()
         
-        guard let expenseCategorys = CategoryProvider().expenseCategory else { return }
+        let expenseCategorys = CategoryProvider().expenseCategory
         
         self.expenseCategorys = expenseCategorys
         

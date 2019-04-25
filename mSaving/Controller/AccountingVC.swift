@@ -135,17 +135,17 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
 
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
-        guard let expenseCategorys = CategoryProvider().expenseCategory else { return }
+        let expenseCategorys = CategoryProvider().expenseCategory
         
         self.expenseCategorys = expenseCategorys
         
-        if selectedExpense {
+        if selectedExpense && expenseCategorys.count != 0 {
             
             selectedExpenseCategory = expenseCategorys[0]
             
         }
         
-        guard let incomeCategorys = CategoryProvider().incomeCategory else { return }
+        let incomeCategorys = CategoryProvider().incomeCategory
         
         self.incomeCategorys = incomeCategorys
 
@@ -155,7 +155,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         
         super.viewWillAppear(animated)
         
-        guard let accounts = AccountProvider().accounts else { return }
+        let accounts = AccountProvider().accounts
         
         if accounts.count > 0 {
             
@@ -345,7 +345,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
     func showAlertWith(title: String, message: String, style: UIAlertController.Style = .actionSheet) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
         
-        guard let accounts = AccountProvider().accounts else { return }
+        let accounts = AccountProvider().accounts
         
         if accounts.count > 0 {
             

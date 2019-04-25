@@ -51,7 +51,7 @@ class CategoryProvider {
         Category(name: "薪水", iconName: "cash", color: "F9C746", priority: 1, subPriority: 1)
     ]
     
-    var expenseCategory: [ExpenseCategory]? {
+    var expenseCategory: [ExpenseCategory] {
         
         return coreDataManager.fetch(entityType: ExpenseCategory(),
                                      sortFirst: "priority",
@@ -60,7 +60,7 @@ class CategoryProvider {
         
     }
     
-    var incomeCategory: [IncomeCategory]? {
+    var incomeCategory: [IncomeCategory] {
         
         return coreDataManager.fetch(entityType: IncomeCategory(),
                                      sortFirst: "priority",

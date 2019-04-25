@@ -80,7 +80,7 @@ class AccountDetailVC: UIViewController {
         
         if delegate.isAddingNewAccount {
             
-            if let account = AccountProvider().accounts?.last {
+            if let account = AccountProvider().accounts.last {
                 
                 AccountProvider().createAccount(name: text, initalAmount: amount, priority: account.priority + 1)
                 
