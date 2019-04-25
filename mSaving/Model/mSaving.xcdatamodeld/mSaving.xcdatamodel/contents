@@ -9,11 +9,13 @@
     </entity>
     <entity name="Accounting" representedClassName="Accounting" syncable="YES" codeGenerationType="class">
         <attribute name="amount" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="createDate" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="occurDate" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="accountName" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="accounting" inverseEntity="Account" syncable="YES"/>
         <relationship name="expenseSubCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExpenseCategory" inverseName="accounting" inverseEntity="ExpenseCategory" syncable="YES"/>
         <relationship name="incomeSubCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IncomeCategory" inverseName="accounting" inverseEntity="IncomeCategory" syncable="YES"/>
+        <relationship name="month" maxCount="1" deletionRule="Nullify" destinationEntity="Month" inverseName="accounting" inverseEntity="Month" syncable="YES"/>
     </entity>
     <entity name="ExpenseCategory" representedClassName="ExpenseCategory" syncable="YES" codeGenerationType="class">
         <attribute name="color" attributeType="String" syncable="YES"/>
@@ -35,21 +37,21 @@
     <entity name="Month" representedClassName="Month" syncable="YES" codeGenerationType="class">
         <attribute name="month" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="year" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="saving" optional="YES" maxCount="1" deletionRule="Nullify" syncable="YES"/>
+        <relationship name="accounting" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Accounting" inverseName="month" inverseEntity="Accounting" syncable="YES"/>
+        <relationship name="saving" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Saving" inverseName="month" inverseEntity="Saving" syncable="YES"/>
     </entity>
     <entity name="Saving" representedClassName="Saving" syncable="YES" codeGenerationType="class">
         <attribute name="amount" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="main" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="month" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="expenseSubCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExpenseCategory" inverseName="saving" inverseEntity="ExpenseCategory" syncable="YES"/>
-        <relationship name="year" optional="YES" maxCount="1" deletionRule="Nullify" syncable="YES"/>
+        <relationship name="month" maxCount="1" deletionRule="Nullify" destinationEntity="Month" inverseName="saving" inverseEntity="Month" syncable="YES"/>
     </entity>
     <elements>
         <element name="Account" positionX="-511.30859375" positionY="-167.48046875" width="128" height="120"/>
-        <element name="Accounting" positionX="-738.33203125" positionY="79.31640625" width="128" height="135"/>
+        <element name="Accounting" positionX="-738.33203125" positionY="79.31640625" width="128" height="165"/>
         <element name="ExpenseCategory" positionX="-324.62890625" positionY="-53.10546875" width="128" height="150"/>
         <element name="IncomeCategory" positionX="-717.62890625" positionY="341.08203125" width="128" height="135"/>
-        <element name="Saving" positionX="-547.4609375" positionY="240.1953125" width="128" height="120"/>
-        <element name="Month" positionX="-540" positionY="-27" width="128" height="90"/>
+        <element name="Saving" positionX="-547.4609375" positionY="240.1953125" width="128" height="105"/>
+        <element name="Month" positionX="-540" positionY="-27" width="128" height="105"/>
     </elements>
 </model>
