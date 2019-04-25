@@ -8,8 +8,6 @@
 
 import Foundation
 
-import CoreData
-
 struct Category {
     
     let name: String
@@ -51,21 +49,15 @@ class CategoryProvider {
         Category(name: "薪水", iconName: "cash", color: "F9C746", priority: 1, subPriority: 1)
     ]
     
-    var expenseCategory: [ExpenseCategory] {
+    var expenseCategories: [ExpenseCategory] {
         
-        return coreDataManager.fetch(entityType: ExpenseCategory(),
-                                     sortFirst: "priority",
-                                     second: "subPriority",
-                                     reverse: false)
+        return coreDataManager.fetch(entityType: ExpenseCategory(), sort: ["priority", "subPriority"])
         
     }
     
-    var incomeCategory: [IncomeCategory] {
+    var incomeCategories: [IncomeCategory] {
         
-        return coreDataManager.fetch(entityType: IncomeCategory(),
-                                     sortFirst: "priority",
-                                     second: "subPriority",
-                                     reverse: false)
+        return coreDataManager.fetch(entityType: IncomeCategory(), sort: ["priority", "subPriority"])
         
     }
     
@@ -73,11 +65,11 @@ class CategoryProvider {
         
         for index in 0...initCategoryArray.count - 1 {
             
+            let category = initCategoryArray[index]
+            
             if index == initCategoryArray.count - 1 {
                 
                 let incomeSubCategory = IncomeCategory(context: coreDataManager.viewContext)
-                
-                let category = initCategoryArray[index]
                 
                 incomeSubCategory.name = category.name
                 incomeSubCategory.iconName = category.iconName
@@ -88,8 +80,6 @@ class CategoryProvider {
             } else {
                 
                 let expenseSubCategory = ExpenseCategory(context: coreDataManager.viewContext)
-                
-                let category = initCategoryArray[index]
                 
                 expenseSubCategory.name = category.name
                 expenseSubCategory.iconName = category.iconName

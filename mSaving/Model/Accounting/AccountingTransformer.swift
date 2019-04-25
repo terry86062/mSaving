@@ -96,8 +96,8 @@ class AccountingTransformer {
                 
                 categoriesMonthTotal.append(CategoryMonthTotal(year: year, month: month,
                                                                amount: accountingWithDate.accounting.amount,
-                                                               expenseCategory: accounting.expenseSubCategory,
-                                                               incomeCategory: accounting.incomeSubCategory,
+                                                               expenseCategory: accounting.expenseCategory,
+                                                               incomeCategory: accounting.incomeCategory,
                                                                accountings: [[accountingWithDate]]))
                 
             } else {
@@ -118,15 +118,15 @@ class AccountingTransformer {
                     else { return [] }
                 
                 if year == preYear && month == preMonth && day == preDay &&
-                    accounting.expenseSubCategory == preAccounting.expenseSubCategory &&
-                    accounting.incomeSubCategory == preAccounting.incomeSubCategory {
+                    accounting.expenseCategory == preAccounting.expenseCategory &&
+                    accounting.incomeCategory == preAccounting.incomeCategory {
                     
                     categoriesMonthTotal[lastNumber].amount += accountingWithDate.accounting.amount
                     categoriesMonthTotal[lastNumber].accountings[lastNumberInside].append(accountingWithDate)
                     
                 } else if year == preYear && month == preMonth &&
-                    accounting.expenseSubCategory == preAccounting.expenseSubCategory &&
-                    accounting.incomeSubCategory == preAccounting.incomeSubCategory {
+                    accounting.expenseCategory == preAccounting.expenseCategory &&
+                    accounting.incomeCategory == preAccounting.incomeCategory {
                     
                     categoriesMonthTotal[lastNumber].amount += accountingWithDate.accounting.amount
                     categoriesMonthTotal[lastNumber].accountings.append([accountingWithDate])
@@ -136,8 +136,8 @@ class AccountingTransformer {
                     categoriesMonthTotal.append(
                         CategoryMonthTotal(year: year, month: month,
                                            amount: accountingWithDate.accounting.amount,
-                                           expenseCategory: accounting.expenseSubCategory,
-                                           incomeCategory: accounting.incomeSubCategory,
+                                           expenseCategory: accounting.expenseCategory,
+                                           incomeCategory: accounting.incomeCategory,
                                            accountings: [[accountingWithDate]]))
                     
                 }

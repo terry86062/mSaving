@@ -16,7 +16,8 @@ class CoreDataManager {
     
     private init() {
         
-        print(" Core data file path: \(NSPersistentContainer.defaultDirectoryURL())")
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
     }
     
     // MARK: - Core Data stack
@@ -42,6 +43,7 @@ class CoreDataManager {
     var viewContext: NSManagedObjectContext {
         
         return persistentContainer.viewContext
+        
     }
     
     // MARK: - Core Data Saving support
@@ -68,22 +70,17 @@ class CoreDataManager {
         
     }
     
-    func fetch<T: NSManagedObject>(entityType: T, sortFirst: String, second: String, reverse: Bool) -> [T] {
+    func fetch<T: NSManagedObject>(entityType: T, sort: [String], predicate: String = "", reverse: Bool = false) -> [T] {
         
         let request = NSFetchRequest<T>(entityName: String(describing: T.self))
         
-        if second == "" {
+        if predicate != "" {
             
-            request.sortDescriptors = [NSSortDescriptor(key: sortFirst, ascending: true)]
-            
-        } else {
-            
-            request.sortDescriptors = [
-                NSSortDescriptor(key: sortFirst, ascending: true),
-                NSSortDescriptor(key: second, ascending: true)
-            ]
+            request.predicate = NSPredicate(format: predicate)
             
         }
+        
+        request.sortDescriptors = helpSortWith(stringArray: sort)
         
         do {
             
@@ -107,14 +104,36 @@ class CoreDataManager {
         
     }
     
+    func helpSortWith(stringArray: [String]) -> [NSSortDescriptor] {
+        
+        var sortDescriptors: [NSSortDescriptor] = []
+        
+        guard stringArray != [] else { return [] }
+        
+        for index in 0...stringArray.count - 1 {
+            
+            sortDescriptors.append(NSSortDescriptor(key: stringArray[index], ascending: true))
+            
+        }
+        
+        return sortDescriptors
+        
+    }
+    
 }
 
 class NSCustomPersistentContainer: NSPersistentContainer {
     
     override open class func defaultDirectoryURL() -> URL {
+        
         var storeURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.terry.mSaving")
+        
+        print(storeURL)
+        
         storeURL = storeURL?.appendingPathComponent("mSaving.sqlite")
+        
         return storeURL!
+        
     }
     
 }

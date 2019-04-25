@@ -16,30 +16,19 @@ class AccountProvider {
     
     var accounts: [Account] {
         
-        return coreDataManager.fetch(entityType: Account(),
-                                     sortFirst: "priority",
-                                     second: "",
-                                     reverse: false)
+        return coreDataManager.fetch(entityType: Account(), sort: ["priority"])
         
     }
     
-    func createAccount(name: String, initalAmount: Int64, priority: Int64, currentAmount: Int64 = 0) {
+    func createAccount(name: String, initalAmount: Int64, priority: Int64) {
         
         let account = Account(context: coreDataManager.viewContext)
         
+        account.name = name
+        
         account.initialValue = initalAmount
         
-        if currentAmount == 0 {
-            
-            account.currentValue = initalAmount
-            
-        } else {
-            
-            account.currentValue = currentAmount
-            
-        }
-        
-        account.name = name
+        account.currentValue = initalAmount
         
         account.priority = priority
         

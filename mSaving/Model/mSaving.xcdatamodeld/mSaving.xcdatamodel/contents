@@ -13,8 +13,8 @@
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="occurDate" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="accountName" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="accounting" inverseEntity="Account" syncable="YES"/>
-        <relationship name="expenseSubCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExpenseCategory" inverseName="accounting" inverseEntity="ExpenseCategory" syncable="YES"/>
-        <relationship name="incomeSubCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IncomeCategory" inverseName="accounting" inverseEntity="IncomeCategory" syncable="YES"/>
+        <relationship name="expenseCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExpenseCategory" inverseName="accounting" inverseEntity="ExpenseCategory" syncable="YES"/>
+        <relationship name="incomeCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IncomeCategory" inverseName="accounting" inverseEntity="IncomeCategory" syncable="YES"/>
         <relationship name="month" maxCount="1" deletionRule="Nullify" destinationEntity="Month" inverseName="accounting" inverseEntity="Month" syncable="YES"/>
     </entity>
     <entity name="ExpenseCategory" representedClassName="ExpenseCategory" syncable="YES" codeGenerationType="class">
@@ -23,8 +23,8 @@
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="priority" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="subPriority" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="accounting" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Accounting" inverseName="expenseSubCategory" inverseEntity="Accounting" syncable="YES"/>
-        <relationship name="saving" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Saving" inverseName="expenseSubCategory" inverseEntity="Saving" syncable="YES"/>
+        <relationship name="accounting" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Accounting" inverseName="expenseCategory" inverseEntity="Accounting" syncable="YES"/>
+        <relationship name="saving" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Saving" inverseName="expenseCategory" inverseEntity="Saving" syncable="YES"/>
     </entity>
     <entity name="IncomeCategory" representedClassName="IncomeCategory" syncable="YES" codeGenerationType="class">
         <attribute name="color" attributeType="String" syncable="YES"/>
@@ -32,7 +32,7 @@
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="priority" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="subPriority" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="accounting" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Accounting" inverseName="incomeSubCategory" inverseEntity="Accounting" syncable="YES"/>
+        <relationship name="accounting" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Accounting" inverseName="incomeCategory" inverseEntity="Accounting" syncable="YES"/>
     </entity>
     <entity name="Month" representedClassName="Month" syncable="YES" codeGenerationType="class">
         <attribute name="month" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -43,7 +43,7 @@
     <entity name="Saving" representedClassName="Saving" syncable="YES" codeGenerationType="class">
         <attribute name="amount" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="main" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="expenseSubCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExpenseCategory" inverseName="saving" inverseEntity="ExpenseCategory" syncable="YES"/>
+        <relationship name="expenseCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExpenseCategory" inverseName="saving" inverseEntity="ExpenseCategory" syncable="YES"/>
         <relationship name="month" maxCount="1" deletionRule="Nullify" destinationEntity="Month" inverseName="saving" inverseEntity="Month" syncable="YES"/>
     </entity>
     <elements>

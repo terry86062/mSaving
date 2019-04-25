@@ -46,19 +46,19 @@ class SavingDetailAddVC: UIViewController {
         
         savingDetailTextField.becomeFirstResponder()
         
-        let expenseCategorys = CategoryProvider().expenseCategory
+        let expenseCategorys = CategoryProvider().expenseCategories
         
         self.expenseCategorys = expenseCategorys
         
         if selectedSavingDetail != nil {
             
-            guard let name = selectedSavingDetail?.saving.expenseSubCategory?.name, let budget = selectedSavingDetail?.saving.amount else { return }
+            guard let name = selectedSavingDetail?.saving.expenseCategory?.name, let budget = selectedSavingDetail?.saving.amount else { return }
             
             titleLabel.text = "\(name)預算"
             
             savingDetailTextField.text = String(budget)
             
-            guard let iconName = selectedSavingDetail?.saving.expenseSubCategory?.iconName, let hex = selectedSavingDetail?.saving.expenseSubCategory?.color else { return }
+            guard let iconName = selectedSavingDetail?.saving.expenseCategory?.iconName, let hex = selectedSavingDetail?.saving.expenseCategory?.color else { return }
             
             selectedCategoryImageView.image = UIImage(named: iconName)
             
@@ -142,8 +142,8 @@ class SavingDetailAddVC: UIViewController {
         
         guard let selectedExpenseCategory = selectedExpenseCategory else { return }
         
-        SavingProvider().createSaving(date: date, amount: amount, main: false,
-                                      selectedExpenseCategory: selectedExpenseCategory)
+//        SavingProvider().createSaving(date: date, amount: amount, main: false,
+//                                      selectedExpenseCategory: selectedExpenseCategory)
         
     }
     
@@ -155,7 +155,7 @@ class SavingDetailAddVC: UIViewController {
         
         selectedSavingDetail.saving.amount = amount
         
-        selectedSavingDetail.saving.expenseSubCategory = selectedExpenseCategory
+        selectedSavingDetail.saving.expenseCategory = selectedExpenseCategory
         
         CoreDataManager.shared.saveContext()
         
@@ -186,9 +186,9 @@ extension SavingDetailAddVC: UICollectionViewDataSource {
             let name = expenseCategory.name,
             let color = expenseCategory.color else { return cell }
         
-        cell.initCategorySelectCVCell(imageName: iconName, subCategoryName: name, hex: color)
+        cell.initCategorySelectCVCell(imageName: iconName, categoryName: name, hex: color)
         
-        cell.selectSubCategory = {
+        cell.selectCategory = {
             
             self.selectedExpenseCategory = expenseCategory
             

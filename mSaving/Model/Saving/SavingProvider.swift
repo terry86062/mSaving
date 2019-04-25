@@ -8,8 +8,6 @@
 
 import Foundation
 
-import CoreData
-
 class SavingProvider {
     
     let coreDataManager = CoreDataManager.shared
@@ -18,36 +16,33 @@ class SavingProvider {
     
     var savings: [Saving] {
         
-        return coreDataManager.fetch(entityType: Saving(),
-                                     sortFirst: "month",
-                                     second: "amount",
-                                     reverse: true)
+        return coreDataManager.fetch(entityType: Saving(), sort: ["month", "amount"], predicate: "", reverse: true)
         
     }
     
-    var savingsWithDate: [SavingWithDate] {
-        
-        return transformer.transformFrom(savings: savings)
-        
-    }
+//    var savingsWithDate: [SavingWithDate] {
+//
+//        return transformer.transformFrom(savings: savings)
+//
+//    }
     
-    var savingsWithDateGroup: [[SavingWithDate]] {
-        
-        return transformer.transformFrom(savingsWithDate: savingsWithDate)
-        
-    }
+//    var savingsWithDateGroup: [[SavingWithDate]] {
+//        
+//        return transformer.transformFrom(savingsWithDate: savingsWithDate)
+//        
+//    }
     
-    func createSaving(date: Date, amount: Int64, main: Bool = true, selectedExpenseCategory: ExpenseCategory? = nil) {
+    func createSaving(month: Month, amount: Int64, main: Bool = true, selectedExpenseCategory: ExpenseCategory? = nil) {
         
         let saving = Saving(context: coreDataManager.viewContext)
         
-        saving.month = Int64(date.timeIntervalSince1970)
+        saving.month = month
         
         saving.amount = amount
         
         saving.main = main
         
-        saving.expenseSubCategory = selectedExpenseCategory
+        saving.expenseCategory = selectedExpenseCategory
         
         coreDataManager.saveContext()
         

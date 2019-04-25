@@ -28,7 +28,7 @@ class AccountingCVCell: UICollectionViewCell {
 
     func initAccountCVCell(accounting: AccountingWithDate) {
         
-        if let category = accounting.accounting.expenseSubCategory,
+        if let category = accounting.accounting.expenseCategory,
             let iconName = category.iconName,
             let color = category.color {
             
@@ -42,7 +42,7 @@ class AccountingCVCell: UICollectionViewCell {
             
             accountingAmountLabel.text = "-\(accounting.accounting.amount)"
             
-        } else if let category = accounting.accounting.incomeSubCategory,
+        } else if let category = accounting.accounting.incomeCategory,
             let iconName = category.iconName,
             let color = category.color {
             

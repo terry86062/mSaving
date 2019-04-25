@@ -7,7 +7,9 @@
 //
 
 import UIKit
+
 import CoreData
+
 import Intents
 
 @UIApplicationMain
@@ -21,6 +23,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         detectFirstLaunch()
+        
+        askSiriAuthorization()
+
+        return true
+        
+    }
+    
+    func detectFirstLaunch() {
+        
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        
+        if launchedBefore {
+            
+            print("Not first launch.")
+            
+        } else {
+            
+            print("First launch, setting NSUserDefault.")
+            
+            CategoryProvider().initExpenseIncomeCategory()
+            
+            AccountProvider().createAccount(name: "現金", initalAmount: 0, priority: 0)
+            
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+            
+        }
+        
+    }
+    
+    func askSiriAuthorization() {
         
         INPreferences.requestSiriAuthorization { (status) in
             
@@ -37,37 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
         }
-
-        return true
-    }
-    
-    func detectFirstLaunch() {
-        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
-        if launchedBefore {
-            print("Not first launch.")
-        } else {
-            print("First launch, setting NSUserDefault.")
-            
-            CategoryProvider().initExpenseIncomeCategory()
-            
-            UserDefaults.standard.set(true, forKey: "launchedBefore")
-        }
-    }
-
-    func applicationWillResignActive(_ application: UIApplication) {
-
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-
+        
     }
 
 }

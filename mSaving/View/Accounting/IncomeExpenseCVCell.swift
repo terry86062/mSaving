@@ -24,15 +24,13 @@ class IncomeExpenseCVCell: UICollectionViewCell {
 
     }
     
-    var selectSubCategory: (() -> Void)?
+    var expenseCategories: [ExpenseCategory] = []
     
-    var expenseCategorys: [ExpenseCategory] = []
+    var incomeCategories: [IncomeCategory] = []
     
-    var incomeCategorys: [IncomeCategory] = []
+    var selectCategory: (() -> Void)?
     
-    var expenseCategory: ExpenseCategory?
-    
-    var incomeCategory: IncomeCategory?
+    var selectedCategory: CategoryCase?
 
     override func awakeFromNib() {
 
@@ -40,19 +38,17 @@ class IncomeExpenseCVCell: UICollectionViewCell {
 
     }
 
-    func initSavingCVCell(expenseCategorys: [ExpenseCategory], incomeCategorys: [IncomeCategory]) {
+    func initIncomeExpenseCVCell(expenseCategories: [ExpenseCategory], incomeCategories: [IncomeCategory]) {
 
-        self.expenseCategorys = expenseCategorys
+        self.expenseCategories = expenseCategories
         
-        self.incomeCategorys = incomeCategorys
+        self.incomeCategories = incomeCategories
 
     }
 
     func setUpCollectionView() {
 
         categoryCollectionView.helpRegister(cell: CategorySelectCVCell())
-
-        categoryCollectionView.helpRegister(cell: AccountingsCVCell())
 
     }
 
@@ -62,13 +58,13 @@ extension IncomeExpenseCVCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if expenseCategorys != [] {
+        if expenseCategories != [] {
             
-            return expenseCategorys.count
+            return expenseCategories.count
             
         } else {
             
-            return incomeCategorys.count
+            return incomeCategories.count
             
         }
         
@@ -83,43 +79,39 @@ extension IncomeExpenseCVCell: UICollectionViewDataSource {
                 return CategorySelectCVCell()
         }
         
-        if expenseCategorys != [] {
+        if expenseCategories != [] {
             
-            let expenseCategory = expenseCategorys[indexPath.row]
+            let expenseCategory = expenseCategories[indexPath.row]
             
             guard let iconName = expenseCategory.iconName,
                 let name = expenseCategory.name,
                 let color = expenseCategory.color else { return cell }
             
-            cell.initCategorySelectCVCell(imageName: iconName, subCategoryName: name, hex: color)
+            cell.initCategorySelectCVCell(imageName: iconName, categoryName: name, hex: color)
             
-            cell.selectSubCategory = {
+            cell.selectCategory = {
                 
-                self.expenseCategory = expenseCategory
+                self.selectedCategory = .expense(expenseCategory)
                 
-                guard let selectSubCategory = self.selectSubCategory else { return }
-                
-                selectSubCategory()
+                self.selectCategory?()
                 
             }
             
         } else {
             
-            let incomeCategory = incomeCategorys[indexPath.row]
+            let incomeCategory = incomeCategories[indexPath.row]
             
             guard let iconName = incomeCategory.iconName,
                 let name = incomeCategory.name,
                 let color = incomeCategory.color else { return cell }
             
-            cell.initCategorySelectCVCell(imageName: iconName, subCategoryName: name, hex: color)
+            cell.initCategorySelectCVCell(imageName: iconName, categoryName: name, hex: color)
             
-            cell.selectSubCategory = {
+            cell.selectCategory = {
                 
-                self.incomeCategory = incomeCategory
+                self.selectedCategory = .income(incomeCategory)
                 
-                guard let selectSubCategory = self.selectSubCategory else { return }
-                
-                selectSubCategory()
+                self.selectCategory?()
                 
             }
             
@@ -131,9 +123,7 @@ extension IncomeExpenseCVCell: UICollectionViewDataSource {
     
 }
 
-extension IncomeExpenseCVCell: UICollectionViewDelegate {
-    
-}
+extension IncomeExpenseCVCell: UICollectionViewDelegate { }
 
 extension IncomeExpenseCVCell: UICollectionViewDelegateFlowLayout {
     

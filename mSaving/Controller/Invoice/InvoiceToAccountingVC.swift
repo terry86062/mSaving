@@ -52,7 +52,7 @@ class InvoiceToAccountingVC: UIViewController {
         
         invoiceAccountingTextField.text = "\(invoiceAmount)"
         
-        let expenseCategorys = CategoryProvider().expenseCategory
+        let expenseCategorys = CategoryProvider().expenseCategories
         
         self.expenseCategorys = expenseCategorys
         
@@ -116,12 +116,12 @@ class InvoiceToAccountingVC: UIViewController {
         
         guard let selectedCategory = selectedExpenseCategory else { return }
         
-        AccountingProvider().saveAccounting(date: date,
-                                             amount: amount,
-                                             accountName: selectedAccount,
-                                             selectedExpenseCategory: selectedCategory,
-                                             selectedIncomeCategory: nil,
-                                             selectedExpense: true)
+//        AccountingProvider().saveAccounting(date: date,
+//                                             amount: amount,
+//                                             accountName: selectedAccount,
+//                                             selectedExpenseCategory: selectedCategory,
+//                                             selectedIncomeCategory: nil,
+//                                             selectedExpense: true)
         
     }
     
@@ -150,9 +150,9 @@ extension InvoiceToAccountingVC: UICollectionViewDataSource {
             let name = expenseCategory.name,
             let color = expenseCategory.color else { return cell }
         
-        cell.initCategorySelectCVCell(imageName: iconName, subCategoryName: name, hex: color)
+        cell.initCategorySelectCVCell(imageName: iconName, categoryName: name, hex: color)
         
-        cell.selectSubCategory = {
+        cell.selectCategory = {
             
             self.selectedExpenseCategory = expenseCategory
             

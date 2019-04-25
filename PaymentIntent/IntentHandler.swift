@@ -22,7 +22,7 @@ extension IntentHandler: INPayBillIntentHandling {
             
         }
 
-        let category = CategoryProvider().expenseCategory
+        let category = CategoryProvider().expenseCategories
         
         guard category != [] else {
             
@@ -32,12 +32,12 @@ extension IntentHandler: INPayBillIntentHandling {
             
         }
 
-        AccountingProvider().saveAccounting(date: Date(),
-                                            amount: Int64(amount),
-                                            accountName: "現金",
-                                            selectedExpenseCategory: category[0],
-                                            selectedIncomeCategory: nil,
-                                            selectedExpense: true)
+//        AccountingProvider().saveAccounting(date: Date(),
+//                                            amount: Int64(amount),
+//                                            accountName: "現金",
+//                                            selectedExpenseCategory: category[0],
+//                                            selectedIncomeCategory: nil,
+//                                            selectedExpense: true)
 
         completion(INPayBillIntentResponse(code: .success, userActivity: nil))
 

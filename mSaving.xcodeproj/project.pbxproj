@@ -94,6 +94,12 @@
 		DEDE57452270C0F90071FCFD /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEDE571E22702EB20071FCFD /* MainInterface.storyboard */; };
 		DEDE57462270C0FC0071FCFD /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDE571122702EB10071FCFD /* IntentHandler.swift */; };
 		DEDE574822718A120071FCFD /* SavingTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDE574722718A120071FCFD /* SavingTransformer.swift */; };
+		DEDE574B2271A57E0071FCFD /* MonthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDE574A2271A57E0071FCFD /* MonthProvider.swift */; };
+		DEDE574E2271EBC70071FCFD /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDE574D2271EBC70071FCFD /* TimeManager.swift */; };
+		DEDE57512271F3FE0071FCFD /* MonthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDE574A2271A57E0071FCFD /* MonthProvider.swift */; };
+		DEDE57522271F3FE0071FCFD /* MonthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDE574A2271A57E0071FCFD /* MonthProvider.swift */; };
+		DEDE57552271F5250071FCFD /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDE574D2271EBC70071FCFD /* TimeManager.swift */; };
+		DEDE57562271F5260071FCFD /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDE574D2271EBC70071FCFD /* TimeManager.swift */; };
 		DEEAA9CC2255F4A5005FCE8E /* SavingDetailCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEAA9CA2255F4A5005FCE8E /* SavingDetailCVCell.swift */; };
 		DEEAA9CD2255F4A5005FCE8E /* SavingDetailCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEEAA9CB2255F4A5005FCE8E /* SavingDetailCVCell.xib */; };
 		DEEB5FB5226CC8DE0088C798 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEB5FB4226CC8DE0088C798 /* HTTPClient.swift */; };
@@ -227,6 +233,8 @@
 		DEDE572122702EB20071FCFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DEDE573F227051FE0071FCFD /* PaymentIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PaymentIntent.entitlements; sourceTree = "<group>"; };
 		DEDE574722718A120071FCFD /* SavingTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingTransformer.swift; sourceTree = "<group>"; };
+		DEDE574A2271A57E0071FCFD /* MonthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthProvider.swift; sourceTree = "<group>"; };
+		DEDE574D2271EBC70071FCFD /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
 		DEEAA9CA2255F4A5005FCE8E /* SavingDetailCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingDetailCVCell.swift; sourceTree = "<group>"; };
 		DEEAA9CB2255F4A5005FCE8E /* SavingDetailCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavingDetailCVCell.xib; sourceTree = "<group>"; };
 		DEEB5FB4226CC8DE0088C798 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -476,8 +484,17 @@
 		DEDE57492271A4F50071FCFD /* Month */ = {
 			isa = PBXGroup;
 			children = (
+				DEDE574A2271A57E0071FCFD /* MonthProvider.swift */,
 			);
 			path = Month;
+			sourceTree = "<group>";
+		};
+		DEDE574C2271EB980071FCFD /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				DEDE574D2271EBC70071FCFD /* TimeManager.swift */,
+			);
+			path = Time;
 			sourceTree = "<group>";
 		};
 		DEEB5FB3226CC7590088C798 /* HTTP */ = {
@@ -573,6 +590,7 @@
 				DEECB02C22533430002D6C30 /* mSaving.xcdatamodeld */,
 				DE9BEFE9225DD2DE003458AD /* CoreDataManager.swift */,
 				DE366ABE226EE64700A65954 /* MSNotificationManager.swift */,
+				DEDE574C2271EB980071FCFD /* Time */,
 				DEDE57492271A4F50071FCFD /* Month */,
 				DE366AB4226EA7CB00A65954 /* Saving */,
 				DE366AB2226EA77A00A65954 /* Accounting */,
@@ -853,12 +871,14 @@
 			files = (
 				DEDE57432270C0EC0071FCFD /* IntentViewController.swift in Sources */,
 				DEDE5737227033E70071FCFD /* MSNotificationManager.swift in Sources */,
+				DEDE57552271F5250071FCFD /* TimeManager.swift in Sources */,
 				DEDE571222702EB10071FCFD /* IntentHandler.swift in Sources */,
 				DEDE573D227036030071FCFD /* CategoryProvider.swift in Sources */,
 				DEDE5731227033400071FCFD /* mSaving.xcdatamodeld in Sources */,
 				DEDE5735227033E40071FCFD /* CoreDataManager.swift in Sources */,
 				DEDE574122706BEE0071FCFD /* String - extension.swift in Sources */,
 				DEDE5739227033F90071FCFD /* AccountingTransformer.swift in Sources */,
+				DEDE57512271F3FE0071FCFD /* MonthProvider.swift in Sources */,
 				DEDE573B2270348B0071FCFD /* Notification - extension.swift in Sources */,
 				DEDE572F2270330C0071FCFD /* AccountingProvider.swift in Sources */,
 			);
@@ -869,9 +889,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEDE5738227033E70071FCFD /* MSNotificationManager.swift in Sources */,
+				DEDE57522271F3FE0071FCFD /* MonthProvider.swift in Sources */,
 				DEDE57462270C0FC0071FCFD /* IntentHandler.swift in Sources */,
 				DEDE571D22702EB20071FCFD /* IntentViewController.swift in Sources */,
 				DEDE573E227036030071FCFD /* CategoryProvider.swift in Sources */,
+				DEDE57562271F5260071FCFD /* TimeManager.swift in Sources */,
 				DEDE5732227033410071FCFD /* mSaving.xcdatamodeld in Sources */,
 				DEDE5736227033E50071FCFD /* CoreDataManager.swift in Sources */,
 				DEDE573A227033FA0071FCFD /* AccountingTransformer.swift in Sources */,
@@ -895,6 +917,7 @@
 				DEECB063225335FA002D6C30 /* UIView - extension.swift in Sources */,
 				DEBE8C2C2255AED800C2A8A3 /* AccountingDateCVCell.swift in Sources */,
 				DE97C64F225919CE00D0C9CF /* AddSavingDetailCVCell.swift in Sources */,
+				DEDE574B2271A57E0071FCFD /* MonthProvider.swift in Sources */,
 				DE21B906225794C900B65719 /* BarChartCVCell.swift in Sources */,
 				DE4984B522586A0F004E4AE9 /* CategoryAccountingsDetailVC.swift in Sources */,
 				DEAA6A302259B07C00224B26 /* CategoryCVCell.swift in Sources */,
@@ -906,6 +929,7 @@
 				DEBE8C252254AE5200C2A8A3 /* UITableView - extension.swift in Sources */,
 				DEECB05C22533599002D6C30 /* TabBarController.swift in Sources */,
 				DEECB05822533599002D6C30 /* SettingVC.swift in Sources */,
+				DEDE574E2271EBC70071FCFD /* TimeManager.swift in Sources */,
 				DEEB5FB8226CD5880088C798 /* Invoice.swift in Sources */,
 				DE366AB9226EBA4600A65954 /* AccountProvider.swift in Sources */,
 				DEEAA9CC2255F4A5005FCE8E /* SavingDetailCVCell.swift in Sources */,

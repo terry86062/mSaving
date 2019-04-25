@@ -10,11 +10,11 @@ import UIKit
 
 class CategorySelectCVCell: UICollectionViewCell {
 
-    @IBOutlet weak var subCategoryImageView: UIImageView!
+    @IBOutlet weak var categoryImageView: UIImageView!
 
-    @IBOutlet weak var subCategoryNameLabel: UILabel!
+    @IBOutlet weak var categoryNameLabel: UILabel!
 
-    var selectSubCategory: (() -> Void)?
+    var selectCategory: (() -> Void)?
 
     override func awakeFromNib() {
 
@@ -22,21 +22,19 @@ class CategorySelectCVCell: UICollectionViewCell {
 
     }
 
-    func initCategorySelectCVCell(imageName: String, subCategoryName: String, hex: String) {
+    func initCategorySelectCVCell(imageName: String, categoryName: String, hex: String) {
 
-        subCategoryImageView.image = UIImage(named: imageName)
+        categoryImageView.image = UIImage(named: imageName)
         
-        subCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
+        categoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
 
-        subCategoryNameLabel.text = subCategoryName
+        categoryNameLabel.text = categoryName
 
     }
 
-    @IBAction func selectSubCategory(_ sender: UIButton) {
+    @IBAction func selectCategory(_ sender: UIButton) {
 
-        guard let select = selectSubCategory else { return }
-
-        select()
+        selectCategory?()
 
     }
 

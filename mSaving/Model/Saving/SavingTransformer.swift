@@ -20,24 +20,24 @@ struct SavingWithDate {
 
 class SavingTransformer {
     
-    func transformFrom(savings: [Saving]) -> [SavingWithDate] {
-        
-        var savingsWithDate: [SavingWithDate] = []
-        
-        guard savings.count > 0 else { return [] }
-        
-        for index in 0...savings.count - 1 {
-            
-            let date = Date(timeIntervalSince1970: TimeInterval(savings[index].month))
-            
-            savingsWithDate.append(SavingWithDate(saving: savings[index], date: date, dateComponents:
-                Calendar.current.dateComponents([.year, .month, .day, .weekday, .hour, .minute], from: date)))
-            
-        }
-        
-        return savingsWithDate
-        
-    }
+//    func transformFrom(savings: [Saving]) -> [SavingWithDate] {
+//        
+//        var savingsWithDate: [SavingWithDate] = []
+//        
+//        guard savings.count > 0 else { return [] }
+//        
+//        for index in 0...savings.count - 1 {
+//            
+//            let date = Date(timeIntervalSince1970: TimeInterval(savings[index].month))
+//            
+//            savingsWithDate.append(SavingWithDate(saving: savings[index], date: date, dateComponents:
+//                Calendar.current.dateComponents([.year, .month, .day, .weekday, .hour, .minute], from: date)))
+//            
+//        }
+//        
+//        return savingsWithDate
+//        
+//    }
     
     func transformFrom(savingsWithDate: [SavingWithDate]) -> [[SavingWithDate]] {
         

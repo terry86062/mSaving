@@ -10,6 +10,14 @@ import Foundation
 
 import CoreData
 
+enum CategoryCase {
+    
+    case expense(ExpenseCategory)
+    
+    case income(IncomeCategory)
+    
+}
+
 struct AccountingWithDate {
     
     let accounting: Accounting
@@ -46,10 +54,7 @@ class AccountingProvider {
     
     var accountingsWithDate: [AccountingWithDate] {
         
-        let accountings = coreDataManager.fetch(entityType: Accounting(),
-                                                sortFirst: "occurDate",
-                                                second: "",
-                                                reverse: true)
+        let accountings = coreDataManager.fetch(entityType: Accounting(), sort: ["occurDate"], predicate: "", reverse: true)
         
         return transformer.transformFrom(accountings: accountings)
         
@@ -63,10 +68,7 @@ class AccountingProvider {
     
     var categoriesMonthTotalGroup: [[CategoryMonthTotal]] {
         
-        let accountings = coreDataManager.fetch(entityType: Accounting(),
-                                                sortFirst: "expenseSubCategory",
-                                                second: "occurDate",
-                                                reverse: true)
+        let accountings = coreDataManager.fetch(entityType: Accounting(), sort: ["expenseSubCategory", "occurDate"], predicate: "", reverse: true)
         
         let accountingsWithDate = transformer.transformFrom(accountings: accountings)
         
@@ -76,163 +78,233 @@ class AccountingProvider {
         
     }
     
-    func saveAccounting(date: Date, amount: Int64, accountName: String, selectedExpenseCategory: ExpenseCategory?, selectedIncomeCategory: IncomeCategory?, selectedExpense: Bool) {
+//    func saveAccounting(date: Date, amount: Int64, accountName: String, selectedExpenseCategory: ExpenseCategory?, selectedIncomeCategory: IncomeCategory?, selectedExpense: Bool) {
+//        
+//        let accounting = Accounting(context: coreDataManager.viewContext)
+//        
+//        let request = NSFetchRequest<Accounting>(entityName: "Accounting")
+//        
+//        let time = Int64(date.timeIntervalSince1970)
+//        
+//        print("time \(time)")
+//        
+//        let beginDate = time - time % 86400 + 57600
+//        
+//        print("beginDate \(beginDate)")
+//        
+//        let finishDate = beginDate + 86400 - 1
+//        
+//        print("finishDate \(finishDate)")
+//        
+//        request.predicate = NSPredicate(format: "occurDate BETWEEN { \(beginDate) , \(finishDate) }")
+//        
+//        let accountRequest = NSFetchRequest<Account>(entityName: "Account")
+//        
+//        accountRequest.predicate = NSPredicate(format: "name = %@", accountName)
+//        
+//        do {
+//            
+//            let accountings = try coreDataManager.viewContext.fetch(request)
+//            
+//            var isRepeat = false
+//            
+//            if accountings.count > 0 {
+//                
+//                for index in 0...accountings.count - 1 {
+//                    
+//                    if time == accountings[index].occurDate {
+//                        
+//                        isRepeat = true
+//                        
+//                        break
+//                        
+//                    }
+//                    
+//                }
+//                
+//            }
+//            
+//            if isRepeat {
+//                
+//                for newTime in beginDate...finishDate {
+//                    
+//                    if accounting.occurDate == 0 {
+//                        
+//                        var count = 0
+//                        
+//                        for index in 0...accountings.count - 1 {
+//                            
+//                            if newTime == accountings[index].occurDate {
+//                                
+//                                break
+//                                
+//                            } else {
+//                                
+//                                count += 1
+//                                
+//                            }
+//                            
+//                            if count == accountings.count {
+//                                
+//                                accounting.occurDate = newTime
+//                                
+//                            }
+//                            
+//                        }
+//                        
+//                    } else {
+//                        
+//                        break
+//                        
+//                    }
+//                    
+//                }
+//                
+//            } else {
+//                
+//                accounting.occurDate = Int64(date.timeIntervalSince1970)
+//                
+//            }
+//            
+//            let account = try coreDataManager.viewContext.fetch(accountRequest)
+//            
+//            accounting.amount = amount
+//            
+//            if account.count > 0 {
+//                
+//                accounting.accountName = account[0]
+//                
+//            }
+//            
+//            if selectedExpense {
+//                
+//                accounting.expenseCategory = selectedExpenseCategory
+//                
+//                if account.count > 0 {
+//                    
+//                    account[0].currentValue -= amount
+//                    
+//                } else {
+//                    
+//                    let account = Account(context: coreDataManager.viewContext)
+//                    
+//                    account.initialValue = 0
+//                    
+//                    account.currentValue = -amount
+//                    
+//                    account.name = "現金"
+//                    
+//                    account.priority = 0
+//                    
+//                    accounting.accountName = account
+//                    
+//                }
+//                
+//            } else {
+//                
+//                accounting.incomeCategory = selectedIncomeCategory
+//                
+//                if account.count > 0 {
+//                    
+//                    account[0].currentValue += amount
+//                    
+//                } else {
+//                    
+//                    let account = Account(context: coreDataManager.viewContext)
+//                    
+//                    account.initialValue = 0
+//                    
+//                    account.currentValue = amount
+//                    
+//                    account.name = "現金"
+//                    
+//                    account.priority = 0
+//                    
+//                    accounting.accountName = account
+//                    
+//                }
+//                
+//            }
+//            
+//        } catch {
+//            
+//            print(error)
+//            
+//        }
+//        
+//        coreDataManager.saveContext()
+//        
+//        notificationManager.postNotificationForRenew()
+//        
+//    }
+    
+    func createAccounting(occurDate: Date, createDate: Date, amount: Int64, account: Account, category: CategoryCase) {
         
         let accounting = Accounting(context: coreDataManager.viewContext)
         
-        let request = NSFetchRequest<Accounting>(entityName: "Accounting")
+        guard let month = helpSetMonth(occurDate: occurDate) else { return }
         
-        let time = Int64(date.timeIntervalSince1970)
+        accounting.month = month
         
-        print("time \(time)")
+        accounting.occurDate = Int64(occurDate.timeIntervalSince1970)
         
-        let beginDate = time - time % 86400 + 57600
+        accounting.createDate = Int64(createDate.timeIntervalSince1970)
         
-        print("beginDate \(beginDate)")
+        accounting.amount = amount
         
-        let finishDate = beginDate + 86400 - 1
-        
-        print("finishDate \(finishDate)")
-        
-        request.predicate = NSPredicate(format: "occurDate BETWEEN { \(beginDate) , \(finishDate) }")
-        
-        let accountRequest = NSFetchRequest<Account>(entityName: "Account")
-        
-        accountRequest.predicate = NSPredicate(format: "name = %@", accountName)
-        
-        do {
+        accounting.accountName = account
+                
+        switch category {
             
-            let accountings = try coreDataManager.viewContext.fetch(request)
+        case .expense(let category):
             
-            var isRepeat = false
+            accounting.expenseCategory = category
             
-            if accountings.count > 0 {
-                
-                for index in 0...accountings.count - 1 {
-                    
-                    if time == accountings[index].occurDate {
-                        
-                        isRepeat = true
-                        
-                        break
-                        
-                    }
-                    
-                }
-                
-            }
+            account.currentValue -= amount
             
-            if isRepeat {
-                
-                for newTime in beginDate...finishDate {
-                    
-                    if accounting.occurDate == 0 {
-                        
-                        var count = 0
-                        
-                        for index in 0...accountings.count - 1 {
-                            
-                            if newTime == accountings[index].occurDate {
-                                
-                                break
-                                
-                            } else {
-                                
-                                count += 1
-                                
-                            }
-                            
-                            if count == accountings.count {
-                                
-                                accounting.occurDate = newTime
-                                
-                            }
-                            
-                        }
-                        
-                    } else {
-                        
-                        break
-                        
-                    }
-                    
-                }
-                
-            } else {
-                
-                accounting.occurDate = Int64(date.timeIntervalSince1970)
-                
-            }
+        case .income(let category):
             
-            let account = try coreDataManager.viewContext.fetch(accountRequest)
+            accounting.incomeCategory = category
             
-            accounting.amount = amount
-            
-            if account.count > 0 {
-                
-                accounting.accountName = account[0]
-                
-            }
-            
-            if selectedExpense {
-                
-                accounting.expenseSubCategory = selectedExpenseCategory
-                
-                if account.count > 0 {
-                    
-                    account[0].currentValue -= amount
-                    
-                } else {
-                    
-                    let account = Account(context: coreDataManager.viewContext)
-                    
-                    account.initialValue = 0
-                    
-                    account.currentValue = -amount
-                    
-                    account.name = "現金"
-                    
-                    account.priority = 0
-                    
-                    accounting.accountName = account
-                    
-                }
-                
-            } else {
-                
-                accounting.incomeSubCategory = selectedIncomeCategory
-                
-                if account.count > 0 {
-                    
-                    account[0].currentValue += amount
-                    
-                } else {
-                    
-                    let account = Account(context: coreDataManager.viewContext)
-                    
-                    account.initialValue = 0
-                    
-                    account.currentValue = amount
-                    
-                    account.name = "現金"
-                    
-                    account.priority = 0
-                    
-                    accounting.accountName = account
-                    
-                }
-                
-            }
-            
-        } catch {
-            
-            print(error)
+            account.currentValue += amount
             
         }
         
         coreDataManager.saveContext()
         
         notificationManager.postNotificationForRenew()
+        
+    }
+    
+    func helpSetMonth(occurDate: Date) -> Month? {
+        
+        let dataComponents = TimeManager().transform(date: occurDate)
+        
+        guard let year = dataComponents.year, let month = dataComponents.month else { return nil }
+        
+        let months = MonthProvider().months
+        
+        if months != [] {
+            
+            for index in 0...months.count - 1 {
+                
+                if months[index].year == year && months[index].month == month {
+                    
+                    return months[index]
+                    
+                }
+                
+            }
+            
+        }
+        
+        let aMonth = Month(context: coreDataManager.viewContext)
+        
+        aMonth.year = Int64(year)
+        
+        aMonth.month = Int64(month)
+        
+        return aMonth
         
     }
     
@@ -378,15 +450,15 @@ class AccountingProvider {
             
             if selectedExpense {
                 
-                accounting[0].expenseSubCategory = selectedExpenseCategory
+                accounting[0].expenseCategory = selectedExpenseCategory
                 
-                accounting[0].incomeSubCategory = nil
+                accounting[0].incomeCategory = nil
                 
             } else {
                 
-                accounting[0].expenseSubCategory = nil
+                accounting[0].expenseCategory = nil
                 
-                accounting[0].incomeSubCategory = selectedIncomeCategory
+                accounting[0].incomeCategory = selectedIncomeCategory
                 
             }
             

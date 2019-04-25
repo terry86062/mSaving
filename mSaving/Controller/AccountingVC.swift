@@ -22,7 +22,7 @@ struct SubCategory {
 
 }
 
-class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDataSource, FSCalendarDelegate {
+class AccountingVC: UIViewController {
 
     @IBOutlet weak var calendar: FSCalendar!
 
@@ -34,11 +34,9 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         return formatter
     }()
 
-    fileprivate lazy var scopeGesture: UIPanGestureRecognizer = {
-        [unowned self] in
-        let panGesture = UIPanGestureRecognizer(
-            target: self.calendar,
-            action: #selector(self.calendar.handleScopeGesture(_:)))
+    fileprivate lazy var scopeGesture: UIPanGestureRecognizer = { [unowned self] in
+        let panGesture = UIPanGestureRecognizer(target: self.calendar,
+                                                action: #selector(self.calendar.handleScopeGesture(_:)))
         panGesture.delegate = self
         panGesture.minimumNumberOfTouches = 1
         panGesture.maximumNumberOfTouches = 2
@@ -47,7 +45,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
 
     @IBOutlet weak var amountTextField: UITextField!
     
-    @IBOutlet weak var selectedSubCategoryImageView: UIImageView!
+    @IBOutlet weak var selectedCategoryImageView: UIImageView!
     
     @IBOutlet var keyboardToolBar: UIToolbar!
 
@@ -73,21 +71,26 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         
     }
     
-    @IBOutlet weak var selectedAccount: UIButton!
+    @IBOutlet weak var selectedAccountButton: UIButton!
     
     @IBOutlet weak var deleteAccountingButton: UIButton!
     
-    var selectedExpenseCategory: ExpenseCategory?
+    var expenseCategories: [ExpenseCategory] = []
     
-    var selectedIncomeCategory: IncomeCategory?
+    var incomeCategories: [IncomeCategory] = []
     
-    var selectedExpense = true
+    var accounts: [Account] = []
+    
+    var selectedCategory: CategoryCase?
+    
+    var selectedAccount: Account?
+    
+    var selectedAccounting: Accounting?
+    
+    
+//    var selectedExpense = true
     
     var reviseSelectedExpense = true
-
-    var expenseCategorys: [ExpenseCategory] = []
-    
-    var incomeCategorys: [IncomeCategory] = []
     
     var newAccounting = true
     
@@ -107,16 +110,38 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
 
         super.viewDidLoad()
 
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
+        amountTextField.inputAccessoryView = keyboardToolBar
+        
+        amountTextField.becomeFirstResponder()
+        
+        setUpCalendar()
+        
+        setUpSegmentedC()
+        
+        fetchData()
+
+    }
+    
+    func setUpCalendar() {
+        
         if UIDevice.current.model.hasPrefix("iPad") {
+            
             self.calendarHeightConstraint.constant = 400
+            
         }
-
+        
         self.calendar.select(Date())
-
-        self.view.addGestureRecognizer(self.scopeGesture)
-//        self.tableView.panGestureRecognizer.require(toFail: self.scopeGesture)
+        
+        self.view.addGestureRecognizer(scopeGesture)
+        
         self.calendar.scope = .week
-
+        
+    }
+    
+    func setUpSegmentedC() {
+        
         incomeExpenseSegmentedC.segments = LabelSegment.segments(
             withTitles: ["支出", "收入", "移轉"],
             normalBackgroundColor: UIColor.white,
@@ -125,53 +150,81 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
             selectedBackgroundColor: UIColor.mSYellow,
             selectedFont: .systemFont(ofSize: 16),
             selectedTextColor: UIColor.black)
-
+        
         incomeExpenseSegmentedC.addTarget(
             self,
             action: #selector(navigationSegmentedControlValueChanged(_:)),
             for: .valueChanged)
-
-        amountTextField.inputAccessoryView = keyboardToolBar
-
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
-        let expenseCategorys = CategoryProvider().expenseCategory
+    }
+    
+    func fetchData() {
         
-        self.expenseCategorys = expenseCategorys
+        expenseCategories = CategoryProvider().expenseCategories
         
-        if selectedExpense && expenseCategorys.count != 0 {
+        incomeCategories = CategoryProvider().incomeCategories
+        
+        accounts = AccountProvider().accounts
+        
+        if expenseCategories != [] {
             
-            selectedExpenseCategory = expenseCategorys[0]
+            setUpForSelected(category: .expense(expenseCategories[0]))
             
         }
         
-        let incomeCategorys = CategoryProvider().incomeCategory
+        if accounts != [] {
+            
+            setUpForSelected(account: accounts[0])
+            
+        }
         
-        self.incomeCategorys = incomeCategorys
-
+    }
+    
+    func setUpForSelected(category: CategoryCase?) {
+        
+        guard let category = category else { return }
+        
+        selectedCategory = category
+        
+        switch category {
+        
+        case .expense(let expense):
+            
+            guard let iconName = expense.iconName, let color = expense.color else { return }
+            
+            selectedCategoryImageView.image = UIImage(named: iconName)
+            
+            selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+        
+        case .income(let income):
+            
+            guard let iconName = income.iconName, let color = income.color else { return }
+            
+            selectedCategoryImageView.image = UIImage(named: iconName)
+            
+            selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+        
+        }
+        
+    }
+    
+    func setUpForSelected(account: Account) {
+        
+        selectedAccount = account
+        
+        selectedAccountButton.setTitle(account.name, for: .normal)
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
         
-        let accounts = AccountProvider().accounts
-        
-        if accounts.count > 0 {
-            
-            selectedAccount.setTitle(accounts[0].name, for: .normal)
-            
-        }
-        
         if newAccounting == false {
             
-            setAccountingFromRevise()
+//            setAccountingFromRevise()
             
             deleteAccountingButton.isHidden = false
-            
-        } else {
-            
-            amountTextField.becomeFirstResponder()
             
         }
         
@@ -221,111 +274,66 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         
         guard let text = amountTextField.text, let amount = Int64(text), amount != 0 else { return }
         
-        guard let selectedAccount = selectedAccount.titleLabel?.text else { return }
+        guard let selectedAccount = selectedAccount else { return }
         
         guard let selectedDate = calendar.selectedDate else { return }
         
-        if newAccounting {
-            
-            if selectedExpense {
-                
-                guard let selectedCategory = selectedExpenseCategory else { return }
-                
-                AccountingProvider().saveAccounting(date: selectedDate,
-                                                     amount: amount,
-                                                     accountName: selectedAccount,
-                                                     selectedExpenseCategory: selectedCategory,
-                                                     selectedIncomeCategory: nil,
-                                                     selectedExpense: selectedExpense)
-                
-            } else {
-                
-                guard let selectedCategory = selectedIncomeCategory else { return }
-                
-                AccountingProvider().saveAccounting(date: selectedDate,
-                                                     amount: amount,
-                                                     accountName: selectedAccount,
-                                                     selectedExpenseCategory: nil,
-                                                     selectedIncomeCategory: selectedCategory,
-                                                     selectedExpense: selectedExpense)
-                
-            }
+        guard let occurDate = createOccurDate(selectedDate: selectedDate) else { return }
+        
+        guard let selectedCategory = selectedCategory else { return }
+        
+//        if newAccounting {
+        
+        AccountingProvider().createAccounting(occurDate: occurDate,
+                                              createDate: Date(),
+                                              amount: amount,
+                                              account: selectedAccount,
+                                              category: selectedCategory)
             
             dismiss(animated: true, completion: nil)
             
-        } else {
-            
-            if selectedExpense {
-                
-                guard let selectedCategory = selectedExpenseCategory else { return }
-                
-                AccountingProvider().reviseAccounting(date: reviseOccurDate,
-                                                       newDate: selectedDate,
-                                                       amount: amount,
-                                                       accountName: selectedAccount,
-                                                       selectedExpenseCategory: selectedCategory,
-                                                       selectedIncomeCategory: nil,
-                                                       selectedExpense: selectedExpense,
-                                                       reviseSelectedExpense: reviseSelectedExpense)
-                
-            } else {
-                
-                guard let selectedCategory = selectedIncomeCategory else { return }
-                
-                AccountingProvider().reviseAccounting(date: reviseOccurDate,
-                                                       newDate: selectedDate,
-                                                       amount: amount,
-                                                       accountName: selectedAccount,
-                                                       selectedExpenseCategory: nil,
-                                                       selectedIncomeCategory: selectedCategory,
-                                                       selectedExpense: selectedExpense,
-                                                       reviseSelectedExpense: reviseSelectedExpense)
-                
-            }
-            
-            navigationController?.popViewController(animated: true)
-            
-        }
+//        } else {
+        
+//            if selectedExpense {
+//
+//                guard let selectedCategory = selectedExpenseCategory else { return }
+//
+//                AccountingProvider().reviseAccounting(date: reviseOccurDate,
+//                                                       newDate: selectedDate,
+//                                                       amount: amount,
+//                                                       accountName: selectedAccount,
+//                                                       selectedExpenseCategory: selectedCategory,
+//                                                       selectedIncomeCategory: nil,
+//                                                       selectedExpense: selectedExpense,
+//                                                       reviseSelectedExpense: reviseSelectedExpense)
+//
+//            } else {
+//
+//                guard let selectedCategory = selectedIncomeCategory else { return }
+//
+//                AccountingProvider().reviseAccounting(date: reviseOccurDate,
+//                                                       newDate: selectedDate,
+//                                                       amount: amount,
+//                                                       accountName: selectedAccount,
+//                                                       selectedExpenseCategory: nil,
+//                                                       selectedIncomeCategory: selectedCategory,
+//                                                       selectedExpense: selectedExpense,
+//                                                       reviseSelectedExpense: reviseSelectedExpense)
+//
+//            }
+//
+//            navigationController?.popViewController(animated: true)
         
     }
-
-    // MARK: - UIGestureRecognizerDelegate
-
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-//        let shouldBegin = self.tableView.contentOffset.y <= -self.tableView.contentInset.top
-//        if shouldBegin {
-//            let velocity = self.scopeGesture.velocity(in: self.view)
-//            switch self.calendar.scope {
-//            case .month:
-//                return velocity.y < 0
-//            case .week:
-//                return velocity.y > 0
-//            }
-//        }
-//        return shouldBegin
-
-        return true
-    }
-
-    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
-        self.calendarHeightConstraint.constant = bounds.height
-
-        print("boundingRectWillChange")
-
-        self.view.layoutIfNeeded()
-    }
-
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print("did select date \(self.dateFormatter.string(from: date))")
-        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
-        print("selected dates is \(selectedDates)")
-        if monthPosition == .next || monthPosition == .previous {
-            calendar.setCurrentPage(date, animated: true)
-        }
-    }
-
-    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        print("\(self.dateFormatter.string(from: calendar.currentPage))")
+    
+    func createOccurDate(selectedDate: Date) -> Date? {
+        
+        let selectedComponents = TimeManager().transform(date: selectedDate)
+        
+        return TimeManager().createDate(year: selectedComponents.year,
+                                        month: selectedComponents.month,
+                                        day: selectedComponents.day)
+        
     }
 
     @IBAction func dismiss(_ sender: UIButton) {
@@ -355,7 +363,7 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
                 
                 let accountAction = UIAlertAction(title: accountName, style: .default, handler: { _ in
                     
-                    self.selectedAccount.setTitle(accountName, for: .normal)
+                    self.selectedAccountButton.setTitle(accountName, for: .normal)
                     
                 })
                 
@@ -366,77 +374,127 @@ class AccountingVC: UIViewController, UIGestureRecognizerDelegate, FSCalendarDat
         }
         
         let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        
         alertController.addAction(cancelAction)
         
         present(alertController, animated: true, completion: nil)
-    }
-    
-    func setAccountingRevise(occurDate: Int64, date: Date, amount: Int64,
-                             account: String?, expenseCategory: ExpenseCategory?, incomeCategory: IncomeCategory?) {
-        
-        newAccounting = false
-        
-        reviseOccurDate = occurDate
-        
-        reviseDate = date
-        
-        reviseAmount = amount
-        
-        reviseAccount = account
-        
-        if expenseCategory != nil {
-            
-            reviseExpenseCategory = expenseCategory
-            
-            selectedExpense = true
-            
-            reviseSelectedExpense = true
-            
-        } else if incomeCategory != nil {
-            
-            reviseIncomeCategory = incomeCategory
-            
-            selectedExpense = false
-            
-            reviseSelectedExpense = false
-            
-        }
         
     }
     
-    func setAccountingFromRevise() {
-        
-        calendar.select(reviseDate, scrollToDate: true)
-        
-        amountTextField.text = String(reviseAmount)
-        
-        selectedAccount.setTitle(reviseAccount, for: .normal)
-        
-        if selectedExpense == true, let category = reviseExpenseCategory, let iconName = category.iconName, let color = category.color {
-            
-            selectedExpenseCategory = category
-            
-            selectedSubCategoryImageView.image = UIImage(named: iconName)
-            
-            selectedSubCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
-            
-        } else if selectedExpense == false, let category = reviseIncomeCategory, let iconName = category.iconName, let color = category.color {
-            
-            selectedIncomeCategory = category
-            
-            selectedSubCategoryImageView.image = UIImage(named: iconName)
-            
-            selectedSubCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
-            
-        }
-        
-    }
+//    func setAccountingRevise(occurDate: Int64, date: Date, amount: Int64,
+//                             account: String?, expenseCategory: ExpenseCategory?, incomeCategory: IncomeCategory?) {
+//
+//        newAccounting = false
+//
+//        reviseOccurDate = occurDate
+//
+//        reviseDate = date
+//
+//        reviseAmount = amount
+//
+//        reviseAccount = account
+//
+//        if expenseCategory != nil {
+//
+//            reviseExpenseCategory = expenseCategory
+//
+//            selectedExpense = true
+//
+//            reviseSelectedExpense = true
+//
+//        } else if incomeCategory != nil {
+//
+//            reviseIncomeCategory = incomeCategory
+//
+//            selectedExpense = false
+//
+//            reviseSelectedExpense = false
+//
+//        }
+//
+//    }
+//
+//    func setAccountingFromRevise() {
+//
+//        calendar.select(reviseDate, scrollToDate: true)
+//
+//        amountTextField.text = String(reviseAmount)
+//
+//        selectedAccountButton.setTitle(reviseAccount, for: .normal)
+//
+//        if selectedExpense == true, let category = reviseExpenseCategory, let iconName = category.iconName, let color = category.color {
+//
+//            selectedExpenseCategory = category
+//
+//            selectedCategoryImageView.image = UIImage(named: iconName)
+//
+//            selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+//
+//        } else if selectedExpense == false, let category = reviseIncomeCategory, let iconName = category.iconName, let color = category.color {
+//
+//            selectedIncomeCategory = category
+//
+//            selectedCategoryImageView.image = UIImage(named: iconName)
+//
+//            selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+//
+//        }
+//
+//    }
     
     @IBAction func deleteAccounting(_ sender: UIButton) {
         
         AccountingProvider().deleteAccounting(date: reviseOccurDate, reviseSelectedExpense: reviseSelectedExpense)
         
         navigationController?.popViewController(animated: true)
+        
+    }
+    
+}
+
+extension AccountingVC: FSCalendarDataSource { }
+
+extension AccountingVC: FSCalendarDelegate {
+    
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        
+        self.calendarHeightConstraint.constant = bounds.height
+        
+        print("boundingRectWillChange")
+        
+        self.view.layoutIfNeeded()
+        
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        
+        print("did select date \(self.dateFormatter.string(from: date))")
+        
+        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
+        
+        print("selected dates is \(selectedDates)")
+        
+        if monthPosition == .next || monthPosition == .previous {
+            
+            calendar.setCurrentPage(date, animated: true)
+            
+        }
+        
+    }
+    
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        
+        print("\(self.dateFormatter.string(from: calendar.currentPage))")
+        
+    }
+    
+}
+
+extension AccountingVC: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        
+        return true
         
     }
     
@@ -461,43 +519,17 @@ extension AccountingVC: UICollectionViewDataSource {
         
         if indexPath.row == 0 {
             
-            cell.initSavingCVCell(expenseCategorys: expenseCategorys, incomeCategorys: [])
-            
-            cell.selectSubCategory = {
-                
-                guard let category = cell.expenseCategory, let iconName = category.iconName, let color = category.color else { return }
-                
-                self.selectedExpenseCategory = category
-                
-                self.selectedIncomeCategory = nil
-                
-                self.selectedExpense = true
-                
-                self.selectedSubCategoryImageView.image = UIImage(named: iconName)
-                
-                self.selectedSubCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
-                
-            }
+            cell.initIncomeExpenseCVCell(expenseCategories: expenseCategories, incomeCategories: [])
             
         } else {
             
-            cell.initSavingCVCell(expenseCategorys: [], incomeCategorys: incomeCategorys)
+            cell.initIncomeExpenseCVCell(expenseCategories: [], incomeCategories: incomeCategories)
             
-            cell.selectSubCategory = {
-                
-                guard let category = cell.incomeCategory, let iconName = category.iconName, let color = category.color else { return }
-                
-                self.selectedIncomeCategory = category
-                
-                self.selectedExpenseCategory = nil
-                
-                self.selectedExpense = false
-                
-                self.selectedSubCategoryImageView.image = UIImage(named: iconName)
-                
-                self.selectedSubCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
-                
-            }
+        }
+        
+        cell.selectCategory = {
+            
+            self.setUpForSelected(category: cell.selectedCategory)
             
         }
         
@@ -507,9 +539,7 @@ extension AccountingVC: UICollectionViewDataSource {
 
 }
 
-extension AccountingVC: UICollectionViewDelegate {
-
-}
+extension AccountingVC: UICollectionViewDelegate { }
 
 extension AccountingVC: UICollectionViewDelegateFlowLayout {
 

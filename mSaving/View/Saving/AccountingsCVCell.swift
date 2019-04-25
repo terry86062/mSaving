@@ -102,11 +102,11 @@ extension AccountingsCVCell: UICollectionViewDataSource {
         
         for index in 0...accountings.count - 1 {
             
-            if accountings[index].accounting.expenseSubCategory != nil {
+            if accountings[index].accounting.expenseCategory != nil {
                 
                 totalAmount -= Int(accountings[index].accounting.amount)
                 
-            } else if accountings[index].accounting.incomeSubCategory != nil {
+            } else if accountings[index].accounting.incomeCategory != nil {
                 
                 totalAmount += Int(accountings[index].accounting.amount)
                 

@@ -40,9 +40,11 @@ class SavingVC: UIViewController {
 
     @IBOutlet weak var editingButton: UIButton!
     
-    var accountingsWithDateGroup: [[[AccountingWithDate]]] = []
+    var months: [Month] = []
     
-    var savingsWithDateGroup: [[SavingWithDate]] = []
+//    var accountingsWithDateGroup: [[[AccountingWithDate]]] = []
+//    
+//    var savingsWithDateGroup: [[SavingWithDate]] = []
     
     var selectedYear = ""
     
@@ -68,13 +70,19 @@ class SavingVC: UIViewController {
         
     }
     
+    func fetchData() {
+        
+        
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
         
         accountingsWithDateGroup = AccountingProvider().accountingsWithDateGroup
         
-        savingsWithDateGroup = SavingProvider().savingsWithDateGroup
+//        savingsWithDateGroup = SavingProvider().savingsWithDateGroup
         
         if accountingsWithDateGroup.count == 0 {
             
@@ -365,12 +373,12 @@ extension SavingVC: UICollectionViewDataSource {
                 
                 self.navigationController?.pushViewController(accountingVC, animated: true)
                 
-                accountingVC.setAccountingRevise(occurDate: accounting.accounting.occurDate,
-                                                 date: accounting.date,
-                                                 amount: accounting.accounting.amount,
-                                                 account: accounting.accounting.accountName?.name,
-                                                 expenseCategory: accounting.accounting.expenseSubCategory,
-                                                 incomeCategory: accounting.accounting.incomeSubCategory)
+//                accountingVC.setAccountingRevise(occurDate: accounting.accounting.occurDate,
+//                                                 date: accounting.date,
+//                                                 amount: accounting.accounting.amount,
+//                                                 account: accounting.accounting.accountName?.name,
+//                                                 expenseCategory: accounting.accounting.expenseSubCategory,
+//                                                 incomeCategory: accounting.accounting.incomeSubCategory)
                 
             }
             

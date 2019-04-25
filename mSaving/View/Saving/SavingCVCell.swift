@@ -68,7 +68,7 @@ class SavingCVCell: UICollectionViewCell {
             
             for index in 0...accountingsFlatMaped.count - 1 {
                 
-                if accountingsFlatMaped[index].accounting.expenseSubCategory != nil {
+                if accountingsFlatMaped[index].accounting.expenseCategory != nil {
                     
                     totalSpend += Int(accountingsFlatMaped[index].accounting.amount)
                     
@@ -236,7 +236,7 @@ extension SavingCVCell: UICollectionViewDataSource {
                     
                     if savings.count > 0 {
                         
-                        guard let expenseCategory = savings[indexPath.row].saving.expenseSubCategory,
+                        guard let expenseCategory = savings[indexPath.row].saving.expenseCategory,
                             let iconName = expenseCategory.iconName,
                             let name = expenseCategory.name,
                             let color = expenseCategory.color else { return cell }
