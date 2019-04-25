@@ -72,6 +72,27 @@
 		DEDE572022702EB20071FCFD /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEDE571E22702EB20071FCFD /* MainInterface.storyboard */; };
 		DEDE572422702EB20071FCFD /* PaymentIntentUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DEDE571822702EB20071FCFD /* PaymentIntentUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DEDE572722702EB20071FCFD /* PaymentIntent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DEDE570F22702EB10071FCFD /* PaymentIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DEDE572F2270330C0071FCFD /* AccountingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366ABC226EC20700A65954 /* AccountingProvider.swift */; };
+		DEDE57302270330C0071FCFD /* AccountingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366ABC226EC20700A65954 /* AccountingProvider.swift */; };
+		DEDE5731227033400071FCFD /* mSaving.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DEECB02C22533430002D6C30 /* mSaving.xcdatamodeld */; };
+		DEDE5732227033410071FCFD /* mSaving.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DEECB02C22533430002D6C30 /* mSaving.xcdatamodeld */; };
+		DEDE5735227033E40071FCFD /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BEFE9225DD2DE003458AD /* CoreDataManager.swift */; };
+		DEDE5736227033E50071FCFD /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BEFE9225DD2DE003458AD /* CoreDataManager.swift */; };
+		DEDE5737227033E70071FCFD /* MSNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366ABE226EE64700A65954 /* MSNotificationManager.swift */; };
+		DEDE5738227033E70071FCFD /* MSNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366ABE226EE64700A65954 /* MSNotificationManager.swift */; };
+		DEDE5739227033F90071FCFD /* AccountingTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5776D7226F57D300652B61 /* AccountingTransformer.swift */; };
+		DEDE573A227033FA0071FCFD /* AccountingTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5776D7226F57D300652B61 /* AccountingTransformer.swift */; };
+		DEDE573B2270348B0071FCFD /* Notification - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366AC0226EE88200A65954 /* Notification - extension.swift */; };
+		DEDE573C2270348B0071FCFD /* Notification - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366AC0226EE88200A65954 /* Notification - extension.swift */; };
+		DEDE573D227036030071FCFD /* CategoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366AB6226EA9F000A65954 /* CategoryProvider.swift */; };
+		DEDE573E227036030071FCFD /* CategoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366AB6226EA9F000A65954 /* CategoryProvider.swift */; };
+		DEDE574022705C320071FCFD /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDE571122702EB10071FCFD /* IntentHandler.swift */; };
+		DEDE574122706BEE0071FCFD /* String - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBA92EE226D8A4F00D93806 /* String - extension.swift */; };
+		DEDE57422270C0E60071FCFD /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEDE571E22702EB20071FCFD /* MainInterface.storyboard */; };
+		DEDE57432270C0EC0071FCFD /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDE571C22702EB20071FCFD /* IntentViewController.swift */; };
+		DEDE57442270C0F70071FCFD /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDE571C22702EB20071FCFD /* IntentViewController.swift */; };
+		DEDE57452270C0F90071FCFD /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEDE571E22702EB20071FCFD /* MainInterface.storyboard */; };
+		DEDE57462270C0FC0071FCFD /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDE571122702EB10071FCFD /* IntentHandler.swift */; };
 		DEEAA9CC2255F4A5005FCE8E /* SavingDetailCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEAA9CA2255F4A5005FCE8E /* SavingDetailCVCell.swift */; };
 		DEEAA9CD2255F4A5005FCE8E /* SavingDetailCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEEAA9CB2255F4A5005FCE8E /* SavingDetailCVCell.xib */; };
 		DEEB5FB5226CC8DE0088C798 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEB5FB4226CC8DE0088C798 /* HTTPClient.swift */; };
@@ -203,6 +224,7 @@
 		DEDE571C22702EB20071FCFD /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
 		DEDE571F22702EB20071FCFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		DEDE572122702EB20071FCFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DEDE573F227051FE0071FCFD /* PaymentIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PaymentIntent.entitlements; sourceTree = "<group>"; };
 		DEEAA9CA2255F4A5005FCE8E /* SavingDetailCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingDetailCVCell.swift; sourceTree = "<group>"; };
 		DEEAA9CB2255F4A5005FCE8E /* SavingDetailCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavingDetailCVCell.xib; sourceTree = "<group>"; };
 		DEEB5FB4226CC8DE0088C798 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -431,6 +453,7 @@
 		DEDE571022702EB10071FCFD /* PaymentIntent */ = {
 			isa = PBXGroup;
 			children = (
+				DEDE573F227051FE0071FCFD /* PaymentIntent.entitlements */,
 				DEDE571122702EB10071FCFD /* IntentHandler.swift */,
 				DEDE571322702EB10071FCFD /* Info.plist */,
 			);
@@ -647,6 +670,11 @@
 				TargetAttributes = {
 					DEDE570E22702EB10071FCFD = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					DEDE571722702EB20071FCFD = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -654,6 +682,9 @@
 					DEECB02122533430002D6C30 = {
 						CreatedOnToolsVersion = 10.2;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.Siri = {
 								enabled = 1;
 							};
@@ -686,6 +717,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEDE57422270C0E60071FCFD /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -722,6 +754,7 @@
 				DE7B38AB2257329300C17846 /* IncomeExpenseCVCell.xib in Resources */,
 				DE2BB3672253AC1D001D55E4 /* MonthCVCell.xib in Resources */,
 				DEECB0472253358B002D6C30 /* Accounting.storyboard in Resources */,
+				DEDE57452270C0F90071FCFD /* MainInterface.storyboard in Resources */,
 				DE21B90322578D9800B65719 /* PieChartCVCell.xib in Resources */,
 				DEECB04C2253358B002D6C30 /* Chart.storyboard in Resources */,
 				DEA65DF42259EE4700A10242 /* CategorysCVCell.xib in Resources */,
@@ -807,7 +840,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEDE57432270C0EC0071FCFD /* IntentViewController.swift in Sources */,
+				DEDE5737227033E70071FCFD /* MSNotificationManager.swift in Sources */,
 				DEDE571222702EB10071FCFD /* IntentHandler.swift in Sources */,
+				DEDE573D227036030071FCFD /* CategoryProvider.swift in Sources */,
+				DEDE5731227033400071FCFD /* mSaving.xcdatamodeld in Sources */,
+				DEDE5735227033E40071FCFD /* CoreDataManager.swift in Sources */,
+				DEDE574122706BEE0071FCFD /* String - extension.swift in Sources */,
+				DEDE5739227033F90071FCFD /* AccountingTransformer.swift in Sources */,
+				DEDE573B2270348B0071FCFD /* Notification - extension.swift in Sources */,
+				DEDE572F2270330C0071FCFD /* AccountingProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -815,7 +857,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEDE5738227033E70071FCFD /* MSNotificationManager.swift in Sources */,
+				DEDE57462270C0FC0071FCFD /* IntentHandler.swift in Sources */,
 				DEDE571D22702EB20071FCFD /* IntentViewController.swift in Sources */,
+				DEDE573E227036030071FCFD /* CategoryProvider.swift in Sources */,
+				DEDE5732227033410071FCFD /* mSaving.xcdatamodeld in Sources */,
+				DEDE5736227033E50071FCFD /* CoreDataManager.swift in Sources */,
+				DEDE573A227033FA0071FCFD /* AccountingTransformer.swift in Sources */,
+				DEDE573C2270348B0071FCFD /* Notification - extension.swift in Sources */,
+				DEDE57302270330C0071FCFD /* AccountingProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -869,9 +919,11 @@
 				DE366AB7226EA9F000A65954 /* CategoryProvider.swift in Sources */,
 				DE712852225E541400E12283 /* AccountDetailVC.swift in Sources */,
 				DEEB5FB5226CC8DE0088C798 /* HTTPClient.swift in Sources */,
+				DEDE574022705C320071FCFD /* IntentHandler.swift in Sources */,
 				DE2BB36322539B95001D55E4 /* UICollectionView - extension.swift in Sources */,
 				DEECB02622533430002D6C30 /* AppDelegate.swift in Sources */,
 				DEA65DF9225A211800A10242 /* IconCVCell.swift in Sources */,
+				DEDE57442270C0F70071FCFD /* IntentViewController.swift in Sources */,
 				DEBA92EB226D7CE200D93806 /* InvoiceRequest.swift in Sources */,
 				DEBA92ED226D821B00D93806 /* InvoiceProvider.swift in Sources */,
 				DEBA92EF226D8A4F00D93806 /* String - extension.swift in Sources */,
@@ -968,6 +1020,7 @@
 		DEDE572C22702EB20071FCFD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = PaymentIntent/PaymentIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B8QRU3Z535;
 				INFOPLIST_FILE = PaymentIntent/Info.plist;
@@ -987,6 +1040,7 @@
 		DEDE572D22702EB20071FCFD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = PaymentIntent/PaymentIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B8QRU3Z535;
 				INFOPLIST_FILE = PaymentIntent/Info.plist;

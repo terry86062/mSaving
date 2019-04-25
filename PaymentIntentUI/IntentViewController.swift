@@ -8,18 +8,14 @@
 
 import IntentsUI
 
-// As an example, this extension's Info.plist has been configured to handle interactions for INSendMessageIntent.
-// You will want to replace this or add other intents as appropriate.
-// The intents whose interactions you wish to handle must be declared in the extension's Info.plist.
-
-// You can test this example integration by saying things to Siri like:
-// "Send a message using <myApp>"
-
 class IntentViewController: UIViewController, INUIHostedViewControlling {
     
+    @IBOutlet weak var addAccountingLabel: UILabel!
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
         
     // MARK: - INUIHostedViewControlling
@@ -30,12 +26,25 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
                        interactiveBehavior: INUIInteractiveBehavior,
                        context: INUIHostedViewContext,
                        completion: @escaping (Bool, Set<INParameter>, CGSize) -> Void) {
+        
         // Do configuration here, including preparing views and calculating a desired size for presentation.
+        
         completion(true, parameters, self.desiredSize)
+        
     }
     
     var desiredSize: CGSize {
-        return self.extensionContext!.hostedViewMaximumAllowedSize
+        
+//        return self.extensionContext!.hostedViewMaximumAllowedSize
+        
+        return CGSize(width: 320, height: 150)
+        
     }
+    
+}
+
+extension IntentViewController {
+    
+    
     
 }

@@ -121,7 +121,7 @@ class BarChartCVCell: UICollectionViewCell {
         barChart.xAxis.labelPosition = .bottom
         
 //        xAxis.granularity = totalDay
-        barChart.xAxis.labelCount = totalDay / 2
+//        barChart.xAxis.labelCount = totalDay / 2
         
         //This must stay at end of function
         barChart.notifyDataSetChanged()

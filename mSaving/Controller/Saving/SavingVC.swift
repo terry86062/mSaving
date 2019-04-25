@@ -10,12 +10,6 @@ import UIKit
 
 import CoreData
 
-struct AccountingWithDate {
-    let accounting: Accounting
-    let date: Date
-    let dateComponents: DateComponents
-}
-
 struct SavingWithDate {
     let saving: Saving
     let date: Date

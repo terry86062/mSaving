@@ -10,6 +10,12 @@ import Foundation
 
 import CoreData
 
+struct AccountingWithDate {
+    let accounting: Accounting
+    let date: Date
+    let dateComponents: DateComponents
+}
+
 struct CategoryMonthTotal {
     
     let year: Int

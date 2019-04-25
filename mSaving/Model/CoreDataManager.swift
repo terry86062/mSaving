@@ -23,7 +23,7 @@ class CoreDataManager {
     
     lazy var persistentContainer: NSPersistentContainer = {
         
-        let container = NSPersistentContainer(name: "mSaving")
+        let container = NSCustomPersistentContainer(name: "mSaving")
         
         container.loadPersistentStores(completionHandler: { (_, error) in
             
@@ -105,6 +105,16 @@ class CoreDataManager {
             
         }
         
+    }
+    
+}
+
+class NSCustomPersistentContainer: NSPersistentContainer {
+    
+    override open class func defaultDirectoryURL() -> URL {
+        var storeURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.terry.mSaving")
+        storeURL = storeURL?.appendingPathComponent("mSaving.sqlite")
+        return storeURL!
     }
     
 }
