@@ -142,7 +142,8 @@ class SavingDetailAddVC: UIViewController {
         
         guard let selectedExpenseCategory = selectedExpenseCategory else { return }
         
-        SavingProvider().createSubSaving(main: false, date: date, amount: amount, selectedExpenseCategory: selectedExpenseCategory)
+        SavingProvider().createSaving(date: date, amount: amount, main: false,
+                                      selectedExpenseCategory: selectedExpenseCategory)
         
     }
     

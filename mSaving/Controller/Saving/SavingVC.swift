@@ -40,9 +40,9 @@ class SavingVC: UIViewController {
 
     @IBOutlet weak var editingButton: UIButton!
     
-    var accountingWithDateGroupArray: [[[AccountingWithDate]]] = []
+    var accountingsWithDateGroup: [[[AccountingWithDate]]] = []
     
-    var savingWithDateGroupArray: [[SavingWithDate]] = []
+    var savingsWithDateGroup: [[SavingWithDate]] = []
     
     var selectedYear = ""
     
@@ -60,60 +60,23 @@ class SavingVC: UIViewController {
         
     }
     
+    func setUpCollectionView() {
+        
+        monthCollectionView.helpRegister(cell: MonthCVCell())
+        
+        savingCollectionView.helpRegister(cell: SavingCVCell())
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
         
-        accountingWithDateGroupArray = AccountingProvider().accountingsWithDateGroup
+        accountingsWithDateGroup = AccountingProvider().accountingsWithDateGroup
         
-        let savingArray = SavingProvider().savings
+        savingsWithDateGroup = SavingProvider().savingsWithDateGroup
         
-        var savingWithDateArray: [SavingWithDate] = []
-        
-        if savingArray.count > 0 {
-            
-            for index in 0...savingArray.count - 1 {
-                
-                let date = Date(timeIntervalSince1970: TimeInterval(savingArray[index].month))
-                
-                savingWithDateArray.append(
-                    SavingWithDate(saving: savingArray[index],
-                                   date: date,
-                                   dateComponents: Calendar.current.dateComponents([.year, .month, .day, .weekday, .hour, .minute], from: date)
-                    )
-                )
-                
-            }
-            
-            for index in 0...savingWithDateArray.count - 1 {
-                
-                if index == 0 {
-                    
-                    savingWithDateGroupArray.append([savingWithDateArray[index]])
-                    
-                } else {
-                    
-                    if savingWithDateArray[index].dateComponents.month == savingWithDateArray[index - 1].dateComponents.month {
-                        
-                        savingWithDateGroupArray[savingWithDateGroupArray.count - 1].append(savingWithDateArray[index])
-                        
-                    } else {
-                        
-                        savingWithDateGroupArray.insert([savingWithDateArray[index]], at: 0)
-                        
-                    }
-                    
-                }
-                
-            }
-            
-        }
-        
-        print(savingWithDateGroupArray)
-        
-        print(savingWithDateGroupArray.count)
-        
-        if accountingWithDateGroupArray.count == 0 {
+        if accountingsWithDateGroup.count == 0 {
             
             let dateComponents = Calendar.current.dateComponents([.year, .month], from: Date())
             
@@ -123,28 +86,28 @@ class SavingVC: UIViewController {
             
             selectedMonth = "\(month)"
             
-            if savingWithDateGroupArray.count != 0 {
+            if savingsWithDateGroup.count != 0 {
                 
-                selectedSaving = savingWithDateGroupArray[savingWithDateGroupArray.count - 1].first
+                selectedSaving = savingsWithDateGroup[savingsWithDateGroup.count - 1].first
                 
             }
             
         } else {
             
-            guard let year = accountingWithDateGroupArray.last?.first?.first?.dateComponents.year,
-                let month = accountingWithDateGroupArray.last?.first?.first?.dateComponents.month else { return }
+            guard let year = accountingsWithDateGroup.last?.first?.first?.dateComponents.year,
+                let month = accountingsWithDateGroup.last?.first?.first?.dateComponents.month else { return }
             
             selectedYear = "\(year)"
             
             selectedMonth = "\(month)"
             
-            if savingWithDateGroupArray.count != 0 {
+            if savingsWithDateGroup.count != 0 {
                 
-                for index in 0...savingWithDateGroupArray.count - 1 {
+                for index in 0...savingsWithDateGroup.count - 1 {
                     
-                    if savingWithDateGroupArray[index].first?.dateComponents.year == year && savingWithDateGroupArray[index].first?.dateComponents.month == month {
+                    if savingsWithDateGroup[index].first?.dateComponents.year == year && savingsWithDateGroup[index].first?.dateComponents.month == month {
                         
-                        selectedSaving = savingWithDateGroupArray[index].first
+                        selectedSaving = savingsWithDateGroup[index].first
                         
                     }
                     
@@ -164,16 +127,54 @@ class SavingVC: UIViewController {
         
         super.viewDidAppear(animated)
         
-        let indexPath = IndexPath(item: accountingWithDateGroupArray.count - 1, section: 0)
+        showCorrectCollectionView()
         
-        savingCollectionView.scrollToItem(at: indexPath,
-                                          at: [.centeredVertically, .centeredHorizontally],
-                                          animated: false)
+    }
+    
+    func showCorrectCollectionView() {
         
-        guard let cell = monthCollectionView.cellForItem(at:
-            indexPath) as? MonthCVCell else { return }
+        if accountingsWithDateGroup.count == 0 {
+            
+            guard let cell = monthCollectionView.cellForItem(at:
+                IndexPath(row: 0, section: 0)) as? MonthCVCell else { return }
+            
+            cell.shadowView.alpha = 1
+            
+        } else {
+            
+            let indexPath = IndexPath(item: accountingsWithDateGroup.count - 1, section: 0)
+            
+            savingCollectionView.scrollToItem(at: indexPath,
+                                              at: [.centeredVertically, .centeredHorizontally],
+                                              animated: false)
+            
+            guard let cell = monthCollectionView.cellForItem(at:
+                indexPath) as? MonthCVCell else { return }
+            
+            cell.shadowView.alpha = 1
+            
+        }
         
-        cell.shadowView.alpha = 1
+    }
+    
+    func helpSetShadowAlpha(row: Int, show: Bool) {
+        
+        guard let cell = monthCollectionView.cellForItem(at: IndexPath(row: row, section: 0))
+            as? MonthCVCell else { return }
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            
+            if show {
+                
+                cell.shadowView.alpha = 1
+                
+            } else {
+                
+                cell.shadowView.alpha = 0
+                
+            }
+            
+        })
         
     }
     
@@ -181,18 +182,10 @@ class SavingVC: UIViewController {
         
         super.viewWillDisappear(animated)
         
-        accountingWithDateGroupArray = []
+        accountingsWithDateGroup = []
         
-        savingWithDateGroupArray = []
+        savingsWithDateGroup = []
         
-    }
-
-    func setUpCollectionView() {
-
-        monthCollectionView.helpRegister(cell: MonthCVCell())
-
-        savingCollectionView.helpRegister(cell: SavingCVCell())
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -235,13 +228,13 @@ extension SavingVC: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if accountingWithDateGroupArray.count == 0 {
+        if accountingsWithDateGroup.count == 0 {
             
             return 1
             
         } else {
             
-            return accountingWithDateGroupArray.count
+            return accountingsWithDateGroup.count
             
         }
         
@@ -256,7 +249,7 @@ extension SavingVC: UICollectionViewDataSource {
                 withReuseIdentifier: String(describing: MonthCVCell.self),
                 for: indexPath) as? MonthCVCell else { return MonthCVCell() }
 
-            if accountingWithDateGroupArray.count == 0 {
+            if accountingsWithDateGroup.count == 0 {
                 
                 let dateComponents = Calendar.current.dateComponents([.year, .month], from: Date())
                 
@@ -266,8 +259,8 @@ extension SavingVC: UICollectionViewDataSource {
                 
             } else {
                 
-                guard let month = accountingWithDateGroupArray[indexPath.row].first?.first?.dateComponents.month,
-                    let year = accountingWithDateGroupArray[indexPath.row].first?.first?.dateComponents.year else {
+                guard let month = accountingsWithDateGroup[indexPath.row].first?.first?.dateComponents.month,
+                    let year = accountingsWithDateGroup[indexPath.row].first?.first?.dateComponents.year else {
                     return cell
                 }
                 
@@ -283,11 +276,11 @@ extension SavingVC: UICollectionViewDataSource {
                 withReuseIdentifier: String(describing: SavingCVCell.self),
                 for: indexPath) as? SavingCVCell else { return SavingCVCell() }
             
-            if accountingWithDateGroupArray.count == 0 {
+            if accountingsWithDateGroup.count == 0 {
                 
-                if savingWithDateGroupArray.count > 0 {
+                if savingsWithDateGroup.count > 0 {
                 
-                    cell.initSavingCVCell(accountings: [], savings: savingWithDateGroupArray[indexPath.row])
+                    cell.initSavingCVCell(accountings: [], savings: savingsWithDateGroup[indexPath.row])
                 
                 } else {
                     
@@ -297,15 +290,15 @@ extension SavingVC: UICollectionViewDataSource {
                 
             } else {
                 
-                if savingWithDateGroupArray.count > 0 {
+                if savingsWithDateGroup.count > 0 {
                     
                     var count = 0
                     
-                    for index in 0...savingWithDateGroupArray.count - 1 {
+                    for index in 0...savingsWithDateGroup.count - 1 {
                         
-                        if savingWithDateGroupArray[index].first?.dateComponents.month == accountingWithDateGroupArray[indexPath.row].first?.first?.dateComponents.month {
+                        if savingsWithDateGroup[index].first?.dateComponents.month == accountingsWithDateGroup[indexPath.row].first?.first?.dateComponents.month {
                             
-                            cell.initSavingCVCell(accountings: accountingWithDateGroupArray[indexPath.row], savings: savingWithDateGroupArray[index])
+                            cell.initSavingCVCell(accountings: accountingsWithDateGroup[indexPath.row], savings: savingsWithDateGroup[index])
                             
                             break
                             
@@ -317,15 +310,15 @@ extension SavingVC: UICollectionViewDataSource {
                         
                     }
                     
-                    if count == savingWithDateGroupArray.count {
+                    if count == savingsWithDateGroup.count {
                         
-                        cell.initSavingCVCell(accountings: accountingWithDateGroupArray[indexPath.row], savings: [])
+                        cell.initSavingCVCell(accountings: accountingsWithDateGroup[indexPath.row], savings: [])
                         
                     }
                     
                 } else {
                     
-                    cell.initSavingCVCell(accountings: accountingWithDateGroupArray[indexPath.row], savings: [])
+                    cell.initSavingCVCell(accountings: accountingsWithDateGroup[indexPath.row], savings: [])
                     
                 }
                 
@@ -542,7 +535,7 @@ extension SavingVC {
 
                 })
 
-            case accountingWithDateGroupArray.count:
+            case accountingsWithDateGroup.count:
 
                 guard let cell2 = monthCollectionView.cellForItem(
                     at: IndexPath(

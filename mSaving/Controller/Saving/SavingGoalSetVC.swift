@@ -102,7 +102,7 @@ class SavingGoalSetVC: UIViewController {
         
         guard let date = Calendar.current.date(from: components) else { return }
         
-        SavingProvider().createSaving(main: true, date: date, amount: amount)
+        SavingProvider().createSaving(date: date, amount: amount)
         
     }
     

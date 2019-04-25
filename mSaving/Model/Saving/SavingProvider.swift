@@ -37,29 +37,15 @@ class SavingProvider {
         
     }
     
-    func createSaving(main: Bool, date: Date, amount: Int64) {
+    func createSaving(date: Date, amount: Int64, main: Bool = true, selectedExpenseCategory: ExpenseCategory? = nil) {
         
         let saving = Saving(context: coreDataManager.viewContext)
-        
-        saving.main = main
         
         saving.month = Int64(date.timeIntervalSince1970)
         
         saving.amount = amount
         
-        coreDataManager.saveContext()
-        
-    }
-    
-    func createSubSaving(main: Bool, date: Date, amount: Int64, selectedExpenseCategory: ExpenseCategory) {
-        
-        let saving = Saving(context: coreDataManager.viewContext)
-        
         saving.main = main
-        
-        saving.month = Int64(date.timeIntervalSince1970)
-        
-        saving.amount = amount
         
         saving.expenseSubCategory = selectedExpenseCategory
         

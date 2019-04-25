@@ -86,6 +86,8 @@ class SettingVC: UIViewController {
         
         fetchData()
         
+        accountArray[0].accounting?.allObjects
+        
     }
 
     func setUpCollectionView() {
