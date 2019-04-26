@@ -70,7 +70,7 @@ class AccountingProvider {
         
         let accountings = coreDataManager.fetch(entityType: Accounting(), sort: ["expenseCategory", "occurDate"], predicate: nil, reverse: true)
         
-        let accountingsWithDate = transformer.transformFrom(accountings: accountings)
+        let accountingsWithDate = transformer.transformFrom(accountings: [])
         
         let categoriesMonthTotal = transformer.transformToTotal(accountingsWithDate: accountingsWithDate)
         
@@ -116,42 +116,6 @@ class AccountingProvider {
         
     }
     
-    func fetchAccounting(month: Month) -> [[Accounting]] {
-        
-        let accounting = coreDataManager.fetch(entityType: Accounting(), sort: ["occurDate", "createDate"], predicate: NSPredicate(format: "month == %@", month), reverse: true)
-        
-        var newAccounting: [[Accounting]] = []
-        
-        for index in 0...accounting.count - 1 {
-            
-            let aAccounting = accounting[index]
-            
-            if index == 0 {
-                
-                newAccounting.append([accounting[index]])
-                
-            } else {
-                
-                let aaAccounting = accounting[index - 1]
-                
-                if aAccounting.occurDate == aaAccounting.occurDate {
-                    
-                    newAccounting[newAccounting.count - 1].append(aAccounting)
-                    
-                } else {
-                    
-                    newAccounting.append([accounting[index]])
-                    
-                }
-                
-            }
-            
-        }
-        
-        return newAccounting
-        
-    }
-    
     func helpSetMonth(occurDate: Date) -> Month? {
         
         let dataComponents = TimeManager().transform(date: occurDate)
@@ -181,6 +145,38 @@ class AccountingProvider {
         aMonth.month = Int64(month)
         
         return aMonth
+        
+    }
+    
+    func fetchAccounting(month: Month) -> [[Accounting]] {
+        
+        let accountings = coreDataManager.fetch(entityType: Accounting(),
+                                                sort: ["occurDate", "createDate"],
+                                                predicate: NSPredicate(format: "month == %@", month),
+                                                reverse: true)
+        
+        return transformer.transToAccountingsGroup(accountings: accountings)
+        
+    }
+    
+    func getTotalSpend(month: Month) -> Int {
+        
+        let accountings = coreDataManager.fetch(entityType: Accounting(),
+                                                sort: ["occurDate", "createDate"],
+                                                predicate: NSPredicate(format: "month == %@", month),
+                                                reverse: true)
+        
+        var totalSpend = 0
+        
+        guard accountings != [] else { return 0 }
+
+        for index in 0...accountings.count - 1 where accountings[index].expenseCategory != nil {
+            
+            totalSpend += Int(accountings[index].amount)
+            
+        }
+        
+        return totalSpend
         
     }
     

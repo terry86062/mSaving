@@ -10,13 +10,13 @@ import UIKit
 
 class MSNotificationManager {
     
-    var collectionView: UICollectionView?
+    var collectionViews: [UICollectionView] = []
     
     var fetchNewDataClosure: (() -> Void)?
     
-    func addNotificationForRenew(collectionView: UICollectionView, fetchNewDataClosure: @escaping () -> Void) {
+    func addNotificationForRenew(collectionView: [UICollectionView], fetchNewDataClosure: @escaping () -> Void) {
         
-        self.collectionView = collectionView
+        self.collectionViews = collectionView
         
         self.fetchNewDataClosure = fetchNewDataClosure
         
@@ -37,7 +37,13 @@ class MSNotificationManager {
         
         fetchNewDataClosure?()
         
-        collectionView?.reloadData()
+        guard collectionViews != [] else { return }
+        
+        for index in 0...collectionViews.count - 1 {
+            
+            collectionViews[index].reloadData()
+            
+        }
         
     }
     

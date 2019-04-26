@@ -24,6 +24,8 @@ class SavingCVCell: UICollectionViewCell {
 
     }
     
+    var accountingProvider = AccountingProvider()
+    
     var showAccounting = true
     
     var accountings: [[Accounting]] = []
@@ -32,17 +34,17 @@ class SavingCVCell: UICollectionViewCell {
     
     var touchMainSaving: (() -> Void)?
     
+    var presentSavingDetailNew: (() -> Void)?
+    
+    var presentSavingDetailEdit: (() -> Void)?
+    
     var goToAccountDetail: (() -> Void)?
     
-    var presentSavingDetailAdd: (() -> Void)?
+    var totalSpend = 0
     
-    var editSavingDetailAdd: (() -> Void)?
-    
-    var selectedAccounting: AccountingWithDate?
+    var selectedAccounting: Accounting?
     
     var selectedSavingDetail: Saving?
-    
-    var totalSpend = 0
     
     override func awakeFromNib() {
 
@@ -54,35 +56,19 @@ class SavingCVCell: UICollectionViewCell {
         
         self.showAccounting = showAccounting
         
-        accountings = AccountingProvider().fetchAccounting(month: month)
+        accountings = accountingProvider.fetchAccounting(month: month)
         
         savings = SavingProvider().fetchSaving(month: month)
-//
-//        totalSpend = 0
-//
-//        let accountingsFlatMaped = accountings.flatMap({ $0 })
-//
-//        if accountingsFlatMaped.count > 0 {
-//
-//            for index in 0...accountingsFlatMaped.count - 1 {
-//
-//                if accountingsFlatMaped[index].accounting.expenseCategory != nil {
-//
-//                    totalSpend += Int(accountingsFlatMaped[index].accounting.amount)
-//
-//                }
-//
-//            }
-//
-//        }
+        
+        totalSpend = accountingProvider.getTotalSpend(month: month)
         
     }
 
     func setUpCollectionView() {
+        
+        savingAccountingCollectionView.helpRegister(cell: AccountingsCVCell())
 
         savingAccountingCollectionView.helpRegister(cell: SavingGoalCVCell())
-
-        savingAccountingCollectionView.helpRegister(cell: AccountingsCVCell())
 
         savingAccountingCollectionView.helpRegister(cell: SavingDetailCVCell())
 
@@ -173,7 +159,7 @@ extension SavingCVCell: UICollectionViewDataSource {
                             return AddSavingDetailCVCell()
                     }
                     
-                    cell.presentSavingDetailAdd = presentSavingDetailAdd
+                    cell.presentSavingDetailAdd = presentSavingDetailNew
                     
                     return cell
                     
@@ -203,7 +189,7 @@ extension SavingCVCell: UICollectionViewDataSource {
                         
                         self.selectedSavingDetail = self.savings[indexPath.row]
                         
-                        self.editSavingDetailAdd?()
+                        self.presentSavingDetailEdit?()
                         
                     }
                     
@@ -220,6 +206,17 @@ extension SavingCVCell: UICollectionViewDataSource {
 }
 
 extension SavingCVCell: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
+        
+        cell.alpha = 0
+        
+        UIView.animate(withDuration: 0.5, delay: 0.05 * Double(indexPath.row),
+                       animations: { cell.alpha = 1 })
+        
+    }
     
 }
 

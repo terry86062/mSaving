@@ -534,7 +534,8 @@
                         <outlet property="monthCollectionView" destination="yhK-G2-nhO" id="v3X-xS-IUV"/>
                         <outlet property="savingCollectionView" destination="Y4f-oa-sf1" id="UWY-KF-Mi0"/>
                         <outlet property="searchButton" destination="HBc-ip-w2C" id="EJB-S8-bV9"/>
-                        <segue destination="YWh-vS-MS1" kind="presentation" identifier="goToSavingDetail" modalPresentationStyle="overFullScreen" id="E7O-at-pcr"/>
+                        <segue destination="YWh-vS-MS1" kind="presentation" identifier="goToSavingDetailNew" modalPresentationStyle="overFullScreen" id="E7O-at-pcr"/>
+                        <segue destination="YWh-vS-MS1" kind="presentation" identifier="goToSavingDetailEdit" modalPresentationStyle="overFullScreen" id="II0-Ca-leY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X3f-df-BEJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2533,4 +2534,7 @@
             <color red="0.99215686274509807" green="0.87450980392156863" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="II0-Ca-leY"/>
+    </inferredMetricsTieBreakers>
 </document>

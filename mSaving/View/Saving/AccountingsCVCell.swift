@@ -24,13 +24,13 @@ class AccountingsCVCell: UICollectionViewCell {
 
     }
 
-    var goToAccountDetail: (() -> Void)?
-
     var haveHeader = false
     
     var accountings: [Accounting] = []
     
-    var selectedAccounting: AccountingWithDate?
+    var goToAccountDetail: (() -> Void)?
+    
+    var selectedAccounting: Accounting?
 
     override func awakeFromNib() {
 

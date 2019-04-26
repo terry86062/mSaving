@@ -54,7 +54,9 @@ class ChartVC: UIViewController {
         
         fetchData()
         
-        notificationManager.addNotificationForRenew(collectionView: analysisCollectionView) { [weak self] in
+        let collectionViews: [UICollectionView] = [monthCollectionView, analysisCollectionView]
+        
+        notificationManager.addNotificationForRenew(collectionView: collectionViews) { [weak self] in
             
             self?.fetchData()
             
@@ -146,7 +148,7 @@ extension ChartVC: UICollectionViewDataSource {
                 
                 guard let month = dateComponents.month, let year = dateComponents.year else { return cell }
                 
-                cell.initMonthCVCell(year: "\(year)", month: "\(month)")
+//                cell.initMonthCVCell(year: "\(year)", month: "\(month)")
                 
             } else {
                 
@@ -155,7 +157,7 @@ extension ChartVC: UICollectionViewDataSource {
                         return cell
                 }
                 
-                cell.initMonthCVCell(year: "\(year)", month: "\(month)")
+//                cell.initMonthCVCell(year: "\(year)", month: "\(month)")
                 
             }
 

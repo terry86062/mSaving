@@ -13,26 +13,18 @@ class MonthCVCell: UICollectionViewCell {
     @IBOutlet weak var monthLabel: UILabel!
 
     @IBOutlet weak var shadowView: UIView!
-    
-    var year = ""
-    
-    var month = ""
 
     override func awakeFromNib() {
 
         super.awakeFromNib()
+        
+        monthLabel.text = "\(TimeManager().todayMonth)月"
 
     }
 
-    func initMonthCVCell(year: String, month: String) {
+    func initMonthCVCell(month: Month) {
 
-        monthLabel.text = month + "月"
-
-        shadowView.alpha = 0
-        
-        self.year = year
-        
-        self.month = month
+        monthLabel.text = "\(month.month)月"
 
     }
 

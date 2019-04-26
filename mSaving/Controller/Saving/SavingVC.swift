@@ -38,15 +38,13 @@ class SavingVC: UIViewController {
 
     @IBOutlet weak var editingButton: UIButton!
     
-    let timeManager = TimeManager()
+    let notificationManager = MSNotificationManager()
     
     var showAccounting = true
     
     var months: [Month] = []
     
-    var selectedYear = ""
-
-    var selectedMonth = ""
+    var selectedAccounting: Accounting?
     
     var selectedSaving: Saving?
     
@@ -59,6 +57,8 @@ class SavingVC: UIViewController {
         setUpCollectionView()
         
         fetchData()
+        
+        setUpNotification()
         
     }
     
@@ -76,54 +76,15 @@ class SavingVC: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    func setUpNotification() {
         
-        super.viewWillAppear(animated)
+        let collectionViews: [UICollectionView] = [monthCollectionView, savingCollectionView]
         
-//        if accountingsWithDateGroup.count == 0 {
-//
-//            let dateComponents = Calendar.current.dateComponents([.year, .month], from: Date())
-//
-//            guard let month = dateComponents.month, let year = dateComponents.year else { return }
-//
-//            selectedYear = "\(year)"
-//
-//            selectedMonth = "\(month)"
-//
-//            if savingsWithDateGroup.count != 0 {
-//
-//                selectedSaving = savingsWithDateGroup[savingsWithDateGroup.count - 1].first
-//
-//            }
-//
-//        } else {
-//
-//            guard let year = accountingsWithDateGroup.last?.first?.first?.dateComponents.year,
-//                let month = accountingsWithDateGroup.last?.first?.first?.dateComponents.month else { return }
-//
-//            selectedYear = "\(year)"
-//
-//            selectedMonth = "\(month)"
-//
-//            if savingsWithDateGroup.count != 0 {
-//
-//                for index in 0...savingsWithDateGroup.count - 1 {
-//
-//                    if savingsWithDateGroup[index].first?.dateComponents.year == year && savingsWithDateGroup[index].first?.dateComponents.month == month {
-//
-//                        selectedSaving = savingsWithDateGroup[index].first
-//
-//                    }
-//
-//                }
-//
-//            }
-//
-//        }
-//
-//        monthCollectionView.reloadData()
-//
-//        savingCollectionView.reloadData()
+        notificationManager.addNotificationForRenew(collectionView: collectionViews) { [weak self] in
+            
+            self?.fetchData()
+            
+        }
         
     }
     
@@ -137,48 +98,21 @@ class SavingVC: UIViewController {
     
     func showCorrectCollectionView() {
         
-//        if accountingsWithDateGroup.count == 0 {
-//
-//            guard let cell = monthCollectionView.cellForItem(at:
-//                IndexPath(row: 0, section: 0)) as? MonthCVCell else { return }
-//
-//            cell.shadowView.alpha = 1
-//
-//        } else {
-//
-//            let indexPath = IndexPath(item: accountingsWithDateGroup.count - 1, section: 0)
-//
-//            savingCollectionView.scrollToItem(at: indexPath,
-//                                              at: [.centeredVertically, .centeredHorizontally],
-//                                              animated: false)
-//
-//            guard let cell = monthCollectionView.cellForItem(at:
-//                indexPath) as? MonthCVCell else { return }
-//
-//            cell.shadowView.alpha = 1
-//
-//        }
+        guard months != [] else { return }
         
-    }
-    
-    func helpSetShadowAlpha(row: Int, show: Bool) {
+        let indexPath = IndexPath(item: months.count - 1, section: 0)
         
-        guard let cell = monthCollectionView.cellForItem(at: IndexPath(row: row, section: 0))
-            as? MonthCVCell else { return }
+        savingCollectionView.scrollToItem(at: indexPath,
+                                         at: [.centeredVertically, .centeredHorizontally],
+                                         animated: false)
         
-        UIView.animate(withDuration: 0.5, animations: {
+        if indexPath.row == 0 {
             
-            if show {
-                
-                cell.shadowView.alpha = 1
-                
-            } else {
-                
-                cell.shadowView.alpha = 0
-                
-            }
+            helpSetShadowAlpha(row: 0, show: true)
             
-        })
+            setUpSelectedSaving(row: 0)
+            
+        }
         
     }
     
@@ -186,33 +120,33 @@ class SavingVC: UIViewController {
         
         if segue.identifier == "goToSavingGoalSetVC" {
             
-            guard let tabBarVC = tabBarController as? TabBarController else { return }
-            
-            tabBarVC.blackView.isHidden = false
+            helpHideTabBarVCBlackView()
             
             guard let savingGoalSetVC = segue.destination as? SavingGoalSetVC else { return }
             
-            savingGoalSetVC.selectedMonth = selectedMonth
-            
-            savingGoalSetVC.selectedYear = selectedYear
-            
             savingGoalSetVC.selectedSaving = selectedSaving
             
-        } else if segue.identifier == "goToSavingDetail" {
+        } else if segue.identifier == "goToSavingDetailNew" {
             
-            guard let tabBarVC = tabBarController as? TabBarController else { return }
+            helpHideTabBarVCBlackView()
             
-            tabBarVC.blackView.isHidden = false
+        } else if segue.identifier == "goToSavingDetailEdit" {
+            
+            helpHideTabBarVCBlackView()
             
             guard let savingDetailAddVC = segue.destination as? SavingDetailAddVC else { return }
-            
-            savingDetailAddVC.selectedMonth = selectedMonth
-            
-            savingDetailAddVC.selectedYear = selectedYear
             
             savingDetailAddVC.selectedSavingDetail = selectedSavingDetail
             
         }
+        
+    }
+    
+    func helpHideTabBarVCBlackView() {
+        
+        guard let tabBarVC = tabBarController as? TabBarController else { return }
+        
+        tabBarVC.blackView.isHidden = false
         
     }
 
@@ -237,17 +171,9 @@ extension SavingVC: UICollectionViewDataSource {
                 withReuseIdentifier: String(describing: MonthCVCell.self),
                 for: indexPath) as? MonthCVCell else { return MonthCVCell() }
 
-            if months == [] {
-                
-                cell.initMonthCVCell(year: "\(timeManager.todayYear)", month: "\(timeManager.todayMonth)")
-                
-            } else {
-                
-                let month = months[indexPath.row]
-                
-                cell.initMonthCVCell(year: "\(month.year)", month: "\(month.month)")
-                
-            }
+            guard months != [] else { return cell }
+            
+            cell.initMonthCVCell(month: months[indexPath.row])
             
             return cell
 
@@ -275,19 +201,17 @@ extension SavingVC: UICollectionViewDataSource {
                 
             }
             
-            cell.presentSavingDetailAdd = {
+            cell.presentSavingDetailNew = {
                 
-                self.selectedSavingDetail = nil
-                
-                self.performSegue(withIdentifier: "goToSavingDetail", sender: nil)
+                self.performSegue(withIdentifier: "goToSavingDetailNew", sender: nil)
                 
             }
             
-            cell.editSavingDetailAdd = {
+            cell.presentSavingDetailEdit = {
                 
                 self.selectedSavingDetail = cell.selectedSavingDetail
                 
-                self.performSegue(withIdentifier: "goToSavingDetail", sender: nil)
+                self.performSegue(withIdentifier: "goToSavingDetailEdit", sender: nil)
                 
             }
             
@@ -298,8 +222,6 @@ extension SavingVC: UICollectionViewDataSource {
                 
                 guard let accounting = cell.selectedAccounting else { return }
                 
-                self.navigationController?.pushViewController(accountingVC, animated: true)
-                
 //                accountingVC.setAccountingRevise(occurDate: accounting.accounting.occurDate,
 //                                                 date: accounting.date,
 //                                                 amount: accounting.accounting.amount,
@@ -307,31 +229,13 @@ extension SavingVC: UICollectionViewDataSource {
 //                                                 expenseCategory: accounting.accounting.expenseSubCategory,
 //                                                 incomeCategory: accounting.accounting.incomeSubCategory)
                 
+                self.navigationController?.pushViewController(accountingVC, animated: true)
+            
             }
             
             cell.savingAccountingCollectionView.reloadData()
 
             return cell
-
-        }
-
-    }
-
-}
-
-extension SavingVC: UICollectionViewDelegate {
-
-    func collectionView(_ collectionView: UICollectionView,
-                        willDisplay cell: UICollectionViewCell,
-                        forItemAt indexPath: IndexPath) {
-
-        if collectionView != monthCollectionView && collectionView != savingCollectionView {
-
-            cell.alpha = 0
-
-            UIView.animate(withDuration: 0.5,
-                           delay: 0.05 * Double(indexPath.row),
-                           animations: { cell.alpha = 1 })
 
         }
 
@@ -347,11 +251,8 @@ extension SavingVC: UICollectionViewDelegateFlowLayout {
 
         if collectionView == monthCollectionView {
 
-            return UIEdgeInsets(
-                top: 0,
-                left: monthCollectionView.frame.width / 3,
-                bottom: 0,
-                right: monthCollectionView.frame.width / 3)
+            return UIEdgeInsets(top: 0, left: monthCollectionView.frame.width / 3,
+                                bottom: 0, right: monthCollectionView.frame.width / 3)
 
         } else {
 
@@ -394,126 +295,115 @@ extension SavingVC {
                                    targetContentOffset: UnsafeMutablePointer<CGPoint>) {
 
         if scrollView == monthCollectionView {
-
+            
             // Simulate "Page" Function
-
-            let pageWidth: Float = Float(monthCollectionView.frame.width/3)
+            
+            let pageWidth: Float = Float(monthCollectionView.frame.width / 3)
+            
             let currentOffset: Float = Float(scrollView.contentOffset.x)
+            
             let targetOffset: Float = Float(targetContentOffset.pointee.x)
+            
             var newTargetOffset: Float = 0
+            
             if targetOffset > currentOffset {
+                
                 newTargetOffset = ceilf(currentOffset / pageWidth) * pageWidth
+                
             } else {
+                
                 newTargetOffset = floorf(currentOffset / pageWidth) * pageWidth
+                
             }
+            
             if newTargetOffset < 0 {
+                
                 newTargetOffset = 0
+                
             } else if newTargetOffset > Float(scrollView.contentSize.width) {
+                
                 newTargetOffset = Float(Float(scrollView.contentSize.width))
+                
             }
-
+            
             targetContentOffset.pointee.x = CGFloat(currentOffset)
+            
             scrollView.setContentOffset(CGPoint(x: CGFloat(newTargetOffset),
                                                 y: scrollView.contentOffset.y), animated: true)
-
+            
         }
 
     }
-
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
-        if scrollView.isEqual(monthCollectionView) {
-
-            savingCollectionView.bounds.origin.x = monthCollectionView.bounds.origin.x * 3
-
-        } else if scrollView.isEqual(savingCollectionView) {
-
-            monthCollectionView.bounds.origin.x = savingCollectionView.bounds.origin.x / 3
-
-            let row = Int((savingCollectionView.bounds.origin.x +
-                            savingCollectionView.frame.width / 2) /
-                            savingCollectionView.frame.width)
-
-            guard let cell = monthCollectionView.cellForItem(at: IndexPath(
-                    row: Int((savingCollectionView.bounds.origin.x +
-                                savingCollectionView.frame.width / 2) /
-                                savingCollectionView.frame.width),
-                    section: 0)) as? MonthCVCell else { return }
-
-            UIView.animate(withDuration: 0.5, animations: {
-
-                cell.shadowView.alpha = 1
-
-                self.selectedMonth = cell.month
-                
-                self.selectedYear = cell.year
-                
-            })
-
-            switch row {
-
-            case 0:
-
-                guard let cell3 = monthCollectionView.cellForItem(
-                    at: IndexPath(
-                        row: Int((savingCollectionView.bounds.origin.x +
-                                    savingCollectionView.frame.width / 2) /
-                                    savingCollectionView.frame.width) + 1,
-                        section: 0)) as? MonthCVCell else { return }
-
-                UIView.animate(withDuration: 0.5, animations: {
-
-                    cell3.shadowView.alpha = 0
-
-                })
-
-//            case accountingsWithDateGroup.count:
-            case months.count:
-
-                guard let cell2 = monthCollectionView.cellForItem(
-                    at: IndexPath(
-                        row: Int((savingCollectionView.bounds.origin.x +
-                                    savingCollectionView.frame.width / 2) /
-                                    savingCollectionView.frame.width) - 1,
-                        section: 0)) as? MonthCVCell else { return }
-
-                UIView.animate(withDuration: 0.5, animations: {
-
-                    cell2.shadowView.alpha = 0
-
-                })
-
-            default:
-
-                guard let cell2 = monthCollectionView.cellForItem(
-                    at: IndexPath(
-                        row: Int((savingCollectionView.bounds.origin.x +
-                                    savingCollectionView.frame.width / 2) /
-                                    savingCollectionView.frame.width) - 1,
-                        section: 0)) as? MonthCVCell else { return }
-
-                UIView.animate(withDuration: 0.5, animations: {
-
-                    cell2.shadowView.alpha = 0
-
-                })
-
-                guard let cell3 = monthCollectionView.cellForItem(
-                    at: IndexPath(
-                        row: Int((savingCollectionView.bounds.origin.x +
-                                    savingCollectionView.frame.width / 2) /
-                                    savingCollectionView.frame.width) + 1,
-                        section: 0)) as? MonthCVCell else { return }
-
-                UIView.animate(withDuration: 0.5, animations: {
-
-                    cell3.shadowView.alpha = 0
-
-                })
-
-            }
-
+        
+        monthCollectionView.bounds.origin.x = savingCollectionView.bounds.origin.x / 3
+        
+        let originX = savingCollectionView.bounds.origin.x
+        
+        let width = savingCollectionView.frame.width
+        
+        let row = Int(originX / width + 0.5)
+        
+        helpSetShadowAlpha(row: row, show: true)
+        
+        setUpSelectedSaving(row: row)
+        
+        switch row {
+            
+        case 0:
+            
+            helpSetShadowAlpha(row: row + 1, show: false)
+            
+        case months.count - 1:
+            
+            helpSetShadowAlpha(row: row - 1, show: false)
+            
+        default:
+            
+            helpSetShadowAlpha(row: row - 1, show: false)
+            
+            helpSetShadowAlpha(row: row + 1, show: false)
+            
         }
+        
+    }
+    
+    func helpSetShadowAlpha(row: Int, show: Bool) {
+        
+        guard let cell = monthCollectionView.cellForItem(at: IndexPath(row: row, section: 0))
+            as? MonthCVCell else { return }
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            
+            if show {
+                
+                cell.shadowView.alpha = 1
+                
+            } else {
+                
+                cell.shadowView.alpha = 0
+                
+            }
+            
+        })
+        
+    }
+    
+    func setUpSelectedSaving(row: Int) {
+
+        guard let cell = savingCollectionView.cellForItem(at: IndexPath(row: row, section: 0))
+            as? SavingCVCell else { return }
+        
+        guard cell.savings != [] else {
+            
+            selectedSaving = nil
+            
+            return
+            
+        }
+        
+        selectedSaving = cell.savings[0]
 
     }
 

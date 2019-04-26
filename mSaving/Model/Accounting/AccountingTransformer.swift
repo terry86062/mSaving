@@ -10,6 +10,43 @@ import Foundation
 
 class AccountingTransformer {
     
+    func transToAccountingsGroup(accountings: [Accounting]) -> [[Accounting]] {
+        
+        var accountingsGroup: [[Accounting]] = []
+        
+        guard accountings != [] else { return [] }
+        
+        for index in 0...accountings.count - 1 {
+            
+            let accounting = accountings[index]
+            
+            if index == 0 {
+                
+                accountingsGroup.append([accounting])
+                
+            } else {
+                
+                let preAccounting = accountings[index - 1]
+                
+                if accounting.occurDate == preAccounting.occurDate {
+                    
+                    accountingsGroup[accountingsGroup.count - 1].append(accounting)
+                    
+                } else {
+                    
+                    accountingsGroup.append([accounting])
+                    
+                }
+                
+            }
+            
+        }
+        
+        return accountingsGroup
+        
+    }
+    
+    
     func transformFrom(accountings: [Accounting]) -> [AccountingWithDate] {
         
         var accountingsWithDate: [AccountingWithDate] = []

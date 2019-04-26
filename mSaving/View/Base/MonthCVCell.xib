@@ -23,7 +23,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VSZ-5f-qZd">
                         <rect key="frame" x="0.0" y="0.0" width="138" height="43"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ode-J8-y6L">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ode-J8-y6L">
                                 <rect key="frame" x="21" y="0.5" width="96" height="32"/>
                                 <color key="backgroundColor" name="mSYellow"/>
                                 <constraints>

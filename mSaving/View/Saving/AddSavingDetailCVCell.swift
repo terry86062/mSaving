@@ -32,9 +32,7 @@ class AddSavingDetailCVCell: UICollectionViewCell {
 
     @IBAction func goToSavingDetailAdd(_ sender: UIButton) {
 
-        guard let show = presentSavingDetailAdd else { return }
-
-        show()
+        presentSavingDetailAdd?()
 
     }
 
