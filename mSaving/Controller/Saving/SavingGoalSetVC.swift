@@ -140,6 +140,8 @@ class SavingGoalSetVC: UIViewController {
         
         CoreDataManager.shared.saveContext()
         
+        MSNotificationManager().postSavingChanged()
+        
     }
 
 }

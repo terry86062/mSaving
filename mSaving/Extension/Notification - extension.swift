@@ -14,4 +14,6 @@ extension Notification.Name {
     
     static let savingChanged = Notification.Name("savingChanged")
     
+    static let accountChanged = Notification.Name("accountChanged")
+    
 }

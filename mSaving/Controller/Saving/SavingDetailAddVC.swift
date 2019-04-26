@@ -28,15 +28,11 @@ class SavingDetailAddVC: UIViewController {
         
     }
     
-    var selectedYear = ""
-    
-    var selectedMonth = ""
+    var expenseCategorys: [ExpenseCategory] = []
     
     var selectedSavingDetail: Saving?
     
     var selectedExpenseCategory: ExpenseCategory?
-    
-    var expenseCategorys: [ExpenseCategory] = []
     
     override func viewDidLoad() {
         
@@ -46,9 +42,7 @@ class SavingDetailAddVC: UIViewController {
         
         savingDetailTextField.becomeFirstResponder()
         
-        let expenseCategorys = CategoryProvider().expenseCategories
-        
-        self.expenseCategorys = expenseCategorys
+        expenseCategorys = CategoryProvider().expenseCategories
         
         if selectedSavingDetail != nil {
             
@@ -206,9 +200,7 @@ extension SavingDetailAddVC: UICollectionViewDataSource {
     
 }
 
-extension SavingDetailAddVC: UICollectionViewDelegate {
-    
-}
+extension SavingDetailAddVC: UICollectionViewDelegate { }
 
 extension SavingDetailAddVC: UICollectionViewDelegateFlowLayout {
     

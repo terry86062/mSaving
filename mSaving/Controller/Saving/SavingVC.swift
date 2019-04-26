@@ -80,13 +80,15 @@ class SavingVC: UIViewController {
     
     func setUpNotification() {
         
-        let collectionViews: [UICollectionView] = [monthCollectionView, savingCollectionView]
-        
-        notificationManager.addNotificationForRenew(collectionView: collectionViews) { [weak self] in
+        notificationManager.addAllNotification(changeHandler: { [weak self] in
             
             self?.fetchData()
             
-        }
+            self?.monthCollectionView.reloadData()
+            
+            self?.savingCollectionView.reloadData()
+            
+        })
         
     }
     

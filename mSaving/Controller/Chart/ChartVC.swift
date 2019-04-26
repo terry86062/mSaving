@@ -54,13 +54,37 @@ class ChartVC: UIViewController {
         
         fetchData()
         
-        let collectionViews: [UICollectionView] = [monthCollectionView, analysisCollectionView]
+        setUpNotification()
         
-        notificationManager.addNotificationForRenew(collectionView: collectionViews) { [weak self] in
+    }
+    
+    func setUpCollectionView() {
+        
+        monthCollectionView.helpRegister(cell: MonthCVCell())
+        
+        analysisCollectionView.helpRegister(cell: AnalysisCVCell())
+        
+    }
+    
+    func fetchData() {
+        
+        categoryAccountingMonthTotalArray = AccountingProvider().categoriesMonthTotalGroup
+        
+        accountingWithDateGroupArray = AccountingProvider().accountingsWithDateGroup
+        
+    }
+    
+    func setUpNotification() {
+        
+        notificationManager.addAccountingNotification(changeHandler: { [weak self] in
             
             self?.fetchData()
             
-        }
+            self?.monthCollectionView.reloadData()
+            
+            self?.analysisCollectionView.reloadData()
+            
+        })
         
     }
     
@@ -80,22 +104,6 @@ class ChartVC: UIViewController {
             indexPath) as? MonthCVCell else { return }
         
         cell.shadowView.alpha = 1
-        
-    }
-    
-    func setUpCollectionView() {
-
-        monthCollectionView.helpRegister(cell: MonthCVCell())
-
-        analysisCollectionView.helpRegister(cell: AnalysisCVCell())
-
-    }
-    
-    func fetchData() {
-        
-        categoryAccountingMonthTotalArray = AccountingProvider().categoriesMonthTotalGroup
-        
-        accountingWithDateGroupArray = AccountingProvider().accountingsWithDateGroup
         
     }
     

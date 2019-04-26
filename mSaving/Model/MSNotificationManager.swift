@@ -10,40 +10,44 @@ import UIKit
 
 class MSNotificationManager {
     
-    var collectionViews: [UICollectionView] = []
+    var handler: (() -> Void)?
     
-    var fetchData: (() -> Void)?
-    
-    func addAccountingNotification(collectionViews: [UICollectionView], fetchData: @escaping () -> Void) {
+    func addAllNotification(changeHandler: @escaping () -> Void) {
         
-        self.collectionViews = collectionViews
+        handler = changeHandler
         
-        self.fetchData = fetchData
+        NotificationCenter.default.addObserver(self, selector: #selector(anyChanged(notification:)),
+                                               name: .accountingChanged, object: nil)
         
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(accountingChanged(notification:)),
-                                               name: .accountingChanged,
-                                               object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(anyChanged(notification:)),
+                                               name: .savingChanged, object: nil)
         
     }
     
-    @objc func accountingChanged(notification: Notification) {
+    func addAccountingNotification(changeHandler: @escaping () -> Void) {
         
-        fetchData?()
+        handler = changeHandler
         
-        guard collectionViews != [] else { return }
+        NotificationCenter.default.addObserver(self, selector: #selector(anyChanged(notification:)),
+                                               name: .accountingChanged, object: nil)
         
-        for index in 0...collectionViews.count - 1 {
-            
-            collectionViews[index].reloadData()
-            
-        }
+    }
+    
+    @objc func anyChanged(notification: Notification) {
+        
+        handler?()
         
     }
     
     func postAccountingChanged() {
         
         NotificationCenter.default.post(name: .accountingChanged, object: nil)
+        
+    }
+    
+    func postSavingChanged() {
+        
+        NotificationCenter.default.post(name: .savingChanged, object: nil)
         
     }
     

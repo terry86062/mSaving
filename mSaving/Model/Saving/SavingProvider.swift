@@ -12,6 +12,8 @@ class SavingProvider {
     
     let coreDataManager = CoreDataManager.shared
     
+    let notificationManager = MSNotificationManager()
+    
     func createSaving(month: Month, amount: Int64, main: Bool = true, selectedExpenseCategory: ExpenseCategory? = nil) {
         
         let saving = Saving(context: coreDataManager.viewContext)
@@ -25,6 +27,8 @@ class SavingProvider {
         saving.expenseCategory = selectedExpenseCategory
         
         coreDataManager.saveContext()
+        
+        notificationManager.postSavingChanged()
         
     }
     
@@ -42,6 +46,8 @@ class SavingProvider {
         coreDataManager.viewContext.delete(saving)
         
         coreDataManager.saveContext()
+        
+        notificationManager.postSavingChanged()
         
     }
     
