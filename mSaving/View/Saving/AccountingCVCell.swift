@@ -62,9 +62,7 @@ class AccountingCVCell: UICollectionViewCell {
 
     @IBAction func goToAccountDetail(_ sender: UIButton) {
 
-        guard let goTo = goToAccountDetail else { return }
-
-        goTo()
+        goToAccountDetail?()
 
     }
 

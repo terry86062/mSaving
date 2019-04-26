@@ -26,6 +26,14 @@ class TimeManager {
         
     }
     
+    func transform(int: Int64) -> DateComponents {
+        
+        let date = Date(timeIntervalSince1970: TimeInterval(int))
+        
+        return Calendar.current.dateComponents([.year, .month, .day, .weekday, .hour, .minute], from: date)
+        
+    }
+    
     func transform(date: Date) -> DateComponents {
         
         return Calendar.current.dateComponents([.year, .month, .day, .weekday, .hour, .minute], from: date)

@@ -24,7 +24,7 @@ class SavingDetailCVCell: UICollectionViewCell {
     
     @IBOutlet weak var categorySpendViewConstraint: NSLayoutConstraint!
     
-    var showSavingDetailAdd: (() -> Void)?
+    var showSavingDetail: (() -> Void)?
 
     override func awakeFromNib() {
 
@@ -32,17 +32,17 @@ class SavingDetailCVCell: UICollectionViewCell {
 
     }
     
-    func initSavingDetailCVCell(budget: Int64, totalSpend: Int, imageName: String, subCategoryName: String, hex: String) {
+    func initSavingDetailCVCell(budget: Int64, totalSpend: Int, imageName: String, categoryName: String, hex: String) {
         
         categoryImageView.image = UIImage(named: imageName)
         
         categoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
         
-        categoryNameLabel.text = subCategoryName + "預算"
+        categoryNameLabel.text = categoryName + "預算"
         
         categoryBudgetLabel.text = "$" + String(budget)
         
-        categorySpendView.isHidden = false
+        categorySpendLabel.text = "-$" + String(totalSpend)
         
         if categorySpendViewConstraint != nil {
             
@@ -53,19 +53,16 @@ class SavingDetailCVCell: UICollectionViewCell {
         if budget != 0 {
             
             NSLayoutConstraint(item: categorySpendView as Any, attribute: .width, relatedBy: .equal,
-                               toItem: categoryBudgetView, attribute: .width, multiplier: CGFloat(Double(totalSpend) / Double(budget)), constant: 0).isActive = true
-            
+                               toItem: categoryBudgetView, attribute: .width,
+                               multiplier: CGFloat(Double(totalSpend) / Double(budget)), constant: 0).isActive = true
+
         }
-        
-        categorySpendLabel.text = "-$" + String(totalSpend)
         
     }
 
     @IBAction func goToSavingDetailAdd(_ sender: UIButton) {
 
-        guard let show = showSavingDetailAdd else { return }
-
-        show()
+        showSavingDetail?()
 
     }
 

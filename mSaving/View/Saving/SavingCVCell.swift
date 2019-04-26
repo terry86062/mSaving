@@ -28,7 +28,7 @@ class SavingCVCell: UICollectionViewCell {
     
     var showAccounting = true
     
-    var accountings: [[Accounting]] = []
+    var accountingsGroup: [[Accounting]] = []
     
     var savings: [Saving] = []
     
@@ -56,7 +56,7 @@ class SavingCVCell: UICollectionViewCell {
         
         self.showAccounting = showAccounting
         
-        accountings = accountingProvider.fetchAccounting(month: month)
+        accountingsGroup = accountingProvider.fetchAccounting(month: month)
         
         savings = SavingProvider().fetchSaving(month: month)
         
@@ -84,7 +84,7 @@ extension SavingCVCell: UICollectionViewDataSource {
         
         if showAccounting {
 
-            return accountings.count + 1
+            return accountingsGroup.count + 1
 
         } else {
 
@@ -135,7 +135,7 @@ extension SavingCVCell: UICollectionViewDataSource {
                         return AccountingsCVCell()
                 }
                 
-                cell.initAccountsCVCell(haveHeader: true, accountings: accountings[indexPath.row - 1])
+                cell.initAccountsCVCell(haveHeader: true, accountings: accountingsGroup[indexPath.row - 1])
                 
                 cell.goToAccountDetail = {
                     
@@ -181,11 +181,11 @@ extension SavingCVCell: UICollectionViewDataSource {
                         cell.initSavingDetailCVCell(budget: savings[indexPath.row].amount,
                                                     totalSpend: 0,
                                                     imageName: iconName,
-                                                    subCategoryName: name, hex: color)
+                                                    categoryName: name, hex: color)
                         
                     }
                     
-                    cell.showSavingDetailAdd = {
+                    cell.showSavingDetail = {
                         
                         self.selectedSavingDetail = self.savings[indexPath.row]
                         
@@ -242,7 +242,7 @@ extension SavingCVCell: UICollectionViewDelegateFlowLayout {
             
             if showAccounting {
                 
-                return CGSize(width: 382, height: 56 * (accountings[indexPath.row - 1].count + 1))
+                return CGSize(width: 382, height: 56 * (accountingsGroup[indexPath.row - 1].count + 1))
                 
             } else {
                 
