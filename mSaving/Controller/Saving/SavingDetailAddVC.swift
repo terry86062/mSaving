@@ -32,7 +32,7 @@ class SavingDetailAddVC: UIViewController {
     
     var selectedMonth = ""
     
-    var selectedSavingDetail: SavingWithDate?
+    var selectedSavingDetail: Saving?
     
     var selectedExpenseCategory: ExpenseCategory?
     
@@ -52,13 +52,13 @@ class SavingDetailAddVC: UIViewController {
         
         if selectedSavingDetail != nil {
             
-            guard let name = selectedSavingDetail?.saving.expenseCategory?.name, let budget = selectedSavingDetail?.saving.amount else { return }
+            guard let name = selectedSavingDetail?.expenseCategory?.name, let budget = selectedSavingDetail?.amount else { return }
             
             titleLabel.text = "\(name)預算"
             
             savingDetailTextField.text = String(budget)
             
-            guard let iconName = selectedSavingDetail?.saving.expenseCategory?.iconName, let hex = selectedSavingDetail?.saving.expenseCategory?.color else { return }
+            guard let iconName = selectedSavingDetail?.expenseCategory?.iconName, let hex = selectedSavingDetail?.expenseCategory?.color else { return }
             
             selectedCategoryImageView.image = UIImage(named: iconName)
             
@@ -104,9 +104,9 @@ class SavingDetailAddVC: UIViewController {
     
     @IBAction func deleteSubSaving(_ sender: UIButton) {
         
-        guard let subSaving = selectedSavingDetail?.saving else { return }
+        guard let subSaving = selectedSavingDetail else { return }
         
-        SavingProvider().deleteSubSaving(subSaving: subSaving)
+        SavingProvider().delete(saving: subSaving)
         
         helpDismiss()
         
@@ -153,9 +153,9 @@ class SavingDetailAddVC: UIViewController {
         
         guard let text = savingDetailTextField.text, let amount = Int64(text) else { return }
         
-        selectedSavingDetail.saving.amount = amount
+        selectedSavingDetail.amount = amount
         
-        selectedSavingDetail.saving.expenseCategory = selectedExpenseCategory
+        selectedSavingDetail.expenseCategory = selectedExpenseCategory
         
         CoreDataManager.shared.saveContext()
         

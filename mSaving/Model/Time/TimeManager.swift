@@ -10,6 +10,22 @@ import Foundation
 
 class TimeManager {
     
+    var todayYear: Int {
+        
+        guard let year = transform(date: Date()).year else { return 0 }
+        
+        return year
+        
+    }
+    
+    var todayMonth: Int {
+        
+        guard let month = transform(date: Date()).month else { return 0 }
+        
+        return month
+        
+    }
+    
     func transform(date: Date) -> DateComponents {
         
         return Calendar.current.dateComponents([.year, .month, .day, .weekday, .hour, .minute], from: date)

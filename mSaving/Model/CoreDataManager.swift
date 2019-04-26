@@ -70,13 +70,13 @@ class CoreDataManager {
         
     }
     
-    func fetch<T: NSManagedObject>(entityType: T, sort: [String], predicate: String = "", reverse: Bool = false) -> [T] {
+    func fetch<T: NSManagedObject>(entityType: T, sort: [String], predicate: NSPredicate? = nil, reverse: Bool = false) -> [T] {
         
         let request = NSFetchRequest<T>(entityName: String(describing: T.self))
         
-        if predicate != "" {
+        if predicate != nil {
             
-            request.predicate = NSPredicate(format: predicate)
+            request.predicate = predicate
             
         }
         

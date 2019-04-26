@@ -26,9 +26,9 @@ class AccountingCVCell: UICollectionViewCell {
 
     }
 
-    func initAccountCVCell(accounting: AccountingWithDate) {
+    func initAccountCVCell(accounting: Accounting) {
         
-        if let category = accounting.accounting.expenseCategory,
+        if let category = accounting.expenseCategory,
             let iconName = category.iconName,
             let color = category.color {
             
@@ -38,11 +38,11 @@ class AccountingCVCell: UICollectionViewCell {
             
             accountingCategoryNameLabel.text = category.name
             
-            accountingAccountNameLabel.text = accounting.accounting.accountName?.name
+            accountingAccountNameLabel.text = accounting.accountName?.name
             
-            accountingAmountLabel.text = "-\(accounting.accounting.amount)"
+            accountingAmountLabel.text = "-\(accounting.amount)"
             
-        } else if let category = accounting.accounting.incomeCategory,
+        } else if let category = accounting.incomeCategory,
             let iconName = category.iconName,
             let color = category.color {
             
@@ -52,9 +52,9 @@ class AccountingCVCell: UICollectionViewCell {
             
             accountingCategoryNameLabel.text = category.name
             
-            accountingAccountNameLabel.text = accounting.accounting.accountName?.name
+            accountingAccountNameLabel.text = accounting.accountName?.name
             
-            accountingAmountLabel.text = String(accounting.accounting.amount)
+            accountingAmountLabel.text = String(accounting.amount)
             
         }
         

@@ -66,7 +66,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFb-ZB-WQ9">
                         <rect key="frame" x="16" y="52" width="350" height="32"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zTY-FH-GaS">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zTY-FH-GaS">
                                 <rect key="frame" x="0.0" y="0.0" width="87.5" height="32"/>
                                 <color key="backgroundColor" name="mSYellow"/>
                                 <userDefinedRuntimeAttributes>
@@ -122,7 +122,7 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8X5-Yh-i4v">
                         <rect key="frame" x="0.0" y="0.0" width="382" height="100"/>
                         <connections>
-                            <action selector="showSavingDetail:" destination="gTV-IL-0wX" eventType="touchUpInside" id="jOD-17-lDb"/>
+                            <action selector="touchMainSaving:" destination="gTV-IL-0wX" eventType="touchUpInside" id="jOD-17-lDb"/>
                         </connections>
                     </button>
                 </subviews>

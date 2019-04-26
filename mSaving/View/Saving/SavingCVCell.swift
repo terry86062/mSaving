@@ -26,23 +26,21 @@ class SavingCVCell: UICollectionViewCell {
     
     var showAccounting = true
     
+    var accountings: [[Accounting]] = []
+    
+    var savings: [Saving] = []
+    
+    var touchMainSaving: (() -> Void)?
+    
     var goToAccountDetail: (() -> Void)?
-    
-    var showSavingDetail: (() -> Void)?
-    
-    var showAccountingBack: (() -> Void)?
     
     var presentSavingDetailAdd: (() -> Void)?
     
     var editSavingDetailAdd: (() -> Void)?
-
-    var accountings: [[AccountingWithDate]] = []
-    
-    var savings: [SavingWithDate] = []
     
     var selectedAccounting: AccountingWithDate?
     
-    var selectedSavingDetail: SavingWithDate?
+    var selectedSavingDetail: Saving?
     
     var totalSpend = 0
     
@@ -52,31 +50,31 @@ class SavingCVCell: UICollectionViewCell {
 
     }
 
-    func initSavingCVCell(accountings: [[AccountingWithDate]], savings: [SavingWithDate]) {
+    func initSavingCVCell(showAccounting: Bool, month: Month) {
         
-        self.savings = []
+        self.showAccounting = showAccounting
         
-        totalSpend = 0
+        accountings = AccountingProvider().fetchAccounting(month: month)
         
-        self.accountings = accountings
-        
-        self.savings = savings
-        
-        let accountingsFlatMaped = accountings.flatMap({ $0 })
-        
-        if accountingsFlatMaped.count > 0 {
-            
-            for index in 0...accountingsFlatMaped.count - 1 {
-                
-                if accountingsFlatMaped[index].accounting.expenseCategory != nil {
-                    
-                    totalSpend += Int(accountingsFlatMaped[index].accounting.amount)
-                    
-                }
-                
-            }
-            
-        }
+        savings = SavingProvider().fetchSaving(month: month)
+//
+//        totalSpend = 0
+//
+//        let accountingsFlatMaped = accountings.flatMap({ $0 })
+//
+//        if accountingsFlatMaped.count > 0 {
+//
+//            for index in 0...accountingsFlatMaped.count - 1 {
+//
+//                if accountingsFlatMaped[index].accounting.expenseCategory != nil {
+//
+//                    totalSpend += Int(accountingsFlatMaped[index].accounting.amount)
+//
+//                }
+//
+//            }
+//
+//        }
         
     }
 
@@ -99,26 +97,19 @@ extension SavingCVCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if showAccounting {
-            
+
             return accountings.count + 1
-            
+
         } else {
-            
-            if savings.count == 0 {
-                
-                return 1
-                
-            } else {
-                
-                return savings.count + 1
-                
-            }
-            
+
+            return savings.count + 1
+
         }
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if indexPath.row == 0 {
             
@@ -128,59 +119,21 @@ extension SavingCVCell: UICollectionViewDataSource {
                     return SavingGoalCVCell()
             }
             
-            if savings.count > 0 {
-                
-                cell.initSavingGoalCVCell(budget: savings[indexPath.row].saving.amount, totalSpend: totalSpend)
-                
-            } else {
+            if savings == [] {
                 
                 cell.initSavingGoalCVCell(budget: 0, totalSpend: totalSpend)
                 
+            } else {
+                
+                cell.initSavingGoalCVCell(budget: savings[0].amount, totalSpend: totalSpend)
+                
             }
             
-            cell.showSavingDetail = {
+            cell.touchMainSaving = {
                 
-                if self.showAccounting {
-                    
-                    self.showAccounting = false
-                    
-                    guard let show = self.showSavingDetail else { return }
-                    
-                    show()
-                    
-//                    var indexPath: [IndexPath] = []
-//                    
-//                    for index in 1...self.accountings.count {
-//                        
-//                        indexPath.append(IndexPath(row: index, section: 0))
-//                        
-//                    }
-//                    
-//                    self.savingAccountingCollectionView.reloadItems(at: indexPath)
-                    
-                    self.savingAccountingCollectionView.reloadData()
-                    
-                } else {
-                    
-                    self.showAccounting = true
-                    
-                    guard let show = self.showAccountingBack else { return }
-                    
-                    show()
-                    
-//                    var indexPath: [IndexPath] = []
-//                    
-//                    for index in 1...self.accountings.count {
-//
-//                        indexPath.append(IndexPath(row: index, section: 0))
-//
-//                    }
-//
-//                    self.savingAccountingCollectionView.reloadItems(at: indexPath)
-                    
-                    self.savingAccountingCollectionView.reloadData()
-                    
-                }
+                self.showAccounting = !self.showAccounting
+                
+                self.touchMainSaving?()
                 
             }
             
@@ -202,9 +155,7 @@ extension SavingCVCell: UICollectionViewDataSource {
                     
                     self.selectedAccounting = cell.selectedAccounting
                     
-                    guard let goTo = self.goToAccountDetail else { return }
-                    
-                    goTo()
+                    self.goToAccountDetail?()
                     
                 }
                 
@@ -236,22 +187,23 @@ extension SavingCVCell: UICollectionViewDataSource {
                     
                     if savings.count > 0 {
                         
-                        guard let expenseCategory = savings[indexPath.row].saving.expenseCategory,
+                        guard let expenseCategory = savings[indexPath.row].expenseCategory,
                             let iconName = expenseCategory.iconName,
                             let name = expenseCategory.name,
                             let color = expenseCategory.color else { return cell }
                         
-                        cell.initSavingDetailCVCell(budget: savings[indexPath.row].saving.amount, totalSpend: 0, imageName: iconName, subCategoryName: name, hex: color)
+                        cell.initSavingDetailCVCell(budget: savings[indexPath.row].amount,
+                                                    totalSpend: 0,
+                                                    imageName: iconName,
+                                                    subCategoryName: name, hex: color)
                         
                     }
                     
                     cell.showSavingDetailAdd = {
                         
                         self.selectedSavingDetail = self.savings[indexPath.row]
-
-                        guard let edit = self.editSavingDetailAdd else { return }
                         
-                        edit()
+                        self.editSavingDetailAdd?()
                         
                     }
                     
@@ -273,13 +225,17 @@ extension SavingCVCell: UICollectionViewDelegate {
 
 extension SavingCVCell: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
         
         return UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if indexPath.row == 0 {
             
@@ -309,7 +265,9 @@ extension SavingCVCell: UICollectionViewDelegateFlowLayout {
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
         return 16
         

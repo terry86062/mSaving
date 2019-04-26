@@ -28,7 +28,7 @@ class AccountingsCVCell: UICollectionViewCell {
 
     var haveHeader = false
     
-    var accountings: [AccountingWithDate] = []
+    var accountings: [Accounting] = []
     
     var selectedAccounting: AccountingWithDate?
 
@@ -38,7 +38,7 @@ class AccountingsCVCell: UICollectionViewCell {
 
     }
 
-    func initAccountsCVCell(haveHeader: Bool, accountings: [AccountingWithDate]) {
+    func initAccountsCVCell(haveHeader: Bool, accountings: [Accounting]) {
 
         self.haveHeader = haveHeader
         
@@ -75,7 +75,7 @@ extension AccountingsCVCell: UICollectionViewDataSource {
 
         cell.goToAccountDetail = {
             
-            self.selectedAccounting = self.accountings[indexPath.row]
+//            self.selectedAccounting = self.accountings[indexPath.row]
             
             guard let goTo = self.goToAccountDetail else { return }
             
@@ -98,43 +98,43 @@ extension AccountingsCVCell: UICollectionViewDataSource {
                 return AccountingCVCell()
         }
         
-        var totalAmount = 0
-        
-        for index in 0...accountings.count - 1 {
-            
-            if accountings[index].accounting.expenseCategory != nil {
-                
-                totalAmount -= Int(accountings[index].accounting.amount)
-                
-            } else if accountings[index].accounting.incomeCategory != nil {
-                
-                totalAmount += Int(accountings[index].accounting.amount)
-                
-            }
-            
-        }
-        
-        let dateComponents = accountings[0].dateComponents
-        
-        guard let day = dateComponents.day, let weekday = dateComponents.weekday else { return headerView }
-        
-        if totalAmount > 0 {
-            
-            headerView.initAccountDateCVCell(
-                leadingText: "\(day), \(helpTransferWeekdayFromIntToString(weekday: weekday))",
-                trailingText: String(totalAmount),
-                trailingColor: .green,
-                havingShadow: false)
-            
-        } else {
-            
-            headerView.initAccountDateCVCell(
-                leadingText: "\(day), \(helpTransferWeekdayFromIntToString(weekday: weekday))",
-                trailingText: String(totalAmount),
-                trailingColor: .red,
-                havingShadow: false)
-            
-        }
+//        var totalAmount = 0
+//        
+//        for index in 0...accountings.count - 1 {
+//            
+//            if accountings[index].accounting.expenseCategory != nil {
+//                
+//                totalAmount -= Int(accountings[index].accounting.amount)
+//                
+//            } else if accountings[index].accounting.incomeCategory != nil {
+//                
+//                totalAmount += Int(accountings[index].accounting.amount)
+//                
+//            }
+//            
+//        }
+//        
+//        let dateComponents = accountings[0].dateComponents
+//        
+//        guard let day = dateComponents.day, let weekday = dateComponents.weekday else { return headerView }
+//        
+//        if totalAmount > 0 {
+//            
+//            headerView.initAccountDateCVCell(
+//                leadingText: "\(day), \(helpTransferWeekdayFromIntToString(weekday: weekday))",
+//                trailingText: String(totalAmount),
+//                trailingColor: .green,
+//                havingShadow: false)
+//            
+//        } else {
+//            
+//            headerView.initAccountDateCVCell(
+//                leadingText: "\(day), \(helpTransferWeekdayFromIntToString(weekday: weekday))",
+//                trailingText: String(totalAmount),
+//                trailingColor: .red,
+//                havingShadow: false)
+//            
+//        }
 
         return headerView
 

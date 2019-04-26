@@ -117,8 +117,8 @@ extension CategoryAccountingsDetailVC: UICollectionViewDataSource {
             
             guard let selectedCategoryAccountingMonthTotal = selectedCategoryAccountingMonthTotal else { return cell }
 
-            cell.initAccountsCVCell(haveHeader: true,
-                                    accountings: selectedCategoryAccountingMonthTotal.accountings[indexPath.row])
+//            cell.initAccountsCVCell(haveHeader: true,
+//                                    accountings: selectedCategoryAccountingMonthTotal.accountings[indexPath.row])
 
             return cell
 

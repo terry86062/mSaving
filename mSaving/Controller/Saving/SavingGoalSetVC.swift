@@ -20,7 +20,7 @@ class SavingGoalSetVC: UIViewController {
     
     var selectedMonth = ""
     
-    var selectedSaving: SavingWithDate?
+    var selectedSaving: Saving?
 
     override func viewDidLoad() {
         
@@ -32,7 +32,7 @@ class SavingGoalSetVC: UIViewController {
         
         if selectedSaving != nil {
             
-            guard let amount = selectedSaving?.saving.amount else { return }
+            guard let amount = selectedSaving?.amount else { return }
             
             savingTextField.text = String(amount)
             
@@ -112,7 +112,7 @@ class SavingGoalSetVC: UIViewController {
         
         guard let text = savingTextField.text, let amount = Int64(text) else { return }
         
-        selectedSaving.saving.amount = amount
+        selectedSaving.amount = amount
         
         CoreDataManager.shared.saveContext()
         
