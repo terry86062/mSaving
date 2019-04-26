@@ -273,9 +273,7 @@ extension SettingVC: UICollectionViewDataSource {
 
 }
 
-extension SettingVC: UICollectionViewDelegate {
-
-}
+extension SettingVC: UICollectionViewDelegate { }
 
 extension SettingVC: UICollectionViewDelegateFlowLayout {
 

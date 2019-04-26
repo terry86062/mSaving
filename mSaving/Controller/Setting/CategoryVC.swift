@@ -108,9 +108,7 @@ extension CategoryVC: UICollectionViewDataSource {
 
 }
 
-extension CategoryVC: UICollectionViewDelegate {
-
-}
+extension CategoryVC: UICollectionViewDelegate { }
 
 extension CategoryVC: UICollectionViewDelegateFlowLayout {
 

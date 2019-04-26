@@ -138,11 +138,17 @@ class SavingVC: UIViewController {
             
             helpHideTabBarVCBlackView()
             
+            guard let savingDetailAddVC = segue.destination as? SavingDetailAddVC else { return }
+            
+            savingDetailAddVC.selectedMonth = selectedMonth
+            
         } else if segue.identifier == "goToSavingDetailEdit" {
             
             helpHideTabBarVCBlackView()
             
             guard let savingDetailAddVC = segue.destination as? SavingDetailAddVC else { return }
+            
+            savingDetailAddVC.selectedMonth = selectedMonth
             
             savingDetailAddVC.selectedSavingDetail = selectedSavingDetail
             
@@ -211,11 +217,15 @@ extension SavingVC: UICollectionViewDataSource {
             
             cell.presentSavingDetailNew = {
                 
+                self.selectedMonth = self.months[indexPath.row]
+                
                 self.performSegue(withIdentifier: "goToSavingDetailNew", sender: nil)
                 
             }
             
             cell.presentSavingDetailEdit = {
+                
+                self.selectedMonth = self.months[indexPath.row]
                 
                 self.selectedSavingDetail = cell.selectedSavingDetail
                 
@@ -228,14 +238,9 @@ extension SavingVC: UICollectionViewDataSource {
                 guard let accountingVC = UIStoryboard.accounting.instantiateInitialViewController()
                     as? AccountingVC else { return }
                 
-                guard let accounting = cell.selectedAccounting else { return }
+                self.selectedAccounting = cell.selectedAccounting
                 
-//                accountingVC.setAccountingRevise(occurDate: accounting.accounting.occurDate,
-//                                                 date: accounting.date,
-//                                                 amount: accounting.accounting.amount,
-//                                                 account: accounting.accounting.accountName?.name,
-//                                                 expenseCategory: accounting.accounting.expenseSubCategory,
-//                                                 incomeCategory: accounting.accounting.incomeSubCategory)
+                accountingVC.selectedAccounting = self.selectedAccounting
                 
                 self.navigationController?.pushViewController(accountingVC, animated: true)
             

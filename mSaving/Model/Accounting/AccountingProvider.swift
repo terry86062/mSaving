@@ -180,200 +180,49 @@ class AccountingProvider {
         
     }
     
-    // swiftlint:disable function_parameter_count
-    func reviseAccounting(date: Int64,
-                          newDate: Date,
-                          amount: Int64,
-                          accountName: String,
-                          selectedExpenseCategory: ExpenseCategory?,
-                          selectedIncomeCategory: IncomeCategory?,
-                          selectedExpense: Bool,
-                          reviseSelectedExpense: Bool) {
+    func reviseAccounting(accounting: Accounting, occurDate: Date, createDate: Date, amount: Int64, account: Account, category: CategoryCase) {
         
-        let request = NSFetchRequest<Accounting>(entityName: "Accounting")
+        guard let month = helpSetMonth(occurDate: occurDate) else { return }
         
-        request.predicate = NSPredicate(format: "occurDate == \(date)")
+        accounting.month = month
         
-        let accountRequest = NSFetchRequest<Account>(entityName: "Account")
+        accounting.occurDate = Int64(occurDate.timeIntervalSince1970)
         
-        accountRequest.predicate = NSPredicate(format: "name = %@", accountName)
+        accounting.createDate = Int64(createDate.timeIntervalSince1970)
         
-        let requests = NSFetchRequest<Accounting>(entityName: "Accounting")
+        accounting.amount = amount
         
-        let time = Int64(newDate.timeIntervalSince1970)
+        accounting.accountName = account
         
-        print("time \(time)")
-        
-        let beginDate = time - time % 86400 + 57600
-        
-        print("beginDate \(beginDate)")
-        
-        let finishDate = beginDate + 86400 - 1
-        
-        print("finishDate \(finishDate)")
-        
-        requests.predicate = NSPredicate(format: "occurDate BETWEEN { \(beginDate) , \(finishDate) }")
-        
-        do {
+        switch category {
             
-            let accounting = try coreDataManager.viewContext.fetch(request)
+        case .expense(let category):
             
-            let accountings = try coreDataManager.viewContext.fetch(requests)
+            accounting.expenseCategory = category
             
-            var isRepeat = false
+            account.currentValue -= amount
             
-            if accountings.count > 0 {
-                
-                for index in 0...accountings.count - 1 {
-                    
-                    if time == accountings[index].occurDate {
-                        
-                        isRepeat = true
-                        
-                        break
-                        
-                    }
-                    
-                }
-                
-            }
+        case .income(let category):
             
-            if isRepeat {
-                
-                for newTime in beginDate...finishDate {
-                    
-                    if accounting[0].occurDate == date {
-                        
-                        var count = 0
-                        
-                        for index in 0...accountings.count - 1 {
-                            
-                            if newTime == accountings[index].occurDate {
-                                
-                                break
-                                
-                            } else {
-                                
-                                count += 1
-                                
-                            }
-                            
-                            if count == accountings.count {
-                                
-                                accounting[0].occurDate = newTime
-                                
-                            }
-                            
-                        }
-                        
-                    } else {
-                        
-                        break
-                        
-                    }
-                    
-                }
-                
-            } else {
-                
-                accounting[0].occurDate = Int64(newDate.timeIntervalSince1970)
-                
-            }
+            accounting.incomeCategory = category
             
-            let account = try coreDataManager.viewContext.fetch(accountRequest)
-            
-            if reviseSelectedExpense {
-                
-                if selectedExpense {
-                    
-                    accounting[0].accountName?.currentValue += accounting[0].amount
-                    
-                    account[0].currentValue -= amount
-                    
-                } else {
-                    
-                    accounting[0].accountName?.currentValue += accounting[0].amount
-                    
-                    account[0].currentValue += amount
-                    
-                }
-                
-            } else {
-                
-                if selectedExpense {
-                    
-                    accounting[0].accountName?.currentValue -= accounting[0].amount
-                    
-                    account[0].currentValue -= amount
-                    
-                } else {
-                    
-                    accounting[0].accountName?.currentValue -= accounting[0].amount
-                    
-                    account[0].currentValue += amount
-                    
-                }
-                
-            }
-            
-            accounting[0].amount = amount
-            
-            accounting[0].accountName = account[0]
-            
-            if selectedExpense {
-                
-                accounting[0].expenseCategory = selectedExpenseCategory
-                
-                accounting[0].incomeCategory = nil
-                
-            } else {
-                
-                accounting[0].expenseCategory = nil
-                
-                accounting[0].incomeCategory = selectedIncomeCategory
-                
-            }
-            
-        } catch {
-            
-            print("revise accounting fail")
+            account.currentValue += amount
             
         }
         
         coreDataManager.saveContext()
+        
+        notificationManager.postAccountingChanged()
         
     }
-    // swiftlint:enable function_parameter_count
     
-    func deleteAccounting(date: Int64, reviseSelectedExpense: Bool) {
+    func deleteAccounting(accounting: Accounting) {
         
-        let request = NSFetchRequest<Accounting>(entityName: "Accounting")
-        
-        request.predicate = NSPredicate(format: "occurDate == \(date)")
-        
-        do {
-            
-            let accounting = try coreDataManager.viewContext.fetch(request)
-            
-            if reviseSelectedExpense {
-                
-                accounting[0].accountName?.currentValue += accounting[0].amount
-                
-            } else {
-                
-                accounting[0].accountName?.currentValue -= accounting[0].amount
-                
-            }
-            
-            coreDataManager.viewContext.delete(accounting[0])
-            
-        } catch {
-            
-            print(error)
-            
-        }
+        coreDataManager.viewContext.delete(accounting)
         
         coreDataManager.saveContext()
+        
+        notificationManager.postAccountingChanged()
         
     }
     

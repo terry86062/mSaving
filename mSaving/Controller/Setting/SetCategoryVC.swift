@@ -101,9 +101,7 @@ extension SetCategoryVC: UICollectionViewDataSource {
 
 }
 
-extension SetCategoryVC: UICollectionViewDelegate {
-
-}
+extension SetCategoryVC: UICollectionViewDelegate { }
 
 extension SetCategoryVC: UICollectionViewDelegateFlowLayout {
 

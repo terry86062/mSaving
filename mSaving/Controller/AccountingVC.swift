@@ -14,14 +14,6 @@ import FSCalendar
 
 import BetterSegmentedControl
 
-struct SubCategory {
-
-    let imageName: String
-
-    let name: String
-
-}
-
 class AccountingVC: UIViewController {
 
     @IBOutlet weak var calendar: FSCalendar!
@@ -86,25 +78,6 @@ class AccountingVC: UIViewController {
     var selectedAccount: Account?
     
     var selectedAccounting: Accounting?
-    
-    
-//    var selectedExpense = true
-    
-    var reviseSelectedExpense = true
-    
-    var newAccounting = true
-    
-    var reviseAmount: Int64 = 0
-    
-    var reviseOccurDate: Int64 = 0
-    
-    var reviseDate: Date?
-    
-    var reviseAccount: String?
-    
-    var reviseExpenseCategory: ExpenseCategory?
-    
-    var reviseIncomeCategory: IncomeCategory?
 
     override func viewDidLoad() {
 
@@ -215,14 +188,56 @@ class AccountingVC: UIViewController {
         selectedAccountButton.setTitle(account.name, for: .normal)
         
     }
+    
+    func setUpView() {
+        
+        if selectedAccounting != nil {
+            
+            guard let budget = selectedAccounting?.amount else { return }
+            
+            amountTextField.text = String(budget)
+            
+            guard let occurDate = selectedAccounting?.occurDate else { return }
+            
+            calendar.select(Date(timeIntervalSince1970: TimeInterval(occurDate)), scrollToDate: true)
+            
+            selectedAccountButton.setTitle(selectedAccounting?.accountName?.name, for: .normal)
+            
+            selectedAccount = selectedAccounting?.accountName
+            
+            if let expenseCategory = selectedAccounting?.expenseCategory,
+                let iconName = expenseCategory.iconName,
+                let hex = expenseCategory.color {
+                
+                selectedCategory = .expense(expenseCategory)
+                
+                selectedCategoryImageView.image = UIImage(named: iconName)
+                
+                selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
+                
+            } else if let incomeCategory = selectedAccounting?.incomeCategory,
+                let iconName = incomeCategory.iconName,
+                let hex = incomeCategory.color {
+                
+                selectedCategory = .income(incomeCategory)
+                
+                selectedCategoryImageView.image = UIImage(named: iconName)
+                
+                selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
+                
+            }
+            
+        }
+        
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
         
-        if newAccounting == false {
+        if selectedAccounting != nil {
             
-//            setAccountingFromRevise()
+            setUpView()
             
             deleteAccountingButton.isHidden = false
             
@@ -282,48 +297,29 @@ class AccountingVC: UIViewController {
         
         guard let selectedCategory = selectedCategory else { return }
         
-//        if newAccounting {
+        if let selectedAccounting = selectedAccounting {
         
-        AccountingProvider().createAccounting(occurDate: occurDate,
-                                              createDate: Date(),
-                                              amount: amount,
-                                              account: selectedAccount,
-                                              category: selectedCategory)
+            AccountingProvider().reviseAccounting(accounting: selectedAccounting,
+                                                  occurDate: occurDate,
+                                                  createDate: Date(),
+                                                  amount: amount,
+                                                  account: selectedAccount,
+                                                  category: selectedCategory)
+            
+            navigationController?.popViewController(animated: true)
+            
+        } else {
+            
+            AccountingProvider().createAccounting(occurDate: occurDate,
+                                                  createDate: Date(),
+                                                  amount: amount,
+                                                  account: selectedAccount,
+                                                  category: selectedCategory)
             
             dismiss(animated: true, completion: nil)
-            
-//        } else {
-        
-//            if selectedExpense {
-//
-//                guard let selectedCategory = selectedExpenseCategory else { return }
-//
-//                AccountingProvider().reviseAccounting(date: reviseOccurDate,
-//                                                       newDate: selectedDate,
-//                                                       amount: amount,
-//                                                       accountName: selectedAccount,
-//                                                       selectedExpenseCategory: selectedCategory,
-//                                                       selectedIncomeCategory: nil,
-//                                                       selectedExpense: selectedExpense,
-//                                                       reviseSelectedExpense: reviseSelectedExpense)
-//
-//            } else {
-//
-//                guard let selectedCategory = selectedIncomeCategory else { return }
-//
-//                AccountingProvider().reviseAccounting(date: reviseOccurDate,
-//                                                       newDate: selectedDate,
-//                                                       amount: amount,
-//                                                       accountName: selectedAccount,
-//                                                       selectedExpenseCategory: nil,
-//                                                       selectedIncomeCategory: selectedCategory,
-//                                                       selectedExpense: selectedExpense,
-//                                                       reviseSelectedExpense: reviseSelectedExpense)
-//
-//            }
-//
-//            navigationController?.popViewController(animated: true)
-        
+
+        }
+
     }
     
     func createOccurDate(selectedDate: Date) -> Date? {
@@ -381,70 +377,11 @@ class AccountingVC: UIViewController {
         
     }
     
-//    func setAccountingRevise(occurDate: Int64, date: Date, amount: Int64,
-//                             account: String?, expenseCategory: ExpenseCategory?, incomeCategory: IncomeCategory?) {
-//
-//        newAccounting = false
-//
-//        reviseOccurDate = occurDate
-//
-//        reviseDate = date
-//
-//        reviseAmount = amount
-//
-//        reviseAccount = account
-//
-//        if expenseCategory != nil {
-//
-//            reviseExpenseCategory = expenseCategory
-//
-//            selectedExpense = true
-//
-//            reviseSelectedExpense = true
-//
-//        } else if incomeCategory != nil {
-//
-//            reviseIncomeCategory = incomeCategory
-//
-//            selectedExpense = false
-//
-//            reviseSelectedExpense = false
-//
-//        }
-//
-//    }
-//
-//    func setAccountingFromRevise() {
-//
-//        calendar.select(reviseDate, scrollToDate: true)
-//
-//        amountTextField.text = String(reviseAmount)
-//
-//        selectedAccountButton.setTitle(reviseAccount, for: .normal)
-//
-//        if selectedExpense == true, let category = reviseExpenseCategory, let iconName = category.iconName, let color = category.color {
-//
-//            selectedExpenseCategory = category
-//
-//            selectedCategoryImageView.image = UIImage(named: iconName)
-//
-//            selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
-//
-//        } else if selectedExpense == false, let category = reviseIncomeCategory, let iconName = category.iconName, let color = category.color {
-//
-//            selectedIncomeCategory = category
-//
-//            selectedCategoryImageView.image = UIImage(named: iconName)
-//
-//            selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
-//
-//        }
-//
-//    }
-    
     @IBAction func deleteAccounting(_ sender: UIButton) {
         
-        AccountingProvider().deleteAccounting(date: reviseOccurDate, reviseSelectedExpense: reviseSelectedExpense)
+        guard let selectedAccounting = selectedAccounting else { return }
+        
+        AccountingProvider().deleteAccounting(accounting: selectedAccounting)
         
         navigationController?.popViewController(animated: true)
         

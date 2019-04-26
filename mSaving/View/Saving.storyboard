@@ -2367,7 +2367,7 @@
                                         <color key="tintColor" name="mSGreen"/>
                                         <state key="normal" image="garbageClosed"/>
                                         <connections>
-                                            <action selector="deleteSubSaving:" destination="YWh-vS-MS1" eventType="touchUpInside" id="422-YY-4nu"/>
+                                            <action selector="deleteSaving:" destination="YWh-vS-MS1" eventType="touchUpInside" id="422-YY-4nu"/>
                                         </connections>
                                     </button>
                                 </subviews>

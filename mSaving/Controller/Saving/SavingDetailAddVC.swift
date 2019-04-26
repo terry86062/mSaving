@@ -30,6 +30,8 @@ class SavingDetailAddVC: UIViewController {
     
     var expenseCategorys: [ExpenseCategory] = []
     
+    var selectedMonth: Month?
+    
     var selectedSavingDetail: Saving?
     
     var selectedExpenseCategory: ExpenseCategory?
@@ -40,37 +42,48 @@ class SavingDetailAddVC: UIViewController {
         
         setUpCollectionView()
         
-        savingDetailTextField.becomeFirstResponder()
-        
-        expenseCategorys = CategoryProvider().expenseCategories
-        
-        if selectedSavingDetail != nil {
-            
-            guard let name = selectedSavingDetail?.expenseCategory?.name, let budget = selectedSavingDetail?.amount else { return }
-            
-            titleLabel.text = "\(name)預算"
-            
-            savingDetailTextField.text = String(budget)
-            
-            guard let iconName = selectedSavingDetail?.expenseCategory?.iconName, let hex = selectedSavingDetail?.expenseCategory?.color else { return }
-            
-            selectedCategoryImageView.image = UIImage(named: iconName)
-            
-            selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
-            
-        } else {
-            
-            titleLabel.text = "新增子預算"
-            
-            selectedCategoryImageView.backgroundColor = UIColor.mSGreen
-            
-        }
+        setUpView()
         
     }
     
     func setUpCollectionView() {
         
         savingCategoryCollectionView.helpRegister(cell: CategorySelectCVCell())
+        
+    }
+    
+    func setUpView() {
+        
+        savingDetailTextField.becomeFirstResponder()
+        
+        expenseCategorys = CategoryProvider().expenseCategories
+        
+        if selectedSavingDetail == nil {
+            
+            titleLabel.text = "新增子預算"
+            
+            selectedCategoryImageView.backgroundColor = UIColor.mSGreen
+            
+        } else {
+            
+            guard let budget = selectedSavingDetail?.amount else { return }
+            
+            savingDetailTextField.text = String(budget)
+
+            guard let expenseCategory = selectedSavingDetail?.expenseCategory,
+                let name = expenseCategory.name,
+                let iconName = expenseCategory.iconName,
+                let hex = expenseCategory.color else { return }
+            
+            selectedExpenseCategory = expenseCategory
+            
+            titleLabel.text = "\(name)預算"
+            
+            selectedCategoryImageView.image = UIImage(named: iconName)
+            
+            selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
+            
+        }
         
     }
     
@@ -82,13 +95,13 @@ class SavingDetailAddVC: UIViewController {
     
     @IBAction func confirm(_ sender: UIButton) {
         
-        if selectedSavingDetail != nil {
+        if selectedSavingDetail == nil {
             
-            reviseSubSaving()
+            saveSaving()
             
         } else {
             
-            saveSubSaving()
+            reviseSaving()
             
         }
         
@@ -96,11 +109,11 @@ class SavingDetailAddVC: UIViewController {
         
     }
     
-    @IBAction func deleteSubSaving(_ sender: UIButton) {
+    @IBAction func deleteSaving(_ sender: UIButton) {
         
-        guard let subSaving = selectedSavingDetail else { return }
+        guard let saving = selectedSavingDetail else { return }
         
-        SavingProvider().delete(saving: subSaving)
+        SavingProvider().delete(saving: saving)
         
         helpDismiss()
         
@@ -122,28 +135,39 @@ class SavingDetailAddVC: UIViewController {
         
     }
     
-    func saveSubSaving() {
+    func saveSaving() {
         
         guard let amountText = savingDetailTextField.text, let amount = Int64(amountText) else { return }
         
-        var components = DateComponents()
-        
-        components.year = Int(selectedYear)
-        components.month = Int(selectedMonth)
-        components.day = 1
-        
-        guard let date = Calendar.current.date(from: components) else { return }
-        
         guard let selectedExpenseCategory = selectedExpenseCategory else { return }
         
-//        SavingProvider().createSaving(date: date, amount: amount, main: false,
-//                                      selectedExpenseCategory: selectedExpenseCategory)
+        if let selectedMonth = selectedMonth {
+            
+            SavingProvider().createSaving(month: selectedMonth, amount: amount, main: false, selectedExpenseCategory: selectedExpenseCategory)
+            
+        } else {
+            
+            let aMonth = Month(context: CoreDataManager.shared.viewContext)
+            
+            let dataComponents = TimeManager().transform(date: Date())
+            
+            guard let year = dataComponents.year, let month = dataComponents.month else { return }
+            
+            aMonth.year = Int64(year)
+            
+            aMonth.month = Int64(month)
+            
+            SavingProvider().createSaving(month: aMonth, amount: amount, main: false, selectedExpenseCategory: selectedExpenseCategory)
+            
+        }
         
     }
     
-    func reviseSubSaving() {
+    func reviseSaving() {
         
         guard let selectedSavingDetail = selectedSavingDetail else { return }
+        
+        guard let selectedExpenseCategory = selectedExpenseCategory else { return }
         
         guard let text = savingDetailTextField.text, let amount = Int64(text) else { return }
         
@@ -152,6 +176,8 @@ class SavingDetailAddVC: UIViewController {
         selectedSavingDetail.expenseCategory = selectedExpenseCategory
         
         CoreDataManager.shared.saveContext()
+        
+        MSNotificationManager().postSavingChanged()
         
     }
 

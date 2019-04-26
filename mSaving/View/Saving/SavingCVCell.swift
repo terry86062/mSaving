@@ -88,7 +88,15 @@ extension SavingCVCell: UICollectionViewDataSource {
 
         } else {
 
-            return savings.count + 1
+            if savings == [] {
+                
+                return 2
+                
+            } else {
+                
+                return savings.count + 1
+                
+            }
 
         }
         
@@ -151,7 +159,7 @@ extension SavingCVCell: UICollectionViewDataSource {
                 
             } else {
                 
-                if indexPath.row == savings.count {
+                if savings == [] {
                     
                     guard let cell = collectionView.dequeueReusableCell(
                         withReuseIdentifier: String(describing: AddSavingDetailCVCell.self),
@@ -165,35 +173,51 @@ extension SavingCVCell: UICollectionViewDataSource {
                     
                 } else {
                     
-                    guard let cell = collectionView.dequeueReusableCell(
-                        withReuseIdentifier: String(describing: SavingDetailCVCell.self),
-                        for: indexPath) as? SavingDetailCVCell else {
-                            return SavingDetailCVCell()
+                    if indexPath.row == savings.count {
+                        
+                        guard let cell = collectionView.dequeueReusableCell(
+                            withReuseIdentifier: String(describing: AddSavingDetailCVCell.self),
+                            for: indexPath) as? AddSavingDetailCVCell else {
+                                return AddSavingDetailCVCell()
+                        }
+                        
+                        cell.presentSavingDetailAdd = presentSavingDetailNew
+                        
+                        return cell
+                        
+                    } else {
+                        
+                        guard let cell = collectionView.dequeueReusableCell(
+                            withReuseIdentifier: String(describing: SavingDetailCVCell.self),
+                            for: indexPath) as? SavingDetailCVCell else {
+                                return SavingDetailCVCell()
+                        }
+                        
+                        if savings.count > 0 {
+                            
+                            guard let expenseCategory = savings[indexPath.row].expenseCategory,
+                                let iconName = expenseCategory.iconName,
+                                let name = expenseCategory.name,
+                                let color = expenseCategory.color else { return cell }
+                            
+                            cell.initSavingDetailCVCell(budget: savings[indexPath.row].amount,
+                                                        totalSpend: 0,
+                                                        imageName: iconName,
+                                                        categoryName: name, hex: color)
+                            
+                        }
+                        
+                        cell.showSavingDetail = {
+                            
+                            self.selectedSavingDetail = self.savings[indexPath.row]
+                            
+                            self.presentSavingDetailEdit?()
+                            
+                        }
+                        
+                        return cell
+                        
                     }
-                    
-                    if savings.count > 0 {
-                        
-                        guard let expenseCategory = savings[indexPath.row].expenseCategory,
-                            let iconName = expenseCategory.iconName,
-                            let name = expenseCategory.name,
-                            let color = expenseCategory.color else { return cell }
-                        
-                        cell.initSavingDetailCVCell(budget: savings[indexPath.row].amount,
-                                                    totalSpend: 0,
-                                                    imageName: iconName,
-                                                    categoryName: name, hex: color)
-                        
-                    }
-                    
-                    cell.showSavingDetail = {
-                        
-                        self.selectedSavingDetail = self.savings[indexPath.row]
-                        
-                        self.presentSavingDetailEdit?()
-                        
-                    }
-                    
-                    return cell
                     
                 }
                 
@@ -246,13 +270,21 @@ extension SavingCVCell: UICollectionViewDelegateFlowLayout {
                 
             } else {
                 
-                if indexPath.row == savings.count {
+                if savings == [] {
                     
                     return CGSize(width: 382, height: 56)
                     
                 } else {
                     
-                    return CGSize(width: 382, height: 112)
+                    if indexPath.row == savings.count {
+                        
+                        return CGSize(width: 382, height: 56)
+                        
+                    } else {
+                        
+                        return CGSize(width: 382, height: 112)
+                        
+                    }
                     
                 }
                 
