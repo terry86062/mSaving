@@ -12,30 +12,24 @@ class MSNotificationManager {
     
     var collectionViews: [UICollectionView] = []
     
-    var fetchNewDataClosure: (() -> Void)?
+    var fetchData: (() -> Void)?
     
-    func addNotificationForRenew(collectionView: [UICollectionView], fetchNewDataClosure: @escaping () -> Void) {
+    func addAccountingNotification(collectionViews: [UICollectionView], fetchData: @escaping () -> Void) {
         
-        self.collectionViews = collectionView
+        self.collectionViews = collectionViews
         
-        self.fetchNewDataClosure = fetchNewDataClosure
+        self.fetchData = fetchData
         
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(renewCollectionView(notification:)),
-                                               name: .renewCollectionView,
+                                               selector: #selector(accountingChanged(notification:)),
+                                               name: .accountingChanged,
                                                object: nil)
         
     }
     
-    func postNotificationForRenew() {
+    @objc func accountingChanged(notification: Notification) {
         
-        NotificationCenter.default.post(name: .renewCollectionView, object: nil)
-        
-    }
-    
-    @objc func renewCollectionView(notification: Notification) {
-        
-        fetchNewDataClosure?()
+        fetchData?()
         
         guard collectionViews != [] else { return }
         
@@ -44,6 +38,12 @@ class MSNotificationManager {
             collectionViews[index].reloadData()
             
         }
+        
+    }
+    
+    func postAccountingChanged() {
+        
+        NotificationCenter.default.post(name: .accountingChanged, object: nil)
         
     }
     

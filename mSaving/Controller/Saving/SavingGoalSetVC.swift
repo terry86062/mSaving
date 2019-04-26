@@ -16,9 +16,7 @@ class SavingGoalSetVC: UIViewController {
     
     @IBOutlet weak var savingTextField: UITextField!
     
-    var selectedYear = ""
-    
-    var selectedMonth = ""
+    var selectedMonth: Month?
     
     var selectedSaving: Saving?
 
@@ -28,17 +26,33 @@ class SavingGoalSetVC: UIViewController {
         
         savingTextField.becomeFirstResponder()
         
-        titleLabel.text = "\(selectedMonth)月預算"
+        setUpView()
         
-        if selectedSaving != nil {
+    }
+    
+    func setUpView() {
+        
+        if let selectedSaving = selectedSaving, let month = selectedSaving.month?.month {
             
-            guard let amount = selectedSaving?.amount else { return }
+            titleLabel.text = "\(month)月預算"
             
-            savingTextField.text = String(amount)
+            savingTextField.text = "\(selectedSaving.amount)"
             
-            descriptionLabel.text = "每天可花 $" + String(amount / 30)
+            descriptionLabel.text = "每天可花 $" + "\(selectedSaving.amount / 30)"
             
+        } else {
             
+            if let selectedMonth = selectedMonth {
+                
+                titleLabel.text = "\(selectedMonth.month)月預算"
+                
+            } else {
+                
+                guard let month = TimeManager().transform(date: Date()).month else { return }
+                
+                titleLabel.text = "\(month)月預算"
+                
+            }
             
         }
         
@@ -52,13 +66,13 @@ class SavingGoalSetVC: UIViewController {
     
     @IBAction func confirm(_ sender: UIButton) {
         
-        if selectedSaving != nil {
+        if selectedSaving == nil {
             
-            reviseSaving()
+            saveSaving()
             
         } else {
             
-            saveSaving()
+            reviseSaving()
             
         }
         
@@ -94,15 +108,25 @@ class SavingGoalSetVC: UIViewController {
         
         guard let amountText = savingTextField.text, let amount = Int64(amountText) else { return }
         
-        var components = DateComponents()
-        
-        components.year = Int(selectedYear)
-        components.month = Int(selectedMonth)
-        components.day = 1
-        
-        guard let date = Calendar.current.date(from: components) else { return }
-        
-//        SavingProvider().createSaving(date: date, amount: amount)
+        if let selectedMonth = selectedMonth {
+            
+            SavingProvider().createSaving(month: selectedMonth, amount: amount)
+            
+        } else {
+            
+            let aMonth = Month(context: CoreDataManager.shared.viewContext)
+            
+            let dataComponents = TimeManager().transform(date: Date())
+            
+            guard let year = dataComponents.year, let month = dataComponents.month else { return }
+            
+            aMonth.year = Int64(year)
+            
+            aMonth.month = Int64(month)
+            
+            SavingProvider().createSaving(month: aMonth, amount: amount)
+            
+        }
         
     }
     

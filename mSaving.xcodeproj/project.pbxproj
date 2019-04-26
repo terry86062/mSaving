@@ -117,7 +117,6 @@
 		DEECB05622533599002D6C30 /* ChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB04F22533599002D6C30 /* ChartVC.swift */; };
 		DEECB05722533599002D6C30 /* SavingGoalSetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB05022533599002D6C30 /* SavingGoalSetVC.swift */; };
 		DEECB05822533599002D6C30 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB05122533599002D6C30 /* SettingVC.swift */; };
-		DEECB05922533599002D6C30 /* SavingDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB05222533599002D6C30 /* SavingDetailVC.swift */; };
 		DEECB05A22533599002D6C30 /* SavingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB05322533599002D6C30 /* SavingVC.swift */; };
 		DEECB05B22533599002D6C30 /* AccountingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB05422533599002D6C30 /* AccountingVC.swift */; };
 		DEECB05C22533599002D6C30 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB05522533599002D6C30 /* TabBarController.swift */; };
@@ -253,7 +252,6 @@
 		DEECB04F22533599002D6C30 /* ChartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartVC.swift; sourceTree = "<group>"; };
 		DEECB05022533599002D6C30 /* SavingGoalSetVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavingGoalSetVC.swift; sourceTree = "<group>"; };
 		DEECB05122533599002D6C30 /* SettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
-		DEECB05222533599002D6C30 /* SavingDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavingDetailVC.swift; sourceTree = "<group>"; };
 		DEECB05322533599002D6C30 /* SavingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavingVC.swift; sourceTree = "<group>"; };
 		DEECB05422533599002D6C30 /* AccountingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountingVC.swift; sourceTree = "<group>"; };
 		DEECB05522533599002D6C30 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -362,7 +360,6 @@
 			isa = PBXGroup;
 			children = (
 				DEECB05322533599002D6C30 /* SavingVC.swift */,
-				DEECB05222533599002D6C30 /* SavingDetailVC.swift */,
 				DEECB05022533599002D6C30 /* SavingGoalSetVC.swift */,
 				DE99AC8922563D1400B12AD6 /* SavingDetailAddVC.swift */,
 				DEA65DFB225A63E400A10242 /* SearchVC.swift */,
@@ -905,7 +902,6 @@
 			files = (
 				DEAA6A292259984B00224B26 /* CategoryVC.swift in Sources */,
 				DE2BB358225360C2001D55E4 /* TopView.swift in Sources */,
-				DEECB05922533599002D6C30 /* SavingDetailVC.swift in Sources */,
 				DE9BEFEA225DD2DE003458AD /* CoreDataManager.swift in Sources */,
 				DE2BB35C22539662001D55E4 /* SavingCVCell.swift in Sources */,
 				DEECB05A22533599002D6C30 /* SavingVC.swift in Sources */,

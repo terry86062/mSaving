@@ -10,6 +10,8 @@ import Foundation
 
 extension Notification.Name {
     
-    static let renewCollectionView = Notification.Name("renewCollectionView")
+    static let accountingChanged = Notification.Name("accountingChanged")
+    
+    static let savingChanged = Notification.Name("savingChanged")
     
 }

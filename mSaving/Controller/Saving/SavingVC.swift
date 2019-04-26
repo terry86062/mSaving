@@ -44,6 +44,8 @@ class SavingVC: UIViewController {
     
     var months: [Month] = []
     
+    var selectedMonth: Month?
+    
     var selectedAccounting: Accounting?
     
     var selectedSaving: Saving?
@@ -112,6 +114,8 @@ class SavingVC: UIViewController {
             
             setUpSelectedSaving(row: 0)
             
+            setUpSelectedMonth(row: 0)
+            
         }
         
     }
@@ -123,6 +127,8 @@ class SavingVC: UIViewController {
             helpHideTabBarVCBlackView()
             
             guard let savingGoalSetVC = segue.destination as? SavingGoalSetVC else { return }
+            
+            savingGoalSetVC.selectedMonth = selectedMonth
             
             savingGoalSetVC.selectedSaving = selectedSaving
             
@@ -347,6 +353,8 @@ extension SavingVC {
         
         helpSetShadowAlpha(row: row, show: true)
         
+        setUpSelectedMonth(row: row)
+        
         setUpSelectedSaving(row: row)
         
         switch row {
@@ -387,6 +395,15 @@ extension SavingVC {
             }
             
         })
+        
+    }
+    
+    func setUpSelectedMonth(row: Int) {
+        
+        guard let cell = monthCollectionView.cellForItem(at: IndexPath(row: row, section: 0))
+            as? MonthCVCell else { return }
+        
+        selectedMonth = cell.month
         
     }
     

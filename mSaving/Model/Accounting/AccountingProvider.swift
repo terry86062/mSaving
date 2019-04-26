@@ -112,7 +112,7 @@ class AccountingProvider {
         
         coreDataManager.saveContext()
         
-        notificationManager.postNotificationForRenew()
+        notificationManager.postAccountingChanged()
         
     }
     
