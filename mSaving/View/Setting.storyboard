@@ -113,8 +113,12 @@
                                     <constraint firstAttribute="height" constant="24" id="tcG-s3-Hyo"/>
                                 </constraints>
                                 <state key="normal" image="pencil"/>
+                                <state key="selected" title="完成"/>
+                                <connections>
+                                    <action selector="changeUserName:" destination="efR-9J-AMD" eventType="touchUpInside" id="ucV-kT-17t"/>
+                                </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="使用者" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="giR-La-Slb">
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="使用者" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="giR-La-Slb">
                                 <rect key="frame" x="136" y="88" width="90" height="24"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -137,6 +141,16 @@
                                     <action selector="changeUserImage:" destination="efR-9J-AMD" eventType="touchUpInside" id="FUy-9x-LTH"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cvH-Bu-a0H">
+                                <rect key="frame" x="360" y="60" width="30" height="27"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="12"/>
+                                <state key="normal" title="完成">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="finishChangeUserName:" destination="efR-9J-AMD" eventType="touchUpInside" id="fyJ-sn-3fE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
@@ -147,6 +161,7 @@
                             <constraint firstItem="F9I-CD-nM3" firstAttribute="top" secondItem="7Jr-bw-C8n" secondAttribute="top" constant="16" id="Iru-W2-hjn"/>
                             <constraint firstAttribute="trailing" secondItem="Ml7-Nu-x95" secondAttribute="trailing" id="K1l-ah-w7B"/>
                             <constraint firstItem="Ml7-Nu-x95" firstAttribute="top" secondItem="RTU-4r-uFr" secondAttribute="bottom" constant="8" id="K7c-Wh-FmL"/>
+                            <constraint firstItem="7Jr-bw-C8n" firstAttribute="trailing" secondItem="cvH-Bu-a0H" secondAttribute="trailing" constant="24" id="Nfh-NW-iHN"/>
                             <constraint firstItem="RTU-4r-uFr" firstAttribute="top" secondItem="syk-jj-XAY" secondAttribute="bottom" constant="3" id="SVj-D7-zcP"/>
                             <constraint firstAttribute="trailing" secondItem="nLB-IN-6CN" secondAttribute="trailing" constant="24" id="VTE-nW-zd3"/>
                             <constraint firstItem="qfW-Op-JEy" firstAttribute="centerX" secondItem="F9I-CD-nM3" secondAttribute="centerX" id="WTb-jl-oCK"/>
@@ -159,6 +174,7 @@
                             <constraint firstItem="syk-jj-XAY" firstAttribute="trailing" secondItem="fNO-t4-7W5" secondAttribute="centerX" constant="-16" id="nzN-0K-2vY"/>
                             <constraint firstItem="RTU-4r-uFr" firstAttribute="centerX" secondItem="syk-jj-XAY" secondAttribute="centerX" id="qai-Hh-1Z1"/>
                             <constraint firstItem="Ml7-Nu-x95" firstAttribute="leading" secondItem="7Jr-bw-C8n" secondAttribute="leading" id="rHq-75-DRy"/>
+                            <constraint firstItem="cvH-Bu-a0H" firstAttribute="top" secondItem="7Jr-bw-C8n" secondAttribute="top" constant="16" id="tOa-ne-uBF"/>
                             <constraint firstItem="qfW-Op-JEy" firstAttribute="centerY" secondItem="F9I-CD-nM3" secondAttribute="centerY" id="unN-ag-AEl"/>
                             <constraint firstItem="syk-jj-XAY" firstAttribute="top" secondItem="F9I-CD-nM3" secondAttribute="bottom" constant="20" id="vfE-0r-OMS"/>
                         </constraints>
@@ -168,12 +184,15 @@
                     <connections>
                         <outlet property="accountsCollectionView" destination="O65-Y2-jB5" id="jEr-R0-Si7"/>
                         <outlet property="accountsLabel" destination="syk-jj-XAY" id="9w2-8L-j9O"/>
+                        <outlet property="changeUserNameButton" destination="nLB-IN-6CN" id="4VE-bd-Kna"/>
                         <outlet property="contentView" destination="Zsq-7Y-WpH" id="OL3-at-02J"/>
+                        <outlet property="finishUserNameButton" destination="cvH-Bu-a0H" id="hdX-tb-LdG"/>
                         <outlet property="scrollView" destination="Ml7-Nu-x95" id="zFy-kd-jGj"/>
                         <outlet property="segmentedBarView" destination="RTU-4r-uFr" id="grE-Yf-NMn"/>
                         <outlet property="settingsCollectionView" destination="gR1-jU-Jmx" id="Scl-Pw-v9w"/>
                         <outlet property="settingsLabel" destination="WUD-Wv-ybQ" id="JTA-yj-k4J"/>
                         <outlet property="userImageView" destination="F9I-CD-nM3" id="rS9-BO-VVd"/>
+                        <outlet property="userNameTextField" destination="giR-La-Slb" id="jPz-kD-K4F"/>
                         <segue destination="oqZ-b3-WQU" kind="show" identifier="goToSetCategory" id="wph-DF-5tA"/>
                         <segue destination="vnS-kl-hBB" kind="presentation" identifier="goToAccountDetail" modalPresentationStyle="overFullScreen" id="PYr-pa-Jcw"/>
                     </connections>

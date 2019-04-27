@@ -57,7 +57,13 @@ class SettingVC: UIViewController {
         }
         
     }
-
+    
+    @IBOutlet weak var userNameTextField: UITextField!
+    
+    @IBOutlet weak var changeUserNameButton: UIButton!
+    
+    @IBOutlet weak var finishUserNameButton: UIButton!
+    
     @IBOutlet weak var segmentedBarView: UIView!
 
     @IBOutlet weak var accountsLabel: UILabel!
@@ -173,7 +179,31 @@ class SettingVC: UIViewController {
         }
         
     }
-
+    
+    @IBAction func changeUserName(_ sender: UIButton) {
+        
+        changeUserNameButton.isHidden = true
+        
+        finishUserNameButton.isHidden = false
+        
+        userNameTextField.isEnabled = true
+        
+        userNameTextField.becomeFirstResponder()
+        
+    }
+    
+    @IBAction func finishChangeUserName(_ sender: UIButton) {
+        
+        finishUserNameButton.isHidden = true
+        
+        changeUserNameButton.isHidden = false
+        
+        userNameTextField.isEnabled = false
+        
+        userNameTextField.resignFirstResponder()
+        
+    }
+    
 }
 
 extension SettingVC: UICollectionViewDataSource {
