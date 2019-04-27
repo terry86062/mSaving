@@ -92,17 +92,23 @@ class ChartVC: UIViewController {
     
     func showCorrectCollectionView() {
         
-        guard months != [] else { return }
-        
-        let indexPath = IndexPath(item: months.count - 1, section: 0)
-        
-        analysisCollectionView.scrollToItem(at: indexPath,
-                                            at: [.centeredVertically, .centeredHorizontally],
-                                            animated: false)
-        
-        if indexPath.row == 0 {
+        if months == [] {
             
             helpSetShadowAlpha(row: 0, show: true)
+            
+        } else {
+            
+            let indexPath = IndexPath(item: months.count - 1, section: 0)
+            
+            analysisCollectionView.scrollToItem(at: indexPath,
+                                                at: [.centeredVertically, .centeredHorizontally],
+                                                animated: false)
+            
+            if indexPath.row == 0 {
+                
+                helpSetShadowAlpha(row: 0, show: true)
+                
+            }
             
         }
         

@@ -102,21 +102,27 @@ class SavingVC: UIViewController {
     
     func showCorrectCollectionView() {
         
-        guard months != [] else { return }
-        
-        let indexPath = IndexPath(item: months.count - 1, section: 0)
-        
-        savingCollectionView.scrollToItem(at: indexPath,
-                                         at: [.centeredVertically, .centeredHorizontally],
-                                         animated: false)
-        
-        if indexPath.row == 0 {
+        if months == [] {
             
             helpSetShadowAlpha(row: 0, show: true)
             
-            setUpSelectedSaving(row: 0)
+        } else {
             
-            setUpSelectedMonth(row: 0)
+            let indexPath = IndexPath(item: months.count - 1, section: 0)
+            
+            savingCollectionView.scrollToItem(at: indexPath,
+                                              at: [.centeredVertically, .centeredHorizontally],
+                                              animated: false)
+            
+            if indexPath.row == 0 {
+                
+                helpSetShadowAlpha(row: 0, show: true)
+                
+                setUpSelectedSaving(row: 0)
+                
+                setUpSelectedMonth(row: 0)
+                
+            }
             
         }
         
@@ -207,7 +213,7 @@ extension SavingVC: UICollectionViewDataSource {
                 
                 self.showAccounting = cell.showAccounting
                 
-                self.searchButton.isHidden = !cell.showAccounting
+//                self.searchButton.isHidden = !cell.showAccounting
                 
                 self.editingButton.isHidden = cell.showAccounting
                 
@@ -217,7 +223,11 @@ extension SavingVC: UICollectionViewDataSource {
             
             cell.presentSavingDetailNew = {
                 
-                self.selectedMonth = self.months[indexPath.row]
+                if self.months != [] {
+                    
+                    self.selectedMonth = self.months[indexPath.row]
+                    
+                }
                 
                 self.performSegue(withIdentifier: "goToSavingDetailNew", sender: nil)
                 
@@ -225,7 +235,11 @@ extension SavingVC: UICollectionViewDataSource {
             
             cell.presentSavingDetailEdit = {
                 
-                self.selectedMonth = self.months[indexPath.row]
+                if self.months != [] {
+                    
+                    self.selectedMonth = self.months[indexPath.row]
+                    
+                }
                 
                 self.selectedSavingDetail = cell.selectedSavingDetail
                 

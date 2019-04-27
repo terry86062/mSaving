@@ -551,8 +551,8 @@
 			children = (
 				DE2BB35622536070001D55E4 /* Base */,
 				DE2BB3552253605D001D55E4 /* Saving */,
-				DE7B38A7225731C400C17846 /* Accounting */,
 				DE21B8FF22578D1E00B65719 /* Chart */,
+				DE7B38A7225731C400C17846 /* Accounting */,
 				DE4984BB225886C8004E4AE9 /* Setting */,
 				DEECB0412253358B002D6C30 /* LaunchScreen.storyboard */,
 				DEECB0432253358B002D6C30 /* Main.storyboard */,

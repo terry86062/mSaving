@@ -24,7 +24,11 @@ class AnalysisCVCell: UICollectionViewCell {
 
     }
     
+    @IBOutlet weak var noDataLabel: UILabel!
+    
     var accountingProvider = AccountingProvider()
+    
+    var month: Month?
     
     var expenseMonthTotal: [CategoryMonthTotal] = []
     
@@ -45,6 +49,10 @@ class AnalysisCVCell: UICollectionViewCell {
     }
     
     func initAnalysisCVCell(month: Month, isIncome: Bool) {
+        
+        noDataLabel.isHidden = true
+        
+        self.month = month
         
         let tempTuples = accountingProvider.fetchExpenseIncomeMonthTotal(month: month)
         
@@ -74,13 +82,47 @@ extension AnalysisCVCell: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
-        return 3
+        if isIncome {
+            
+            return 2
+            
+        } else {
+            
+            return 3
+            
+        }
         
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 1
+        guard month != nil else { return 0 }
+        
+        if isIncome {
+            
+            if incomeMonthTotal.count > 0 {
+                
+                return 1
+                
+            } else {
+                
+                return 0
+                
+            }
+            
+        } else {
+            
+            if expenseMonthTotal.count > 0 {
+                
+                return 1
+                
+            } else {
+                
+                return 0
+                
+            }
+            
+        }
         
     }
     

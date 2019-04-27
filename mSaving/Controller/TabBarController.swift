@@ -126,6 +126,8 @@ class TabBarController: UITabBarController {
         blackView.isHidden = true
         
         view.addSubview(blackView)
+        
+        tabBar.barTintColor = .white
 
     }
 
@@ -149,13 +151,13 @@ class TabBarController: UITabBarController {
         let yy = rectBoundTabbar.midY - paddingBottom
         button.center = CGPoint(x: xx, y: yy)
 
-        button.backgroundColor = UIColor(red: 248 / 255, green: 248 / 255, blue: 248 / 255, alpha: 1)
+        button.backgroundColor = UIColor(red: 254 / 255, green: 254 / 255, blue: 254 / 255, alpha: 1)
 
         button.layer.cornerRadius = 30
 
         button.layer.borderWidth = 5
 
-        button.layer.borderColor = UIColor(red: 248 / 255, green: 248 / 255, blue: 248 / 255, alpha: 1).cgColor
+        button.layer.borderColor = UIColor(red: 254 / 255, green: 254 / 255, blue: 254 / 255, alpha: 1).cgColor
 
         // two color view
         let twoColorView = UIView(frame:
@@ -168,8 +170,8 @@ class TabBarController: UITabBarController {
         gradientLayer.colors = [
             UIColor(red: 175 / 255, green: 175 / 255, blue: 175 / 255, alpha: 1).cgColor,
             UIColor(red: 175 / 255, green: 175 / 255, blue: 175 / 255, alpha: 1).cgColor,
-            UIColor(red: 248 / 255, green: 248 / 255, blue: 248 / 255, alpha: 1).cgColor,
-            UIColor(red: 248 / 255, green: 248 / 255, blue: 248 / 255, alpha: 1).cgColor
+            UIColor(red: 254 / 255, green: 254 / 255, blue: 254 / 255, alpha: 1).cgColor,
+            UIColor(red: 254 / 255, green: 254 / 255, blue: 254 / 255, alpha: 1).cgColor
         ]
         gradientLayer.locations = [
             NSNumber(value: 0.0),

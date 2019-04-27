@@ -21,6 +21,10 @@ class PieChartCVCell: UICollectionViewCell {
     }
 
     func pieChartUpdate(monthTotal: [CategoryMonthTotal], isIncome: Bool) {
+        
+        pieChart.data = PieChartData(dataSet: PieChartDataSet(values: [], label: ""))
+        
+        pieChart.notifyDataSetChanged()
 
         guard monthTotal.count != 0 else { return }
         

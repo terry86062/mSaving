@@ -32,8 +32,12 @@ class BarChartCVCell: UICollectionViewCell {
 
             for indexx in 0...accountingsGroup[index].count - 1 {
 
-                totalSpendPerDay += accountingsGroup[index][indexx].amount
-
+                if accountingsGroup[index][indexx].incomeCategory == nil {
+                    
+                    totalSpendPerDay += accountingsGroup[index][indexx].amount
+                    
+                }
+                
             }
             
             guard let day = TimeManager().transform(int: accountingsGroup[index][0].occurDate).day else { return }

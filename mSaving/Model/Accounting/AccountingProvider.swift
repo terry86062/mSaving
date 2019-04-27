@@ -122,6 +122,8 @@ class AccountingProvider {
                                                 predicate: NSPredicate(format: "month == %@", month),
                                                 reverse: true)
         
+        print(accountings)
+        
         let categoriesMonthTotal = transformer.transToCategoriesMonthTotal(accountings: accountings)
         
         return transformer.sortAmount(categoriesMonthTotal: categoriesMonthTotal)
@@ -171,6 +173,16 @@ class AccountingProvider {
         accounting.occurDate = Int64(occurDate.timeIntervalSince1970)
         
         accounting.createDate = Int64(createDate.timeIntervalSince1970)
+        
+        if accounting.expenseCategory != nil {
+            
+            accounting.accountName?.currentValue += accounting.amount
+            
+        } else {
+            
+            accounting.accountName?.currentValue -= accounting.amount
+            
+        }
         
         accounting.amount = amount
         

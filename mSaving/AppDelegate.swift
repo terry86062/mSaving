@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         detectFirstLaunch()
         
-        askSiriAuthorization()
+//        askSiriAuthorization()
 
         return true
         

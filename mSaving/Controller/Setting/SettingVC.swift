@@ -50,9 +50,9 @@ class SettingVC: UIViewController {
 
     @IBOutlet weak var segmentedBarView: UIView!
 
-    @IBOutlet weak var accountsButton: UIButton!
-
-    @IBOutlet weak var settingButton: UIButton!
+    @IBOutlet weak var accountsLabel: UILabel!
+    
+    @IBOutlet weak var settingsLabel: UILabel!
     
     var isAddingNewAccount = false
     
@@ -65,7 +65,7 @@ class SettingVC: UIViewController {
     var accountArrayCount = 0
     
     var settings: [SettingText] = [
-        SettingText(leadingText: "新增類別", trailingText: ">"),
+        SettingText(leadingText: "類別顯示", trailingText: ">"),
         SettingText(leadingText: "隱私權聲明內容", trailingText: ">"),
         SettingText(leadingText: "給予評價", trailingText: ">")
     ]
@@ -85,8 +85,6 @@ class SettingVC: UIViewController {
         super.viewWillAppear(animated)
         
         fetchData()
-        
-        accountArray[0].accounting?.allObjects
         
     }
 
@@ -333,33 +331,27 @@ extension SettingVC: UIScrollViewDelegate {
 
         if scrollView.isEqual(scrollView) {
             
-            segmentedBarView.frame.origin.x = 119 + scrollView.bounds.origin.x * 104 / 414
+            segmentedBarView.frame.origin.x = 119 + scrollView.contentOffset.x * 104 / 414
             
             if segmentedBarView.frame.origin.x > scrollView.frame.width / 2 {
 
-                accountsButton.isSelected = false
+                accountsLabel.textColor = .lightGray
 
-                settingButton.isSelected = true
-                
-                accountsButton.setTitleColor(.lightGray, for: .normal)
-                
-                settingButton.setTitleColor(.black, for: .normal)
-                
-                segmentedBarView.frame = CGRect(x: segmentedBarView.frame.origin.x, y: segmentedBarView.frame.origin.y,
-                                                width: settingButton.frame.width, height: 3)
+                settingsLabel.textColor = .black
+
+                segmentedBarView.frame = CGRect(x: segmentedBarView.frame.origin.x,
+                                                y: segmentedBarView.frame.origin.y,
+                                                width: settingsLabel.frame.width, height: 3)
 
             } else if segmentedBarView.frame.origin.x < scrollView.frame.width / 2 {
 
-                accountsButton.isSelected = true
-
-                settingButton.isSelected = false
+                accountsLabel.textColor = .black
                 
-                accountsButton.setTitleColor(.black, for: .normal)
+                settingsLabel.textColor = .lightGray
                 
-                settingButton.setTitleColor(.lightGray, for: .normal)
-                
-                segmentedBarView.frame = CGRect(x: segmentedBarView.frame.origin.x, y: segmentedBarView.frame.origin.y,
-                                                width: accountsButton.frame.width, height: 3)
+                segmentedBarView.frame = CGRect(x: segmentedBarView.frame.origin.x,
+                                                y: segmentedBarView.frame.origin.y,
+                                                width: accountsLabel.frame.width, height: 3)
 
             }
 

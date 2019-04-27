@@ -116,7 +116,7 @@ class AccountingVC: UIViewController {
     func setUpSegmentedC() {
         
         incomeExpenseSegmentedC.segments = LabelSegment.segments(
-            withTitles: ["支出", "收入", "移轉"],
+            withTitles: ["支出", "收入"],
             normalBackgroundColor: UIColor.white,
             normalFont: .systemFont(ofSize: 16),
             normalTextColor: UIColor.lightGray,
@@ -441,7 +441,7 @@ extension AccountingVC: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return 3
+        return 2
 
     }
 

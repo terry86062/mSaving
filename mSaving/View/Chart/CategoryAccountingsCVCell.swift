@@ -71,7 +71,7 @@ extension CategoryAccountingsCVCell: UICollectionViewDataSource {
             withReuseIdentifier: String(describing: CategoryCVCell.self),
             for: indexPath) as? CategoryCVCell else { return UICollectionViewCell() }
         
-        cell.initCategoryCVCell(categoryAccountingMonthTotal: categoriesMonthTotal[indexPath.row])
+        cell.initCategoryCVCell(categoryMonthTotal: categoriesMonthTotal[indexPath.row], isIncome: isIncome)
         
         cell.touchCategoryHandler = {
             

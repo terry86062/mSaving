@@ -14,9 +14,9 @@ class InvoiceVC: UIViewController {
     
     @IBOutlet weak var messageLabel: UILabel!
     
-    var messageFromQRCode = ""
-    
     let invoiceDownloader = InvoiceProvider()
+    
+    var messageFromQRCode = ""
 
     var captureSession = AVCaptureSession()
     

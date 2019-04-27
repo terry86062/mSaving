@@ -76,6 +76,12 @@ class AccountingTransformer {
                     categoriesMonthTotal[lastNumber].amount += accounting.amount
                     categoriesMonthTotal[lastNumber].accountings[lastNumberInside].append(accounting)
                     
+                } else if accounting.expenseCategory == preAccounting.expenseCategory &&
+                    accounting.incomeCategory == preAccounting.incomeCategory {
+                        
+                    categoriesMonthTotal[lastNumber].amount += accounting.amount
+                    categoriesMonthTotal[lastNumber].accountings.append([accounting])
+                        
                 } else {
                     
                     categoriesMonthTotal.append(CategoryMonthTotal(amount: accounting.amount,

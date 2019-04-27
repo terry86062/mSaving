@@ -24,27 +24,43 @@ class CategoryCVCell: UICollectionViewCell {
 
     }
     
-    func initCategoryCVCell(categoryAccountingMonthTotal: CategoryMonthTotal) {
+    func initCategoryCVCell(categoryMonthTotal: CategoryMonthTotal, isIncome: Bool) {
         
-        let category = categoryAccountingMonthTotal.accountings[0][0].expenseCategory
-        
-        guard let iconName = category?.iconName, let color = category?.color else { return }
+        if isIncome {
             
-        categoryImageView.image = UIImage(named: iconName)
-        
-        categoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
-        
-        categoryNameLabel.text = category?.name
-        
-        trailingLabel.text = "-\(categoryAccountingMonthTotal.amount)"
+            let category = categoryMonthTotal.accountings[0][0].incomeCategory
+            
+            guard let iconName = category?.iconName, let color = category?.color else { return }
+            
+            categoryImageView.image = UIImage(named: iconName)
+            
+            categoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+            
+            categoryNameLabel.text = category?.name
+            
+            trailingLabel.text = "\(categoryMonthTotal.amount)"
+            
+        } else {
+            
+            let category = categoryMonthTotal.accountings[0][0].expenseCategory
+            
+            guard let iconName = category?.iconName, let color = category?.color else { return }
+            
+            categoryImageView.image = UIImage(named: iconName)
+            
+            categoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+            
+            categoryNameLabel.text = category?.name
+            
+            trailingLabel.text = "-\(categoryMonthTotal.amount)"
+            
+        }
         
     }
 
     @IBAction private func touchCategory(_ sender: UIButton) {
 
-        guard let goTo = touchCategoryHandler else { return }
-
-        goTo()
+        touchCategoryHandler?()
 
     }
 
