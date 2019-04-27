@@ -34,6 +34,8 @@ class SavingDetailCVCell: UICollectionViewCell {
     
     func initSavingDetailCVCell(budget: Int64, totalSpend: Int, imageName: String, categoryName: String, hex: String) {
         
+        categorySpendView.frame = CGRect(x: 0, y: 0, width: 0, height: categoryBudgetView.frame.height)
+        
         categoryImageView.image = UIImage(named: imageName)
         
         categoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
@@ -44,19 +46,27 @@ class SavingDetailCVCell: UICollectionViewCell {
         
         categorySpendLabel.text = "-$" + String(totalSpend)
         
-        if categorySpendViewConstraint != nil {
+        if budget != 0 {
             
-            categorySpendViewConstraint.isActive = false
+            categorySpendView.frame = CGRect(x: 0, y: 0,
+                                             width: categoryBudgetView.frame.width * CGFloat(Double(totalSpend) / Double(budget)),
+                                             height: categoryBudgetView.frame.height)
             
         }
         
-        if budget != 0 {
-            
-            NSLayoutConstraint(item: categorySpendView as Any, attribute: .width, relatedBy: .equal,
-                               toItem: categoryBudgetView, attribute: .width,
-                               multiplier: CGFloat(Double(totalSpend) / Double(budget)), constant: 0).isActive = true
-
-        }
+//        if categorySpendViewConstraint != nil {
+//
+//            categorySpendViewConstraint.isActive = false
+//
+//        }
+        
+//        if budget != 0 {
+//
+//            NSLayoutConstraint(item: categorySpendView as Any, attribute: .width, relatedBy: .equal,
+//                               toItem: categoryBudgetView, attribute: .width,
+//                               multiplier: CGFloat(Double(totalSpend) / Double(budget)), constant: 0).isActive = true
+//
+//        }
         
     }
 

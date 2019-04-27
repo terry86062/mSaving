@@ -82,6 +82,7 @@ class SettingVC: UIViewController {
     
     var settings: [SettingText] = [
         SettingText(leadingText: "類別顯示", trailingText: ">"),
+        SettingText(leadingText: "使用 Siri", trailingText: "未使用"),
         SettingText(leadingText: "隱私權聲明內容", trailingText: ">"),
         SettingText(leadingText: "給予評價", trailingText: ">")
     ]
@@ -90,9 +91,19 @@ class SettingVC: UIViewController {
 
         super.viewDidLoad()
         
-        if let data = UserDefaults.standard.object(forKey: "userImage") as? NSData {
+        DispatchQueue.global(qos: .userInteractive).async {
             
-            userImageView.image = UIImage(data: data as Data)
+            if let data = UserDefaults.standard.object(forKey: "userImage") as? NSData {
+
+                let image = UIImage(data: data as Data)
+
+                DispatchQueue.main.async {
+
+                    self.userImageView.image = image
+
+                }
+
+            }
             
         }
         
@@ -293,6 +304,8 @@ extension SettingVC: UICollectionViewDataSource {
                                        havingShadow: true)
             
             cell.goToDetialPage = {
+                
+                guard indexPath.row == 0 else { return }
                 
                 self.performSegue(withIdentifier: "goToSetCategory", sender: nil)
                 

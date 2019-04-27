@@ -23,6 +23,10 @@ class CategorysCVCell: UICollectionViewCell {
         }
 
     }
+    
+    var expenseCategories: [ExpenseCategory] = []
+    
+    var incomeCategories: [IncomeCategory] = []
 
     var goToSetCategory: (() -> Void)?
 
@@ -30,6 +34,14 @@ class CategorysCVCell: UICollectionViewCell {
 
         super.awakeFromNib()
 
+    }
+    
+    func initCategorysCVCell(expense: [ExpenseCategory], income: [IncomeCategory]) {
+        
+        expenseCategories = expense
+        
+        incomeCategories = income
+        
     }
 
     func setUpCollectionView() {
@@ -44,8 +56,20 @@ extension CategorysCVCell: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return 9
-
+        if expenseCategories != [] {
+            
+            return expenseCategories.count
+            
+        } else if incomeCategories != [] {
+            
+            return incomeCategories.count
+            
+        } else {
+            
+            return 0
+            
+        }
+        
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -55,6 +79,18 @@ extension CategorysCVCell: UICollectionViewDataSource {
             withReuseIdentifier: String(describing: CategoryCVCell.self),
             for: indexPath) as? CategoryCVCell else { return CategoryCVCell() }
 
+        if expenseCategories != [] {
+            
+            cell.initCategoryCVCell(expense: expenseCategories[indexPath.row],
+                                    income: nil)
+            
+        } else if incomeCategories != [] {
+            
+            cell.initCategoryCVCell(expense: nil,
+                                    income: incomeCategories[indexPath.row])
+            
+        }
+        
         cell.touchCategoryHandler = goToSetCategory
 
         return cell
@@ -63,9 +99,7 @@ extension CategorysCVCell: UICollectionViewDataSource {
 
 }
 
-extension CategorysCVCell: UICollectionViewDelegate {
-
-}
+extension CategorysCVCell: UICollectionViewDelegate { }
 
 extension CategorysCVCell: UICollectionViewDelegateFlowLayout {
 

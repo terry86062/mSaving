@@ -57,6 +57,36 @@ class CategoryCVCell: UICollectionViewCell {
         }
         
     }
+    
+    func initCategoryCVCell(expense: ExpenseCategory?, income: IncomeCategory?) {
+        
+        if expense == nil {
+            
+            guard let iconName = income?.iconName, let color = income?.color else { return }
+            
+            categoryImageView.image = UIImage(named: iconName)
+            
+            categoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+            
+            categoryNameLabel.text = income?.name
+            
+            trailingLabel.text = ""
+            
+        } else {
+            
+            guard let iconName = expense?.iconName, let color = expense?.color else { return }
+            
+            categoryImageView.image = UIImage(named: iconName)
+            
+            categoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+            
+            categoryNameLabel.text = expense?.name
+            
+            trailingLabel.text = ""
+            
+        }
+        
+    }
 
     @IBAction private func touchCategory(_ sender: UIButton) {
 

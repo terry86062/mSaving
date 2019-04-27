@@ -32,15 +32,28 @@ extension IntentHandler: INPayBillIntentHandling {
             
         }
 
-//        AccountingProvider().saveAccounting(date: Date(),
-//                                            amount: Int64(amount),
-//                                            accountName: "現金",
-//                                            selectedExpenseCategory: category[0],
-//                                            selectedIncomeCategory: nil,
-//                                            selectedExpense: true)
+        let account = AccountProvider().accounts
+        
+        guard let occurDate = createOccurDate(selectedDate: Date()) else { return }
+        
+        AccountingProvider().createAccounting(occurDate: occurDate,
+                                              createDate: Date(),
+                                              amount: Int64(amount),
+                                              account: account[0],
+                                              category: .expense(category[0]))
 
         completion(INPayBillIntentResponse(code: .success, userActivity: nil))
 
+    }
+    
+    func createOccurDate(selectedDate: Date) -> Date? {
+        
+        let selectedComponents = TimeManager().transform(date: selectedDate)
+        
+        return TimeManager().createDate(year: selectedComponents.year,
+                                        month: selectedComponents.month,
+                                        day: selectedComponents.day)
+        
     }
 
 }

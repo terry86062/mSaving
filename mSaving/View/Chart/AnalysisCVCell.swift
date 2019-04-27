@@ -106,6 +106,8 @@ extension AnalysisCVCell: UICollectionViewDataSource {
                 
             } else {
                 
+                noDataLabel.isHidden = false
+                
                 return 0
                 
             }
@@ -117,6 +119,8 @@ extension AnalysisCVCell: UICollectionViewDataSource {
                 return 1
                 
             } else {
+                
+                noDataLabel.isHidden = false
                 
                 return 0
                 

@@ -34,6 +34,8 @@ class SavingCVCell: UICollectionViewCell {
     
     var savings: [Saving] = []
     
+    var expenseMonthTotal: [CategoryMonthTotal] = []
+    
     var touchMainSaving: (() -> Void)?
     
     var presentSavingDetailNew: (() -> Void)?
@@ -65,6 +67,10 @@ class SavingCVCell: UICollectionViewCell {
         savings = SavingProvider().fetchSaving(month: month)
         
         totalSpend = accountingProvider.getTotalSpend(month: month)
+        
+        let tempTuples = accountingProvider.fetchExpenseIncomeMonthTotal(month: month)
+        
+        expenseMonthTotal = tempTuples.expense
         
     }
 
@@ -216,8 +222,19 @@ extension SavingCVCell: UICollectionViewDataSource {
                                 let name = expenseCategory.name,
                                 let color = expenseCategory.color else { return cell }
                             
+                            guard expenseMonthTotal.count > 0 else { return cell }
+                            
+                            var totalSpend = 0
+                            
+                            for index in 0...expenseMonthTotal.count - 1
+                                where expenseMonthTotal[index].accountings[0][0].expenseCategory == expenseCategory {
+                                
+                                totalSpend = Int(expenseMonthTotal[index].amount)
+                                
+                            }
+                            
                             cell.initSavingDetailCVCell(budget: savings[indexPath.row].amount,
-                                                        totalSpend: 0,
+                                                        totalSpend: totalSpend,
                                                         imageName: iconName,
                                                         categoryName: name, hex: color)
                             

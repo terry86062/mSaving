@@ -16,7 +16,7 @@ class InvoiceToAccountingVC: UIViewController {
     
     @IBOutlet weak var selectedCategoryImageView: UIImageView!
     
-    @IBOutlet weak var selectedAccount: UIButton!
+    @IBOutlet weak var selectedAccountButton: UIButton!
     
     @IBOutlet weak var accountingCategoryCollectionView: UICollectionView! {
         
@@ -38,9 +38,13 @@ class InvoiceToAccountingVC: UIViewController {
     
     var invoiceAmount = 0
     
+    var expenseCategorys: [ExpenseCategory] = []
+    
+    var accounts: [Account] = []
+    
     var selectedExpenseCategory: ExpenseCategory?
     
-    var expenseCategorys: [ExpenseCategory] = []
+    var selectedAccount: Account?
     
     override func viewDidLoad() {
         
@@ -48,19 +52,31 @@ class InvoiceToAccountingVC: UIViewController {
         
         setUpCollectionView()
         
-        dateLabel.text = invoiceYear + "年" + invoiceMonth + "月" + invoiceDay + "日"
+        setUpInvoiceInfo()
         
-        invoiceAccountingTextField.text = "\(invoiceAmount)"
-        
-        let expenseCategorys = CategoryProvider().expenseCategories
-        
-        self.expenseCategorys = expenseCategorys
+        fetchData()
         
     }
     
     func setUpCollectionView() {
         
         accountingCategoryCollectionView.helpRegister(cell: CategorySelectCVCell())
+        
+    }
+    
+    func setUpInvoiceInfo() {
+        
+        dateLabel.text = invoiceYear + "年" + invoiceMonth + "月" + invoiceDay + "日"
+        
+        invoiceAccountingTextField.text = "\(invoiceAmount)"
+        
+    }
+    
+    func fetchData() {
+        
+        expenseCategorys = CategoryProvider().expenseCategories
+        
+        accounts = AccountProvider().accounts
         
     }
     
@@ -104,24 +120,57 @@ class InvoiceToAccountingVC: UIViewController {
         
         guard let text = invoiceAccountingTextField.text, let amount = Int64(text), amount != 0 else { return }
         
-        guard let selectedAccount = selectedAccount.titleLabel?.text else { return }
+        guard let selectedAccount = selectedAccount else { return }
         
-        var components = DateComponents()
-        
-        components.year = Int(invoiceYear)
-        components.month = Int(invoiceMonth)
-        components.day = Int(invoiceDay)
-        
-        guard let date = Calendar.current.date(from: components) else { return }
+        guard let date = TimeManager().createDate(year: Int(invoiceYear),
+                                                  month: Int(invoiceMonth),
+                                                  day: Int(invoiceDay)) else { return }
         
         guard let selectedCategory = selectedExpenseCategory else { return }
         
-//        AccountingProvider().saveAccounting(date: date,
-//                                             amount: amount,
-//                                             accountName: selectedAccount,
-//                                             selectedExpenseCategory: selectedCategory,
-//                                             selectedIncomeCategory: nil,
-//                                             selectedExpense: true)
+        AccountingProvider().createAccounting(occurDate: date,
+                                              createDate: Date(),
+                                              amount: amount,
+                                              account: selectedAccount,
+                                              category: .expense(selectedCategory))
+        
+    }
+    
+    @IBAction func changeAccount(_ sender: UIButton) {
+        
+        showAlertWith(title: "請選擇帳戶", message: "")
+        
+    }
+    
+    func showAlertWith(title: String, message: String, style: UIAlertController.Style = .actionSheet) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
+        
+        if accounts.count > 0 {
+            
+            for index in 0...accounts.count - 1 {
+                
+                guard let accountName = accounts[index].name else { return }
+                
+                let accountAction = UIAlertAction(title: accountName, style: .default, handler: { _ in
+                    
+                    self.selectedAccountButton.setTitle(accountName, for: .normal)
+                    
+                    self.selectedAccount = self.accounts[index]
+                    
+                })
+                
+                alertController.addAction(accountAction)
+                
+            }
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
         
     }
     
@@ -168,9 +217,7 @@ extension InvoiceToAccountingVC: UICollectionViewDataSource {
     
 }
 
-extension InvoiceToAccountingVC: UICollectionViewDelegate {
-    
-}
+extension InvoiceToAccountingVC: UICollectionViewDelegate { }
 
 extension InvoiceToAccountingVC: UICollectionViewDelegateFlowLayout {
     

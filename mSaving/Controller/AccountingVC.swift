@@ -347,9 +347,8 @@ class AccountingVC: UIViewController {
     }
     
     func showAlertWith(title: String, message: String, style: UIAlertController.Style = .actionSheet) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
         
-        let accounts = AccountProvider().accounts
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
         
         if accounts.count > 0 {
             
@@ -360,6 +359,8 @@ class AccountingVC: UIViewController {
                 let accountAction = UIAlertAction(title: accountName, style: .default, handler: { _ in
                     
                     self.selectedAccountButton.setTitle(accountName, for: .normal)
+                    
+                    self.selectedAccount = self.accounts[index]
                     
                 })
                 

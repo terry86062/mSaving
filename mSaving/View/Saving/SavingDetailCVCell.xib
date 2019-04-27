@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,9 +23,10 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCq-We-BpK">
                         <rect key="frame" x="16" y="64" width="350" height="32"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9XI-z4-jgI">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9XI-z4-jgI">
                                 <rect key="frame" x="0.0" y="0.0" width="87.5" height="32"/>
-                                <color key="backgroundColor" red="0.2936418354511261" green="0.35291594266891479" blue="0.964702308177948" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="mSGreen"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
                                         <real key="value" value="10"/>
@@ -57,12 +59,8 @@
                         <color key="backgroundColor" red="0.92159336810000003" green="0.9098213315" blue="0.92535680529999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="s7L-Jp-6GX" secondAttribute="trailing" constant="8" id="3N0-ed-Tee"/>
-                            <constraint firstItem="9XI-z4-jgI" firstAttribute="top" secondItem="NCq-We-BpK" secondAttribute="top" id="7Sw-Ii-3a4"/>
                             <constraint firstItem="PEH-dF-A7Y" firstAttribute="centerY" secondItem="NCq-We-BpK" secondAttribute="centerY" id="BnB-2b-Zw7"/>
                             <constraint firstItem="s7L-Jp-6GX" firstAttribute="centerY" secondItem="NCq-We-BpK" secondAttribute="centerY" id="F3C-HI-8Hl"/>
-                            <constraint firstItem="9XI-z4-jgI" firstAttribute="width" secondItem="NCq-We-BpK" secondAttribute="width" multiplier="1:4" id="QeO-og-zUJ"/>
-                            <constraint firstAttribute="bottom" secondItem="9XI-z4-jgI" secondAttribute="bottom" id="UBA-P1-AOe"/>
-                            <constraint firstItem="9XI-z4-jgI" firstAttribute="leading" secondItem="NCq-We-BpK" secondAttribute="leading" id="VyX-gG-Mro"/>
                             <constraint firstItem="PEH-dF-A7Y" firstAttribute="leading" secondItem="NCq-We-BpK" secondAttribute="leading" constant="8" id="mhX-ok-UlX"/>
                             <constraint firstAttribute="height" constant="32" id="rc1-GD-qHe"/>
                         </constraints>
@@ -141,8 +139,12 @@
                 <outlet property="categoryNameLabel" destination="Ny2-xL-vlJ" id="op0-ep-U65"/>
                 <outlet property="categorySpendLabel" destination="PEH-dF-A7Y" id="l9r-e4-tR9"/>
                 <outlet property="categorySpendView" destination="9XI-z4-jgI" id="viT-hp-nk3"/>
-                <outlet property="categorySpendViewConstraint" destination="QeO-og-zUJ" id="MD3-52-hxH"/>
             </connections>
         </collectionViewCell>
     </objects>
+    <resources>
+        <namedColor name="mSGreen">
+            <color red="0.2196078431372549" green="0.52941176470588236" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

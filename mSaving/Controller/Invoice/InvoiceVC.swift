@@ -145,7 +145,7 @@ extension InvoiceVC: AVCaptureMetadataOutputObjectsDelegate {
         // 檢查  metadataObjects 陣列為非空值，它至少需包含一個物件
         if metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRect.zero
-            messageLabel.text = "No QR code is detected"
+//            messageLabel.text = "No QR code is detected"
             return
         }
         
@@ -161,7 +161,7 @@ extension InvoiceVC: AVCaptureMetadataOutputObjectsDelegate {
             
             messageFromQRCode = stringValue
             
-            messageLabel.text = stringValue
+//            messageLabel.text = stringValue
             
             guard messageFromQRCode.first != "*" else { return }
             

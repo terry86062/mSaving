@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		34FE46260D153EA89122AC6A /* Pods_mSaving.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2F60CB0FEB4CC786F0B4059 /* Pods_mSaving.framework */; };
 		DE02DECA226C97B700B51201 /* InvoiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE02DEC9226C97B700B51201 /* InvoiceVC.swift */; };
+		DE1544F522748C9D00814EC3 /* AccountProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366AB8226EBA4600A65954 /* AccountProvider.swift */; };
+		DE1544F622748CB000814EC3 /* AccountProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366AB8226EBA4600A65954 /* AccountProvider.swift */; };
 		DE21B90222578D9800B65719 /* PieChartCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE21B90022578D9800B65719 /* PieChartCVCell.swift */; };
 		DE21B90322578D9800B65719 /* PieChartCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE21B90122578D9800B65719 /* PieChartCVCell.xib */; };
 		DE21B906225794C900B65719 /* BarChartCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE21B904225794C900B65719 /* BarChartCVCell.swift */; };
@@ -870,6 +872,7 @@
 				DEDE57432270C0EC0071FCFD /* IntentViewController.swift in Sources */,
 				DEDE5737227033E70071FCFD /* MSNotificationManager.swift in Sources */,
 				DEDE57552271F5250071FCFD /* TimeManager.swift in Sources */,
+				DE1544F522748C9D00814EC3 /* AccountProvider.swift in Sources */,
 				DEDE571222702EB10071FCFD /* IntentHandler.swift in Sources */,
 				DEDE573D227036030071FCFD /* CategoryProvider.swift in Sources */,
 				DEDE5731227033400071FCFD /* mSaving.xcdatamodeld in Sources */,
@@ -890,6 +893,7 @@
 				DEDE57522271F3FE0071FCFD /* MonthProvider.swift in Sources */,
 				DEDE57462270C0FC0071FCFD /* IntentHandler.swift in Sources */,
 				DEDE571D22702EB20071FCFD /* IntentViewController.swift in Sources */,
+				DE1544F622748CB000814EC3 /* AccountProvider.swift in Sources */,
 				DEDE573E227036030071FCFD /* CategoryProvider.swift in Sources */,
 				DEDE57562271F5260071FCFD /* TimeManager.swift in Sources */,
 				DEDE5732227033410071FCFD /* mSaving.xcdatamodeld in Sources */,

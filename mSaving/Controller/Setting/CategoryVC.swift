@@ -13,40 +13,78 @@ import BetterSegmentedControl
 class CategoryVC: UIViewController {
 
     @IBOutlet weak var categorySegmentedC: BetterSegmentedControl!
-
-    @IBOutlet weak var categoryCollectionView: UICollectionView! {
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var expenseCollectionView: UICollectionView! {
 
         didSet {
 
-            categoryCollectionView.dataSource = self
+            expenseCollectionView.dataSource = self
 
-            categoryCollectionView.delegate = self
+            expenseCollectionView.delegate = self
 
         }
 
     }
+    
+    @IBOutlet weak var incomeCollectionView: UICollectionView! {
+
+        didSet {
+
+            incomeCollectionView.dataSource = self
+
+            incomeCollectionView.delegate = self
+
+        }
+
+    }
+    
+    var expenseCategories: [ExpenseCategory] = []
+    
+    var incomeCategories: [IncomeCategory] = []
 
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        
+        scrollView.delegate = self
 
         setUpCollectionView()
-
-        categorySegmentedC.segments = LabelSegment.segments(
-            withTitles: ["支出", "收入"],
-            normalBackgroundColor: UIColor.white,
-            normalFont: .systemFont(ofSize: 16),
-            normalTextColor: UIColor.mSYellow,
-            selectedBackgroundColor: UIColor.mSYellow,
-            selectedFont: .systemFont(ofSize: 16),
-            selectedTextColor: UIColor.black)
+        
+        setUpSegmentedC()
+        
+        fetchData()
 
     }
 
     func setUpCollectionView() {
+        
+        expenseCollectionView.helpRegister(cell: CategorysCVCell())
+        
+        incomeCollectionView.helpRegister(cell: CategorysCVCell())
 
-        categoryCollectionView.helpRegister(cell: IncomeExpenseCategoryCVCell())
-
+    }
+    
+    func setUpSegmentedC() {
+        
+        categorySegmentedC.segments = LabelSegment.segments(
+            withTitles: ["支出", "收入"],
+            normalBackgroundColor: UIColor.white,
+            normalFont: .systemFont(ofSize: 16),
+            normalTextColor: UIColor.lightGray,
+            selectedBackgroundColor: UIColor.mSYellow,
+            selectedFont: .systemFont(ofSize: 16),
+            selectedTextColor: UIColor.black)
+        
+    }
+    
+    func fetchData() {
+        
+        expenseCategories = CategoryProvider().expenseCategories
+        
+        incomeCategories = CategoryProvider().incomeCategories
+        
     }
 
     @IBAction func pop(_ sender: UIButton) {
@@ -61,48 +99,34 @@ extension CategoryVC: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        if collectionView == categoryCollectionView {
-
-            return 2
-
-        } else {
-
-            return 1
-
-        }
+        return 1
 
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        if collectionView == categoryCollectionView {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: String(describing: CategorysCVCell.self),
+            for: indexPath) as? CategorysCVCell else { return CategorysCVCell() }
+        
+        if collectionView == expenseCollectionView {
 
-            guard let cell = categoryCollectionView.dequeueReusableCell(
-                withReuseIdentifier: String(describing: IncomeExpenseCategoryCVCell.self),
-                for: indexPath) as? IncomeExpenseCategoryCVCell else {
-                    return IncomeExpenseCategoryCVCell()
-            }
-
-            cell.initIncomeExpenseCategoryCVCell(dataSource: self, delegate: self)
-
-            return cell
+            cell.initCategorysCVCell(expense: expenseCategories, income: [])
 
         } else {
 
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: String(describing: CategorysCVCell.self),
-                for: indexPath) as? CategorysCVCell else { return CategorysCVCell() }
-
-            cell.goToSetCategory = {
-
-                self.performSegue(withIdentifier: "goToSetCategoryVC", sender: nil)
-
-            }
-
-            return cell
-
+            cell.initCategorysCVCell(expense: [], income: incomeCategories)
+            
         }
+        
+        cell.goToSetCategory = {
+            
+//            self.performSegue(withIdentifier: "goToSetCategoryVC", sender: nil)
+            
+        }
+        
+        return cell
 
     }
 
@@ -116,15 +140,7 @@ extension CategoryVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
 
-        if collectionView == categoryCollectionView {
-
-            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-
-        } else {
-
-            return UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
-
-        }
+        return UIEdgeInsets(top: 8, left: 16, bottom: 32, right: 16)
 
     }
 
@@ -132,32 +148,16 @@ extension CategoryVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        if collectionView == categoryCollectionView {
-
-            return CGSize(width: categoryCollectionView.frame.width, height: categoryCollectionView.frame.height)
-
+        if collectionView == expenseCollectionView {
+            
+            return CGSize(width: 382, height: 56 * expenseCategories.count)
+            
         } else {
-
-            return CGSize(width: 382, height: 56 * 9)
-
+            
+            return CGSize(width: 382, height: 56 * incomeCategories.count)
+            
         }
-
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-
-        if collectionView == categoryCollectionView {
-
-            return 0
-
-        } else {
-
-            return 0
-
-        }
-
+        
     }
 
 }
@@ -166,11 +166,9 @@ extension CategoryVC {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
-        if scrollView.isEqual(categoryCollectionView) {
+        if scrollView.isEqual(self.scrollView) {
 
-            let move = categoryCollectionView.bounds.origin.x
-
-            print((move + 207) / 414)
+            let move = self.scrollView.contentOffset.x
 
             if (move + 207) / 414 < 1 {
 
