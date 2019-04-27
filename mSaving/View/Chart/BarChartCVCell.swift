@@ -20,27 +20,27 @@ class BarChartCVCell: UICollectionViewCell {
 
     }
 
-    func barChartUpdate(accountingWithDateArray: [[Accounting]]) {
+    func barChartUpdate(accountingsGroup: [[Accounting]]) {
         
         var entries: [ChartDataEntry] = []
         
-        guard accountingWithDateArray.count > 0 else { return }
+        guard accountingsGroup.count > 0 else { return }
         
-//        for index in 0...accountingWithDateArray.count - 1 {
-//
-//            guard let day = accountingWithDateArray[index].first?.dateComponents.day else { return }
-//
-//            var totalSpendPerDay: Int64 = 0
-//
-//            for indexx in 0...accountingWithDateArray[index].count - 1 {
-//
-//                totalSpendPerDay += accountingWithDateArray[index][indexx].accounting.amount
-//
-//            }
-//
-//            entries.append(BarChartDataEntry(x: Double(day), y: Double(totalSpendPerDay)))
-//
-//        }
+        for index in 0...accountingsGroup.count - 1 {
+
+            var totalSpendPerDay: Int64 = 0
+
+            for indexx in 0...accountingsGroup[index].count - 1 {
+
+                totalSpendPerDay += accountingsGroup[index][indexx].amount
+
+            }
+            
+            guard let day = TimeManager().transform(int: accountingsGroup[index][0].occurDate).day else { return }
+
+            entries.append(BarChartDataEntry(x: Double(day), y: Double(totalSpendPerDay)))
+
+        }
         
         /*
          
@@ -102,7 +102,7 @@ class BarChartCVCell: UICollectionViewCell {
         */
         
 //        guard let date = accountingWithDateArray.first?.first?.date else { return }
-        
+//
 //        let totalDay = countOfDaysInCurrentMonth(date: date)
         
         let dataSet = BarChartDataSet(values: entries, label: "每日花費")
@@ -128,9 +128,9 @@ class BarChartCVCell: UICollectionViewCell {
 
     }
     
-    func countOfDaysInCurrentMonth(date: Date) ->Int {
+    func countOfDaysInCurrentMonth(date: Date) -> Int {
         
-        let calendar = Calendar(identifier:Calendar.Identifier.gregorian)
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
         
         let range = (calendar as NSCalendar?)?.range(of: NSCalendar.Unit.day, in: NSCalendar.Unit.month, for: date)
         

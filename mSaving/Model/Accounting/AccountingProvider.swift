@@ -18,27 +18,9 @@ enum CategoryCase {
     
 }
 
-//struct AccountingWithDate {
-//
-//    let accounting: Accounting
-//
-//    let date: Date
-//
-//    let dateComponents: DateComponents
-//
-//}
-
 struct CategoryMonthTotal {
     
-//    let year: Int
-//
-//    let month: Int
-    
     var amount: Int64
-    
-//    let expenseCategory: ExpenseCategory?
-//
-//    let incomeCategory: IncomeCategory?
     
     var accountings: [[Accounting]]
     
@@ -51,32 +33,6 @@ class AccountingProvider {
     let transformer = AccountingTransformer()
     
     let notificationManager = MSNotificationManager()
-    
-//    var accountingsWithDate: [AccountingWithDate] {
-//        
-//        let accountings = coreDataManager.fetch(entityType: Accounting(), sort: ["occurDate"], predicate: nil, reverse: true)
-//        
-//        return transformer.transformFrom(accountings: accountings)
-//        
-//    }
-//    
-//    var accountingsWithDateGroup: [[[AccountingWithDate]]] {
-//        
-//        return transformer.transformFrom(accountingsWithDate: accountingsWithDate)
-//        
-//    }
-    
-//    var categoriesMonthTotalGroup: [[CategoryMonthTotal]] {
-//
-//        let accountings = coreDataManager.fetch(entityType: Accounting(), sort: ["expenseCategory", "occurDate"], predicate: nil, reverse: true)
-//
-//        let accountingsWithDate = transformer.transformFrom(accountings: [])
-//
-//        let categoriesMonthTotal = transformer.transformToTotal(accountingsWithDate: accountingsWithDate)
-//
-//        return transformer.transformFrom(categoriesMonthTotal: categoriesMonthTotal)
-//
-//    }
     
     func createAccounting(occurDate: Date, createDate: Date, amount: Int64, account: Account, category: CategoryCase) {
         
@@ -148,7 +104,7 @@ class AccountingProvider {
         
     }
     
-    func fetchAccounting(month: Month) -> [[Accounting]] {
+    func fetchAccountingsGroup(month: Month) -> [[Accounting]] {
         
         let accountings = coreDataManager.fetch(entityType: Accounting(),
                                                 sort: ["occurDate", "createDate"],
@@ -159,16 +115,24 @@ class AccountingProvider {
         
     }
     
-    func fetchAccountingCategory(month: Month) -> [CategoryMonthTotal] {
+    func fetchCategoriesMonthTotal(month: Month) -> [CategoryMonthTotal] {
         
         let accountings = coreDataManager.fetch(entityType: Accounting(),
                                                 sort: ["expenseCategory", "occurDate", "createDate"],
                                                 predicate: NSPredicate(format: "month == %@", month),
                                                 reverse: true)
         
-        let categoriesMonthTotal = transformer.transToAccountingsCategory(accountings: accountings)
+        let categoriesMonthTotal = transformer.transToCategoriesMonthTotal(accountings: accountings)
         
-        return transformer.sort(categoriesMonthTotal: categoriesMonthTotal)
+        return transformer.sortAmount(categoriesMonthTotal: categoriesMonthTotal)
+        
+    }
+    
+    func fetchExpenseIncomeMonthTotal(month: Month) -> (expense: [CategoryMonthTotal], income: [CategoryMonthTotal]) {
+        
+        let categoriesMonthTotal = fetchCategoriesMonthTotal(month: month)
+        
+        return transformer.sortExpenseIncome(categoriesMonthTotal: categoriesMonthTotal)
         
     }
     
@@ -193,7 +157,12 @@ class AccountingProvider {
         
     }
     
-    func reviseAccounting(accounting: Accounting, occurDate: Date, createDate: Date, amount: Int64, account: Account, category: CategoryCase) {
+    func reviseAccounting(accounting: Accounting,
+                          occurDate: Date,
+                          createDate: Date,
+                          amount: Int64,
+                          account: Account,
+                          category: CategoryCase) {
         
         guard let month = helpSetMonth(occurDate: occurDate) else { return }
         

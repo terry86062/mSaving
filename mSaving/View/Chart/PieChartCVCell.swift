@@ -20,27 +20,29 @@ class PieChartCVCell: UICollectionViewCell {
 
     }
 
-    func pieChartUpdate(categoriesMonthTotal: [CategoryMonthTotal], isIncome: Bool) {
+    func pieChartUpdate(monthTotal: [CategoryMonthTotal], isIncome: Bool) {
 
-        guard categoriesMonthTotal.count != 0 else { return }
+        guard monthTotal.count != 0 else { return }
         
         var dataArray: [ChartDataEntry] = []
         
-        for index in 0...categoriesMonthTotal.count - 1 {
+        for index in 0...monthTotal.count - 1 {
             
             if isIncome {
                 
-                if let incomeCategory = categoriesMonthTotal[index].accountings[0][0].incomeCategory {
+                if let incomeCategory = monthTotal[index].accountings[0][0].incomeCategory {
                     
-                    dataArray.append(PieChartDataEntry(value: Double(categoriesMonthTotal[index].amount), label: incomeCategory.name))
+                    dataArray.append(PieChartDataEntry(value: Double(monthTotal[index].amount),
+                                                       label: incomeCategory.name))
                     
                 }
                 
             } else {
                 
-                if let expenseCategory = categoriesMonthTotal[index].accountings[0][0].expenseCategory {
+                if let expenseCategory = monthTotal[index].accountings[0][0].expenseCategory {
                     
-                    dataArray.append(PieChartDataEntry(value: Double(categoriesMonthTotal[index].amount), label: expenseCategory.name))
+                    dataArray.append(PieChartDataEntry(value: Double(monthTotal[index].amount),
+                                                       label: expenseCategory.name))
                     
                 }
                 
@@ -52,11 +54,11 @@ class PieChartCVCell: UICollectionViewCell {
         
         var colors: [NSUIColor] = []
         
-        for index in 0...categoriesMonthTotal.count - 1 {
+        for index in 0...monthTotal.count - 1 {
 
             if isIncome {
                 
-                if let color = categoriesMonthTotal[index].accountings[0][0].incomeCategory?.color {
+                if let color = monthTotal[index].accountings[0][0].incomeCategory?.color {
                     
                     colors.append(UIColor.hexStringToUIColor(hex: color))
                     
@@ -64,7 +66,7 @@ class PieChartCVCell: UICollectionViewCell {
                 
             } else {
                 
-                if let color = categoriesMonthTotal[index].accountings[0][0].expenseCategory?.color {
+                if let color = monthTotal[index].accountings[0][0].expenseCategory?.color {
                     
                     colors.append(UIColor.hexStringToUIColor(hex: color))
                     

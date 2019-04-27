@@ -26,69 +26,33 @@ class AnalysisCVCell: UICollectionViewCell {
     
     var accountingProvider = AccountingProvider()
     
-    var categoriesMonthTotal: [CategoryMonthTotal] = []
+    var expenseMonthTotal: [CategoryMonthTotal] = []
     
-//    var accountingWithDateArray: [[AccountingWithDate]] = []
+    var incomeMonthTotal: [CategoryMonthTotal] = []
+    
+    var accountingsGroup: [[Accounting]] = []
     
     var isIncome = false
     
     var touchCategoryHandler: (() -> Void)?
     
     var selectedCategoryMonthTotal: CategoryMonthTotal?
-    
-//    var numberOfRow: Int {
-//
-//        var tempArray: [CategoryMonthTotal] = []
-//
-//        guard categoryAccountingMonthTotals.count > 0 else { return 0 }
-//
-//        for index in 0...categoryAccountingMonthTotals.count - 1 {
-//
-//            if isIncome {
-//
-//                if categoryAccountingMonthTotals[index].incomeCategory != nil {
-//
-//                    tempArray.append(categoryAccountingMonthTotals[index])
-//
-//                }
-//
-//            } else {
-//
-//                if categoryAccountingMonthTotals[index].expenseCategory != nil {
-//
-//                    tempArray.append(categoryAccountingMonthTotals[index])
-//
-//                }
-//
-//            }
-//
-//        }
-//
-//        return tempArray.count
-//
-//    }
 
     override func awakeFromNib() {
 
         super.awakeFromNib()
 
     }
-
-//    func initAnalysisCVCell(categoryAccountingMonthTotals: [CategoryMonthTotal],
-//                            accountingWithDateArray: [[AccountingWithDate]],
-//                            isIncome: Bool) {
-//
-//        self.categoryAccountingMonthTotals = categoryAccountingMonthTotals
-//
-//        self.accountingWithDateArray = accountingWithDateArray
-//
-//        self.isIncome = isIncome
-//
-//    }
     
     func initAnalysisCVCell(month: Month, isIncome: Bool) {
         
-        categoriesMonthTotal = accountingProvider.fetchAccountingCategory(month: month)
+        let tempTuples = accountingProvider.fetchExpenseIncomeMonthTotal(month: month)
+        
+        expenseMonthTotal = tempTuples.expense
+        
+        incomeMonthTotal = tempTuples.income
+        
+        accountingsGroup = accountingProvider.fetchAccountingsGroup(month: month)
         
         self.isIncome = isIncome
         
@@ -131,7 +95,15 @@ extension AnalysisCVCell: UICollectionViewDataSource {
                     return UICollectionViewCell()
             }
             
-            cell.pieChartUpdate(categoriesMonthTotal: categoriesMonthTotal, isIncome: isIncome)
+            if isIncome {
+                
+                cell.pieChartUpdate(monthTotal: incomeMonthTotal, isIncome: isIncome)
+                
+            } else {
+                
+                cell.pieChartUpdate(monthTotal: expenseMonthTotal, isIncome: isIncome)
+                
+            }
             
             return cell
             
@@ -143,7 +115,15 @@ extension AnalysisCVCell: UICollectionViewDataSource {
                     return UICollectionViewCell()
             }
             
-            cell.initCategoryAccountingsCVCell(categoriesMonthTotal: categoriesMonthTotal, isIncome: isIncome)
+            if isIncome {
+                
+                cell.initCategoryAccountingsCVCell(monthTotal: incomeMonthTotal, isIncome: isIncome)
+                
+            } else {
+                
+                cell.initCategoryAccountingsCVCell(monthTotal: expenseMonthTotal, isIncome: isIncome)
+                
+            }
             
             cell.touchCategoryHandler = {
 
@@ -165,7 +145,7 @@ extension AnalysisCVCell: UICollectionViewDataSource {
                     return UICollectionViewCell()
             }
             
-//            cell.barChartUpdate(accountingWithDateArray: accountingWithDateArray)
+            cell.barChartUpdate(accountingsGroup: accountingsGroup)
             
             return cell
             
@@ -209,7 +189,15 @@ extension AnalysisCVCell: UICollectionViewDelegateFlowLayout {
             
         } else if indexPath.section == 1 {
             
-            return CGSize(width: 382, height: 56 * 5)//* numberOfRow)
+            if isIncome {
+                
+                return CGSize(width: 382, height: 56 * incomeMonthTotal.count)
+                
+            } else {
+                
+                return CGSize(width: 382, height: 56 * expenseMonthTotal.count)
+                
+            }
             
         } else {
             

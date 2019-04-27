@@ -38,9 +38,9 @@ class CategoryAccountingsCVCell: UICollectionViewCell {
         
     }
     
-    func initCategoryAccountingsCVCell(categoriesMonthTotal: [CategoryMonthTotal], isIncome: Bool) {
+    func initCategoryAccountingsCVCell(monthTotal: [CategoryMonthTotal], isIncome: Bool) {
         
-        self.categoriesMonthTotal = categoriesMonthTotal
+        self.categoriesMonthTotal = monthTotal
         
         self.isIncome = isIncome
         

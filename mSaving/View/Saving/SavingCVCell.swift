@@ -56,7 +56,7 @@ class SavingCVCell: UICollectionViewCell {
         
         self.showAccounting = showAccounting
         
-        accountingsGroup = accountingProvider.fetchAccounting(month: month)
+        accountingsGroup = accountingProvider.fetchAccountingsGroup(month: month)
         
         savings = SavingProvider().fetchSaving(month: month)
         
