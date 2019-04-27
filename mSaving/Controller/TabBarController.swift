@@ -100,7 +100,19 @@ class TabBarController: UITabBarController {
 
     private let tabs: [Tab] = [.saving, .chart, .accounting, .invoice, .setting]
 
-    var blackView = UIView()
+    var blackButton = UIButton()
+    
+    lazy var setUserImageView: SetUserImageView = {
+        
+        guard let view = Bundle.main.loadNibNamed(String(describing: SetUserImageView.self), owner: nil, options: nil)![0] as? SetUserImageView else { return SetUserImageView() }
+        
+        view.frame = CGRect(x: 0, y: (UIScreen.main.bounds.height * 487 / 667) + 180 , width: UIScreen.main.bounds.width, height: 180)
+        
+        view.isHidden = true
+        
+        return view
+        
+    }()
     
     override func viewDidLoad() {
 
@@ -119,13 +131,17 @@ class TabBarController: UITabBarController {
             self.addCenterButton(withImage: newButtonImage, highlightImage: newButtonImage)
         }
         
-        blackView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        blackButton.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         
-        blackView.frame = UIScreen.main.bounds
+        blackButton.frame = UIScreen.main.bounds
         
-        blackView.isHidden = true
+        blackButton.isHidden = true
         
-        view.addSubview(blackView)
+        blackButton.addTarget(self, action: #selector(hideBlackButton), for: .touchUpInside)
+        
+        view.addSubview(blackButton)
+        
+        view.addSubview(setUserImageView)
         
         tabBar.barTintColor = .white
 
@@ -147,9 +163,9 @@ class TabBarController: UITabBarController {
 //        button.setBackgroundImage(highlightImage, for: .highlighted)
 
         let rectBoundTabbar = self.tabBar.bounds
-        let xx = rectBoundTabbar.midX
-        let yy = rectBoundTabbar.midY - paddingBottom
-        button.center = CGPoint(x: xx, y: yy)
+        let xxx = rectBoundTabbar.midX
+        let yyy = rectBoundTabbar.midY - paddingBottom
+        button.center = CGPoint(x: xxx, y: yyy)
 
         button.backgroundColor = UIColor(red: 254 / 255, green: 254 / 255, blue: 254 / 255, alpha: 1)
 
@@ -209,13 +225,11 @@ class TabBarController: UITabBarController {
 
     @objc func handleTouchTabbarCenter(sender: UIButton) {
 
-        print("yes or yes")
+        if let accountingVC = UIStoryboard.accounting.instantiateInitialViewController() {
 
-        if let vc = UIStoryboard.accounting.instantiateInitialViewController() {
+            accountingVC.modalPresentationStyle = .overCurrentContext
 
-            vc.modalPresentationStyle = .overCurrentContext
-
-            present(vc, animated: true, completion: nil)
+            present(accountingVC, animated: true, completion: nil)
         }
 
 //        if let count = self.tabBar.items?.count
@@ -224,9 +238,21 @@ class TabBarController: UITabBarController {
 //            self.selectedViewController = self.viewControllers?[Int(i)]
 //        }
     }
+    
+    @objc func hideBlackButton() {
+        
+        blackButton.isHidden = true
+        
+        setUserImageView.isHidden = true
+        
+        UIView.animate(withDuration: 0.25) {
+            
+            self.setUserImageView.center.y += 180
+            
+        }
+        
+    }
 
 }
 
-extension TabBarController: UITabBarControllerDelegate {
-
-}
+extension TabBarController: UITabBarControllerDelegate { }

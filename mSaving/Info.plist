@@ -42,8 +42,10 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
-	<string>We need to access your camera for scanning QR code</string>
+	<string>請提供訪問相機權限，以利掃描 QR code</string>
 	<key>NSSiriUsageDescription</key>
 	<string>開啟Siri</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>請提供訪問圖片庫權限</string>
 </dict>
 </plist>

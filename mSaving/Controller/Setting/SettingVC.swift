@@ -8,7 +8,7 @@
 
 import UIKit
 
-import CoreData
+import Photos
 
 struct SettingText {
     
@@ -47,6 +47,16 @@ class SettingVC: UIViewController {
         }
         
     }
+    
+    @IBOutlet weak var userImageView: UIImageView! {
+        
+        didSet {
+            
+            userImageView.layer.cornerRadius = userImageView.frame.width / 2
+            
+        }
+        
+    }
 
     @IBOutlet weak var segmentedBarView: UIView!
 
@@ -73,7 +83,13 @@ class SettingVC: UIViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
-
+        
+        if let data = UserDefaults.standard.object(forKey: "userImage") as? NSData {
+            
+            userImageView.image = UIImage(data: data as Data)
+            
+        }
+        
         setUpCollectionView()
         
         scrollView.delegate = self
@@ -108,7 +124,7 @@ class SettingVC: UIViewController {
             
             guard let tabBarVC = tabBarController as? TabBarController else { return }
             
-            tabBarVC.blackView.isHidden = false
+            tabBarVC.blackButton.isHidden = false
             
             guard let accountDetailVC = segue.destination as? AccountDetailVC else { return }
             
@@ -137,6 +153,24 @@ class SettingVC: UIViewController {
         accountArrayCount = accountArray.count
         
         accountsCollectionView.reloadData()
+        
+    }
+    
+    @IBAction func changeUserImage(_ sender: UIButton) {
+        
+        guard let tabBarVC = tabBarController as? TabBarController else { return }
+        
+        tabBarVC.blackButton.isHidden = false
+        
+        tabBarVC.setUserImageView.delegate = self
+        
+        tabBarVC.setUserImageView.isHidden = false
+        
+        UIView.animate(withDuration: 0.25) {
+            
+            tabBarVC.setUserImageView.center.y -= 180
+            
+        }
         
     }
 
@@ -360,3 +394,71 @@ extension SettingVC: UIScrollViewDelegate {
     }
 
 }
+
+extension SettingVC: SetUserImageViewDelegate {
+    
+    func getImage(getImageFrom: GetImageFrom) {
+        
+        let imagePC = UIImagePickerController()
+        
+        imagePC.delegate = self
+        
+        switch getImageFrom {
+            
+        case .camera:
+            
+            imagePC.sourceType = UIImagePickerController.SourceType.camera
+            
+        case .photoLibrary:
+            
+            imagePC.sourceType = UIImagePickerController.SourceType.photoLibrary
+            
+        }
+        
+        imagePC.allowsEditing = false
+        
+        self.present(imagePC, animated: true, completion: nil)
+        
+    }
+    
+    func cancelSetImage() {
+        
+        guard let tabBarVC = tabBarController as? TabBarController else { return }
+        
+        tabBarVC.hideBlackButton()
+        
+    }
+    
+}
+
+extension SettingVC: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [
+        UIImagePickerController.InfoKey: Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            
+            userImageView.image = image
+            
+            let imageData = image.pngData()! as NSData
+            
+            UserDefaults.standard.set(imageData, forKey: "userImage")
+            
+        } else {
+            
+            print("user get image fail")
+            
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+        
+        guard let tabBarVC = tabBarController as? TabBarController else { return }
+        
+        tabBarVC.hideBlackButton()
+        
+    }
+    
+}
+
+extension SettingVC: UINavigationControllerDelegate { }

@@ -131,7 +131,7 @@ class SavingDetailAddVC: UIViewController {
         
         guard let tabBarVC = presentingViewController as? TabBarController else { return }
         
-        tabBarVC.blackView.isHidden = true
+        tabBarVC.blackButton.isHidden = true
         
     }
     
@@ -143,7 +143,10 @@ class SavingDetailAddVC: UIViewController {
         
         if let selectedMonth = selectedMonth {
             
-            SavingProvider().createSaving(month: selectedMonth, amount: amount, main: false, selectedExpenseCategory: selectedExpenseCategory)
+            SavingProvider().createSaving(month: selectedMonth,
+                                          amount: amount,
+                                          main: false,
+                                          selectedExpenseCategory: selectedExpenseCategory)
             
         } else {
             
@@ -157,7 +160,10 @@ class SavingDetailAddVC: UIViewController {
             
             aMonth.month = Int64(month)
             
-            SavingProvider().createSaving(month: aMonth, amount: amount, main: false, selectedExpenseCategory: selectedExpenseCategory)
+            SavingProvider().createSaving(month: aMonth,
+                                          amount: amount,
+                                          main: false,
+                                          selectedExpenseCategory: selectedExpenseCategory)
             
         }
         

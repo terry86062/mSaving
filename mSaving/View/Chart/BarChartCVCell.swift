@@ -30,13 +30,10 @@ class BarChartCVCell: UICollectionViewCell {
 
             var totalSpendPerDay: Int64 = 0
 
-            for indexx in 0...accountingsGroup[index].count - 1 {
+            for indexx in 0...accountingsGroup[index].count - 1
+                where accountingsGroup[index][indexx].incomeCategory == nil {
 
-                if accountingsGroup[index][indexx].incomeCategory == nil {
-                    
-                    totalSpendPerDay += accountingsGroup[index][indexx].amount
-                    
-                }
+                totalSpendPerDay += accountingsGroup[index][indexx].amount
                 
             }
             

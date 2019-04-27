@@ -166,7 +166,7 @@ class SavingVC: UIViewController {
         
         guard let tabBarVC = tabBarController as? TabBarController else { return }
         
-        tabBarVC.blackView.isHidden = false
+        tabBarVC.blackButton.isHidden = false
         
     }
 

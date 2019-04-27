@@ -102,7 +102,7 @@ class AccountDetailVC: UIViewController {
         
         guard let tabBarVC = presentingViewController as? TabBarController else { return }
         
-        tabBarVC.blackView.isHidden = true
+        tabBarVC.blackButton.isHidden = true
         
     }
     

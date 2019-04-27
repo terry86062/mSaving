@@ -55,7 +55,8 @@ class InvoiceVC: UIViewController {
     func setUpCaptureSession() {
         
 //        // 取得後置鏡頭來擷取影片
-//        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
+//        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(
+//        deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
 //
 //        guard let captureDevice = deviceDiscoverySession.devices.first else {
 //            print("Failed to get the camera device")
@@ -118,7 +119,7 @@ class InvoiceVC: UIViewController {
             
             guard let tabBarVC = tabBarController as? TabBarController else { return }
             
-            tabBarVC.blackView.isHidden = false
+            tabBarVC.blackButton.isHidden = false
             
             guard let invoiceToAccountingVC = segue.destination as? InvoiceToAccountingVC else { return }
             

@@ -70,7 +70,10 @@ class CoreDataManager {
         
     }
     
-    func fetch<T: NSManagedObject>(entityType: T, sort: [String], predicate: NSPredicate? = nil, reverse: Bool = false) -> [T] {
+    func fetch<T: NSManagedObject>(entityType: T,
+                                   sort: [String],
+                                   predicate: NSPredicate? = nil,
+                                   reverse: Bool = false) -> [T] {
         
         let request = NSFetchRequest<T>(entityName: String(describing: T.self))
         
@@ -126,7 +129,8 @@ class NSCustomPersistentContainer: NSPersistentContainer {
     
     override open class func defaultDirectoryURL() -> URL {
         
-        var storeURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.terry.mSaving")
+        var storeURL = FileManager.default.containerURL(
+            forSecurityApplicationGroupIdentifier: "group.com.terry.mSaving")
         
         print(storeURL)
         
