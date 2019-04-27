@@ -20,27 +20,27 @@ class BarChartCVCell: UICollectionViewCell {
 
     }
 
-    func barChartUpdate(accountingWithDateArray: [[AccountingWithDate]]) {
+    func barChartUpdate(accountingWithDateArray: [[Accounting]]) {
         
         var entries: [ChartDataEntry] = []
         
         guard accountingWithDateArray.count > 0 else { return }
         
-        for index in 0...accountingWithDateArray.count - 1 {
-            
-            guard let day = accountingWithDateArray[index].first?.dateComponents.day else { return }
-            
-            var totalSpendPerDay: Int64 = 0
-            
-            for indexx in 0...accountingWithDateArray[index].count - 1 {
-                
-                totalSpendPerDay += accountingWithDateArray[index][indexx].accounting.amount
-                
-            }
-            
-            entries.append(BarChartDataEntry(x: Double(day), y: Double(totalSpendPerDay)))
-            
-        }
+//        for index in 0...accountingWithDateArray.count - 1 {
+//
+//            guard let day = accountingWithDateArray[index].first?.dateComponents.day else { return }
+//
+//            var totalSpendPerDay: Int64 = 0
+//
+//            for indexx in 0...accountingWithDateArray[index].count - 1 {
+//
+//                totalSpendPerDay += accountingWithDateArray[index][indexx].accounting.amount
+//
+//            }
+//
+//            entries.append(BarChartDataEntry(x: Double(day), y: Double(totalSpendPerDay)))
+//
+//        }
         
         /*
          
@@ -101,9 +101,9 @@ class BarChartCVCell: UICollectionViewCell {
          
         */
         
-        guard let date = accountingWithDateArray.first?.first?.date else { return }
+//        guard let date = accountingWithDateArray.first?.first?.date else { return }
         
-        let totalDay = countOfDaysInCurrentMonth(date: date)
+//        let totalDay = countOfDaysInCurrentMonth(date: date)
         
         let dataSet = BarChartDataSet(values: entries, label: "每日花費")
         

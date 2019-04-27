@@ -24,13 +24,13 @@ class CategoryAccountingsCVCell: UICollectionViewCell {
         
     }
     
-    var categoryAccountingMonthTotals: [CategoryMonthTotal] = []
+    var categoriesMonthTotal: [CategoryMonthTotal] = []
     
     var isIncome = false
     
     var touchCategoryHandler: (() -> Void)?
     
-    var selectedCategoryAccountingMonthTotal: CategoryMonthTotal?
+    var selectedCategoryMonthTotal: CategoryMonthTotal?
     
     override func awakeFromNib() {
         
@@ -38,9 +38,9 @@ class CategoryAccountingsCVCell: UICollectionViewCell {
         
     }
     
-    func initCategoryAccountingsCVCell(categoryAccountingMonthTotals: [CategoryMonthTotal], isIncome: Bool) {
+    func initCategoryAccountingsCVCell(categoriesMonthTotal: [CategoryMonthTotal], isIncome: Bool) {
         
-        self.categoryAccountingMonthTotals = categoryAccountingMonthTotals
+        self.categoriesMonthTotal = categoriesMonthTotal
         
         self.isIncome = isIncome
         
@@ -60,7 +60,7 @@ extension CategoryAccountingsCVCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return categoryAccountingMonthTotals.count
+        return categoriesMonthTotal.count
         
     }
     
@@ -71,15 +71,13 @@ extension CategoryAccountingsCVCell: UICollectionViewDataSource {
             withReuseIdentifier: String(describing: CategoryCVCell.self),
             for: indexPath) as? CategoryCVCell else { return UICollectionViewCell() }
         
-        cell.initCategoryCVCell(categoryAccountingMonthTotal: categoryAccountingMonthTotals[indexPath.row])
+        cell.initCategoryCVCell(categoryAccountingMonthTotal: categoriesMonthTotal[indexPath.row])
         
         cell.touchCategoryHandler = {
             
-            self.selectedCategoryAccountingMonthTotal = self.categoryAccountingMonthTotals[indexPath.row]
+            self.selectedCategoryMonthTotal = self.categoriesMonthTotal[indexPath.row]
             
-            guard let touch = self.touchCategoryHandler else { return }
-            
-            touch()
+            self.touchCategoryHandler?()
             
         }
         
@@ -89,9 +87,7 @@ extension CategoryAccountingsCVCell: UICollectionViewDataSource {
     
 }
 
-extension CategoryAccountingsCVCell: UICollectionViewDelegate {
-    
-}
+extension CategoryAccountingsCVCell: UICollectionViewDelegate { }
 
 extension CategoryAccountingsCVCell: UICollectionViewDelegateFlowLayout {
     

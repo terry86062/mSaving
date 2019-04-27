@@ -24,7 +24,7 @@ class CategoryAccountingsDetailVC: UIViewController {
     
     @IBOutlet weak var categoryNameLabel: UILabel!
     
-    var selectedCategoryAccountingMonthTotal: CategoryMonthTotal?
+    var selectedCategoryMonthTotal: CategoryMonthTotal?
 
     override func viewDidLoad() {
 
@@ -32,7 +32,7 @@ class CategoryAccountingsDetailVC: UIViewController {
 
         setUpCollectionView()
         
-        categoryNameLabel.text = selectedCategoryAccountingMonthTotal?.expenseCategory?.name
+        categoryNameLabel.text = selectedCategoryMonthTotal?.accountings[0][0].expenseCategory?.name
 
     }
 
@@ -62,7 +62,7 @@ extension CategoryAccountingsDetailVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        guard let selectedCategoryAccountingMonthTotal = selectedCategoryAccountingMonthTotal else { return 0 }
+        guard let selectedCategoryAccountingMonthTotal = selectedCategoryMonthTotal else { return 0 }
         
         if section == 0 {
             
@@ -87,7 +87,7 @@ extension CategoryAccountingsDetailVC: UICollectionViewDataSource {
                     return UICollectionViewCell()
             }
             
-            guard let selectedCategoryAccountingMonthTotal = selectedCategoryAccountingMonthTotal else { return cell }
+            guard let selectedCategoryAccountingMonthTotal = selectedCategoryMonthTotal else { return cell }
             
             var flatMapArray = selectedCategoryAccountingMonthTotal.accountings.flatMap({ $0 })
             
@@ -95,9 +95,9 @@ extension CategoryAccountingsDetailVC: UICollectionViewDataSource {
             
             for index in 0...flatMapArray.count - 1 {
                 
-                if flatMapArray[index].accounting.amount > highestSpend {
+                if flatMapArray[index].amount > highestSpend {
                     
-                    highestSpend = flatMapArray[index].accounting.amount
+                    highestSpend = flatMapArray[index].amount
                     
                 }
                 
@@ -115,7 +115,7 @@ extension CategoryAccountingsDetailVC: UICollectionViewDataSource {
                     return UICollectionViewCell()
             }
             
-            guard let selectedCategoryAccountingMonthTotal = selectedCategoryAccountingMonthTotal else { return cell }
+            guard let selectedCategoryAccountingMonthTotal = selectedCategoryMonthTotal else { return cell }
 
 //            cell.initAccountsCVCell(haveHeader: true,
 //                                    accountings: selectedCategoryAccountingMonthTotal.accountings[indexPath.row])
@@ -146,7 +146,7 @@ extension CategoryAccountingsDetailVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        guard let selectedCategoryAccountingMonthTotal = selectedCategoryAccountingMonthTotal else {
+        guard let selectedCategoryAccountingMonthTotal = selectedCategoryMonthTotal else {
             
             return CGSize(width: 0, height: 0)
             

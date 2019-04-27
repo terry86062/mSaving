@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Charts
-
 class ChartVC: UIViewController {
 
     @IBOutlet weak var monthCollectionView: UICollectionView! {
@@ -40,11 +38,9 @@ class ChartVC: UIViewController {
     
     let notificationManager = MSNotificationManager()
     
-    var categoryAccountingMonthTotalArray: [[CategoryMonthTotal]] = []
+    var months: [Month] = []
     
-    var accountingWithDateGroupArray: [[[AccountingWithDate]]] = []
-    
-    var selectedCategoryAccountingMonthTotal: CategoryMonthTotal?
+    var selectedCategoryMonthTotal: CategoryMonthTotal?
 
     override func viewDidLoad() {
 
@@ -67,10 +63,8 @@ class ChartVC: UIViewController {
     }
     
     func fetchData() {
-        
-        categoryAccountingMonthTotalArray = AccountingProvider().categoriesMonthTotalGroup
-        
-        accountingWithDateGroupArray = AccountingProvider().accountingsWithDateGroup
+
+        months = MonthProvider().months
         
     }
     
@@ -92,18 +86,25 @@ class ChartVC: UIViewController {
         
         super.viewDidAppear(animated)
         
-        guard categoryAccountingMonthTotalArray.count > 0 else { return }
+        showCorrectCollectionView()
         
-        let indexPath = IndexPath(item: categoryAccountingMonthTotalArray.count - 1, section: 0)
+    }
+    
+    func showCorrectCollectionView() {
+        
+        guard months != [] else { return }
+        
+        let indexPath = IndexPath(item: months.count - 1, section: 0)
         
         analysisCollectionView.scrollToItem(at: indexPath,
                                             at: [.centeredVertically, .centeredHorizontally],
                                             animated: false)
         
-        guard let cell = monthCollectionView.cellForItem(at:
-            indexPath) as? MonthCVCell else { return }
-        
-        cell.shadowView.alpha = 1
+        if indexPath.row == 0 {
+            
+            helpSetShadowAlpha(row: 0, show: true)
+            
+        }
         
     }
     
@@ -113,7 +114,7 @@ class ChartVC: UIViewController {
             
             guard let categoryAccountingsDetailVC = segue.destination as? CategoryAccountingsDetailVC else { return }
             
-            categoryAccountingsDetailVC.selectedCategoryAccountingMonthTotal = selectedCategoryAccountingMonthTotal
+            categoryAccountingsDetailVC.selectedCategoryMonthTotal = selectedCategoryMonthTotal
             
         }
         
@@ -135,9 +136,9 @@ extension ChartVC: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        guard categoryAccountingMonthTotalArray.count != 0 else { return 1 }
+        guard months != [] else { return 1 }
         
-        return categoryAccountingMonthTotalArray.count
+        return months.count
 
     }
 
@@ -150,24 +151,9 @@ extension ChartVC: UICollectionViewDataSource {
                 withReuseIdentifier: String(describing: MonthCVCell.self),
                 for: indexPath) as? MonthCVCell else { return MonthCVCell() }
             
-            if categoryAccountingMonthTotalArray.count == 0 {
-                
-                let dateComponents = Calendar.current.dateComponents([.year, .month], from: Date())
-                
-                guard let month = dateComponents.month, let year = dateComponents.year else { return cell }
-                
-//                cell.initMonthCVCell(year: "\(year)", month: "\(month)")
-                
-            } else {
-                
-                guard let month = categoryAccountingMonthTotalArray[indexPath.row].first?.month,
-                    let year = categoryAccountingMonthTotalArray[indexPath.row].first?.year else {
-                        return cell
-                }
-                
-//                cell.initMonthCVCell(year: "\(year)", month: "\(month)")
-                
-            }
+            guard months != [] else { return cell }
+            
+            cell.initMonthCVCell(month: months[indexPath.row])
 
             return cell
 
@@ -177,17 +163,15 @@ extension ChartVC: UICollectionViewDataSource {
                 withReuseIdentifier: String(describing: AnalysisCVCell.self),
                 for: indexPath) as? AnalysisCVCell else { return AnalysisCVCell() }
 
-            if indexPath.row > 0 {
+            if months != [] {
                 
-                cell.initAnalysisCVCell(categoryAccountingMonthTotals: categoryAccountingMonthTotalArray[indexPath.row],
-                                        accountingWithDateArray: accountingWithDateGroupArray[indexPath.row],
-                                        isIncome: expenseIncomeButton.isSelected)
+                cell.initAnalysisCVCell(month: months[indexPath.row], isIncome: expenseIncomeButton.isSelected)
                 
             }
             
             cell.touchCategoryHandler = {
                 
-                self.selectedCategoryAccountingMonthTotal = cell.selectedCategoryAccountingMonthTotal
+                self.selectedCategoryMonthTotal = cell.selectedCategoryMonthTotal
                 
                 self.performSegue(withIdentifier: "goToCategoryAccountsDetailVC", sender: nil)
                 
@@ -315,7 +299,7 @@ extension ChartVC {
             
             helpSetShadowAlpha(row: row + 1, show: false)
             
-        case categoryAccountingMonthTotalArray.count - 1:
+        case months.count - 1:
             
             helpSetShadowAlpha(row: row - 1, show: false)
             

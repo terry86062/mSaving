@@ -26,7 +26,7 @@ class CategoryCVCell: UICollectionViewCell {
     
     func initCategoryCVCell(categoryAccountingMonthTotal: CategoryMonthTotal) {
         
-        let category = categoryAccountingMonthTotal.expenseCategory
+        let category = categoryAccountingMonthTotal.accountings[0][0].expenseCategory
         
         guard let iconName = category?.iconName, let color = category?.color else { return }
             
