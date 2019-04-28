@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -9,32 +13,32 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CategorySelectCVCell" customModule="mSaving" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="74" height="89"/>
+            <rect key="frame" x="0.0" y="0.0" width="36" height="84"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="74" height="89"/>
+                <rect key="frame" x="0.0" y="0.0" width="36" height="84"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="Xtr-06-sYA">
-                        <rect key="frame" x="21" y="16" width="32" height="32"/>
+                        <rect key="frame" x="0.0" y="12" width="36" height="36"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="32" id="J5o-0Q-KFd"/>
-                            <constraint firstAttribute="width" constant="32" id="ZAI-mu-huc"/>
+                            <constraint firstAttribute="width" secondItem="Xtr-06-sYA" secondAttribute="height" id="Lzd-Nj-KWm"/>
+                            <constraint firstAttribute="width" constant="36" id="ZAI-mu-huc"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
-                                <real key="value" value="16"/>
+                                <real key="value" value="18"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="交通" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppU-OH-TF7">
-                        <rect key="frame" x="22.5" y="52" width="29" height="17"/>
-                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="14"/>
+                        <rect key="frame" x="2.5" y="54" width="31" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45M-HL-Edy">
-                        <rect key="frame" x="21" y="16" width="32" height="53"/>
+                        <rect key="frame" x="0.0" y="12" width="36" height="60"/>
                         <connections>
                             <action selector="selectCategory:" destination="gTV-IL-0wX" eventType="touchUpInside" id="jCT-lW-fah"/>
                         </connections>
@@ -48,9 +52,9 @@
                 <constraint firstItem="ppU-OH-TF7" firstAttribute="centerX" secondItem="Xtr-06-sYA" secondAttribute="centerX" id="8Cd-Qj-vYZ"/>
                 <constraint firstItem="45M-HL-Edy" firstAttribute="top" secondItem="Xtr-06-sYA" secondAttribute="top" id="UY4-SF-AhP"/>
                 <constraint firstItem="45M-HL-Edy" firstAttribute="bottom" secondItem="ppU-OH-TF7" secondAttribute="bottom" id="VwP-ko-heu"/>
-                <constraint firstItem="Xtr-06-sYA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="eSm-jw-lVh"/>
+                <constraint firstItem="Xtr-06-sYA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="eSm-jw-lVh"/>
                 <constraint firstItem="45M-HL-Edy" firstAttribute="trailing" secondItem="Xtr-06-sYA" secondAttribute="trailing" id="oZG-US-qWR"/>
-                <constraint firstItem="ppU-OH-TF7" firstAttribute="top" secondItem="Xtr-06-sYA" secondAttribute="bottom" constant="4" id="xMD-ay-jGt"/>
+                <constraint firstItem="ppU-OH-TF7" firstAttribute="top" secondItem="Xtr-06-sYA" secondAttribute="bottom" constant="6" id="xMD-ay-jGt"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="157" height="135"/>
