@@ -224,21 +224,13 @@ extension ChartVC: UICollectionViewDelegateFlowLayout {
 
         if collectionView == monthCollectionView {
 
-            return CGSize(width: UIScreen.main.bounds.width / 3, height: 43.fitScreen)
+            return CGSize(width: monthCollectionView.frame.width / 3, height: 32)
 
         } else {
 
-            return CGSize(width: 414, height: analysisCollectionView.frame.height)
+            return CGSize(width: analysisCollectionView.frame.width, height: analysisCollectionView.frame.height)
 
         }
-
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-
-        return 0
 
     }
 

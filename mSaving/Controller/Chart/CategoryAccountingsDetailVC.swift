@@ -133,8 +133,16 @@ extension CategoryAccountingsDetailVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
 
-        return UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
-
+        if section == 0 {
+            
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            
+        } else {
+            
+            return UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 0)
+            
+        }
+        
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -149,22 +157,14 @@ extension CategoryAccountingsDetailVC: UICollectionViewDelegateFlowLayout {
         
         if indexPath.section == 0 {
 
-            return CGSize(width: 382, height: 56)
+            return CGSize(width: Int(UIScreen.main.bounds.width - 24), height: 68)
 
         } else {
             
-            return CGSize(width: 382,
-                          height: 56 * (selectedCategoryMonthTotal.accountings[indexPath.row].count + 1))
+            return CGSize(width: Int(UIScreen.main.bounds.width - 24),
+                          height: 48 * (selectedCategoryMonthTotal.accountings[indexPath.row].count) + 53)
 
         }
-
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-
-        return 16
 
     }
 

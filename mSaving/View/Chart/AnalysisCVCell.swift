@@ -211,11 +211,11 @@ extension AnalysisCVCell: UICollectionViewDelegateFlowLayout {
         
         if section == 0 {
             
-            return UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
+            return UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 0)
             
         } else if section == 1 {
             
-            return UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
+            return UIEdgeInsets(top: 12, left: 0, bottom: 24, right: 0)
             
         } else {
             
@@ -231,17 +231,19 @@ extension AnalysisCVCell: UICollectionViewDelegateFlowLayout {
         
         if indexPath.section == 0 {
             
-            return CGSize(width: 320, height: 320)
+            return CGSize(width: 324.fitScreen, height: 324.fitScreen)
             
         } else if indexPath.section == 1 {
             
             if isIncome {
                 
-                return CGSize(width: 382, height: 56 * incomeMonthTotal.count)
+                return CGSize(width: Int(UIScreen.main.bounds.width - 24),
+                              height: 48 * incomeMonthTotal.count + 12)
                 
             } else {
                 
-                return CGSize(width: 382, height: 56 * expenseMonthTotal.count)
+                return CGSize(width: Int(UIScreen.main.bounds.width - 24),
+                              height: 48 * expenseMonthTotal.count + 12)
                 
             }
             
