@@ -12,8 +12,6 @@ import CoreData
 
 import FSCalendar
 
-import BetterSegmentedControl
-
 class AccountingVC: UIViewController {
 
     @IBOutlet weak var calendar: FSCalendar!
@@ -21,18 +19,28 @@ class AccountingVC: UIViewController {
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
 
     fileprivate lazy var dateFormatter: DateFormatter = {
+        
         let formatter = DateFormatter()
+        
         formatter.dateFormat = "yyyy/MM/dd"
+        
         return formatter
+        
     }()
 
     fileprivate lazy var scopeGesture: UIPanGestureRecognizer = { [unowned self] in
+        
         let panGesture = UIPanGestureRecognizer(target: self.calendar,
                                                 action: #selector(self.calendar.handleScopeGesture(_:)))
+        
         panGesture.delegate = self
+        
         panGesture.minimumNumberOfTouches = 1
+        
         panGesture.maximumNumberOfTouches = 2
+        
         return panGesture
+        
     }()
 
     @IBOutlet weak var amountTextField: UITextField!
@@ -40,8 +48,6 @@ class AccountingVC: UIViewController {
     @IBOutlet weak var selectedCategoryImageView: UIImageView!
     
     @IBOutlet var keyboardToolBar: UIToolbar!
-
-    @IBOutlet weak var incomeExpenseSegmentedC: BetterSegmentedControl!
 
     @IBOutlet weak var incomeExpenseCollectionView: UICollectionView! {
 
@@ -51,21 +57,15 @@ class AccountingVC: UIViewController {
 
             incomeExpenseCollectionView.delegate = self
 
-            setUpCollectionView()
-
         }
 
-    }
-    
-    func setUpCollectionView() {
-        
-        incomeExpenseCollectionView.helpRegister(cell: IncomeExpenseCVCell())
-        
     }
     
     @IBOutlet weak var selectedAccountButton: UIButton!
     
     @IBOutlet weak var deleteAccountingButton: UIButton!
+    
+    @IBOutlet weak var incomeExpenseButton: UIButton!
     
     var expenseCategories: [ExpenseCategory] = []
     
@@ -82,19 +82,23 @@ class AccountingVC: UIViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
-
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
         amountTextField.inputAccessoryView = keyboardToolBar
         
         amountTextField.becomeFirstResponder()
         
-        setUpCalendar()
+        setUpCollectionView()
         
-        setUpSegmentedC()
+        setUpCalendar()
         
         fetchData()
 
+    }
+    
+    func setUpCollectionView() {
+        
+        incomeExpenseCollectionView.helpRegister(cell: CategorySelectCVCell())
+        
     }
     
     func setUpCalendar() {
@@ -110,24 +114,6 @@ class AccountingVC: UIViewController {
         self.view.addGestureRecognizer(scopeGesture)
         
         self.calendar.scope = .week
-        
-    }
-    
-    func setUpSegmentedC() {
-        
-        incomeExpenseSegmentedC.segments = LabelSegment.segments(
-            withTitles: ["支出", "收入"],
-            normalBackgroundColor: UIColor.white,
-            normalFont: .systemFont(ofSize: 16),
-            normalTextColor: UIColor.lightGray,
-            selectedBackgroundColor: UIColor.mSYellow,
-            selectedFont: .systemFont(ofSize: 16),
-            selectedTextColor: UIColor.black)
-        
-        incomeExpenseSegmentedC.addTarget(
-            self,
-            action: #selector(navigationSegmentedControlValueChanged(_:)),
-            for: .valueChanged)
         
     }
     
@@ -188,6 +174,20 @@ class AccountingVC: UIViewController {
         selectedAccountButton.setTitle(account.name, for: .normal)
         
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        if selectedAccounting != nil {
+            
+            setUpView()
+            
+            deleteAccountingButton.isHidden = false
+            
+        }
+        
+    }
     
     func setUpView() {
         
@@ -205,78 +205,18 @@ class AccountingVC: UIViewController {
             
             selectedAccount = selectedAccounting?.accountName
             
-            if let expenseCategory = selectedAccounting?.expenseCategory,
-                let iconName = expenseCategory.iconName,
-                let hex = expenseCategory.color {
+            if let expenseCategory = selectedAccounting?.expenseCategory {
                 
-                selectedCategory = .expense(expenseCategory)
+                setUpForSelected(category: .expense(expenseCategory))
                 
-                selectedCategoryImageView.image = UIImage(named: iconName)
+            } else if let incomeCategory = selectedAccounting?.incomeCategory {
                 
-                selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
-                
-            } else if let incomeCategory = selectedAccounting?.incomeCategory,
-                let iconName = incomeCategory.iconName,
-                let hex = incomeCategory.color {
-                
-                selectedCategory = .income(incomeCategory)
-                
-                selectedCategoryImageView.image = UIImage(named: iconName)
-                
-                selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
+                setUpForSelected(category: .income(incomeCategory))
                 
             }
             
         }
         
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        
-        super.viewWillAppear(animated)
-        
-        if selectedAccounting != nil {
-            
-            setUpView()
-            
-            deleteAccountingButton.isHidden = false
-            
-        }
-        
-    }
-
-    @objc func navigationSegmentedControlValueChanged(_ sender: BetterSegmentedControl) {
-
-        if incomeExpenseCollectionView.isDragging == false {
-
-            if sender.index == 0 {
-
-                UIView.animate(withDuration: 0.1, animations: {
-
-                    self.incomeExpenseCollectionView.bounds.origin.x = 0
-
-                })
-
-            } else if sender.index == 1 {
-
-                UIView.animate(withDuration: 0.1, animations: {
-
-                    self.incomeExpenseCollectionView.bounds.origin.x = 386
-
-                })
-
-            } else if sender.index == 2 {
-
-                UIView.animate(withDuration: 0.1, animations: {
-
-                    self.incomeExpenseCollectionView.bounds.origin.x = 772
-
-                })
-
-            }
-
-        }
-
     }
 
     @IBAction func dismissKeyboard(_ sender: UIButton) {
@@ -388,6 +328,14 @@ class AccountingVC: UIViewController {
         
     }
     
+    @IBAction func changeIncomeExpense(_ sender: UIButton) {
+        
+        incomeExpenseButton.isSelected = !incomeExpenseButton.isSelected
+        
+        incomeExpenseCollectionView.reloadData()
+        
+    }
+    
 }
 
 extension AccountingVC: FSCalendarDataSource { }
@@ -442,32 +390,66 @@ extension AccountingVC: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return 2
-
+        if incomeExpenseButton.isSelected {
+            
+            return incomeCategories.count
+            
+        } else {
+            
+            return expenseCategories.count
+            
+        }
+        
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         guard let cell = incomeExpenseCollectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: IncomeExpenseCVCell.self),
-            for: indexPath) as? IncomeExpenseCVCell else {
-                return IncomeExpenseCVCell()
+            withReuseIdentifier: String(describing: CategorySelectCVCell.self),
+            for: indexPath) as? CategorySelectCVCell else {
+                return CategorySelectCVCell()
         }
         
-        if indexPath.row == 0 {
+        if incomeExpenseButton.isSelected {
             
-            cell.initIncomeExpenseCVCell(expenseCategories: expenseCategories, incomeCategories: [])
+            let incomeCategory = incomeCategories[indexPath.row]
+            
+            guard let iconName = incomeCategory.iconName,
+                let name = incomeCategory.name,
+                let color = incomeCategory.color else { return cell }
+            
+            cell.initCategorySelectCVCell(imageName: iconName, categoryName: name, hex: color)
+            
+            cell.selectCategory = {
+                
+                self.selectedCategory = .income(incomeCategory)
+                
+                self.selectedCategoryImageView.image = UIImage(named: iconName)
+                
+                self.selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+                
+            }
             
         } else {
             
-            cell.initIncomeExpenseCVCell(expenseCategories: [], incomeCategories: incomeCategories)
+            let expenseCategory = expenseCategories[indexPath.row]
             
-        }
-        
-        cell.selectCategory = {
+            guard let iconName = expenseCategory.iconName,
+                let name = expenseCategory.name,
+                let color = expenseCategory.color else { return cell }
             
-            self.setUpForSelected(category: cell.selectedCategory)
+            cell.initCategorySelectCVCell(imageName: iconName, categoryName: name, hex: color)
+            
+            cell.selectCategory = {
+                
+                self.selectedCategory = .expense(expenseCategory)
+                
+                self.selectedCategoryImageView.image = UIImage(named: iconName)
+                
+                self.selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+                
+            }
             
         }
         
@@ -484,94 +466,25 @@ extension AccountingVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-
-        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-
+        
+        return UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+        
     }
-
+    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        return CGSize(width: 374, height: 240)
-
+        
+        return CGSize(width: 36, height: 84)
+        
     }
-
+    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-
-        return 12
-
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-
-        return 0
-
-    }
-
-}
-
-extension AccountingVC {
-
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView,
-                                   withVelocity velocity: CGPoint,
-                                   targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-
-        if scrollView == incomeExpenseCollectionView {
-
-            // Simulate "Page" Function
-
-            let pageWidth: Float = Float(386)
-            let currentOffset: Float = Float(scrollView.contentOffset.x)
-            let targetOffset: Float = Float(targetContentOffset.pointee.x)
-            var newTargetOffset: Float = 0
-            if targetOffset > currentOffset {
-                newTargetOffset = ceilf(currentOffset / pageWidth) * pageWidth
-            } else {
-                newTargetOffset = floorf(currentOffset / pageWidth) * pageWidth
-            }
-            if newTargetOffset < 0 {
-                newTargetOffset = 0
-            } else if newTargetOffset > Float(scrollView.contentSize.width) {
-                newTargetOffset = Float(Float(scrollView.contentSize.width))
-            }
-
-            targetContentOffset.pointee.x = CGFloat(currentOffset)
-            scrollView.setContentOffset(CGPoint(x: CGFloat(newTargetOffset),
-                                                y: scrollView.contentOffset.y), animated: true)
-
-        }
-
-    }
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
-        if scrollView.isEqual(incomeExpenseCollectionView) {
-
-            let move = incomeExpenseCollectionView.bounds.origin.x
-
-            print((move + 193) / 386)
-
-            if (move + 193) / 386 < 1 {
-
-                incomeExpenseSegmentedC.setIndex(0, animated: true)
-
-            } else if (move + 193) / 386 >= 1 && (move + 193) / 386 < 2 {
-
-                incomeExpenseSegmentedC.setIndex(1, animated: true)
-
-            } else if (move + 193) / 386 >= 2 {
-
-                incomeExpenseSegmentedC.setIndex(2, animated: true)
-
-            }
-
-        }
-
+        
+        return 30
+        
     }
 
 }

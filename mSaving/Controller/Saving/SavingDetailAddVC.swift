@@ -28,7 +28,7 @@ class SavingDetailAddVC: UIViewController {
         
     }
     
-    var expenseCategorys: [ExpenseCategory] = []
+    var expenseCategories: [ExpenseCategory] = []
     
     var selectedMonth: Month?
     
@@ -56,7 +56,7 @@ class SavingDetailAddVC: UIViewController {
         
         savingDetailTextField.becomeFirstResponder()
         
-        expenseCategorys = CategoryProvider().expenseCategories
+        expenseCategories = CategoryProvider().expenseCategories
         
         if selectedSavingDetail == nil {
             
@@ -193,7 +193,7 @@ extension SavingDetailAddVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return expenseCategorys.count
+        return expenseCategories.count
         
     }
     
@@ -206,7 +206,7 @@ extension SavingDetailAddVC: UICollectionViewDataSource {
                 return CategorySelectCVCell()
         }
         
-        let expenseCategory = expenseCategorys[indexPath.row]
+        let expenseCategory = expenseCategories[indexPath.row]
         
         guard let iconName = expenseCategory.iconName,
             let name = expenseCategory.name,

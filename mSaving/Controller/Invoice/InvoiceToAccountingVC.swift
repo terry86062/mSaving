@@ -38,7 +38,7 @@ class InvoiceToAccountingVC: UIViewController {
     
     var invoiceAmount = 0
     
-    var expenseCategorys: [ExpenseCategory] = []
+    var expenseCategories: [ExpenseCategory] = []
     
     var accounts: [Account] = []
     
@@ -74,7 +74,7 @@ class InvoiceToAccountingVC: UIViewController {
     
     func fetchData() {
         
-        expenseCategorys = CategoryProvider().expenseCategories
+        expenseCategories = CategoryProvider().expenseCategories
         
         accounts = AccountProvider().accounts
         
@@ -180,7 +180,7 @@ extension InvoiceToAccountingVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return expenseCategorys.count
+        return expenseCategories.count
         
     }
     
@@ -193,7 +193,7 @@ extension InvoiceToAccountingVC: UICollectionViewDataSource {
                 return CategorySelectCVCell()
         }
         
-        let expenseCategory = expenseCategorys[indexPath.row]
+        let expenseCategory = expenseCategories[indexPath.row]
         
         guard let iconName = expenseCategory.iconName,
             let name = expenseCategory.name,
