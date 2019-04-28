@@ -118,19 +118,47 @@ extension AccountingsCVCell: UICollectionViewDataSource {
         
         if totalAmount > 0 {
             
-            headerView.initAccountDateCVCell(
-                leadingText: "\(day), \(helpTransferWeekdayFromIntToString(weekday: weekday))",
-                trailingText: String(totalAmount),
-                trailingColor: .green,
-                havingShadow: false)
+            if day < 10 {
+                
+                headerView.initAccountDateCVCell(
+                    leadingText: "0\(day)",
+                    subLeadingText: "\(helpTransferWeekdayFromIntToString(weekday: weekday))",
+                    trailingText: String(totalAmount),
+                    trailingColor: .green,
+                    havingShadow: false)
+                
+            } else {
+                
+                headerView.initAccountDateCVCell(
+                    leadingText: "\(day)",
+                    subLeadingText: "\(helpTransferWeekdayFromIntToString(weekday: weekday))",
+                    trailingText: String(totalAmount),
+                    trailingColor: .green,
+                    havingShadow: false)
+                
+            }
             
         } else {
             
-            headerView.initAccountDateCVCell(
-                leadingText: "\(day), \(helpTransferWeekdayFromIntToString(weekday: weekday))",
-                trailingText: String(totalAmount),
-                trailingColor: .red,
-                havingShadow: false)
+            if day < 10 {
+                
+                headerView.initAccountDateCVCell(
+                    leadingText: "0\(day)",
+                    subLeadingText: "\(helpTransferWeekdayFromIntToString(weekday: weekday))",
+                    trailingText: String(totalAmount),
+                    trailingColor: .red,
+                    havingShadow: false)
+                
+            } else {
+                
+                headerView.initAccountDateCVCell(
+                    leadingText: "\(day)",
+                    subLeadingText: "\(helpTransferWeekdayFromIntToString(weekday: weekday))",
+                    trailingText: String(totalAmount),
+                    trailingColor: .red,
+                    havingShadow: false)
+                
+            }
             
         }
 
@@ -172,7 +200,7 @@ extension AccountingsCVCell: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        return CGSize(width: 382, height: 56)
+        return CGSize(width: UIScreen.main.bounds.width - 24, height: 48)
 
     }
 
@@ -190,7 +218,7 @@ extension AccountingsCVCell: UICollectionViewDelegateFlowLayout {
 
         if haveHeader {
 
-            return CGSize(width: 0, height: 56)
+            return CGSize(width: 0, height: 53)
 
         } else {
 

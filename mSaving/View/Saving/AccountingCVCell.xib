@@ -13,44 +13,44 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="AccountingCVCell" customModule="mSaving" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
+            <rect key="frame" x="0.0" y="0.0" width="382" height="48"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
+                <rect key="frame" x="0.0" y="0.0" width="382" height="48"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clothes" translatesAutoresizingMaskIntoConstraints="NO" id="anR-vD-yqN">
-                        <rect key="frame" x="16" y="12" width="32" height="32"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="anR-vD-yqN">
+                        <rect key="frame" x="12" y="0.0" width="36" height="36"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="32" id="ZPd-Wa-Xtq"/>
-                            <constraint firstAttribute="height" constant="32" id="jwf-kX-b3O"/>
+                            <constraint firstAttribute="width" constant="36" id="ZPd-Wa-Xtq"/>
+                            <constraint firstAttribute="height" constant="36" id="jwf-kX-b3O"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
-                                <real key="value" value="16"/>
+                                <real key="value" value="18"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-$1500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHZ-SP-VZg">
-                        <rect key="frame" x="313" y="18.5" width="53" height="19.5"/>
+                        <rect key="frame" x="317" y="8.5" width="53" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="16"/>
                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="衣服" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IaY-pv-PHR">
-                        <rect key="frame" x="64" y="8.5" width="33" height="19.5"/>
-                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="16"/>
+                        <rect key="frame" x="60" y="9" width="31" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="現金" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJc-CP-sRC">
-                        <rect key="frame" x="64" y="30" width="33" height="20"/>
-                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="16"/>
+                        <rect key="frame" x="95" y="15" width="20.5" height="12"/>
+                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="10"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcO-O6-pvy">
-                        <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="382" height="48"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <connections>
                             <action selector="goToAccountDetail:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Z5o-b4-Q9F"/>
@@ -60,18 +60,18 @@
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="anR-vD-yqN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="4VK-mi-4Dk"/>
+                <constraint firstItem="anR-vD-yqN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="4VK-mi-4Dk"/>
                 <constraint firstAttribute="trailing" secondItem="xcO-O6-pvy" secondAttribute="trailing" id="8bc-ju-kqw"/>
-                <constraint firstItem="QJc-CP-sRC" firstAttribute="top" secondItem="IaY-pv-PHR" secondAttribute="bottom" constant="2" id="CIs-BQ-UeN"/>
-                <constraint firstItem="anR-vD-yqN" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Pvz-L5-2O8"/>
-                <constraint firstItem="QJc-CP-sRC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="centerY" constant="2" id="U34-V1-MVv"/>
+                <constraint firstItem="anR-vD-yqN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="S1S-au-iRV"/>
+                <constraint firstItem="QJc-CP-sRC" firstAttribute="bottom" secondItem="IaY-pv-PHR" secondAttribute="bottom" id="W9G-ql-S7l"/>
                 <constraint firstItem="xcO-O6-pvy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="crW-JA-wD4"/>
+                <constraint firstItem="zHZ-SP-VZg" firstAttribute="centerY" secondItem="anR-vD-yqN" secondAttribute="centerY" id="fUk-jO-CbI"/>
                 <constraint firstItem="xcO-O6-pvy" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fXf-ra-9AB"/>
                 <constraint firstAttribute="bottom" secondItem="xcO-O6-pvy" secondAttribute="bottom" id="kQ7-dB-o4h"/>
-                <constraint firstItem="QJc-CP-sRC" firstAttribute="leading" secondItem="IaY-pv-PHR" secondAttribute="leading" id="p6C-zW-tqd"/>
-                <constraint firstItem="zHZ-SP-VZg" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="qMc-M3-lS5"/>
-                <constraint firstAttribute="trailing" secondItem="zHZ-SP-VZg" secondAttribute="trailing" constant="16" id="v1a-ai-y0V"/>
-                <constraint firstItem="IaY-pv-PHR" firstAttribute="leading" secondItem="anR-vD-yqN" secondAttribute="trailing" constant="16" id="xXe-Mt-FXc"/>
+                <constraint firstItem="IaY-pv-PHR" firstAttribute="centerY" secondItem="anR-vD-yqN" secondAttribute="centerY" id="ktT-AK-xVa"/>
+                <constraint firstItem="QJc-CP-sRC" firstAttribute="leading" secondItem="IaY-pv-PHR" secondAttribute="trailing" constant="4" id="p6C-zW-tqd"/>
+                <constraint firstAttribute="trailing" secondItem="zHZ-SP-VZg" secondAttribute="trailing" constant="12" id="v1a-ai-y0V"/>
+                <constraint firstItem="IaY-pv-PHR" firstAttribute="leading" secondItem="anR-vD-yqN" secondAttribute="trailing" constant="12" id="xXe-Mt-FXc"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="144" height="50"/>
@@ -84,7 +84,4 @@
             <point key="canvasLocation" x="82.608695652173921" y="41.517857142857139"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="clothes" width="512" height="512"/>
-    </resources>
 </document>

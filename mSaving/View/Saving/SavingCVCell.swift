@@ -283,7 +283,7 @@ extension SavingCVCell: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        return UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+        return UIEdgeInsets(top: 12, left: 0, bottom: 24, right: 0)
         
     }
     
@@ -293,29 +293,30 @@ extension SavingCVCell: UICollectionViewDelegateFlowLayout {
         
         if indexPath.row == 0 {
             
-            return CGSize(width: 382, height: 100)
+            return CGSize(width: UIScreen.main.bounds.width - 24, height: 92)
             
         } else {
             
             if showAccounting {
                 
-                return CGSize(width: 382, height: 56 * (accountingsGroup[indexPath.row - 1].count + 1))
+                return CGSize(width: Int(UIScreen.main.bounds.width - 24),
+                              height: 48 * (accountingsGroup[indexPath.row - 1].count) + 53)
                 
             } else {
                 
                 if savings == [] {
                     
-                    return CGSize(width: 382, height: 56)
+                    return CGSize(width: UIScreen.main.bounds.width - 24, height: 60)
                     
                 } else {
                     
                     if indexPath.row == savings.count {
                         
-                        return CGSize(width: 382, height: 56)
+                        return CGSize(width: UIScreen.main.bounds.width - 24, height: 60)
                         
                     } else {
                         
-                        return CGSize(width: 382, height: 112)
+                        return CGSize(width: UIScreen.main.bounds.width - 24, height: 108)
                         
                     }
                     
@@ -331,7 +332,7 @@ extension SavingCVCell: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
-        return 16
+        return 12
         
     }
     

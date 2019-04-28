@@ -13,26 +13,32 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="AccountingDateCVCell" customModule="mSaving" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
+            <rect key="frame" x="0.0" y="0.0" width="382" height="53"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
+                <rect key="frame" x="0.0" y="0.0" width="382" height="53"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-$2000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R3N-4d-0rV">
-                        <rect key="frame" x="310" y="18.5" width="56" height="19.5"/>
+                        <rect key="frame" x="314" y="17" width="56" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="16"/>
                         <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星期日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gow-B8-7LE">
-                        <rect key="frame" x="16" y="18.5" width="49" height="19.5"/>
-                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="16"/>
-                        <nil key="textColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gow-B8-7LE">
+                        <rect key="frame" x="16" y="12" width="24" height="29"/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星期一" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Sw-5K-mfm">
+                        <rect key="frame" x="44" y="25.5" width="31" height="12"/>
+                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="10"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QS1-jP-Hha">
-                        <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="382" height="53"/>
                         <connections>
                             <action selector="goToDetail:" destination="gTV-IL-0wX" eventType="touchUpInside" id="xxN-7B-6ah"/>
                         </connections>
@@ -44,9 +50,11 @@
                 <constraint firstItem="QS1-jP-Hha" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1xi-Fw-q0t"/>
                 <constraint firstItem="gow-B8-7LE" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="4fW-Ds-irs"/>
                 <constraint firstItem="R3N-4d-0rV" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="6lx-L7-Otd"/>
-                <constraint firstAttribute="trailing" secondItem="R3N-4d-0rV" secondAttribute="trailing" constant="16" id="7ID-qy-VaK"/>
+                <constraint firstAttribute="trailing" secondItem="R3N-4d-0rV" secondAttribute="trailing" constant="12" id="7ID-qy-VaK"/>
                 <constraint firstAttribute="bottom" secondItem="QS1-jP-Hha" secondAttribute="bottom" id="d7v-f2-fdQ"/>
                 <constraint firstItem="gow-B8-7LE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="iHn-r9-y6F"/>
+                <constraint firstItem="1Sw-5K-mfm" firstAttribute="firstBaseline" secondItem="gow-B8-7LE" secondAttribute="firstBaseline" id="jIG-4M-Bl4"/>
+                <constraint firstItem="1Sw-5K-mfm" firstAttribute="leading" secondItem="gow-B8-7LE" secondAttribute="trailing" constant="4" id="so2-AL-FBS"/>
                 <constraint firstItem="QS1-jP-Hha" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="tFI-fR-DCW"/>
                 <constraint firstAttribute="trailing" secondItem="QS1-jP-Hha" secondAttribute="trailing" id="zum-Hd-gC9"/>
             </constraints>
@@ -58,9 +66,10 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="leadingLabel" destination="gow-B8-7LE" id="rV9-p3-KQw"/>
+                <outlet property="subLeadingLabel" destination="1Sw-5K-mfm" id="Vhd-gJ-HFi"/>
                 <outlet property="trailingLabel" destination="R3N-4d-0rV" id="g0b-rT-hCW"/>
             </connections>
-            <point key="canvasLocation" x="133" y="126"/>
+            <point key="canvasLocation" x="131.8840579710145" y="125.89285714285714"/>
         </collectionViewCell>
     </objects>
 </document>

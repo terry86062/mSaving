@@ -60,6 +60,7 @@
 		DEACE3DD2257AD1900EA209C /* AnalysisCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEACE3DB2257AD1900EA209C /* AnalysisCVCell.xib */; };
 		DEACE3E02257B9F500EA209C /* AccountingsCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEACE3DE2257B9F500EA209C /* AccountingsCVCell.swift */; };
 		DEACE3E12257B9F500EA209C /* AccountingsCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEACE3DF2257B9F500EA209C /* AccountingsCVCell.xib */; };
+		DEAF79B622757A85002C48B9 /* UILabel - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAF79B522757A85002C48B9 /* UILabel - extension.swift */; };
 		DEBA92EB226D7CE200D93806 /* InvoiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBA92EA226D7CE200D93806 /* InvoiceRequest.swift */; };
 		DEBA92ED226D821B00D93806 /* InvoiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBA92EC226D821B00D93806 /* InvoiceProvider.swift */; };
 		DEBA92EF226D8A4F00D93806 /* String - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBA92EE226D8A4F00D93806 /* String - extension.swift */; };
@@ -215,6 +216,7 @@
 		DEACE3DB2257AD1900EA209C /* AnalysisCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnalysisCVCell.xib; sourceTree = "<group>"; };
 		DEACE3DE2257B9F500EA209C /* AccountingsCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountingsCVCell.swift; sourceTree = "<group>"; };
 		DEACE3DF2257B9F500EA209C /* AccountingsCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountingsCVCell.xib; sourceTree = "<group>"; };
+		DEAF79B522757A85002C48B9 /* UILabel - extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel - extension.swift"; sourceTree = "<group>"; };
 		DEBA92EA226D7CE200D93806 /* InvoiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceRequest.swift; sourceTree = "<group>"; };
 		DEBA92EC226D821B00D93806 /* InvoiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceProvider.swift; sourceTree = "<group>"; };
 		DEBA92EE226D8A4F00D93806 /* String - extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String - extension.swift"; sourceTree = "<group>"; };
@@ -614,6 +616,7 @@
 				DEBA92EE226D8A4F00D93806 /* String - extension.swift */,
 				DEEB5FB9226D79E90088C798 /* URLComponents - extension.swift */,
 				DE366AC0226EE88200A65954 /* Notification - extension.swift */,
+				DEAF79B522757A85002C48B9 /* UILabel - extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -928,6 +931,7 @@
 				DEAA6A2C2259A55000224B26 /* IncomeExpenseCategoryCVCell.swift in Sources */,
 				DE7B38AE2257427200C17846 /* CategorySelectCVCell.swift in Sources */,
 				DEBE8C252254AE5200C2A8A3 /* UITableView - extension.swift in Sources */,
+				DEAF79B622757A85002C48B9 /* UILabel - extension.swift in Sources */,
 				DEECB05C22533599002D6C30 /* TabBarController.swift in Sources */,
 				DEECB05822533599002D6C30 /* SettingVC.swift in Sources */,
 				DEDE574E2271EBC70071FCFD /* TimeManager.swift in Sources */,

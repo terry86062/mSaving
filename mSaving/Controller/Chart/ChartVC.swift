@@ -38,6 +38,8 @@ class ChartVC: UIViewController {
     
     let notificationManager = MSNotificationManager()
     
+    var firstAppear = true
+    
     var months: [Month] = []
     
     var selectedCategoryMonthTotal: CategoryMonthTotal?
@@ -86,7 +88,13 @@ class ChartVC: UIViewController {
         
         super.viewDidAppear(animated)
         
-        showCorrectCollectionView()
+        if firstAppear {
+            
+            showCorrectCollectionView()
+            
+            firstAppear = false
+            
+        }
         
     }
     
@@ -104,11 +112,7 @@ class ChartVC: UIViewController {
                                                 at: [.centeredVertically, .centeredHorizontally],
                                                 animated: false)
             
-            if indexPath.row == 0 {
-                
-                helpSetShadowAlpha(row: 0, show: true)
-                
-            }
+            helpSetShadowAlpha(row: 0, show: true)
             
         }
         

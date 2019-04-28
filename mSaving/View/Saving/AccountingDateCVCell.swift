@@ -11,7 +11,9 @@ import UIKit
 class AccountingDateCVCell: UICollectionViewCell {
 
     @IBOutlet weak var leadingLabel: UILabel!
-
+    
+    @IBOutlet weak var subLeadingLabel: UILabel!
+    
     @IBOutlet weak var trailingLabel: UILabel!
 
     var goToDetialPage: (() -> Void)?
@@ -22,9 +24,11 @@ class AccountingDateCVCell: UICollectionViewCell {
 
     }
 
-    func initAccountDateCVCell(leadingText: String, trailingText: String, trailingColor: UIColor, havingShadow: Bool) {
+    func initAccountDateCVCell(leadingText: String, subLeadingText: String = "", trailingText: String, trailingColor: UIColor, havingShadow: Bool) {
 
         leadingLabel.text = leadingText
+        
+        subLeadingLabel.text = subLeadingText
         
         trailingLabel.text = trailingText
         

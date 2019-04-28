@@ -42,6 +42,8 @@ class SavingVC: UIViewController {
     
     var showAccounting = true
     
+    var firstAppear = true
+    
     var months: [Month] = []
     
     var selectedMonth: Month?
@@ -96,7 +98,13 @@ class SavingVC: UIViewController {
         
         super.viewDidAppear(animated)
         
-        showCorrectCollectionView()
+        if firstAppear {
+            
+            showCorrectCollectionView()
+            
+            firstAppear = false
+            
+        }
         
     }
     
@@ -114,15 +122,11 @@ class SavingVC: UIViewController {
                                               at: [.centeredVertically, .centeredHorizontally],
                                               animated: false)
             
-            if indexPath.row == 0 {
-                
-                helpSetShadowAlpha(row: 0, show: true)
-                
-                setUpSelectedSaving(row: 0)
-                
-                setUpSelectedMonth(row: 0)
-                
-            }
+            helpSetShadowAlpha(row: indexPath.row, show: true)
+            
+            setUpSelectedSaving(row: indexPath.row)
+            
+            setUpSelectedMonth(row: indexPath.row)
             
         }
         
@@ -295,21 +299,13 @@ extension SavingVC: UICollectionViewDelegateFlowLayout {
 
         if collectionView == monthCollectionView {
 
-            return CGSize(width: UIScreen.main.bounds.width / 3, height: 43.fitScreen)
+            return CGSize(width: monthCollectionView.frame.width / 3, height: 32)
 
         } else {
 
             return CGSize(width: savingCollectionView.frame.width, height: savingCollectionView.frame.height)
 
         }
-
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-
-        return 0
 
     }
 

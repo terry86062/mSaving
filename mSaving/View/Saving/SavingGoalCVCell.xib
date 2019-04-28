@@ -14,36 +14,15 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SavingGoalCVCell" customModule="mSaving" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="382" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="382" height="92"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="382" height="100"/>
+                <rect key="frame" x="0.0" y="0.0" width="382" height="92"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZQk-5R-95J">
-                        <rect key="frame" x="0.0" y="0.0" width="382" height="100"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
-                                <real key="value" value="20"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
-                                <size key="value" width="0.0" height="2"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
-                                <real key="value" value="0.80000000000000004"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
-                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
-                                <real key="value" value="5"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本月預算" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nER-8a-o5n">
-                        <rect key="frame" x="300.5" y="16.5" width="65.5" height="19.5"/>
-                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="16"/>
+                        <rect key="frame" x="302.5" y="12" width="61.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
@@ -53,8 +32,8 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已花費" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfX-rD-TjU">
-                        <rect key="frame" x="16" y="16" width="49" height="20"/>
-                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="16"/>
+                        <rect key="frame" x="16" y="12" width="46" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
@@ -64,21 +43,21 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFb-ZB-WQ9">
-                        <rect key="frame" x="16" y="52" width="350" height="32"/>
+                        <rect key="frame" x="12" y="42" width="358" height="36"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zTY-FH-GaS">
-                                <rect key="frame" x="0.0" y="0.0" width="87.5" height="32"/>
+                                <rect key="frame" x="0.0" y="0.0" width="89.5" height="36"/>
                                 <color key="backgroundColor" name="mSYellow"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
-                                        <real key="value" value="10"/>
+                                        <real key="value" value="12"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0x-WJ-ZTw">
-                                <rect key="frame" x="322" y="7.5" width="20" height="19.5"/>
+                                <rect key="frame" x="330" y="9.5" width="20" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="16"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
@@ -87,9 +66,9 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-$0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ri-gX-cFp">
-                                <rect key="frame" x="8" y="7.5" width="27.5" height="19.5"/>
+                                <rect key="frame" x="8" y="9.5" width="27.5" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="16"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
@@ -98,7 +77,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.92159336810000003" green="0.9098213315" blue="0.92535680529999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9ri-gX-cFp" firstAttribute="leading" secondItem="WFb-ZB-WQ9" secondAttribute="leading" constant="8" id="SXS-KI-SPA"/>
                             <constraint firstAttribute="trailing" secondItem="Z0x-WJ-ZTw" secondAttribute="trailing" constant="8" id="TQY-gY-lRf"/>
@@ -108,45 +87,57 @@
                             <constraint firstItem="zTY-FH-GaS" firstAttribute="width" secondItem="WFb-ZB-WQ9" secondAttribute="width" multiplier="1:4" id="ZQG-ZY-ty1"/>
                             <constraint firstItem="zTY-FH-GaS" firstAttribute="top" secondItem="WFb-ZB-WQ9" secondAttribute="top" id="dOy-DP-1Vt"/>
                             <constraint firstItem="Z0x-WJ-ZTw" firstAttribute="centerY" secondItem="WFb-ZB-WQ9" secondAttribute="centerY" constant="1" id="p4M-8I-IXd"/>
-                            <constraint firstAttribute="height" constant="32" id="pbB-bQ-z33"/>
+                            <constraint firstAttribute="height" constant="36" id="pbB-bQ-z33"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
                                 <real key="value" value="2"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
-                                <real key="value" value="10"/>
+                                <real key="value" value="12"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8X5-Yh-i4v">
-                        <rect key="frame" x="0.0" y="0.0" width="382" height="100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="382" height="92"/>
                         <connections>
                             <action selector="touchMainSaving:" destination="gTV-IL-0wX" eventType="touchUpInside" id="jOD-17-lDb"/>
                         </connections>
                     </button>
                 </subviews>
             </view>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="ZQk-5R-95J" secondAttribute="bottom" id="3VV-Xj-Omd"/>
-                <constraint firstItem="WFb-ZB-WQ9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="6JC-N2-V2w"/>
-                <constraint firstAttribute="trailing" secondItem="nER-8a-o5n" secondAttribute="trailing" constant="16" id="DOr-Hp-g8Y"/>
+                <constraint firstItem="WFb-ZB-WQ9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="6JC-N2-V2w"/>
                 <constraint firstItem="nER-8a-o5n" firstAttribute="centerY" secondItem="kfX-rD-TjU" secondAttribute="centerY" id="DfY-Rh-p8f"/>
-                <constraint firstItem="ZQk-5R-95J" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="FdF-2N-jpG"/>
-                <constraint firstAttribute="trailing" secondItem="ZQk-5R-95J" secondAttribute="trailing" id="GBE-a9-tXP"/>
-                <constraint firstItem="kfX-rD-TjU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="ICU-bR-3v5"/>
-                <constraint firstAttribute="trailing" secondItem="WFb-ZB-WQ9" secondAttribute="trailing" constant="16" id="Jjz-W9-Ubq"/>
+                <constraint firstItem="kfX-rD-TjU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="ICU-bR-3v5"/>
+                <constraint firstItem="kfX-rD-TjU" firstAttribute="leading" secondItem="9ri-gX-cFp" secondAttribute="leading" constant="-4" id="IQ0-Vy-6fu"/>
+                <constraint firstAttribute="trailing" secondItem="WFb-ZB-WQ9" secondAttribute="trailing" constant="12" id="Jjz-W9-Ubq"/>
                 <constraint firstAttribute="bottom" secondItem="8X5-Yh-i4v" secondAttribute="bottom" id="Twa-Bg-5Hx"/>
                 <constraint firstItem="8X5-Yh-i4v" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="g09-1H-2fa"/>
-                <constraint firstItem="kfX-rD-TjU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="hhB-JD-G5d"/>
                 <constraint firstAttribute="trailing" secondItem="8X5-Yh-i4v" secondAttribute="trailing" id="jhh-h1-3fw"/>
-                <constraint firstAttribute="bottom" secondItem="WFb-ZB-WQ9" secondAttribute="bottom" constant="16" id="log-Bf-KuK"/>
-                <constraint firstItem="WFb-ZB-WQ9" firstAttribute="top" secondItem="kfX-rD-TjU" secondAttribute="bottom" constant="16" id="mJz-5I-TGk"/>
+                <constraint firstItem="WFb-ZB-WQ9" firstAttribute="top" secondItem="kfX-rD-TjU" secondAttribute="bottom" constant="12" id="mJz-5I-TGk"/>
+                <constraint firstItem="nER-8a-o5n" firstAttribute="trailing" secondItem="Z0x-WJ-ZTw" secondAttribute="trailing" constant="2" id="w1r-iu-PB2"/>
                 <constraint firstItem="8X5-Yh-i4v" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="xD7-9O-sWi"/>
-                <constraint firstItem="ZQk-5R-95J" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="z4c-fB-jUs"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
+                    <size key="value" width="0.0" height="2"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
+                    <real key="value" value="0.5"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
+                    <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
+                    <real key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
+                    <real key="value" value="12"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="budgetLabel" destination="Z0x-WJ-ZTw" id="Fva-Iv-lUx"/>
                 <outlet property="budgetProgressView" destination="WFb-ZB-WQ9" id="asa-U5-zzN"/>
@@ -154,7 +145,7 @@
                 <outlet property="spendPercentView" destination="zTY-FH-GaS" id="bEa-e1-ahZ"/>
                 <outlet property="spendPercentWidthConstraint" destination="ZQG-ZY-ty1" id="nKs-2n-kaH"/>
             </connections>
-            <point key="canvasLocation" x="37.681159420289859" y="34.821428571428569"/>
+            <point key="canvasLocation" x="-74" y="2"/>
         </collectionViewCell>
     </objects>
     <resources>
