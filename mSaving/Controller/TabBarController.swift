@@ -149,8 +149,6 @@ class TabBarController: UITabBarController {
 
     func addCenterButton(withImage buttonImage: UIImage, highlightImage: UIImage) {
 
-        let paddingBottom: CGFloat = -14
-
         let button = UIButton(type: .custom)
         button.autoresizingMask = [.flexibleRightMargin, .flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin]
         button.frame = CGRect(x: 0.0,
@@ -163,10 +161,25 @@ class TabBarController: UITabBarController {
 //        button.setBackgroundImage(highlightImage, for: .highlighted)
 
         let rectBoundTabbar = self.tabBar.bounds
-        let xxx = rectBoundTabbar.midX
-        let yyy = rectBoundTabbar.midY - paddingBottom
-        button.center = CGPoint(x: xxx, y: yyy)
+        
+        if UIScreen.main.bounds.height < 800 {
+            
+            let paddingBottom: CGFloat = 12.5
+            
+            let xxx = rectBoundTabbar.midX
+            let yyy = rectBoundTabbar.midY - paddingBottom
+            button.center = CGPoint(x: xxx, y: yyy)
+            
+        } else if UIScreen.main.bounds.height > 800 {
 
+            let paddingBottom: CGFloat = -14
+
+            let xxx = rectBoundTabbar.midX
+            let yyy = rectBoundTabbar.midY - paddingBottom
+            button.center = CGPoint(x: xxx, y: yyy)
+
+        }
+    
         button.backgroundColor = UIColor(red: 254 / 255, green: 254 / 255, blue: 254 / 255, alpha: 1)
 
         button.layer.cornerRadius = 30

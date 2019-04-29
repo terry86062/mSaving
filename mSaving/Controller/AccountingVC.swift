@@ -12,6 +12,8 @@ import CoreData
 
 import FSCalendar
 
+import Firebase
+
 class AccountingVC: UIViewController {
 
     @IBOutlet weak var calendar: FSCalendar!
@@ -283,6 +285,8 @@ class AccountingVC: UIViewController {
     @IBAction func changeAccount(_ sender: UIButton) {
         
         showAlertWith(title: "請選擇帳戶", message: "")
+        
+        Analytics.logEvent("accounting_page_change_account_button", parameters: nil)
         
     }
     
