@@ -7,5 +7,8 @@ pod 'FSCalendar'
 pod 'BetterSegmentedControl'
 pod 'Charts'
 pod 'SwiftLint'
+pod 'IQKeyboardManagerSwift'
+pod 'Fabric'
+pod 'Crashlytics'
 
 end

@@ -36,7 +36,7 @@ class AccountDetailVC: UIViewController {
         
         if let delegate = delegate, delegate.isAddingNewAccount == true {
             
-            accountTextField.becomeFirstResponder()
+//            accountTextField.becomeFirstResponder()
             
         }
         
