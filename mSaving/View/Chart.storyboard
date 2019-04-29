@@ -125,6 +125,7 @@
                         <outlet property="analysisCollectionView" destination="Ua1-Yq-anV" id="cTl-wb-td7"/>
                         <outlet property="expenseIncomeButton" destination="Pkt-50-wDB" id="nLh-g8-nB5"/>
                         <outlet property="monthCollectionView" destination="iyE-0e-gdu" id="EtV-rg-Gl1"/>
+                        <outlet property="yearLabel" destination="iM7-gY-DsZ" id="BfF-An-Kho"/>
                         <segue destination="23y-g6-22h" kind="show" identifier="goToCategoryAccountsDetailVC" id="cmI-jx-hVW"/>
                     </connections>
                 </viewController>

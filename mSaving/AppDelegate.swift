@@ -10,8 +10,6 @@ import UIKit
 
 import CoreData
 
-import Intents
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -23,8 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         detectFirstLaunch()
-        
-//        askSiriAuthorization()
 
         return true
         
@@ -47,26 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             AccountProvider().createAccount(name: "現金", initalAmount: 0, priority: 0)
             
             UserDefaults.standard.set(true, forKey: "launchedBefore")
-            
-        }
-        
-    }
-    
-    func askSiriAuthorization() {
-        
-        INPreferences.requestSiriAuthorization { (status) in
-            
-            switch status {
-                
-            case .authorized:
-                
-                print("Authorized")
-                
-            default:
-                
-                print("Not Authorized")
-                
-            }
             
         }
         

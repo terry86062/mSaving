@@ -38,7 +38,7 @@ class SavingGoalSetVC: UIViewController {
             
             savingTextField.text = "\(selectedSaving.amount)"
             
-            descriptionLabel.text = "每天可花 $" + "\(selectedSaving.amount / 30)"
+            descriptionLabel.text = "每天約可花 $" + "\(selectedSaving.amount / 30)"
             
         } else {
             
@@ -84,7 +84,7 @@ class SavingGoalSetVC: UIViewController {
         
         guard let text = savingTextField.text, let budget = Int(text) else { return }
         
-        descriptionLabel.text = "每天可花 $" + String(budget / 30)
+        descriptionLabel.text = "每天約可花 $" + String(budget / 30)
         
     }
     
@@ -136,11 +136,7 @@ class SavingGoalSetVC: UIViewController {
         
         guard let text = savingTextField.text, let amount = Int64(text) else { return }
         
-        selectedSaving.amount = amount
-        
-        CoreDataManager.shared.saveContext()
-        
-        MSNotificationManager().postSavingChanged()
+        SavingProvider().reviseSaving(saving: selectedSaving, amount: amount)
         
     }
 

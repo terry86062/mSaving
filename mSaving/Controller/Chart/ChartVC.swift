@@ -34,11 +34,15 @@ class ChartVC: UIViewController {
 
     }
     
+    @IBOutlet weak var yearLabel: UILabel!
+    
     @IBOutlet weak var expenseIncomeButton: UIButton!
     
     let notificationManager = MSNotificationManager()
     
     var firstAppear = true
+    
+    var firstSetColor = true
     
     var months: [Month] = []
     
@@ -104,6 +108,12 @@ class ChartVC: UIViewController {
             
             helpSetShadowAlpha(row: 0, show: true)
             
+            let dataComponents = TimeManager().transform(date: Date())
+            
+            guard let year = dataComponents.year else { return }
+            
+            yearLabel.text = "\(year)"
+            
         } else {
             
             let indexPath = IndexPath(item: months.count - 1, section: 0)
@@ -112,7 +122,13 @@ class ChartVC: UIViewController {
                                                 at: [.centeredVertically, .centeredHorizontally],
                                                 animated: false)
             
-            helpSetShadowAlpha(row: 0, show: true)
+            helpSetShadowAlpha(row: indexPath.row, show: true)
+            
+            if indexPath.row == 0 {
+                
+                helpSetShadowAlpha(row: 0, show: true)
+                
+            }
             
         }
         
@@ -164,6 +180,14 @@ extension ChartVC: UICollectionViewDataSource {
             guard months != [] else { return cell }
             
             cell.initMonthCVCell(month: months[indexPath.row])
+            
+            if indexPath.row == months.count - 1 && firstSetColor {
+                
+                cell.shadowView.alpha = 1
+                
+                firstSetColor = false
+                
+            }
 
             return cell
 
@@ -325,6 +349,10 @@ extension ChartVC {
             if show {
                 
                 cell.shadowView.alpha = 1
+                
+                guard let year = cell.month?.year else { return }
+                
+                self.yearLabel.text = "\(year)"
                 
             } else {
                 

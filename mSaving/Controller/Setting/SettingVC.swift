@@ -10,6 +10,8 @@ import UIKit
 
 import Photos
 
+import Intents
+
 struct SettingText {
     
     let leadingText: String
@@ -82,7 +84,7 @@ class SettingVC: UIViewController {
     
     var settings: [SettingText] = [
         SettingText(leadingText: "類別顯示", trailingText: ">"),
-        SettingText(leadingText: "使用 Siri", trailingText: "未使用"),
+        SettingText(leadingText: "啟用 Siri", trailingText: "未啟用"),
         SettingText(leadingText: "隱私權聲明內容", trailingText: ">"),
         SettingText(leadingText: "給予評價", trailingText: ">")
     ]
@@ -215,6 +217,28 @@ class SettingVC: UIViewController {
         
     }
     
+    func askSiriAuthorization() {
+        
+        INPreferences.requestSiriAuthorization { [weak self] (status) in
+            
+            switch status {
+                
+            case .authorized:
+                
+                print("Authorized")
+                
+                self?.settingsCollectionView.reloadData()
+                
+            default:
+                
+                print("Not Authorized")
+                
+            }
+            
+        }
+        
+    }
+    
 }
 
 extension SettingVC: UICollectionViewDataSource {
@@ -298,16 +322,44 @@ extension SettingVC: UICollectionViewDataSource {
                     return AccountingDateCVCell()
             }
             
-            cell.initAccountDateCVCell(leadingText: settings[indexPath.row].leadingText,
-                                       trailingText: settings[indexPath.row].trailingText,
-                                       trailingColor: .black,
-                                       havingShadow: true)
+            if indexPath.row == 1 {
+                
+                if INPreferences.siriAuthorizationStatus() == .authorized {
+                    
+                    cell.initAccountDateCVCell(leadingText: settings[indexPath.row].leadingText,
+                                               trailingText: "已啟用",
+                                               trailingColor: .black,
+                                               havingShadow: true)
+                    
+                } else {
+                    
+                    cell.initAccountDateCVCell(leadingText: settings[indexPath.row].leadingText,
+                                               trailingText: settings[indexPath.row].trailingText,
+                                               trailingColor: .black,
+                                               havingShadow: true)
+                    
+                }
+                
+            } else {
+                
+                cell.initAccountDateCVCell(leadingText: settings[indexPath.row].leadingText,
+                                           trailingText: settings[indexPath.row].trailingText,
+                                           trailingColor: .black,
+                                           havingShadow: true)
+                
+            }
             
             cell.goToDetialPage = {
                 
-                guard indexPath.row == 0 else { return }
-                
-                self.performSegue(withIdentifier: "goToSetCategory", sender: nil)
+                if indexPath.row == 0 {
+                    
+                    self.performSegue(withIdentifier: "goToSetCategory", sender: nil)
+                    
+                } else if indexPath.row == 1 {
+                    
+                    self.askSiriAuthorization()
+                    
+                }
                 
             }
             
@@ -358,11 +410,11 @@ extension SettingVC: UICollectionViewDelegateFlowLayout {
 
         if collectionView == accountsCollectionView {
             
-            return UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
+            return UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 0)
             
         } else {
             
-            return UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
+            return UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 0)
             
         }
 
@@ -372,7 +424,7 @@ extension SettingVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        return CGSize(width: 382, height: 56)
+        return CGSize(width: Int(UIScreen.main.bounds.width - 24), height: 53)
 
     }
 
@@ -380,7 +432,7 @@ extension SettingVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 
-        return 16
+        return 12
 
     }
     
@@ -390,7 +442,7 @@ extension SettingVC: UICollectionViewDelegateFlowLayout {
         
         if collectionView == accountsCollectionView {
             
-            return CGSize(width: 0, height: 56)
+            return CGSize(width: 0, height: 53)
             
         } else {
             
@@ -408,7 +460,7 @@ extension SettingVC: UIScrollViewDelegate {
 
         if scrollView.isEqual(scrollView) {
             
-            segmentedBarView.frame.origin.x = 119 + scrollView.contentOffset.x * 104 / 414
+            segmentedBarView.frame.origin.x = 129.5 + scrollView.contentOffset.x * 93.5 / 414
             
             if segmentedBarView.frame.origin.x > scrollView.frame.width / 2 {
 

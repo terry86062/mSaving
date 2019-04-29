@@ -45,8 +45,9 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFb-ZB-WQ9">
                         <rect key="frame" x="12" y="42" width="358" height="36"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zTY-FH-GaS">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zTY-FH-GaS">
                                 <rect key="frame" x="0.0" y="0.0" width="89.5" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="mSYellow"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
@@ -81,11 +82,7 @@
                         <constraints>
                             <constraint firstItem="9ri-gX-cFp" firstAttribute="leading" secondItem="WFb-ZB-WQ9" secondAttribute="leading" constant="8" id="SXS-KI-SPA"/>
                             <constraint firstAttribute="trailing" secondItem="Z0x-WJ-ZTw" secondAttribute="trailing" constant="8" id="TQY-gY-lRf"/>
-                            <constraint firstAttribute="bottom" secondItem="zTY-FH-GaS" secondAttribute="bottom" id="UEH-s2-Ugv"/>
                             <constraint firstItem="9ri-gX-cFp" firstAttribute="centerY" secondItem="Z0x-WJ-ZTw" secondAttribute="centerY" id="XT1-xx-rQq"/>
-                            <constraint firstItem="zTY-FH-GaS" firstAttribute="leading" secondItem="WFb-ZB-WQ9" secondAttribute="leading" id="YCQ-xK-Bql"/>
-                            <constraint firstItem="zTY-FH-GaS" firstAttribute="width" secondItem="WFb-ZB-WQ9" secondAttribute="width" multiplier="1:4" id="ZQG-ZY-ty1"/>
-                            <constraint firstItem="zTY-FH-GaS" firstAttribute="top" secondItem="WFb-ZB-WQ9" secondAttribute="top" id="dOy-DP-1Vt"/>
                             <constraint firstItem="Z0x-WJ-ZTw" firstAttribute="centerY" secondItem="WFb-ZB-WQ9" secondAttribute="centerY" constant="1" id="p4M-8I-IXd"/>
                             <constraint firstAttribute="height" constant="36" id="pbB-bQ-z33"/>
                         </constraints>
@@ -143,7 +140,6 @@
                 <outlet property="budgetProgressView" destination="WFb-ZB-WQ9" id="asa-U5-zzN"/>
                 <outlet property="spendLabel" destination="9ri-gX-cFp" id="iA4-uH-h5B"/>
                 <outlet property="spendPercentView" destination="zTY-FH-GaS" id="bEa-e1-ahZ"/>
-                <outlet property="spendPercentWidthConstraint" destination="ZQG-ZY-ty1" id="nKs-2n-kaH"/>
             </connections>
             <point key="canvasLocation" x="-74" y="2"/>
         </collectionViewCell>

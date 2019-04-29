@@ -33,7 +33,9 @@ class SavingVC: UIViewController {
         }
 
     }
-
+    
+    @IBOutlet weak var yearLabel: UILabel!
+    
     @IBOutlet weak var searchButton: UIButton!
 
     @IBOutlet weak var editingButton: UIButton!
@@ -43,6 +45,8 @@ class SavingVC: UIViewController {
     var showAccounting = true
     
     var firstAppear = true
+    
+    var firstSetColor = true
     
     var months: [Month] = []
     
@@ -114,6 +118,12 @@ class SavingVC: UIViewController {
             
             helpSetShadowAlpha(row: 0, show: true)
             
+            let dataComponents = TimeManager().transform(date: Date())
+            
+            guard let year = dataComponents.year else { return }
+            
+            yearLabel.text = "\(year)"
+            
         } else {
             
             let indexPath = IndexPath(item: months.count - 1, section: 0)
@@ -128,11 +138,23 @@ class SavingVC: UIViewController {
             
             setUpSelectedMonth(row: indexPath.row)
             
+            if indexPath.row == 0 {
+                
+                helpSetShadowAlpha(row: 0, show: true)
+                
+            }
+            
         }
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let row = savingCollectionView.contentOffset.x / savingCollectionView.frame.width
+        
+        setUpSelectedMonth(row: Int(row))
+        
+        setUpSelectedSaving(row: Int(row))
         
         if segue.identifier == "goToSavingGoalSetVC" {
             
@@ -198,6 +220,14 @@ extension SavingVC: UICollectionViewDataSource {
             guard months != [] else { return cell }
             
             cell.initMonthCVCell(month: months[indexPath.row])
+            
+            if indexPath.row == months.count - 1 && firstSetColor {
+                
+                cell.shadowView.alpha = 1
+                
+                firstSetColor = false
+                
+            }
             
             return cell
 
@@ -404,6 +434,10 @@ extension SavingVC {
             if show {
                 
                 cell.shadowView.alpha = 1
+                
+                guard let year = cell.month?.year else { return }
+                
+                self.yearLabel.text = "\(year)"
                 
             } else {
                 

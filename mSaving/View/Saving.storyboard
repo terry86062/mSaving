@@ -151,6 +151,7 @@
                         <outlet property="editingButton" destination="Hbs-E5-8bb" id="XA5-ud-Olq"/>
                         <outlet property="monthCollectionView" destination="yhK-G2-nhO" id="v3X-xS-IUV"/>
                         <outlet property="savingCollectionView" destination="Y4f-oa-sf1" id="UWY-KF-Mi0"/>
+                        <outlet property="yearLabel" destination="Rk2-Xk-qbG" id="wGw-IT-S30"/>
                         <segue destination="YWh-vS-MS1" kind="presentation" identifier="goToSavingDetailNew" modalPresentationStyle="overFullScreen" id="E7O-at-pcr"/>
                         <segue destination="YWh-vS-MS1" kind="presentation" identifier="goToSavingDetailEdit" modalPresentationStyle="overFullScreen" id="II0-Ca-leY"/>
                     </connections>
@@ -463,23 +464,6 @@
                                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="10"/>
                                         <color key="textColor" name="mSGreen"/>
                                         <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
-                                                <size key="value" width="0.0" height="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
-                                                <real key="value" value="0.80000000000000004"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
-                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ln2-Lq-vFz">
                                         <rect key="frame" x="84" y="156" width="270" height="1"/>
@@ -493,23 +477,6 @@
                                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="10"/>
                                         <color key="textColor" name="mSGreen"/>
                                         <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
-                                                <size key="value" width="0.0" height="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
-                                                <real key="value" value="0.80000000000000004"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
-                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3n-UV-pWZ">
                                         <rect key="frame" x="123" y="421.5" width="144" height="36"/>

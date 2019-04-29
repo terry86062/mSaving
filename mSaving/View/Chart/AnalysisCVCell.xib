@@ -30,8 +30,8 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本月無資料" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Wg-b0-zaU">
-                        <rect key="frame" x="163.5" y="330.5" width="87" height="21"/>
-                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
+                        <rect key="frame" x="169" y="332" width="76.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>

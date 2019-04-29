@@ -18,8 +18,6 @@ class SavingGoalCVCell: UICollectionViewCell {
     
     @IBOutlet weak var spendPercentView: UIView!
     
-    @IBOutlet weak var spendPercentWidthConstraint: NSLayoutConstraint!
-    
     var touchMainSaving: (() -> Void)?
 
     override func awakeFromNib() {
@@ -30,21 +28,27 @@ class SavingGoalCVCell: UICollectionViewCell {
     
     func initSavingGoalCVCell(budget: Int64, totalSpend: Int) {
         
+        spendPercentView.frame = CGRect(x: 0, y: 0, width: 0, height: budgetProgressView.frame.height)
+        
         budgetLabel.text = "$" + String(budget)
         
         spendLabel.text = "-$" + String(totalSpend)
         
-        if spendPercentWidthConstraint != nil {
-
-            spendPercentWidthConstraint.isActive = false
-
-        }
-        
         if budget != 0 {
             
-            NSLayoutConstraint(item: spendPercentView as Any, attribute: .width, relatedBy: .equal,
-                               toItem: budgetProgressView, attribute: .width,
-                               multiplier: CGFloat(Double(totalSpend) / Double(budget)), constant: 0).isActive = true
+            if totalSpend > budget {
+                
+                spendPercentView.frame = CGRect(x: 0, y: 0,
+                                                width: budgetProgressView.frame.width * 1,
+                                                height: budgetProgressView.frame.height)
+                
+            } else {
+                
+                spendPercentView.frame = CGRect(x: 0, y: 0,
+                                                width: budgetProgressView.frame.width * CGFloat(Double(totalSpend) / Double(budget)),
+                                                height: budgetProgressView.frame.height)
+                
+            }
             
         }
         

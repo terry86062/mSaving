@@ -177,13 +177,9 @@ class SavingDetailAddVC: UIViewController {
         
         guard let text = savingDetailTextField.text, let amount = Int64(text) else { return }
         
-        selectedSavingDetail.amount = amount
-        
-        selectedSavingDetail.expenseCategory = selectedExpenseCategory
-        
-        CoreDataManager.shared.saveContext()
-        
-        MSNotificationManager().postSavingChanged()
+        SavingProvider().reviseSaving(saving: selectedSavingDetail,
+                                      amount: amount,
+                                      selectedExpenseCategory: selectedExpenseCategory)
         
     }
 

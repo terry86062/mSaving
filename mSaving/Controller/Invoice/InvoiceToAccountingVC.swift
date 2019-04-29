@@ -78,6 +78,20 @@ class InvoiceToAccountingVC: UIViewController {
         
         accounts = AccountProvider().accounts
         
+        if accounts != [] {
+            
+            setUpForSelected(account: accounts[0])
+            
+        }
+        
+    }
+    
+    func setUpForSelected(account: Account) {
+        
+        selectedAccount = account
+        
+        selectedAccountButton.setTitle(account.name, for: .normal)
+        
     }
     
     @IBAction func dismiss(_ sender: UIButton) {

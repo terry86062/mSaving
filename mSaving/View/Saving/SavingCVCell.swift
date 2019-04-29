@@ -72,6 +72,12 @@ class SavingCVCell: UICollectionViewCell {
         
         expenseMonthTotal = tempTuples.expense
         
+        if showAccounting && accountingsGroup.count == 0 {
+            
+            noDataLabel.isHidden = false
+            
+        }
+        
     }
 
     func setUpCollectionView() {
@@ -222,21 +228,30 @@ extension SavingCVCell: UICollectionViewDataSource {
                                 let name = expenseCategory.name,
                                 let color = expenseCategory.color else { return cell }
                             
-                            guard expenseMonthTotal.count > 0 else { return cell }
-                            
-                            var totalSpend = 0
-                            
-                            for index in 0...expenseMonthTotal.count - 1
-                                where expenseMonthTotal[index].accountings[0][0].expenseCategory == expenseCategory {
+                            if expenseMonthTotal.count > 0 {
                                 
-                                totalSpend = Int(expenseMonthTotal[index].amount)
+                                var totalSpend = 0
+                                
+                                for index in 0...expenseMonthTotal.count - 1
+                                where expenseMonthTotal[index].accountings[0][0].expenseCategory == expenseCategory {
+                                        
+                                        totalSpend = Int(expenseMonthTotal[index].amount)
+                                        
+                                }
+                                
+                                cell.initSavingDetailCVCell(budget: savings[indexPath.row].amount,
+                                                            totalSpend: totalSpend,
+                                                            imageName: iconName,
+                                                            categoryName: name, hex: color)
+                                
+                            } else {
+                                
+                                cell.initSavingDetailCVCell(budget: savings[indexPath.row].amount,
+                                                            totalSpend: totalSpend,
+                                                            imageName: iconName,
+                                                            categoryName: name, hex: color)
                                 
                             }
-                            
-                            cell.initSavingDetailCVCell(budget: savings[indexPath.row].amount,
-                                                        totalSpend: totalSpend,
-                                                        imageName: iconName,
-                                                        categoryName: name, hex: color)
                             
                         }
                         

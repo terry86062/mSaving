@@ -194,11 +194,15 @@ class AccountingProvider {
             
             accounting.expenseCategory = category
             
+            accounting.incomeCategory = nil
+            
             account.currentValue -= amount
             
         case .income(let category):
             
             accounting.incomeCategory = category
+            
+            accounting.expenseCategory = nil
             
             account.currentValue += amount
             

@@ -22,8 +22,6 @@ class SavingDetailCVCell: UICollectionViewCell {
     
     @IBOutlet weak var categorySpendView: UIView!
     
-    @IBOutlet weak var categorySpendViewConstraint: NSLayoutConstraint!
-    
     var showSavingDetail: (() -> Void)?
 
     override func awakeFromNib() {
@@ -48,25 +46,21 @@ class SavingDetailCVCell: UICollectionViewCell {
         
         if budget != 0 {
             
-            categorySpendView.frame = CGRect(x: 0, y: 0,
-                                             width: categoryBudgetView.frame.width * CGFloat(Double(totalSpend) / Double(budget)),
-                                             height: categoryBudgetView.frame.height)
+            if totalSpend > budget {
+                
+                categorySpendView.frame = CGRect(x: 0, y: 0,
+                                                 width: categoryBudgetView.frame.width * 1,
+                                                 height: categoryBudgetView.frame.height)
+                
+            } else {
+                
+                categorySpendView.frame = CGRect(x: 0, y: 0,
+                                                 width: categoryBudgetView.frame.width * CGFloat(Double(totalSpend) / Double(budget)),
+                                                 height: categoryBudgetView.frame.height)
+                
+            }
             
         }
-        
-//        if categorySpendViewConstraint != nil {
-//
-//            categorySpendViewConstraint.isActive = false
-//
-//        }
-        
-//        if budget != 0 {
-//
-//            NSLayoutConstraint(item: categorySpendView as Any, attribute: .width, relatedBy: .equal,
-//                               toItem: categoryBudgetView, attribute: .width,
-//                               multiplier: CGFloat(Double(totalSpend) / Double(budget)), constant: 0).isActive = true
-//
-//        }
         
     }
 
