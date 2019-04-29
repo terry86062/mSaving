@@ -16,6 +16,8 @@ import Fabric
 
 import Crashlytics
 
+import Firebase
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -29,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         
         Fabric.with([Crashlytics.self])
+        
+        FirebaseApp.configure()
         
         detectFirstLaunch()
 

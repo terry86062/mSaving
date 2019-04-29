@@ -10,5 +10,6 @@ pod 'SwiftLint'
 pod 'IQKeyboardManagerSwift'
 pod 'Fabric'
 pod 'Crashlytics'
+pod 'Firebase/Core'
 
 end
