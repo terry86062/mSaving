@@ -32,8 +32,6 @@
 		DE4984B9225878A8004E4AE9 /* CategoryAccountingsTotalCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE4984B7225878A8004E4AE9 /* CategoryAccountingsTotalCVCell.xib */; };
 		DE5776D8226F57D300652B61 /* AccountingTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5776D7226F57D300652B61 /* AccountingTransformer.swift */; };
 		DE712852225E541400E12283 /* AccountDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE712851225E541400E12283 /* AccountDetailVC.swift */; };
-		DE73D27322744DFC00E1A468 /* SetUserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE73D27122744DFC00E1A468 /* SetUserImageView.swift */; };
-		DE73D27422744DFC00E1A468 /* SetUserImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE73D27222744DFC00E1A468 /* SetUserImageView.xib */; };
 		DE7B38AE2257427200C17846 /* CategorySelectCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7B38AC2257427200C17846 /* CategorySelectCVCell.swift */; };
 		DE7B38AF2257427200C17846 /* CategorySelectCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE7B38AD2257427200C17846 /* CategorySelectCVCell.xib */; };
 		DE97C64B2258E12400D0C9CF /* SavingGoalCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97C6492258E12400D0C9CF /* SavingGoalCVCell.swift */; };
@@ -43,6 +41,7 @@
 		DE99AC8A22563D1400B12AD6 /* SavingDetailAddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99AC8922563D1400B12AD6 /* SavingDetailAddVC.swift */; };
 		DE9BEFEA225DD2DE003458AD /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BEFE9225DD2DE003458AD /* CoreDataManager.swift */; };
 		DEA5CEF4226DB83900A312E5 /* InvoiceToAccountingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA5CEF3226DB83900A312E5 /* InvoiceToAccountingVC.swift */; };
+		DEA6157B22794FDF00F086CC /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA6157A22794FDE00F086CC /* AlertManager.swift */; };
 		DEA65DF32259EE4700A10242 /* CategorysCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA65DF12259EE4700A10242 /* CategorysCVCell.swift */; };
 		DEA65DF42259EE4700A10242 /* CategorysCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEA65DF22259EE4700A10242 /* CategorysCVCell.xib */; };
 		DEA65DF62259F5F900A10242 /* SetCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA65DF52259F5F800A10242 /* SetCategoryVC.swift */; };
@@ -187,8 +186,6 @@
 		DE4984B7225878A8004E4AE9 /* CategoryAccountingsTotalCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryAccountingsTotalCVCell.xib; sourceTree = "<group>"; };
 		DE5776D7226F57D300652B61 /* AccountingTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountingTransformer.swift; sourceTree = "<group>"; };
 		DE712851225E541400E12283 /* AccountDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailVC.swift; sourceTree = "<group>"; };
-		DE73D27122744DFC00E1A468 /* SetUserImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUserImageView.swift; sourceTree = "<group>"; };
-		DE73D27222744DFC00E1A468 /* SetUserImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetUserImageView.xib; sourceTree = "<group>"; };
 		DE7B38AC2257427200C17846 /* CategorySelectCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectCVCell.swift; sourceTree = "<group>"; };
 		DE7B38AD2257427200C17846 /* CategorySelectCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategorySelectCVCell.xib; sourceTree = "<group>"; };
 		DE97C6492258E12400D0C9CF /* SavingGoalCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingGoalCVCell.swift; sourceTree = "<group>"; };
@@ -198,6 +195,7 @@
 		DE99AC8922563D1400B12AD6 /* SavingDetailAddVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingDetailAddVC.swift; sourceTree = "<group>"; };
 		DE9BEFE9225DD2DE003458AD /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		DEA5CEF3226DB83900A312E5 /* InvoiceToAccountingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceToAccountingVC.swift; sourceTree = "<group>"; };
+		DEA6157A22794FDE00F086CC /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		DEA65DF12259EE4700A10242 /* CategorysCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorysCVCell.swift; sourceTree = "<group>"; };
 		DEA65DF22259EE4700A10242 /* CategorysCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategorysCVCell.xib; sourceTree = "<group>"; };
 		DEA65DF52259F5F800A10242 /* SetCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCategoryVC.swift; sourceTree = "<group>"; };
@@ -434,8 +432,6 @@
 				DEAA6A2F2259B07C00224B26 /* CategoryCVCell.xib */,
 				DEA65DF7225A211800A10242 /* IconCVCell.swift */,
 				DEA65DF8225A211800A10242 /* IconCVCell.xib */,
-				DE73D27122744DFC00E1A468 /* SetUserImageView.swift */,
-				DE73D27222744DFC00E1A468 /* SetUserImageView.xib */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -588,6 +584,7 @@
 				DEECB02C22533430002D6C30 /* mSaving.xcdatamodeld */,
 				DE9BEFE9225DD2DE003458AD /* CoreDataManager.swift */,
 				DE366ABE226EE64700A65954 /* MSNotificationManager.swift */,
+				DEA6157A22794FDE00F086CC /* AlertManager.swift */,
 				DEDE574C2271EB980071FCFD /* Time */,
 				DEDE57492271A4F50071FCFD /* Month */,
 				DE366AB4226EA7CB00A65954 /* Saving */,
@@ -764,7 +761,6 @@
 			files = (
 				DE97C64C2258E12400D0C9CF /* SavingGoalCVCell.xib in Resources */,
 				DEACE3DD2257AD1900EA209C /* AnalysisCVCell.xib in Resources */,
-				DE73D27422744DFC00E1A468 /* SetUserImageView.xib in Resources */,
 				DEBE8C29225519F800C2A8A3 /* AccountingCVCell.xib in Resources */,
 				DEF7B4632276CF0000F68F8B /* GoogleService-Info.plist in Resources */,
 				DEECB03022533432002D6C30 /* Assets.xcassets in Resources */,
@@ -933,7 +929,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE73D27322744DFC00E1A468 /* SetUserImageView.swift in Sources */,
 				DEAA6A292259984B00224B26 /* CategoryVC.swift in Sources */,
 				DE9BEFEA225DD2DE003458AD /* CoreDataManager.swift in Sources */,
 				DE2BB35C22539662001D55E4 /* SavingCVCell.swift in Sources */,
@@ -989,6 +984,7 @@
 				DEBA92ED226D821B00D93806 /* InvoiceProvider.swift in Sources */,
 				DEBA92EF226D8A4F00D93806 /* String - extension.swift in Sources */,
 				DEEB5FBA226D79E90088C798 /* URLComponents - extension.swift in Sources */,
+				DEA6157B22794FDF00F086CC /* AlertManager.swift in Sources */,
 				DEACE3E02257B9F500EA209C /* AccountingsCVCell.swift in Sources */,
 				DE366ABD226EC20700A65954 /* AccountingProvider.swift in Sources */,
 				DEA5CEF4226DB83900A312E5 /* InvoiceToAccountingVC.swift in Sources */,
@@ -1046,6 +1042,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B8QRU3Z535;
 				INFOPLIST_FILE = PaymentIntentUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1055,7 +1052,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1065,6 +1062,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B8QRU3Z535;
 				INFOPLIST_FILE = PaymentIntentUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1074,7 +1072,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1085,6 +1083,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B8QRU3Z535;
 				INFOPLIST_FILE = PaymentIntent/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1094,7 +1093,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1105,6 +1104,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B8QRU3Z535;
 				INFOPLIST_FILE = PaymentIntent/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1114,7 +1114,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1253,7 +1253,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.terry.mSaving;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1275,7 +1275,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.terry.mSaving;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

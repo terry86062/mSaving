@@ -305,12 +305,19 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" name="mSYellow"/>
                     <items>
+                        <barButtonItem style="plain" systemItem="stop" id="AAM-fg-gYE">
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <connections>
+                                <action selector="dismissKeyboardButton:" destination="pCO-3F-btS" id="Dm7-cO-Fcy"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem title="確認" width="486" id="aFy-QS-DFL">
                             <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
                                 <action selector="addAccounting:" destination="pCO-3F-btS" id="M17-HM-tHl"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem enabled="NO" width="42" style="plain" systemItem="fixedSpace" id="Q1g-b8-K93"/>
                     </items>
                     <color key="barTintColor" name="mSYellow"/>
                 </toolbar>

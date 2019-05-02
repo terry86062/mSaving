@@ -109,10 +109,19 @@ class SavingProvider {
             
             guard let month = saving.month else { return }
             
-            if checkSaving(month: month, amount: amount - saving.amount,
-                           main: saving.main, selectedExpenseCategory: selectedExpenseCategory) == false {
+            if saving.expenseCategory == selectedExpenseCategory {
                 
-                return
+                checkSaving(month: month, amount: amount - saving.amount,
+                            main: saving.main, selectedExpenseCategory: nil)
+                
+            } else {
+                
+                if checkSaving(month: month, amount: amount - saving.amount,
+                               main: saving.main, selectedExpenseCategory: selectedExpenseCategory) == false {
+                    
+                    return
+                    
+                }
                 
             }
             

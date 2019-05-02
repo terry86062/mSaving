@@ -77,6 +77,8 @@ class CategoryVC: UIViewController {
             selectedFont: .systemFont(ofSize: 16),
             selectedTextColor: UIColor.black)
         
+        categorySegmentedC.isEnabled = false
+        
     }
     
     func fetchData() {

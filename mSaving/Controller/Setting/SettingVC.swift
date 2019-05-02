@@ -113,6 +113,8 @@ class SettingVC: UIViewController {
         
         scrollView.delegate = self
         
+        accountsCollectionView.contentInset = UIEdgeInsets(top: 12, left: 12, bottom: 0, right: 12)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -177,19 +179,7 @@ class SettingVC: UIViewController {
     
     @IBAction func changeUserImage(_ sender: UIButton) {
         
-        guard let tabBarVC = tabBarController as? TabBarController else { return }
-        
-        tabBarVC.blackButton.isHidden = false
-        
-        tabBarVC.setUserImageView.delegate = self
-        
-        tabBarVC.setUserImageView.isHidden = false
-        
-        UIView.animate(withDuration: 0.25) {
-            
-            tabBarVC.setUserImageView.center.y -= 180
-            
-        }
+        AlertManager().showUserImageAlertWith(title: "請選擇圖片來源", message: "", viewController: self)
         
     }
     
@@ -251,7 +241,7 @@ extension SettingVC: UICollectionViewDataSource {
             
         } else {
             
-            return 3
+            return 1
             
         }
 
@@ -409,13 +399,13 @@ extension SettingVC: UICollectionViewDelegateFlowLayout {
                         insetForSectionAt section: Int) -> UIEdgeInsets {
 
         if collectionView == accountsCollectionView {
-            
+
             return UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 0)
-            
+
         } else {
-            
+
             return UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 0)
-            
+
         }
 
     }
@@ -435,21 +425,21 @@ extension SettingVC: UICollectionViewDelegateFlowLayout {
         return 12
 
     }
-    
+
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        
+
         if collectionView == accountsCollectionView {
-            
+
             return CGSize(width: 0, height: 53)
-            
+
         } else {
-            
+
             return CGSize(width: 0, height: 0)
-            
+
         }
-        
+
     }
 
 }
@@ -460,7 +450,10 @@ extension SettingVC: UIScrollViewDelegate {
 
         if scrollView.isEqual(scrollView) {
             
-            segmentedBarView.frame.origin.x = 129.5 + scrollView.contentOffset.x * 93.5 / 414
+            let width = UIScreen.main.bounds.width / 2
+            
+            segmentedBarView.frame.origin.x = width - 16 - 61.5 + scrollView.contentOffset.x * 93.5 / 414.fitScreen
+            //129.5 + scrollView.contentOffset.x * 93.5 / 414
             
             if segmentedBarView.frame.origin.x > scrollView.frame.width / 2 {
 
@@ -490,67 +483,35 @@ extension SettingVC: UIScrollViewDelegate {
 
 }
 
-extension SettingVC: SetUserImageViewDelegate {
-    
-    func getImage(getImageFrom: GetImageFrom) {
-        
-        let imagePC = UIImagePickerController()
-        
-        imagePC.delegate = self
-        
-        switch getImageFrom {
-            
-        case .camera:
-            
-            imagePC.sourceType = UIImagePickerController.SourceType.camera
-            
-        case .photoLibrary:
-            
-            imagePC.sourceType = UIImagePickerController.SourceType.photoLibrary
-            
-        }
-        
-        imagePC.allowsEditing = false
-        
-        self.present(imagePC, animated: true, completion: nil)
-        
-    }
-    
-    func cancelSetImage() {
-        
-        guard let tabBarVC = tabBarController as? TabBarController else { return }
-        
-        tabBarVC.hideBlackButton()
-        
-    }
-    
-}
-
 extension SettingVC: UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [
         UIImagePickerController.InfoKey: Any]) {
         
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+        DispatchQueue.global(qos: .userInteractive).async {
             
-            userImageView.image = image
-            
-            let imageData = image.pngData()! as NSData
-            
-            UserDefaults.standard.set(imageData, forKey: "userImage")
-            
-        } else {
-            
-            print("user get image fail")
+            if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                
+                DispatchQueue.main.async {
+                    
+                    self.userImageView.image = image
+                    
+                }
+                
+                let imageData = image.pngData()! as NSData
+                
+                UserDefaults.standard.set(imageData, forKey: "userImage")
+                
+            } else {
+                
+                print("user get image fail")
+                
+            }
             
         }
         
         self.dismiss(animated: true, completion: nil)
-        
-        guard let tabBarVC = tabBarController as? TabBarController else { return }
-        
-        tabBarVC.hideBlackButton()
         
     }
     

@@ -54,40 +54,40 @@ private enum Tab {
 
             return UITabBarItem(
                 title: nil,
-                image: UIImage(named: "saving1")?.resizeImage(),
-                selectedImage: UIImage(named: "saving1")?.resizeImage()
+                image: UIImage(named: "saving1"),
+                selectedImage: UIImage(named: "saving1")
             )
 
         case .chart:
 
             return UITabBarItem(
                 title: nil,
-                image: UIImage(named: "chart")?.resizeImage(),
-                selectedImage: UIImage(named: "chart")?.resizeImage()
+                image: UIImage(named: "chart"),
+                selectedImage: UIImage(named: "chart")
             )
 
         case .accounting:
 
             return UITabBarItem(
                 title: nil,
-                image: UIImage(named: "")?.resizeImage(),
-                selectedImage: UIImage(named: "")?.resizeImage()
+                image: UIImage(named: ""),
+                selectedImage: UIImage(named: "")
             )
 
         case .invoice:
 
             return UITabBarItem(
                 title: nil,
-                image: UIImage(named: "QRcode")?.resizeImage(),
-                selectedImage: UIImage(named: "QRcode")?.resizeImage()
+                image: UIImage(named: "QRcode"),
+                selectedImage: UIImage(named: "QRcode")
             )
 
         case .setting:
 
             return UITabBarItem(
                 title: nil,
-                image: UIImage(named: "user1")?.resizeImage(),
-                selectedImage: UIImage(named: "user1")?.resizeImage()
+                image: UIImage(named: "user1"),
+                selectedImage: UIImage(named: "user1")
             )
 
         }
@@ -101,18 +101,6 @@ class TabBarController: UITabBarController {
     private let tabs: [Tab] = [.saving, .chart, .accounting, .invoice, .setting]
 
     var blackButton = UIButton()
-    
-    lazy var setUserImageView: SetUserImageView = {
-        
-        guard let view = Bundle.main.loadNibNamed(String(describing: SetUserImageView.self), owner: nil, options: nil)![0] as? SetUserImageView else { return SetUserImageView() }
-        
-        view.frame = CGRect(x: 0, y: (UIScreen.main.bounds.height * 487 / 667) + 180 , width: UIScreen.main.bounds.width, height: 180)
-        
-        view.isHidden = true
-        
-        return view
-        
-    }()
     
     override func viewDidLoad() {
 
@@ -140,8 +128,6 @@ class TabBarController: UITabBarController {
         blackButton.addTarget(self, action: #selector(hideBlackButton), for: .touchUpInside)
         
         view.addSubview(blackButton)
-        
-        view.addSubview(setUserImageView)
         
         tabBar.barTintColor = .white
 
@@ -171,13 +157,13 @@ class TabBarController: UITabBarController {
             button.center = CGPoint(x: xxx, y: yyy)
             
         } else if UIScreen.main.bounds.height > 800 {
-
+            
             let paddingBottom: CGFloat = -14
-
+            
             let xxx = rectBoundTabbar.midX
             let yyy = rectBoundTabbar.midY - paddingBottom
             button.center = CGPoint(x: xxx, y: yyy)
-
+            
         }
     
         button.backgroundColor = UIColor(red: 254 / 255, green: 254 / 255, blue: 254 / 255, alpha: 1)
@@ -255,14 +241,6 @@ class TabBarController: UITabBarController {
     @objc func hideBlackButton() {
         
         blackButton.isHidden = true
-        
-        setUserImageView.isHidden = true
-        
-        UIView.animate(withDuration: 0.25) {
-            
-            self.setUserImageView.center.y += 180
-            
-        }
         
     }
 

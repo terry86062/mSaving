@@ -264,6 +264,12 @@ class AccountingVC: UIViewController {
 
     }
     
+    @IBAction func dismissKeyboardButton(_ sender: UIBarButtonItem) {
+        
+        amountTextField.resignFirstResponder()
+        
+    }
+    
     func createOccurDate(selectedDate: Date) -> Date? {
         
         let selectedComponents = TimeManager().transform(date: selectedDate)
