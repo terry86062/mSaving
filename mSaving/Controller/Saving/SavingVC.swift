@@ -42,6 +42,8 @@ class SavingVC: UIViewController {
     
     let notificationManager = MSNotificationManager()
     
+    let viewContext = CoreDataManager.shared.viewContext
+    
     var showAccounting = true
     
     var firstAppear = true
