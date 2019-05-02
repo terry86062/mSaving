@@ -10,8 +10,6 @@ import UIKit
 
 import Photos
 
-import Intents
-
 struct SettingText {
     
     let leadingText: String
@@ -84,7 +82,7 @@ class SettingVC: UIViewController {
     
     var settings: [SettingText] = [
         SettingText(leadingText: "類別顯示", trailingText: ">"),
-        SettingText(leadingText: "啟用 Siri", trailingText: "未啟用"),
+        SettingText(leadingText: "使用 Siri 記帳", trailingText: ">"),
         SettingText(leadingText: "隱私權聲明內容", trailingText: ">"),
         SettingText(leadingText: "給予評價", trailingText: ">")
     ]
@@ -207,28 +205,6 @@ class SettingVC: UIViewController {
         
     }
     
-    func askSiriAuthorization() {
-        
-        INPreferences.requestSiriAuthorization { [weak self] (status) in
-            
-            switch status {
-                
-            case .authorized:
-                
-                print("Authorized")
-                
-                self?.settingsCollectionView.reloadData()
-                
-            default:
-                
-                print("Not Authorized")
-                
-            }
-            
-        }
-        
-    }
-    
 }
 
 extension SettingVC: UICollectionViewDataSource {
@@ -241,7 +217,7 @@ extension SettingVC: UICollectionViewDataSource {
             
         } else {
             
-            return 1
+            return 2
             
         }
 
@@ -312,32 +288,10 @@ extension SettingVC: UICollectionViewDataSource {
                     return AccountingDateCVCell()
             }
             
-            if indexPath.row == 1 {
-                
-                if INPreferences.siriAuthorizationStatus() == .authorized {
-                    
-                    cell.initAccountDateCVCell(leadingText: settings[indexPath.row].leadingText,
-                                               trailingText: "已啟用",
-                                               trailingColor: .black,
-                                               havingShadow: true)
-                    
-                } else {
-                    
-                    cell.initAccountDateCVCell(leadingText: settings[indexPath.row].leadingText,
-                                               trailingText: settings[indexPath.row].trailingText,
-                                               trailingColor: .black,
-                                               havingShadow: true)
-                    
-                }
-                
-            } else {
-                
-                cell.initAccountDateCVCell(leadingText: settings[indexPath.row].leadingText,
-                                           trailingText: settings[indexPath.row].trailingText,
-                                           trailingColor: .black,
-                                           havingShadow: true)
-                
-            }
+            cell.initAccountDateCVCell(leadingText: settings[indexPath.row].leadingText,
+                                       trailingText: settings[indexPath.row].trailingText,
+                                       trailingColor: .black,
+                                       havingShadow: true)
             
             cell.goToDetialPage = {
                 
@@ -347,7 +301,7 @@ extension SettingVC: UICollectionViewDataSource {
                     
                 } else if indexPath.row == 1 {
                     
-                    self.askSiriAuthorization()
+                    self.performSegue(withIdentifier: "goToUseSiriVC", sender: nil)
                     
                 }
                 

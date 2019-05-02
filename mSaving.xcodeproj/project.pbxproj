@@ -27,6 +27,7 @@
 		DE366ABD226EC20700A65954 /* AccountingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366ABC226EC20700A65954 /* AccountingProvider.swift */; };
 		DE366ABF226EE64700A65954 /* MSNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366ABE226EE64700A65954 /* MSNotificationManager.swift */; };
 		DE366AC1226EE88200A65954 /* Notification - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366AC0226EE88200A65954 /* Notification - extension.swift */; };
+		DE490C30227AF3660063EAD4 /* UseSiriVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE490C2F227AF3660063EAD4 /* UseSiriVC.swift */; };
 		DE4984B522586A0F004E4AE9 /* CategoryAccountingsDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4984B422586A0F004E4AE9 /* CategoryAccountingsDetailVC.swift */; };
 		DE4984B8225878A8004E4AE9 /* CategoryAccountingsTotalCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4984B6225878A8004E4AE9 /* CategoryAccountingsTotalCVCell.swift */; };
 		DE4984B9225878A8004E4AE9 /* CategoryAccountingsTotalCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE4984B7225878A8004E4AE9 /* CategoryAccountingsTotalCVCell.xib */; };
@@ -181,6 +182,7 @@
 		DE366ABC226EC20700A65954 /* AccountingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountingProvider.swift; sourceTree = "<group>"; };
 		DE366ABE226EE64700A65954 /* MSNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSNotificationManager.swift; sourceTree = "<group>"; };
 		DE366AC0226EE88200A65954 /* Notification - extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification - extension.swift"; sourceTree = "<group>"; };
+		DE490C2F227AF3660063EAD4 /* UseSiriVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseSiriVC.swift; sourceTree = "<group>"; };
 		DE4984B422586A0F004E4AE9 /* CategoryAccountingsDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAccountingsDetailVC.swift; sourceTree = "<group>"; };
 		DE4984B6225878A8004E4AE9 /* CategoryAccountingsTotalCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAccountingsTotalCVCell.swift; sourceTree = "<group>"; };
 		DE4984B7225878A8004E4AE9 /* CategoryAccountingsTotalCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryAccountingsTotalCVCell.xib; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 				DE712851225E541400E12283 /* AccountDetailVC.swift */,
 				DEAA6A282259984B00224B26 /* CategoryVC.swift */,
 				DEA65DF52259F5F800A10242 /* SetCategoryVC.swift */,
+				DE490C2F227AF3660063EAD4 /* UseSiriVC.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -978,6 +981,7 @@
 				DEDE574022705C320071FCFD /* IntentHandler.swift in Sources */,
 				DE2BB36322539B95001D55E4 /* UICollectionView - extension.swift in Sources */,
 				DEECB02622533430002D6C30 /* AppDelegate.swift in Sources */,
+				DE490C30227AF3660063EAD4 /* UseSiriVC.swift in Sources */,
 				DEA65DF9225A211800A10242 /* IconCVCell.swift in Sources */,
 				DEDE57442270C0F70071FCFD /* IntentViewController.swift in Sources */,
 				DEBA92EB226D7CE200D93806 /* InvoiceRequest.swift in Sources */,
