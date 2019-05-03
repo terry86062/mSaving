@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,40 +13,24 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SavingDetailCVCell" customModule="mSaving" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="382" height="108"/>
+            <rect key="frame" x="0.0" y="0.0" width="382" height="72"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="382" height="108"/>
+                <rect key="frame" x="0.0" y="0.0" width="382" height="72"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCq-We-BpK">
-                        <rect key="frame" x="12" y="60" width="358" height="36"/>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCq-We-BpK">
+                        <rect key="frame" x="1" y="1" width="380" height="70"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9XI-z4-jgI">
-                                <rect key="frame" x="0.0" y="0.0" width="88" height="36"/>
+                                <rect key="frame" x="0.0" y="0.0" width="88" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" name="mSYellow"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$2000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7L-Jp-6GX">
-                                <rect key="frame" x="301" y="8.5" width="49" height="19.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-$0 / $0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7L-Jp-6GX">
+                                <rect key="frame" x="304" y="0.0" width="60" height="70"/>
                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="16"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-$500" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEH-dF-A7Y">
-                                <rect key="frame" x="8" y="8.5" width="46.5" height="19.5"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="16"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
@@ -56,25 +39,21 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="s7L-Jp-6GX" secondAttribute="trailing" constant="8" id="3N0-ed-Tee"/>
-                            <constraint firstItem="PEH-dF-A7Y" firstAttribute="centerY" secondItem="NCq-We-BpK" secondAttribute="centerY" id="BnB-2b-Zw7"/>
-                            <constraint firstItem="s7L-Jp-6GX" firstAttribute="centerY" secondItem="NCq-We-BpK" secondAttribute="centerY" id="F3C-HI-8Hl"/>
-                            <constraint firstItem="PEH-dF-A7Y" firstAttribute="leading" secondItem="NCq-We-BpK" secondAttribute="leading" constant="8" id="mhX-ok-UlX"/>
-                            <constraint firstAttribute="height" constant="36" id="rc1-GD-qHe"/>
+                            <constraint firstItem="s7L-Jp-6GX" firstAttribute="top" secondItem="NCq-We-BpK" secondAttribute="top" id="7o7-Kk-yUC"/>
+                            <constraint firstAttribute="bottom" secondItem="s7L-Jp-6GX" secondAttribute="bottom" id="Kyc-ES-0xK"/>
+                            <constraint firstAttribute="trailing" secondItem="s7L-Jp-6GX" secondAttribute="trailing" constant="16" id="pgL-dW-VD0"/>
+                            <constraint firstItem="s7L-Jp-6GX" firstAttribute="centerY" secondItem="NCq-We-BpK" secondAttribute="centerY" id="z5k-F0-cJN"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
-                                <real key="value" value="2"/>
-                            </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
-                                <real key="value" value="10"/>
+                                <real key="value" value="12"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kJl-rQ-uVD">
-                        <rect key="frame" x="12" y="12" width="36" height="36"/>
+                        <rect key="frame" x="16" y="18" width="36" height="36"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="36" id="FHQ-1S-y9s"/>
                             <constraint firstAttribute="width" constant="36" id="sch-85-PSM"/>
@@ -86,13 +65,14 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="食物預算" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ny2-xL-vlJ">
-                        <rect key="frame" x="60" y="21" width="61.5" height="18"/>
+                        <rect key="frame" x="64" y="27" width="61.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
+                        <size key="shadowOffset" width="0.0" height="0.0"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BXQ-sd-tbd">
-                        <rect key="frame" x="0.0" y="0.0" width="382" height="108"/>
+                        <rect key="frame" x="0.0" y="0.0" width="382" height="72"/>
                         <connections>
                             <action selector="goToSavingDetailAdd:" destination="gTV-IL-0wX" eventType="touchUpInside" id="s2j-xZ-OBn"/>
                         </connections>
@@ -101,17 +81,18 @@
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="kJl-rQ-uVD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="139-WG-msH"/>
-                <constraint firstItem="Ny2-xL-vlJ" firstAttribute="leading" secondItem="kJl-rQ-uVD" secondAttribute="trailing" constant="12" id="3Ge-sR-iKT"/>
                 <constraint firstAttribute="trailing" secondItem="BXQ-sd-tbd" secondAttribute="trailing" id="5Ev-lt-9uS"/>
-                <constraint firstItem="NCq-We-BpK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="UKd-HQ-eFy"/>
+                <constraint firstItem="NCq-We-BpK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="1" id="G05-I4-6vF"/>
+                <constraint firstItem="kJl-rQ-uVD" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Rb8-fy-Imp"/>
+                <constraint firstItem="NCq-We-BpK" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="1" id="SxO-8g-NPx"/>
+                <constraint firstAttribute="trailing" secondItem="NCq-We-BpK" secondAttribute="trailing" constant="1" id="WPr-9X-Se1"/>
+                <constraint firstItem="kJl-rQ-uVD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="Xsg-Fe-87v"/>
+                <constraint firstItem="Ny2-xL-vlJ" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="cLs-7a-yE7"/>
                 <constraint firstAttribute="bottom" secondItem="BXQ-sd-tbd" secondAttribute="bottom" id="fYx-DW-1iY"/>
-                <constraint firstItem="kJl-rQ-uVD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="hV8-FL-1MI"/>
-                <constraint firstItem="Ny2-xL-vlJ" firstAttribute="centerY" secondItem="kJl-rQ-uVD" secondAttribute="centerY" id="l3H-dS-deP"/>
-                <constraint firstAttribute="trailing" secondItem="NCq-We-BpK" secondAttribute="trailing" constant="12" id="qyI-DH-MGd"/>
+                <constraint firstItem="Ny2-xL-vlJ" firstAttribute="leading" secondItem="kJl-rQ-uVD" secondAttribute="trailing" constant="12" id="ixg-MA-Nu9"/>
                 <constraint firstItem="BXQ-sd-tbd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="sKQ-CJ-s4e"/>
-                <constraint firstItem="NCq-We-BpK" firstAttribute="top" secondItem="kJl-rQ-uVD" secondAttribute="bottom" constant="12" id="vNM-eA-o5H"/>
                 <constraint firstItem="BXQ-sd-tbd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="yPg-bf-a0M"/>
+                <constraint firstAttribute="bottom" secondItem="NCq-We-BpK" secondAttribute="bottom" constant="1" id="ynW-IE-tmI"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <userDefinedRuntimeAttributes>
@@ -136,15 +117,9 @@
                 <outlet property="categoryBudgetView" destination="NCq-We-BpK" id="gwQ-rH-kkh"/>
                 <outlet property="categoryImageView" destination="kJl-rQ-uVD" id="b8e-Hl-cGZ"/>
                 <outlet property="categoryNameLabel" destination="Ny2-xL-vlJ" id="op0-ep-U65"/>
-                <outlet property="categorySpendLabel" destination="PEH-dF-A7Y" id="l9r-e4-tR9"/>
                 <outlet property="categorySpendView" destination="9XI-z4-jgI" id="viT-hp-nk3"/>
             </connections>
             <point key="canvasLocation" x="37.681159420289859" y="34.821428571428569"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <namedColor name="mSYellow">
-            <color red="0.99215686274509807" green="0.87450980392156863" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>

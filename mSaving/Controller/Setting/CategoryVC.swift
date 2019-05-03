@@ -142,7 +142,7 @@ extension CategoryVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
 
-        return UIEdgeInsets(top: 0, left: 0, bottom: 24, right: 0)
+        return UIEdgeInsets(top: 8, left: 0, bottom: 24, right: 0)
 
     }
 
@@ -152,11 +152,11 @@ extension CategoryVC: UICollectionViewDelegateFlowLayout {
 
         if collectionView == expenseCollectionView {
             
-            return CGSize(width: Int(UIScreen.main.bounds.width - 24), height: 48 * expenseCategories.count + 12)
+            return CGSize(width: Int(UIScreen.main.bounds.width - 32), height: 48 * expenseCategories.count + 12)
             
         } else {
             
-            return CGSize(width: Int(UIScreen.main.bounds.width - 24), height: 48 * incomeCategories.count + 12)
+            return CGSize(width: Int(UIScreen.main.bounds.width - 32), height: 48 * incomeCategories.count + 12)
             
         }
         

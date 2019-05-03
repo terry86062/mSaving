@@ -354,11 +354,11 @@ extension SettingVC: UICollectionViewDelegateFlowLayout {
 
         if collectionView == accountsCollectionView {
 
-            return UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 0)
+            return UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
 
         } else {
 
-            return UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 0)
+            return UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
 
         }
 
@@ -368,7 +368,7 @@ extension SettingVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        return CGSize(width: Int(UIScreen.main.bounds.width - 24), height: 53)
+        return CGSize(width: Int(UIScreen.main.bounds.width - 32), height: 53)
 
     }
 
@@ -376,7 +376,7 @@ extension SettingVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 
-        return 12
+        return 16
 
     }
 

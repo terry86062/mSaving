@@ -200,15 +200,7 @@ extension AccountingsCVCell: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        return CGSize(width: UIScreen.main.bounds.width - 24, height: 48)
-
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-
-        return 0
+        return CGSize(width: UIScreen.main.bounds.width - 32, height: 48)
 
     }
 

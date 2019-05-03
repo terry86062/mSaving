@@ -433,10 +433,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LbR-28-hSS">
-                                <rect key="frame" x="12" y="83.5" width="390" height="32"/>
+                                <rect key="frame" x="16" y="89.5" width="382" height="32"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2wJ-Lu-37c" customClass="BetterSegmentedControl" customModule="BetterSegmentedControl">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="32"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="32"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="fsz-QB-bGF"/>
@@ -477,7 +477,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="類別" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYr-fn-kl0">
-                                <rect key="frame" x="185.5" y="46" width="43" height="25.5"/>
+                                <rect key="frame" x="185.5" y="48" width="43" height="25.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="21"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -497,7 +497,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yWz-ue-uyN">
-                                <rect key="frame" x="18" y="49" width="20" height="20"/>
+                                <rect key="frame" x="18" y="51" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="2lQ-hy-8xf"/>
                                     <constraint firstAttribute="height" constant="20" id="miJ-Ea-UtC"/>
@@ -523,13 +523,13 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBc-2g-B0K">
-                                <rect key="frame" x="0.0" y="127.5" width="414" height="734.5"/>
+                                <rect key="frame" x="0.0" y="129.5" width="414" height="732.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iaO-aX-VCZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="828" height="734.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="828" height="732.5"/>
                                         <subviews>
                                             <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XGW-ls-dnW">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="734.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="732.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LMq-ly-mN9">
                                                     <size key="itemSize" width="50" height="50"/>
@@ -540,7 +540,7 @@
                                                 <cells/>
                                             </collectionView>
                                             <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FxN-Tm-mcC">
-                                                <rect key="frame" x="414" y="0.0" width="414" height="734.5"/>
+                                                <rect key="frame" x="414" y="0.0" width="414" height="732.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6Wv-lR-bxc">
                                                     <size key="itemSize" width="50" height="50"/>
@@ -577,16 +577,16 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="yWz-ue-uyN" firstAttribute="centerY" secondItem="iYr-fn-kl0" secondAttribute="centerY" id="DaH-20-m6J"/>
-                            <constraint firstItem="LbR-28-hSS" firstAttribute="trailing" secondItem="0dm-js-ZVs" secondAttribute="trailing" constant="-12" id="E5W-bc-886"/>
+                            <constraint firstItem="0dm-js-ZVs" firstAttribute="trailing" secondItem="LbR-28-hSS" secondAttribute="trailing" constant="16" id="E5W-bc-886"/>
                             <constraint firstItem="yWz-ue-uyN" firstAttribute="leading" secondItem="0dm-js-ZVs" secondAttribute="leading" constant="18" id="IiM-Mf-De4"/>
                             <constraint firstItem="0dm-js-ZVs" firstAttribute="trailing" secondItem="KBc-2g-B0K" secondAttribute="trailing" id="KTc-uy-6TE"/>
-                            <constraint firstItem="LbR-28-hSS" firstAttribute="top" secondItem="iYr-fn-kl0" secondAttribute="bottom" constant="12" id="QUV-Fe-CQg"/>
+                            <constraint firstItem="LbR-28-hSS" firstAttribute="top" secondItem="iYr-fn-kl0" secondAttribute="bottom" constant="16" id="QUV-Fe-CQg"/>
                             <constraint firstItem="0dm-js-ZVs" firstAttribute="bottom" secondItem="KBc-2g-B0K" secondAttribute="bottom" id="ZsF-Ls-dpZ"/>
                             <constraint firstItem="iYr-fn-kl0" firstAttribute="centerX" secondItem="mNd-NE-xpF" secondAttribute="centerX" id="b5i-PE-Kzh"/>
-                            <constraint firstItem="KBc-2g-B0K" firstAttribute="top" secondItem="LbR-28-hSS" secondAttribute="bottom" constant="12" id="bZH-7y-Ezp"/>
+                            <constraint firstItem="KBc-2g-B0K" firstAttribute="top" secondItem="LbR-28-hSS" secondAttribute="bottom" constant="8" id="bZH-7y-Ezp"/>
                             <constraint firstItem="KBc-2g-B0K" firstAttribute="leading" secondItem="0dm-js-ZVs" secondAttribute="leading" id="esN-26-D0j"/>
-                            <constraint firstItem="LbR-28-hSS" firstAttribute="leading" secondItem="0dm-js-ZVs" secondAttribute="leading" constant="12" id="lVF-iv-T2c"/>
-                            <constraint firstItem="iYr-fn-kl0" firstAttribute="top" secondItem="0dm-js-ZVs" secondAttribute="top" constant="2" id="uXS-bw-kwg"/>
+                            <constraint firstItem="LbR-28-hSS" firstAttribute="leading" secondItem="0dm-js-ZVs" secondAttribute="leading" constant="16" id="lVF-iv-T2c"/>
+                            <constraint firstItem="iYr-fn-kl0" firstAttribute="top" secondItem="0dm-js-ZVs" secondAttribute="top" constant="4" id="uXS-bw-kwg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0dm-js-ZVs"/>
                     </view>

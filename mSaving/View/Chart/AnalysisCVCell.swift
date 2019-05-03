@@ -211,7 +211,7 @@ extension AnalysisCVCell: UICollectionViewDelegateFlowLayout {
         
         if section == 0 {
             
-            return UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 0)
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             
         } else if section == 1 {
             
@@ -237,12 +237,12 @@ extension AnalysisCVCell: UICollectionViewDelegateFlowLayout {
             
             if isIncome {
                 
-                return CGSize(width: Int(UIScreen.main.bounds.width - 24),
+                return CGSize(width: Int(UIScreen.main.bounds.width - 32),
                               height: 48 * incomeMonthTotal.count + 12)
                 
             } else {
                 
-                return CGSize(width: Int(UIScreen.main.bounds.width - 24),
+                return CGSize(width: Int(UIScreen.main.bounds.width - 32),
                               height: 48 * expenseMonthTotal.count + 12)
                 
             }

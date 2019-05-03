@@ -139,7 +139,7 @@ extension CategoryAccountingsDetailVC: UICollectionViewDelegateFlowLayout {
             
         } else {
             
-            return UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 0)
+            return UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
             
         }
         
@@ -157,11 +157,11 @@ extension CategoryAccountingsDetailVC: UICollectionViewDelegateFlowLayout {
         
         if indexPath.section == 0 {
 
-            return CGSize(width: Int(UIScreen.main.bounds.width - 24), height: 68)
+            return CGSize(width: Int(UIScreen.main.bounds.width - 32), height: 68)
 
         } else {
             
-            return CGSize(width: Int(UIScreen.main.bounds.width - 24),
+            return CGSize(width: Int(UIScreen.main.bounds.width - 32),
                           height: 48 * (selectedCategoryMonthTotal.accountings[indexPath.row].count) + 53)
 
         }

@@ -16,8 +16,6 @@ class SavingDetailCVCell: UICollectionViewCell {
     
     @IBOutlet weak var categoryBudgetLabel: UILabel!
     
-    @IBOutlet weak var categorySpendLabel: UILabel!
-    
     @IBOutlet weak var categoryBudgetView: UIView!
     
     @IBOutlet weak var categorySpendView: UIView!
@@ -38,11 +36,11 @@ class SavingDetailCVCell: UICollectionViewCell {
         
         categoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
         
+        categorySpendView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
+        
         categoryNameLabel.text = categoryName + "預算"
         
-        categoryBudgetLabel.text = "$" + String(budget)
-        
-        categorySpendLabel.text = "-$" + String(totalSpend)
+        categoryBudgetLabel.text = "-$" + String(totalSpend) + " / " + "$" + String(budget)
         
         if budget != 0 {
             

@@ -12,8 +12,6 @@ class SavingGoalCVCell: UICollectionViewCell {
     
     @IBOutlet weak var budgetLabel: UILabel!
     
-    @IBOutlet weak var spendLabel: UILabel!
-    
     @IBOutlet weak var budgetProgressView: UIView!
     
     @IBOutlet weak var spendPercentView: UIView!
@@ -30,9 +28,7 @@ class SavingGoalCVCell: UICollectionViewCell {
         
         spendPercentView.frame = CGRect(x: 0, y: 0, width: 0, height: budgetProgressView.frame.height)
         
-        budgetLabel.text = "$" + String(budget)
-        
-        spendLabel.text = "-$" + String(totalSpend)
+        budgetLabel.text = "-$" + String(totalSpend) + " / " + "$" + String(budget)
         
         if budget != 0 {
             

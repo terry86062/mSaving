@@ -103,7 +103,7 @@ extension CategoryAccountingsCVCell: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: UIScreen.main.bounds.width - 24, height: 48)
+        return CGSize(width: UIScreen.main.bounds.width - 32, height: 48)
         
     }
     

@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yhK-G2-nhO">
-                                <rect key="frame" x="0.0" y="81" width="414" height="32"/>
+                                <rect key="frame" x="0.0" y="87" width="414" height="32"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="Yqa-Vv-OKn"/>
@@ -39,7 +39,7 @@
                                 </userDefinedRuntimeAttributes>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rk2-Xk-qbG">
-                                <rect key="frame" x="181" y="46" width="52" height="29"/>
+                                <rect key="frame" x="181" y="48" width="52" height="29"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -62,7 +62,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBc-ip-w2C">
-                                <rect key="frame" x="376" y="50.5" width="20" height="20"/>
+                                <rect key="frame" x="376" y="52.5" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="pBO-dc-PPU"/>
                                     <constraint firstAttribute="width" constant="20" id="s0J-FI-c1C"/>
@@ -89,7 +89,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hbs-E5-8bb">
-                                <rect key="frame" x="361" y="45.5" width="35" height="30"/>
+                                <rect key="frame" x="361" y="47.5" width="35" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="DhS-vJ-glu"/>
                                 </constraints>
@@ -117,7 +117,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Y4f-oa-sf1">
-                                <rect key="frame" x="0.0" y="113" width="414" height="749"/>
+                                <rect key="frame" x="0.0" y="135" width="414" height="727"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="1o7-R8-T2G">
                                     <size key="itemSize" width="50" height="50"/>
@@ -134,13 +134,13 @@
                             <constraint firstItem="yL3-9r-bOn" firstAttribute="bottom" secondItem="Y4f-oa-sf1" secondAttribute="bottom" id="7dr-vJ-hat"/>
                             <constraint firstItem="yhK-G2-nhO" firstAttribute="leading" secondItem="yL3-9r-bOn" secondAttribute="leading" id="8B3-up-xo4"/>
                             <constraint firstItem="Y4f-oa-sf1" firstAttribute="leading" secondItem="yL3-9r-bOn" secondAttribute="leading" id="B3e-Nh-bQR"/>
-                            <constraint firstItem="Rk2-Xk-qbG" firstAttribute="top" secondItem="yL3-9r-bOn" secondAttribute="top" constant="2" id="HGd-FN-7nG"/>
+                            <constraint firstItem="Rk2-Xk-qbG" firstAttribute="top" secondItem="yL3-9r-bOn" secondAttribute="top" constant="4" id="HGd-FN-7nG"/>
                             <constraint firstAttribute="trailing" secondItem="HBc-ip-w2C" secondAttribute="trailing" constant="18" id="MpM-Zi-qxm"/>
                             <constraint firstItem="HBc-ip-w2C" firstAttribute="centerY" secondItem="Rk2-Xk-qbG" secondAttribute="centerY" id="VCF-Ra-zdf"/>
                             <constraint firstItem="yL3-9r-bOn" firstAttribute="trailing" secondItem="Y4f-oa-sf1" secondAttribute="trailing" id="YP5-vJ-YU5"/>
                             <constraint firstItem="Rk2-Xk-qbG" firstAttribute="centerX" secondItem="mVS-nP-D1J" secondAttribute="centerX" id="Yew-3B-NDo"/>
-                            <constraint firstItem="yhK-G2-nhO" firstAttribute="top" secondItem="Rk2-Xk-qbG" secondAttribute="firstBaseline" constant="12" id="aAx-cs-3yh"/>
-                            <constraint firstItem="Y4f-oa-sf1" firstAttribute="top" secondItem="yhK-G2-nhO" secondAttribute="bottom" id="k5t-FQ-mq6"/>
+                            <constraint firstItem="yhK-G2-nhO" firstAttribute="top" secondItem="Rk2-Xk-qbG" secondAttribute="firstBaseline" constant="16" id="aAx-cs-3yh"/>
+                            <constraint firstItem="Y4f-oa-sf1" firstAttribute="top" secondItem="yhK-G2-nhO" secondAttribute="bottom" constant="16" id="k5t-FQ-mq6"/>
                             <constraint firstAttribute="trailing" secondItem="Hbs-E5-8bb" secondAttribute="trailing" constant="18" id="wVk-bf-Exg"/>
                             <constraint firstItem="Hbs-E5-8bb" firstAttribute="centerY" secondItem="Rk2-Xk-qbG" secondAttribute="centerY" id="zhn-iM-ZFe"/>
                         </constraints>
