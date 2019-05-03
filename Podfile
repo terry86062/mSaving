@@ -11,5 +11,6 @@ pod 'IQKeyboardManagerSwift'
 pod 'Fabric'
 pod 'Crashlytics'
 pod 'Firebase/Core'
+pod 'SwiftMessages'
 
 end

@@ -58,6 +58,9 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - SwiftLint (0.31.0)
+  - SwiftMessages (6.0.2):
+    - SwiftMessages/App (= 6.0.2)
+  - SwiftMessages/App (6.0.2)
 
 DEPENDENCIES:
   - BetterSegmentedControl
@@ -68,6 +71,7 @@ DEPENDENCIES:
   - FSCalendar
   - IQKeyboardManagerSwift
   - SwiftLint
+  - SwiftMessages
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -85,6 +89,7 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - nanopb
     - SwiftLint
+    - SwiftMessages
 
 SPEC CHECKSUMS:
   BetterSegmentedControl: 4e3bd0bd517b0f6077c9e17f5663a01cff48e2c5
@@ -101,7 +106,8 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
+  SwiftMessages: 8b3cc68dba2f1c91aac1a74c90b10287aac35371
 
-PODFILE CHECKSUM: 3f7d7bb4759ebaae35832263f2e942f66cbcf0dc
+PODFILE CHECKSUM: 7b1a6fade849103b898a0fe9196a6f7750ac7cb1
 
 COCOAPODS: 1.6.0

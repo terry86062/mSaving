@@ -111,8 +111,6 @@ class SettingVC: UIViewController {
         
         scrollView.delegate = self
         
-        accountsCollectionView.contentInset = UIEdgeInsets(top: 12, left: 12, bottom: 0, right: 12)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -133,7 +131,7 @@ class SettingVC: UIViewController {
         
         settingsCollectionView.helpRegister(cell: AccountingDateCVCell())
         
-        accountsCollectionView.contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 24, right: 16)
+        accountsCollectionView.contentInset = UIEdgeInsets(top: 12, left: 16, bottom: 0, right: 16)
 
     }
     

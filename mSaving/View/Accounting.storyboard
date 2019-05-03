@@ -150,7 +150,7 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8X-Ee-VYo">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8X-Ee-VYo">
                                 <rect key="frame" x="18" y="52" width="24" height="24"/>
                                 <color key="backgroundColor" name="mSGreen"/>
                                 <constraints>
@@ -158,7 +158,7 @@
                                     <constraint firstAttribute="height" constant="24" id="pei-jV-ysW"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="X"/>
+                                <state key="normal" image="close"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
                                         <real key="value" value="12"/>
@@ -326,6 +326,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="close" width="128" height="128"/>
         <image name="down" width="512" height="512"/>
         <image name="garbageClosed" width="128" height="128"/>
         <namedColor name="mSGreen">
