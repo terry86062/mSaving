@@ -250,7 +250,9 @@ class AccountingVC: UIViewController {
                                                   account: selectedAccount,
                                                   category: selectedCategory)
             
-            navigationController?.popViewController(animated: true)
+            dismiss(animated: true, completion: nil)
+            
+            hideTabBarVCBlackView()
             
             showAddResult(selectedCategory: selectedCategory, amount: amount, addType: "修改", sub: "成")
             
@@ -263,6 +265,8 @@ class AccountingVC: UIViewController {
                                                   category: selectedCategory)
             
             dismiss(animated: true, completion: nil)
+            
+            hideTabBarVCBlackView()
             
             showAddResult(selectedCategory: selectedCategory, amount: amount, addType: "新增")
 
@@ -348,8 +352,16 @@ class AccountingVC: UIViewController {
 
         dismiss(animated: true, completion: nil)
         
-        navigationController?.popViewController(animated: true)
+        hideTabBarVCBlackView()
 
+    }
+    
+    func hideTabBarVCBlackView() {
+        
+        guard let tabBarVC = presentingViewController as? TabBarController else { return }
+        
+        tabBarVC.blackButton.isHidden = true
+        
     }
     
     @IBAction func changeAccount(_ sender: UIButton) {
@@ -408,7 +420,9 @@ class AccountingVC: UIViewController {
         
         AccountingProvider().deleteAccounting(accounting: selectedAccounting)
         
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+        
+        hideTabBarVCBlackView()
         
     }
     

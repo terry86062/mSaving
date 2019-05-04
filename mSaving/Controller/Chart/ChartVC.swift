@@ -179,6 +179,22 @@ extension ChartVC: UICollectionViewDataSource {
             
             guard months != [] else { return cell }
             
+            let originX = analysisCollectionView.bounds.origin.x
+            
+            let width = analysisCollectionView.frame.width
+            
+            let row = Int(originX / width + 0.5)
+            
+            if row == indexPath.row {
+                
+                cell.shadowView.alpha = 1
+                
+            } else {
+                
+                cell.shadowView.alpha = 0
+                
+            }
+            
             cell.initMonthCVCell(month: months[indexPath.row])
             
             if indexPath.row == months.count - 1 && firstSetColor {

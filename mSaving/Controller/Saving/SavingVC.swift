@@ -221,6 +221,22 @@ extension SavingVC: UICollectionViewDataSource {
 
             guard months != [] else { return cell }
             
+            let originX = savingCollectionView.bounds.origin.x
+            
+            let width = savingCollectionView.frame.width
+            
+            let row = Int(originX / width + 0.5)
+            
+            if row == indexPath.row {
+                
+                cell.shadowView.alpha = 1
+                
+            } else {
+                
+                cell.shadowView.alpha = 0
+                
+            }
+            
             cell.initMonthCVCell(month: months[indexPath.row])
             
             if indexPath.row == months.count - 1 && firstSetColor {
@@ -292,7 +308,11 @@ extension SavingVC: UICollectionViewDataSource {
                 
                 accountingVC.selectedAccounting = self.selectedAccounting
                 
-                self.navigationController?.pushViewController(accountingVC, animated: true)
+                guard let tabBarVC = self.tabBarController as? TabBarController else { return }
+                
+                tabBarVC.blackButton.isHidden = false
+                
+                self.present(accountingVC, animated: true, completion: nil)
             
             }
             

@@ -64,7 +64,7 @@ class SavingDetailAddVC: UIViewController {
             
             titleLabel.text = "新增子預算"
             
-            selectedCategoryImageView.backgroundColor = UIColor.mSGreen
+            selectedCategoryImageView.backgroundColor = UIColor.mSYellow
             
         } else {
             

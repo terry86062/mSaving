@@ -227,6 +227,8 @@ class TabBarController: UITabBarController {
         if let accountingVC = UIStoryboard.accounting.instantiateInitialViewController() {
 
             accountingVC.modalPresentationStyle = .overCurrentContext
+            
+            blackButton.isHidden = false
 
             present(accountingVC, animated: true, completion: nil)
         }
