@@ -257,10 +257,21 @@ extension SettingVC: UICollectionViewDataSource {
                 
                 guard let name = anAccount.name else { return cell }
                 
-                cell.initAccountDateCVCell(leadingText: name,
-                                           trailingText: String(anAccount.currentValue),
-                                           trailingColor: .black,
-                                           havingShadow: true)
+                if anAccount.currentValue > 0 {
+                    
+                    cell.initAccountDateCVCell(leadingText: name,
+                                               trailingText: "$\(Int(anAccount.currentValue).formattedWithSeparator)",
+                                               trailingColor: .black,
+                                               havingShadow: true)
+                    
+                } else {
+                    
+                    cell.initAccountDateCVCell(leadingText: name,
+                                               trailingText: "-$\(abs(Int(anAccount.currentValue)).formattedWithSeparator)",
+                                               trailingColor: .red,
+                                               havingShadow: true)
+                    
+                }
                 
                 cell.goToDetialPage = {
                     
@@ -332,10 +343,21 @@ extension SettingVC: UICollectionViewDataSource {
             
         }
         
-        headerView.initAccountDateCVCell(leadingText: "總資產",
-                                         trailingText: String(totalAmount),
-                                         trailingColor: .black,
-                                         havingShadow: true)
+        if totalAmount > 0 {
+            
+            headerView.initAccountDateCVCell(leadingText: "總資產",
+                                             trailingText: "$\(totalAmount.formattedWithSeparator)",
+                                             trailingColor: .black,
+                                             havingShadow: true)
+            
+        } else {
+            
+            headerView.initAccountDateCVCell(leadingText: "總資產",
+                                             trailingText: "-$\(abs(totalAmount).formattedWithSeparator)",
+                                             trailingColor: .red,
+                                             havingShadow: true)
+            
+        }
         
         return headerView
     }

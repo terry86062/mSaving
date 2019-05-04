@@ -40,7 +40,7 @@ class AccountingCVCell: UICollectionViewCell {
             
             accountingAccountNameLabel.text = accounting.accountName?.name
             
-            accountingAmountLabel.text = "-\(accounting.amount)"
+            accountingAmountLabel.text = "-$\(Int(accounting.amount).formattedWithSeparator)"
             
         } else if let category = accounting.incomeCategory,
             let iconName = category.iconName,
@@ -54,7 +54,7 @@ class AccountingCVCell: UICollectionViewCell {
             
             accountingAccountNameLabel.text = accounting.accountName?.name
             
-            accountingAmountLabel.text = String(accounting.amount)
+            accountingAmountLabel.text = "$\(Int(accounting.amount).formattedWithSeparator)"
             
         }
         

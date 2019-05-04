@@ -28,7 +28,7 @@ class SavingGoalCVCell: UICollectionViewCell {
         
         spendPercentView.frame = CGRect(x: 0, y: 0, width: 0, height: budgetProgressView.frame.height)
         
-        budgetLabel.text = "-$" + String(totalSpend) + " / " + "$" + String(budget)
+        budgetLabel.text = "-$" + String(totalSpend.formattedWithSeparator) + "  /  " + "$" + String(Int(budget).formattedWithSeparator)
         
         if budget != 0 {
             

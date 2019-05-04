@@ -22,9 +22,9 @@ class CategoryAccountingsTotalCVCell: UICollectionViewCell {
     
     func initCategoryAccountingsTotalCVCell(totalSpend: Int64, highestSpend: Int64) {
         
-        totalSpendLabel.text = "-\(totalSpend)"
+        totalSpendLabel.text = "-$\(Int(totalSpend).formattedWithSeparator)"
         
-        highestSpendLabel.text = "-\(highestSpend)"
+        highestSpendLabel.text = "-$\(Int(highestSpend).formattedWithSeparator)"
         
     }
 

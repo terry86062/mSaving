@@ -29,42 +29,41 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                     </collectionView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noData" translatesAutoresizingMaskIntoConstraints="NO" id="bRf-Zq-0Zb">
+                        <rect key="frame" x="103.5" y="284" width="207" height="207"/>
+                        <constraints>
+                            <constraint firstAttribute="height" secondItem="bRf-Zq-0Zb" secondAttribute="width" id="QY4-xS-eGB"/>
+                        </constraints>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本月無資料" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIl-bR-qrf">
-                        <rect key="frame" x="169" y="378.5" width="76.5" height="18"/>
-                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
-                        <nil key="textColor"/>
+                        <rect key="frame" x="169" y="491" width="76.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.52853012084960938" green="0.57438009977340698" blue="0.62524843215942383" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
-                                <size key="value" width="0.0" height="2"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
-                                <real key="value" value="0.80000000000000004"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
-                                <real key="value" value="5"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
-                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </label>
                 </subviews>
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="9fs-Jl-s2h" secondAttribute="trailing" id="8SN-gr-chG"/>
+                <constraint firstItem="bRf-Zq-0Zb" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="1:2" id="AGM-ES-p4o"/>
                 <constraint firstItem="9fs-Jl-s2h" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="BuV-bz-Ll2"/>
-                <constraint firstItem="MIl-bR-qrf" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="CRa-0a-jUs"/>
+                <constraint firstItem="bRf-Zq-0Zb" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Opa-6l-LaM"/>
                 <constraint firstItem="MIl-bR-qrf" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="VbT-SH-AuW"/>
+                <constraint firstItem="bRf-Zq-0Zb" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="fM0-9g-KKW"/>
                 <constraint firstItem="9fs-Jl-s2h" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="kka-8M-cM1"/>
+                <constraint firstItem="MIl-bR-qrf" firstAttribute="top" secondItem="bRf-Zq-0Zb" secondAttribute="bottom" id="mOL-T0-pIb"/>
                 <constraint firstAttribute="bottom" secondItem="9fs-Jl-s2h" secondAttribute="bottom" id="ov5-lh-6tb"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
+                <outlet property="noDataImageView" destination="bRf-Zq-0Zb" id="JA3-0n-gOa"/>
                 <outlet property="noDataLabel" destination="MIl-bR-qrf" id="1mN-I5-ouq"/>
                 <outlet property="savingAccountingCollectionView" destination="9fs-Jl-s2h" id="HFy-9C-di6"/>
             </connections>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="noData" width="512" height="334"/>
+    </resources>
 </document>

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		34FE46260D153EA89122AC6A /* Pods_mSaving.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2F60CB0FEB4CC786F0B4059 /* Pods_mSaving.framework */; };
 		DE02DECA226C97B700B51201 /* InvoiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE02DEC9226C97B700B51201 /* InvoiceVC.swift */; };
+		DE0BD670227D41B200E03E31 /* Formatter - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0BD66F227D41B200E03E31 /* Formatter - extension.swift */; };
 		DE1544F522748C9D00814EC3 /* AccountProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366AB8226EBA4600A65954 /* AccountProvider.swift */; };
 		DE1544F622748CB000814EC3 /* AccountProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366AB8226EBA4600A65954 /* AccountProvider.swift */; };
 		DE21B90222578D9800B65719 /* PieChartCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE21B90022578D9800B65719 /* PieChartCVCell.swift */; };
@@ -50,8 +51,6 @@
 		DEA65DFA225A211800A10242 /* IconCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEA65DF8225A211800A10242 /* IconCVCell.xib */; };
 		DEA65DFC225A63E400A10242 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA65DFB225A63E400A10242 /* SearchVC.swift */; };
 		DEAA6A292259984B00224B26 /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA6A282259984B00224B26 /* CategoryVC.swift */; };
-		DEAA6A2C2259A55000224B26 /* IncomeExpenseCategoryCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA6A2A2259A55000224B26 /* IncomeExpenseCategoryCVCell.swift */; };
-		DEAA6A2D2259A55000224B26 /* IncomeExpenseCategoryCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEAA6A2B2259A55000224B26 /* IncomeExpenseCategoryCVCell.xib */; };
 		DEAA6A302259B07C00224B26 /* CategoryCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA6A2E2259B07C00224B26 /* CategoryCVCell.swift */; };
 		DEAA6A312259B07C00224B26 /* CategoryCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEAA6A2F2259B07C00224B26 /* CategoryCVCell.xib */; };
 		DEACE3DC2257AD1900EA209C /* AnalysisCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEACE3DA2257AD1900EA209C /* AnalysisCVCell.swift */; };
@@ -166,6 +165,7 @@
 		2269CA763E2B12B921C758F2 /* Pods-mSaving.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mSaving.debug.xcconfig"; path = "Target Support Files/Pods-mSaving/Pods-mSaving.debug.xcconfig"; sourceTree = "<group>"; };
 		2C6C6317FBC34568D8610458 /* Pods-mSaving.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mSaving.release.xcconfig"; path = "Target Support Files/Pods-mSaving/Pods-mSaving.release.xcconfig"; sourceTree = "<group>"; };
 		DE02DEC9226C97B700B51201 /* InvoiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceVC.swift; sourceTree = "<group>"; };
+		DE0BD66F227D41B200E03E31 /* Formatter - extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter - extension.swift"; sourceTree = "<group>"; };
 		DE21B90022578D9800B65719 /* PieChartCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartCVCell.swift; sourceTree = "<group>"; };
 		DE21B90122578D9800B65719 /* PieChartCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PieChartCVCell.xib; sourceTree = "<group>"; };
 		DE21B904225794C900B65719 /* BarChartCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartCVCell.swift; sourceTree = "<group>"; };
@@ -205,8 +205,6 @@
 		DEA65DF8225A211800A10242 /* IconCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconCVCell.xib; sourceTree = "<group>"; };
 		DEA65DFB225A63E400A10242 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		DEAA6A282259984B00224B26 /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
-		DEAA6A2A2259A55000224B26 /* IncomeExpenseCategoryCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseCategoryCVCell.swift; sourceTree = "<group>"; };
-		DEAA6A2B2259A55000224B26 /* IncomeExpenseCategoryCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeExpenseCategoryCVCell.xib; sourceTree = "<group>"; };
 		DEAA6A2E2259B07C00224B26 /* CategoryCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCVCell.swift; sourceTree = "<group>"; };
 		DEAA6A2F2259B07C00224B26 /* CategoryCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCVCell.xib; sourceTree = "<group>"; };
 		DEACE3DA2257AD1900EA209C /* AnalysisCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisCVCell.swift; sourceTree = "<group>"; };
@@ -427,8 +425,6 @@
 		DE4984BB225886C8004E4AE9 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				DEAA6A2A2259A55000224B26 /* IncomeExpenseCategoryCVCell.swift */,
-				DEAA6A2B2259A55000224B26 /* IncomeExpenseCategoryCVCell.xib */,
 				DEA65DF12259EE4700A10242 /* CategorysCVCell.swift */,
 				DEA65DF22259EE4700A10242 /* CategorysCVCell.xib */,
 				DEAA6A2E2259B07C00224B26 /* CategoryCVCell.swift */,
@@ -614,6 +610,7 @@
 				DEEB5FB9226D79E90088C798 /* URLComponents - extension.swift */,
 				DE366AC0226EE88200A65954 /* Notification - extension.swift */,
 				DEAF79B522757A85002C48B9 /* UILabel - extension.swift */,
+				DE0BD66F227D41B200E03E31 /* Formatter - extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -773,7 +770,6 @@
 				DEECB04B2253358B002D6C30 /* Main.storyboard in Resources */,
 				DEECB0482253358B002D6C30 /* Setting.storyboard in Resources */,
 				DE4984B9225878A8004E4AE9 /* CategoryAccountingsTotalCVCell.xib in Resources */,
-				DEAA6A2D2259A55000224B26 /* IncomeExpenseCategoryCVCell.xib in Resources */,
 				DEF27CAD226977F30030DB9D /* CategoryAccountingsCVCell.xib in Resources */,
 				DEBE8C2D2255AED800C2A8A3 /* AccountingDateCVCell.xib in Resources */,
 				DEECB04A2253358B002D6C30 /* LaunchScreen.storyboard in Resources */,
@@ -950,7 +946,6 @@
 				DE02DECA226C97B700B51201 /* InvoiceVC.swift in Sources */,
 				DE2BB3662253AC1D001D55E4 /* MonthCVCell.swift in Sources */,
 				DE366ABF226EE64700A65954 /* MSNotificationManager.swift in Sources */,
-				DEAA6A2C2259A55000224B26 /* IncomeExpenseCategoryCVCell.swift in Sources */,
 				DE7B38AE2257427200C17846 /* CategorySelectCVCell.swift in Sources */,
 				DEBE8C252254AE5200C2A8A3 /* UITableView - extension.swift in Sources */,
 				DEAF79B622757A85002C48B9 /* UILabel - extension.swift in Sources */,
@@ -985,6 +980,7 @@
 				DEECB02622533430002D6C30 /* AppDelegate.swift in Sources */,
 				DE490C30227AF3660063EAD4 /* UseSiriVC.swift in Sources */,
 				DEA65DF9225A211800A10242 /* IconCVCell.swift in Sources */,
+				DE0BD670227D41B200E03E31 /* Formatter - extension.swift in Sources */,
 				DEDE57442270C0F70071FCFD /* IntentViewController.swift in Sources */,
 				DEBA92EB226D7CE200D93806 /* InvoiceRequest.swift in Sources */,
 				DEBA92ED226D821B00D93806 /* InvoiceProvider.swift in Sources */,

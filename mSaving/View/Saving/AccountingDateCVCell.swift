@@ -68,9 +68,7 @@ class AccountingDateCVCell: UICollectionViewCell {
 
     @IBAction func goToDetail(_ sender: UIButton) {
 
-        guard let goTo = goToDetialPage else { return }
-
-        goTo()
+        goToDetialPage?()
 
     }
 

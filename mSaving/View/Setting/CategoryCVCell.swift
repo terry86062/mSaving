@@ -38,7 +38,7 @@ class CategoryCVCell: UICollectionViewCell {
             
             categoryNameLabel.text = category?.name
             
-            trailingLabel.text = "\(categoryMonthTotal.amount)"
+            trailingLabel.text = "$\(Int(categoryMonthTotal.amount).formattedWithSeparator)"
             
         } else {
             
@@ -52,7 +52,7 @@ class CategoryCVCell: UICollectionViewCell {
             
             categoryNameLabel.text = category?.name
             
-            trailingLabel.text = "-\(categoryMonthTotal.amount)"
+            trailingLabel.text = "-$\(Int(categoryMonthTotal.amount).formattedWithSeparator)"
             
         }
         

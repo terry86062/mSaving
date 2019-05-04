@@ -105,8 +105,6 @@ class SavingDetailAddVC: UIViewController {
             
         }
         
-        helpDismiss()
-        
     }
     
     @IBAction func deleteSaving(_ sender: UIButton) {
@@ -167,6 +165,8 @@ class SavingDetailAddVC: UIViewController {
             
         }
         
+        helpDismiss()
+        
     }
     
     func reviseSaving() {
@@ -180,6 +180,8 @@ class SavingDetailAddVC: UIViewController {
         SavingProvider().reviseSaving(saving: selectedSavingDetail,
                                       amount: amount,
                                       selectedExpenseCategory: selectedExpenseCategory)
+        
+        helpDismiss()
         
     }
 

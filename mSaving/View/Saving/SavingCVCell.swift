@@ -24,6 +24,8 @@ class SavingCVCell: UICollectionViewCell {
 
     }
     
+    @IBOutlet weak var noDataImageView: UIImageView!
+    
     @IBOutlet weak var noDataLabel: UILabel!
     
     var accountingProvider = AccountingProvider()
@@ -58,6 +60,8 @@ class SavingCVCell: UICollectionViewCell {
 
     func initSavingCVCell(showAccounting: Bool, month: Month) {
         
+        noDataImageView.isHidden = true
+        
         noDataLabel.isHidden = true
         
         self.showAccounting = showAccounting
@@ -75,6 +79,8 @@ class SavingCVCell: UICollectionViewCell {
         if showAccounting && accountingsGroup.count == 0 {
             
             noDataLabel.isHidden = false
+            
+            noDataImageView.isHidden = false
             
         }
         
@@ -149,9 +155,13 @@ extension SavingCVCell: UICollectionViewDataSource {
                     
                     weakSelf.noDataLabel.isHidden = false
                     
+                    weakSelf.noDataImageView.isHidden = false
+                    
                 } else {
                     
                     weakSelf.noDataLabel.isHidden = true
+                    
+                    weakSelf.noDataImageView.isHidden = true
                     
                 }
                 

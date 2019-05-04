@@ -24,6 +24,8 @@ class AnalysisCVCell: UICollectionViewCell {
 
     }
     
+    @IBOutlet weak var noDataImageView: UIImageView!
+    
     @IBOutlet weak var noDataLabel: UILabel!
     
     var accountingProvider = AccountingProvider()
@@ -51,6 +53,8 @@ class AnalysisCVCell: UICollectionViewCell {
     func initAnalysisCVCell(month: Month, isIncome: Bool) {
         
         noDataLabel.isHidden = true
+        
+        noDataImageView.isHidden = true
         
         self.month = month
         
@@ -108,6 +112,8 @@ extension AnalysisCVCell: UICollectionViewDataSource {
                 
                 noDataLabel.isHidden = false
                 
+                noDataImageView.isHidden = false
+                
                 return 0
                 
             }
@@ -121,6 +127,8 @@ extension AnalysisCVCell: UICollectionViewDataSource {
             } else {
                 
                 noDataLabel.isHidden = false
+                
+                noDataImageView.isHidden = false
                 
                 return 0
                 

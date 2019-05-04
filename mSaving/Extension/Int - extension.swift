@@ -15,5 +15,11 @@ extension Int {
         return CGFloat(self) * UIScreen.main.bounds.width / 414
 
     }
+    
+    var formattedWithSeparator: String {
+        
+        return Formatter.withSeparator.string(for: self) ?? ""
+        
+    }
 
 }

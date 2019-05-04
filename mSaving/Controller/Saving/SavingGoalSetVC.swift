@@ -76,8 +76,6 @@ class SavingGoalSetVC: UIViewController {
             
         }
         
-        helpDismiss()
-        
     }
     
     @IBAction func changeText(_ sender: UITextField) {
@@ -128,6 +126,8 @@ class SavingGoalSetVC: UIViewController {
             
         }
         
+        helpDismiss()
+        
     }
     
     func reviseSaving() {
@@ -137,6 +137,8 @@ class SavingGoalSetVC: UIViewController {
         guard let text = savingTextField.text, let amount = Int64(text) else { return }
         
         SavingProvider().reviseSaving(saving: selectedSaving, amount: amount)
+        
+        helpDismiss()
         
     }
 

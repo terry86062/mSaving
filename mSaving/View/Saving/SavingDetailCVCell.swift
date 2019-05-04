@@ -25,6 +25,10 @@ class SavingDetailCVCell: UICollectionViewCell {
     override func awakeFromNib() {
 
         super.awakeFromNib()
+        
+        categoryImageView.image?.withRenderingMode(.alwaysTemplate)
+        
+        categoryImageView.tintColor = .darkText
 
     }
     
@@ -38,9 +42,15 @@ class SavingDetailCVCell: UICollectionViewCell {
         
         categorySpendView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
         
+        categoryImageView.image?.withRenderingMode(.alwaysTemplate)
+        
+        categoryImageView.tintColor = .darkText
+        
+//        categoryBudgetView.backgroundColor = UIColor.hexStringToUIColor(hex: hex).withAlphaComponent(0.6)
+        
         categoryNameLabel.text = categoryName + "預算"
         
-        categoryBudgetLabel.text = "-$" + String(totalSpend) + " / " + "$" + String(budget)
+        categoryBudgetLabel.text = "-$" + String(totalSpend.formattedWithSeparator) + "  /  " + "$" + String(Int(budget).formattedWithSeparator)
         
         if budget != 0 {
             

@@ -123,8 +123,8 @@ extension AccountingsCVCell: UICollectionViewDataSource {
                 headerView.initAccountDateCVCell(
                     leadingText: "0\(day)",
                     subLeadingText: "\(helpTransferWeekdayFromIntToString(weekday: weekday))",
-                    trailingText: String(totalAmount),
-                    trailingColor: .green,
+                    trailingText: "$\(totalAmount.formattedWithSeparator)",
+                    trailingColor: .mSLightGreen,
                     havingShadow: false)
                 
             } else {
@@ -132,8 +132,8 @@ extension AccountingsCVCell: UICollectionViewDataSource {
                 headerView.initAccountDateCVCell(
                     leadingText: "\(day)",
                     subLeadingText: "\(helpTransferWeekdayFromIntToString(weekday: weekday))",
-                    trailingText: String(totalAmount),
-                    trailingColor: .green,
+                    trailingText: "$\(totalAmount.formattedWithSeparator)",
+                    trailingColor: .mSLightGreen,
                     havingShadow: false)
                 
             }
@@ -145,7 +145,7 @@ extension AccountingsCVCell: UICollectionViewDataSource {
                 headerView.initAccountDateCVCell(
                     leadingText: "0\(day)",
                     subLeadingText: "\(helpTransferWeekdayFromIntToString(weekday: weekday))",
-                    trailingText: String(totalAmount),
+                    trailingText: "-$\(abs(totalAmount).formattedWithSeparator)",
                     trailingColor: .red,
                     havingShadow: false)
                 
@@ -154,7 +154,7 @@ extension AccountingsCVCell: UICollectionViewDataSource {
                 headerView.initAccountDateCVCell(
                     leadingText: "\(day)",
                     subLeadingText: "\(helpTransferWeekdayFromIntToString(weekday: weekday))",
-                    trailingText: String(totalAmount),
+                    trailingText: "-$\(abs(totalAmount).formattedWithSeparator)",
                     trailingColor: .red,
                     havingShadow: false)
                 
