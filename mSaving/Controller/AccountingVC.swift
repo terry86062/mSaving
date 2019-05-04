@@ -396,6 +396,16 @@ class AccountingVC: UIViewController {
         
         guard let selectedAccounting = selectedAccounting else { return }
         
+        if let expense = selectedAccounting.expenseCategory {
+            
+            showAddResult(selectedCategory: .expense(expense), amount: selectedAccounting.amount, addType: "刪除")
+            
+        } else if let income = selectedAccounting.incomeCategory {
+            
+            showAddResult(selectedCategory: .income(income), amount: selectedAccounting.amount, addType: "刪除")
+            
+        }
+        
         AccountingProvider().deleteAccounting(accounting: selectedAccounting)
         
         navigationController?.popViewController(animated: true)

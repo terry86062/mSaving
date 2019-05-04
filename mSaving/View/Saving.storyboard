@@ -88,14 +88,16 @@
                                     <segue destination="faa-fA-ylO" kind="show" id="5Tu-FO-moN"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hbs-E5-8bb">
-                                <rect key="frame" x="361" y="47.5" width="35" height="30"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hbs-E5-8bb">
+                                <rect key="frame" x="338" y="50.5" width="60" height="24"/>
+                                <color key="backgroundColor" name="mSGreen"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="DhS-vJ-glu"/>
+                                    <constraint firstAttribute="width" constant="60" id="DhS-vJ-glu"/>
+                                    <constraint firstAttribute="height" constant="24" id="yUr-Y1-C68"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
                                 <state key="normal" title="編輯">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <state key="selected" title="編輯"/>
                                 <userDefinedRuntimeAttributes>
@@ -103,13 +105,22 @@
                                         <size key="value" width="0.0" height="2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
-                                        <real key="value" value="0.80000000000000004"/>
+                                        <real key="value" value="0.5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
                                         <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
                                         <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="msBorderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msBorderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
+                                        <real key="value" value="12"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -141,7 +152,7 @@
                             <constraint firstItem="Rk2-Xk-qbG" firstAttribute="centerX" secondItem="mVS-nP-D1J" secondAttribute="centerX" id="Yew-3B-NDo"/>
                             <constraint firstItem="yhK-G2-nhO" firstAttribute="top" secondItem="Rk2-Xk-qbG" secondAttribute="firstBaseline" constant="16" id="aAx-cs-3yh"/>
                             <constraint firstItem="Y4f-oa-sf1" firstAttribute="top" secondItem="yhK-G2-nhO" secondAttribute="bottom" constant="16" id="k5t-FQ-mq6"/>
-                            <constraint firstAttribute="trailing" secondItem="Hbs-E5-8bb" secondAttribute="trailing" constant="18" id="wVk-bf-Exg"/>
+                            <constraint firstAttribute="trailing" secondItem="Hbs-E5-8bb" secondAttribute="trailing" constant="16" id="wVk-bf-Exg"/>
                             <constraint firstItem="Hbs-E5-8bb" firstAttribute="centerY" secondItem="Rk2-Xk-qbG" secondAttribute="centerY" id="zhn-iM-ZFe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yL3-9r-bOn"/>

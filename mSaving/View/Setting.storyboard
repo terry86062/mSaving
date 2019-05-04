@@ -612,7 +612,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4JB-sD-uc5">
-                                <rect key="frame" x="12" y="746.5" width="390" height="60"/>
+                                <rect key="frame" x="16" y="746.5" width="382" height="60"/>
                                 <color key="backgroundColor" name="mSGreen"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="DCD-hh-1ms"/>
@@ -703,10 +703,10 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nt4-HW-xRJ">
-                                <rect key="frame" x="12" y="448" width="390" height="60"/>
+                                <rect key="frame" x="16" y="448" width="382" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-$ＯＯ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVb-DT-Eak">
-                                        <rect key="frame" x="328" y="20.5" width="50" height="19.5"/>
+                                        <rect key="frame" x="320" y="20.5" width="50" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="16"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -788,7 +788,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLX-wl-q37">
-                                <rect key="frame" x="12" y="56" width="24" height="24"/>
+                                <rect key="frame" x="16" y="60" width="24" height="24"/>
                                 <color key="backgroundColor" name="mSGreen"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="PF4-cX-F5j"/>
@@ -833,15 +833,15 @@
                             <constraint firstItem="drS-PE-BZ8" firstAttribute="top" secondItem="BUY-Fh-Hlf" secondAttribute="bottom" multiplier="4:10" id="Gzc-eW-Xnj"/>
                             <constraint firstItem="rvm-gJ-zWR" firstAttribute="top" secondItem="BUY-Fh-Hlf" secondAttribute="bottom" multiplier="3:10" id="IxR-hF-obB"/>
                             <constraint firstItem="vvk-2d-mp4" firstAttribute="top" secondItem="BUY-Fh-Hlf" secondAttribute="bottom" multiplier="2:10" id="NSO-T5-EHL"/>
-                            <constraint firstItem="ZLX-wl-q37" firstAttribute="leading" secondItem="4j7-Xy-wHQ" secondAttribute="leading" constant="12" id="PZ7-E5-nlp"/>
+                            <constraint firstItem="ZLX-wl-q37" firstAttribute="leading" secondItem="4j7-Xy-wHQ" secondAttribute="leading" constant="16" id="PZ7-E5-nlp"/>
                             <constraint firstItem="EaU-sV-SlD" firstAttribute="top" secondItem="BUY-Fh-Hlf" secondAttribute="bottom" multiplier="1:10" id="SXN-fM-u8h"/>
                             <constraint firstItem="Nt4-HW-xRJ" firstAttribute="centerX" secondItem="BUY-Fh-Hlf" secondAttribute="centerX" id="Wev-AE-hSJ"/>
                             <constraint firstItem="drS-PE-BZ8" firstAttribute="centerX" secondItem="BUY-Fh-Hlf" secondAttribute="centerX" id="gix-g8-4gY"/>
                             <constraint firstItem="EaU-sV-SlD" firstAttribute="centerX" secondItem="BUY-Fh-Hlf" secondAttribute="centerX" id="gpV-kG-Sbv"/>
                             <constraint firstItem="rvm-gJ-zWR" firstAttribute="centerX" secondItem="BUY-Fh-Hlf" secondAttribute="centerX" id="kT9-TS-Wv1"/>
-                            <constraint firstItem="Nt4-HW-xRJ" firstAttribute="width" secondItem="BUY-Fh-Hlf" secondAttribute="width" constant="-24" id="n0r-W8-353"/>
-                            <constraint firstItem="4JB-sD-uc5" firstAttribute="width" secondItem="BUY-Fh-Hlf" secondAttribute="width" constant="-24" id="nmm-IN-Hwo"/>
-                            <constraint firstItem="ZLX-wl-q37" firstAttribute="top" secondItem="4j7-Xy-wHQ" secondAttribute="top" constant="12" id="u2E-Ll-Yov"/>
+                            <constraint firstItem="Nt4-HW-xRJ" firstAttribute="width" secondItem="BUY-Fh-Hlf" secondAttribute="width" constant="-32" id="n0r-W8-353"/>
+                            <constraint firstItem="4JB-sD-uc5" firstAttribute="width" secondItem="BUY-Fh-Hlf" secondAttribute="width" constant="-32" id="nmm-IN-Hwo"/>
+                            <constraint firstItem="ZLX-wl-q37" firstAttribute="top" secondItem="4j7-Xy-wHQ" secondAttribute="top" constant="16" id="u2E-Ll-Yov"/>
                             <constraint firstItem="4JB-sD-uc5" firstAttribute="centerX" secondItem="BUY-Fh-Hlf" secondAttribute="centerX" id="yDq-zL-sFf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4j7-Xy-wHQ"/>

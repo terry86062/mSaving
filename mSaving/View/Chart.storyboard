@@ -68,7 +68,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pkt-50-wDB">
-                                <rect key="frame" x="336" y="50.5" width="60" height="24"/>
+                                <rect key="frame" x="338" y="50.5" width="60" height="24"/>
                                 <color key="backgroundColor" name="mSGreen"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="1Hy-Sx-FJr"/>
@@ -90,7 +90,7 @@
                                         <size key="value" width="0.0" height="2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
-                                        <real key="value" value="0.80000000000000004"/>
+                                        <real key="value" value="0.5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
                                         <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -118,7 +118,7 @@
                             <constraint firstItem="iM7-gY-DsZ" firstAttribute="top" secondItem="BQC-eJ-uAd" secondAttribute="top" constant="4" id="CjB-Ov-dlD"/>
                             <constraint firstItem="iyE-0e-gdu" firstAttribute="top" secondItem="iM7-gY-DsZ" secondAttribute="firstBaseline" constant="16" id="GEy-X9-GtT"/>
                             <constraint firstItem="BQC-eJ-uAd" firstAttribute="trailing" secondItem="Ua1-Yq-anV" secondAttribute="trailing" id="LtF-tm-CSX"/>
-                            <constraint firstItem="BQC-eJ-uAd" firstAttribute="trailing" secondItem="Pkt-50-wDB" secondAttribute="trailing" constant="18" id="OiN-tK-lPz"/>
+                            <constraint firstItem="BQC-eJ-uAd" firstAttribute="trailing" secondItem="Pkt-50-wDB" secondAttribute="trailing" constant="16" id="OiN-tK-lPz"/>
                             <constraint firstItem="Ua1-Yq-anV" firstAttribute="top" secondItem="iyE-0e-gdu" secondAttribute="bottom" constant="6" id="dXm-IL-NO8"/>
                             <constraint firstItem="Ua1-Yq-anV" firstAttribute="bottom" secondItem="BQC-eJ-uAd" secondAttribute="bottom" id="eX6-An-Hh6"/>
                             <constraint firstItem="iyE-0e-gdu" firstAttribute="leading" secondItem="BQC-eJ-uAd" secondAttribute="leading" id="pTq-9p-zeK"/>

@@ -50,7 +50,7 @@ class AccountingDateCVCell: UICollectionViewCell {
             
             self.layer.shadowColor = UIColor.lightGray.cgColor
             
-            leadingLabel.font = UIFont(name: leadingLabel.font.fontName, size: 21)
+            leadingLabel.font = UIFont(name: leadingLabel.font.fontName, size: 16)
             
         } else {
             

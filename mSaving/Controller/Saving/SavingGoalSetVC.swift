@@ -8,6 +8,8 @@
 
 import UIKit
 
+import SwiftMessages
+
 class SavingGoalSetVC: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
@@ -110,6 +112,10 @@ class SavingGoalSetVC: UIViewController {
             
             SavingProvider().createSaving(month: selectedMonth, amount: amount)
             
+            helpDismiss()
+            
+            showAddResult(selectedSaving: nil, month: selectedMonth, amount: amount)
+            
         } else {
             
             let aMonth = Month(context: CoreDataManager.shared.viewContext)
@@ -124,9 +130,11 @@ class SavingGoalSetVC: UIViewController {
             
             SavingProvider().createSaving(month: aMonth, amount: amount)
             
+            helpDismiss()
+            
+            showAddResult(selectedSaving: nil, month: aMonth, amount: amount)
+            
         }
-        
-        helpDismiss()
         
     }
     
@@ -139,6 +147,60 @@ class SavingGoalSetVC: UIViewController {
         SavingProvider().reviseSaving(saving: selectedSaving, amount: amount)
         
         helpDismiss()
+        
+        showAddResult(selectedSaving: selectedSaving, month: nil, amount: amount)
+        
+    }
+    
+    func showAddResult(selectedSaving: Saving?, month: Month?, amount: Int64) {
+        
+        // Instantiate a message view from the provided card view layout. SwiftMessages searches for nib
+        // files in the main bundle first, so you can easily copy them into your project and make changes.
+        let view = MessageView.viewFromNib(layout: .cardView)
+        
+        // Theme message elements with the warning style.
+        view.configureTheme(.warning)
+        
+        // Add a drop shadow.
+        view.configureDropShadow()
+        
+        // Set message title, body, and icon. Here, we're overriding the default warning
+        // image with an emoji character.
+        if let saving = selectedSaving {
+            
+            guard let month = saving.month?.month else { return }
+            
+            view.configureTheme(backgroundColor: .mSGreen, foregroundColor: .white)
+            
+            view.configureContent(title: "修改成功", body: "已修改\(month)月預算", iconText: "\(month)月")
+            
+            view.button?.setTitle("$\(amount)", for: .normal)
+            
+        } else {
+            
+            guard let month = month?.month else { return }
+            
+            view.configureTheme(backgroundColor: .mSGreen, foregroundColor: .white)
+            
+            view.configureContent(title: "新增成功", body: "已新增\(month)月預算", iconText: "\(month)月")
+            
+            view.button?.setTitle("$\(amount)", for: .normal)
+            
+        }
+        
+        view.button?.backgroundColor = .clear
+        
+        view.button?.setTitleColor(.white, for: .normal)
+        
+        // Increase the external margin around the card. In general, the effect of this setting
+        // depends on how the given layout is constrained to the layout margins.
+        view.layoutMarginAdditions = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        
+        // Reduce the corner radius (applicable to layouts featuring rounded corners).
+        (view.backgroundView as? CornerRoundingView)?.cornerRadius = 12
+        
+        // Show the message.
+        SwiftMessages.show(view: view)
         
     }
 
