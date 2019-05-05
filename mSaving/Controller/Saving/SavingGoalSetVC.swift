@@ -90,6 +90,8 @@ class SavingGoalSetVC: UIViewController {
     
     func helpDismiss() {
         
+        savingTextField.resignFirstResponder()
+        
         dismiss(animated: true, completion: nil)
         
         hideTabBarVCBlackView()

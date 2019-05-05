@@ -46,7 +46,9 @@ class CategoryProvider {
         Category(name: "人情", iconName: "gift", color: "55C4B3", priority: 7, subPriority: 1),
         Category(name: "投資", iconName: "stockExchange", color: "ED5190", priority: 8, subPriority: 1),
         Category(name: "保險", iconName: "addShield", color: "ED5190", priority: 9, subPriority: 2),
-        Category(name: "薪水", iconName: "cash", color: "F9C746", priority: 1, subPriority: 1)
+        Category(name: "薪水", iconName: "cash", color: "F9C746", priority: 1, subPriority: 1),
+        Category(name: "投資", iconName: "finance", color: "F9C746", priority: 1, subPriority: 2),
+        Category(name: "禮物", iconName: "gift2", color: "F9C746", priority: 1, subPriority: 3)
     ]
     
     var expenseCategories: [ExpenseCategory] {
@@ -67,7 +69,7 @@ class CategoryProvider {
             
             let category = initCategoryArray[index]
             
-            if index == initCategoryArray.count - 1 {
+            if index > 18 {
                 
                 let incomeSubCategory = IncomeCategory(context: coreDataManager.viewContext)
                 

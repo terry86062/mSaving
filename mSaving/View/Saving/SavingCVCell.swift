@@ -308,7 +308,7 @@ extension SavingCVCell: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        return UIEdgeInsets(top: 0, left: 0, bottom: 24, right: 0)
+        return UIEdgeInsets(top: 8, left: 0, bottom: 24, right: 0)
         
     }
     

@@ -44,18 +44,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
-                                        <size key="value" width="0.0" height="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
-                                        <real key="value" value="0.80000000000000004"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
-                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="characterSpacing">
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
@@ -127,8 +115,8 @@
                                     <segue destination="nTW-Gj-7Bw" kind="presentation" identifier="goToSavingGoalSetVC" modalPresentationStyle="overFullScreen" id="dUa-Qq-oDp"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Y4f-oa-sf1">
-                                <rect key="frame" x="0.0" y="135" width="414" height="727"/>
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Y4f-oa-sf1">
+                                <rect key="frame" x="0.0" y="127" width="414" height="735"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="1o7-R8-T2G">
                                     <size key="itemSize" width="50" height="50"/>
@@ -151,7 +139,7 @@
                             <constraint firstItem="yL3-9r-bOn" firstAttribute="trailing" secondItem="Y4f-oa-sf1" secondAttribute="trailing" id="YP5-vJ-YU5"/>
                             <constraint firstItem="Rk2-Xk-qbG" firstAttribute="centerX" secondItem="mVS-nP-D1J" secondAttribute="centerX" id="Yew-3B-NDo"/>
                             <constraint firstItem="yhK-G2-nhO" firstAttribute="top" secondItem="Rk2-Xk-qbG" secondAttribute="firstBaseline" constant="16" id="aAx-cs-3yh"/>
-                            <constraint firstItem="Y4f-oa-sf1" firstAttribute="top" secondItem="yhK-G2-nhO" secondAttribute="bottom" constant="16" id="k5t-FQ-mq6"/>
+                            <constraint firstItem="Y4f-oa-sf1" firstAttribute="top" secondItem="yhK-G2-nhO" secondAttribute="bottom" constant="8" id="k5t-FQ-mq6"/>
                             <constraint firstAttribute="trailing" secondItem="Hbs-E5-8bb" secondAttribute="trailing" constant="16" id="wVk-bf-Exg"/>
                             <constraint firstItem="Hbs-E5-8bb" firstAttribute="centerY" secondItem="Rk2-Xk-qbG" secondAttribute="centerY" id="zhn-iM-ZFe"/>
                         </constraints>
@@ -310,23 +298,6 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="24"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="msZPosition">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="size" keyPath="msShadowOffset">
-                                                <size key="value" width="0.0" height="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowOpacity">
-                                                <real key="value" value="0.80000000000000004"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="msShadowColor">
-                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="msShadowRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="changeText:" destination="nTW-Gj-7Bw" eventType="editingChanged" id="BAi-aq-V0Q"/>
                                         </connections>
@@ -495,7 +466,7 @@
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
-                                                <real key="value" value="16"/>
+                                                <real key="value" value="12"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -613,6 +584,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
+                        <outlet property="deleteButton" destination="nkc-cQ-wHW" id="3cL-F5-nmb"/>
                         <outlet property="savingCategoryCollectionView" destination="mKe-UT-vAR" id="WWS-MI-t4t"/>
                         <outlet property="savingDetailTextField" destination="8Bb-ad-hJA" id="pVW-uK-1yC"/>
                         <outlet property="selectedCategoryImageView" destination="M1c-w2-tIh" id="y9P-mA-sfP"/>

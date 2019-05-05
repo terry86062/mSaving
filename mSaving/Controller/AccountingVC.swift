@@ -223,12 +223,6 @@ class AccountingVC: UIViewController {
         
     }
 
-    @IBAction func dismissKeyboard(_ sender: UIButton) {
-
-        amountTextField.resignFirstResponder()
-
-    }
-
     @IBAction func addAccounting(_ sender: UIBarButtonItem) {
         
         guard let text = amountTextField.text, let amount = Int64(text), amount != 0 else { return }
@@ -250,6 +244,8 @@ class AccountingVC: UIViewController {
                                                   account: selectedAccount,
                                                   category: selectedCategory)
             
+            amountTextField.resignFirstResponder()
+            
             dismiss(animated: true, completion: nil)
             
             hideTabBarVCBlackView()
@@ -263,6 +259,8 @@ class AccountingVC: UIViewController {
                                                   amount: amount,
                                                   account: selectedAccount,
                                                   category: selectedCategory)
+            
+            amountTextField.resignFirstResponder()
             
             dismiss(animated: true, completion: nil)
             
@@ -349,6 +347,8 @@ class AccountingVC: UIViewController {
     }
 
     @IBAction func dismiss(_ sender: UIButton) {
+        
+        amountTextField.resignFirstResponder()
 
         dismiss(animated: true, completion: nil)
         
@@ -366,13 +366,13 @@ class AccountingVC: UIViewController {
     
     @IBAction func changeAccount(_ sender: UIButton) {
         
-        showAlertWith(title: "請選擇帳戶", message: "")
+        showAlertWith(title: "請選擇帳戶", message: nil)
         
         Analytics.logEvent("accounting_page_change_account_button", parameters: nil)
         
     }
     
-    func showAlertWith(title: String, message: String, style: UIAlertController.Style = .actionSheet) {
+    func showAlertWith(title: String, message: String?, style: UIAlertController.Style = .actionSheet) {
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
         
@@ -406,23 +406,45 @@ class AccountingVC: UIViewController {
     
     @IBAction func deleteAccounting(_ sender: UIButton) {
         
-        guard let selectedAccounting = selectedAccounting else { return }
+        showDeleteAlertWith(title: "您確定要刪除交易記錄嗎？", message: nil)
         
-        if let expense = selectedAccounting.expenseCategory {
-            
-            showAddResult(selectedCategory: .expense(expense), amount: selectedAccounting.amount, addType: "刪除")
-            
-        } else if let income = selectedAccounting.incomeCategory {
-            
-            showAddResult(selectedCategory: .income(income), amount: selectedAccounting.amount, addType: "刪除")
-            
-        }
+    }
+    
+    func showDeleteAlertWith(title: String, message: String?, style: UIAlertController.Style = .actionSheet) {
         
-        AccountingProvider().deleteAccounting(accounting: selectedAccounting)
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: style)
         
-        dismiss(animated: true, completion: nil)
+        let deleteAction = UIAlertAction(title: "刪除", style: .default, handler: { _ in
+            
+            guard let selectedAccounting = self.selectedAccounting else { return }
+            
+            if let expense = selectedAccounting.expenseCategory {
+                
+                self.showAddResult(selectedCategory: .expense(expense), amount: selectedAccounting.amount, addType: "刪除")
+                
+            } else if let income = selectedAccounting.incomeCategory {
+                
+                self.showAddResult(selectedCategory: .income(income), amount: selectedAccounting.amount, addType: "刪除")
+                
+            }
+            
+            AccountingProvider().deleteAccounting(accounting: selectedAccounting)
+            
+            self.amountTextField.resignFirstResponder()
+            
+            self.dismiss(animated: true, completion: nil)
+            
+            self.hideTabBarVCBlackView()
+            
+        })
         
-        hideTabBarVCBlackView()
+        alertController.addAction(deleteAction)
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
         
     }
     

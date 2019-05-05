@@ -18,6 +18,8 @@ class SavingDetailAddVC: UIViewController {
     
     @IBOutlet weak var selectedCategoryImageView: UIImageView!
     
+    @IBOutlet weak var deleteButton: UIButton!
+    
     @IBOutlet weak var savingCategoryCollectionView: UICollectionView! {
         
         didSet {
@@ -66,6 +68,8 @@ class SavingDetailAddVC: UIViewController {
             
             selectedCategoryImageView.backgroundColor = UIColor.mSYellow
             
+            deleteButton.isHidden = true
+            
         } else {
             
             guard let budget = selectedSavingDetail?.amount else { return }
@@ -113,19 +117,47 @@ class SavingDetailAddVC: UIViewController {
         
         guard let saving = selectedSavingDetail else { return }
         
-        if let expense = saving.expenseCategory {
+        if let name = saving.expenseCategory?.name {
             
-            showAddResult(expense: expense, selected: true, month: saving.month, amount: saving.amount, delete: true)
+            showAlertWith(title: "您確定要刪除\(name)預算嗎？", message: nil)
             
         }
         
-        SavingProvider().delete(saving: saving)
+    }
+    
+    func showAlertWith(title: String, message: String?, style: UIAlertController.Style = .actionSheet) {
         
-        helpDismiss()
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: style)
+        
+        let deleteAction = UIAlertAction(title: "刪除", style: .default, handler: { _ in
+            
+            guard let saving = self.selectedSavingDetail else { return }
+            
+            if let expense = saving.expenseCategory {
+                
+                self.showAddResult(expense: expense, selected: true, month: saving.month, amount: saving.amount, delete: true)
+                
+            }
+            
+            SavingProvider().delete(saving: saving)
+            
+            self.helpDismiss()
+            
+        })
+        
+        alertController.addAction(deleteAction)
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
         
     }
     
     func helpDismiss() {
+        
+        savingDetailTextField.resignFirstResponder()
         
         dismiss(animated: true, completion: nil)
         

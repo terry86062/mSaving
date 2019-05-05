@@ -257,7 +257,7 @@ extension SettingVC: UICollectionViewDataSource {
                 
                 guard let name = anAccount.name else { return cell }
                 
-                if anAccount.currentValue > 0 {
+                if anAccount.currentValue >= 0 {
                     
                     cell.initAccountDateCVCell(leadingText: name,
                                                trailingText: "$\(Int(anAccount.currentValue).formattedWithSeparator)",
@@ -343,7 +343,7 @@ extension SettingVC: UICollectionViewDataSource {
             
         }
         
-        if totalAmount > 0 {
+        if totalAmount >= 0 {
             
             headerView.initAccountDateCVCell(leadingText: "總資產",
                                              trailingText: "$\(totalAmount.formattedWithSeparator)",

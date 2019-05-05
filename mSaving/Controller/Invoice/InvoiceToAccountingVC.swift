@@ -196,11 +196,11 @@ class InvoiceToAccountingVC: UIViewController {
     
     @IBAction func changeAccount(_ sender: UIButton) {
         
-        showAlertWith(title: "請選擇帳戶", message: "")
+        showAlertWith(title: "請選擇帳戶", message: nil)
         
     }
     
-    func showAlertWith(title: String, message: String, style: UIAlertController.Style = .actionSheet) {
+    func showAlertWith(title: String, message: String?, style: UIAlertController.Style = .actionSheet) {
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
         

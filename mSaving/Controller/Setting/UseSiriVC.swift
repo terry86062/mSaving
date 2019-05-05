@@ -27,7 +27,7 @@ class UseSiriVC: UIViewController {
             useSiriButton.setTitle("開啟 Siri 使用權限", for: .normal)
             
         }
-
+        
     }
     
     @IBAction func useSiri(_ sender: UIButton) {
@@ -55,6 +55,9 @@ class UseSiriVC: UIViewController {
             default:
                 
                 print("Not Authorized")
+                
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!,
+                                          options: [:], completionHandler: nil)
                 
             }
             

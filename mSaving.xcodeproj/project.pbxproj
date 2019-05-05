@@ -40,6 +40,8 @@
 		DE97C64C2258E12400D0C9CF /* SavingGoalCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE97C64A2258E12400D0C9CF /* SavingGoalCVCell.xib */; };
 		DE97C64F225919CE00D0C9CF /* AddSavingDetailCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97C64D225919CE00D0C9CF /* AddSavingDetailCVCell.swift */; };
 		DE97C650225919CE00D0C9CF /* AddSavingDetailCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE97C64E225919CE00D0C9CF /* AddSavingDetailCVCell.xib */; };
+		DE990ED3227E8F1000958B33 /* AskCameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE990ED2227E8F1000958B33 /* AskCameraView.xib */; };
+		DE990ED5227E8FB900958B33 /* AskCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE990ED4227E8FB900958B33 /* AskCameraView.swift */; };
 		DE99AC8A22563D1400B12AD6 /* SavingDetailAddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99AC8922563D1400B12AD6 /* SavingDetailAddVC.swift */; };
 		DE9BEFEA225DD2DE003458AD /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BEFE9225DD2DE003458AD /* CoreDataManager.swift */; };
 		DEA5CEF4226DB83900A312E5 /* InvoiceToAccountingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA5CEF3226DB83900A312E5 /* InvoiceToAccountingVC.swift */; };
@@ -194,6 +196,8 @@
 		DE97C64A2258E12400D0C9CF /* SavingGoalCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavingGoalCVCell.xib; sourceTree = "<group>"; };
 		DE97C64D225919CE00D0C9CF /* AddSavingDetailCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSavingDetailCVCell.swift; sourceTree = "<group>"; };
 		DE97C64E225919CE00D0C9CF /* AddSavingDetailCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSavingDetailCVCell.xib; sourceTree = "<group>"; };
+		DE990ED2227E8F1000958B33 /* AskCameraView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AskCameraView.xib; sourceTree = "<group>"; };
+		DE990ED4227E8FB900958B33 /* AskCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskCameraView.swift; sourceTree = "<group>"; };
 		DE99AC8922563D1400B12AD6 /* SavingDetailAddVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingDetailAddVC.swift; sourceTree = "<group>"; };
 		DE9BEFE9225DD2DE003458AD /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		DEA5CEF3226DB83900A312E5 /* InvoiceToAccountingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceToAccountingVC.swift; sourceTree = "<group>"; };
@@ -444,6 +448,15 @@
 			path = Accounting;
 			sourceTree = "<group>";
 		};
+		DE990ED1227E8E8000958B33 /* Invoice */ = {
+			isa = PBXGroup;
+			children = (
+				DE990ED2227E8F1000958B33 /* AskCameraView.xib */,
+				DE990ED4227E8FB900958B33 /* AskCameraView.swift */,
+			);
+			path = Invoice;
+			sourceTree = "<group>";
+		};
 		DEA5CEF2226DB5BC00A312E5 /* Invoice */ = {
 			isa = PBXGroup;
 			children = (
@@ -552,6 +565,7 @@
 				DE2BB3552253605D001D55E4 /* Saving */,
 				DE21B8FF22578D1E00B65719 /* Chart */,
 				DE7B38A7225731C400C17846 /* Accounting */,
+				DE990ED1227E8E8000958B33 /* Invoice */,
 				DE4984BB225886C8004E4AE9 /* Setting */,
 				DEECB0412253358B002D6C30 /* LaunchScreen.storyboard */,
 				DEECB0432253358B002D6C30 /* Main.storyboard */,
@@ -769,6 +783,7 @@
 				DEECB0492253358B002D6C30 /* Invoice.storyboard in Resources */,
 				DEECB04B2253358B002D6C30 /* Main.storyboard in Resources */,
 				DEECB0482253358B002D6C30 /* Setting.storyboard in Resources */,
+				DE990ED3227E8F1000958B33 /* AskCameraView.xib in Resources */,
 				DE4984B9225878A8004E4AE9 /* CategoryAccountingsTotalCVCell.xib in Resources */,
 				DEF27CAD226977F30030DB9D /* CategoryAccountingsCVCell.xib in Resources */,
 				DEBE8C2D2255AED800C2A8A3 /* AccountingDateCVCell.xib in Resources */,
@@ -954,6 +969,7 @@
 				DEDE574E2271EBC70071FCFD /* TimeManager.swift in Sources */,
 				DEEB5FB8226CD5880088C798 /* Invoice.swift in Sources */,
 				DE366AB9226EBA4600A65954 /* AccountProvider.swift in Sources */,
+				DE990ED5227E8FB900958B33 /* AskCameraView.swift in Sources */,
 				DEEAA9CC2255F4A5005FCE8E /* SavingDetailCVCell.swift in Sources */,
 				DEECB064225335FA002D6C30 /* UIImage - extension.swift in Sources */,
 				DE2BB3692253AE16001D55E4 /* Int - extension.swift in Sources */,

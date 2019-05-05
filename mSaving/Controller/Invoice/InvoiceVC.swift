@@ -14,6 +14,18 @@ class InvoiceVC: UIViewController {
     
     @IBOutlet weak var messageLabel: UILabel!
     
+    lazy var askCameraView: AskCameraView = {
+        
+        guard let view = Bundle.main.loadNibNamed(String(describing: AskCameraView.self), owner: nil, options: nil)?[0] as? AskCameraView else { return AskCameraView() }
+        
+        view.frame = CGRect(x: 0, y: 0 , width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        
+        view.delegate = self
+        
+        return view
+        
+    }()
+    
     let invoiceDownloader = InvoiceProvider()
     
     var messageFromQRCode = ""
@@ -48,7 +60,15 @@ class InvoiceVC: UIViewController {
         
         super.viewDidLoad()
         
-        setUpCaptureSession()
+        if AVCaptureDevice.authorizationStatus(for: .video) != .authorized {
+            
+            view.addSubview(askCameraView)
+            
+        } else {
+            
+            setUpCaptureSession()
+            
+        }
         
     }
     

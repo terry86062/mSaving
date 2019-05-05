@@ -8,6 +8,8 @@
 
 import UIKit
 
+import AVFoundation
+
 class AlertManager {
     
     func showUserImageAlertWith(title: String, message: String, viewController: UIViewController &
@@ -22,15 +24,51 @@ class AlertManager {
         
         imagePC.allowsEditing = false
         
-        let cameraAction = UIAlertAction(title: "相機", style: .default, handler: { _ in
+        if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
             
-            imagePC.sourceType = UIImagePickerController.SourceType.camera
+            //already authorized
+            let cameraAction = UIAlertAction(title: "相機", style: .default, handler: { _ in
+                
+                imagePC.sourceType = UIImagePickerController.SourceType.camera
+                
+                viewController.present(imagePC, animated: true, completion: nil)
+                
+            })
             
-            viewController.present(imagePC, animated: true, completion: nil)
+            alertController.addAction(cameraAction)
             
-        })
-        
-        alertController.addAction(cameraAction)
+        } else {
+            
+            let cameraAction = UIAlertAction(title: "請開啟相機權限", style: .default, handler: { _ in
+                
+                AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
+                    
+                    DispatchQueue.main.async {
+                        
+                        if granted {
+                            
+                            //access allowed
+                            imagePC.sourceType = UIImagePickerController.SourceType.camera
+                            
+                            viewController.present(imagePC, animated: true, completion: nil)
+                            
+                        } else {
+                            
+                            //access denied
+                            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!,
+                                                      options: [:], completionHandler: nil)
+                            
+                        }
+                        
+                    }
+                    
+                })
+                
+            })
+            
+            alertController.addAction(cameraAction)
+            
+        }
         
         let photoAction = UIAlertAction(title: "相簿", style: .default, handler: { _ in
             

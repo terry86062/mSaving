@@ -18,6 +18,8 @@ class AccountDetailVC: UIViewController {
     
     @IBOutlet weak var accountAmountTextField: UITextField!
     
+    @IBOutlet weak var deleteButton: UIButton!
+    
     var stringForTitle: String = ""
     
     var originalAccountName = ""
@@ -39,6 +41,8 @@ class AccountDetailVC: UIViewController {
         if let delegate = delegate, delegate.isAddingNewAccount == true {
             
 //            accountTextField.becomeFirstResponder()
+            
+            deleteButton.isHidden = true
             
         }
         
@@ -65,6 +69,10 @@ class AccountDetailVC: UIViewController {
         delegate?.selectedAccountName = ""
         
         delegate?.selectedAccountInitialValue = ""
+        
+        accountTextField.resignFirstResponder()
+        
+        accountAmountTextField.resignFirstResponder()
         
         dismiss(animated: true, completion: nil)
         
@@ -114,19 +122,39 @@ class AccountDetailVC: UIViewController {
     
     @IBAction func deleteAccount(_ sender: UIButton) {
         
-        guard let text = accountTextField.text, text != "" else { return }
+        showDeleteAlertWith(title: "您確定要刪除此帳戶嗎？", message: nil)
         
-        if let amountText = delegate?.selectedAccountInitialValue, let amount = Int64(amountText) {
+    }
+    
+    func showDeleteAlertWith(title: String, message: String?, style: UIAlertController.Style = .actionSheet) {
+        
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: style)
+        
+        let deleteAction = UIAlertAction(title: "刪除", style: .default, handler: { _ in
             
-            showAddResult(selected: true, name: text, amount: amount, delete: true)
+            guard let text = self.accountTextField.text, text != "" else { return }
             
-        }
+            if let amountText = self.delegate?.selectedAccountInitialValue, let amount = Int64(amountText) {
+                
+                self.showAddResult(selected: true, name: text, amount: amount, delete: true)
+                
+            }
+            
+            AccountProvider().deleteAccount(accountName: text)
+            
+            self.delegate?.fetchData()
+            
+            self.helpDismiss()
+            
+        })
         
-        AccountProvider().deleteAccount(accountName: text)
+        alertController.addAction(deleteAction)
         
-        delegate?.fetchData()
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         
-        helpDismiss()
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
         
     }
     
