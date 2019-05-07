@@ -24,7 +24,8 @@ class AccountingDateCVCell: UICollectionViewCell {
 
     }
 
-    func initAccountDateCVCell(leadingText: String, subLeadingText: String = "", trailingText: String, trailingColor: UIColor, havingShadow: Bool) {
+    func initAccountDateCVCell(leadingText: String, subLeadingText: String = "", trailingText: String,
+                               trailingColor: UIColor, havingShadow: Bool) {
 
         leadingLabel.text = leadingText
         
@@ -50,7 +51,7 @@ class AccountingDateCVCell: UICollectionViewCell {
             
             self.layer.shadowColor = UIColor.lightGray.cgColor
             
-            leadingLabel.font = UIFont(name: leadingLabel.font.fontName, size: 16)
+            leadingLabel.font = UIFont.systemFont(ofSize: 16, weight: .thin)
             
         } else {
             

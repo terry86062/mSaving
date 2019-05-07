@@ -132,7 +132,11 @@ class NSCustomPersistentContainer: NSPersistentContainer {
         var storeURL = FileManager.default.containerURL(
             forSecurityApplicationGroupIdentifier: "group.com.terry.mSaving")
         
-        print(storeURL)
+        if let url = storeURL {
+            
+            print(url)
+            
+        }
         
         storeURL = storeURL?.appendingPathComponent("mSaving.sqlite")
         

@@ -57,10 +57,6 @@ class AccountDetailVC: UIViewController {
     @IBAction func confirm(_ sender: UIButton) {
         
         saveAccount()
-        
-        delegate?.fetchData()
-        
-        helpDismiss()
 
     }
     
@@ -109,6 +105,10 @@ class AccountDetailVC: UIViewController {
             showAddResult(selected: true, name: text, amount: amount)
             
         }
+        
+        delegate.fetchData()
+        
+        helpDismiss()
         
     }
     

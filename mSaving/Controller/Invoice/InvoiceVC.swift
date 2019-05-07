@@ -16,9 +16,11 @@ class InvoiceVC: UIViewController {
     
     lazy var askCameraView: AskCameraView = {
         
-        guard let view = Bundle.main.loadNibNamed(String(describing: AskCameraView.self), owner: nil, options: nil)?[0] as? AskCameraView else { return AskCameraView() }
+        guard let view = Bundle.main.loadNibNamed(String(describing: AskCameraView.self),
+                                                  owner: nil, options: nil)?[0]
+            as? AskCameraView else { return AskCameraView() }
         
-        view.frame = CGRect(x: 0, y: 0 , width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         
         view.delegate = self
         

@@ -14,9 +14,12 @@ class SavingProvider {
     
     let notificationManager = MSNotificationManager()
     
+    let messageViewManager = MessageViewManager()
+    
     func createSaving(month: Month, amount: Int64, main: Bool = true, selectedExpenseCategory: ExpenseCategory? = nil) {
         
-        if checkSaving(month: month, amount: amount, main: main, selectedExpenseCategory: selectedExpenseCategory) == false {
+        if checkSaving(month: month, amount: amount, main: main,
+                       selectedExpenseCategory: selectedExpenseCategory) == false {
             
             return
             
@@ -36,6 +39,16 @@ class SavingProvider {
         
         notificationManager.postSavingChanged()
         
+        if main {
+            
+            messageViewManager.show(saving: saving, type: .add)
+            
+        } else {
+            
+            messageViewManager.show(subSaving: saving, type: .add)
+            
+        }
+        
     }
     
     func fetchSaving(month: Month) -> [Saving] {
@@ -47,7 +60,8 @@ class SavingProvider {
         
     }
     
-    func checkSaving(month: Month, amount: Int64, main: Bool = true, selectedExpenseCategory: ExpenseCategory? = nil) -> Bool {
+    func checkSaving(month: Month, amount: Int64, main: Bool = true,
+                     selectedExpenseCategory: ExpenseCategory? = nil) -> Bool {
         
         if main == false {
             
@@ -135,9 +149,21 @@ class SavingProvider {
         
         MSNotificationManager().postSavingChanged()
         
+        if saving.main {
+            
+            messageViewManager.show(saving: saving, type: .revise)
+            
+        } else {
+            
+            messageViewManager.show(subSaving: saving, type: .revise)
+            
+        }
+        
     }
     
     func delete(saving: Saving) {
+        
+        messageViewManager.show(subSaving: saving, type: .delete)
         
         coreDataManager.viewContext.delete(saving)
         

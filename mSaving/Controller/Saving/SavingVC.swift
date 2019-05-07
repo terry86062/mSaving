@@ -162,7 +162,7 @@ class SavingVC: UIViewController {
             
             helpHideTabBarVCBlackView()
             
-            guard let savingGoalSetVC = segue.destination as? SavingGoalSetVC else { return }
+            guard let savingGoalSetVC = segue.destination as? MainSavingVC else { return }
             
             savingGoalSetVC.selectedMonth = selectedMonth
             
@@ -172,7 +172,7 @@ class SavingVC: UIViewController {
             
             helpHideTabBarVCBlackView()
             
-            guard let savingDetailAddVC = segue.destination as? SavingDetailAddVC else { return }
+            guard let savingDetailAddVC = segue.destination as? SubSavingVC else { return }
             
             savingDetailAddVC.selectedMonth = selectedMonth
             
@@ -180,7 +180,7 @@ class SavingVC: UIViewController {
             
             helpHideTabBarVCBlackView()
             
-            guard let savingDetailAddVC = segue.destination as? SavingDetailAddVC else { return }
+            guard let savingDetailAddVC = segue.destination as? SubSavingVC else { return }
             
             savingDetailAddVC.selectedMonth = selectedMonth
             

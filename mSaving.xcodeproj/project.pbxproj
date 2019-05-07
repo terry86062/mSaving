@@ -16,6 +16,7 @@
 		DE21B90322578D9800B65719 /* PieChartCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE21B90122578D9800B65719 /* PieChartCVCell.xib */; };
 		DE21B906225794C900B65719 /* BarChartCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE21B904225794C900B65719 /* BarChartCVCell.swift */; };
 		DE21B907225794C900B65719 /* BarChartCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE21B905225794C900B65719 /* BarChartCVCell.xib */; };
+		DE29CC0322815860001EC04E /* MessageViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE29CC0222815860001EC04E /* MessageViewManager.swift */; };
 		DE2BB35C22539662001D55E4 /* SavingCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BB35A22539662001D55E4 /* SavingCVCell.swift */; };
 		DE2BB35D22539662001D55E4 /* SavingCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2BB35B22539662001D55E4 /* SavingCVCell.xib */; };
 		DE2BB36322539B95001D55E4 /* UICollectionView - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BB36222539B95001D55E4 /* UICollectionView - extension.swift */; };
@@ -42,7 +43,7 @@
 		DE97C650225919CE00D0C9CF /* AddSavingDetailCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE97C64E225919CE00D0C9CF /* AddSavingDetailCVCell.xib */; };
 		DE990ED3227E8F1000958B33 /* AskCameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE990ED2227E8F1000958B33 /* AskCameraView.xib */; };
 		DE990ED5227E8FB900958B33 /* AskCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE990ED4227E8FB900958B33 /* AskCameraView.swift */; };
-		DE99AC8A22563D1400B12AD6 /* SavingDetailAddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99AC8922563D1400B12AD6 /* SavingDetailAddVC.swift */; };
+		DE99AC8A22563D1400B12AD6 /* SubSavingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99AC8922563D1400B12AD6 /* SubSavingVC.swift */; };
 		DE9BEFEA225DD2DE003458AD /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BEFE9225DD2DE003458AD /* CoreDataManager.swift */; };
 		DEA5CEF4226DB83900A312E5 /* InvoiceToAccountingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA5CEF3226DB83900A312E5 /* InvoiceToAccountingVC.swift */; };
 		DEA6157B22794FDF00F086CC /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA6157A22794FDE00F086CC /* AlertManager.swift */; };
@@ -118,7 +119,7 @@
 		DEECB04C2253358B002D6C30 /* Chart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEECB0452253358B002D6C30 /* Chart.storyboard */; };
 		DEECB04D2253358B002D6C30 /* Saving.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEECB0462253358B002D6C30 /* Saving.storyboard */; };
 		DEECB05622533599002D6C30 /* ChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB04F22533599002D6C30 /* ChartVC.swift */; };
-		DEECB05722533599002D6C30 /* SavingGoalSetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB05022533599002D6C30 /* SavingGoalSetVC.swift */; };
+		DEECB05722533599002D6C30 /* MainSavingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB05022533599002D6C30 /* MainSavingVC.swift */; };
 		DEECB05822533599002D6C30 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB05122533599002D6C30 /* SettingVC.swift */; };
 		DEECB05A22533599002D6C30 /* SavingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB05322533599002D6C30 /* SavingVC.swift */; };
 		DEECB05B22533599002D6C30 /* AccountingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB05422533599002D6C30 /* AccountingVC.swift */; };
@@ -172,6 +173,7 @@
 		DE21B90122578D9800B65719 /* PieChartCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PieChartCVCell.xib; sourceTree = "<group>"; };
 		DE21B904225794C900B65719 /* BarChartCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartCVCell.swift; sourceTree = "<group>"; };
 		DE21B905225794C900B65719 /* BarChartCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarChartCVCell.xib; sourceTree = "<group>"; };
+		DE29CC0222815860001EC04E /* MessageViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewManager.swift; sourceTree = "<group>"; };
 		DE2BB35A22539662001D55E4 /* SavingCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingCVCell.swift; sourceTree = "<group>"; };
 		DE2BB35B22539662001D55E4 /* SavingCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavingCVCell.xib; sourceTree = "<group>"; };
 		DE2BB36222539B95001D55E4 /* UICollectionView - extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView - extension.swift"; sourceTree = "<group>"; };
@@ -198,7 +200,7 @@
 		DE97C64E225919CE00D0C9CF /* AddSavingDetailCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSavingDetailCVCell.xib; sourceTree = "<group>"; };
 		DE990ED2227E8F1000958B33 /* AskCameraView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AskCameraView.xib; sourceTree = "<group>"; };
 		DE990ED4227E8FB900958B33 /* AskCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskCameraView.swift; sourceTree = "<group>"; };
-		DE99AC8922563D1400B12AD6 /* SavingDetailAddVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingDetailAddVC.swift; sourceTree = "<group>"; };
+		DE99AC8922563D1400B12AD6 /* SubSavingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSavingVC.swift; sourceTree = "<group>"; };
 		DE9BEFE9225DD2DE003458AD /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		DEA5CEF3226DB83900A312E5 /* InvoiceToAccountingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceToAccountingVC.swift; sourceTree = "<group>"; };
 		DEA6157A22794FDE00F086CC /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
@@ -255,7 +257,7 @@
 		DEECB0452253358B002D6C30 /* Chart.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chart.storyboard; sourceTree = "<group>"; };
 		DEECB0462253358B002D6C30 /* Saving.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Saving.storyboard; sourceTree = "<group>"; };
 		DEECB04F22533599002D6C30 /* ChartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartVC.swift; sourceTree = "<group>"; };
-		DEECB05022533599002D6C30 /* SavingGoalSetVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavingGoalSetVC.swift; sourceTree = "<group>"; };
+		DEECB05022533599002D6C30 /* MainSavingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSavingVC.swift; sourceTree = "<group>"; };
 		DEECB05122533599002D6C30 /* SettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		DEECB05322533599002D6C30 /* SavingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavingVC.swift; sourceTree = "<group>"; };
 		DEECB05422533599002D6C30 /* AccountingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountingVC.swift; sourceTree = "<group>"; };
@@ -365,8 +367,8 @@
 			isa = PBXGroup;
 			children = (
 				DEECB05322533599002D6C30 /* SavingVC.swift */,
-				DEECB05022533599002D6C30 /* SavingGoalSetVC.swift */,
-				DE99AC8922563D1400B12AD6 /* SavingDetailAddVC.swift */,
+				DEECB05022533599002D6C30 /* MainSavingVC.swift */,
+				DE99AC8922563D1400B12AD6 /* SubSavingVC.swift */,
 				DEA65DFB225A63E400A10242 /* SearchVC.swift */,
 			);
 			path = Saving;
@@ -598,6 +600,7 @@
 				DE9BEFE9225DD2DE003458AD /* CoreDataManager.swift */,
 				DE366ABE226EE64700A65954 /* MSNotificationManager.swift */,
 				DEA6157A22794FDE00F086CC /* AlertManager.swift */,
+				DE29CC0222815860001EC04E /* MessageViewManager.swift */,
 				DEDE574C2271EB980071FCFD /* Time */,
 				DEDE57492271A4F50071FCFD /* Month */,
 				DE366AB4226EA7CB00A65954 /* Saving */,
@@ -618,12 +621,12 @@
 				DE2BB36222539B95001D55E4 /* UICollectionView - extension.swift */,
 				DEBE8C242254AE5200C2A8A3 /* UITableView - extension.swift */,
 				DEECB061225335FA002D6C30 /* UIImage - extension.swift */,
+				DEAF79B522757A85002C48B9 /* UILabel - extension.swift */,
 				DEBE8C1A2254836800C2A8A3 /* UIColor - extension.swift */,
-				DE2BB3682253AE16001D55E4 /* Int - extension.swift */,
 				DEBA92EE226D8A4F00D93806 /* String - extension.swift */,
+				DE2BB3682253AE16001D55E4 /* Int - extension.swift */,
 				DEEB5FB9226D79E90088C798 /* URLComponents - extension.swift */,
 				DE366AC0226EE88200A65954 /* Notification - extension.swift */,
-				DEAF79B522757A85002C48B9 /* UILabel - extension.swift */,
 				DE0BD66F227D41B200E03E31 /* Formatter - extension.swift */,
 			);
 			path = Extension;
@@ -959,6 +962,7 @@
 				DE4984B522586A0F004E4AE9 /* CategoryAccountingsDetailVC.swift in Sources */,
 				DEAA6A302259B07C00224B26 /* CategoryCVCell.swift in Sources */,
 				DE02DECA226C97B700B51201 /* InvoiceVC.swift in Sources */,
+				DE29CC0322815860001EC04E /* MessageViewManager.swift in Sources */,
 				DE2BB3662253AC1D001D55E4 /* MonthCVCell.swift in Sources */,
 				DE366ABF226EE64700A65954 /* MSNotificationManager.swift in Sources */,
 				DE7B38AE2257427200C17846 /* CategorySelectCVCell.swift in Sources */,
@@ -977,14 +981,14 @@
 				DEA65DF32259EE4700A10242 /* CategorysCVCell.swift in Sources */,
 				DEA65DFC225A63E400A10242 /* SearchVC.swift in Sources */,
 				DEF27CAC226977F30030DB9D /* CategoryAccountingsCVCell.swift in Sources */,
-				DE99AC8A22563D1400B12AD6 /* SavingDetailAddVC.swift in Sources */,
+				DE99AC8A22563D1400B12AD6 /* SubSavingVC.swift in Sources */,
 				DE366ABB226EBEF900A65954 /* SavingProvider.swift in Sources */,
 				DEA65DF62259F5F900A10242 /* SetCategoryVC.swift in Sources */,
 				DEACE3DC2257AD1900EA209C /* AnalysisCVCell.swift in Sources */,
 				DE97C64B2258E12400D0C9CF /* SavingGoalCVCell.swift in Sources */,
 				DEBE8C1B2254836800C2A8A3 /* UIColor - extension.swift in Sources */,
 				DE5776D8226F57D300652B61 /* AccountingTransformer.swift in Sources */,
-				DEECB05722533599002D6C30 /* SavingGoalSetVC.swift in Sources */,
+				DEECB05722533599002D6C30 /* MainSavingVC.swift in Sources */,
 				DEECB02E22533430002D6C30 /* mSaving.xcdatamodeld in Sources */,
 				DEECB05B22533599002D6C30 /* AccountingVC.swift in Sources */,
 				DE21B90222578D9800B65719 /* PieChartCVCell.swift in Sources */,

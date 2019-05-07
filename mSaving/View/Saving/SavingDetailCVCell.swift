@@ -50,7 +50,8 @@ class SavingDetailCVCell: UICollectionViewCell {
         
         categoryNameLabel.text = categoryName + "預算"
         
-        categoryBudgetLabel.text = "-$" + String(totalSpend.formattedWithSeparator) + "  /  " + "$" + String(Int(budget).formattedWithSeparator)
+        categoryBudgetLabel.text = "-$" + String(totalSpend.formattedWithSeparator) + "  /  "
+            + "$" + String(Int(budget).formattedWithSeparator)
         
         if budget != 0 {
             
@@ -63,7 +64,8 @@ class SavingDetailCVCell: UICollectionViewCell {
             } else {
                 
                 categorySpendView.frame = CGRect(x: 0, y: 0,
-                                                 width: categoryBudgetView.frame.width * CGFloat(Double(totalSpend) / Double(budget)),
+                                                 width: categoryBudgetView.frame.width *
+                                                    CGFloat(Double(totalSpend) / Double(budget)),
                                                  height: categoryBudgetView.frame.height)
                 
             }

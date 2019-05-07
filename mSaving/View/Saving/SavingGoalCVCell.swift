@@ -28,7 +28,8 @@ class SavingGoalCVCell: UICollectionViewCell {
         
         spendPercentView.frame = CGRect(x: 0, y: 0, width: 0, height: budgetProgressView.frame.height)
         
-        budgetLabel.text = "-$" + String(totalSpend.formattedWithSeparator) + "  /  " + "$" + String(Int(budget).formattedWithSeparator)
+        budgetLabel.text = "-$" + String(totalSpend.formattedWithSeparator) + "  /  "
+            + "$" + String(Int(budget).formattedWithSeparator)
         
         if budget != 0 {
             
@@ -41,7 +42,8 @@ class SavingGoalCVCell: UICollectionViewCell {
             } else {
                 
                 spendPercentView.frame = CGRect(x: 0, y: 0,
-                                                width: budgetProgressView.frame.width * CGFloat(Double(totalSpend) / Double(budget)),
+                                                width: budgetProgressView.frame.width *
+                                                    CGFloat(Double(totalSpend) / Double(budget)),
                                                 height: budgetProgressView.frame.height)
                 
             }

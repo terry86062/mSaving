@@ -111,6 +111,10 @@ class SettingVC: UIViewController {
         
         scrollView.delegate = self
         
+        segmentedBarView.frame = CGRect(x: accountsLabel.frame.origin.x,
+                                        y: accountsLabel.frame.origin.y + 18 + 3,
+                                        width: accountsLabel.frame.width, height: 3)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -267,7 +271,7 @@ extension SettingVC: UICollectionViewDataSource {
                 } else {
                     
                     cell.initAccountDateCVCell(leadingText: name,
-                                               trailingText: "-$\(abs(Int(anAccount.currentValue)).formattedWithSeparator)",
+                                    trailingText: "-$\(abs(Int(anAccount.currentValue)).formattedWithSeparator)",
                                                trailingColor: .red,
                                                havingShadow: true)
                     
@@ -429,7 +433,8 @@ extension SettingVC: UIScrollViewDelegate {
             segmentedBarView.frame.origin.x = width - 16 - 61.5 + scrollView.contentOffset.x * 93.5 / 414.fitScreen
             //129.5 + scrollView.contentOffset.x * 93.5 / 414
             
-            if segmentedBarView.frame.origin.x > scrollView.frame.width / 2 {
+            if segmentedBarView.frame.origin.x + segmentedBarView.frame.width
+                >= settingsLabel.frame.origin.x + settingsLabel.frame.width / 2 {
 
                 accountsLabel.textColor = .lightGray
 
@@ -439,7 +444,7 @@ extension SettingVC: UIScrollViewDelegate {
                                                 y: segmentedBarView.frame.origin.y,
                                                 width: settingsLabel.frame.width, height: 3)
 
-            } else if segmentedBarView.frame.origin.x < scrollView.frame.width / 2 {
+            } else if segmentedBarView.frame.origin.x < accountsLabel.frame.origin.x + accountsLabel.frame.width / 2 {
 
                 accountsLabel.textColor = .black
                 

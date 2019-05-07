@@ -283,7 +283,7 @@ extension InvoiceToAccountingVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        return UIEdgeInsets(top: 0, left: 36, bottom: 0, right: 36)
+        return UIEdgeInsets(top: 0, left: 43, bottom: 0, right: 38.2)
         
     }
     
@@ -299,7 +299,7 @@ extension InvoiceToAccountingVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
-        return 36
+        return 38.2
         
     }
     

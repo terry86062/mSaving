@@ -222,7 +222,13 @@ class AccountingVC: UIViewController {
         }
         
     }
-
+    
+    @IBAction func addAccountingToo(_ sender: UIButton) {
+        
+        addAccounting(UIBarButtonItem())
+        
+    }
+    
     @IBAction func addAccounting(_ sender: UIBarButtonItem) {
         
         guard let text = amountTextField.text, let amount = Int64(text), amount != 0 else { return }
@@ -250,7 +256,7 @@ class AccountingVC: UIViewController {
             
             hideTabBarVCBlackView()
             
-            showAddResult(selectedCategory: selectedCategory, amount: amount, addType: "修改", sub: "成")
+//            showAddResult(selectedCategory: selectedCategory, amount: amount, addType: "修改", sub: "成")
             
         } else {
             
@@ -266,7 +272,7 @@ class AccountingVC: UIViewController {
             
             hideTabBarVCBlackView()
             
-            showAddResult(selectedCategory: selectedCategory, amount: amount, addType: "新增")
+//            showAddResult(selectedCategory: selectedCategory, amount: amount, addType: "新增")
 
         }
 
@@ -420,11 +426,12 @@ class AccountingVC: UIViewController {
             
             if let expense = selectedAccounting.expenseCategory {
                 
-                self.showAddResult(selectedCategory: .expense(expense), amount: selectedAccounting.amount, addType: "刪除")
+//                self.showAddResult(selectedCategory: .expense(expense), amount: selectedAccounting.amount,
+//                                   addType: "刪除")
                 
             } else if let income = selectedAccounting.incomeCategory {
                 
-                self.showAddResult(selectedCategory: .income(income), amount: selectedAccounting.amount, addType: "刪除")
+//                self.showAddResult(selectedCategory: .income(income), amount: selectedAccounting.amount, addType: "刪除")
                 
             }
             
@@ -587,7 +594,7 @@ extension AccountingVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        return UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+        return UIEdgeInsets(top: 0, left: 43, bottom: 0, right: 38.2)
         
     }
     
@@ -603,7 +610,7 @@ extension AccountingVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
-        return 30
+        return 38.2
         
     }
 
