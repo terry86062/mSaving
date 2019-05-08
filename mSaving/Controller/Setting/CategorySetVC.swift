@@ -1,5 +1,5 @@
 //
-//  SetCategoryVC.swift
+//  CategorySetVC.swift
 //  mSaving
 //
 //  Created by 黃偉勛 Terry on 2019/4/7.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SetCategoryVC: UIViewController {
+class CategorySetVC: UIViewController {
 
     @IBOutlet weak var colorCollectionView: UICollectionView! {
 
@@ -80,7 +80,7 @@ class SetCategoryVC: UIViewController {
 
 }
 
-extension SetCategoryVC: UICollectionViewDataSource {
+extension CategorySetVC: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
@@ -101,9 +101,9 @@ extension SetCategoryVC: UICollectionViewDataSource {
 
 }
 
-extension SetCategoryVC: UICollectionViewDelegate { }
+extension CategorySetVC: UICollectionViewDelegate { }
 
-extension SetCategoryVC: UICollectionViewDelegateFlowLayout {
+extension CategorySetVC: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -131,7 +131,7 @@ extension SetCategoryVC: UICollectionViewDelegateFlowLayout {
 
 }
 
-extension SetCategoryVC {
+extension CategorySetVC {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 

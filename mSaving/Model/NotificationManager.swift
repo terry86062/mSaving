@@ -1,5 +1,5 @@
 //
-//  MSNotificationManager.swift
+//  NotificationManager.swift
 //  mSaving
 //
 //  Created by 黃偉勛 Terry on 2019/4/23.
@@ -8,9 +8,11 @@
 
 import UIKit
 
-class MSNotificationManager {
+class NotificationManager {
     
     var handler: (() -> Void)?
+    
+    // Observer
     
     func addAllNotification(changeHandler: @escaping () -> Void) {
         
@@ -33,11 +35,22 @@ class MSNotificationManager {
         
     }
     
+    func addAccountNotification(changeHandler: @escaping () -> Void) {
+        
+        handler = changeHandler
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(anyChanged(notification:)),
+                                               name: .accountChanged, object: nil)
+        
+    }
+    
     @objc func anyChanged(notification: Notification) {
         
         handler?()
         
     }
+    
+    // Post
     
     func postAccountingChanged() {
         
@@ -48,6 +61,12 @@ class MSNotificationManager {
     func postSavingChanged() {
         
         NotificationCenter.default.post(name: .savingChanged, object: nil)
+        
+    }
+    
+    func postAccountChanged() {
+        
+        NotificationCenter.default.post(name: .accountChanged, object: nil)
         
     }
     

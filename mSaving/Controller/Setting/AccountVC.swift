@@ -1,5 +1,5 @@
 //
-//  AccountDetailVC.swift
+//  AccountVC.swift
 //  mSaving
 //
 //  Created by 黃偉勛 Terry on 2019/4/11.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccountDetailVC: UIViewController {
+class AccountVC: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -18,39 +18,39 @@ class AccountDetailVC: UIViewController {
     
     @IBOutlet weak var deleteButton: UIButton!
     
-    var stringForTitle: String = ""
-    
-    var originalAccountName = ""
-    
-    weak var delegate: SettingVC?
+    var selectedAccount: Account?
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        accountTextField.text = delegate?.selectedAccountName
+        setUpView()
         
-        originalAccountName = delegate?.selectedAccountName ?? ""
+    }
+    
+    func setUpView() {
         
-        accountAmountTextField.text = delegate?.selectedAccountInitialValue
-        
-        titleLabel.text = stringForTitle
-        
-        if let delegate = delegate, delegate.isAddingNewAccount == true {
+        if let account = selectedAccount {
             
-//            accountTextField.becomeFirstResponder()
+            titleLabel.text = "帳戶資訊"
             
-            deleteButton.isHidden = true
+            accountTextField.text = account.name
+            
+            accountAmountTextField.text = "\(account.initialValue)"
+            
+            deleteButton.isHidden = false
+            
+        } else {
+            
+            titleLabel.text = "新增帳戶"
             
         }
+        
+        accountTextField.becomeFirstResponder()
         
     }
 
     @IBAction func dismiss(_ sender: UIButton) {
-        
-        delegate?.selectedAccountName = ""
-        
-        delegate?.selectedAccountInitialValue = ""
         
         accountTextField.resignFirstResponder()
         
@@ -78,31 +78,19 @@ class AccountDetailVC: UIViewController {
     
     func saveAccount() {
         
-        guard let delegate = delegate else { return }
-        
         guard let text = accountTextField.text, text != "" else { return }
         
         guard let amountText = accountAmountTextField.text, let amount = Int64(amountText) else { return }
         
-        if delegate.isAddingNewAccount {
+        if let account = selectedAccount {
             
-            if let account = AccountProvider().accounts.last {
-                
-                AccountProvider().createAccount(name: text, initalAmount: amount, priority: account.priority + 1)
-                
-            } else {
-                
-                AccountProvider().createAccount(name: text, initalAmount: amount, priority: 0)
-                
-            }
-
+            AccountProvider().reviseAccount(account: account, name: text, initialValue: amount)
+            
         } else {
             
-            AccountProvider().reviseAccount(accountName: originalAccountName, newName: text, newInitialValue: amount)
+            AccountProvider().createAccount(name: text, initalAmount: amount)
             
         }
-        
-        delegate.fetchData()
         
         dismiss(UIButton())
         
@@ -120,11 +108,9 @@ class AccountDetailVC: UIViewController {
         
         let deleteAction = UIAlertAction(title: "刪除", style: .default, handler: { _ in
             
-            guard let text = self.accountTextField.text, text != "" else { return }
+            guard let account = self.selectedAccount else { return }
             
-            AccountProvider().deleteAccount(accountName: text)
-            
-            self.delegate?.fetchData()
+            AccountProvider().deleteAccount(account: account)
             
             self.dismiss(UIButton())
             

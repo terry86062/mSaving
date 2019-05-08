@@ -40,7 +40,7 @@ class SavingVC: UIViewController {
 
     @IBOutlet weak var editingButton: UIButton!
     
-    let notificationManager = MSNotificationManager()
+    let notificationManager = NotificationManager()
     
     let viewContext = CoreDataManager.shared.viewContext
     

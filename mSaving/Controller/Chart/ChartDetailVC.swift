@@ -1,5 +1,5 @@
 //
-//  CategoryAccountingsDetailVC.swift
+//  ChartDetailVC.swift
 //  mSaving
 //
 //  Created by 黃偉勛 Terry on 2019/4/6.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryAccountingsDetailVC: UIViewController {
+class ChartDetailVC: UIViewController {
 
     @IBOutlet weak var categoryAccountingsCollectionView: UICollectionView! {
 
@@ -52,7 +52,7 @@ class CategoryAccountingsDetailVC: UIViewController {
 
 }
 
-extension CategoryAccountingsDetailVC: UICollectionViewDataSource {
+extension ChartDetailVC: UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
@@ -125,9 +125,9 @@ extension CategoryAccountingsDetailVC: UICollectionViewDataSource {
 
 }
 
-extension CategoryAccountingsDetailVC: UICollectionViewDelegate { }
+extension ChartDetailVC: UICollectionViewDelegate { }
 
-extension CategoryAccountingsDetailVC: UICollectionViewDelegateFlowLayout {
+extension ChartDetailVC: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

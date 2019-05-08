@@ -14,6 +14,8 @@ class AccountProvider {
     
     let coreDataManager = CoreDataManager.shared
     
+    let notificationManager = NotificationManager()
+    
     let messageViewManager = MessageViewManager()
     
     var accounts: [Account] {
@@ -22,7 +24,7 @@ class AccountProvider {
         
     }
     
-    func createAccount(name: String, initalAmount: Int64, priority: Int64) {
+    func createAccount(name: String, initalAmount: Int64) {
         
         let account = Account(context: coreDataManager.viewContext)
         
@@ -32,87 +34,61 @@ class AccountProvider {
         
         account.currentValue = initalAmount
         
-        account.priority = priority
+        if let last = accounts.last {
+            
+            account.priority = last.priority + 1
+            
+        } else {
+            
+            account.priority = 0
+            
+        }
         
         coreDataManager.saveContext()
+        
+        notificationManager.postAccountChanged()
         
         messageViewManager.show(account: account, type: .add)
         
     }
     
-    func deleteAccount(accountName: String) {
+    func reviseAccount(account: Account, name: String, initialValue: Int64) {
         
-        let request = NSFetchRequest<Account>(entityName: "Account")
+        account.name = name
         
-        request.predicate = NSPredicate(format: "name = %@", accountName)
+        account.currentValue -= account.initialValue
         
-        do {
-            
-            let account = try coreDataManager.viewContext.fetch(request)
-            
-            let request = NSFetchRequest<Account>(entityName: "Account")
-            
-            request.sortDescriptors = [NSSortDescriptor(key: "priority", ascending: true)]
-            
-            do {
-                
-                let accounts = try coreDataManager.viewContext.fetch(request)
-                
-                var priority = Int(account[0].priority)
-                
-                while priority + 1 < accounts.count {
-                    
-                    accounts[priority + 1].priority -= 1
-                    
-                    priority += 1
-                    
-                }
-                
-            } catch {
-                
-                print(error)
-                
-            }
-            
-            messageViewManager.show(account: account[0], type: .delete)
-            
-            coreDataManager.viewContext.delete(account[0])
-            
-        } catch {
-            
-            print(error)
-            
-        }
+        account.currentValue += initialValue
+        
+        account.initialValue = initialValue
         
         coreDataManager.saveContext()
+        
+        notificationManager.postAccountChanged()
+        
+        messageViewManager.show(account: account, type: .revise)
         
     }
     
-    func reviseAccount(accountName: String, newName: String, newInitialValue: Int64) {
+    func deleteAccount(account: Account) {
         
-        let request = NSFetchRequest<Account>(entityName: "Account")
+        var priority = Int(account.priority)
         
-        request.predicate = NSPredicate(format: "name = %@", accountName)
-        
-        do {
+        while priority + 1 < accounts.count {
             
-            let account = try coreDataManager.viewContext.fetch(request)
+            accounts[priority + 1].priority -= 1
             
-            account[0].name = newName
-            
-            account[0].currentValue = account[0].currentValue + newInitialValue - account[0].initialValue
-            
-            account[0].initialValue = newInitialValue
-            
-            messageViewManager.show(account: account[0], type: .revise)
-            
-        } catch {
-            
-            print("revise account fail")
+            priority += 1
             
         }
         
+        messageViewManager.show(account: account, type: .delete)
+        
+        coreDataManager.viewContext.delete(account)
+        
         coreDataManager.saveContext()
+        
+        notificationManager.postAccountChanged()
         
     }
     

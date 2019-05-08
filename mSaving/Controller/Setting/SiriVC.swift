@@ -1,5 +1,5 @@
 //
-//  UseSiriVC.swift
+//  SiriVC.swift
 //  mSaving
 //
 //  Created by 黃偉勛 Terry on 2019/5/2.
@@ -10,7 +10,7 @@ import UIKit
 
 import Intents
 
-class UseSiriVC: UIViewController {
+class SiriVC: UIViewController {
     
     @IBOutlet weak var useSiriButton: UIButton!
     

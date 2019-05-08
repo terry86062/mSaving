@@ -1,5 +1,5 @@
 //
-//  InvoiceToAccountingVC.swift
+//  InvoiceAddVC.swift
 //  mSaving
 //
 //  Created by 黃偉勛 Terry on 2019/4/22.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InvoiceToAccountingVC: UIViewController {
+class InvoiceAddVC: UIViewController {
     
     @IBOutlet weak var dateLabel: UILabel!
     
@@ -178,7 +178,7 @@ class InvoiceToAccountingVC: UIViewController {
     
 }
 
-extension InvoiceToAccountingVC: UICollectionViewDataSource {
+extension InvoiceAddVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -219,9 +219,9 @@ extension InvoiceToAccountingVC: UICollectionViewDataSource {
     
 }
 
-extension InvoiceToAccountingVC: UICollectionViewDelegate { }
+extension InvoiceAddVC: UICollectionViewDelegate { }
 
-extension InvoiceToAccountingVC: UICollectionViewDelegateFlowLayout {
+extension InvoiceAddVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

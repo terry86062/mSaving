@@ -20,7 +20,15 @@ struct SettingText {
 
 class SettingVC: UIViewController {
 
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollView: UIScrollView! {
+        
+        didSet {
+            
+            scrollView.delegate = self
+            
+        }
+        
+    }
     
     @IBOutlet weak var contentView: UIView!
     
@@ -70,15 +78,9 @@ class SettingVC: UIViewController {
     
     @IBOutlet weak var settingsLabel: UILabel!
     
-    var isAddingNewAccount = false
+    let notificationManager = NotificationManager()
     
-    var selectedAccountName = ""
-    
-    var selectedAccountInitialValue = ""
-    
-    var accountArray: [Account] = []
-    
-    var accountArrayCount = 0
+    var accounts: [Account] = []
     
     var settings: [SettingText] = [
         SettingText(leadingText: "類別顯示", trailingText: ">"),
@@ -86,30 +88,20 @@ class SettingVC: UIViewController {
         SettingText(leadingText: "隱私權聲明內容", trailingText: ">"),
         SettingText(leadingText: "給予評價", trailingText: ">")
     ]
-
+    
+    var selectedAccount: Account?
+    
     override func viewDidLoad() {
 
         super.viewDidLoad()
         
-        DispatchQueue.global(qos: .userInteractive).async {
-            
-            if let data = UserDefaults.standard.object(forKey: "userImage") as? NSData {
-
-                let image = UIImage(data: data as Data)
-
-                DispatchQueue.main.async {
-
-                    self.userImageView.image = image
-
-                }
-
-            }
-            
-        }
+        setUpUserImage()
         
         setUpCollectionView()
         
-        scrollView.delegate = self
+        fetchData()
+        
+        setUpNotification()
         
         segmentedBarView.frame = CGRect(x: accountsLabel.frame.origin.x,
                                         y: accountsLabel.frame.origin.y + 18 + 3,
@@ -117,16 +109,26 @@ class SettingVC: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    func setUpUserImage() {
         
-        super.viewWillAppear(animated)
-        
-        fetchData()
+        DispatchQueue.global(qos: .userInteractive).async {
+            
+            guard let data = UserDefaults.standard.object(forKey: "userImage") as? NSData else { return }
+            
+            let image = UIImage(data: data as Data)
+            
+            DispatchQueue.main.async {
+                
+                self.userImageView.image = image
+                
+            }
+            
+        }
         
     }
-
+    
     func setUpCollectionView() {
-
+        
         accountsCollectionView.helpRegisterView(cell: AccountingDateCVCell())
         
         accountsCollectionView.helpRegister(cell: AccountingDateCVCell())
@@ -136,7 +138,25 @@ class SettingVC: UIViewController {
         settingsCollectionView.helpRegister(cell: AccountingDateCVCell())
         
         accountsCollectionView.contentInset = UIEdgeInsets(top: 12, left: 16, bottom: 0, right: 16)
-
+        
+    }
+    
+    func fetchData() {
+        
+        accounts = AccountProvider().accounts
+        
+    }
+    
+    func setUpNotification() {
+        
+        notificationManager.addAccountNotification { [weak self] in
+            
+            self?.fetchData()
+            
+            self?.accountsCollectionView.reloadData()
+            
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -147,49 +167,23 @@ class SettingVC: UIViewController {
             
             tabBarVC.blackView.isHidden = false
             
-            guard let accountDetailVC = segue.destination as? AccountDetailVC else { return }
+            guard let accountDetailVC = segue.destination as? AccountVC else { return }
             
-            accountDetailVC.delegate = self
-            
-            if isAddingNewAccount {
-                
-                accountDetailVC.stringForTitle = "新增帳戶"
-                
-            } else {
-                
-                accountDetailVC.stringForTitle = "帳戶資訊"
-                
-            }
+            accountDetailVC.selectedAccount = selectedAccount
             
         }
         
     }
     
-    func fetchData() {
-        
-        let accountArray = AccountProvider().accounts
-        
-        self.accountArray = accountArray
-        
-        accountArrayCount = accountArray.count
-        
-        accountsCollectionView.reloadData()
-        
-    }
-    
     @IBAction func changeUserImage(_ sender: UIButton) {
         
-        AlertManager().showUserImageAlertWith(title: "請選擇圖片來源", message: "", viewController: self)
+        AlertManager().showUserImageAlertWith(title: "請選擇圖片來源", message: nil, viewController: self)
         
     }
     
     @IBAction func changeUserName(_ sender: UIButton) {
         
-        changeUserNameButton.isHidden = true
-        
-        finishUserNameButton.isHidden = false
-        
-        userNameTextField.isEnabled = true
+        helpChangeUserName()
         
         userNameTextField.becomeFirstResponder()
         
@@ -197,13 +191,19 @@ class SettingVC: UIViewController {
     
     @IBAction func finishChangeUserName(_ sender: UIButton) {
         
-        finishUserNameButton.isHidden = true
-        
-        changeUserNameButton.isHidden = false
-        
-        userNameTextField.isEnabled = false
+        helpChangeUserName()
         
         userNameTextField.resignFirstResponder()
+        
+    }
+    
+    func helpChangeUserName() {
+        
+        changeUserNameButton.isHidden = !changeUserNameButton.isHidden
+        
+        finishUserNameButton.isHidden = !finishUserNameButton.isHidden
+        
+        userNameTextField.isEnabled = !userNameTextField.isEnabled
         
     }
     
@@ -215,7 +215,7 @@ extension SettingVC: UICollectionViewDataSource {
 
         if collectionView == accountsCollectionView {
             
-            return accountArrayCount + 1
+            return accounts.count + 1
             
         } else {
             
@@ -230,7 +230,7 @@ extension SettingVC: UICollectionViewDataSource {
         
         if collectionView == accountsCollectionView {
             
-            if indexPath.row == accountArrayCount {
+            if indexPath.row == accounts.count {
                 
                 guard let cell = accountsCollectionView.dequeueReusableCell(
                     withReuseIdentifier: String(describing: AddSavingDetailCVCell.self),
@@ -242,9 +242,10 @@ extension SettingVC: UICollectionViewDataSource {
                 
                 cell.presentSavingDetailAdd = {
                     
-                    self.isAddingNewAccount = true
+                    self.selectedAccount = nil
                     
                     self.performSegue(withIdentifier: "goToAccountDetail", sender: nil)
+                    
                 }
                 
                 return cell
@@ -257,21 +258,21 @@ extension SettingVC: UICollectionViewDataSource {
                         return AccountingDateCVCell()
                 }
                 
-                let anAccount = accountArray[indexPath.row]
+                let account = accounts[indexPath.row]
                 
-                guard let name = anAccount.name else { return cell }
+                guard let name = account.name else { return cell }
                 
-                if anAccount.currentValue >= 0 {
+                if account.currentValue >= 0 {
                     
                     cell.initAccountDateCVCell(leadingText: name,
-                                               trailingText: "$\(Int(anAccount.currentValue).formattedWithSeparator)",
+                                               trailingText: "$\(Int(account.currentValue).formattedWithSeparator)",
                                                trailingColor: .black,
                                                havingShadow: true)
                     
                 } else {
                     
                     cell.initAccountDateCVCell(leadingText: name,
-                                    trailingText: "-$\(abs(Int(anAccount.currentValue)).formattedWithSeparator)",
+                                    trailingText: "-$\(abs(Int(account.currentValue)).formattedWithSeparator)",
                                                trailingColor: .red,
                                                havingShadow: true)
                     
@@ -279,11 +280,7 @@ extension SettingVC: UICollectionViewDataSource {
                 
                 cell.goToDetialPage = {
                     
-                    self.selectedAccountName = name
-                    
-                    self.selectedAccountInitialValue = String(anAccount.initialValue)
-                    
-                    self.isAddingNewAccount = false
+                    self.selectedAccount = account
                     
                     self.performSegue(withIdentifier: "goToAccountDetail", sender: nil)
                     
@@ -337,11 +334,11 @@ extension SettingVC: UICollectionViewDataSource {
         
         var totalAmount = 0
         
-        if accountArrayCount > 0 {
+        if accounts.count > 0 {
             
-            for index in 0...accountArrayCount - 1 {
+            for index in 0...accounts.count - 1 {
                 
-                totalAmount += Int(accountArray[index].currentValue)
+                totalAmount += Int(accounts[index].currentValue)
                 
             }
             
@@ -364,6 +361,7 @@ extension SettingVC: UICollectionViewDataSource {
         }
         
         return headerView
+        
     }
 
 }

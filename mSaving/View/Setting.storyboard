@@ -251,10 +251,10 @@
             </objects>
             <point key="canvasLocation" x="-603" y="1791"/>
         </scene>
-        <!--Account DetailVC-->
+        <!--AccountVC-->
         <scene sceneID="B65-g5-1My">
             <objects>
-                <viewController id="vnS-kl-hBB" customClass="AccountDetailVC" customModule="mSaving" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vnS-kl-hBB" customClass="AccountVC" customModule="mSaving" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dUX-A3-pLC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -328,7 +328,7 @@
                                             <action selector="confirm:" destination="vnS-kl-hBB" eventType="touchUpInside" id="5cv-FY-7Pu"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLW-K8-Y7k">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLW-K8-Y7k">
                                         <rect key="frame" x="374" y="16" width="24" height="24"/>
                                         <color key="backgroundColor" name="mSGreen"/>
                                         <constraints>
@@ -574,10 +574,10 @@
             </objects>
             <point key="canvasLocation" x="1558" y="1791"/>
         </scene>
-        <!--Use SiriVC-->
+        <!--SiriVC-->
         <scene sceneID="DW9-SJ-KXe">
             <objects>
-                <viewController id="L0o-oG-Mxg" customClass="UseSiriVC" customModule="mSaving" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="L0o-oG-Mxg" customClass="SiriVC" customModule="mSaving" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BUY-Fh-Hlf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -767,10 +767,10 @@
             </objects>
             <point key="canvasLocation" x="1557.9710144927537" y="2506.4732142857142"/>
         </scene>
-        <!--Set CategoryVC-->
+        <!--Category SetVC-->
         <scene sceneID="sp4-4a-cUp">
             <objects>
-                <viewController id="rKV-vh-dMk" customClass="SetCategoryVC" customModule="mSaving" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rKV-vh-dMk" customClass="CategorySetVC" customModule="mSaving" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RbX-jH-mwc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

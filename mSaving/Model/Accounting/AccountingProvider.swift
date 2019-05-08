@@ -32,7 +32,7 @@ class AccountingProvider {
     
     let transformer = AccountingTransformer()
     
-    let notificationManager = MSNotificationManager()
+    let notificationManager = NotificationManager()
     
     let messageViewManager = MessageViewManager()
     

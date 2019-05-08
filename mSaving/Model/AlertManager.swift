@@ -12,7 +12,7 @@ import AVFoundation
 
 class AlertManager {
     
-    func showUserImageAlertWith(title: String, message: String, viewController: UIViewController &
+    func showUserImageAlertWith(title: String, message: String?, viewController: UIViewController &
         UIImagePickerControllerDelegate & UINavigationControllerDelegate,
                                 style: UIAlertController.Style = .actionSheet) {
         

@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             CategoryProvider().initExpenseIncomeCategory()
             
-            AccountProvider().createAccount(name: "現金", initalAmount: 0, priority: 0)
+            AccountProvider().createAccount(name: "現金", initalAmount: 0)
             
             UserDefaults.standard.set(true, forKey: "launchedBefore")
             
@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         
-        MSNotificationManager().postAccountingChanged()
+        NotificationManager().postAccountingChanged()
         
     }
 

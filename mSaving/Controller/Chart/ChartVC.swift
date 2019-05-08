@@ -38,7 +38,7 @@ class ChartVC: UIViewController {
     
     @IBOutlet weak var expenseIncomeButton: UIButton!
     
-    let notificationManager = MSNotificationManager()
+    let notificationManager = NotificationManager()
     
     var firstAppear = true
     
@@ -138,7 +138,7 @@ class ChartVC: UIViewController {
         
         if segue.identifier == "goToCategoryAccountsDetailVC" {
             
-            guard let categoryAccountingsDetailVC = segue.destination as? CategoryAccountingsDetailVC else { return }
+            guard let categoryAccountingsDetailVC = segue.destination as? ChartDetailVC else { return }
             
             categoryAccountingsDetailVC.selectedCategoryMonthTotal = selectedCategoryMonthTotal
             

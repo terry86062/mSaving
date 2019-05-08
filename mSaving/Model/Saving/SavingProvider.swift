@@ -12,7 +12,7 @@ class SavingProvider {
     
     let coreDataManager = CoreDataManager.shared
     
-    let notificationManager = MSNotificationManager()
+    let notificationManager = NotificationManager()
     
     let messageViewManager = MessageViewManager()
     
@@ -147,7 +147,7 @@ class SavingProvider {
         
         CoreDataManager.shared.saveContext()
         
-        MSNotificationManager().postSavingChanged()
+        NotificationManager().postSavingChanged()
         
         if saving.main {
             
