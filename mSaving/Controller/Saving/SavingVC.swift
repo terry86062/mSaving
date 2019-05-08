@@ -36,15 +36,11 @@ class SavingVC: UIViewController {
     
     @IBOutlet weak var yearLabel: UILabel!
     
-    @IBOutlet weak var searchButton: UIButton!
+//    @IBOutlet weak var searchButton: UIButton!
 
     @IBOutlet weak var editingButton: UIButton!
     
     let notificationManager = NotificationManager()
-    
-    let viewContext = CoreDataManager.shared.viewContext
-    
-    var showAccounting = true
     
     var firstAppear = true
     
@@ -53,8 +49,6 @@ class SavingVC: UIViewController {
     var months: [Month] = []
     
     var selectedMonth: Month?
-    
-    var selectedAccounting: Accounting?
     
     var selectedSaving: Saving?
     
@@ -160,8 +154,6 @@ class SavingVC: UIViewController {
         
         if segue.identifier == "goToSavingGoalSetVC" {
             
-            helpHideTabBarVCBlackView()
-            
             guard let savingGoalSetVC = segue.destination as? MainSavingVC else { return }
             
             savingGoalSetVC.selectedMonth = selectedMonth
@@ -170,15 +162,11 @@ class SavingVC: UIViewController {
             
         } else if segue.identifier == "goToSavingDetailNew" {
             
-            helpHideTabBarVCBlackView()
-            
             guard let savingDetailAddVC = segue.destination as? SubSavingVC else { return }
             
             savingDetailAddVC.selectedMonth = selectedMonth
             
         } else if segue.identifier == "goToSavingDetailEdit" {
-            
-            helpHideTabBarVCBlackView()
             
             guard let savingDetailAddVC = segue.destination as? SubSavingVC else { return }
             
@@ -187,14 +175,6 @@ class SavingVC: UIViewController {
             savingDetailAddVC.selectedSavingDetail = selectedSavingDetail
             
         }
-        
-    }
-    
-    func helpHideTabBarVCBlackView() {
-        
-        guard let tabBarVC = tabBarController as? TabBarController else { return }
-        
-        tabBarVC.blackView.isHidden = false
         
     }
 
@@ -257,63 +237,8 @@ extension SavingVC: UICollectionViewDataSource {
             
             if months != [] {
 
-                cell.initSavingCVCell(showAccounting: showAccounting, month: months[indexPath.row])
+                cell.initSavingCVCell(showAccounting: editingButton.isHidden, month: months[indexPath.row], delegate: self)
 
-            }
-            
-            cell.touchMainSaving = {
-                
-                self.showAccounting = cell.showAccounting
-                
-//                self.searchButton.isHidden = !cell.showAccounting
-                
-                self.editingButton.isHidden = cell.showAccounting
-                
-                self.savingCollectionView.reloadData()
-                
-            }
-            
-            cell.presentSavingDetailNew = {
-                
-                if self.months != [] {
-                    
-                    self.selectedMonth = self.months[indexPath.row]
-                    
-                }
-                
-                self.performSegue(withIdentifier: "goToSavingDetailNew", sender: nil)
-                
-            }
-            
-            cell.presentSavingDetailEdit = {
-                
-                if self.months != [] {
-                    
-                    self.selectedMonth = self.months[indexPath.row]
-                    
-                }
-                
-                self.selectedSavingDetail = cell.selectedSavingDetail
-                
-                self.performSegue(withIdentifier: "goToSavingDetailEdit", sender: nil)
-                
-            }
-            
-            cell.goToAccountDetail = {
-                
-                guard let accountingVC = UIStoryboard.accounting.instantiateInitialViewController()
-                    as? AccountingVC else { return }
-                
-                self.selectedAccounting = cell.selectedAccounting
-                
-                accountingVC.selectedAccounting = self.selectedAccounting
-                
-                guard let tabBarVC = self.tabBarController as? TabBarController else { return }
-                
-                tabBarVC.blackView.isHidden = false
-                
-                self.present(accountingVC, animated: true, completion: nil)
-            
             }
             
             cell.savingAccountingCollectionView.reloadData()
@@ -326,10 +251,48 @@ extension SavingVC: UICollectionViewDataSource {
 
 }
 
+extension SavingVC: SavingCVCCellDelegate {
+    
+    func touchMain() {
+        
+        editingButton.isHidden = !editingButton.isHidden
+        
+        savingCollectionView.reloadData()
+        
+    }
+    
+    func touchSub(saving: Saving?) {
+        
+        selectedSavingDetail = saving
+        
+        performSegue(withIdentifier: "goToSavingDetailEdit", sender: nil)
+        
+    }
+    
+    func touchAddSaving() {
+        
+        selectedSavingDetail = nil
+        
+        self.performSegue(withIdentifier: "goToSavingDetailNew", sender: nil)
+        
+    }
+    
+    func touch(accounting: Accounting?) {
+        
+        guard let accountingVC = UIStoryboard.accounting.instantiateInitialViewController()
+            as? AccountingVC else { return }
+        
+        accountingVC.selectedAccounting = accounting
+        
+        present(accountingVC, animated: true, completion: nil)
+        
+    }
+    
+}
+
 extension SavingVC: UICollectionViewDelegateFlowLayout {
 
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
 
         if collectionView == monthCollectionView {
@@ -345,8 +308,7 @@ extension SavingVC: UICollectionViewDelegateFlowLayout {
 
     }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         if collectionView == monthCollectionView {
@@ -365,8 +327,7 @@ extension SavingVC: UICollectionViewDelegateFlowLayout {
 
 extension SavingVC {
 
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView,
-                                   withVelocity velocity: CGPoint,
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint,
                                    targetContentOffset: UnsafeMutablePointer<CGPoint>) {
 
         if scrollView == monthCollectionView {

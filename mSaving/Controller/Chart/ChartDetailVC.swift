@@ -114,8 +114,9 @@ extension ChartDetailVC: UICollectionViewDataSource {
             
             guard let selectedCategoryMonthTotal = selectedCategoryMonthTotal else { return cell }
 
-            cell.initAccountsCVCell(haveHeader: true,
-                                    accountings: selectedCategoryMonthTotal.accountings[indexPath.row])
+            cell.initAccountingsCVCell(haveHeader: true,
+                                    accountings: selectedCategoryMonthTotal.accountings[indexPath.row],
+                                    delegate: nil)
 
             return cell
 

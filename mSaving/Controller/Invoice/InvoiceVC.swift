@@ -139,10 +139,6 @@ class InvoiceVC: UIViewController {
         
         if segue.identifier == "goToInvoiceToAccountingVC" {
             
-            guard let tabBarVC = tabBarController as? TabBarController else { return }
-            
-            tabBarVC.blackView.isHidden = false
-            
             guard let invoiceToAccountingVC = segue.destination as? InvoiceAddVC else { return }
             
             invoiceToAccountingVC.invoiceYear = invoiceYear

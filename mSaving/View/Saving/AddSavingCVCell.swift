@@ -1,5 +1,5 @@
 //
-//  AddSavingDetailCVCell.swift
+//  AddSavingCVCell.swift
 //  mSaving
 //
 //  Created by 黃偉勛 Terry on 2019/4/7.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class AddSavingDetailCVCell: UICollectionViewCell {
+class AddSavingCVCell: UICollectionViewCell {
 
     @IBOutlet weak var plusImageView: UIImageView!
     
     @IBOutlet weak var addLabel: UILabel!
     
-    var presentSavingDetailAdd: (() -> Void)?
+    weak var delegate: SavingCVCCellDelegate?
 
     override func awakeFromNib() {
 
@@ -24,15 +24,17 @@ class AddSavingDetailCVCell: UICollectionViewCell {
 
     }
     
-    func initAddSavingDetailCVCell(addText: String) {
+    func initAddSavingCVCell(addText: String, delegate: SavingCVCCellDelegate?) {
         
         addLabel.text = addText
+        
+        self.delegate = delegate
         
     }
 
     @IBAction func goToSavingDetailAdd(_ sender: UIButton) {
-
-        presentSavingDetailAdd?()
+        
+        delegate?.touchAddSaving()
 
     }
 

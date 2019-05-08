@@ -1,5 +1,5 @@
 //
-//  SavingDetailCVCell.swift
+//  SubSavingCVCell.swift
 //  mSaving
 //
 //  Created by 黃偉勛 Terry on 2019/4/4.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SavingDetailCVCell: UICollectionViewCell {
+class SubSavingCVCell: UICollectionViewCell {
     
     @IBOutlet weak var categoryImageView: UIImageView!
     
@@ -20,7 +20,9 @@ class SavingDetailCVCell: UICollectionViewCell {
     
     @IBOutlet weak var categorySpendView: UIView!
     
-    var showSavingDetail: (() -> Void)?
+    weak var delegate: SavingCVCCellDelegate?
+    
+    var selectedSaving: Saving?
 
     override func awakeFromNib() {
 
@@ -32,7 +34,11 @@ class SavingDetailCVCell: UICollectionViewCell {
 
     }
     
-    func initSavingDetailCVCell(budget: Int64, totalSpend: Int, imageName: String, categoryName: String, hex: String) {
+    func initSubSavingCVCell(saving: Saving, budget: Int64, totalSpend: Int, imageName: String, categoryName: String, hex: String, delegate: SavingCVCCellDelegate?) {
+        
+        self.delegate = delegate
+        
+        selectedSaving = saving
         
         categorySpendView.frame = CGRect(x: 0, y: 0, width: 0, height: categoryBudgetView.frame.height)
         
@@ -75,8 +81,8 @@ class SavingDetailCVCell: UICollectionViewCell {
     }
 
     @IBAction func goToSavingDetailAdd(_ sender: UIButton) {
-
-        showSavingDetail?()
+        
+        delegate?.touchSub(saving: selectedSaving)
 
     }
 

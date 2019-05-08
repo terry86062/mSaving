@@ -133,7 +133,7 @@ class SettingVC: UIViewController {
         
         accountsCollectionView.helpRegister(cell: AccountingDateCVCell())
         
-        accountsCollectionView.helpRegister(cell: AddSavingDetailCVCell())
+        accountsCollectionView.helpRegister(cell: AddSavingCVCell())
         
         settingsCollectionView.helpRegister(cell: AccountingDateCVCell())
         
@@ -162,10 +162,6 @@ class SettingVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "goToAccountDetail" {
-            
-            guard let tabBarVC = tabBarController as? TabBarController else { return }
-            
-            tabBarVC.blackView.isHidden = false
             
             guard let accountDetailVC = segue.destination as? AccountVC else { return }
             
@@ -233,20 +229,20 @@ extension SettingVC: UICollectionViewDataSource {
             if indexPath.row == accounts.count {
                 
                 guard let cell = accountsCollectionView.dequeueReusableCell(
-                    withReuseIdentifier: String(describing: AddSavingDetailCVCell.self),
-                    for: indexPath) as? AddSavingDetailCVCell else {
-                        return AddSavingDetailCVCell()
+                    withReuseIdentifier: String(describing: AddSavingCVCell.self),
+                    for: indexPath) as? AddSavingCVCell else {
+                        return AddSavingCVCell()
                 }
                 
-                cell.initAddSavingDetailCVCell(addText: "新增帳戶")
-                
-                cell.presentSavingDetailAdd = {
-                    
-                    self.selectedAccount = nil
-                    
-                    self.performSegue(withIdentifier: "goToAccountDetail", sender: nil)
-                    
-                }
+//                cell.initAddSavingDetailCVCell(addText: "新增帳戶")
+//
+//                cell.presentSavingDetailAdd = {
+//
+//                    self.selectedAccount = nil
+//
+//                    self.performSegue(withIdentifier: "goToAccountDetail", sender: nil)
+//
+//                }
                 
                 return cell
                 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccountVC: UIViewController {
+class AccountVC: PresentVC {
     
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -57,16 +57,6 @@ class AccountVC: UIViewController {
         accountAmountTextField.resignFirstResponder()
         
         dismiss(animated: true, completion: nil)
-        
-        hideTabBarVCBlackView()
-        
-    }
-    
-    func hideTabBarVCBlackView() {
-        
-        guard let tabBarVC = presentingViewController as? TabBarController else { return }
-        
-        tabBarVC.blackView.isHidden = true
         
     }
     

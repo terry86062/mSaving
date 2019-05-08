@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InvoiceAddVC: UIViewController {
+class InvoiceAddVC: PresentVC {
     
     @IBOutlet weak var dateLabel: UILabel!
     
@@ -97,16 +97,6 @@ class InvoiceAddVC: UIViewController {
     @IBAction func dismiss(_ sender: UIButton) {
         
         dismiss(animated: true, completion: nil)
-        
-        hideTabBarVCBlackView()
-        
-    }
-    
-    func hideTabBarVCBlackView() {
-        
-        guard let tabBarVC = presentingViewController as? TabBarController else { return }
-        
-        tabBarVC.blackView.isHidden = true
         
     }
     

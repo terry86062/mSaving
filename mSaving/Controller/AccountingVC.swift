@@ -14,7 +14,7 @@ import FSCalendar
 
 import Firebase
 
-class AccountingVC: UIViewController {
+class AccountingVC: PresentVC {
 
     @IBOutlet weak var calendar: FSCalendar!
 
@@ -285,17 +285,7 @@ class AccountingVC: UIViewController {
         amountTextField.resignFirstResponder()
 
         dismiss(animated: true, completion: nil)
-        
-        hideTabBarVCBlackView()
 
-    }
-    
-    func hideTabBarVCBlackView() {
-        
-        guard let tabBarVC = presentingViewController as? TabBarController else { return }
-        
-        tabBarVC.blackView.isHidden = true
-        
     }
     
     @IBAction func changeAccount(_ sender: UIButton) {

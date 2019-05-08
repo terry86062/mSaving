@@ -1,5 +1,5 @@
 //
-//  SavingGoalCVCell.swift
+//  MainSavingCVCell.swift
 //  mSaving
 //
 //  Created by 黃偉勛 Terry on 2019/4/6.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SavingGoalCVCell: UICollectionViewCell {
+class MainSavingCVCell: UICollectionViewCell {
     
     @IBOutlet weak var budgetLabel: UILabel!
     
@@ -16,7 +16,7 @@ class SavingGoalCVCell: UICollectionViewCell {
     
     @IBOutlet weak var spendPercentView: UIView!
     
-    var touchMainSaving: (() -> Void)?
+    weak var delegate: SavingCVCCellDelegate?
 
     override func awakeFromNib() {
 
@@ -24,7 +24,7 @@ class SavingGoalCVCell: UICollectionViewCell {
 
     }
     
-    func initSavingGoalCVCell(budget: Int64, totalSpend: Int) {
+    func initMainSavingCVCell(budget: Int64, totalSpend: Int, delegate: SavingCVCCellDelegate?) {
         
         spendPercentView.frame = CGRect(x: 0, y: 0, width: 0, height: budgetProgressView.frame.height)
         
@@ -50,11 +50,13 @@ class SavingGoalCVCell: UICollectionViewCell {
             
         }
         
+        self.delegate = delegate
+        
     }
 
     @IBAction func touchMainSaving(_ sender: UIButton) {
-
-        touchMainSaving?()
+        
+        delegate?.touchMain()
 
     }
 

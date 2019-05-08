@@ -8,6 +8,18 @@
 
 import UIKit
 
+protocol SavingCVCCellDelegate: AnyObject {
+    
+    func touchMain()
+    
+    func touchSub(saving: Saving?)
+    
+    func touchAddSaving()
+    
+    func touch(accounting: Accounting?)
+    
+}
+
 class SavingCVCell: UICollectionViewCell {
 
     @IBOutlet weak var savingAccountingCollectionView: UICollectionView! {
@@ -38,19 +50,9 @@ class SavingCVCell: UICollectionViewCell {
     
     var expenseMonthTotal: [CategoryMonthTotal] = []
     
-    var touchMainSaving: (() -> Void)?
-    
-    var presentSavingDetailNew: (() -> Void)?
-    
-    var presentSavingDetailEdit: (() -> Void)?
-    
-    var goToAccountDetail: (() -> Void)?
+    weak var delegate: SavingCVCCellDelegate?
     
     var totalSpend = 0
-    
-    var selectedAccounting: Accounting?
-    
-    var selectedSavingDetail: Saving?
     
     override func awakeFromNib() {
 
@@ -58,7 +60,7 @@ class SavingCVCell: UICollectionViewCell {
 
     }
 
-    func initSavingCVCell(showAccounting: Bool, month: Month) {
+    func initSavingCVCell(showAccounting: Bool, month: Month, delegate: SavingCVCCellDelegate?) {
         
         noDataImageView.isHidden = true
         
@@ -84,17 +86,19 @@ class SavingCVCell: UICollectionViewCell {
             
         }
         
+        self.delegate = delegate
+        
     }
 
     func setUpCollectionView() {
         
         savingAccountingCollectionView.helpRegister(cell: AccountingsCVCell())
 
-        savingAccountingCollectionView.helpRegister(cell: SavingGoalCVCell())
+        savingAccountingCollectionView.helpRegister(cell: MainSavingCVCell())
 
-        savingAccountingCollectionView.helpRegister(cell: SavingDetailCVCell())
+        savingAccountingCollectionView.helpRegister(cell: SubSavingCVCell())
 
-        savingAccountingCollectionView.helpRegister(cell: AddSavingDetailCVCell())
+        savingAccountingCollectionView.helpRegister(cell: AddSavingCVCell())
 
     }
 
@@ -130,42 +134,18 @@ extension SavingCVCell: UICollectionViewDataSource {
         if indexPath.row == 0 {
             
             guard let cell = savingAccountingCollectionView.dequeueReusableCell(
-                withReuseIdentifier: String(describing: SavingGoalCVCell.self),
-                for: indexPath) as? SavingGoalCVCell else {
-                    return SavingGoalCVCell()
+                withReuseIdentifier: String(describing: MainSavingCVCell.self),
+                for: indexPath) as? MainSavingCVCell else {
+                    return MainSavingCVCell()
             }
             
             if savings == [] {
                 
-                cell.initSavingGoalCVCell(budget: 0, totalSpend: totalSpend)
+                cell.initMainSavingCVCell(budget: 0, totalSpend: totalSpend, delegate: delegate)
                 
             } else {
                 
-                cell.initSavingGoalCVCell(budget: savings[0].amount, totalSpend: totalSpend)
-                
-            }
-            
-            cell.touchMainSaving = { [weak self] in
-                
-                guard let weakSelf = self else { return }
-                
-                weakSelf.showAccounting = !weakSelf.showAccounting
-                
-                if weakSelf.showAccounting, weakSelf.accountingsGroup == [] {
-                    
-                    weakSelf.noDataLabel.isHidden = false
-                    
-                    weakSelf.noDataImageView.isHidden = false
-                    
-                } else {
-                    
-                    weakSelf.noDataLabel.isHidden = true
-                    
-                    weakSelf.noDataImageView.isHidden = true
-                    
-                }
-                
-                weakSelf.touchMainSaving?()
+                cell.initMainSavingCVCell(budget: savings[0].amount, totalSpend: totalSpend, delegate: delegate)
                 
             }
             
@@ -181,15 +161,7 @@ extension SavingCVCell: UICollectionViewDataSource {
                         return AccountingsCVCell()
                 }
                 
-                cell.initAccountsCVCell(haveHeader: true, accountings: accountingsGroup[indexPath.row - 1])
-                
-                cell.goToAccountDetail = {
-                    
-                    self.selectedAccounting = cell.selectedAccounting
-                    
-                    self.goToAccountDetail?()
-                    
-                }
+                cell.initAccountingsCVCell(haveHeader: true, accountings: accountingsGroup[indexPath.row - 1], delegate: delegate)
                 
                 cell.accountingsCollectionView.reloadData()
                 
@@ -200,12 +172,12 @@ extension SavingCVCell: UICollectionViewDataSource {
                 if savings == [] {
                     
                     guard let cell = collectionView.dequeueReusableCell(
-                        withReuseIdentifier: String(describing: AddSavingDetailCVCell.self),
-                        for: indexPath) as? AddSavingDetailCVCell else {
-                            return AddSavingDetailCVCell()
+                        withReuseIdentifier: String(describing: AddSavingCVCell.self),
+                        for: indexPath) as? AddSavingCVCell else {
+                            return AddSavingCVCell()
                     }
                     
-                    cell.presentSavingDetailAdd = presentSavingDetailNew
+                    cell.initAddSavingCVCell(addText: "新增子預算", delegate: delegate)
                     
                     return cell
                     
@@ -214,21 +186,21 @@ extension SavingCVCell: UICollectionViewDataSource {
                     if indexPath.row == savings.count {
                         
                         guard let cell = collectionView.dequeueReusableCell(
-                            withReuseIdentifier: String(describing: AddSavingDetailCVCell.self),
-                            for: indexPath) as? AddSavingDetailCVCell else {
-                                return AddSavingDetailCVCell()
+                            withReuseIdentifier: String(describing: AddSavingCVCell.self),
+                            for: indexPath) as? AddSavingCVCell else {
+                                return AddSavingCVCell()
                         }
                         
-                        cell.presentSavingDetailAdd = presentSavingDetailNew
+                        cell.initAddSavingCVCell(addText: "新增子預算", delegate: delegate)
                         
                         return cell
                         
                     } else {
                         
                         guard let cell = collectionView.dequeueReusableCell(
-                            withReuseIdentifier: String(describing: SavingDetailCVCell.self),
-                            for: indexPath) as? SavingDetailCVCell else {
-                                return SavingDetailCVCell()
+                            withReuseIdentifier: String(describing: SubSavingCVCell.self),
+                            for: indexPath) as? SubSavingCVCell else {
+                                return SubSavingCVCell()
                         }
                         
                         if savings.count > 0 {
@@ -249,27 +221,21 @@ extension SavingCVCell: UICollectionViewDataSource {
                                         
                                 }
                                 
-                                cell.initSavingDetailCVCell(budget: savings[indexPath.row].amount,
-                                                            totalSpend: totalSpend,
-                                                            imageName: iconName,
-                                                            categoryName: name, hex: color)
+                                cell.initSubSavingCVCell(saving: savings[indexPath.row],
+                                                         budget: savings[indexPath.row].amount,
+                                                         totalSpend: totalSpend,
+                                                         imageName: iconName,
+                                                         categoryName: name, hex: color, delegate: delegate)
                                 
                             } else {
                                 
-                                cell.initSavingDetailCVCell(budget: savings[indexPath.row].amount,
-                                                            totalSpend: totalSpend,
-                                                            imageName: iconName,
-                                                            categoryName: name, hex: color)
+                                cell.initSubSavingCVCell(saving: savings[indexPath.row],
+                                                         budget: savings[indexPath.row].amount,
+                                                         totalSpend: totalSpend,
+                                                         imageName: iconName,
+                                                         categoryName: name, hex: color, delegate: delegate)
                                 
                             }
-                            
-                        }
-                        
-                        cell.showSavingDetail = {
-                            
-                            self.selectedSavingDetail = self.savings[indexPath.row]
-                            
-                            self.presentSavingDetailEdit?()
                             
                         }
                         
@@ -350,14 +316,6 @@ extension SavingCVCell: UICollectionViewDelegateFlowLayout {
             }
             
         }
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        
-        return 16
         
     }
     

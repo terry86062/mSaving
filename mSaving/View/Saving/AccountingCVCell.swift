@@ -18,7 +18,9 @@ class AccountingCVCell: UICollectionViewCell {
     
     @IBOutlet weak var accountingAmountLabel: UILabel!
     
-    var goToAccountDetail: (() -> Void)?
+    weak var delegate: SavingCVCCellDelegate?
+    
+    var selectedAccounting: Accounting?
     
     override func awakeFromNib() {
 
@@ -26,7 +28,7 @@ class AccountingCVCell: UICollectionViewCell {
 
     }
 
-    func initAccountCVCell(accounting: Accounting) {
+    func initAccountCVCell(accounting: Accounting, delegate: SavingCVCCellDelegate?) {
         
         if let category = accounting.expenseCategory,
             let iconName = category.iconName,
@@ -58,11 +60,15 @@ class AccountingCVCell: UICollectionViewCell {
             
         }
         
+        selectedAccounting = accounting
+        
+        self.delegate = delegate
+        
     }
 
     @IBAction func goToAccountDetail(_ sender: UIButton) {
-
-        goToAccountDetail?()
+        
+        delegate?.touch(accounting: selectedAccounting)
 
     }
 

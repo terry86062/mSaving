@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainSavingVC: UIViewController {
+class MainSavingVC: PresentVC {
 
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -63,16 +63,6 @@ class MainSavingVC: UIViewController {
         savingTextField.resignFirstResponder()
         
         dismiss(animated: true, completion: nil)
-        
-        hideTabBarVCBlackView()
-        
-    }
-    
-    func hideTabBarVCBlackView() {
-        
-        guard let tabBarVC = presentingViewController as? TabBarController else { return }
-        
-        tabBarVC.blackView.isHidden = true
         
     }
     

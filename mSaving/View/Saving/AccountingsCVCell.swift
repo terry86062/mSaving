@@ -28,9 +28,7 @@ class AccountingsCVCell: UICollectionViewCell {
     
     var accountings: [Accounting] = []
     
-    var goToAccountDetail: (() -> Void)?
-    
-    var selectedAccounting: Accounting?
+    weak var delegate: SavingCVCCellDelegate?
 
     override func awakeFromNib() {
 
@@ -38,11 +36,13 @@ class AccountingsCVCell: UICollectionViewCell {
 
     }
 
-    func initAccountsCVCell(haveHeader: Bool, accountings: [Accounting]) {
+    func initAccountingsCVCell(haveHeader: Bool, accountings: [Accounting], delegate: SavingCVCCellDelegate?) {
 
         self.haveHeader = haveHeader
         
         self.accountings = accountings
+        
+        self.delegate = delegate
 
     }
 
@@ -71,15 +71,7 @@ extension AccountingsCVCell: UICollectionViewDataSource {
             withReuseIdentifier: String(describing: AccountingCVCell.self),
             for: indexPath) as? AccountingCVCell else { return UICollectionViewCell() }
         
-        cell.initAccountCVCell(accounting: accountings[indexPath.row])
-
-        cell.goToAccountDetail = {
-            
-            self.selectedAccounting = self.accountings[indexPath.row]
-            
-            self.goToAccountDetail?()
-            
-        }
+        cell.initAccountCVCell(accounting: accountings[indexPath.row], delegate: delegate)
 
         return cell
 
