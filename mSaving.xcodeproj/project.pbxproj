@@ -37,6 +37,14 @@
 		DE712852225E541400E12283 /* AccountDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE712851225E541400E12283 /* AccountDetailVC.swift */; };
 		DE7B38AE2257427200C17846 /* CategorySelectCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7B38AC2257427200C17846 /* CategorySelectCVCell.swift */; };
 		DE7B38AF2257427200C17846 /* CategorySelectCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE7B38AD2257427200C17846 /* CategorySelectCVCell.xib */; };
+		DE8F7BFA22818BB900EBFDBD /* AccountingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366ABC226EC20700A65954 /* AccountingProvider.swift */; };
+		DE8F7BFB22818BBA00EBFDBD /* AccountingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366ABC226EC20700A65954 /* AccountingProvider.swift */; };
+		DE8F7BFD22818EF300EBFDBD /* MessageViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE29CC0222815860001EC04E /* MessageViewManager.swift */; };
+		DE8F7BFE22818EF300EBFDBD /* MessageViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE29CC0222815860001EC04E /* MessageViewManager.swift */; };
+		DE8F7BFF22818F3400EBFDBD /* UIImage - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB061225335FA002D6C30 /* UIImage - extension.swift */; };
+		DE8F7C0022818F3500EBFDBD /* UIImage - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB061225335FA002D6C30 /* UIImage - extension.swift */; };
+		DE8F7C0122818F3700EBFDBD /* UIColor - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C1A2254836800C2A8A3 /* UIColor - extension.swift */; };
+		DE8F7C0222818F3800EBFDBD /* UIColor - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C1A2254836800C2A8A3 /* UIColor - extension.swift */; };
 		DE97C64B2258E12400D0C9CF /* SavingGoalCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97C6492258E12400D0C9CF /* SavingGoalCVCell.swift */; };
 		DE97C64C2258E12400D0C9CF /* SavingGoalCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE97C64A2258E12400D0C9CF /* SavingGoalCVCell.xib */; };
 		DE97C64F225919CE00D0C9CF /* AddSavingDetailCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97C64D225919CE00D0C9CF /* AddSavingDetailCVCell.swift */; };
@@ -76,8 +84,6 @@
 		DEDE572022702EB20071FCFD /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEDE571E22702EB20071FCFD /* MainInterface.storyboard */; };
 		DEDE572422702EB20071FCFD /* PaymentIntentUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DEDE571822702EB20071FCFD /* PaymentIntentUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DEDE572722702EB20071FCFD /* PaymentIntent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DEDE570F22702EB10071FCFD /* PaymentIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		DEDE572F2270330C0071FCFD /* AccountingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366ABC226EC20700A65954 /* AccountingProvider.swift */; };
-		DEDE57302270330C0071FCFD /* AccountingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366ABC226EC20700A65954 /* AccountingProvider.swift */; };
 		DEDE5731227033400071FCFD /* mSaving.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DEECB02C22533430002D6C30 /* mSaving.xcdatamodeld */; };
 		DEDE5732227033410071FCFD /* mSaving.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DEECB02C22533430002D6C30 /* mSaving.xcdatamodeld */; };
 		DEDE5735227033E40071FCFD /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9BEFE9225DD2DE003458AD /* CoreDataManager.swift */; };
@@ -167,6 +173,12 @@
 /* Begin PBXFileReference section */
 		2269CA763E2B12B921C758F2 /* Pods-mSaving.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mSaving.debug.xcconfig"; path = "Target Support Files/Pods-mSaving/Pods-mSaving.debug.xcconfig"; sourceTree = "<group>"; };
 		2C6C6317FBC34568D8610458 /* Pods-mSaving.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mSaving.release.xcconfig"; path = "Target Support Files/Pods-mSaving/Pods-mSaving.release.xcconfig"; sourceTree = "<group>"; };
+		39954889D5B7E72FC0F1A436 /* Pods_PaymentIntent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaymentIntent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44CCA7C78D1A03C2A0EEA8EE /* Pods_PaymentIntentUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaymentIntentUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BACA53F095B584B936B8306 /* Pods-PaymentIntent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaymentIntent.debug.xcconfig"; path = "Target Support Files/Pods-PaymentIntent/Pods-PaymentIntent.debug.xcconfig"; sourceTree = "<group>"; };
+		8CF849528FF6FDFC2BF5FBF6 /* Pods-PaymentIntent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaymentIntent.release.xcconfig"; path = "Target Support Files/Pods-PaymentIntent/Pods-PaymentIntent.release.xcconfig"; sourceTree = "<group>"; };
+		C04056EC67D5D2B804E98C9C /* Pods-PaymentIntentUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaymentIntentUI.debug.xcconfig"; path = "Target Support Files/Pods-PaymentIntentUI/Pods-PaymentIntentUI.debug.xcconfig"; sourceTree = "<group>"; };
+		DD872CB340C41B2FB7A2BD8D /* Pods-PaymentIntentUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaymentIntentUI.release.xcconfig"; path = "Target Support Files/Pods-PaymentIntentUI/Pods-PaymentIntentUI.release.xcconfig"; sourceTree = "<group>"; };
 		DE02DEC9226C97B700B51201 /* InvoiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceVC.swift; sourceTree = "<group>"; };
 		DE0BD66F227D41B200E03E31 /* Formatter - extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter - extension.swift"; sourceTree = "<group>"; };
 		DE21B90022578D9800B65719 /* PieChartCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartCVCell.swift; sourceTree = "<group>"; };
@@ -303,6 +315,10 @@
 			children = (
 				2269CA763E2B12B921C758F2 /* Pods-mSaving.debug.xcconfig */,
 				2C6C6317FBC34568D8610458 /* Pods-mSaving.release.xcconfig */,
+				4BACA53F095B584B936B8306 /* Pods-PaymentIntent.debug.xcconfig */,
+				8CF849528FF6FDFC2BF5FBF6 /* Pods-PaymentIntent.release.xcconfig */,
+				C04056EC67D5D2B804E98C9C /* Pods-PaymentIntentUI.debug.xcconfig */,
+				DD872CB340C41B2FB7A2BD8D /* Pods-PaymentIntentUI.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -312,6 +328,8 @@
 			children = (
 				E2F60CB0FEB4CC786F0B4059 /* Pods_mSaving.framework */,
 				DEDE571922702EB20071FCFD /* IntentsUI.framework */,
+				39954889D5B7E72FC0F1A436 /* Pods_PaymentIntent.framework */,
+				44CCA7C78D1A03C2A0EEA8EE /* Pods_PaymentIntentUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -647,6 +665,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DEDE572B22702EB20071FCFD /* Build configuration list for PBXNativeTarget "PaymentIntent" */;
 			buildPhases = (
+				FD426991EDFA8D65FA1FBEC7 /* [CP] Check Pods Manifest.lock */,
 				DEDE570B22702EB10071FCFD /* Sources */,
 				DEDE570C22702EB10071FCFD /* Frameworks */,
 				DEDE570D22702EB10071FCFD /* Resources */,
@@ -664,6 +683,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DEDE572822702EB20071FCFD /* Build configuration list for PBXNativeTarget "PaymentIntentUI" */;
 			buildPhases = (
+				C858FB9E2764DA990687734F /* [CP] Check Pods Manifest.lock */,
 				DEDE571422702EB20071FCFD /* Sources */,
 				DEDE571522702EB20071FCFD /* Frameworks */,
 				DEDE571622702EB20071FCFD /* Resources */,
@@ -866,6 +886,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C858FB9E2764DA990687734F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PaymentIntentUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DE93BBBA225C993B00DCD069 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -902,6 +944,28 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" bf023c90a8ead00f2b68024796cedc7139b7db01 6b9bd6f009138673dfd578f47fb4e8db23b83ddf93172e3231477996bfe60c90\n";
 		};
+		FD426991EDFA8D65FA1FBEC7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PaymentIntent-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -911,17 +975,20 @@
 			files = (
 				DEDE57432270C0EC0071FCFD /* IntentViewController.swift in Sources */,
 				DEDE5737227033E70071FCFD /* MSNotificationManager.swift in Sources */,
+				DE8F7BFD22818EF300EBFDBD /* MessageViewManager.swift in Sources */,
+				DE8F7BFA22818BB900EBFDBD /* AccountingProvider.swift in Sources */,
 				DEDE57552271F5250071FCFD /* TimeManager.swift in Sources */,
 				DE1544F522748C9D00814EC3 /* AccountProvider.swift in Sources */,
 				DEDE571222702EB10071FCFD /* IntentHandler.swift in Sources */,
 				DEDE573D227036030071FCFD /* CategoryProvider.swift in Sources */,
 				DEDE5731227033400071FCFD /* mSaving.xcdatamodeld in Sources */,
 				DEDE5735227033E40071FCFD /* CoreDataManager.swift in Sources */,
+				DE8F7BFF22818F3400EBFDBD /* UIImage - extension.swift in Sources */,
+				DE8F7C0122818F3700EBFDBD /* UIColor - extension.swift in Sources */,
 				DEDE574122706BEE0071FCFD /* String - extension.swift in Sources */,
 				DEDE5739227033F90071FCFD /* AccountingTransformer.swift in Sources */,
 				DEDE57512271F3FE0071FCFD /* MonthProvider.swift in Sources */,
 				DEDE573B2270348B0071FCFD /* Notification - extension.swift in Sources */,
-				DEDE572F2270330C0071FCFD /* AccountingProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -930,17 +997,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEDE5738227033E70071FCFD /* MSNotificationManager.swift in Sources */,
+				DE8F7BFB22818BBA00EBFDBD /* AccountingProvider.swift in Sources */,
 				DEDE57522271F3FE0071FCFD /* MonthProvider.swift in Sources */,
 				DEDE57462270C0FC0071FCFD /* IntentHandler.swift in Sources */,
 				DEDE571D22702EB20071FCFD /* IntentViewController.swift in Sources */,
+				DE8F7C0022818F3500EBFDBD /* UIImage - extension.swift in Sources */,
 				DE1544F622748CB000814EC3 /* AccountProvider.swift in Sources */,
 				DEDE573E227036030071FCFD /* CategoryProvider.swift in Sources */,
 				DEDE57562271F5260071FCFD /* TimeManager.swift in Sources */,
 				DEDE5732227033410071FCFD /* mSaving.xcdatamodeld in Sources */,
 				DEDE5736227033E50071FCFD /* CoreDataManager.swift in Sources */,
+				DE8F7C0222818F3800EBFDBD /* UIColor - extension.swift in Sources */,
+				DE8F7BFE22818EF300EBFDBD /* MessageViewManager.swift in Sources */,
 				DEDE573A227033FA0071FCFD /* AccountingTransformer.swift in Sources */,
 				DEDE573C2270348B0071FCFD /* Notification - extension.swift in Sources */,
-				DEDE57302270330C0071FCFD /* AccountingProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1060,6 +1130,7 @@
 /* Begin XCBuildConfiguration section */
 		DEDE572922702EB20071FCFD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C04056EC67D5D2B804E98C9C /* Pods-PaymentIntentUI.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B8QRU3Z535;
@@ -1080,6 +1151,7 @@
 		};
 		DEDE572A22702EB20071FCFD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD872CB340C41B2FB7A2BD8D /* Pods-PaymentIntentUI.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B8QRU3Z535;
@@ -1100,6 +1172,7 @@
 		};
 		DEDE572C22702EB20071FCFD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BACA53F095B584B936B8306 /* Pods-PaymentIntent.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = PaymentIntent/PaymentIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -1121,6 +1194,7 @@
 		};
 		DEDE572D22702EB20071FCFD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CF849528FF6FDFC2BF5FBF6 /* Pods-PaymentIntent.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = PaymentIntent/PaymentIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -1260,7 +1334,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2269CA763E2B12B921C758F2 /* Pods-mSaving.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = mSaving/mSaving.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -1283,7 +1357,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2C6C6317FBC34568D8610458 /* Pods-mSaving.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = mSaving/mSaving.entitlements;
 				CODE_SIGN_STYLE = Automatic;

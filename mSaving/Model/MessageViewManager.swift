@@ -120,38 +120,15 @@ class MessageViewManager {
         
     }
     
-//    func showAddResult(selected: Bool, name: String, amount: Int64, delete: Bool = false) {
-//        
-//        if delete {
-//            
-//            view.configureTheme(backgroundColor: .mSGreen, foregroundColor: .white)
-//            
-//            view.configureContent(title: "刪除成功", body: "已刪除\(name)帳戶", iconText: "\(name)")
-//            
-//            view.button?.setTitle("$\(amount)", for: .normal)
-//            
-//        } else {
-//            
-//            if selected {
-//                
-//                view.configureTheme(backgroundColor: .mSGreen, foregroundColor: .white)
-//                
-//                view.configureContent(title: "修改成功", body: "已修改\(name)帳戶初始金額", iconText: "\(name)")
-//                
-//                view.button?.setTitle("$\(amount)", for: .normal)
-//                
-//            } else {
-//                
-//                view.configureTheme(backgroundColor: .mSGreen, foregroundColor: .white)
-//                
-//                view.configureContent(title: "新增成功", body: "已新增\(name)帳戶", iconText: "\(name)")
-//                
-//                view.button?.setTitle("$\(amount)", for: .normal)
-//                
-//            }
-//            
-//        }
-//        
-//    }
+    func show(account: Account, type: MessageType) {
+        
+        guard let name = account.name else { return }
+        
+        showMessageView(type: type, style: .label(body: "已\(type.rawValue)\(name)帳戶",
+                                                  iconText: "\(name)",
+                                                  amount: "$\(account.currentValue)",
+                                                  backgroundColor: .mSGreen))
+        
+    }
     
 }

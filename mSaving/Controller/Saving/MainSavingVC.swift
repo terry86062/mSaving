@@ -60,7 +60,19 @@ class MainSavingVC: UIViewController {
     
     @IBAction func dismiss(_ sender: UIButton) {
         
-        helpDismiss()
+        savingTextField.resignFirstResponder()
+        
+        dismiss(animated: true, completion: nil)
+        
+        hideTabBarVCBlackView()
+        
+    }
+    
+    func hideTabBarVCBlackView() {
+        
+        guard let tabBarVC = presentingViewController as? TabBarController else { return }
+        
+        tabBarVC.blackButton.isHidden = true
         
     }
     
@@ -83,24 +95,6 @@ class MainSavingVC: UIViewController {
         guard let text = savingTextField.text, let budget = Int(text) else { return }
         
         descriptionLabel.text = "每天約可花 $" + String(budget / 30)
-        
-    }
-    
-    func helpDismiss() {
-        
-        savingTextField.resignFirstResponder()
-        
-        dismiss(animated: true, completion: nil)
-        
-        hideTabBarVCBlackView()
-        
-    }
-    
-    func hideTabBarVCBlackView() {
-        
-        guard let tabBarVC = presentingViewController as? TabBarController else { return }
-        
-        tabBarVC.blackButton.isHidden = true
         
     }
     
@@ -128,7 +122,7 @@ class MainSavingVC: UIViewController {
             
         }
         
-        helpDismiss()
+        dismiss(UIButton())
         
     }
     
@@ -140,7 +134,7 @@ class MainSavingVC: UIViewController {
         
         SavingProvider().reviseSaving(saving: selectedSaving, amount: amount)
         
-        helpDismiss()
+        dismiss(UIButton())
         
     }
 

@@ -298,23 +298,6 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Vw-IA-ETC">
-                                        <rect key="frame" x="374" y="16" width="24" height="24"/>
-                                        <color key="backgroundColor" name="mSGreen"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="BNg-11-Wqg"/>
-                                            <constraint firstAttribute="height" constant="24" id="PLv-IC-iVg"/>
-                                        </constraints>
-                                        <state key="normal" image="garbageClosedWhite"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="msCornerRadius">
-                                                <real key="value" value="12"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="deleteSubSaving:" destination="IH7-8p-MB4" eventType="touchUpInside" id="ONT-rH-Q9s"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zna-ZG-dH8">
                                         <rect key="frame" x="323" y="136" width="31" height="30"/>
                                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
@@ -357,7 +340,6 @@
                                     <constraint firstItem="bPd-aE-cHA" firstAttribute="leading" secondItem="BkQ-1p-ulk" secondAttribute="leading" id="2Fa-Ip-Y3F"/>
                                     <constraint firstItem="F1j-vq-yE8" firstAttribute="trailing" secondItem="bPd-aE-cHA" secondAttribute="trailing" id="4hF-Ta-YJ4"/>
                                     <constraint firstItem="VjZ-7q-c4v" firstAttribute="bottom" secondItem="zna-ZG-dH8" secondAttribute="bottom" id="6ug-5g-yDI"/>
-                                    <constraint firstItem="5Vw-IA-ETC" firstAttribute="top" secondItem="Gmh-I2-sgV" secondAttribute="top" constant="16" id="CS9-Pk-Cys"/>
                                     <constraint firstAttribute="trailing" secondItem="7FJ-fw-27Y" secondAttribute="trailing" id="FBy-wy-NRs"/>
                                     <constraint firstItem="X09-eh-8kM" firstAttribute="width" secondItem="X09-eh-8kM" secondAttribute="height" id="H96-pi-4WL"/>
                                     <constraint firstAttribute="trailing" secondItem="bPd-aE-cHA" secondAttribute="trailing" constant="36" id="Hlk-sN-xpn"/>
@@ -381,7 +363,6 @@
                                     <constraint firstItem="BkQ-1p-ulk" firstAttribute="leading" secondItem="AAc-2m-Dut" secondAttribute="trailing" constant="12" id="oQ0-Mo-nD7"/>
                                     <constraint firstItem="7FJ-fw-27Y" firstAttribute="leading" secondItem="Gmh-I2-sgV" secondAttribute="leading" id="sck-AZ-bvk"/>
                                     <constraint firstItem="pHs-9q-yHh" firstAttribute="leading" secondItem="Gmh-I2-sgV" secondAttribute="leading" constant="36" id="sp6-B4-QLH"/>
-                                    <constraint firstAttribute="trailing" secondItem="5Vw-IA-ETC" secondAttribute="trailing" constant="16" id="vgT-BW-GGA"/>
                                     <constraint firstItem="AAc-2m-Dut" firstAttribute="leading" secondItem="Gmh-I2-sgV" secondAttribute="leading" constant="36" id="vqQ-5y-9zc"/>
                                     <constraint firstItem="X09-eh-8kM" firstAttribute="top" secondItem="Gmh-I2-sgV" secondAttribute="top" constant="16" id="wlN-By-u6D"/>
                                     <constraint firstItem="F1j-vq-yE8" firstAttribute="centerY" secondItem="zna-ZG-dH8" secondAttribute="centerY" id="z19-Bn-xsw"/>
@@ -425,7 +406,6 @@
     <resources>
         <image name="close" width="128" height="128"/>
         <image name="down" width="512" height="512"/>
-        <image name="garbageClosedWhite" width="128" height="128"/>
         <namedColor name="mSGreen">
             <color red="0.2196078431372549" green="0.52941176470588236" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

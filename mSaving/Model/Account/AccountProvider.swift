@@ -12,7 +12,9 @@ import CoreData
 
 class AccountProvider {
     
-    var coreDataManager = CoreDataManager.shared
+    let coreDataManager = CoreDataManager.shared
+    
+    let messageViewManager = MessageViewManager()
     
     var accounts: [Account] {
         
@@ -33,6 +35,8 @@ class AccountProvider {
         account.priority = priority
         
         coreDataManager.saveContext()
+        
+        messageViewManager.show(account: account, type: .add)
         
     }
     
@@ -70,6 +74,8 @@ class AccountProvider {
                 
             }
             
+            messageViewManager.show(account: account[0], type: .delete)
+            
             coreDataManager.viewContext.delete(account[0])
             
         } catch {
@@ -97,6 +103,8 @@ class AccountProvider {
             account[0].currentValue = account[0].currentValue + newInitialValue - account[0].initialValue
             
             account[0].initialValue = newInitialValue
+            
+            messageViewManager.show(account: account[0], type: .revise)
             
         } catch {
             

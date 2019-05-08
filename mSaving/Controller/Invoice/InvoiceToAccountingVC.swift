@@ -8,8 +8,6 @@
 
 import UIKit
 
-import SwiftMessages
-
 class InvoiceToAccountingVC: UIViewController {
     
     @IBOutlet weak var dateLabel: UILabel!
@@ -98,24 +96,6 @@ class InvoiceToAccountingVC: UIViewController {
     
     @IBAction func dismiss(_ sender: UIButton) {
         
-        helpDismiss()
-        
-    }
-    
-    @IBAction func confirm(_ sender: UIButton) {
-        
-        saveAccounting()
-        
-    }
-    
-    @IBAction func deleteSubSaving(_ sender: UIButton) {
-        
-        helpDismiss()
-        
-    }
-    
-    func helpDismiss() {
-        
         dismiss(animated: true, completion: nil)
         
         hideTabBarVCBlackView()
@@ -127,6 +107,12 @@ class InvoiceToAccountingVC: UIViewController {
         guard let tabBarVC = presentingViewController as? TabBarController else { return }
         
         tabBarVC.blackButton.isHidden = true
+        
+    }
+    
+    @IBAction func confirm(_ sender: UIButton) {
+        
+        saveAccounting()
         
     }
     
@@ -148,49 +134,7 @@ class InvoiceToAccountingVC: UIViewController {
                                               account: selectedAccount,
                                               category: .expense(selectedCategory))
         
-        showAddResult(expense: selectedCategory, amount: amount)
-        
-        helpDismiss()
-        
-    }
-    
-    func showAddResult(expense: ExpenseCategory, amount: Int64) {
-        
-        // Instantiate a message view from the provided card view layout. SwiftMessages searches for nib
-        // files in the main bundle first, so you can easily copy them into your project and make changes.
-        let view = MessageView.viewFromNib(layout: .cardView)
-        
-        // Theme message elements with the warning style.
-        view.configureTheme(.warning)
-        
-        // Add a drop shadow.
-        view.configureDropShadow()
-        
-        // Set message title, body, and icon. Here, we're overriding the default warning
-        // image with an emoji character.
-        guard let name = expense.name, let color = expense.color, let iconName = expense.iconName,
-            let iconImage = UIImage(named: iconName) else { return }
-        
-        view.configureTheme(backgroundColor: UIColor.hexStringToUIColor(hex: color), foregroundColor: .white)
-        
-        view.configureContent(title: "新增成功", body: "已新增一筆\(name)交易",
-            iconImage: iconImage.resizeImage())
-        
-        view.button?.setTitle("-$\(amount)", for: .normal)
-        
-        view.button?.backgroundColor = .clear
-        
-        view.button?.setTitleColor(.white, for: .normal)
-        
-        // Increase the external margin around the card. In general, the effect of this setting
-        // depends on how the given layout is constrained to the layout margins.
-        view.layoutMarginAdditions = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-        
-        // Reduce the corner radius (applicable to layouts featuring rounded corners).
-        (view.backgroundView as? CornerRoundingView)?.cornerRadius = 12
-        
-        // Show the message.
-        SwiftMessages.show(view: view)
+        dismiss(UIButton())
         
     }
     

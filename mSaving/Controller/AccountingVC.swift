@@ -14,8 +14,6 @@ import FSCalendar
 
 import Firebase
 
-import SwiftMessages
-
 class AccountingVC: UIViewController {
 
     @IBOutlet weak var calendar: FSCalendar!
@@ -250,13 +248,7 @@ class AccountingVC: UIViewController {
                                                   account: selectedAccount,
                                                   category: selectedCategory)
             
-            amountTextField.resignFirstResponder()
-            
-            dismiss(animated: true, completion: nil)
-            
-            hideTabBarVCBlackView()
-            
-//            showAddResult(selectedCategory: selectedCategory, amount: amount, addType: "修改", sub: "成")
+            dismiss(UIButton())
             
         } else {
             
@@ -266,74 +258,10 @@ class AccountingVC: UIViewController {
                                                   account: selectedAccount,
                                                   category: selectedCategory)
             
-            amountTextField.resignFirstResponder()
-            
-            dismiss(animated: true, completion: nil)
-            
-            hideTabBarVCBlackView()
-            
-//            showAddResult(selectedCategory: selectedCategory, amount: amount, addType: "新增")
+            dismiss(UIButton())
 
         }
 
-    }
-    
-    func showAddResult(selectedCategory: CategoryCase, amount: Int64, addType: String, sub: String = "") {
-        
-        // Instantiate a message view from the provided card view layout. SwiftMessages searches for nib
-        // files in the main bundle first, so you can easily copy them into your project and make changes.
-        let view = MessageView.viewFromNib(layout: .cardView)
-        
-        // Theme message elements with the warning style.
-        view.configureTheme(.warning)
-        
-        // Add a drop shadow.
-        view.configureDropShadow()
-        
-        // Set message title, body, and icon. Here, we're overriding the default warning
-        // image with an emoji character.
-        switch selectedCategory {
-            
-        case .expense(let expense):
-            
-            guard let name = expense.name, let color = expense.color, let iconName = expense.iconName,
-                let iconImage = UIImage(named: iconName) else { return }
-            
-            view.configureTheme(backgroundColor: UIColor.hexStringToUIColor(hex: color), foregroundColor: .white)
-            
-            view.configureContent(title: "\(addType)成功", body: "已\(addType)\(sub)一筆\(name)交易",
-                iconImage: iconImage.resizeImage())
-            
-            view.button?.setTitle("-$\(amount)", for: .normal)
-            
-        case .income(let income):
-            
-            guard let name = income.name, let color = income.color, let iconName = income.iconName,
-                let iconImage = UIImage(named: iconName) else { return }
-            
-            view.configureTheme(backgroundColor: UIColor.hexStringToUIColor(hex: color), foregroundColor: .white)
-            
-            view.configureContent(title: "\(addType)成功", body: "已\(addType)\(sub)一筆\(name)交易",
-                iconImage: iconImage.resizeImage())
-            
-            view.button?.setTitle("$\(amount)", for: .normal)
-            
-        }
-        
-        view.button?.backgroundColor = .clear
-        
-        view.button?.setTitleColor(.white, for: .normal)
-        
-        // Increase the external margin around the card. In general, the effect of this setting
-        // depends on how the given layout is constrained to the layout margins.
-        view.layoutMarginAdditions = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-        
-        // Reduce the corner radius (applicable to layouts featuring rounded corners).
-        (view.backgroundView as? CornerRoundingView)?.cornerRadius = 12
-        
-        // Show the message.
-        SwiftMessages.show(view: view)
-        
     }
     
     @IBAction func dismissKeyboardButton(_ sender: UIBarButtonItem) {
@@ -424,24 +352,9 @@ class AccountingVC: UIViewController {
             
             guard let selectedAccounting = self.selectedAccounting else { return }
             
-            if let expense = selectedAccounting.expenseCategory {
-                
-//                self.showAddResult(selectedCategory: .expense(expense), amount: selectedAccounting.amount,
-//                                   addType: "刪除")
-                
-            } else if let income = selectedAccounting.incomeCategory {
-                
-//                self.showAddResult(selectedCategory: .income(income), amount: selectedAccounting.amount, addType: "刪除")
-                
-            }
-            
             AccountingProvider().deleteAccounting(accounting: selectedAccounting)
             
-            self.amountTextField.resignFirstResponder()
-            
-            self.dismiss(animated: true, completion: nil)
-            
-            self.hideTabBarVCBlackView()
+            self.dismiss(UIButton())
             
         })
         

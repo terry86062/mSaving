@@ -8,8 +8,6 @@
 
 import UIKit
 
-import SwiftMessages
-
 class SubSavingVC: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
@@ -95,7 +93,19 @@ class SubSavingVC: UIViewController {
     
     @IBAction func dismiss(_ sender: UIButton) {
         
-        helpDismiss()
+        savingDetailTextField.resignFirstResponder()
+        
+        dismiss(animated: true, completion: nil)
+        
+        hideTabBarVCBlackView()
+        
+    }
+    
+    func hideTabBarVCBlackView() {
+        
+        guard let tabBarVC = presentingViewController as? TabBarController else { return }
+        
+        tabBarVC.blackButton.isHidden = true
         
     }
     
@@ -135,7 +145,7 @@ class SubSavingVC: UIViewController {
             
             SavingProvider().delete(saving: saving)
             
-            self.helpDismiss()
+            self.dismiss(UIButton())
             
         })
         
@@ -146,24 +156,6 @@ class SubSavingVC: UIViewController {
         alertController.addAction(cancelAction)
         
         present(alertController, animated: true, completion: nil)
-        
-    }
-    
-    func helpDismiss() {
-        
-        savingDetailTextField.resignFirstResponder()
-        
-        dismiss(animated: true, completion: nil)
-        
-        hideTabBarVCBlackView()
-        
-    }
-    
-    func hideTabBarVCBlackView() {
-        
-        guard let tabBarVC = presentingViewController as? TabBarController else { return }
-        
-        tabBarVC.blackButton.isHidden = true
         
     }
     
@@ -199,7 +191,7 @@ class SubSavingVC: UIViewController {
             
         }
         
-        helpDismiss()
+        dismiss(UIButton())
         
     }
     
@@ -215,7 +207,7 @@ class SubSavingVC: UIViewController {
                                       amount: amount,
                                       selectedExpenseCategory: selectedExpenseCategory)
         
-        helpDismiss()
+        dismiss(UIButton())
         
     }
 
