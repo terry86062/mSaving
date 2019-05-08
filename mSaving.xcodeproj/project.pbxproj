@@ -1132,6 +1132,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C04056EC67D5D2B804E98C9C /* Pods-PaymentIntentUI.debug.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B8QRU3Z535;
 				INFOPLIST_FILE = PaymentIntentUI/Info.plist;
@@ -1153,6 +1154,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DD872CB340C41B2FB7A2BD8D /* Pods-PaymentIntentUI.release.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B8QRU3Z535;
 				INFOPLIST_FILE = PaymentIntentUI/Info.plist;
@@ -1174,6 +1176,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4BACA53F095B584B936B8306 /* Pods-PaymentIntent.debug.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_ENTITLEMENTS = PaymentIntent/PaymentIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B8QRU3Z535;
@@ -1196,6 +1199,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8CF849528FF6FDFC2BF5FBF6 /* Pods-PaymentIntent.release.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_ENTITLEMENTS = PaymentIntent/PaymentIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B8QRU3Z535;

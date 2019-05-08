@@ -72,7 +72,7 @@ class MainSavingVC: UIViewController {
         
         guard let tabBarVC = presentingViewController as? TabBarController else { return }
         
-        tabBarVC.blackButton.isHidden = true
+        tabBarVC.blackView.isHidden = true
         
     }
     

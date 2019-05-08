@@ -145,7 +145,7 @@ class SettingVC: UIViewController {
             
             guard let tabBarVC = tabBarController as? TabBarController else { return }
             
-            tabBarVC.blackButton.isHidden = false
+            tabBarVC.blackView.isHidden = false
             
             guard let accountDetailVC = segue.destination as? AccountDetailVC else { return }
             

@@ -141,7 +141,7 @@ class InvoiceVC: UIViewController {
             
             guard let tabBarVC = tabBarController as? TabBarController else { return }
             
-            tabBarVC.blackButton.isHidden = false
+            tabBarVC.blackView.isHidden = false
             
             guard let invoiceToAccountingVC = segue.destination as? InvoiceToAccountingVC else { return }
             

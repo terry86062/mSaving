@@ -45,13 +45,13 @@ enum ImageAsset: String {
 
 extension UIImage {
 
-    func resizeImage(targetSize: CGSize = CGSize(width: 36, height: 36)) -> UIImage {
+    func resizeImage(width: CGFloat = 36, height: CGFloat = 36) -> UIImage {
 
         let size = self.size
 
-        let widthRatio = targetSize.width / size.width
+        let widthRatio = width / size.width
 
-        let heightRatio = targetSize.height / size.height
+        let heightRatio = height / size.height
 
         // Figure out what our orientation is, and use that to form the rectangle
 
