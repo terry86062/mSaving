@@ -16,7 +16,7 @@
 		DE21B90322578D9800B65719 /* PieChartCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE21B90122578D9800B65719 /* PieChartCVCell.xib */; };
 		DE21B906225794C900B65719 /* BarChartCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE21B904225794C900B65719 /* BarChartCVCell.swift */; };
 		DE21B907225794C900B65719 /* BarChartCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE21B905225794C900B65719 /* BarChartCVCell.xib */; };
-		DE29CC0322815860001EC04E /* MessageViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE29CC0222815860001EC04E /* MessageViewManager.swift */; };
+		DE29CC0322815860001EC04E /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE29CC0222815860001EC04E /* MessageView.swift */; };
 		DE2BB35C22539662001D55E4 /* SavingCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BB35A22539662001D55E4 /* SavingCVCell.swift */; };
 		DE2BB35D22539662001D55E4 /* SavingCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2BB35B22539662001D55E4 /* SavingCVCell.xib */; };
 		DE2BB36322539B95001D55E4 /* UICollectionView - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BB36222539B95001D55E4 /* UICollectionView - extension.swift */; };
@@ -39,8 +39,8 @@
 		DE7B38AF2257427200C17846 /* CategorySelectCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE7B38AD2257427200C17846 /* CategorySelectCVCell.xib */; };
 		DE8F7BFA22818BB900EBFDBD /* AccountingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366ABC226EC20700A65954 /* AccountingProvider.swift */; };
 		DE8F7BFB22818BBA00EBFDBD /* AccountingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366ABC226EC20700A65954 /* AccountingProvider.swift */; };
-		DE8F7BFD22818EF300EBFDBD /* MessageViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE29CC0222815860001EC04E /* MessageViewManager.swift */; };
-		DE8F7BFE22818EF300EBFDBD /* MessageViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE29CC0222815860001EC04E /* MessageViewManager.swift */; };
+		DE8F7BFD22818EF300EBFDBD /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE29CC0222815860001EC04E /* MessageView.swift */; };
+		DE8F7BFE22818EF300EBFDBD /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE29CC0222815860001EC04E /* MessageView.swift */; };
 		DE8F7BFF22818F3400EBFDBD /* UIImage - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB061225335FA002D6C30 /* UIImage - extension.swift */; };
 		DE8F7C0022818F3500EBFDBD /* UIImage - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECB061225335FA002D6C30 /* UIImage - extension.swift */; };
 		DE8F7C0122818F3700EBFDBD /* UIColor - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C1A2254836800C2A8A3 /* UIColor - extension.swift */; };
@@ -185,7 +185,7 @@
 		DE21B90122578D9800B65719 /* PieChartCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PieChartCVCell.xib; sourceTree = "<group>"; };
 		DE21B904225794C900B65719 /* BarChartCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartCVCell.swift; sourceTree = "<group>"; };
 		DE21B905225794C900B65719 /* BarChartCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarChartCVCell.xib; sourceTree = "<group>"; };
-		DE29CC0222815860001EC04E /* MessageViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewManager.swift; sourceTree = "<group>"; };
+		DE29CC0222815860001EC04E /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		DE2BB35A22539662001D55E4 /* SavingCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingCVCell.swift; sourceTree = "<group>"; };
 		DE2BB35B22539662001D55E4 /* SavingCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavingCVCell.xib; sourceTree = "<group>"; };
 		DE2BB36222539B95001D55E4 /* UICollectionView - extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView - extension.swift"; sourceTree = "<group>"; };
@@ -332,6 +332,14 @@
 				44CCA7C78D1A03C2A0EEA8EE /* Pods_PaymentIntentUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE073DD22282A7D80098BCAE /* Third Party Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				DE29CC0222815860001EC04E /* MessageView.swift */,
+			);
+			path = "Third Party Wrapper";
 			sourceTree = "<group>";
 		};
 		DE21B8FF22578D1E00B65719 /* Chart */ = {
@@ -572,6 +580,7 @@
 				DEECB05D225335AD002D6C30 /* Model */,
 				DEECB03D2253358B002D6C30 /* View */,
 				DEECB04E22533599002D6C30 /* Controller */,
+				DE073DD22282A7D80098BCAE /* Third Party Wrapper */,
 				DEECB05F225335FA002D6C30 /* Extension */,
 				DEECB0662253366F002D6C30 /* Resource */,
 			);
@@ -618,7 +627,6 @@
 				DE9BEFE9225DD2DE003458AD /* CoreDataManager.swift */,
 				DE366ABE226EE64700A65954 /* NotificationManager.swift */,
 				DEA6157A22794FDE00F086CC /* AlertManager.swift */,
-				DE29CC0222815860001EC04E /* MessageViewManager.swift */,
 				DEDE574C2271EB980071FCFD /* Time */,
 				DEDE57492271A4F50071FCFD /* Month */,
 				DE366AB4226EA7CB00A65954 /* Saving */,
@@ -975,7 +983,7 @@
 			files = (
 				DEDE57432270C0EC0071FCFD /* IntentViewController.swift in Sources */,
 				DEDE5737227033E70071FCFD /* NotificationManager.swift in Sources */,
-				DE8F7BFD22818EF300EBFDBD /* MessageViewManager.swift in Sources */,
+				DE8F7BFD22818EF300EBFDBD /* MessageView.swift in Sources */,
 				DE8F7BFA22818BB900EBFDBD /* AccountingProvider.swift in Sources */,
 				DEDE57552271F5250071FCFD /* TimeManager.swift in Sources */,
 				DE1544F522748C9D00814EC3 /* AccountProvider.swift in Sources */,
@@ -1008,7 +1016,7 @@
 				DEDE5732227033410071FCFD /* mSaving.xcdatamodeld in Sources */,
 				DEDE5736227033E50071FCFD /* CoreDataManager.swift in Sources */,
 				DE8F7C0222818F3800EBFDBD /* UIColor - extension.swift in Sources */,
-				DE8F7BFE22818EF300EBFDBD /* MessageViewManager.swift in Sources */,
+				DE8F7BFE22818EF300EBFDBD /* MessageView.swift in Sources */,
 				DEDE573A227033FA0071FCFD /* AccountingTransformer.swift in Sources */,
 				DEDE573C2270348B0071FCFD /* Notification - extension.swift in Sources */,
 			);
@@ -1032,7 +1040,7 @@
 				DE4984B522586A0F004E4AE9 /* ChartDetailVC.swift in Sources */,
 				DEAA6A302259B07C00224B26 /* CategoryCVCell.swift in Sources */,
 				DE02DECA226C97B700B51201 /* InvoiceVC.swift in Sources */,
-				DE29CC0322815860001EC04E /* MessageViewManager.swift in Sources */,
+				DE29CC0322815860001EC04E /* MessageView.swift in Sources */,
 				DE2BB3662253AC1D001D55E4 /* MonthCVCell.swift in Sources */,
 				DE366ABF226EE64700A65954 /* NotificationManager.swift in Sources */,
 				DE7B38AE2257427200C17846 /* CategorySelectCVCell.swift in Sources */,

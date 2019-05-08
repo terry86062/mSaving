@@ -34,7 +34,7 @@ class AccountingProvider {
     
     let notificationManager = NotificationManager()
     
-    let messageViewManager = MessageViewManager()
+    let msMessageView = MSMessageView()
     
     func createAccounting(occurDate: Date, createDate: Date, amount: Int64, account: Account, category: CategoryCase) {
         
@@ -72,7 +72,7 @@ class AccountingProvider {
         
         notificationManager.postAccountingChanged()
         
-        messageViewManager.show(accounting: accounting, type: .add)
+        msMessageView.show(accounting: accounting, type: .add)
         
     }
     
@@ -216,13 +216,13 @@ class AccountingProvider {
         
         notificationManager.postAccountingChanged()
         
-        messageViewManager.show(accounting: accounting, type: .revise)
+        msMessageView.show(accounting: accounting, type: .revise)
         
     }
     
     func deleteAccounting(accounting: Accounting) {
         
-        messageViewManager.show(accounting: accounting, type: .delete)
+        msMessageView.show(accounting: accounting, type: .delete)
         
         coreDataManager.viewContext.delete(accounting)
         

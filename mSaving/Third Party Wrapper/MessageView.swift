@@ -1,5 +1,5 @@
 //
-//  MessageViewManager.swift
+//  MessageView.swift
 //  mSaving
 //
 //  Created by 黃偉勛 Terry on 2019/5/7.
@@ -10,7 +10,7 @@ import Foundation
 
 import SwiftMessages
 
-class MessageViewManager {
+class MSMessageView {
     
     enum MessageType: String {
         

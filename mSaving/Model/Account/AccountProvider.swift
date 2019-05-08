@@ -16,7 +16,7 @@ class AccountProvider {
     
     let notificationManager = NotificationManager()
     
-    let messageViewManager = MessageViewManager()
+    let msMessageView = MSMessageView()
     
     var accounts: [Account] {
         
@@ -48,7 +48,7 @@ class AccountProvider {
         
         notificationManager.postAccountChanged()
         
-        messageViewManager.show(account: account, type: .add)
+        msMessageView.show(account: account, type: .add)
         
     }
     
@@ -66,7 +66,7 @@ class AccountProvider {
         
         notificationManager.postAccountChanged()
         
-        messageViewManager.show(account: account, type: .revise)
+        msMessageView.show(account: account, type: .revise)
         
     }
     
@@ -82,7 +82,7 @@ class AccountProvider {
             
         }
         
-        messageViewManager.show(account: account, type: .delete)
+        msMessageView.show(account: account, type: .delete)
         
         coreDataManager.viewContext.delete(account)
         

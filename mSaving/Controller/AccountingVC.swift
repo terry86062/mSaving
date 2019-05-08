@@ -300,71 +300,25 @@ class AccountingVC: UIViewController {
     
     @IBAction func changeAccount(_ sender: UIButton) {
         
-        showAlertWith(title: "請選擇帳戶", message: nil)
+        AlertManager().showAlertWith(accounts: accounts, viewController: self) { [weak self] account in
+            
+            self?.selectedAccountButton.setTitle(account.name, for: .normal)
+            
+            self?.selectedAccount = account
+            
+        }
         
         Analytics.logEvent("accounting_page_change_account_button", parameters: nil)
         
     }
     
-    func showAlertWith(title: String, message: String?, style: UIAlertController.Style = .actionSheet) {
-        
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
-        
-        if accounts.count > 0 {
-            
-            for index in 0...accounts.count - 1 {
-                
-                guard let accountName = accounts[index].name else { return }
-                
-                let accountAction = UIAlertAction(title: accountName, style: .default, handler: { _ in
-                    
-                    self.selectedAccountButton.setTitle(accountName, for: .normal)
-                    
-                    self.selectedAccount = self.accounts[index]
-                    
-                })
-                
-                alertController.addAction(accountAction)
-                
-            }
-            
-        }
-        
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-        
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true, completion: nil)
-        
-    }
-    
     @IBAction func deleteAccounting(_ sender: UIButton) {
         
-        showDeleteAlertWith(title: "您確定要刪除交易記錄嗎？", message: nil)
-        
-    }
-    
-    func showDeleteAlertWith(title: String, message: String?, style: UIAlertController.Style = .actionSheet) {
-        
-        let alertController = UIAlertController(title: title, message: nil, preferredStyle: style)
-        
-        let deleteAction = UIAlertAction(title: "刪除", style: .default, handler: { _ in
+        AlertManager().showDeleteAlertWith(accounting: selectedAccounting, viewController: self) { [weak self] in
             
-            guard let selectedAccounting = self.selectedAccounting else { return }
+            self?.dismiss(UIButton())
             
-            AccountingProvider().deleteAccounting(accounting: selectedAccounting)
-            
-            self.dismiss(UIButton())
-            
-        })
-        
-        alertController.addAction(deleteAction)
-        
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-        
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true, completion: nil)
+        }
         
     }
     

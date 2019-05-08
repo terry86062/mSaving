@@ -140,39 +140,13 @@ class InvoiceAddVC: UIViewController {
     
     @IBAction func changeAccount(_ sender: UIButton) {
         
-        showAlertWith(title: "請選擇帳戶", message: nil)
-        
-    }
-    
-    func showAlertWith(title: String, message: String?, style: UIAlertController.Style = .actionSheet) {
-        
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
-        
-        if accounts.count > 0 {
+        AlertManager().showAlertWith(accounts: accounts, viewController: self) { [weak self] account in
             
-            for index in 0...accounts.count - 1 {
-                
-                guard let accountName = accounts[index].name else { return }
-                
-                let accountAction = UIAlertAction(title: accountName, style: .default, handler: { _ in
-                    
-                    self.selectedAccountButton.setTitle(accountName, for: .normal)
-                    
-                    self.selectedAccount = self.accounts[index]
-                    
-                })
-                
-                alertController.addAction(accountAction)
-                
-            }
+            self?.selectedAccountButton.setTitle(account.name, for: .normal)
+            
+            self?.selectedAccount = account
             
         }
-        
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-        
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true, completion: nil)
         
     }
     

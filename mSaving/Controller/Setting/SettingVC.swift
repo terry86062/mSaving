@@ -177,7 +177,7 @@ class SettingVC: UIViewController {
     
     @IBAction func changeUserImage(_ sender: UIButton) {
         
-        AlertManager().showUserImageAlertWith(title: "請選擇圖片來源", message: nil, viewController: self)
+        AlertManager().showUserImageAlertWith(viewController: self)
         
     }
     

@@ -98,31 +98,11 @@ class AccountVC: UIViewController {
     
     @IBAction func deleteAccount(_ sender: UIButton) {
         
-        showDeleteAlertWith(title: "您確定要刪除此帳戶嗎？", message: nil)
-        
-    }
-    
-    func showDeleteAlertWith(title: String, message: String?, style: UIAlertController.Style = .actionSheet) {
-        
-        let alertController = UIAlertController(title: title, message: nil, preferredStyle: style)
-        
-        let deleteAction = UIAlertAction(title: "刪除", style: .default, handler: { _ in
+        AlertManager().showDeleteAlertWith(account: selectedAccount, viewController: self) { [weak self] in
             
-            guard let account = self.selectedAccount else { return }
+            self?.dismiss(UIButton())
             
-            AccountProvider().deleteAccount(account: account)
-            
-            self.dismiss(UIButton())
-            
-        })
-        
-        alertController.addAction(deleteAction)
-        
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-        
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true, completion: nil)
+        }
         
     }
     

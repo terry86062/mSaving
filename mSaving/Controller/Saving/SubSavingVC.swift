@@ -125,37 +125,11 @@ class SubSavingVC: UIViewController {
     
     @IBAction func deleteSaving(_ sender: UIButton) {
         
-        guard let saving = selectedSavingDetail else { return }
-        
-        if let name = saving.expenseCategory?.name {
+        AlertManager().showDeleteAlertWith(saving: selectedSavingDetail, viewController: self) { [weak self] in
             
-            showAlertWith(title: "您確定要刪除\(name)預算嗎？", message: nil)
+            self?.dismiss(UIButton())
             
         }
-        
-    }
-    
-    func showAlertWith(title: String, message: String?, style: UIAlertController.Style = .actionSheet) {
-        
-        let alertController = UIAlertController(title: title, message: nil, preferredStyle: style)
-        
-        let deleteAction = UIAlertAction(title: "刪除", style: .default, handler: { _ in
-            
-            guard let saving = self.selectedSavingDetail else { return }
-            
-            SavingProvider().delete(saving: saving)
-            
-            self.dismiss(UIButton())
-            
-        })
-        
-        alertController.addAction(deleteAction)
-        
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-        
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true, completion: nil)
         
     }
     
