@@ -68,7 +68,7 @@ class AccountingCVCell: UICollectionViewCell {
 
     @IBAction func goToAccountDetail(_ sender: UIButton) {
         
-        delegate?.touch(accounting: selectedAccounting)
+        delegate?.touch?(accounting: selectedAccounting)
 
     }
 

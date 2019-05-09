@@ -82,7 +82,7 @@ class SubSavingCVCell: UICollectionViewCell {
 
     @IBAction func goToSavingDetailAdd(_ sender: UIButton) {
         
-        delegate?.touchSub(saving: selectedSaving)
+        delegate?.touchSub?(saving: selectedSaving)
 
     }
 

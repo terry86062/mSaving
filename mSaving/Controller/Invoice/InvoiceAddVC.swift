@@ -165,17 +165,17 @@ extension InvoiceAddVC: UICollectionViewDataSource {
             let name = expenseCategory.name,
             let color = expenseCategory.color else { return cell }
         
-        cell.initCategorySelectCVCell(imageName: iconName, categoryName: name, hex: color)
-        
-        cell.selectCategory = {
-            
-            self.selectedExpenseCategory = expenseCategory
-            
-            self.selectedCategoryImageView.image = UIImage(named: iconName)
-            
-            self.selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
-            
-        }
+//        cell.initCategorySelectCVCell(imageName: iconName, categoryName: name, hex: color)
+//        
+//        cell.selectCategory = {
+//            
+//            self.selectedExpenseCategory = expenseCategory
+//            
+//            self.selectedCategoryImageView.image = UIImage(named: iconName)
+//            
+//            self.selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+//            
+//        }
         
         return cell
         

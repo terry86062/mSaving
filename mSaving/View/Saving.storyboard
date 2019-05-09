@@ -112,7 +112,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="nTW-Gj-7Bw" kind="presentation" identifier="goToSavingGoalSetVC" modalPresentationStyle="overFullScreen" id="dUa-Qq-oDp"/>
+                                    <segue destination="nTW-Gj-7Bw" kind="presentation" identifier="presentMainSavingVC" modalPresentationStyle="overFullScreen" id="dUa-Qq-oDp"/>
                                 </connections>
                             </button>
                             <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Y4f-oa-sf1">
@@ -147,12 +147,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="BFi-jn-3Hi"/>
                     <connections>
+                        <outlet property="dataCollectionView" destination="Y4f-oa-sf1" id="84N-8W-TJa"/>
                         <outlet property="editingButton" destination="Hbs-E5-8bb" id="XA5-ud-Olq"/>
-                        <outlet property="monthCollectionView" destination="yhK-G2-nhO" id="v3X-xS-IUV"/>
-                        <outlet property="savingCollectionView" destination="Y4f-oa-sf1" id="UWY-KF-Mi0"/>
-                        <outlet property="yearLabel" destination="Rk2-Xk-qbG" id="wGw-IT-S30"/>
-                        <segue destination="YWh-vS-MS1" kind="presentation" identifier="goToSavingDetailNew" modalPresentationStyle="overFullScreen" id="E7O-at-pcr"/>
-                        <segue destination="YWh-vS-MS1" kind="presentation" identifier="goToSavingDetailEdit" modalPresentationStyle="overFullScreen" id="II0-Ca-leY"/>
+                        <outlet property="monthCollectionView" destination="yhK-G2-nhO" id="qUI-tu-GSm"/>
+                        <outlet property="yearLabel" destination="Rk2-Xk-qbG" id="aaQ-nI-3Os"/>
+                        <segue destination="YWh-vS-MS1" kind="presentation" identifier="presentSubSavingVC" modalPresentationStyle="overFullScreen" id="E7O-at-pcr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X3f-df-BEJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -586,8 +585,8 @@
                     <connections>
                         <outlet property="deleteButton" destination="nkc-cQ-wHW" id="3cL-F5-nmb"/>
                         <outlet property="savingCategoryCollectionView" destination="mKe-UT-vAR" id="WWS-MI-t4t"/>
-                        <outlet property="savingDetailTextField" destination="8Bb-ad-hJA" id="pVW-uK-1yC"/>
                         <outlet property="selectedCategoryImageView" destination="M1c-w2-tIh" id="y9P-mA-sfP"/>
+                        <outlet property="subSavingTextField" destination="8Bb-ad-hJA" id="pVW-uK-1yC"/>
                         <outlet property="titleLabel" destination="GP4-ZD-g3c" id="dZX-0X-wnc"/>
                     </connections>
                 </viewController>
@@ -605,7 +604,4 @@
             <color red="0.2196078431372549" green="0.52941176470588236" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="E7O-at-pcr"/>
-    </inferredMetricsTieBreakers>
 </document>

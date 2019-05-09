@@ -34,7 +34,7 @@ class AddSavingCVCell: UICollectionViewCell {
 
     @IBAction func goToSavingDetailAdd(_ sender: UIButton) {
         
-        delegate?.touchAddSaving()
+        delegate?.touchAddSaving?()
 
     }
 

@@ -48,9 +48,7 @@ class MainSavingVC: PresentVC {
                 
             } else {
                 
-                guard let month = TimeManager().transform(date: Date()).month else { return }
-                
-                titleLabel.text = "\(month)月預算"
+                titleLabel.text = "\(TimeManager().todayMonth)月預算"
                 
             }
             
@@ -80,14 +78,6 @@ class MainSavingVC: PresentVC {
         
     }
     
-    @IBAction func changeText(_ sender: UITextField) {
-        
-        guard let text = savingTextField.text, let budget = Int(text) else { return }
-        
-        descriptionLabel.text = "每天約可花 $" + String(budget / 30)
-        
-    }
-    
     func saveSaving() {
         
         guard let amountText = savingTextField.text, let amount = Int64(amountText) else { return }
@@ -98,17 +88,7 @@ class MainSavingVC: PresentVC {
             
         } else {
             
-            let aMonth = Month(context: CoreDataManager.shared.viewContext)
-            
-            let dataComponents = TimeManager().transform(date: Date())
-            
-            guard let year = dataComponents.year, let month = dataComponents.month else { return }
-            
-            aMonth.year = Int64(year)
-            
-            aMonth.month = Int64(month)
-            
-            SavingProvider().createSaving(month: aMonth, amount: amount)
+            SavingProvider().createSaving(month: MonthProvider().createCurrentMonth(), amount: amount)
             
         }
         
@@ -127,5 +107,13 @@ class MainSavingVC: PresentVC {
         dismiss(UIButton())
         
     }
-
+    
+    @IBAction func changeText(_ sender: UITextField) {
+        
+        guard let text = savingTextField.text, let budget = Int(text) else { return }
+        
+        descriptionLabel.text = "每天約可花 $" + String(budget / 30)
+        
+    }
+    
 }

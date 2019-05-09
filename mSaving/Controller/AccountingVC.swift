@@ -403,17 +403,17 @@ extension AccountingVC: UICollectionViewDataSource {
                 let name = incomeCategory.name,
                 let color = incomeCategory.color else { return cell }
             
-            cell.initCategorySelectCVCell(imageName: iconName, categoryName: name, hex: color)
-            
-            cell.selectCategory = {
-                
-                self.selectedCategory = .income(incomeCategory)
-                
-                self.selectedCategoryImageView.image = UIImage(named: iconName)
-                
-                self.selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
-                
-            }
+//            cell.initCategorySelectCVCell(imageName: iconName, categoryName: name, hex: color)
+//            
+//            cell.selectCategory = {
+//                
+//                self.selectedCategory = .income(incomeCategory)
+//                
+//                self.selectedCategoryImageView.image = UIImage(named: iconName)
+//                
+//                self.selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+//                
+//            }
             
         } else {
             
@@ -423,17 +423,17 @@ extension AccountingVC: UICollectionViewDataSource {
                 let name = expenseCategory.name,
                 let color = expenseCategory.color else { return cell }
             
-            cell.initCategorySelectCVCell(imageName: iconName, categoryName: name, hex: color)
-            
-            cell.selectCategory = {
-                
-                self.selectedCategory = .expense(expenseCategory)
-                
-                self.selectedCategoryImageView.image = UIImage(named: iconName)
-                
-                self.selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
-                
-            }
+//            cell.initCategorySelectCVCell(imageName: iconName, categoryName: name, hex: color)
+//            
+//            cell.selectCategory = {
+//                
+//                self.selectedCategory = .expense(expenseCategory)
+//                
+//                self.selectedCategoryImageView.image = UIImage(named: iconName)
+//                
+//                self.selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+//                
+//            }
             
         }
         

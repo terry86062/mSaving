@@ -10,6 +10,7 @@
 		34FE46260D153EA89122AC6A /* Pods_mSaving.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2F60CB0FEB4CC786F0B4059 /* Pods_mSaving.framework */; };
 		DE02DECA226C97B700B51201 /* InvoiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE02DEC9226C97B700B51201 /* InvoiceVC.swift */; };
 		DE073DD52282C2200098BCAE /* PresentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE073DD42282C2200098BCAE /* PresentVC.swift */; };
+		DE073DD722832F620098BCAE /* MonthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE073DD622832F620098BCAE /* MonthVC.swift */; };
 		DE0BD670227D41B200E03E31 /* Formatter - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0BD66F227D41B200E03E31 /* Formatter - extension.swift */; };
 		DE1544F522748C9D00814EC3 /* AccountProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366AB8226EBA4600A65954 /* AccountProvider.swift */; };
 		DE1544F622748CB000814EC3 /* AccountProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366AB8226EBA4600A65954 /* AccountProvider.swift */; };
@@ -17,6 +18,7 @@
 		DE21B90322578D9800B65719 /* PieChartCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE21B90122578D9800B65719 /* PieChartCVCell.xib */; };
 		DE21B906225794C900B65719 /* BarChartCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE21B904225794C900B65719 /* BarChartCVCell.swift */; };
 		DE21B907225794C900B65719 /* BarChartCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE21B905225794C900B65719 /* BarChartCVCell.xib */; };
+		DE24715022840093005A341C /* CategoryCollectionViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE24714F22840093005A341C /* CategoryCollectionViewVC.swift */; };
 		DE29CC0322815860001EC04E /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE29CC0222815860001EC04E /* MessageView.swift */; };
 		DE2BB35C22539662001D55E4 /* SavingCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BB35A22539662001D55E4 /* SavingCVCell.swift */; };
 		DE2BB35D22539662001D55E4 /* SavingCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2BB35B22539662001D55E4 /* SavingCVCell.xib */; };
@@ -182,11 +184,13 @@
 		DD872CB340C41B2FB7A2BD8D /* Pods-PaymentIntentUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaymentIntentUI.release.xcconfig"; path = "Target Support Files/Pods-PaymentIntentUI/Pods-PaymentIntentUI.release.xcconfig"; sourceTree = "<group>"; };
 		DE02DEC9226C97B700B51201 /* InvoiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceVC.swift; sourceTree = "<group>"; };
 		DE073DD42282C2200098BCAE /* PresentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentVC.swift; sourceTree = "<group>"; };
+		DE073DD622832F620098BCAE /* MonthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthVC.swift; sourceTree = "<group>"; };
 		DE0BD66F227D41B200E03E31 /* Formatter - extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter - extension.swift"; sourceTree = "<group>"; };
 		DE21B90022578D9800B65719 /* PieChartCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartCVCell.swift; sourceTree = "<group>"; };
 		DE21B90122578D9800B65719 /* PieChartCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PieChartCVCell.xib; sourceTree = "<group>"; };
 		DE21B904225794C900B65719 /* BarChartCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartCVCell.swift; sourceTree = "<group>"; };
 		DE21B905225794C900B65719 /* BarChartCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarChartCVCell.xib; sourceTree = "<group>"; };
+		DE24714F22840093005A341C /* CategoryCollectionViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewVC.swift; sourceTree = "<group>"; };
 		DE29CC0222815860001EC04E /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		DE2BB35A22539662001D55E4 /* SavingCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingCVCell.swift; sourceTree = "<group>"; };
 		DE2BB35B22539662001D55E4 /* SavingCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavingCVCell.xib; sourceTree = "<group>"; };
@@ -347,6 +351,7 @@
 		DE073DD32282C1C30098BCAE /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				DE073DD622832F620098BCAE /* MonthVC.swift */,
 				DE073DD42282C2200098BCAE /* PresentVC.swift */,
 			);
 			path = Base;
@@ -367,6 +372,14 @@
 				DE4984B7225878A8004E4AE9 /* CategoryAccountingsTotalCVCell.xib */,
 			);
 			path = Chart;
+			sourceTree = "<group>";
+		};
+		DE24715122842B27005A341C /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				DE24714F22840093005A341C /* CategoryCollectionViewVC.swift */,
+			);
+			path = Delegate;
 			sourceTree = "<group>";
 		};
 		DE2BB3552253605D001D55E4 /* Saving */ = {
@@ -622,6 +635,7 @@
 			children = (
 				DEECB05522533599002D6C30 /* TabBarController.swift */,
 				DE073DD32282C1C30098BCAE /* Base */,
+				DE24715122842B27005A341C /* Delegate */,
 				DE2BB35922538889001D55E4 /* Saving */,
 				DE4984B3225869D6004E4AE9 /* Chart */,
 				DEECB05422533599002D6C30 /* AccountingVC.swift */,
@@ -1054,10 +1068,12 @@
 				DE29CC0322815860001EC04E /* MessageView.swift in Sources */,
 				DE2BB3662253AC1D001D55E4 /* MonthCVCell.swift in Sources */,
 				DE366ABF226EE64700A65954 /* NotificationManager.swift in Sources */,
+				DE073DD722832F620098BCAE /* MonthVC.swift in Sources */,
 				DE7B38AE2257427200C17846 /* CategorySelectCVCell.swift in Sources */,
 				DEBE8C252254AE5200C2A8A3 /* UITableView - extension.swift in Sources */,
 				DEAF79B622757A85002C48B9 /* UILabel - extension.swift in Sources */,
 				DE073DD52282C2200098BCAE /* PresentVC.swift in Sources */,
+				DE24715022840093005A341C /* CategoryCollectionViewVC.swift in Sources */,
 				DEECB05C22533599002D6C30 /* TabBarController.swift in Sources */,
 				DEECB05822533599002D6C30 /* SettingVC.swift in Sources */,
 				DEDE574E2271EBC70071FCFD /* TimeManager.swift in Sources */,

@@ -8,8 +8,6 @@
 
 import UIKit
 
-import CoreData
-
 import IQKeyboardManagerSwift
 
 import Fabric

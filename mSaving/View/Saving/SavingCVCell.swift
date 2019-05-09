@@ -8,15 +8,15 @@
 
 import UIKit
 
-protocol SavingCVCCellDelegate: AnyObject {
+@objc protocol SavingCVCCellDelegate: AnyObject {
     
-    func touchMain()
+    @objc optional func touchMain()
     
-    func touchSub(saving: Saving?)
+    @objc optional func touchSub(saving: Saving?)
     
-    func touchAddSaving()
+    @objc optional func touchAddSaving()
     
-    func touch(accounting: Accounting?)
+    @objc optional func touch(accounting: Accounting?)
     
 }
 
@@ -60,7 +60,7 @@ class SavingCVCell: UICollectionViewCell {
 
     }
 
-    func initSavingCVCell(showAccounting: Bool, month: Month, delegate: SavingCVCCellDelegate?) {
+    func initSavingCVCell(showAccounting: Bool, month: Month?, delegate: SavingCVCCellDelegate?) {
         
         noDataImageView.isHidden = true
         
@@ -68,15 +68,19 @@ class SavingCVCell: UICollectionViewCell {
         
         self.showAccounting = showAccounting
         
-        accountingsGroup = accountingProvider.fetchAccountingsGroup(month: month)
-        
-        savings = SavingProvider().fetchSaving(month: month)
-        
-        totalSpend = accountingProvider.getTotalSpend(month: month)
-        
-        let tempTuples = accountingProvider.fetchExpenseIncomeMonthTotal(month: month)
-        
-        expenseMonthTotal = tempTuples.expense
+        if let month = month {
+            
+            accountingsGroup = accountingProvider.fetchAccountingsGroup(month: month)
+            
+            savings = SavingProvider().fetchSaving(month: month)
+            
+            totalSpend = accountingProvider.getTotalSpend(month: month)
+            
+            let tempTuples = accountingProvider.fetchExpenseIncomeMonthTotal(month: month)
+            
+            expenseMonthTotal = tempTuples.expense
+            
+        }
         
         if showAccounting && accountingsGroup.count == 0 {
             

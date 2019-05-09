@@ -56,7 +56,7 @@ class MainSavingCVCell: UICollectionViewCell {
 
     @IBAction func touchMainSaving(_ sender: UIButton) {
         
-        delegate?.touchMain()
+        delegate?.touchMain?()
 
     }
 

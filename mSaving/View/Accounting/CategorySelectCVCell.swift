@@ -8,13 +8,21 @@
 
 import UIKit
 
+protocol CategorySelectCVCellDelegate: AnyObject {
+    
+    func touchCategory(expense: ExpenseCategory?)
+    
+}
+
 class CategorySelectCVCell: UICollectionViewCell {
 
     @IBOutlet weak var categoryImageView: UIImageView!
 
     @IBOutlet weak var categoryNameLabel: UILabel!
-
-    var selectCategory: (() -> Void)?
+    
+    weak var delegate: CategorySelectCVCellDelegate?
+    
+    var expense: ExpenseCategory?
 
     override func awakeFromNib() {
 
@@ -22,19 +30,26 @@ class CategorySelectCVCell: UICollectionViewCell {
 
     }
 
-    func initCategorySelectCVCell(imageName: String, categoryName: String, hex: String) {
-
-        categoryImageView.image = UIImage(named: imageName)
+    func initCategorySelectCVCell(expense: ExpenseCategory?, delegate: CategorySelectCVCellDelegate?) {
         
-        categoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
+        self.delegate = delegate
+        
+        self.expense = expense
+        
+        guard let iconName = expense?.iconName, let color = expense?.color,
+              let name = expense?.name else { return }
 
-        categoryNameLabel.text = categoryName
+        categoryImageView.image = UIImage(named: iconName)
+        
+        categoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+
+        categoryNameLabel.text = name
 
     }
 
     @IBAction func selectCategory(_ sender: UIButton) {
-
-        selectCategory?()
+        
+        delegate?.touchCategory(expense: expense)
 
     }
 

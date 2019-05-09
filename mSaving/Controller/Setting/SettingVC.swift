@@ -234,7 +234,7 @@ extension SettingVC: UICollectionViewDataSource {
                         return AddSavingCVCell()
                 }
                 
-//                cell.initAddSavingDetailCVCell(addText: "新增帳戶")
+                cell.initAddSavingCVCell(addText: "新增帳戶", delegate: self)
 //
 //                cell.presentSavingDetailAdd = {
 //
@@ -362,7 +362,17 @@ extension SettingVC: UICollectionViewDataSource {
 
 }
 
-extension SettingVC: UICollectionViewDelegate { }
+extension SettingVC: SavingCVCCellDelegate {
+    
+    func touchAddSaving() {
+        
+        selectedAccount = nil
+
+        performSegue(withIdentifier: "goToAccountDetail", sender: nil)
+        
+    }
+    
+}
 
 extension SettingVC: UICollectionViewDelegateFlowLayout {
 

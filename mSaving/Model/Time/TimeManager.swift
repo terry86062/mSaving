@@ -10,31 +10,31 @@ import Foundation
 
 class TimeManager {
     
-    var todayYear: Int {
+    lazy var todayYear: Int = {
         
         guard let year = transform(date: Date()).year else { return 0 }
         
         return year
         
-    }
+    }()
     
-    var todayMonth: Int {
+    lazy var todayMonth: Int = {
         
         guard let month = transform(date: Date()).month else { return 0 }
         
         return month
+        
+    }()
+    
+    func transform(date: Date) -> DateComponents {
+        
+        return Calendar.current.dateComponents([.year, .month, .day, .weekday, .hour, .minute], from: date)
         
     }
     
     func transform(int: Int64) -> DateComponents {
         
         let date = Date(timeIntervalSince1970: TimeInterval(int))
-        
-        return Calendar.current.dateComponents([.year, .month, .day, .weekday, .hour, .minute], from: date)
-        
-    }
-    
-    func transform(date: Date) -> DateComponents {
         
         return Calendar.current.dateComponents([.year, .month, .day, .weekday, .hour, .minute], from: date)
         

@@ -10,7 +10,9 @@ import Foundation
 
 class MonthProvider {
     
-    let coreDataManager = CoreDataManager.shared
+    private let coreDataManager = CoreDataManager.shared
+    
+    private lazy var timeManager = TimeManager()
     
     var months: [Month] {
         
@@ -18,16 +20,16 @@ class MonthProvider {
         
     }
     
-    func createMonth(year: Int64, month: Int64) {
+    func createCurrentMonth() -> Month {
+
+        let month = Month(context: coreDataManager.viewContext)
         
-        let aMonth = Month(context: coreDataManager.viewContext)
+        month.year = Int64(timeManager.todayYear)
         
-        aMonth.year = year
+        month.month = Int64(timeManager.todayMonth)
         
-        aMonth.month = month
-        
-        coreDataManager.saveContext()
-        
+        return month
+
     }
     
 }

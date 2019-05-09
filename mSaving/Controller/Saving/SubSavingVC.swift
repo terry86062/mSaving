@@ -12,29 +12,19 @@ class SubSavingVC: PresentVC {
 
     @IBOutlet weak var titleLabel: UILabel!
     
-    @IBOutlet weak var savingDetailTextField: UITextField!
+    @IBOutlet weak var subSavingTextField: UITextField!
     
     @IBOutlet weak var selectedCategoryImageView: UIImageView!
     
     @IBOutlet weak var deleteButton: UIButton!
     
-    @IBOutlet weak var savingCategoryCollectionView: UICollectionView! {
-        
-        didSet {
-            
-            savingCategoryCollectionView.dataSource = self
-            
-            savingCategoryCollectionView.delegate = self
-            
-        }
-        
-    }
+    @IBOutlet weak var savingCategoryCollectionView: UICollectionView!
     
-    var expenseCategories: [ExpenseCategory] = []
+    let categoryCVVC = CategoryCollectionViewVC()
     
     var selectedMonth: Month?
     
-    var selectedSavingDetail: Saving?
+    var selectedSubSaving: Saving?
     
     var selectedExpenseCategory: ExpenseCategory?
     
@@ -52,15 +42,19 @@ class SubSavingVC: PresentVC {
         
         savingCategoryCollectionView.helpRegister(cell: CategorySelectCVCell())
         
+        savingCategoryCollectionView.dataSource = categoryCVVC
+        
+        savingCategoryCollectionView.delegate = categoryCVVC
+        
+        categoryCVVC.delegate = self
+        
     }
     
     func setUpView() {
         
-        savingDetailTextField.becomeFirstResponder()
+        subSavingTextField.becomeFirstResponder()
         
-        expenseCategories = CategoryProvider().expenseCategories
-        
-        if selectedSavingDetail == nil {
+        if selectedSubSaving == nil {
             
             titleLabel.text = "新增子預算"
             
@@ -70,11 +64,11 @@ class SubSavingVC: PresentVC {
             
         } else {
             
-            guard let budget = selectedSavingDetail?.amount else { return }
+            guard let budget = selectedSubSaving?.amount else { return }
             
-            savingDetailTextField.text = String(budget)
+            subSavingTextField.text = String(budget)
 
-            guard let expenseCategory = selectedSavingDetail?.expenseCategory,
+            guard let expenseCategory = selectedSubSaving?.expenseCategory,
                 let name = expenseCategory.name,
                 let iconName = expenseCategory.iconName,
                 let hex = expenseCategory.color else { return }
@@ -93,7 +87,7 @@ class SubSavingVC: PresentVC {
     
     @IBAction func dismiss(_ sender: UIButton) {
         
-        savingDetailTextField.resignFirstResponder()
+        subSavingTextField.resignFirstResponder()
         
         dismiss(animated: true, completion: nil)
         
@@ -101,7 +95,7 @@ class SubSavingVC: PresentVC {
     
     @IBAction func confirm(_ sender: UIButton) {
         
-        if selectedSavingDetail == nil {
+        if selectedSubSaving == nil {
             
             saveSaving()
             
@@ -113,27 +107,15 @@ class SubSavingVC: PresentVC {
         
     }
     
-    @IBAction func deleteSaving(_ sender: UIButton) {
-        
-        AlertManager().showDeleteAlertWith(saving: selectedSavingDetail, viewController: self) { [weak self] in
-            
-            self?.dismiss(UIButton())
-            
-        }
-        
-    }
-    
     func saveSaving() {
         
-        guard let amountText = savingDetailTextField.text, let amount = Int64(amountText) else { return }
+        guard let amountText = subSavingTextField.text, let amount = Int64(amountText) else { return }
         
         guard let selectedExpenseCategory = selectedExpenseCategory else { return }
         
         if let selectedMonth = selectedMonth {
             
-            SavingProvider().createSaving(month: selectedMonth,
-                                          amount: amount,
-                                          main: false,
+            SavingProvider().createSaving(month: selectedMonth, amount: amount, main: false,
                                           selectedExpenseCategory: selectedExpenseCategory)
             
         } else {
@@ -148,9 +130,7 @@ class SubSavingVC: PresentVC {
             
             aMonth.month = Int64(month)
             
-            SavingProvider().createSaving(month: aMonth,
-                                          amount: amount,
-                                          main: false,
+            SavingProvider().createSaving(month: aMonth, amount: amount, main: false,
                                           selectedExpenseCategory: selectedExpenseCategory)
             
         }
@@ -161,11 +141,11 @@ class SubSavingVC: PresentVC {
     
     func reviseSaving() {
         
-        guard let selectedSavingDetail = selectedSavingDetail else { return }
+        guard let selectedSavingDetail = selectedSubSaving else { return }
         
         guard let selectedExpenseCategory = selectedExpenseCategory else { return }
         
-        guard let text = savingDetailTextField.text, let amount = Int64(text) else { return }
+        guard let text = subSavingTextField.text, let amount = Int64(text) else { return }
         
         SavingProvider().reviseSaving(saving: selectedSavingDetail,
                                       amount: amount,
@@ -174,77 +154,33 @@ class SubSavingVC: PresentVC {
         dismiss(UIButton())
         
     }
-
-}
-
-extension SubSavingVC: UICollectionViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    @IBAction func deleteSaving(_ sender: UIButton) {
         
-        return expenseCategories.count
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        guard let cell = savingCategoryCollectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: CategorySelectCVCell.self),
-            for: indexPath) as? CategorySelectCVCell else {
-                return CategorySelectCVCell()
-        }
-        
-        let expenseCategory = expenseCategories[indexPath.row]
-        
-        guard let iconName = expenseCategory.iconName,
-            let name = expenseCategory.name,
-            let color = expenseCategory.color else { return cell }
-        
-        cell.initCategorySelectCVCell(imageName: iconName, categoryName: name, hex: color)
-        
-        cell.selectCategory = {
+        AlertManager().showDeleteAlertWith(saving: selectedSubSaving, viewController: self) { [weak self] in
             
-            self.selectedExpenseCategory = expenseCategory
-            
-            self.titleLabel.text = "\(name)預算"
-            
-            self.selectedCategoryImageView.image = UIImage(named: iconName)
-            
-            self.selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+            self?.dismiss(UIButton())
             
         }
-        
-        return cell
         
     }
     
 }
 
-extension SubSavingVC: UICollectionViewDelegate { }
+extension SubSavingVC: CategorySelectCVCellDelegate {
+    
+    func touchCategory(expense: ExpenseCategory?) {
+        
+        selectedExpenseCategory = expense
+        
+        guard let iconName = expense?.iconName, let color = expense?.color,
+            let name = expense?.name else { return }
 
-extension SubSavingVC: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        
-        return UIEdgeInsets(top: 0, left: 43, bottom: 0, right: 38.2)
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: 36, height: 84)
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        
-        return 38.2
+        titleLabel.text = "\(name)預算"
+
+        selectedCategoryImageView.image = UIImage(named: iconName)
+
+        selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
         
     }
     
