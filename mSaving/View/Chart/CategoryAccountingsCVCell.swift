@@ -24,13 +24,11 @@ class CategoryAccountingsCVCell: UICollectionViewCell {
         
     }
     
-    var categoriesMonthTotal: [CategoryMonthTotal] = []
-    
     var isIncome = false
     
-    var touchCategoryHandler: (() -> Void)?
-    
-    var selectedCategoryMonthTotal: CategoryMonthTotal?
+    var categoriesMonthTotal: [CategoryMonthTotal] = []
+
+    weak var delegate: AnalysisCVCellDelegate?
     
     override func awakeFromNib() {
         
@@ -38,11 +36,14 @@ class CategoryAccountingsCVCell: UICollectionViewCell {
         
     }
     
-    func initCategoryAccountingsCVCell(monthTotal: [CategoryMonthTotal], isIncome: Bool) {
+    func initCategoryAccountingsCVCell(isIncome: Bool, monthTotal: [CategoryMonthTotal],
+                                       delegate: AnalysisCVCellDelegate?) {
         
         self.categoriesMonthTotal = monthTotal
         
         self.isIncome = isIncome
+        
+        self.delegate = delegate
         
     }
     
@@ -71,23 +72,14 @@ extension CategoryAccountingsCVCell: UICollectionViewDataSource {
             withReuseIdentifier: String(describing: CategoryCVCell.self),
             for: indexPath) as? CategoryCVCell else { return UICollectionViewCell() }
         
-        cell.initCategoryCVCell(categoryMonthTotal: categoriesMonthTotal[indexPath.row], isIncome: isIncome)
-        
-        cell.touchCategoryHandler = {
-            
-            self.selectedCategoryMonthTotal = self.categoriesMonthTotal[indexPath.row]
-            
-            self.touchCategoryHandler?()
-            
-        }
+        cell.initCategoryCVCell(isIncome: isIncome,
+                                categoryMonthTotal: categoriesMonthTotal[indexPath.row], delegate: delegate)
         
         return cell
         
     }
     
 }
-
-extension CategoryAccountingsCVCell: UICollectionViewDelegate { }
 
 extension CategoryAccountingsCVCell: UICollectionViewDelegateFlowLayout {
     

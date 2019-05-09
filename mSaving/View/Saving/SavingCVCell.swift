@@ -165,7 +165,8 @@ extension SavingCVCell: UICollectionViewDataSource {
                         return AccountingsCVCell()
                 }
                 
-                cell.initAccountingsCVCell(haveHeader: true, accountings: accountingsGroup[indexPath.row - 1], delegate: delegate)
+                cell.initAccountingsCVCell(haveHeader: true, accountings: accountingsGroup[indexPath.row - 1],
+                                           delegate: delegate)
                 
                 cell.accountingsCollectionView.reloadData()
                 

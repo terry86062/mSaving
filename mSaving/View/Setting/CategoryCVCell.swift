@@ -16,7 +16,9 @@ class CategoryCVCell: UICollectionViewCell {
     
     @IBOutlet private weak var trailingLabel: UILabel!
     
-    var touchCategoryHandler: (() -> Void)?
+    weak var delegate: AnalysisCVCellDelegate?
+    
+    var categoryMonthTotal: CategoryMonthTotal?
 
     override func awakeFromNib() {
 
@@ -24,7 +26,11 @@ class CategoryCVCell: UICollectionViewCell {
 
     }
     
-    func initCategoryCVCell(categoryMonthTotal: CategoryMonthTotal, isIncome: Bool) {
+    func initCategoryCVCell(isIncome: Bool, categoryMonthTotal: CategoryMonthTotal, delegate: AnalysisCVCellDelegate?) {
+        
+        self.delegate = delegate
+        
+        self.categoryMonthTotal = categoryMonthTotal
         
         if isIncome {
             
@@ -89,8 +95,8 @@ class CategoryCVCell: UICollectionViewCell {
     }
 
     @IBAction private func touchCategory(_ sender: UIButton) {
-
-        touchCategoryHandler?()
+        
+        delegate?.touch(categoryMonthTotal: categoryMonthTotal)
 
     }
 

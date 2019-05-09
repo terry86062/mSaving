@@ -91,7 +91,7 @@ extension CategorysCVCell: UICollectionViewDataSource {
             
         }
         
-        cell.touchCategoryHandler = goToSetCategory
+//        cell.touchCategoryHandler = goToSetCategory
 
         return cell
 

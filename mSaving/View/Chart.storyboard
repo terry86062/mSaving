@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fdg-41-sgK">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,11 +16,11 @@
             <objects>
                 <viewController id="who-qC-jFn" customClass="ChartVC" customModule="mSaving" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PIl-r7-Y3z">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iyE-0e-gdu">
-                                <rect key="frame" x="0.0" y="63" width="600" height="32"/>
+                                <rect key="frame" x="0.0" y="87" width="414" height="32"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="juX-Ua-C2O"/>
@@ -30,7 +34,7 @@
                                 <cells/>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ua1-Yq-anV">
-                                <rect key="frame" x="0.0" y="101" width="600" height="499"/>
+                                <rect key="frame" x="0.0" y="125" width="414" height="737"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="hZg-Ec-T9d">
                                     <size key="itemSize" width="50" height="50"/>
@@ -41,7 +45,7 @@
                                 <cells/>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iM7-gY-DsZ">
-                                <rect key="frame" x="274" y="24" width="52" height="29"/>
+                                <rect key="frame" x="181" y="48" width="52" height="29"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -52,7 +56,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pkt-50-wDB">
-                                <rect key="frame" x="524" y="26.5" width="60" height="24"/>
+                                <rect key="frame" x="338" y="50.5" width="60" height="24"/>
                                 <color key="backgroundColor" name="mSGreen"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="1Hy-Sx-FJr"/>
@@ -112,11 +116,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="Kou-5r-bgS"/>
                     <connections>
-                        <outlet property="analysisCollectionView" destination="Ua1-Yq-anV" id="cTl-wb-td7"/>
+                        <outlet property="dataCollectionView" destination="Ua1-Yq-anV" id="0kt-FY-9Zf"/>
                         <outlet property="expenseIncomeButton" destination="Pkt-50-wDB" id="nLh-g8-nB5"/>
-                        <outlet property="monthCollectionView" destination="iyE-0e-gdu" id="EtV-rg-Gl1"/>
-                        <outlet property="yearLabel" destination="iM7-gY-DsZ" id="BfF-An-Kho"/>
-                        <segue destination="23y-g6-22h" kind="show" identifier="goToCategoryAccountsDetailVC" id="cmI-jx-hVW"/>
+                        <outlet property="monthCollectionView" destination="iyE-0e-gdu" id="LRx-ET-cD9"/>
+                        <outlet property="yearLabel" destination="iM7-gY-DsZ" id="hC9-wO-G1K"/>
+                        <segue destination="23y-g6-22h" kind="show" identifier="pushChartDetailVC" id="cmI-jx-hVW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h21-ub-3Y0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -128,17 +132,17 @@
             <objects>
                 <viewController id="23y-g6-22h" customClass="ChartDetailVC" customModule="mSaving" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7mx-sz-7lN">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="食物" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gel-8e-Adx">
-                                <rect key="frame" x="278.5" y="24" width="43" height="25.5"/>
+                                <rect key="frame" x="185.5" y="48" width="43" height="25.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Sg9-Zb-77l">
-                                <rect key="frame" x="0.0" y="65.5" width="600" height="534.5"/>
+                                <rect key="frame" x="0.0" y="89.5" width="414" height="772.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="BFp-F6-1Ox">
                                     <size key="itemSize" width="50" height="50"/>
@@ -149,7 +153,7 @@
                                 <cells/>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PsP-bR-loK">
-                                <rect key="frame" x="18" y="27" width="20" height="20"/>
+                                <rect key="frame" x="18" y="51" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="OOa-iY-5Lx"/>
                                     <constraint firstAttribute="height" constant="20" id="lc3-t0-prH"/>
@@ -190,7 +194,6 @@
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="P89-Id-m8A">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

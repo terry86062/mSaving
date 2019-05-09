@@ -62,6 +62,8 @@ class MonthVC: UIViewController {
         
         dataCollectionView.helpRegister(cell: SavingCVCell())
         
+        dataCollectionView.helpRegister(cell: AnalysisCVCell())
+        
     }
     
     func fetchData() {

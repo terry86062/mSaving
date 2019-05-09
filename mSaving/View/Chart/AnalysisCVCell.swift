@@ -8,6 +8,12 @@
 
 import UIKit
 
+protocol AnalysisCVCellDelegate: AnyObject {
+    
+    func touch(categoryMonthTotal: CategoryMonthTotal?)
+    
+}
+
 class AnalysisCVCell: UICollectionViewCell {
 
     @IBOutlet weak var analysisCollectionView: UICollectionView! {
@@ -30,7 +36,7 @@ class AnalysisCVCell: UICollectionViewCell {
     
     var accountingProvider = AccountingProvider()
     
-    var month: Month?
+    var isIncome = false
     
     var expenseMonthTotal: [CategoryMonthTotal] = []
     
@@ -38,11 +44,7 @@ class AnalysisCVCell: UICollectionViewCell {
     
     var accountingsGroup: [[Accounting]] = []
     
-    var isIncome = false
-    
-    var touchCategoryHandler: (() -> Void)?
-    
-    var selectedCategoryMonthTotal: CategoryMonthTotal?
+    weak var delegate: AnalysisCVCellDelegate?
 
     override func awakeFromNib() {
 
@@ -50,23 +52,27 @@ class AnalysisCVCell: UICollectionViewCell {
 
     }
     
-    func initAnalysisCVCell(month: Month, isIncome: Bool) {
+    func initAnalysisCVCell(isIncome: Bool, month: Month?, delegate: AnalysisCVCellDelegate?) {
         
         noDataLabel.isHidden = true
         
         noDataImageView.isHidden = true
         
-        self.month = month
-        
-        let tempTuples = accountingProvider.fetchExpenseIncomeMonthTotal(month: month)
-        
-        expenseMonthTotal = tempTuples.expense
-        
-        incomeMonthTotal = tempTuples.income
-        
-        accountingsGroup = accountingProvider.fetchAccountingsGroup(month: month)
-        
         self.isIncome = isIncome
+        
+        if let month = month {
+            
+            let tempTuples = accountingProvider.fetchExpenseIncomeMonthTotal(month: month)
+            
+            expenseMonthTotal = tempTuples.expense
+            
+            incomeMonthTotal = tempTuples.income
+            
+            accountingsGroup = accountingProvider.fetchAccountingsGroup(month: month)
+            
+        }
+        
+        self.delegate = delegate
         
     }
 
@@ -86,21 +92,11 @@ extension AnalysisCVCell: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
-        if isIncome {
-            
-            return 2
-            
-        } else {
-            
-            return 2
-            
-        }
+        return 2
         
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        guard month != nil else { return 0 }
         
         if isIncome {
             
@@ -171,20 +167,14 @@ extension AnalysisCVCell: UICollectionViewDataSource {
             
             if isIncome {
                 
-                cell.initCategoryAccountingsCVCell(monthTotal: incomeMonthTotal, isIncome: isIncome)
+                cell.initCategoryAccountingsCVCell(isIncome: isIncome, monthTotal: incomeMonthTotal,
+                                                   delegate: delegate)
                 
             } else {
                 
-                cell.initCategoryAccountingsCVCell(monthTotal: expenseMonthTotal, isIncome: isIncome)
+                cell.initCategoryAccountingsCVCell(isIncome: isIncome, monthTotal: expenseMonthTotal,
+                                                   delegate: delegate)
                 
-            }
-            
-            cell.touchCategoryHandler = {
-
-                self.selectedCategoryMonthTotal = cell.selectedCategoryMonthTotal
-                
-                self.touchCategoryHandler?()
-
             }
             
             cell.categoryAccountingsCollectionView.reloadData()
@@ -208,8 +198,6 @@ extension AnalysisCVCell: UICollectionViewDataSource {
     }
     
 }
-
-extension AnalysisCVCell: UICollectionViewDelegate { }
 
 extension AnalysisCVCell: UICollectionViewDelegateFlowLayout {
     
