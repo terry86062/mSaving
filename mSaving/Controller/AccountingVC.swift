@@ -51,17 +51,7 @@ class AccountingVC: PresentVC {
     
     @IBOutlet var keyboardToolBar: UIToolbar!
 
-    @IBOutlet weak var incomeExpenseCollectionView: UICollectionView! {
-
-        didSet {
-
-            incomeExpenseCollectionView.dataSource = self
-
-            incomeExpenseCollectionView.delegate = self
-
-        }
-
-    }
+    @IBOutlet weak var incomeExpenseCollectionView: UICollectionView!
     
     @IBOutlet weak var selectedAccountButton: UIButton!
     
@@ -69,9 +59,7 @@ class AccountingVC: PresentVC {
     
     @IBOutlet weak var incomeExpenseButton: UIButton!
     
-    var expenseCategories: [ExpenseCategory] = []
-    
-    var incomeCategories: [IncomeCategory] = []
+    let categoryCVVC = CategoryCollectionViewVC()
     
     var accounts: [Account] = []
     
@@ -101,6 +89,18 @@ class AccountingVC: PresentVC {
         
         incomeExpenseCollectionView.helpRegister(cell: CategorySelectCVCell())
         
+        incomeExpenseCollectionView.dataSource = categoryCVVC
+        
+        incomeExpenseCollectionView.delegate = categoryCVVC
+        
+        categoryCVVC.delegate = self
+        
+        if categoryCVVC.expenseCategories != [] {
+            
+            setUpForSelected(category: .expense(categoryCVVC.expenseCategories[0]))
+            
+        }
+        
     }
     
     func setUpCalendar() {
@@ -121,17 +121,7 @@ class AccountingVC: PresentVC {
     
     func fetchData() {
         
-        expenseCategories = CategoryProvider().expenseCategories
-        
-        incomeCategories = CategoryProvider().incomeCategories
-        
         accounts = AccountProvider().accounts
-        
-        if expenseCategories != [] {
-            
-            setUpForSelected(category: .expense(expenseCategories[0]))
-            
-        }
         
         if accounts != [] {
             
@@ -316,6 +306,8 @@ class AccountingVC: PresentVC {
         
         incomeExpenseButton.isSelected = !incomeExpenseButton.isSelected
         
+        categoryCVVC.showExpense = !incomeExpenseButton.isSelected
+        
         incomeExpenseCollectionView.reloadData()
         
     }
@@ -370,105 +362,32 @@ extension AccountingVC: UIGestureRecognizerDelegate {
     
 }
 
-extension AccountingVC: UICollectionViewDataSource {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
-        if incomeExpenseButton.isSelected {
+extension AccountingVC: CategorySelectCVCellDelegate {
+    
+    func touchCategory(expense: ExpenseCategory?, income: IncomeCategory?) {
+        
+        if let expense = expense {
             
-            return incomeCategories.count
+            selectedCategory = .expense(expense)
             
-        } else {
+            guard let iconName = expense.iconName, let color = expense.color else { return }
             
-            return expenseCategories.count
+            selectedCategoryImageView.image = UIImage(named: iconName)
+            
+            selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+            
+        } else if let income = income {
+            
+            selectedCategory = .income(income)
+            
+            guard let iconName = income.iconName, let color = income.color else { return }
+            
+            selectedCategoryImageView.image = UIImage(named: iconName)
+            
+            selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
             
         }
-        
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-        guard let cell = incomeExpenseCollectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: CategorySelectCVCell.self),
-            for: indexPath) as? CategorySelectCVCell else {
-                return CategorySelectCVCell()
-        }
-        
-        if incomeExpenseButton.isSelected {
-            
-            let incomeCategory = incomeCategories[indexPath.row]
-            
-            guard let iconName = incomeCategory.iconName,
-                let name = incomeCategory.name,
-                let color = incomeCategory.color else { return cell }
-            
-//            cell.initCategorySelectCVCell(imageName: iconName, categoryName: name, hex: color)
-//            
-//            cell.selectCategory = {
-//                
-//                self.selectedCategory = .income(incomeCategory)
-//                
-//                self.selectedCategoryImageView.image = UIImage(named: iconName)
-//                
-//                self.selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
-//                
-//            }
-            
-        } else {
-            
-            let expenseCategory = expenseCategories[indexPath.row]
-            
-            guard let iconName = expenseCategory.iconName,
-                let name = expenseCategory.name,
-                let color = expenseCategory.color else { return cell }
-            
-//            cell.initCategorySelectCVCell(imageName: iconName, categoryName: name, hex: color)
-//            
-//            cell.selectCategory = {
-//                
-//                self.selectedCategory = .expense(expenseCategory)
-//                
-//                self.selectedCategoryImageView.image = UIImage(named: iconName)
-//                
-//                self.selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
-//                
-//            }
-            
-        }
-        
-        return cell
-
-    }
-
-}
-
-extension AccountingVC: UICollectionViewDelegate { }
-
-extension AccountingVC: UICollectionViewDelegateFlowLayout {
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        
-        return UIEdgeInsets(top: 0, left: 43, bottom: 0, right: 38.2)
         
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: 36, height: 84)
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        
-        return 38.2
-        
-    }
-
 }

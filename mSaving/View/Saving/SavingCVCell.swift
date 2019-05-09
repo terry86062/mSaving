@@ -92,6 +92,9 @@ class SavingCVCell: UICollectionViewCell {
         
         self.delegate = delegate
         
+        
+        savingAccountingCollectionView.reloadData()
+        
     }
 
     func setUpCollectionView() {
@@ -167,8 +170,6 @@ extension SavingCVCell: UICollectionViewDataSource {
                 
                 cell.initAccountingsCVCell(haveHeader: true, accountings: accountingsGroup[indexPath.row - 1],
                                            delegate: delegate)
-                
-                cell.accountingsCollectionView.reloadData()
                 
                 return cell
                 

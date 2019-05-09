@@ -10,7 +10,7 @@ import UIKit
 
 protocol CategorySelectCVCellDelegate: AnyObject {
     
-    func touchCategory(expense: ExpenseCategory?)
+    func touchCategory(expense: ExpenseCategory?, income: IncomeCategory?)
     
 }
 
@@ -23,6 +23,8 @@ class CategorySelectCVCell: UICollectionViewCell {
     weak var delegate: CategorySelectCVCellDelegate?
     
     var expense: ExpenseCategory?
+    
+    var income: IncomeCategory?
 
     override func awakeFromNib() {
 
@@ -30,26 +32,43 @@ class CategorySelectCVCell: UICollectionViewCell {
 
     }
 
-    func initCategorySelectCVCell(expense: ExpenseCategory?, delegate: CategorySelectCVCellDelegate?) {
+    func initCategorySelectCVCell(expense: ExpenseCategory?, income: IncomeCategory?, delegate: CategorySelectCVCellDelegate?) {
         
         self.delegate = delegate
         
         self.expense = expense
         
-        guard let iconName = expense?.iconName, let color = expense?.color,
-              let name = expense?.name else { return }
-
-        categoryImageView.image = UIImage(named: iconName)
+        self.income = income
         
-        categoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
-
-        categoryNameLabel.text = name
-
+        if expense != nil {
+            
+            guard let iconName = expense?.iconName, let color = expense?.color,
+                let name = expense?.name else { return }
+            
+            categoryImageView.image = UIImage(named: iconName)
+            
+            categoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+            
+            categoryNameLabel.text = name
+            
+        } else {
+            
+            guard let iconName = income?.iconName, let color = income?.color,
+                let name = income?.name else { return }
+            
+            categoryImageView.image = UIImage(named: iconName)
+            
+            categoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
+            
+            categoryNameLabel.text = name
+            
+        }
+        
     }
 
     @IBAction func selectCategory(_ sender: UIButton) {
         
-        delegate?.touchCategory(expense: expense)
+        delegate?.touchCategory(expense: expense, income: income)
 
     }
 

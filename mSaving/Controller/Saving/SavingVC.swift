@@ -91,8 +91,6 @@ extension SavingVC {
                                       delegate: self)
                 
             }
-            
-            cell.savingAccountingCollectionView.reloadData()
 
             return cell
 

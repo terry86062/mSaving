@@ -134,8 +134,6 @@ extension CategoryVC: UICollectionViewDataSource {
 
 }
 
-extension CategoryVC: UICollectionViewDelegate { }
-
 extension CategoryVC: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView,

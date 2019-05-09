@@ -74,6 +74,8 @@ class AnalysisCVCell: UICollectionViewCell {
         
         self.delegate = delegate
         
+        analysisCollectionView.reloadData()
+        
     }
 
     func setUpCollectionView() {
@@ -176,8 +178,6 @@ extension AnalysisCVCell: UICollectionViewDataSource {
                                                    delegate: delegate)
                 
             }
-            
-            cell.categoryAccountingsCollectionView.reloadData()
             
             return cell
             

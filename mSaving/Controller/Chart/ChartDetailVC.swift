@@ -126,8 +126,6 @@ extension ChartDetailVC: UICollectionViewDataSource {
 
 }
 
-extension ChartDetailVC: UICollectionViewDelegate { }
-
 extension ChartDetailVC: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView,

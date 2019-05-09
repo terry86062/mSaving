@@ -45,6 +45,8 @@ class CategoryAccountingsCVCell: UICollectionViewCell {
         
         self.delegate = delegate
         
+        categoryAccountingsCollectionView.reloadData()
+        
     }
     
     func setUpCollectionView() {

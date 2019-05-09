@@ -64,8 +64,6 @@ extension ChartVC {
                                         month: nil, delegate: self)
                 
             }
-            
-            cell.analysisCollectionView.reloadData()
 
             return cell
 

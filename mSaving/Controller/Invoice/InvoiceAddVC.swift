@@ -18,17 +18,9 @@ class InvoiceAddVC: PresentVC {
     
     @IBOutlet weak var selectedAccountButton: UIButton!
     
-    @IBOutlet weak var accountingCategoryCollectionView: UICollectionView! {
-        
-        didSet {
-            
-            accountingCategoryCollectionView.dataSource = self
-            
-            accountingCategoryCollectionView.delegate = self
-            
-        }
-        
-    }
+    @IBOutlet weak var accountingCategoryCollectionView: UICollectionView!
+    
+    let categoryCVVC = CategoryCollectionViewVC()
     
     var invoiceYear = ""
     
@@ -37,8 +29,6 @@ class InvoiceAddVC: PresentVC {
     var invoiceDay = ""
     
     var invoiceAmount = 0
-    
-    var expenseCategories: [ExpenseCategory] = []
     
     var accounts: [Account] = []
     
@@ -62,6 +52,12 @@ class InvoiceAddVC: PresentVC {
         
         accountingCategoryCollectionView.helpRegister(cell: CategorySelectCVCell())
         
+        accountingCategoryCollectionView.dataSource = categoryCVVC
+        
+        accountingCategoryCollectionView.delegate = categoryCVVC
+        
+        categoryCVVC.delegate = self
+        
     }
     
     func setUpInvoiceInfo() {
@@ -73,8 +69,6 @@ class InvoiceAddVC: PresentVC {
     }
     
     func fetchData() {
-        
-        expenseCategories = CategoryProvider().expenseCategories
         
         accounts = AccountProvider().accounts
         
@@ -142,72 +136,17 @@ class InvoiceAddVC: PresentVC {
     
 }
 
-extension InvoiceAddVC: UICollectionViewDataSource {
+extension InvoiceAddVC: CategorySelectCVCellDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func touchCategory(expense: ExpenseCategory?, income: IncomeCategory?) {
         
-        return expenseCategories.count
+        selectedExpenseCategory = expense
         
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let iconName = expense?.iconName, let color = expense?.color else { return }
         
-        guard let cell = accountingCategoryCollectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: CategorySelectCVCell.self),
-            for: indexPath) as? CategorySelectCVCell else {
-                return CategorySelectCVCell()
-        }
+        selectedCategoryImageView.image = UIImage(named: iconName)
         
-        let expenseCategory = expenseCategories[indexPath.row]
-        
-        guard let iconName = expenseCategory.iconName,
-            let name = expenseCategory.name,
-            let color = expenseCategory.color else { return cell }
-        
-//        cell.initCategorySelectCVCell(imageName: iconName, categoryName: name, hex: color)
-//        
-//        cell.selectCategory = {
-//            
-//            self.selectedExpenseCategory = expenseCategory
-//            
-//            self.selectedCategoryImageView.image = UIImage(named: iconName)
-//            
-//            self.selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
-//            
-//        }
-        
-        return cell
-        
-    }
-    
-}
-
-extension InvoiceAddVC: UICollectionViewDelegate { }
-
-extension InvoiceAddVC: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        
-        return UIEdgeInsets(top: 0, left: 43, bottom: 0, right: 38.2)
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: 36, height: 84)
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        
-        return 38.2
+        selectedCategoryImageView.backgroundColor = UIColor.hexStringToUIColor(hex: color)
         
     }
     

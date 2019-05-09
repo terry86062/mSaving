@@ -169,7 +169,7 @@ class SubSavingVC: PresentVC {
 
 extension SubSavingVC: CategorySelectCVCellDelegate {
     
-    func touchCategory(expense: ExpenseCategory?) {
+    func touchCategory(expense: ExpenseCategory?, income: IncomeCategory?) {
         
         selectedExpenseCategory = expense
         

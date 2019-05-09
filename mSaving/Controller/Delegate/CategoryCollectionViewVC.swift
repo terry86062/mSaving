@@ -12,7 +12,11 @@ class CategoryCollectionViewVC: UIViewController {
     
     weak var delegate: CategorySelectCVCellDelegate?
     
+    var showExpense = true
+    
     var expenseCategories: [ExpenseCategory] = CategoryProvider().expenseCategories
+    
+    var incomeCategories: [IncomeCategory] = CategoryProvider().incomeCategories
     
 }
 
@@ -20,7 +24,15 @@ extension CategoryCollectionViewVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return expenseCategories.count
+        if showExpense {
+            
+            return expenseCategories.count
+            
+        } else {
+            
+            return incomeCategories.count
+            
+        }
         
     }
     
@@ -33,9 +45,19 @@ extension CategoryCollectionViewVC: UICollectionViewDataSource {
                 return CategorySelectCVCell()
         }
         
-        let expenseCategory = expenseCategories[indexPath.row]
-        
-        cell.initCategorySelectCVCell(expense: expenseCategory, delegate: delegate)
+        if showExpense {
+            
+            let expenseCategory = expenseCategories[indexPath.row]
+            
+            cell.initCategorySelectCVCell(expense: expenseCategory, income: nil, delegate: delegate)
+            
+        } else {
+            
+            let incomeCategory = incomeCategories[indexPath.row]
+            
+            cell.initCategorySelectCVCell(expense: nil, income: incomeCategory, delegate: delegate)
+            
+        }
         
         return cell
         

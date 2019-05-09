@@ -43,6 +43,8 @@ class AccountingsCVCell: UICollectionViewCell {
         self.accountings = accountings
         
         self.delegate = delegate
+        
+        accountingsCollectionView.reloadData()
 
     }
 
@@ -183,8 +185,6 @@ extension AccountingsCVCell: UICollectionViewDataSource {
     }
 
 }
-
-extension AccountingsCVCell: UICollectionViewDelegate { }
 
 extension AccountingsCVCell: UICollectionViewDelegateFlowLayout {
 
