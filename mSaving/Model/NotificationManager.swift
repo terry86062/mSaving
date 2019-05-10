@@ -10,23 +10,20 @@ import UIKit
 
 class NotificationManager {
     
-    var handler: (() -> Void)?
+    var handler: ((Notification) -> Void)?
     
     // Observer
     
-    func addAllNotification(changeHandler: @escaping () -> Void) {
+    func addSavingNotification(changeHandler: @escaping (Notification) -> Void) {
         
         handler = changeHandler
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(anyChanged(notification:)),
-                                               name: .accountingChanged, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(anyChanged(notification:)),
                                                name: .savingChanged, object: nil)
         
     }
     
-    func addAccountingNotification(changeHandler: @escaping () -> Void) {
+    func addAccountingNotification(changeHandler: @escaping (Notification) -> Void) {
         
         handler = changeHandler
         
@@ -35,7 +32,7 @@ class NotificationManager {
         
     }
     
-    func addAccountNotification(changeHandler: @escaping () -> Void) {
+    func addAccountNotification(changeHandler: @escaping (Notification) -> Void) {
         
         handler = changeHandler
         
@@ -46,27 +43,27 @@ class NotificationManager {
     
     @objc func anyChanged(notification: Notification) {
         
-        handler?()
+        handler?(notification)
         
     }
     
     // Post
     
-    func postAccountingChanged() {
+    func postSavingChanged(userInfo: [String: Saving]?) {
         
-        NotificationCenter.default.post(name: .accountingChanged, object: nil)
-        
-    }
-    
-    func postSavingChanged() {
-        
-        NotificationCenter.default.post(name: .savingChanged, object: nil)
+        NotificationCenter.default.post(name: .savingChanged, object: nil, userInfo: userInfo)
         
     }
     
-    func postAccountChanged() {
+    func postAccountingChanged(userInfo: [String: Accounting]?) {
         
-        NotificationCenter.default.post(name: .accountChanged, object: nil)
+        NotificationCenter.default.post(name: .accountingChanged, object: nil, userInfo: userInfo)
+        
+    }
+    
+    func postAccountChanged(userInfo: [String: Account]?) {
+        
+        NotificationCenter.default.post(name: .accountChanged, object: nil, userInfo: userInfo)
         
     }
     

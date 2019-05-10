@@ -74,7 +74,7 @@ class MonthVC: UIViewController {
     
     func setUpNotification() {
         
-        notificationManager.addAllNotification(changeHandler: { [weak self] in
+        notificationManager.addAccountingNotification(changeHandler: { [weak self] _ in
             
             self?.fetchData()
             

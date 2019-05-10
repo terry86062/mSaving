@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     let uuid = UUID().uuidString
+    
+    let messageViewVC = MessageViewVC()
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -33,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         detectFirstLaunch()
+        
+        messageViewVC.setUpNotification()
 
         return true
         
@@ -62,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         
-        NotificationManager().postAccountingChanged()
+        NotificationManager().postAccountingChanged(userInfo: nil)
         
     }
 

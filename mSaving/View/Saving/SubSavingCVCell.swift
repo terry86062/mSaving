@@ -34,7 +34,8 @@ class SubSavingCVCell: UICollectionViewCell {
 
     }
     
-    func initSubSavingCVCell(saving: Saving, budget: Int64, totalSpend: Int, imageName: String, categoryName: String, hex: String, delegate: SavingCVCCellDelegate?) {
+    func initSubSavingCVCell(saving: Saving, budget: Int64, totalSpend: Int, imageName: String,
+                             categoryName: String, hex: String, delegate: SavingCVCCellDelegate?) {
         
         self.delegate = delegate
         

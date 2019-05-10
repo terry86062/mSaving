@@ -19,6 +19,7 @@
 		DE21B906225794C900B65719 /* BarChartCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE21B904225794C900B65719 /* BarChartCVCell.swift */; };
 		DE21B907225794C900B65719 /* BarChartCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE21B905225794C900B65719 /* BarChartCVCell.xib */; };
 		DE24715022840093005A341C /* CategoryCollectionViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE24714F22840093005A341C /* CategoryCollectionViewVC.swift */; };
+		DE24715322855D07005A341C /* MessageViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE24715222855D07005A341C /* MessageViewVC.swift */; };
 		DE29CC0322815860001EC04E /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE29CC0222815860001EC04E /* MessageView.swift */; };
 		DE2BB35C22539662001D55E4 /* SavingCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BB35A22539662001D55E4 /* SavingCVCell.swift */; };
 		DE2BB35D22539662001D55E4 /* SavingCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2BB35B22539662001D55E4 /* SavingCVCell.xib */; };
@@ -191,6 +192,7 @@
 		DE21B904225794C900B65719 /* BarChartCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartCVCell.swift; sourceTree = "<group>"; };
 		DE21B905225794C900B65719 /* BarChartCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarChartCVCell.xib; sourceTree = "<group>"; };
 		DE24714F22840093005A341C /* CategoryCollectionViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewVC.swift; sourceTree = "<group>"; };
+		DE24715222855D07005A341C /* MessageViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewVC.swift; sourceTree = "<group>"; };
 		DE29CC0222815860001EC04E /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		DE2BB35A22539662001D55E4 /* SavingCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingCVCell.swift; sourceTree = "<group>"; };
 		DE2BB35B22539662001D55E4 /* SavingCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavingCVCell.xib; sourceTree = "<group>"; };
@@ -634,6 +636,7 @@
 			isa = PBXGroup;
 			children = (
 				DEECB05522533599002D6C30 /* TabBarController.swift */,
+				DE24715222855D07005A341C /* MessageViewVC.swift */,
 				DE073DD32282C1C30098BCAE /* Base */,
 				DE24715122842B27005A341C /* Delegate */,
 				DE2BB35922538889001D55E4 /* Saving */,
@@ -1082,6 +1085,7 @@
 				DE990ED5227E8FB900958B33 /* AskCameraView.swift in Sources */,
 				DEEAA9CC2255F4A5005FCE8E /* SubSavingCVCell.swift in Sources */,
 				DEECB064225335FA002D6C30 /* UIImage - extension.swift in Sources */,
+				DE24715322855D07005A341C /* MessageViewVC.swift in Sources */,
 				DE2BB3692253AE16001D55E4 /* Int - extension.swift in Sources */,
 				DEECB065225335FA002D6C30 /* UIStoryboard - extension.swift in Sources */,
 				DEA65DF32259EE4700A10242 /* CategorysCVCell.swift in Sources */,

@@ -32,7 +32,8 @@ class CategorySelectCVCell: UICollectionViewCell {
 
     }
 
-    func initCategorySelectCVCell(expense: ExpenseCategory?, income: IncomeCategory?, delegate: CategorySelectCVCellDelegate?) {
+    func initCategorySelectCVCell(expense: ExpenseCategory?, income: IncomeCategory?,
+                                  delegate: CategorySelectCVCellDelegate?) {
         
         self.delegate = delegate
         

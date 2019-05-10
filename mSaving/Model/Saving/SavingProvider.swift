@@ -14,7 +14,7 @@ class SavingProvider {
     
     let notificationManager = NotificationManager()
     
-    let msMessageView = MSMessageView()
+//    let msMessageView = MSMessageView()
     
     func createSaving(month: Month, amount: Int64, main: Bool = true, selectedExpenseCategory: ExpenseCategory? = nil) {
         
@@ -37,15 +37,17 @@ class SavingProvider {
         
         coreDataManager.saveContext()
         
-        notificationManager.postSavingChanged()
-        
         if main {
             
-            msMessageView.show(saving: saving, type: .add)
+//            msMessageView.show(saving: saving, type: .add)
+            
+            notificationManager.postSavingChanged(userInfo: ["createSaving": saving])
             
         } else {
             
-            msMessageView.show(subSaving: saving, type: .add)
+//            msMessageView.show(subSaving: saving, type: .add)
+            
+            notificationManager.postSavingChanged(userInfo: ["createSubSaving": saving])
             
         }
         
@@ -147,15 +149,17 @@ class SavingProvider {
         
         CoreDataManager.shared.saveContext()
         
-        NotificationManager().postSavingChanged()
-        
         if saving.main {
             
-            msMessageView.show(saving: saving, type: .revise)
+            notificationManager.postSavingChanged(userInfo: ["reviseSaving": saving])
+            
+//            msMessageView.show(saving: saving, type: .revise)
             
         } else {
             
-            msMessageView.show(subSaving: saving, type: .revise)
+            notificationManager.postSavingChanged(userInfo: ["reviseSubSaving": saving])
+            
+//            msMessageView.show(subSaving: saving, type: .revise)
             
         }
         
@@ -163,13 +167,13 @@ class SavingProvider {
     
     func delete(saving: Saving) {
         
-        msMessageView.show(subSaving: saving, type: .delete)
+        notificationManager.postSavingChanged(userInfo: ["delete": saving])
+        
+//        msMessageView.show(subSaving: saving, type: .delete)
         
         coreDataManager.viewContext.delete(saving)
         
         coreDataManager.saveContext()
-        
-        notificationManager.postSavingChanged()
         
     }
     

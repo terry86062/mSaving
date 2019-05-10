@@ -149,7 +149,7 @@ class SettingVC: UIViewController {
     
     func setUpNotification() {
         
-        notificationManager.addAccountNotification { [weak self] in
+        notificationManager.addAccountNotification { [weak self] _ in
             
             self?.fetchData()
             

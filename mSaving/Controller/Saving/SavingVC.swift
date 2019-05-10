@@ -18,6 +18,28 @@ class SavingVC: MonthVC {
     
     var selectedSubSaving: Saving?
     
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        setUpNewNotification()
+        
+    }
+    
+    func setUpNewNotification() {
+        
+        notificationManager.addSavingNotification(changeHandler: { [weak self] _ in
+            
+            self?.fetchData()
+            
+            self?.monthCollectionView.reloadData()
+            
+            self?.dataCollectionView.reloadData()
+            
+        })
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         setUpSelectedMonth(row: findShowRow())
