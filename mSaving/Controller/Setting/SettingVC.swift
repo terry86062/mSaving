@@ -149,11 +149,19 @@ class SettingVC: UIViewController {
     
     func setUpNotification() {
         
-        notificationManager.addAccountNotification { [weak self] _ in
+        notificationManager.addAccountNotification { [weak self] notification in
             
-            self?.fetchData()
-            
-            self?.accountsCollectionView.reloadData()
+            if notification.userInfo?["delete"] as? Account != nil {
+                
+                print("do nothing")
+                
+            } else {
+                
+                self?.fetchData()
+                
+                self?.accountsCollectionView.reloadData()
+                
+            }
             
         }
         

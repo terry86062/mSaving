@@ -28,13 +28,21 @@ class SavingVC: MonthVC {
     
     func setUpNewNotification() {
         
-        notificationManager.addSavingNotification(changeHandler: { [weak self] _ in
+        notificationManager.addSavingNotification(changeHandler: { [weak self] notification in
             
-            self?.fetchData()
-            
-            self?.monthCollectionView.reloadData()
-            
-            self?.dataCollectionView.reloadData()
+            if notification.userInfo?["delete"] as? Saving != nil {
+                
+                print("do nothing")
+                
+            } else {
+                
+                self?.fetchData()
+                
+                self?.monthCollectionView.reloadData()
+                
+                self?.dataCollectionView.reloadData()
+                
+            }
             
         })
         

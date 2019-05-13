@@ -222,6 +222,8 @@ class AccountingProvider {
         
         coreDataManager.saveContext()
         
+        notificationManager.postAccountingChanged(userInfo: nil)
+        
     }
     
 }

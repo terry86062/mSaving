@@ -10,40 +10,56 @@ import UIKit
 
 class NotificationManager {
     
-    var handler: ((Notification) -> Void)?
+    var savingHandler: ((Notification) -> Void)?
+    
+    var accountingHandler: ((Notification) -> Void)?
+    
+    var accountHandler: ((Notification) -> Void)?
     
     // Observer
     
     func addSavingNotification(changeHandler: @escaping (Notification) -> Void) {
         
-        handler = changeHandler
+        savingHandler = changeHandler
         
-        NotificationCenter.default.addObserver(self, selector: #selector(anyChanged(notification:)),
+        NotificationCenter.default.addObserver(self, selector: #selector(savingChanged(notification:)),
                                                name: .savingChanged, object: nil)
         
     }
     
     func addAccountingNotification(changeHandler: @escaping (Notification) -> Void) {
         
-        handler = changeHandler
+        accountingHandler = changeHandler
         
-        NotificationCenter.default.addObserver(self, selector: #selector(anyChanged(notification:)),
+        NotificationCenter.default.addObserver(self, selector: #selector(accountingChanged(notification:)),
                                                name: .accountingChanged, object: nil)
         
     }
     
     func addAccountNotification(changeHandler: @escaping (Notification) -> Void) {
         
-        handler = changeHandler
+        accountHandler = changeHandler
         
-        NotificationCenter.default.addObserver(self, selector: #selector(anyChanged(notification:)),
+        NotificationCenter.default.addObserver(self, selector: #selector(accountChanged(notification:)),
                                                name: .accountChanged, object: nil)
         
     }
     
-    @objc func anyChanged(notification: Notification) {
+    @objc func savingChanged(notification: Notification) {
         
-        handler?(notification)
+        savingHandler?(notification)
+        
+    }
+    
+    @objc func accountingChanged(notification: Notification) {
+        
+        accountingHandler?(notification)
+        
+    }
+    
+    @objc func accountChanged(notification: Notification) {
+        
+        accountHandler?(notification)
         
     }
     

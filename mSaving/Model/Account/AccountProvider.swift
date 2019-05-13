@@ -16,8 +16,6 @@ class AccountProvider {
     
     let notificationManager = NotificationManager()
     
-//    let msMessageView = MSMessageView()
-    
     var accounts: [Account] {
         
         return coreDataManager.fetch(entityType: Account(), sort: ["priority"])
@@ -48,8 +46,6 @@ class AccountProvider {
         
         notificationManager.postAccountChanged(userInfo: ["create": account])
         
-//        msMessageView.show(account: account, type: .add)
-        
     }
     
     func reviseAccount(account: Account, name: String, initialValue: Int64) {
@@ -65,8 +61,6 @@ class AccountProvider {
         coreDataManager.saveContext()
         
         notificationManager.postAccountChanged(userInfo: ["revise": account])
-        
-//        msMessageView.show(account: account, type: .revise)
         
     }
     
@@ -84,11 +78,11 @@ class AccountProvider {
         
         notificationManager.postAccountChanged(userInfo: ["delete": account])
         
-//        msMessageView.show(account: account, type: .delete)
-        
         coreDataManager.viewContext.delete(account)
         
         coreDataManager.saveContext()
+        
+        notificationManager.postAccountChanged(userInfo: nil)
         
     }
     

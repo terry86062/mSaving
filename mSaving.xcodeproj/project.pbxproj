@@ -20,6 +20,7 @@
 		DE21B907225794C900B65719 /* BarChartCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE21B905225794C900B65719 /* BarChartCVCell.xib */; };
 		DE24715022840093005A341C /* CategoryCollectionViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE24714F22840093005A341C /* CategoryCollectionViewVC.swift */; };
 		DE24715322855D07005A341C /* MessageViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE24715222855D07005A341C /* MessageViewVC.swift */; };
+		DE24717922857331005A341C /* mSavingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE24717822857331005A341C /* mSavingTests.swift */; };
 		DE29CC0322815860001EC04E /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE29CC0222815860001EC04E /* MessageView.swift */; };
 		DE2BB35C22539662001D55E4 /* SavingCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BB35A22539662001D55E4 /* SavingCVCell.swift */; };
 		DE2BB35D22539662001D55E4 /* SavingCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2BB35B22539662001D55E4 /* SavingCVCell.xib */; };
@@ -143,6 +144,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		DE24717B22857331005A341C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DEECB01A22533430002D6C30 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DEECB02122533430002D6C30;
+			remoteInfo = mSaving;
+		};
 		DEDE572222702EB20071FCFD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DEECB01A22533430002D6C30 /* Project object */;
@@ -193,6 +201,9 @@
 		DE21B905225794C900B65719 /* BarChartCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarChartCVCell.xib; sourceTree = "<group>"; };
 		DE24714F22840093005A341C /* CategoryCollectionViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewVC.swift; sourceTree = "<group>"; };
 		DE24715222855D07005A341C /* MessageViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewVC.swift; sourceTree = "<group>"; };
+		DE24717622857331005A341C /* mSavingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mSavingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE24717822857331005A341C /* mSavingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mSavingTests.swift; sourceTree = "<group>"; };
+		DE24717A22857331005A341C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE29CC0222815860001EC04E /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		DE2BB35A22539662001D55E4 /* SavingCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingCVCell.swift; sourceTree = "<group>"; };
 		DE2BB35B22539662001D55E4 /* SavingCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavingCVCell.xib; sourceTree = "<group>"; };
@@ -292,6 +303,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		DE24717322857331005A341C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DEDE570C22702EB10071FCFD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -382,6 +400,15 @@
 				DE24714F22840093005A341C /* CategoryCollectionViewVC.swift */,
 			);
 			path = Delegate;
+			sourceTree = "<group>";
+		};
+		DE24717722857331005A341C /* mSavingTests */ = {
+			isa = PBXGroup;
+			children = (
+				DE24717822857331005A341C /* mSavingTests.swift */,
+				DE24717A22857331005A341C /* Info.plist */,
+			);
+			path = mSavingTests;
 			sourceTree = "<group>";
 		};
 		DE2BB3552253605D001D55E4 /* Saving */ = {
@@ -579,6 +606,7 @@
 				DEECB02422533430002D6C30 /* mSaving */,
 				DEDE571022702EB10071FCFD /* PaymentIntent */,
 				DEDE571B22702EB20071FCFD /* PaymentIntentUI */,
+				DE24717722857331005A341C /* mSavingTests */,
 				DEECB02322533430002D6C30 /* Products */,
 				600F4854E9FFB3F5EA3A02F1 /* Pods */,
 				BBD75296C698B591F95558B3 /* Frameworks */,
@@ -591,6 +619,7 @@
 				DEECB02222533430002D6C30 /* mSaving.app */,
 				DEDE570F22702EB10071FCFD /* PaymentIntent.appex */,
 				DEDE571822702EB20071FCFD /* PaymentIntentUI.appex */,
+				DE24717622857331005A341C /* mSavingTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -697,6 +726,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		DE24717522857331005A341C /* mSavingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE24717D22857331005A341C /* Build configuration list for PBXNativeTarget "mSavingTests" */;
+			buildPhases = (
+				DE24717222857331005A341C /* Sources */,
+				DE24717322857331005A341C /* Frameworks */,
+				DE24717422857331005A341C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DE24717C22857331005A341C /* PBXTargetDependency */,
+			);
+			name = mSavingTests;
+			productName = mSavingTests;
+			productReference = DE24717622857331005A341C /* mSavingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		DEDE570E22702EB10071FCFD /* PaymentIntent */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DEDE572B22702EB20071FCFD /* Build configuration list for PBXNativeTarget "PaymentIntent" */;
@@ -767,6 +814,10 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Terry;
 				TargetAttributes = {
+					DE24717522857331005A341C = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = DEECB02122533430002D6C30;
+					};
 					DEDE570E22702EB10071FCFD = {
 						CreatedOnToolsVersion = 10.2.1;
 						SystemCapabilities = {
@@ -807,11 +858,19 @@
 				DEECB02122533430002D6C30 /* mSaving */,
 				DEDE570E22702EB10071FCFD /* PaymentIntent */,
 				DEDE571722702EB20071FCFD /* PaymentIntentUI */,
+				DE24717522857331005A341C /* mSavingTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		DE24717422857331005A341C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DEDE570D22702EB10071FCFD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1005,6 +1064,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		DE24717222857331005A341C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE24717922857331005A341C /* mSavingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DEDE570B22702EB10071FCFD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1128,6 +1195,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		DE24717C22857331005A341C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DEECB02122533430002D6C30 /* mSaving */;
+			targetProxy = DE24717B22857331005A341C /* PBXContainerItemProxy */;
+		};
 		DEDE572322702EB20071FCFD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DEDE571722702EB20071FCFD /* PaymentIntentUI */;
@@ -1168,6 +1240,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		DE24717E22857331005A341C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B8QRU3Z535;
+				INFOPLIST_FILE = mSavingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.terry.mSavingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mSaving.app/mSaving";
+			};
+			name = Debug;
+		};
+		DE24717F22857331005A341C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B8QRU3Z535;
+				INFOPLIST_FILE = mSavingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.terry.mSavingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mSaving.app/mSaving";
+			};
+			name = Release;
+		};
 		DEDE572922702EB20071FCFD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C04056EC67D5D2B804E98C9C /* Pods-PaymentIntentUI.debug.xcconfig */;
@@ -1422,6 +1534,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		DE24717D22857331005A341C /* Build configuration list for PBXNativeTarget "mSavingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE24717E22857331005A341C /* Debug */,
+				DE24717F22857331005A341C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DEDE572822702EB20071FCFD /* Build configuration list for PBXNativeTarget "PaymentIntentUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

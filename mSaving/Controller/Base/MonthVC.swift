@@ -74,13 +74,21 @@ class MonthVC: UIViewController {
     
     func setUpNotification() {
         
-        notificationManager.addAccountingNotification(changeHandler: { [weak self] _ in
+        notificationManager.addAccountingNotification(changeHandler: { [weak self] notification in
             
-            self?.fetchData()
-            
-            self?.monthCollectionView.reloadData()
-            
-            self?.dataCollectionView.reloadData()
+            if notification.userInfo?["delete"] as? Accounting != nil {
+                
+                print("do nothing")
+                
+            } else {
+                
+                self?.fetchData()
+                
+                self?.monthCollectionView.reloadData()
+                
+                self?.dataCollectionView.reloadData()
+                
+            }
             
         })
         

@@ -28,6 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DE24716522856DB5005A341C"
+               BuildableName = "MSavingTests.xctest"
+               BlueprintName = "MSavingTests"
+               ReferencedContainer = "container:mSaving.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DE24717522857331005A341C"
+               BuildableName = "mSavingTests.xctest"
+               BlueprintName = "mSavingTests"
+               ReferencedContainer = "container:mSaving.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

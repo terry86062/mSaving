@@ -14,8 +14,6 @@ class SavingProvider {
     
     let notificationManager = NotificationManager()
     
-//    let msMessageView = MSMessageView()
-    
     func createSaving(month: Month, amount: Int64, main: Bool = true, selectedExpenseCategory: ExpenseCategory? = nil) {
         
         if checkSaving(month: month, amount: amount, main: main,
@@ -39,13 +37,9 @@ class SavingProvider {
         
         if main {
             
-//            msMessageView.show(saving: saving, type: .add)
-            
             notificationManager.postSavingChanged(userInfo: ["createSaving": saving])
             
         } else {
-            
-//            msMessageView.show(subSaving: saving, type: .add)
             
             notificationManager.postSavingChanged(userInfo: ["createSubSaving": saving])
             
@@ -153,13 +147,9 @@ class SavingProvider {
             
             notificationManager.postSavingChanged(userInfo: ["reviseSaving": saving])
             
-//            msMessageView.show(saving: saving, type: .revise)
-            
         } else {
             
             notificationManager.postSavingChanged(userInfo: ["reviseSubSaving": saving])
-            
-//            msMessageView.show(subSaving: saving, type: .revise)
             
         }
         
@@ -169,11 +159,11 @@ class SavingProvider {
         
         notificationManager.postSavingChanged(userInfo: ["delete": saving])
         
-//        msMessageView.show(subSaving: saving, type: .delete)
-        
         coreDataManager.viewContext.delete(saving)
         
         coreDataManager.saveContext()
+        
+        notificationManager.postSavingChanged(userInfo: nil)
         
     }
     
