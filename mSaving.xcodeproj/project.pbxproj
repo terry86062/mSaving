@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		34FE46260D153EA89122AC6A /* Pods_mSaving.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2F60CB0FEB4CC786F0B4059 /* Pods_mSaving.framework */; };
+		37935FF62C45D0DA61B87A67 /* Pods_mSavingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F34163170596A438DB1E11E0 /* Pods_mSavingTests.framework */; };
+		A8C6C4FAFFBA43AA846BB0A5 /* Pods_PaymentIntent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39954889D5B7E72FC0F1A436 /* Pods_PaymentIntent.framework */; };
+		BAAAFBA3F6DEA26BE79E4598 /* Pods_PaymentIntentUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44CCA7C78D1A03C2A0EEA8EE /* Pods_PaymentIntentUI.framework */; };
 		DE02DECA226C97B700B51201 /* InvoiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE02DEC9226C97B700B51201 /* InvoiceVC.swift */; };
 		DE073DD52282C2200098BCAE /* PresentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE073DD42282C2200098BCAE /* PresentVC.swift */; };
 		DE073DD722832F620098BCAE /* MonthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE073DD622832F620098BCAE /* MonthVC.swift */; };
@@ -186,8 +189,10 @@
 		2269CA763E2B12B921C758F2 /* Pods-mSaving.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mSaving.debug.xcconfig"; path = "Target Support Files/Pods-mSaving/Pods-mSaving.debug.xcconfig"; sourceTree = "<group>"; };
 		2C6C6317FBC34568D8610458 /* Pods-mSaving.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mSaving.release.xcconfig"; path = "Target Support Files/Pods-mSaving/Pods-mSaving.release.xcconfig"; sourceTree = "<group>"; };
 		39954889D5B7E72FC0F1A436 /* Pods_PaymentIntent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaymentIntent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CE047C4CBDF73357BD4C977 /* Pods-mSavingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mSavingTests.debug.xcconfig"; path = "Target Support Files/Pods-mSavingTests/Pods-mSavingTests.debug.xcconfig"; sourceTree = "<group>"; };
 		44CCA7C78D1A03C2A0EEA8EE /* Pods_PaymentIntentUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaymentIntentUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BACA53F095B584B936B8306 /* Pods-PaymentIntent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaymentIntent.debug.xcconfig"; path = "Target Support Files/Pods-PaymentIntent/Pods-PaymentIntent.debug.xcconfig"; sourceTree = "<group>"; };
+		856954376E295EBD6FB9FBF0 /* Pods-mSavingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mSavingTests.release.xcconfig"; path = "Target Support Files/Pods-mSavingTests/Pods-mSavingTests.release.xcconfig"; sourceTree = "<group>"; };
 		8CF849528FF6FDFC2BF5FBF6 /* Pods-PaymentIntent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaymentIntent.release.xcconfig"; path = "Target Support Files/Pods-PaymentIntent/Pods-PaymentIntent.release.xcconfig"; sourceTree = "<group>"; };
 		C04056EC67D5D2B804E98C9C /* Pods-PaymentIntentUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaymentIntentUI.debug.xcconfig"; path = "Target Support Files/Pods-PaymentIntentUI/Pods-PaymentIntentUI.debug.xcconfig"; sourceTree = "<group>"; };
 		DD872CB340C41B2FB7A2BD8D /* Pods-PaymentIntentUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaymentIntentUI.release.xcconfig"; path = "Target Support Files/Pods-PaymentIntentUI/Pods-PaymentIntentUI.release.xcconfig"; sourceTree = "<group>"; };
@@ -300,6 +305,7 @@
 		DEF27CAB226977F30030DB9D /* CategoryAccountingsCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryAccountingsCVCell.xib; sourceTree = "<group>"; };
 		DEF7B4622276CEFF00F68F8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E2F60CB0FEB4CC786F0B4059 /* Pods_mSaving.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mSaving.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F34163170596A438DB1E11E0 /* Pods_mSavingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mSavingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,6 +313,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37935FF62C45D0DA61B87A67 /* Pods_mSavingTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +321,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8C6C4FAFFBA43AA846BB0A5 /* Pods_PaymentIntent.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEDE571A22702EB20071FCFD /* IntentsUI.framework in Frameworks */,
+				BAAAFBA3F6DEA26BE79E4598 /* Pods_PaymentIntentUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +354,8 @@
 				8CF849528FF6FDFC2BF5FBF6 /* Pods-PaymentIntent.release.xcconfig */,
 				C04056EC67D5D2B804E98C9C /* Pods-PaymentIntentUI.debug.xcconfig */,
 				DD872CB340C41B2FB7A2BD8D /* Pods-PaymentIntentUI.release.xcconfig */,
+				3CE047C4CBDF73357BD4C977 /* Pods-mSavingTests.debug.xcconfig */,
+				856954376E295EBD6FB9FBF0 /* Pods-mSavingTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -356,6 +367,7 @@
 				DEDE571922702EB20071FCFD /* IntentsUI.framework */,
 				39954889D5B7E72FC0F1A436 /* Pods_PaymentIntent.framework */,
 				44CCA7C78D1A03C2A0EEA8EE /* Pods_PaymentIntentUI.framework */,
+				F34163170596A438DB1E11E0 /* Pods_mSavingTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -730,9 +742,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE24717D22857331005A341C /* Build configuration list for PBXNativeTarget "mSavingTests" */;
 			buildPhases = (
+				5347F438B8E5A2D5AE04252A /* [CP] Check Pods Manifest.lock */,
 				DE24717222857331005A341C /* Sources */,
 				DE24717322857331005A341C /* Frameworks */,
 				DE24717422857331005A341C /* Resources */,
+				461B6FDDE6176F444E9FF7BD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -957,6 +971,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mSaving/Pods-mSaving-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		461B6FDDE6176F444E9FF7BD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mSavingTests/Pods-mSavingTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BetterSegmentedControl/BetterSegmentedControl.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BetterSegmentedControl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mSavingTests/Pods-mSavingTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5347F438B8E5A2D5AE04252A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mSavingTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B7B405D90613C72D0DB5D1C2 /* [CP] Check Pods Manifest.lock */ = {
@@ -1242,11 +1312,13 @@
 /* Begin XCBuildConfiguration section */
 		DE24717E22857331005A341C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CE047C4CBDF73357BD4C977 /* Pods-mSavingTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B8QRU3Z535;
 				INFOPLIST_FILE = mSavingTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1262,11 +1334,13 @@
 		};
 		DE24717F22857331005A341C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 856954376E295EBD6FB9FBF0 /* Pods-mSavingTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B8QRU3Z535;
 				INFOPLIST_FILE = mSavingTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1405,6 +1479,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1466,6 +1541,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1495,7 +1571,9 @@
 				CODE_SIGN_ENTITLEMENTS = mSaving/mSaving.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = B8QRU3Z535;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = mSaving/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1517,7 +1595,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = mSaving/mSaving.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = B8QRU3Z535;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = mSaving/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

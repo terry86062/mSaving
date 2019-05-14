@@ -44,3 +44,7 @@ end
 target 'PaymentIntentUI' do
   available_pods
 end
+
+target 'mSavingTests' do
+  available_pods
+end

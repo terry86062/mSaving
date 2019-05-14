@@ -14,15 +14,7 @@ class CoreDataManager {
     
     static let shared = CoreDataManager()
     
-    private init() {
-        
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        
-    }
-    
-    // MARK: - Core Data stack
-    
-    lazy var persistentContainer: NSPersistentContainer = {
+    static let persistentContainer: NSPersistentContainer = {
         
         let container = NSCustomPersistentContainer(name: "mSaving")
         
@@ -39,6 +31,18 @@ class CoreDataManager {
         return container
         
     }()
+    
+    init(container: NSPersistentContainer = CoreDataManager.persistentContainer) {
+        
+        persistentContainer = container
+        
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
+    }
+    
+    // MARK: - Core Data stack
+    
+    let persistentContainer: NSPersistentContainer
     
     var viewContext: NSManagedObjectContext {
         

@@ -8,13 +8,13 @@
 
 import UIKit
 
-class NotificationManager {
+open class NotificationManager {
     
-    var savingHandler: ((Notification) -> Void)?
+    private var savingHandler: ((Notification) -> Void)?
     
-    var accountingHandler: ((Notification) -> Void)?
+    private var accountingHandler: ((Notification) -> Void)?
     
-    var accountHandler: ((Notification) -> Void)?
+    private var accountHandler: ((Notification) -> Void)?
     
     // Observer
     
@@ -45,19 +45,19 @@ class NotificationManager {
         
     }
     
-    @objc func savingChanged(notification: Notification) {
+    @objc private func savingChanged(notification: Notification) {
         
         savingHandler?(notification)
         
     }
     
-    @objc func accountingChanged(notification: Notification) {
+    @objc private func accountingChanged(notification: Notification) {
         
         accountingHandler?(notification)
         
     }
     
-    @objc func accountChanged(notification: Notification) {
+    @objc private func accountChanged(notification: Notification) {
         
         accountHandler?(notification)
         
@@ -77,7 +77,7 @@ class NotificationManager {
         
     }
     
-    func postAccountChanged(userInfo: [String: Account]?) {
+    open func postAccountChanged(userInfo: [String: Account]?) {
         
         NotificationCenter.default.post(name: .accountChanged, object: nil, userInfo: userInfo)
         

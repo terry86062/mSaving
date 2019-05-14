@@ -8,13 +8,20 @@
 
 import Foundation
 
-import CoreData
-
 class AccountProvider {
     
-    let coreDataManager = CoreDataManager.shared
+    private let coreDataManager: CoreDataManager
     
-    let notificationManager = NotificationManager()
+    private let notificationManager: NotificationManager
+    
+    init(coreDataManager: CoreDataManager = CoreDataManager.shared,
+         notificationManager: NotificationManager = NotificationManager()) {
+        
+        self.coreDataManager = coreDataManager
+        
+        self.notificationManager = notificationManager
+        
+    }
     
     var accounts: [Account] {
         

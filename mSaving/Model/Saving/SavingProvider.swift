@@ -10,9 +10,9 @@ import Foundation
 
 class SavingProvider {
     
-    let coreDataManager = CoreDataManager.shared
+    private let coreDataManager = CoreDataManager.shared
     
-    let notificationManager = NotificationManager()
+    private let notificationManager = NotificationManager()
     
     func createSaving(month: Month, amount: Int64, main: Bool = true, selectedExpenseCategory: ExpenseCategory? = nil) {
         
@@ -56,8 +56,8 @@ class SavingProvider {
         
     }
     
-    func checkSaving(month: Month, amount: Int64, main: Bool = true,
-                     selectedExpenseCategory: ExpenseCategory? = nil) -> Bool {
+    private func checkSaving(month: Month, amount: Int64, main: Bool = true,
+                             selectedExpenseCategory: ExpenseCategory? = nil) -> Bool {
         
         if main == false {
             

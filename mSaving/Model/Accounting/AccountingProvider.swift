@@ -28,11 +28,11 @@ struct CategoryMonthTotal {
 
 class AccountingProvider {
     
-    let coreDataManager = CoreDataManager.shared
+    private let coreDataManager = CoreDataManager.shared
     
-    let transformer = AccountingTransformer()
+    private let transformer = AccountingTransformer()
     
-    let notificationManager = NotificationManager()
+    private let notificationManager = NotificationManager()
     
     func createAccounting(occurDate: Date, createDate: Date, amount: Int64, account: Account, category: CategoryCase) {
         
@@ -72,7 +72,7 @@ class AccountingProvider {
         
     }
     
-    func helpSetMonth(occurDate: Date) -> Month? {
+    private func helpSetMonth(occurDate: Date) -> Month? {
         
         let dataComponents = TimeManager().transform(date: occurDate)
         

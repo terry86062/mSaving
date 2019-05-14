@@ -24,7 +24,7 @@ struct Category {
 
 class CategoryProvider {
     
-    var coreDataManager = CoreDataManager.shared
+    private let coreDataManager = CoreDataManager.shared
     
     var initCategoryArray = [
         Category(name: "食物", iconName: "cutleryForkKnife", color: "EE5142", priority: 1, subPriority: 1),
