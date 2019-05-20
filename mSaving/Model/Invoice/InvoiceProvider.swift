@@ -33,11 +33,11 @@ class InvoiceProvider {
                     
                     let invoiceDetail = try JSONDecoder().decode(InvoiceDetail.self, from: data)
                     
-//                    DispatchQueue.main.async {
+                    DispatchQueue.main.async {
                     
                         completionHandler(Result.success(invoiceDetail))
                         
-//                    }
+                    }
                     
                 } catch {
                     

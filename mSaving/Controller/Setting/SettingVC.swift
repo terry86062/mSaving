@@ -120,6 +120,20 @@ class SettingVC: UIViewController {
                 self?.accountsCollectionView.reloadData()
             }
         }
+        
+        notificationManager.addAccountingNotification { [weak self] notification in
+            
+            if notification.userInfo?["delete"] as? Accounting != nil {
+                
+                print("do nothing")
+                
+            } else {
+                
+                self?.fetchData()
+                
+                self?.accountsCollectionView.reloadData()
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -129,7 +143,6 @@ class SettingVC: UIViewController {
             guard let accountDetailVC = segue.destination as? AccountVC else { return }
             
             accountDetailVC.selectedAccount = selectedAccount
-            
         }
     }
     
@@ -169,7 +182,6 @@ extension SettingVC: UICollectionViewDataSource {
         } else {
             
             return 2
-            
         }
     }
 
@@ -209,7 +221,6 @@ extension SettingVC: UICollectionViewDataSource {
                     cell.initAccountDateCVCell(leadingText: name,
                                         trailingText: "-$\(abs(Int(account.currentValue)).formattedWithSeparator)",
                                                trailingColor: .red, havingShadow: true)
-                    
                 }
                 
                 cell.goToDetialPage = {
@@ -217,11 +228,9 @@ extension SettingVC: UICollectionViewDataSource {
                     self.selectedAccount = account
                     
                     self.performSegue(withIdentifier: "goToAccountDetail", sender: nil)
-                    
                 }
                 
                 return cell
-                
             }
             
         } else {
@@ -246,7 +255,6 @@ extension SettingVC: UICollectionViewDataSource {
                     
                 }
             }
-            
             return cell
         }
     }
@@ -267,7 +275,6 @@ extension SettingVC: UICollectionViewDataSource {
             for index in 0...accounts.count - 1 {
                 
                 totalAmount += Int(accounts[index].currentValue)
-                
             }
         }
         
@@ -276,14 +283,12 @@ extension SettingVC: UICollectionViewDataSource {
             headerView.initAccountDateCVCell(leadingText: "總資產",
                                              trailingText: "$\(totalAmount.formattedWithSeparator)",
                                              trailingColor: .black, havingShadow: true)
-            
         } else {
             
             headerView.initAccountDateCVCell(leadingText: "總資產",
                                              trailingText: "-$\(abs(totalAmount).formattedWithSeparator)",
                                              trailingColor: .red, havingShadow: true)
         }
-        
         return headerView
     }
 }
@@ -343,7 +348,6 @@ extension SettingVC: UIScrollViewDelegate {
                 >= settingsLabel.frame.origin.x + settingsLabel.frame.width / 2 {
 
                 accountsLabel.textColor = .lightGray
-
                 settingsLabel.textColor = .black
 
                 segmentedBarView.frame = CGRect(x: segmentedBarView.frame.origin.x,
@@ -353,7 +357,6 @@ extension SettingVC: UIScrollViewDelegate {
             } else if segmentedBarView.frame.origin.x < accountsLabel.frame.origin.x + accountsLabel.frame.width / 2 {
 
                 accountsLabel.textColor = .black
-                
                 settingsLabel.textColor = .lightGray
                 
                 segmentedBarView.frame = CGRect(x: segmentedBarView.frame.origin.x,

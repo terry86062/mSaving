@@ -218,6 +218,16 @@ class AccountingProvider {
         
         notificationManager.postAccountingChanged(userInfo: ["delete": accounting])
         
+        if accounting.expenseCategory != nil {
+            
+            accounting.accountName?.currentValue += accounting.amount
+            
+        } else {
+            
+            accounting.accountName?.currentValue -= accounting.amount
+            
+        }
+        
         coreDataManager.viewContext.delete(accounting)
         
         coreDataManager.saveContext()
