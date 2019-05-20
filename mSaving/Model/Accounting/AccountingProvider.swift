@@ -158,7 +158,7 @@ class AccountingProvider {
         return totalSpend
         
     }
-    
+    // swiftlint:disable function_parameter_count
     func reviseAccounting(accounting: Accounting,
                           occurDate: Date,
                           createDate: Date,

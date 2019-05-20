@@ -28,27 +28,15 @@ class InvoiceVC: UIViewController {
         
     }()
     
-    let invoiceDownloader = InvoiceProvider()
-    
-    var messageFromQRCode = ""
-
     var captureSession = AVCaptureSession()
     
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     
     var qrCodeFrameView: UIView?
     
-    // Added to support different barcodes
-    let supportedBarCodes = [
-        AVMetadataObject.ObjectType.qr,
-        AVMetadataObject.ObjectType.code128,
-        AVMetadataObject.ObjectType.code39,
-        AVMetadataObject.ObjectType.code93,
-        AVMetadataObject.ObjectType.upce,
-        AVMetadataObject.ObjectType.pdf417,
-        AVMetadataObject.ObjectType.ean13,
-        AVMetadataObject.ObjectType.aztec
-    ]
+    let invoiceDownloader = InvoiceProvider()
+    
+    var messageFromQRCode = ""
     
     var invoiceYear = ""
     
@@ -75,15 +63,6 @@ class InvoiceVC: UIViewController {
     }
     
     func setUpCaptureSession() {
-        
-//        // 取得後置鏡頭來擷取影片
-//        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(
-//        deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
-//
-//        guard let captureDevice = deviceDiscoverySession.devices.first else {
-//            print("Failed to get the camera device")
-//            return
-//        }
         
         // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video
         // as the media type parameter.
@@ -115,7 +94,6 @@ class InvoiceVC: UIViewController {
             
             //移動訊息標籤與頂部列至上層
             view.bringSubviewToFront(messageLabel)
-//            view.bringSubview(toFront: topbar)
             
             // 初始化 QR Code 框來突顯 QR code
             qrCodeFrameView = UIView()
@@ -163,7 +141,6 @@ extension InvoiceVC: AVCaptureMetadataOutputObjectsDelegate {
         // 檢查  metadataObjects 陣列為非空值，它至少需包含一個物件
         if metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRect.zero
-//            messageLabel.text = "No QR code is detected"
             return
         }
         
@@ -178,8 +155,6 @@ extension InvoiceVC: AVCaptureMetadataOutputObjectsDelegate {
             guard let stringValue = metadataObj.stringValue else { return }
             
             messageFromQRCode = stringValue
-            
-//            messageLabel.text = stringValue
             
             guard messageFromQRCode.first != "*" else { return }
             
@@ -202,31 +177,31 @@ extension InvoiceVC: AVCaptureMetadataOutputObjectsDelegate {
                                         randomNumber: messageFromQRCode.getRangeString(start: 17, end: 21))
             
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-            
+
             invoiceDownloader.downloadInvoiceDetail(qrCodeInfo: qrCodeInfo, uuid: appDelegate.uuid) { result in
-                
+
                 switch result {
-                    
-                case .success(var invoiceDetail):
-                    
+
+                case .success(let invoiceDetail):
+
                     print(invoiceDetail)
-                    
+
                     self.invoiceYear = "\(yearInt + 1911)"
-                    
+
                     self.invoiceMonth = month
-                    
+
                     self.invoiceDay = day
-                    
+
                     self.invoiceAmount = invoiceDetail.totalAmount
-                    
+
                     self.performSegue(withIdentifier: "goToInvoiceToAccountingVC", sender: nil)
-                    
+
                 case .failure(let error):
-                    
+
                     print("download failure: \(error)")
-                    
+
                 }
-                
+
             }
             
         }

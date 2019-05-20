@@ -103,7 +103,6 @@ extension AccountingsCVCell: UICollectionViewDataSource {
                 totalAmount += Int(accountings[index].amount)
                 
             }
-            
         }
         
         let dateComponents = TimeManager().transform(int: accountings[0].occurDate)
@@ -118,8 +117,7 @@ extension AccountingsCVCell: UICollectionViewDataSource {
                     leadingText: "0\(day)",
                     subLeadingText: "\(helpTransferWeekdayFromIntToString(weekday: weekday))",
                     trailingText: "$\(totalAmount.formattedWithSeparator)",
-                    trailingColor: .mSLightGreen,
-                    havingShadow: false)
+                    trailingColor: .mSLightGreen, havingShadow: false)
                 
             } else {
                 
@@ -127,8 +125,7 @@ extension AccountingsCVCell: UICollectionViewDataSource {
                     leadingText: "\(day)",
                     subLeadingText: "\(helpTransferWeekdayFromIntToString(weekday: weekday))",
                     trailingText: "$\(totalAmount.formattedWithSeparator)",
-                    trailingColor: .mSLightGreen,
-                    havingShadow: false)
+                    trailingColor: .mSLightGreen, havingShadow: false)
                 
             }
             
@@ -140,8 +137,7 @@ extension AccountingsCVCell: UICollectionViewDataSource {
                     leadingText: "0\(day)",
                     subLeadingText: "\(helpTransferWeekdayFromIntToString(weekday: weekday))",
                     trailingText: "-$\(abs(totalAmount).formattedWithSeparator)",
-                    trailingColor: .red,
-                    havingShadow: false)
+                    trailingColor: .red, havingShadow: false)
                 
             } else {
                 
@@ -149,8 +145,7 @@ extension AccountingsCVCell: UICollectionViewDataSource {
                     leadingText: "\(day)",
                     subLeadingText: "\(helpTransferWeekdayFromIntToString(weekday: weekday))",
                     trailingText: "-$\(abs(totalAmount).formattedWithSeparator)",
-                    trailingColor: .red,
-                    havingShadow: false)
+                    trailingColor: .red, havingShadow: false)
                 
             }
             

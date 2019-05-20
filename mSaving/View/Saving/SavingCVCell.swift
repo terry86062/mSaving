@@ -174,81 +174,7 @@ extension SavingCVCell: UICollectionViewDataSource {
                 
             } else {
                 
-                if savings == [] {
-                    
-                    guard let cell = collectionView.dequeueReusableCell(
-                        withReuseIdentifier: String(describing: AddSavingCVCell.self),
-                        for: indexPath) as? AddSavingCVCell else {
-                            return AddSavingCVCell()
-                    }
-                    
-                    cell.initAddSavingCVCell(addText: "新增子預算", delegate: delegate)
-                    
-                    return cell
-                    
-                } else {
-                    
-                    if indexPath.row == savings.count {
-                        
-                        guard let cell = collectionView.dequeueReusableCell(
-                            withReuseIdentifier: String(describing: AddSavingCVCell.self),
-                            for: indexPath) as? AddSavingCVCell else {
-                                return AddSavingCVCell()
-                        }
-                        
-                        cell.initAddSavingCVCell(addText: "新增子預算", delegate: delegate)
-                        
-                        return cell
-                        
-                    } else {
-                        
-                        guard let cell = collectionView.dequeueReusableCell(
-                            withReuseIdentifier: String(describing: SubSavingCVCell.self),
-                            for: indexPath) as? SubSavingCVCell else {
-                                return SubSavingCVCell()
-                        }
-                        
-                        if savings.count > 0 {
-                            
-                            guard let expenseCategory = savings[indexPath.row].expenseCategory,
-                                let iconName = expenseCategory.iconName,
-                                let name = expenseCategory.name,
-                                let color = expenseCategory.color else { return cell }
-                            
-                            if expenseMonthTotal.count > 0 {
-                                
-                                var totalSpend = 0
-                                
-                                for index in 0...expenseMonthTotal.count - 1
-                                where expenseMonthTotal[index].accountings[0][0].expenseCategory == expenseCategory {
-                                        
-                                        totalSpend = Int(expenseMonthTotal[index].amount)
-                                        
-                                }
-                                
-                                cell.initSubSavingCVCell(saving: savings[indexPath.row],
-                                                         budget: savings[indexPath.row].amount,
-                                                         totalSpend: totalSpend,
-                                                         imageName: iconName,
-                                                         categoryName: name, hex: color, delegate: delegate)
-                                
-                            } else {
-                                
-                                cell.initSubSavingCVCell(saving: savings[indexPath.row],
-                                                         budget: savings[indexPath.row].amount,
-                                                         totalSpend: totalSpend,
-                                                         imageName: iconName,
-                                                         categoryName: name, hex: color, delegate: delegate)
-                                
-                            }
-                            
-                        }
-                        
-                        return cell
-                        
-                    }
-                    
-                }
+                return helpSetUpSavingCell(collectionView: collectionView, indexPath: indexPath)
                 
             }
             
@@ -256,6 +182,71 @@ extension SavingCVCell: UICollectionViewDataSource {
         
     }
     
+    func helpSetUpSavingCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if savings == [] {
+            
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: String(describing: AddSavingCVCell.self),
+                for: indexPath) as? AddSavingCVCell else { return AddSavingCVCell() }
+            
+            cell.initAddSavingCVCell(addText: "新增子預算", delegate: delegate)
+            
+            return cell
+            
+        } else {
+            
+            if indexPath.row == savings.count {
+                
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: String(describing: AddSavingCVCell.self),
+                    for: indexPath) as? AddSavingCVCell else { return AddSavingCVCell() }
+                
+                cell.initAddSavingCVCell(addText: "新增子預算", delegate: delegate)
+                
+                return cell
+                
+            } else {
+                
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: String(describing: SubSavingCVCell.self),
+                    for: indexPath) as? SubSavingCVCell else { return SubSavingCVCell() }
+                
+                if savings.count > 0 {
+                    
+                    guard let expenseCategory = savings[indexPath.row].expenseCategory,
+                        let iconName = expenseCategory.iconName,
+                        let name = expenseCategory.name,
+                        let color = expenseCategory.color else { return cell }
+                    
+                    if expenseMonthTotal.count > 0 {
+                        
+                        var totalSpend = 0
+                        
+                        for index in 0...expenseMonthTotal.count - 1
+                            where expenseMonthTotal[index].accountings[0][0].expenseCategory == expenseCategory {
+                                
+                                totalSpend = Int(expenseMonthTotal[index].amount)
+                        }
+                        
+                        cell.initSubSavingCVCell(saving: savings[indexPath.row],
+                                                 budget: savings[indexPath.row].amount,
+                                                 totalSpend: totalSpend, imageName: iconName,
+                                                 categoryName: name, hex: color, delegate: delegate)
+                        
+                    } else {
+                        
+                        cell.initSubSavingCVCell(saving: savings[indexPath.row],
+                                                 budget: savings[indexPath.row].amount,
+                                                 totalSpend: totalSpend, imageName: iconName,
+                                                 categoryName: name, hex: color, delegate: delegate)
+                    }
+                }
+                
+                return cell
+            }
+        }
+    }
 }
 
 extension SavingCVCell: UICollectionViewDelegateFlowLayout {

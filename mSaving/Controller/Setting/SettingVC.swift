@@ -10,84 +10,51 @@ import UIKit
 
 import Photos
 
-struct SettingText {
-    
-    let leadingText: String
-    
-    let trailingText: String
-    
-}
-
 class SettingVC: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView! {
-        
         didSet {
-            
             scrollView.delegate = self
-            
         }
-        
     }
     
     @IBOutlet weak var contentView: UIView!
     
     @IBOutlet weak var accountsCollectionView: UICollectionView! {
-
         didSet {
-
             accountsCollectionView.dataSource = self
-
             accountsCollectionView.delegate = self
-
         }
-
     }
     
     @IBOutlet weak var settingsCollectionView: UICollectionView! {
-        
         didSet {
-            
             settingsCollectionView.dataSource = self
-            
             settingsCollectionView.delegate = self
-            
         }
-        
     }
     
     @IBOutlet weak var userImageView: UIImageView! {
-        
         didSet {
-            
             userImageView.layer.cornerRadius = userImageView.frame.width / 2
-            
         }
-        
     }
     
     @IBOutlet weak var userNameTextField: UITextField!
     
     @IBOutlet weak var changeUserNameButton: UIButton!
-    
     @IBOutlet weak var finishUserNameButton: UIButton!
     
     @IBOutlet weak var segmentedBarView: UIView!
 
     @IBOutlet weak var accountsLabel: UILabel!
-    
     @IBOutlet weak var settingsLabel: UILabel!
     
     let notificationManager = NotificationManager()
     
     var accounts: [Account] = []
     
-    var settings: [SettingText] = [
-        SettingText(leadingText: "類別顯示", trailingText: ">"),
-        SettingText(leadingText: "使用 Siri 記帳", trailingText: ">"),
-        SettingText(leadingText: "隱私權聲明內容", trailingText: ">"),
-        SettingText(leadingText: "給予評價", trailingText: ">")
-    ]
+    var settings: [SettingText] = SettingProvider().settings
     
     var selectedAccount: Account?
     
@@ -106,7 +73,6 @@ class SettingVC: UIViewController {
         segmentedBarView.frame = CGRect(x: accountsLabel.frame.origin.x,
                                         y: accountsLabel.frame.origin.y + 18 + 3,
                                         width: accountsLabel.frame.width, height: 3)
-        
     }
     
     func setUpUserImage() {
@@ -120,31 +86,23 @@ class SettingVC: UIViewController {
             DispatchQueue.main.async {
                 
                 self.userImageView.image = image
-                
             }
-            
         }
-        
     }
     
     func setUpCollectionView() {
         
         accountsCollectionView.helpRegisterView(cell: AccountingDateCVCell())
-        
         accountsCollectionView.helpRegister(cell: AccountingDateCVCell())
-        
         accountsCollectionView.helpRegister(cell: AddSavingCVCell())
-        
         settingsCollectionView.helpRegister(cell: AccountingDateCVCell())
         
         accountsCollectionView.contentInset = UIEdgeInsets(top: 12, left: 16, bottom: 0, right: 16)
-        
     }
     
     func fetchData() {
         
         accounts = AccountProvider().accounts
-        
     }
     
     func setUpNotification() {
@@ -160,11 +118,8 @@ class SettingVC: UIViewController {
                 self?.fetchData()
                 
                 self?.accountsCollectionView.reloadData()
-                
             }
-            
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -176,41 +131,31 @@ class SettingVC: UIViewController {
             accountDetailVC.selectedAccount = selectedAccount
             
         }
-        
     }
     
     @IBAction func changeUserImage(_ sender: UIButton) {
         
         AlertManager().showUserImageAlertWith(viewController: self)
-        
     }
     
     @IBAction func changeUserName(_ sender: UIButton) {
         
         helpChangeUserName()
-        
         userNameTextField.becomeFirstResponder()
-        
     }
     
     @IBAction func finishChangeUserName(_ sender: UIButton) {
         
         helpChangeUserName()
-        
         userNameTextField.resignFirstResponder()
-        
     }
     
     func helpChangeUserName() {
         
         changeUserNameButton.isHidden = !changeUserNameButton.isHidden
-        
         finishUserNameButton.isHidden = !finishUserNameButton.isHidden
-        
         userNameTextField.isEnabled = !userNameTextField.isEnabled
-        
     }
-    
 }
 
 extension SettingVC: UICollectionViewDataSource {
@@ -226,7 +171,6 @@ extension SettingVC: UICollectionViewDataSource {
             return 2
             
         }
-
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -238,19 +182,9 @@ extension SettingVC: UICollectionViewDataSource {
                 
                 guard let cell = accountsCollectionView.dequeueReusableCell(
                     withReuseIdentifier: String(describing: AddSavingCVCell.self),
-                    for: indexPath) as? AddSavingCVCell else {
-                        return AddSavingCVCell()
-                }
+                    for: indexPath) as? AddSavingCVCell else { return AddSavingCVCell() }
                 
                 cell.initAddSavingCVCell(addText: "新增帳戶", delegate: self)
-//
-//                cell.presentSavingDetailAdd = {
-//
-//                    self.selectedAccount = nil
-//
-//                    self.performSegue(withIdentifier: "goToAccountDetail", sender: nil)
-//
-//                }
                 
                 return cell
                 
@@ -258,9 +192,7 @@ extension SettingVC: UICollectionViewDataSource {
                 
                 guard let cell = accountsCollectionView.dequeueReusableCell(
                     withReuseIdentifier: String(describing: AccountingDateCVCell.self),
-                    for: indexPath) as? AccountingDateCVCell else {
-                        return AccountingDateCVCell()
-                }
+                    for: indexPath) as? AccountingDateCVCell else { return AccountingDateCVCell() }
                 
                 let account = accounts[indexPath.row]
                 
@@ -270,15 +202,13 @@ extension SettingVC: UICollectionViewDataSource {
                     
                     cell.initAccountDateCVCell(leadingText: name,
                                                trailingText: "$\(Int(account.currentValue).formattedWithSeparator)",
-                                               trailingColor: .black,
-                                               havingShadow: true)
+                                               trailingColor: .black, havingShadow: true)
                     
                 } else {
                     
                     cell.initAccountDateCVCell(leadingText: name,
-                                    trailingText: "-$\(abs(Int(account.currentValue)).formattedWithSeparator)",
-                                               trailingColor: .red,
-                                               havingShadow: true)
+                                        trailingText: "-$\(abs(Int(account.currentValue)).formattedWithSeparator)",
+                                               trailingColor: .red, havingShadow: true)
                     
                 }
                 
@@ -298,14 +228,11 @@ extension SettingVC: UICollectionViewDataSource {
             
             guard let cell = settingsCollectionView.dequeueReusableCell(
                 withReuseIdentifier: String(describing: AccountingDateCVCell.self),
-                for: indexPath) as? AccountingDateCVCell else {
-                    return AccountingDateCVCell()
-            }
+                for: indexPath) as? AccountingDateCVCell else { return AccountingDateCVCell() }
             
             cell.initAccountDateCVCell(leadingText: settings[indexPath.row].leadingText,
                                        trailingText: settings[indexPath.row].trailingText,
-                                       trailingColor: .black,
-                                       havingShadow: true)
+                                       trailingColor: .black, havingShadow: true)
             
             cell.goToDetialPage = {
                 
@@ -318,13 +245,10 @@ extension SettingVC: UICollectionViewDataSource {
                     self.performSegue(withIdentifier: "goToUseSiriVC", sender: nil)
                     
                 }
-                
             }
             
             return cell
-            
         }
-
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -345,29 +269,23 @@ extension SettingVC: UICollectionViewDataSource {
                 totalAmount += Int(accounts[index].currentValue)
                 
             }
-            
         }
         
         if totalAmount >= 0 {
             
             headerView.initAccountDateCVCell(leadingText: "總資產",
                                              trailingText: "$\(totalAmount.formattedWithSeparator)",
-                                             trailingColor: .black,
-                                             havingShadow: true)
+                                             trailingColor: .black, havingShadow: true)
             
         } else {
             
             headerView.initAccountDateCVCell(leadingText: "總資產",
                                              trailingText: "-$\(abs(totalAmount).formattedWithSeparator)",
-                                             trailingColor: .red,
-                                             havingShadow: true)
-            
+                                             trailingColor: .red, havingShadow: true)
         }
         
         return headerView
-        
     }
-
 }
 
 extension SettingVC: SavingCVCCellDelegate {
@@ -377,9 +295,7 @@ extension SettingVC: SavingCVCCellDelegate {
         selectedAccount = nil
 
         performSegue(withIdentifier: "goToAccountDetail", sender: nil)
-        
     }
-    
 }
 
 extension SettingVC: UICollectionViewDelegateFlowLayout {
@@ -388,16 +304,7 @@ extension SettingVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
 
-        if collectionView == accountsCollectionView {
-
-            return UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
-
-        } else {
-
-            return UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
-
-        }
-
+        return UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -405,15 +312,6 @@ extension SettingVC: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         return CGSize(width: Int(UIScreen.main.bounds.width - 32), height: 53)
-
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-
-        return 16
-
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -427,11 +325,8 @@ extension SettingVC: UICollectionViewDelegateFlowLayout {
         } else {
 
             return CGSize(width: 0, height: 0)
-
         }
-
     }
-
 }
 
 extension SettingVC: UIScrollViewDelegate {
@@ -443,7 +338,6 @@ extension SettingVC: UIScrollViewDelegate {
             let width = UIScreen.main.bounds.width / 2
             
             segmentedBarView.frame.origin.x = width - 16 - 61.5 + scrollView.contentOffset.x * 93.5 / 414.fitScreen
-            //129.5 + scrollView.contentOffset.x * 93.5 / 414
             
             if segmentedBarView.frame.origin.x + segmentedBarView.frame.width
                 >= settingsLabel.frame.origin.x + settingsLabel.frame.width / 2 {
@@ -465,13 +359,9 @@ extension SettingVC: UIScrollViewDelegate {
                 segmentedBarView.frame = CGRect(x: segmentedBarView.frame.origin.x,
                                                 y: segmentedBarView.frame.origin.y,
                                                 width: accountsLabel.frame.width, height: 3)
-
             }
-
         }
-
     }
-
 }
 
 extension SettingVC: UIImagePickerControllerDelegate {
@@ -481,13 +371,12 @@ extension SettingVC: UIImagePickerControllerDelegate {
         UIImagePickerController.InfoKey: Any]) {
         
         DispatchQueue.global(qos: .userInteractive).async {
-            
+        
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 
                 DispatchQueue.main.async {
                     
                     self.userImageView.image = image
-                    
                 }
                 
                 let imageData = image.pngData()! as NSData
@@ -497,15 +386,11 @@ extension SettingVC: UIImagePickerControllerDelegate {
             } else {
                 
                 print("user get image fail")
-                
             }
-            
         }
         
         self.dismiss(animated: true, completion: nil)
-        
     }
-    
 }
 
 extension SettingVC: UINavigationControllerDelegate { }

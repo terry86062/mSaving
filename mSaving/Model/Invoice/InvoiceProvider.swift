@@ -10,11 +10,20 @@ import Foundation
 
 class InvoiceProvider {
     
-    func downloadInvoiceDetail(qrCodeInfo: QRCodeInfo,
-                               uuid: String,
+    private let httpClient: HTTPClient
+    
+    init(client: HTTPClient = HTTPClient.shared) {
+        
+        httpClient = client
+        
+    }
+    
+    func downloadInvoiceDetail(qrCodeInfo: QRCodeInfo, uuid: String,
                                completionHandler: @escaping (Result<InvoiceDetail>) -> Void) {
         
-        HTTPClient.shared.sendRequest(InvoiceRequest.invoiceDetail(qrCodeInfo: qrCodeInfo, uuid: uuid)) { result in
+        let request = InvoiceRequest.invoiceDetail(qrCodeInfo: qrCodeInfo, uuid: uuid)
+        
+        httpClient.sendRequest(request) { result in
             
             switch result {
                 
@@ -24,11 +33,11 @@ class InvoiceProvider {
                     
                     let invoiceDetail = try JSONDecoder().decode(InvoiceDetail.self, from: data)
                     
-                    DispatchQueue.main.async {
-                        
+//                    DispatchQueue.main.async {
+                    
                         completionHandler(Result.success(invoiceDetail))
                         
-                    }
+//                    }
                     
                 } catch {
                     

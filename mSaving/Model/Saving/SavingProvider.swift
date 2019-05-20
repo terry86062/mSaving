@@ -121,8 +121,10 @@ class SavingProvider {
             
             if saving.expenseCategory == selectedExpenseCategory {
                 
-                checkSaving(month: month, amount: amount - saving.amount,
-                            main: saving.main, selectedExpenseCategory: nil)
+                let result = checkSaving(month: month, amount: amount - saving.amount,
+                                         main: saving.main, selectedExpenseCategory: nil)
+                
+                print(result)
                 
             } else {
                 

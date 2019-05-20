@@ -118,7 +118,7 @@ class InvoiceAddVC: PresentVC {
                                               account: selectedAccount,
                                               category: .expense(selectedCategory))
         
-        dismiss(UIButton())
+        dismiss(animated: true, completion: nil)
         
     }
     

@@ -33,7 +33,7 @@ class SubSavingCVCell: UICollectionViewCell {
         categoryImageView.tintColor = .darkText
 
     }
-    
+    // swiftlint:disable function_parameter_count
     func initSubSavingCVCell(saving: Saving, budget: Int64, totalSpend: Int, imageName: String,
                              categoryName: String, hex: String, delegate: SavingCVCCellDelegate?) {
         
@@ -52,8 +52,6 @@ class SubSavingCVCell: UICollectionViewCell {
         categoryImageView.image?.withRenderingMode(.alwaysTemplate)
         
         categoryImageView.tintColor = .darkText
-        
-//        categoryBudgetView.backgroundColor = UIColor.hexStringToUIColor(hex: hex).withAlphaComponent(0.6)
         
         categoryNameLabel.text = categoryName + "預算"
         

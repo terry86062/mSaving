@@ -8,6 +8,12 @@
 
 import UIKit
 
+@objc protocol AccountingDateCVCellDelegate: AnyObject {
+    
+    @objc optional func touchAccountingDate()
+    
+}
+
 class AccountingDateCVCell: UICollectionViewCell {
 
     @IBOutlet weak var leadingLabel: UILabel!

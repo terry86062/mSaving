@@ -37,6 +37,7 @@
 		DE366ABD226EC20700A65954 /* AccountingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366ABC226EC20700A65954 /* AccountingProvider.swift */; };
 		DE366ABF226EE64700A65954 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366ABE226EE64700A65954 /* NotificationManager.swift */; };
 		DE366AC1226EE88200A65954 /* Notification - extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366AC0226EE88200A65954 /* Notification - extension.swift */; };
+		DE42682B2291942300A8933A /* SettingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42682A2291942300A8933A /* SettingProvider.swift */; };
 		DE490C30227AF3660063EAD4 /* SiriVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE490C2F227AF3660063EAD4 /* SiriVC.swift */; };
 		DE4984B522586A0F004E4AE9 /* ChartDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4984B422586A0F004E4AE9 /* ChartDetailVC.swift */; };
 		DE4984B8225878A8004E4AE9 /* CategoryAccountingsTotalCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4984B6225878A8004E4AE9 /* CategoryAccountingsTotalCVCell.swift */; };
@@ -86,6 +87,8 @@
 		DEBE8C29225519F800C2A8A3 /* AccountingCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEBE8C27225519F800C2A8A3 /* AccountingCVCell.xib */; };
 		DEBE8C2C2255AED800C2A8A3 /* AccountingDateCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C2A2255AED800C2A8A3 /* AccountingDateCVCell.swift */; };
 		DEBE8C2D2255AED800C2A8A3 /* AccountingDateCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEBE8C2B2255AED800C2A8A3 /* AccountingDateCVCell.xib */; };
+		DEC77717228A96B6006D0567 /* AccountProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC77716228A96B6006D0567 /* AccountProviderTests.swift */; };
+		DEC77719228AA5B4006D0567 /* InvoiceProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC77718228AA5B4006D0567 /* InvoiceProviderTests.swift */; };
 		DEDE571222702EB10071FCFD /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDE571122702EB10071FCFD /* IntentHandler.swift */; };
 		DEDE571A22702EB20071FCFD /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEDE571922702EB20071FCFD /* IntentsUI.framework */; };
 		DEDE571D22702EB20071FCFD /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDE571C22702EB20071FCFD /* IntentViewController.swift */; };
@@ -222,6 +225,7 @@
 		DE366ABC226EC20700A65954 /* AccountingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountingProvider.swift; sourceTree = "<group>"; };
 		DE366ABE226EE64700A65954 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		DE366AC0226EE88200A65954 /* Notification - extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification - extension.swift"; sourceTree = "<group>"; };
+		DE42682A2291942300A8933A /* SettingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingProvider.swift; sourceTree = "<group>"; };
 		DE490C2F227AF3660063EAD4 /* SiriVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriVC.swift; sourceTree = "<group>"; };
 		DE4984B422586A0F004E4AE9 /* ChartDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDetailVC.swift; sourceTree = "<group>"; };
 		DE4984B6225878A8004E4AE9 /* CategoryAccountingsTotalCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAccountingsTotalCVCell.swift; sourceTree = "<group>"; };
@@ -263,6 +267,8 @@
 		DEBE8C27225519F800C2A8A3 /* AccountingCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountingCVCell.xib; sourceTree = "<group>"; };
 		DEBE8C2A2255AED800C2A8A3 /* AccountingDateCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountingDateCVCell.swift; sourceTree = "<group>"; };
 		DEBE8C2B2255AED800C2A8A3 /* AccountingDateCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountingDateCVCell.xib; sourceTree = "<group>"; };
+		DEC77716228A96B6006D0567 /* AccountProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountProviderTests.swift; sourceTree = "<group>"; };
+		DEC77718228AA5B4006D0567 /* InvoiceProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceProviderTests.swift; sourceTree = "<group>"; };
 		DEDE570A227004550071FCFD /* mSaving.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mSaving.entitlements; sourceTree = "<group>"; };
 		DEDE570F22702EB10071FCFD /* PaymentIntent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PaymentIntent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEDE571122702EB10071FCFD /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
@@ -418,6 +424,8 @@
 			isa = PBXGroup;
 			children = (
 				DE24717822857331005A341C /* mSavingTests.swift */,
+				DEC77716228A96B6006D0567 /* AccountProviderTests.swift */,
+				DEC77718228AA5B4006D0567 /* InvoiceProviderTests.swift */,
 				DE24717A22857331005A341C /* Info.plist */,
 			);
 			path = mSavingTests;
@@ -495,6 +503,14 @@
 				DE366AB6226EA9F000A65954 /* CategoryProvider.swift */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		DE426829229193EF00A8933A /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				DE42682A2291942300A8933A /* SettingProvider.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		DE4984B3225869D6004E4AE9 /* Chart */ = {
@@ -703,6 +719,7 @@
 				DE366AB3226EA78F00A65954 /* Account */,
 				DE366AB5226EA7DE00A65954 /* Category */,
 				DEEB5FB6226CD5360088C798 /* Invoice */,
+				DE426829229193EF00A8933A /* Setting */,
 				DEEB5FB3226CC7590088C798 /* HTTP */,
 			);
 			path = Model;
@@ -1138,6 +1155,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEC77719228AA5B4006D0567 /* InvoiceProviderTests.swift in Sources */,
+				DEC77717228A96B6006D0567 /* AccountProviderTests.swift in Sources */,
 				DE24717922857331005A341C /* mSavingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1226,6 +1245,7 @@
 				DE2BB3692253AE16001D55E4 /* Int - extension.swift in Sources */,
 				DEECB065225335FA002D6C30 /* UIStoryboard - extension.swift in Sources */,
 				DEA65DF32259EE4700A10242 /* CategorysCVCell.swift in Sources */,
+				DE42682B2291942300A8933A /* SettingProvider.swift in Sources */,
 				DEA65DFC225A63E400A10242 /* SearchVC.swift in Sources */,
 				DEF27CAC226977F30030DB9D /* CategoryAccountingsCVCell.swift in Sources */,
 				DE99AC8A22563D1400B12AD6 /* SubSavingVC.swift in Sources */,

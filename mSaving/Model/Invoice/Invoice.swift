@@ -36,7 +36,7 @@ struct InvoiceDetail: Codable {
     
     let invDate: String
     
-    lazy var totalAmount: Int = {
+    var totalAmount: Int {
         
         var total = 0
         
@@ -52,7 +52,7 @@ struct InvoiceDetail: Codable {
         
         return total
         
-    }()
+    }
     
 }
 

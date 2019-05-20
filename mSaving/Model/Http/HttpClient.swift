@@ -52,7 +52,7 @@ class HTTPClient {
     
     static let shared = HTTPClient()
     
-    private init() {}
+    init() {}
     
     func sendRequest(_ mSRequest: MSRequest,
                      completionHandler: @escaping (Result<Data>) -> Void) {
