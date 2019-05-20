@@ -2,8 +2,8 @@
 
 記一記帳 is a free budgeting app that tracks users’ spending, optimizes users’ budget and helps users save money.
 
-<img width="400" height="865" src="https://github.com/terry86062/mSaving/blob/develop/教學-新增帳.gif"/><img width="400" height="865" src="https://github.com/terry86062/mSaving/blob/develop/教學-新增預算.gif"/>
-<img width="400" height="865" src="https://github.com/terry86062/mSaving/blob/develop/教學-掃QR-code記帳.gif"/><img width="400" height="865" src="https://github.com/terry86062/mSaving/blob/develop/教學-使用Siri記帳.gif"/>
+<img width="400" height="865" src="https://github.com/terry86062/mSaving/blob/develop/教學-新增帳.gif"/> <img width="400" height="865" src="https://github.com/terry86062/mSaving/blob/develop/教學-新增預算.gif"/>
+<img width="400" height="865" src="https://github.com/terry86062/mSaving/blob/develop/教學-掃QR-code記帳.gif"/> <img width="400" height="865" src="https://github.com/terry86062/mSaving/blob/develop/教學-使用Siri記帳.gif"/>
 
 * ## Design Pattern 
     Structured with MVC architecture. Use Delegation and Notification Center Patterns to communicate and pass informations between objects.
