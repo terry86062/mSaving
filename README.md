@@ -2,6 +2,8 @@
 
 記一記帳 is a free budgeting app that tracks users’ spending, optimizes users’ budget and helps users save money.
 
+TestFlight  https://testflight.apple.com/join/zDn3SOEg
+
 # Feature
 * ### 新增帳
 <img width="200" height="433" src="https://github.com/terry86062/mSaving/blob/develop/教學-新增帳.gif"/>
@@ -77,7 +79,7 @@ extension IntentHandler: INPayBillIntentHandling {
 
 # Requirement
 * #### iOS 11.0+
-* #### XCode 10.0+
+* #### XCode 10.2+
 
 # Contacts
 Terry Huang
