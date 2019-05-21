@@ -25,6 +25,8 @@ Build Relationships between different entities to fetch and revise data more eff
 * ### Third Party API 
 Through scanning the QR-code on E-Invoice, send a request to E-Invoice API of the Ministry of Finance, R.O.C.. Parse the response from the server to get the information of E-Invoice for users recording their spending.
 
+<img width="200" height="433" src="https://github.com/terry86062/mSaving/blob/develop/教學-掃QR-code記帳.gif"/>
+
 * ### SiriKit 
 Users can say the keyword “支付帳單O元” which provide in INPayBillIntent and Siri will create new spending for users if they enabled Siri function.
 <pre><code>
@@ -60,6 +62,8 @@ extension IntentHandler: INPayBillIntentHandling {
 
 }
 </code></pre>
+
+<img width="200" height="433" src="https://github.com/terry86062/mSaving/blob/develop/教學-使用Siri記帳.gif"/>
 
 # ScreenShot
 <img width="400" height="400" src="https://github.com/terry86062/mSaving/blob/develop/IMG_0327_iphonexspacegrey_portrait.png"/>
