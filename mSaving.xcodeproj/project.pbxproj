@@ -559,8 +559,8 @@
 		DE990ED1227E8E8000958B33 /* Invoice */ = {
 			isa = PBXGroup;
 			children = (
-				DE990ED2227E8F1000958B33 /* AskCameraView.xib */,
 				DE990ED4227E8FB900958B33 /* AskCameraView.swift */,
+				DE990ED2227E8F1000958B33 /* AskCameraView.xib */,
 			);
 			path = Invoice;
 			sourceTree = "<group>";

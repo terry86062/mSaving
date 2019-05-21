@@ -34,6 +34,14 @@ extension IntentHandler: INPayBillIntentHandling {
 
         let account = AccountProvider().accounts
         
+        guard account != [] else {
+            
+            completion(INPayBillIntentResponse(code: .failure, userActivity: nil))
+            
+            return
+            
+        }
+        
         guard let occurDate = createOccurDate(selectedDate: Date()) else { return }
         
         AccountingProvider().createAccounting(occurDate: occurDate,
